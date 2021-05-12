@@ -7,19 +7,34 @@ Der Begriff des Empfehlungssystems ist im englischsprachigen Raum auch unter Bez
 Besonders bekannt für den Einsatz von Empfehlungssystemen sind große IT-Konzerne wie Amazon, Facebook, Google und Netflix \cite[S. 1]{zarzour:2018}. Diese Unternehmen nutzen Recommender Engines, um ihren Kunden personalisierte Vorschläge zu den Inhalten ihrer Plattformen anzuzeigen \cite[S. 2]{jeckmans:2013}. In vielen Fällen entfällt dabei für den Anwender vollständig die Notwendigkeit einer manuellen Suche \cite[S. 1]{comibingCareer:2013}.\\
 Der Einsatz von Empfehlungssystemen wird in der Literatur kritisch diskutiert. Beispielsweise beobachteten \textcite[S. 17f.]{alfano:2020}, dass das Empfehlungssystem der Videostreaming-Plattform YouTube dazu tendiert, neuen Anwendern zur Verlängerung ihrer Nutzungszeit verschwörungstheoretische Inhalte auszuspielen. Eine Untersuchung von Forschern des sozialen Netzwerks Facebook kam zu dem Ergebnis, dass deren Recommender Engine Nutzern verstärkt Inhalte präsentiert, welche konform mit deren Ideologien sind \cite[S. 2]{bakshy:2015}. \textcite[S. 1ff.]{pariser:2012} prägte für diese Art der Personalisierung den Begriff der Filterblase. \\
 Empfehlungssysteme haben aber auch einen bedeutenden Anteil am wirtschaftlichen Erfolg großer Internetplattformen. So führen beispielsweise \textcite[S. 6f.]{sharma:2015} etwa 30 Prozent des Internetverkehrs beim Online-Händler Amazon unmittelbar auf den Einsatz von Empfehlungssystemen zurück. \textcite[S. 5]{gomezuribe:2016} stellten bei einer Analyse der Streaming-Plattform Netflix fest, dass ca. 80 Prozent der Nutzungszeit auf Videos entfällt, welche dem Nutzer ohne vorherige Suche von einer Recommender Engine vorgeschlagen wurden.\\
-Um solch präzise Vorhersagen treffen zu können, werden vorhandene Daten häufig zunächst in die Form von Matrizen überführt \cite[S. 11f.]{recommenderSystems:2016}.
+Um Vorschläge generieren zu können, sollten Nutzerdaten zunächst in einer maschinell auswertbaren Struktur gespeichert werden \cite[S. 11f.]{recommenderSystems:2016}.
 
 \section{Arbeitsweise von Empfehlungssystemen}
 \label{ch:empfehlungssysteme:arbeitsweise}
-Um Vorschläge zu generieren, leiten Empfehlungssysteme bislang unbekannte Bewertungen eines Nutzers aus bereits vorhandenen Beurteilungen ableiten \cite[S. 3]{recommenderSystems:2016}. Dieses Vorgehen setzt voraus, die Nutzerbewertungen in einer maschinell auswertbaren Form gespeichert sind. Bezogen auf die Implementierung von Empfehlungssystemen zur Besetzung offener Projektpositionen ist dabei die Verwendung von Matrizen verbreitet. Diese erfassen über boolsche Werte oder Bewertungen die Ausprägungen der Fähigkeiten der Mitarbeiters \cite[S. 11f.]{recommenderSystems:2016}. Beispiele für Fähigkeits-Matrizen mit boolschen Werten sind in Abbildung \ref{fig:empfehlungssysteme:abb1} dargestellt.
-\begin{figure}[h]
+Empfehlungssysteme wählen anzuzeigende Inhalte basierend auf Präferenzen von Nutzern aus. Solche Vorlieben können explizit erfasst werden. Dies kann beispielsweise über abgegebene Produktbewertungen geschehen. Auch ist es möglich implizite Rückmeldungen der Anwender auszuwerten. Zu diesem Zweck können unter anderem Verhaltensweisen aufgezeichnet werden \cite[S. 3]{pu:2012}. Das gesammelte Feedback wird zunächst in die Struktur von Matrizen überführt \cite[S. 11f.]{recommenderSystems:2016}. Ein Beispiel für eine Matrix mit Bewertungen der Fähigkeiten von Mitarbeitern ist in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} dargestellt.
+\begin{table}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{gfx/Projektmatrix.png}
-	\caption{Beispiele für Matrixdarstellungen von Fähigkeiten}
-	\label{fig:empfehlungssysteme:abb1}
-\end{figure}\\
+	\begin{tabular}{c|c|c|c|c|c|c|c}
+	 & JavaScript & Java & MySQL & Db2 & Hadoop & Spark & ... \\
+	\hline
+	Doe, Jane & 3 & ? & 2 & ? & ? & ? & ... \\
+	Doe, John & ? & 4 & 3 & 3 & ? & ? & ... \\
+	Musterfrau, Erika & ? & 5 & ? & ? & 5 & 3 & ... \\
+	Mustermann, Max & 2 & 1 & 1 & ? & ? & ? & ... \\
+	... & ... & ... & ... & ... & ... & ... & ... \\
+	\end{tabular}
+	\caption{Beispiel für die Matrixdarstellung von Fähigkeiten}
+	\label{tbl:empfehlungssysteme:arbeitsweise:tbl1}
+\end{table}\\
+In Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} sind in der ersten Spalte die Mitarbeiter eines Unternehmens zu erkennen. 
+\newpage
+
+
+Um Vorschläge zu generieren, leiten Empfehlungssysteme bislang unbekannte Bewertungen eines Nutzers aus bereits vorhandenen Beurteilungen ableiten \cite[S. 3]{recommenderSystems:2016}. Dieses Vorgehen setzt voraus, die Nutzerbewertungen in einer maschinell auswertbaren Form gespeichert sind. Bezogen auf die Implementierung von Empfehlungssystemen zur Besetzung offener Projektpositionen ist dabei die Verwendung von Matrizen verbreitet. Diese erfassen über boolsche Werte oder Bewertungen die Ausprägungen der Fähigkeiten der Mitarbeiters \cite[S. 11f.]{recommenderSystems:2016}. Beispiele für Fähigkeits-Matrizen mit boolschen Werten sind in Abbildung \ref{fig:empfehlungssysteme:abb1} dargestellt.
+
 Zahlreiche Wissenschaftler in der Literatur sind sich einig, dass für die Auswahl geeigneter Kandidaten ein einfacher boolscher Abgleich zwischen gesuchten und vorhandenen Fähigkeiten in den Matrizen eine unzureichende Lösung ist \cite[S. 1]{enhancingERecruitment:2012}\cite[S. 1]{faerber:2003}\cite[S. 2]{prospect:2010} und der Komplexität der Aufgabe nicht gerecht wird \cite[S. 1]{malinowski:2008}. So kritisieren beispielsweise \textcite[S. 1f.]{mitre:2014}, dass bei einem solchen Ansatz Synonyme und verwandte Fähigkeit nicht in die Suche einbezogen werden.\\
 Ein Ansatz ist die Umsetzung eines wissensbasierten Systems.
+
 \newpage
 - \cite[S. xvii]{recommenderSystems:2016}: Thema der RS erhielt eine steigende Wichtigkeit in den 90ern, als das Web ein wichtiges Medium für Wirtschaft und Online-Handel wurde --> Es wurde früh erkannt, dass das Web unerreichte Möglichkeiten zur Personalisierung bereit hielt, welche in anderen Kanälen nicht zur Verfügung standen --> Web bot einfache Datensammlung und Nutzeroberfläche, um empfohlene Items in einer unaufdringlichen Weise anzuzeigen\\
 - \cite[S. xvii]{recommenderSystems:2016}: Bekannteste Methoden: kollaboratives filtern, inhaltsbasiertes filtern und wissensbasierte Systeme\\
