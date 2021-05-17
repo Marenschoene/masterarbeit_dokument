@@ -16,10 +16,10 @@ Das gesammelte Feedback überführen Analysten in die Struktur von Matrizen \cit
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|c|c|c}
-	 & JavaScript & Java & MySQL & Db2 & Hadoop & Spark & ... \\
+	 & Java & Python & MySQL & MongoDB & Hadoop & Spark & ... \\
 	\hline
-	Doe, Jane & 3 & ? & 2 & ? & ? & ? & ... \\
-	Doe, John & ? & 4 & 3 & 3 & 1 & ? & ... \\
+	Doe, Jane & ? & 4 & 3 & 3 & 1 & ? & ... \\
+	Doe, John & 3 & ? & 2 & ? & ? & ? & ... \\
 	Musterfrau, Erika & ? & 5 & ? & ? & 5 & 3 & ... \\
 	Mustermann, Max & 2 & 1 & 1 & ? & ? & ? & ... \\
 	... & ... & ... & ... & ... & ... & ... & ... \\
@@ -41,7 +41,10 @@ Sofern die Ergebnisse nicht vollständiger Präzision unterliegen müssen, ziehe
 
 \section{Kollaboratives Filtern}
 \label{ch:empfehlungssysteme:cf}
-Implementierungen auf Basis des kollaborativen Filterns fokussieren die Daten anderer Mitarbeiter. Dabei werden dem Anwender Stellen empfohlen, für welche sich auch andere Nutzer interessieren, die ihm ähnlich sind \cite[S. 3]{jobMatcher:2020}. Diese Art von Empfehlungssystem ist für die vorliegende Problemstellung jedoch ungeeignet, da hier Mitarbeiter für Projekte empfohlen werden sollen und nicht umgekehrt. Dieses Problem identifizierten auch \textcite[S. 2]{mitre:2014}. Um dennoch ein System auf Basis des kollaborativen Filterns entwickeln zu können, entwarfen die Forscher einen fiktiven "Pseudo-Mitarbeiter". Diesem wiesen sie alle für das Projekt relevanten Fähigkeiten zu. Über Ähnlichkeitsmaße wurden die Angestellten ausgewählt, welche die höchste Übereinstimmung mit dem Pseudo-Mitarbeiter vorweisen konnten. Zu diesem Ansatz muss kritisch angemerkt werden, dass es sich entgegen der Angabe der Wissenschaftler nicht um kollaboratives, sondern um inhaltsbasiertes Filtern handelt.\\
+Implementierungen auf Basis des kollaborativen Filterns fokussieren die Daten anderer Mitarbeiter. Dabei werden dem Anwender Stellen empfohlen, für welche sich auch andere Nutzer interessieren, die diesem ähnlich sind \cite[S. 3]{jobMatcher:2020}.
+
+\newpage
+Diese Art von Empfehlungssystem ist für die vorliegende Problemstellung jedoch ungeeignet, da hier Mitarbeiter für Projekte empfohlen werden sollen und nicht umgekehrt. Dieses Problem identifizierten auch \textcite[S. 2]{mitre:2014}. Um dennoch ein System auf Basis des kollaborativen Filterns entwickeln zu können, entwarfen die Forscher einen fiktiven "Pseudo-Mitarbeiter". Diesem wiesen sie alle für das Projekt relevanten Fähigkeiten zu. Über Ähnlichkeitsmaße wurden die Angestellten ausgewählt, welche die höchste Übereinstimmung mit dem Pseudo-Mitarbeiter vorweisen konnten. Zu diesem Ansatz muss kritisch angemerkt werden, dass es sich entgegen der Angabe der Wissenschaftler nicht um kollaboratives, sondern um inhaltsbasiertes Filtern handelt.\\
 Beim inhaltsbasierten Filtern werden Mitarbeiter für Projekte empfohlen, welche in ihren Fähigkeiten eine möglichst hohe Übereinstimmung mit den im Projekt benötigten Kompetenzen aufweisen \cite[S. 139]{recommenderSystems:2016}. So verwendeten \textcite[S. 2]{mitre:2014} zwar einen Pseudo-Mitarbeiter, dieser stellte jedoch lediglich eine Repräsentation der im Projekt geforderten Fähigkeiten da.\\
 Einen ähnlichen Ansatz verfolgten auch \textcite[S. 6ff.]{buildingVectorRepresentations:2020}. Diese stellten die Fähigkeiten der Mitarbeiter und die im Projekt benötigten Kompetenzen in Form von Vektoren dar. Auch hier wurden über Ähnlichkeitsalgorithmen diejenigen Kandidaten ausgewählt, welche die höchste Übereinstimmung mit den gesuchten Fähigkeiten aufweisen konnten.\\
 Solche, auf Ähnlichkeitsberechnungen basierende Implementierung, werden als "speicherbasierte Ansätze" bezeichnet. Darüber hinaus existieren auch "modellbasierte Ansätze", welche Verfahren aus dem Bereich des maschinellen Lernens und des Data Minings zur Generierung von Empfehlungen verwenden \cite[S. 9]{recommenderSystems:2016}. So entwickelten beispielsweise \textcite[S. 5ff.]{personJobFit:2018} ein Empfehlungssystem auf Basis eines neuronalen Netzes, welches die Eignung einer Person für eine Stelle aus vergangenen Bewerbungsdaten vorhersagt.\\
