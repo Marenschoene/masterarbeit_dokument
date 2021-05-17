@@ -57,6 +57,9 @@
 %*************************************************************************
 %\hyphenation{put special hyphenation here}
 
+% Keine Einrückung bei neuem Absatz
+\usepackage[parfill]{parskip}
+
 %*************************************************************************
 % GO!GO!GO! MOVE IT!
 %*************************************************************************
@@ -84,7 +87,7 @@
 \cleardoublepage\include{frontbackmatter/Figures}
 %\cleardoublepage\include{frontbackmatter/Tables}
 %\cleardoublepage\include{frontbackmatter/Listings}
-%\cleardoublepage\include{frontbackmatter/Acronyms}
+\cleardoublepage\include{frontbackmatter/Acronyms}
 %*************************************************************************
 % Mainmatter
 %*************************************************************************
@@ -94,7 +97,7 @@
 % Alwas use \cleardoublepage before \part{...}.
 \cleardoublepage
 \part{Thesis}\label{pt:thesis}
-%\include{chapters/chapter01}
+\include{chapters/chapter01}
 \include{chapters/chapter02}
 %\include{chapters/chapter03}
 %\include{chapters/chapter04}
