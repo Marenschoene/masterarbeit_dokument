@@ -28,14 +28,14 @@ Das gesammelte Feedback überführen Analysten in die Struktur von Matrizen \cit
 	Doe, Jane & ? & 4 & 3 & 3 & 1 & ? & ...\\
 	Doe, John & 3 & ? & 2 & ? & ? & ? & ...\\
 	Muster, Erika & ? & 5 & ? & ? & 5 & 3 & ...\\
-	Muster, Max & 2 & 1 & 1 & ? & ? & ? & ...\\
+	Muster, Max & 2 & 3 & 1 & ? & ? & ? & ...\\
 	... & ... & ... & ... & ... & ... & ... & ... 
 	\end{tabular}
 	\caption{Beispiel für die Matrixdarstellung von Fähigkeiten}
 	\label{tbl:empfehlungssysteme:arbeitsweise:tbl1}
 \end{table}
 
-In Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} sind in der ersten Spalte die Mitarbeiter eines Unternehmens gespeichert. Diese werden als Nutzer (User) bezeichnet. In der Kopfzeile der folgenden Spalten sind verschiedene Fähigkeiten eingetragen, welche Elemente (Items) genannt werden. In der Mitte der Tabelle befinden sich die Bewertungen (Ratings) der Fähigkeiten jedes Nutzers \cite[S. 1f.]{strub:2016}. Im Beispiel aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} wurden die expliziten Beurteilungen auf einer Skala von eins bis fünf vergeben. Diese bewerteten Matrix-Einträge werden  als beobachtet (observed) oder spezifiziert (specified) bezeichnet. Unbewertete Elemente sind mit einem Fragezeichen gekennzeichnet und werden unbeobachtet (unobserved) oder fehlend (missing) genannt \cite[S. 8]{recommenderSystems:2016}.
+In Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} sind in der ersten Spalte die Mitarbeiter eines Unternehmens gespeichert. Diese werden als Nutzer (User) bezeichnet. In der Kopfzeile der folgenden Spalten sind verschiedene Fähigkeiten eingetragen. Diese werden Elemente (Items) genannt. In der Mitte der Tabelle befinden sich die Bewertungen (Ratings) der Fähigkeiten jedes Nutzers \cite[S. 1f.]{strub:2016}. Im Beispiel aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} wurden die expliziten Beurteilungen auf einer Skala von eins bis fünf vergeben. Diese bewerteten Matrix-Einträge werden  als beobachtet (observed) oder spezifiziert (specified) bezeichnet. Unbewertete Elemente sind mit einem Fragezeichen gekennzeichnet und werden unbeobachtet (unobserved) oder fehlend (missing) genannt \cite[S. 8]{recommenderSystems:2016}.
 
 Zahlreiche Wissenschaftler in der Literatur sind sich einig, dass für die Empfehlung geeigneter Kandidaten für eine Stelle bzw. Projektposition ein einfacher Abgleich zwischen gesuchten und vorhandenen Fähigkeiten in der Matrix eine unzureichende Lösung darstellt \cite[S. 1]{enhancingERecruitment:2012}\cite[S. 1]{faerber:2003}\cite[S. 2]{prospect:2010} und der Komplexität der Aufgabe nicht gerecht wird \cite[S. 1]{malinowski:2008}. So kritisieren beispielsweise \textcite[S. 1f.]{mitre:2014}, dass bei einem solchen Ansatz Synonyme und verwandte Fähigkeit nicht in die Suche einbezogen werden. Um diesem Problem zu begegnen, existieren in der Literatur zahlreiche unterschiedliche Ansätze, Recommender Enginges zu implementieren. Einer davon ist die Umsetzung eines wissensbasierten Empfehlungssystems \cite[S. 2f.]{dwivedi:2017}.
 
@@ -55,8 +55,55 @@ Sofern die Ergebnisse nicht vollständiger Präzision unterliegen müssen, ziehe
 
 \section{Kollaboratives Filtern}
 \label{ch:empfehlungssysteme:cf}
-Implementierungen auf Basis des kollaborativen Filterns fokussieren die Daten anderer Mitarbeiter. Dabei werden dem Anwender Stellen empfohlen, für welche sich auch andere Nutzer interessieren, die diesem ähnlich sind \cite[S. 3]{jobMatcher:2020}.
+Das Ziel von Verfahren im Bereich des kollaborativen Filterns ist das Vorhersagen unbewerteter Einträge in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}. Unbeobachtete Werte eines Zielnutzers werden dabei über Ähnlichkeitsberechnungen aus vergebenen Beurteilungen anderer Nutzer geschlussfolgert. Verwenden Algorithmen die Ähnlichkeiten zwischen Mitarbeitern bzw. Tabellenzeilen zur Vorhersage, werden diese als nutzerbasiert (user-based) bezeichnet. Greifen Verfahren dagegen auf die Gleichartigkeit zwischen Fähigkeiten bzw. Tabellenspalten zurück, werden sie elementbasiert (item-based) genannt. \textcite[S. 3]{breese:1998} unterschieden speicher- (memory-) und modellbasierten (modelbased) Algorithmen. Speicherbasierte Verfahren übertragen sämtliche Nutzer und deren Bewertungen zur Empfehlungs-Berechnung in den Hauptspeicher. Modellbasierte Verfahren nutzen dagegen Algorithmen aus dem Bereich des Data Minings. Diese werden genutzt, um vor dem Einsatz in der Produktivumgebung statistische Vorhersage-Modelle zu entwickeln \cite[S. 3]{breese:1998}\cite[S. 11]{schafer:2007}.
 
+In der Literatur existieren unterschiedliche Ansätze, speicher- und modellbasierte Verfahren zu implementieren.
+
+\subsection{Speicherbasierte Verfahren}
+\label{ch:empfehlungssysteme:cf:speicherbasiert}
+Ein bekannter Ansatz, speicherbasierte Verfahren umzusetzen, ist die Implementierung nachbarschaftsbasierter Algorithmen. Soll hierbei beispielsweise die fehlende Java-Bewertung von Jane Doe in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} vorhergesagt werden, erfolgt dies über paarweise Ähnlichkeitsberechnungen. Diese können element- (item-) oder nutzer-orientiert (user-oriented) erfolgen \cite[S. 1f.]{duong:2018}.
+
+Bei element-orientierten Verfahren wird die Ähnlichkeit zwischen Java und jeder anderen Fähigkeit bestimmt, welche Jane Doe beherrscht. Anschließend wird die durchschnittliche Bewertung der k-ähnlichsten Elemente berechnet und als Java-Beurteilung für Jane Doe eingesetzt.
+
+Bei nutzer-orientierten Algorithmen wird die Gleichartigkeit zwischen Jane Doe und allen anderen Mitarbeitern berechnet. Daraufhin wird die durchschnittliche Java-Beurteilung der k-ähnlichsten Mitarbeiter bestimmt. Diese wird als Bewertung für die Fähigkeit Java von Jane Doe vorhergesagt.
+
+Zur Ähnlichkeitsberehnung können unterschiedliche Algorithmen wie die Jaccard-Ähnlichkeit \cite[S. 2]{bharti:2019}, die euklidische Distanz \cite[S. 3]{cheng:2013} oder die Kosinus-Ähnlichkeit \cite[S. 2]{duong:2018}. Beispielhaft ist in der folgenden Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel1} die Formel zur Berechnung der Kosinus-Ähnlichkeit zwischen den Objekten A und B dargestellt \cite[S. 111]{bharti:2019}:
+\begin{equation}
+cos(A,B) = \frac{(\vec{A} * \vec{B})}{|\vec{A}| * |\vec{B}|} = \frac{\sum_{i=1}^n A_i * B_i}{\sqrt{\sum_{i=1}^n (A_i)^2} * \sqrt{\sum_{i=1}^n (B_i)^2}}
+\label{fig:empfehlungssysteme:cf:speicherbasiert:formel1}
+\end{equation}
+Anstelle der Objekte a und b können in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel1} im Beispiel aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} paarweise Fähigkeiten bzw. Mitarbeiter eingesetzt werden. Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel2} zeigt die nutzerbasierte Ähnlichkeitsberechnung zwischen Jane Doe und Max Muster. Dort ist auch zu erkennen, dass ausschließlich Tabellenspalten in die Berechnung einbezogen werden, welche von beiden Mitarbeitern bewertet wurden.
+\begin{equation}
+	cos(Jane Doe,Max Muster) = \frac{(4*3 + 3*1)}{\sqrt{4^2 + 3^2} * \sqrt{3^2 + 1^2}} \approx \frac{15}{15,811} \approx 0,95
+	\label{fig:empfehlungssysteme:cf:speicherbasiert:formel2}
+\end{equation}
+Wie in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel3} dargestellt, kann auch die elementbasierte Ähnlichkeit zwischen Java und MySQL aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mittels Kosinus-Distanz berechnet werden:
+\begin{equation}
+	cos(Java, MySQL) = \frac{(3*2 + 2*1)}{\sqrt{3^2 + 2^2} * \sqrt{2^2 + 1^2}} \approx \frac{8}{8,063} \approx 0,992
+	\label{fig:empfehlungssysteme:cf:speicherbasiert:formel3}
+\end{equation}
+\textcite[S. 35ff.]{recommenderSystems:2016} kritisiert an solchen Berechnungen, dass möglicher Bias die Ergebnisse verzerren kann. So können einzelne Mitarbeiter ihre Fähigkeiten grundsätzlich schlechter oder besser einschätzen als andere Nutzer. Aus diesem Grund empfiehlt der Autor, vor den Ähnlichkeitsberechnungen zunächst eine Mittelwert-Zentrierung auszuführen. Hierbei wird in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} die durchschnittliche Bewertung jedes Nutzers bestimmt und von dessen vorhandenen Beurteilungen abgezogen. Dabei entstehende negative Bewertungen müssen anschließend gegebenenfalls aus der Tabelle entfernt werden. Dieses Vorgehen ist in der Literatur auch unter der Bezeichnung Pearson Korrelation bekannt \cite[S. 3]{bharti:2019}.
+
+Speicherbasierte 
+
+\newpage
+fokussieren die Bewertungen anderer Mitarbeiter \cite[S. 3]{jobMatcher:2020}. Hierbei werden Ähnlichkeitsberechnungen genutzt, um unbewertete Einträge anderer Mitarbeiter vorherzusagen. 
+
+- \cite[S. 33]{recommenderSystems:2016}: Beispiele zum kollaborativen Filtern: Kann über Nachbarschaften zwischen Nutzern (User-based Models) (Wenn Alice und Bob in der Vergangenheit ähnliche Filme bewertet haben, kann Alice Bewertung für Terminator genutzt werden, um Bobs nicht vergebene Bewertung für Terminator vorherzusagen) oder Nachbarschaft zwischen Items (Item-Based Models) --> Ähnliche Items werden vom Nutzer ähnlich bewertet --> Um Bobs Bewertung für Terminator vorherzusagen, können Bobs Bewertungen für Alien and Predator verwendet werden / Neighborhood Methoden können als Generalisierung von Nearest Neighbor Klassifikatoren aus der ML-Literatur betrachtet werden --> Unterschied: Beim Kollaborativen Filtern können Ähnlichkeiten sowohl in Spalten als auch Zeilen gefunden werden --> Bei ML nur in Rows
+
+- \cite[S. 34f.]{recommenderSystems:2016}: User-Based Neighborhood Models: Berechne Ähnlichkeit zwischen allen Nutzern i und einem Zielnutzer u --> Dazu muss eine Ähnlichkeitsfunktion verwendet werden --> Nimm dazu für jedes Nutzer-Paar alle Items, die beide bewertet haben und berechne darüber die Ähnlichkeit --> z.B. mit Pearson Korrelations-Koeffizient --> Danach kann man ein Set mit k Nutzern auswählen, welche die höchste Ähnlichkeit aufweisen --> Durchschnitt derer Bewertungen kann zur Vorhersage genutzt werden / Achtung: Nutzer könnten unterschiedlich gut bewerten (grundsätzlich besser oder grundsätzlich schnlechter), deshalb: Bewertungen mean-centern, bevor die durchschnittliche Bewertung der Peer-Group bestimmt wird --> Mean-Centern: Durchschnittliche Bewertung eines Nutzers von der Rohbewertung des Items abziehen --> S. 39: Negative Bewertungen sollten gefiltert werden
+
+- \cite[S. 40f.]{recommenderSystems:2016}: Item-Based Neighborhood Models: Ähnlichkeiten werden zwischen Items (Spalten) berechnet --> Erstmal mean centern --> Dann werden alle Nutzer geladen, die das Ziel-Item bewertet haben --> Ähnlichkeit berechnen z.B. Mit AdjustedCosinus (bietet hier bessere Ergebnisse als Pearson) --> Nimm top k-Items --> Gewichteten Durchschnitt berechnen (unter Einbeziehung der Bewertungen des Nutzers für Hebelwirkung)
+
+- \cite[S. 44]{recommenderSystems:2016}: Vorteile Neighborhood: Einfacher und intuitiver Ansatz; Nachteil: Berechnung kann bei großen Datenmengen unpraktisch werden --> Kann langsam werden (vgl. Offline- Online Phase)
+
+- \cite[S. 44]{recommenderSystems:2016}: Kombination von Item- und User-Based: Wichtig: Beide müssen denselben Algorithmus nutzen --> Zuvor mean-centern --> Für Zieleintrag ähnlichste Zeilen und Spalten bestimmen --> Für Zieleintrag die gewichtete Kombination aus den top-k ähnlichsten bestimmen
+
+- \cite[S. 46]{recommenderSystems:2016}: Alternativ: Offline-Clustern
+
+- \cite{recommenderSystems:2016}: Allgemeine Anmerkung: Laufzeiten O(..) wurden im Text genannt / Grundsätzlich: Hauptprobleme bei Memory-Based: Sparsity und hohe Berechnungszeit
+
+- \cite[S. 60]{recommenderSystems:2016}: Sparsity ist ein großes Problem bei Nachbarschafts-Berechnungen  --> Graphen können helfen --> Können für Nutzer, Items oder beide Konzipiert werden --> Bestimmt auch Nachbarschaft --> Ist aber effektiver bei sparse Settings
 \newpage
 Diese Art von Empfehlungssystem ist für die vorliegende Problemstellung jedoch ungeeignet, da hier Mitarbeiter für Projekte empfohlen werden sollen und nicht umgekehrt. Dieses Problem identifizierten auch \textcite[S. 2]{mitre:2014}. Um dennoch ein System auf Basis des kollaborativen Filterns entwickeln zu können, entwarfen die Forscher einen fiktiven "Pseudo-Mitarbeiter". Diesem wiesen sie alle für das Projekt relevanten Fähigkeiten zu. Über Ähnlichkeitsmaße wurden die Angestellten ausgewählt, welche die höchste Übereinstimmung mit dem Pseudo-Mitarbeiter vorweisen konnten. Zu diesem Ansatz muss kritisch angemerkt werden, dass es sich entgegen der Angabe der Wissenschaftler nicht um kollaboratives, sondern um inhaltsbasiertes Filtern handelt.
 
