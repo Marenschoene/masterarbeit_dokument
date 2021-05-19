@@ -55,13 +55,13 @@ Sofern die Ergebnisse nicht vollständiger Präzision unterliegen müssen, ziehe
 
 \section{Kollaboratives Filtern}
 \label{ch:empfehlungssysteme:cf}
-Das Ziel von Verfahren im Bereich des kollaborativen Filterns ist das Vorhersagen unbewerteter Einträge in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}. Unbeobachtete Werte eines Zielnutzers werden dabei über Ähnlichkeitsberechnungen aus vergebenen Beurteilungen anderer Nutzer geschlussfolgert. Verwenden Algorithmen die Ähnlichkeiten zwischen Mitarbeitern bzw. Tabellenzeilen zur Vorhersage, werden diese als nutzerbasiert (user-based) bezeichnet. Greifen Verfahren dagegen auf die Gleichartigkeit zwischen Fähigkeiten bzw. Tabellenspalten zurück, werden sie elementbasiert (item-based) genannt. \textcite[S. 3]{breese:1998} unterschieden speicher- (memory-) und modellbasierten (modelbased) Algorithmen. Speicherbasierte Verfahren übertragen sämtliche Nutzer und deren Bewertungen zur Empfehlungs-Berechnung in den Hauptspeicher. Modellbasierte Verfahren nutzen dagegen Algorithmen aus dem Bereich des Data Minings. Diese werden genutzt, um vor dem Einsatz in der Produktivumgebung statistische Vorhersage-Modelle zu entwickeln \cite[S. 3]{breese:1998}\cite[S. 11]{schafer:2007}.
+Das Ziel von Verfahren im Bereich des kollaborativen Filterns ist das Vorhersagen unbewerteter Einträge in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}. Unbeobachtete Werte eines Zielnutzers werden dabei über Ähnlichkeitsberechnungen aus vergebenen Beurteilungen anderer Nutzer geschlussfolgert \cite[S. 1]{su:2009}. Verwenden Algorithmen die Ähnlichkeiten zwischen Mitarbeitern bzw. Tabellenzeilen zur Vorhersage, werden diese als nutzer-orientiert (user-oriented) bezeichnet. Greifen Verfahren dagegen auf die Gleichartigkeit zwischen Fähigkeiten bzw. Tabellenspalten zurück, werden sie element-orientiert (item-oriented) genannt \cite[S. 1f.]{duong:2018}. \textcite[S. 3]{breese:1998} unterschieden speicher- (memory-) und modellbasierten (modelbased) Algorithmen. Speicherbasierte Verfahren übertragen sämtliche Nutzer und deren Bewertungen zur Empfehlungs-Berechnung in den Hauptspeicher. Modellbasierte Verfahren nutzen dagegen Algorithmen aus dem Bereich des Data Minings. Diese werden genutzt, um vor dem Einsatz in der Produktivumgebung statistische Vorhersage-Modelle zu entwickeln \cite[S. 3]{breese:1998}\cite[S. 11]{schafer:2007}.
 
 In der Literatur existieren unterschiedliche Ansätze, speicher- und modellbasierte Verfahren zu implementieren.
 
 \subsection{Speicherbasierte Verfahren}
 \label{ch:empfehlungssysteme:cf:speicherbasiert}
-Ein bekannter Ansatz, speicherbasierte Verfahren umzusetzen, ist die Implementierung nachbarschaftsbasierter Algorithmen. Soll hierbei beispielsweise die fehlende Java-Bewertung von Jane Doe in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} vorhergesagt werden, erfolgt dies über paarweise Ähnlichkeitsberechnungen. Diese können element- (item-) oder nutzer-orientiert (user-oriented) erfolgen \cite[S. 1f.]{duong:2018}.
+Ein bekannter Ansatz, speicherbasierte Verfahren umzusetzen, ist die Implementierung nachbarschaftsbasierter Algorithmen. Soll hierbei beispielsweise die fehlende Java-Bewertung von Jane Doe in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} vorhergesagt werden, erfolgt dies über paarweise Ähnlichkeitsberechnungen \cite[S. 2f.]{bharti:2019}. Diese können element- (item-) oder nutzer-orientiert (user-oriented) erfolgen \cite[S. 1f.]{duong:2018}.
 
 Bei element-orientierten Verfahren wird die Ähnlichkeit zwischen Java und jeder anderen Fähigkeit bestimmt, welche Jane Doe beherrscht. Anschließend wird die durchschnittliche Bewertung der k-ähnlichsten Elemente berechnet und als Java-Beurteilung für Jane Doe eingesetzt.
 
@@ -72,7 +72,7 @@ Zur Ähnlichkeitsberehnung können unterschiedliche Algorithmen wie die Jaccard-
 cos(A,B) = \frac{(\vec{A} * \vec{B})}{|\vec{A}| * |\vec{B}|} = \frac{\sum_{i=1}^n A_i * B_i}{\sqrt{\sum_{i=1}^n (A_i)^2} * \sqrt{\sum_{i=1}^n (B_i)^2}}
 \label{fig:empfehlungssysteme:cf:speicherbasiert:formel1}
 \end{equation}
-Anstelle der Objekte a und b können in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel1} im Beispiel aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} paarweise Fähigkeiten bzw. Mitarbeiter eingesetzt werden. Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel2} zeigt die nutzerbasierte Ähnlichkeitsberechnung zwischen Jane Doe und Max Muster. Dort ist auch zu erkennen, dass ausschließlich Tabellenspalten in die Berechnung einbezogen werden, welche von beiden Mitarbeitern bewertet wurden.
+Anstelle der Objekte A und B können in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel1} im Beispiel aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} paarweise Fähigkeiten bzw. Mitarbeiter eingesetzt werden. Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel2} zeigt die nutzerbasierte Ähnlichkeitsberechnung zwischen Jane Doe und Max Muster. Dort ist auch zu erkennen, dass ausschließlich Tabellenspalten in die Berechnung einbezogen werden, welche von beiden Mitarbeitern bewertet wurden.
 \begin{equation}
 	cos(Jane Doe,Max Muster) = \frac{(4*3 + 3*1)}{\sqrt{4^2 + 3^2} * \sqrt{3^2 + 1^2}} \approx \frac{15}{15,811} \approx 0,95
 	\label{fig:empfehlungssysteme:cf:speicherbasiert:formel2}
@@ -241,7 +241,17 @@ Neben dem Cold Start sollten Empfehlungssysteme auch eine Lösung für das Spars
 
 - \cite[S. 443]{recommenderSystems:2016}: Reripocale Systeme zeichnen sich dadurch aus, dass sowohl Nutzer als auch Items Präferenzen haben --> Asymmetrisches Problem
 
+- \cite[S. 2]{bharti:2019}: Content-Based: Empfehlen Items, die ähnlich zu vorherigen Items sind, welche der Nutzer hoch bewertet hat
 
+- \cite[S. 1]{duong:2018}: Content-Based: Empfiehlt Items, die ähnlich zu denen sind, welche der Nutzer in der Vergangenheit geliket hat --> Ähnlihckeitsgrad zwischen zwei Items wird basierend auf den assoziierten Features der verglichenen Items berechnet --> Hauptnachteil: Metadaten sind nicht immer verfügbar und nicht immer korrekt (Quelle)
+
+- \cite[S. 1]{duong:2018}: Zwei Ansätze bei kollaborativem Filtern: Neighborhood und Matrix Faktorisierungs CF Modelle, welche latent factors entdecken können / Neighborhood braucht oft viel Berechnungszeit zur Bestimmung der Matrix; Zweiter kann versteckte Faktoren bezogen auf Items bestimmen, das braucht aber sehr viel Trainingszeit / (Quellen) State of the art ist Matrix Faktorisierung, da sie akkurater sind / Neighborhood bieten oft eine bessere Erklärung für ihre Empfehlungen, was die UX verbessern kann --> Sorgt für eine Langzeit-Verbesserung
+
+- \cite[S. 2]{duong:2018}: Bei Neighborhood wird item-item aus zwei Gründen bevorzugt (Quelle): 1. Es gibt eine rationale Erklärung für die Empfehlung; 2. Größe der item-item Matrix ist wesentlich kleiner als user-user
+
+- \cite[S. 2]{duong:2018}: Finales Ziel ist es, die unbebobachtete Bewertung von Nutzer u fr item i zu bestimmen
+
+- \cite[S. 2]{duong:2018}: Neighboordhood aktuell sehr populär, da einfach zu implementierung und erklären den Grund hinter der Empfehlung
 
 \newpage
 Aufbau:
