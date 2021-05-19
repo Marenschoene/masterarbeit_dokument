@@ -61,18 +61,18 @@ In der Literatur existieren unterschiedliche Ansätze, speicher- und modellbasie
 
 \subsection{Speicherbasierte Verfahren}
 \label{ch:empfehlungssysteme:cf:speicherbasiert}
-Ein bekannter Ansatz, speicherbasierte Verfahren umzusetzen, ist die Implementierung nachbarschaftsbasierter Algorithmen. Soll hierbei beispielsweise die fehlende Java-Bewertung von Jane Doe in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} vorhergesagt werden, erfolgt dies über paarweise Ähnlichkeitsberechnungen \cite[S. 2f.]{bharti:2019}. Diese können element- (item-) oder nutzer-orientiert (user-oriented) erfolgen \cite[S. 1f.]{duong:2018}.
+Ein bekannter Ansatz, speicherbasierte Verfahren umzusetzen, ist die Implementierung nachbarschaftsbasierter Algorithmen. Soll hierbei beispielsweise die fehlende Java-Bewertung von Jane Doe in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} vorhergesagt werden, erfolgt dies über paarweise Ähnlichkeitsberechnungen \cite[S. 2f.]{bharti:2019}. Diese können element- (item-) oder nutzer-orientiert (user-oriented) erfolgen \cite[S. 1f.]{duong:2018}. Beide Verfahren zählen zu den \ac{KNN}-Algorithmen \cite[S. 1]{nayak:2018}.
 
-Bei element-orientierten Verfahren wird die Ähnlichkeit zwischen Java und jeder anderen Fähigkeit bestimmt, welche Jane Doe beherrscht. Anschließend wird die durchschnittliche Bewertung der k-ähnlichsten Elemente berechnet und als Java-Beurteilung für Jane Doe eingesetzt.
+Bei element-orientierten Verfahren wird die Ähnlichkeit zwischen Java und jeder anderen Fähigkeit bestimmt, welche Jane Doe beherrscht. Anschließend wird die durchschnittliche Bewertung der k-ähnlichsten Elemente berechnet und als Java-Beurteilung für Jane Doe eingesetzt \cite[S. 2]{hao:2013}.
 
-Bei nutzer-orientierten Algorithmen wird die Gleichartigkeit zwischen Jane Doe und allen anderen Mitarbeitern berechnet. Daraufhin wird die durchschnittliche Java-Beurteilung der k-ähnlichsten Mitarbeiter bestimmt. Diese wird als Bewertung für die Fähigkeit Java von Jane Doe vorhergesagt.
+Bei nutzer-orientierten Algorithmen wird die Gleichartigkeit zwischen Jane Doe und allen anderen Mitarbeitern berechnet. Daraufhin wird die durchschnittliche Java-Beurteilung der k-ähnlichsten Mitarbeiter bestimmt. Diese wird als Bewertung für die Fähigkeit Java von Jane Doe vorhergesagt \cite[S. 2f.]{hao:2013}.
 
 Zur Ähnlichkeitsberehnung können unterschiedliche Algorithmen wie die Jaccard-Ähnlichkeit \cite[S. 2]{bharti:2019}, die euklidische Distanz \cite[S. 3]{cheng:2013} oder die Kosinus-Ähnlichkeit \cite[S. 2]{duong:2018}. Beispielhaft ist in der folgenden Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel1} die Formel zur Berechnung der Kosinus-Ähnlichkeit zwischen den Objekten A und B dargestellt \cite[S. 111]{bharti:2019}:
 \begin{equation}
 cos(A,B) = \frac{(\vec{A} * \vec{B})}{|\vec{A}| * |\vec{B}|} = \frac{\sum_{i=1}^n A_i * B_i}{\sqrt{\sum_{i=1}^n (A_i)^2} * \sqrt{\sum_{i=1}^n (B_i)^2}}
 \label{fig:empfehlungssysteme:cf:speicherbasiert:formel1}
 \end{equation}
-Anstelle der Objekte A und B können in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel1} im Beispiel aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} paarweise Fähigkeiten bzw. Mitarbeiter eingesetzt werden. Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel2} zeigt die nutzerbasierte Ähnlichkeitsberechnung zwischen Jane Doe und Max Muster. Dort ist auch zu erkennen, dass ausschließlich Tabellenspalten in die Berechnung einbezogen werden, welche von beiden Mitarbeitern bewertet wurden.
+Anstelle der Objekte A und B können in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel1} im Beispiel aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} paarweise Fähigkeiten bzw. Mitarbeiter eingesetzt werden. Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel2} zeigt die nutzerbasierte Ähnlichkeitsberechnung zwischen Jane Doe und Max Muster. Dort ist auch zu erkennen, dass ausschließlich Tabellenspalten in die Berechnung einbezogen werden, welche von beiden Mitarbeitern bewertet wurden \cite[S. 2f.]{hao:2013}.
 \begin{equation}
 	cos(Jane Doe,Max Muster) = \frac{(4*3 + 3*1)}{\sqrt{4^2 + 3^2} * \sqrt{3^2 + 1^2}} \approx \frac{15}{15,811} \approx 0,95
 	\label{fig:empfehlungssysteme:cf:speicherbasiert:formel2}
@@ -84,7 +84,7 @@ Wie in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel3} dargest
 \end{equation}
 \textcite[S. 35ff.]{recommenderSystems:2016} kritisiert an solchen Berechnungen, dass möglicher Bias die Ergebnisse verzerren kann. So können einzelne Mitarbeiter ihre Fähigkeiten grundsätzlich schlechter oder besser einschätzen als andere Nutzer. Aus diesem Grund empfiehlt der Autor, vor den Ähnlichkeitsberechnungen zunächst eine Mittelwert-Zentrierung auszuführen. Hierbei wird in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} die durchschnittliche Bewertung jedes Nutzers bestimmt und von dessen vorhandenen Beurteilungen abgezogen. Dabei entstehende negative Bewertungen müssen anschließend gegebenenfalls aus der Tabelle entfernt werden. Dieses Vorgehen ist in der Literatur auch unter der Bezeichnung Pearson Korrelation bekannt \cite[S. 3]{bharti:2019}.
 
-Speicherbasierte 
+Neben nachbarschaftsbasierten Verfahren ist es auch möglich, Graphenalgorithmen zur Ähnlichkeitsbestimmung zu nutzen. 
 
 \newpage
 fokussieren die Bewertungen anderer Mitarbeiter \cite[S. 3]{jobMatcher:2020}. Hierbei werden Ähnlichkeitsberechnungen genutzt, um unbewertete Einträge anderer Mitarbeiter vorherzusagen. 
