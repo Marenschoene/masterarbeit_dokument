@@ -23,11 +23,11 @@ Das gesammelte Feedback überführen Analysten in die Struktur von Matrizen \cit
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|c|c|c}
-	 & Python & Java & MySQL & MongoDB & HDFS & Spark & ...\\ 
+	 & Java & Python & MySQL & MongoDB & HDFS & Spark & ...\\ 
 	\hline
 	Doe, Jane & ? & 4 & 3 & 3 & ? & ? & ...\\
 	Doe, John & 3 & ? & 2 & ? & 1 & ? & ...\\
-	Muster, Erika & ? & 5 & ? & ? & 5 & 3 & ...\\
+	Muster, Erika & ? & ? & ? & ? & 5 & 3 & ...\\
 	Muster, Max & 2 & 3 & 1 & ? & ? & ? & ...\\
 	... & ... & ... & ... & ... & ... & ... & ... 
 	\end{tabular}
@@ -63,9 +63,9 @@ Das Ziel von Verfahren im Bereich des kollaborativen Filterns ist das Vorhersage
 
 %\subsection{Speicherbasierte Verfahren}
 %\label{ch:empfehlungssysteme:cf:speicherbasiert}
-Ein bekannter Ansatz, speicherbasierte Verfahren umzusetzen, ist die Implementierung nachbarschaftsbasierter Algorithmen. Soll hierbei beispielsweise die fehlende Python-Bewertung von Jane Doe in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} vorhergesagt werden, erfolgt dies über paarweise Ähnlichkeitsberechnungen \cite[S. 2f.]{bharti:2019}. Diese können element- (item-) oder nutzer-orientiert (user-oriented) erfolgen \cite[S. 1f.]{duong:2018}. Beide Verfahren zählen zu den \ac{KNN}-Algorithmen \cite[S. 1]{nayak:2018}.
+Ein bekannter Ansatz, speicherbasierte Verfahren umzusetzen, ist die Implementierung nachbarschaftsbasierter Algorithmen. Soll hierbei beispielsweise die fehlende Java-Bewertung von Jane Doe in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} vorhergesagt werden, erfolgt dies über paarweise Ähnlichkeitsberechnungen \cite[S. 2f.]{bharti:2019}. Diese können element- (item-) oder nutzer-orientiert (user-oriented) erfolgen \cite[S. 1f.]{duong:2018}. Beide Verfahren zählen zu den \ac{KNN}-Algorithmen \cite[S. 1]{nayak:2018}.
 
-Bei element-orientierten Verfahren wird die Ähnlichkeit zwischen Python und jeder anderen Fähigkeit bestimmt, welche Jane Doe beherrscht. Anschließend wird die durchschnittliche Bewertung der k-ähnlichsten Elemente berechnet und als Java-Beurteilung für Jane Doe eingesetzt \cite[S. 2]{hao:2013}.
+Bei element-orientierten Verfahren wird die Ähnlichkeit zwischen Java und jeder anderen Fähigkeit bestimmt, welche Jane Doe beherrscht. Anschließend wird die durchschnittliche Bewertung der k-ähnlichsten Elemente berechnet und als Java-Beurteilung für Jane Doe eingesetzt \cite[S. 2]{hao:2013}.
 
 Bei nutzer-orientierten Algorithmen wird die Gleichartigkeit zwischen Jane Doe und allen anderen Mitarbeitern berechnet. Daraufhin wird die durchschnittliche Java-Beurteilung der k-ähnlichsten Mitarbeiter bestimmt. Diese wird als Bewertung für die Fähigkeit Java von Jane Doe vorhergesagt \cite[S. 2f.]{hao:2013}.
 
@@ -79,7 +79,7 @@ Anstelle der Vektoren A und B können in Gleichung \ref{fig:empfehlungssysteme:c
 	cos(Jane Doe,Max Muster) = \frac{(4*3 + 3*1)}{\sqrt{4^2 + 3^2} * \sqrt{3^2 + 1^2}} \approx \frac{15}{15,811} \approx 0,95
 	\label{fig:empfehlungssysteme:cf:speicherbasiert:formel2}
 \end{equation}
-Wie in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel3} dargestellt, kann auch die elementbasierte Ähnlichkeit zwischen Python und MySQL aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mittels Kosinus-Distanz berechnet werden:
+Wie in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel3} dargestellt, kann auch die elementbasierte Ähnlichkeit zwischen Java und MySQL aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mittels Kosinus-Distanz berechnet werden:
 \begin{equation}
 	cos(Java, MySQL) = \frac{(3*2 + 2*1)}{\sqrt{3^2 + 2^2} * \sqrt{2^2 + 1^2}} \approx \frac{8}{8,063} \approx 0,992
 	\label{fig:empfehlungssysteme:cf:speicherbasiert:formel3}
@@ -98,41 +98,40 @@ Für diese Häufigkeitsverteilung prägte \textcite[S. 12]{anderson:2007} den Be
 
 Die in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb1} dargestellte Häufigkeitsverteilung von abgegebenen Bewertungen bzw. verkauften Produkten spiegelt \textcite[S. 1ff.]{anderson:2007} zu Folge einen allgemeinen Trend wider, welchen er im Zusammenhang mit der Digitalisierung beobachtete. Der Autor stellte fest, dass sich Menschen aufgrund der heute verfügbaren breiten Angebote wesentlich diverser orientieren, als es vor einigen Jahrzehnten der Fall war.
 
-Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} beobachtet werden. Dort haben MongoDB und Spark jeweils nur eine Bewertung. Für diese Fähigkeiten ist es folglich über Ähnlichkeitsberechnungen im Bereich des speicherbasierten kollaborativen Filterns nicht möglich, robuste Vorhersagen zu ermitteln. Um diesem Problem zu begegnen, überführten \textcite[S. 2f.]{huang:2004} die bisher verwendete Matrixdarstellung in die Form eines bipartiten Graphen. Diese Datenstruktur zeichnet sich durch die Verwendung zwei unterschiedlicher Arten von Knoten aus \cite[S. 1f.]{cao:2021}. Diese nutzten \textcite{huang:2004} zur separaten Repräsentation von Nutzern und Elementen. Transaktionen und Bewertungen stellten die Forscher als gewichtete Kanten zwischen beiden Knotentypen dar. Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} zeigt die Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Datenstruktur eines solchen bipartiten Graphen. In diesem Beispiel sind die Knoten der Mitarbeiter rot und die Knoten der Fähigkeiten blau markiert.
+Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} beobachtet werden. Dort haben MongoDB und Spark jeweils nur eine Bewertung. Für diese Fähigkeiten ist es über Ähnlichkeitsberechnungen im Bereich des speicherbasierten kollaborativen Filterns nicht möglich, für alle Angestellten robuste Vorhersagen zu ermitteln. Um diesem Problem zu begegnen, überführten \textcite[S. 2f.]{huang:2004} die bisher verwendete Matrixdarstellung in die Form eines bipartiten Graphen. Diese Datenstruktur zeichnet sich durch die Verwendung zwei unterschiedlicher Arten von Knoten aus \cite[S. 1f.]{cao:2021}. Diese nutzten \textcite{huang:2004} zur separaten Repräsentation von Nutzern und Elementen. Transaktionen und Bewertungen stellten die Forscher als gewichtete Kanten zwischen beiden Knotentypen dar. Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} zeigt die Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Datenstruktur eines solchen bipartiten Graphen. In diesem Beispiel sind die Knoten der Mitarbeiter rot und die Knoten der Fähigkeiten blau markiert.
 
 \begin{figure}[h]
 	\centering
 	\definecolor{itemcolor}{RGB}{179,217,255}
 	\definecolor{usercolor}{RGB}{255,204,179}
 	
-	\begin{tikzpicture}[node distance={35mm}, thick, main/.style = {draw, circle}] 
+	\begin{tikzpicture}[node distance={32mm}, thick, main/.style = {draw, circle}] 
 		\node[main, fill=itemcolor] (MongoDB) {$MongoDB$}; 
-		\node[main, fill=itemcolor] (Java) [below right of=MongoDB] {$Java$}; 
-		\node[main, fill=itemcolor] (MySQL) [above right of=Java] {$MySQL$}; 
-		\node[main, fill=itemcolor] (Python) [below right of=MySQL] {$Python$}; 
-		\node[main, fill=itemcolor] (HDFS) [above right of=Python] {$HDFS$}; 
+		\node[main, fill=itemcolor] (Python) [below right of=MongoDB] {$Python$}; 
+		\node[main, fill=itemcolor] (MySQL) [above right of=Python] {$MySQL$}; 
+		\node[main, fill=itemcolor] (Java) [below right of=MySQL] {$Java$}; 
+		\node[main, fill=itemcolor] (HDFS) [above right of=Java] {$HDFS$}; 
 		\node[main, fill=itemcolor] (Spark) [below right of=HDFS] {$Spark$};
 		
 		\node[main, fill=usercolor] (Jane) [above right of=MongoDB] {$Jane D.$}; 
 		\node[main, fill=usercolor] (John) [above left of=HDFS] {$John D.$}; 
 		\node[main, fill=usercolor] (Max) [below of=MySQL] {$Max M.$};
-		\node[main, fill=usercolor] (Erika) [below of=Max] {$Erika M.$}; 
+		\node[main, fill=usercolor] (Erika) [above right of=HDFS] {$Erika M.$}; 
 		
-		\draw (Jane) -- node[midway, right] {4} (Java);
+		\draw (Jane) -- node[midway, right] {4} (Python);
 		\draw (Jane) -- node[midway, above] {3} (MySQL);
 		\draw (Jane) -- node[midway, above] {3} (MongoDB);
-		%\path (Jane) edge[bend left=90] node[midway, above] {1} (HDFS);
 
 		\draw (John) -- node[midway, right] {1} (HDFS);		
-		\draw (John) -- node[midway, right] {3} (Python);
+		\draw (John) -- node[midway, right] {3} (Java);
 		\draw (John) -- node[midway, above] {2} (MySQL);
 		
-		\draw (Erika) -- node[midway, above] {5} (Java);
-		\path (Erika) edge[bend right=10] node[midway, right] {5} (HDFS); 
-		\draw (Erika) -- node[midway, above] {3} (Spark);
+		%\path (Erika) edge[bend right=10] node[midway, right] {5} (HDFS); 
+		\draw (Erika) -- node[midway, above] {5} (HDFS);
+		\draw (Erika) -- node[midway, left] {3} (Spark);
 		
-		\draw (Max) -- node[midway, above] {2} (Python);
-		\draw (Max) -- node[midway, above] {3} (Java);
+		\draw (Max) -- node[midway, above] {2} (Java);
+		\draw (Max) -- node[midway, above] {3} (Python);
 		\draw (Max) -- node[midway, right] {1} (MySQL);
 	\end{tikzpicture}
 
@@ -140,10 +139,15 @@ Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitswei
 	\label{fig:empfehlungssysteme:cf:speicherbasiert:abb2}
 \end{figure}
 
+\textcite[S. 7ff.]{huang:2004} bemerken mit Blick auf Darstellungen wie Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2}, dass bei nachbarschaftsbasierten Ansätzen nur Empfehlungen für Knoten bestimmt werden können, welche vom Zielknoten über drei Kanten zu erreichen sind. Im vorliegenden Beispiel ist zu erkennen, dass über solche Verfahren somit keine Bewertungs-Vorhersage für Jane Doe und Spark bzw. Erika Muster und MongoDB bestimmt werden können. Den Wissenschaftlern zu Folge eignet sich in einem solchen Fall der Einsatz graphenbasierter Algorithmen. Diese beachten auch transitive Verbindungen zwischen Knoten und beziehen diese in die Berechnung mit ein.
+
+Ihr Verfahren sieht es vor, die Gewichte aller unabhängigen Wege zwischen dem Zielknoten und allen anderen Knoten zu summieren.  
+
+
 \newpage
-Ein Problem, mit dem weder nachbarschafts- noch graphenbasierte Verfahren umgehen können, ist das Phänomen des Cold Starts. 
+Ein Problem, welches weder nachbarschafts- noch graphenbasierte Verfahren beseitigen können, ist das Phänomen des Cold Starts.
 
-
+- \cite[S. 5]{huang:2004}: Cold-Start kann als ein Sonderfall des Sparse Data Problems betrachtet werden / Gute Quellen für hybrid
 
 
 
