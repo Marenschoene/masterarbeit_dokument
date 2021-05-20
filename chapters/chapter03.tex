@@ -25,8 +25,8 @@ Das gesammelte Feedback überführen Analysten in die Struktur von Matrizen \cit
 	\begin{tabular}{c|c|c|c|c|c|c|c}
 	 & Python & Java & MySQL & MongoDB & HDFS & Spark & ...\\ 
 	\hline
-	Doe, Jane & ? & 4 & 3 & 3 & 1 & ? & ...\\
-	Doe, John & 3 & ? & 2 & ? & ? & ? & ...\\
+	Doe, Jane & ? & 4 & 3 & 3 & ? & ? & ...\\
+	Doe, John & 3 & ? & 2 & ? & 1 & ? & ...\\
 	Muster, Erika & ? & 5 & ? & ? & 5 & 3 & ...\\
 	Muster, Max & 2 & 3 & 1 & ? & ? & ? & ...\\
 	... & ... & ... & ... & ... & ... & ... & ... 
@@ -119,8 +119,9 @@ Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitswei
 		\draw (Jane) -- node[midway, right] {4} (Java);
 		\draw (Jane) -- node[midway, above] {3} (MySQL);
 		\draw (Jane) -- node[midway, above] {3} (MongoDB);
-		\path (Jane) edge[bend left=90] node[midway, above] {1} (HDFS);
-		
+		%\path (Jane) edge[bend left=90] node[midway, above] {1} (HDFS);
+
+		\draw (John) -- node[midway, right] {1} (HDFS);		
 		\draw (John) -- node[midway, right] {3} (Python);
 		\draw (John) -- node[midway, above] {2} (MySQL);
 		
