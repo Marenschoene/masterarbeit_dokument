@@ -23,7 +23,7 @@ Das gesammelte Feedback überführen Analysten in die Struktur von Matrizen \cit
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|c|c|c}
-	 & Java & Python & MySQL & MongoDB & HDFS & Spark & ...\\ 
+	 & Python & Java & MySQL & MongoDB & HDFS & Spark & ...\\ 
 	\hline
 	Doe, Jane & ? & 4 & 3 & 3 & 1 & ? & ...\\
 	Doe, John & 3 & ? & 2 & ? & ? & ? & ...\\
@@ -77,7 +77,7 @@ Anstelle der Objekte A und B können in Gleichung \ref{fig:empfehlungssysteme:cf
 	cos(Jane Doe,Max Muster) = \frac{(4*3 + 3*1)}{\sqrt{4^2 + 3^2} * \sqrt{3^2 + 1^2}} \approx \frac{15}{15,811} \approx 0,95
 	\label{fig:empfehlungssysteme:cf:speicherbasiert:formel2}
 \end{equation}
-Wie in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel3} dargestellt, kann auch die elementbasierte Ähnlichkeit zwischen Java und MySQL aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mittels Kosinus-Distanz berechnet werden:
+Wie in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel3} dargestellt, kann auch die elementbasierte Ähnlichkeit zwischen Python und MySQL aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mittels Kosinus-Distanz berechnet werden:
 \begin{equation}
 	cos(Java, MySQL) = \frac{(3*2 + 2*1)}{\sqrt{3^2 + 2^2} * \sqrt{2^2 + 1^2}} \approx \frac{8}{8,063} \approx 0,992
 	\label{fig:empfehlungssysteme:cf:speicherbasiert:formel3}
@@ -96,40 +96,40 @@ Für diese Häufigkeitsverteilung prägte \textcite[S. 12]{anderson:2007} den Be
 
 Die in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb1} dargestellte Häufigkeitsverteilung von abgegebenen Bewertungen bzw. verkauften Produkten spiegelt \textcite[S. 1ff.]{anderson:2007} zu Folge einen allgemeinen Trend wider, welchen er im Zusammenhang mit der Digitalisierung beobachtete. Der Autor stellte fest, dass sich Menschen aufgrund der heute verfügbaren breiten Angebote wesentlich diverser orientieren, als es vor einigen Jahrzehnten der Fall war.
 
-Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} beobachtet werden. Dort hat beispielsweise Spark nur eine Bewertung. Für diese Fähigkeit ist es folglich über Ähnlichkeitsberechnungen im Bereich des speicherbasierten kollaborativen Filterns nicht möglich, robuste Vorhersagen zu ermitteln. Abhilfe können graphenbasierte Verfahren schaffen. Hierbei stellen Forscher Nutzer und Elemente als Knoten und die zugehörigen Bewertungen als Kanten eines Graphen dar. Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} zeigt die Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Datenstruktur eines Graphen.
+Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} beobachtet werden. Dort haben MongoDB und Spark jeweils nur eine Bewertung. Für diese Fähigkeiten ist es folglich über Ähnlichkeitsberechnungen im Bereich des speicherbasierten kollaborativen Filterns nicht möglich, robuste Vorhersagen zu ermitteln. Abhilfe können graphenbasierte Verfahren schaffen. Hierbei stellen Forscher Nutzer und Elemente als Knoten und die zugehörigen Bewertungen als Kanten in einem gewichteten, bipartiten Graphen dar \cite[S. 2f.]{huang:2004}. Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} zeigt die Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} als gewichteten, bipartiten Graphen.
 
 \begin{figure}[h]
 	\centering
+	\definecolor{itemcolor}{RGB}{179,217,255}
+	\definecolor{usercolor}{RGB}{255,204,179}
 	
 	\begin{tikzpicture}[node distance={35mm}, thick, main/.style = {draw, circle}] 
-		\node[main] (MongoDB) {$MongoDB$}; 
-		\node[main] (Python) [below right of=MongoDB] {$Python$}; 
-		\node[main] (MySQL) [above right of=Python] {$MySQL$}; 
-		\node[main] (Java) [below right of=MySQL] {$Java$}; 
-		\node[main] (HDFS) [above right of=Java] {$HDFS$}; 
-		\node[main] (Spark) [below right of=HDFS] {$Spark$};
+		\node[main, fill=itemcolor] (MongoDB) {$MongoDB$}; 
+		\node[main, fill=itemcolor] (Java) [below right of=MongoDB] {$Java$}; 
+		\node[main, fill=itemcolor] (MySQL) [above right of=Java] {$MySQL$}; 
+		\node[main, fill=itemcolor] (Python) [below right of=MySQL] {$Python$}; 
+		\node[main, fill=itemcolor] (HDFS) [above right of=Python] {$HDFS$}; 
+		\node[main, fill=itemcolor] (Spark) [below right of=HDFS] {$Spark$};
 		
-		\node[main] (Jane) [above right of=MongoDB] {$Jane D.$}; 
-		\node[main] (John) [above left of=HDFS] {$John D.$}; 
-		\node[main] (Max) [below of=MySQL] {$Max M.$};
-		\node[main] (Erika) [below of=Max] {$Erika M.$}; 
+		\node[main, fill=usercolor] (Jane) [above right of=MongoDB] {$Jane D.$}; 
+		\node[main, fill=usercolor] (John) [above left of=HDFS] {$John D.$}; 
+		\node[main, fill=usercolor] (Max) [below of=MySQL] {$Max M.$};
+		\node[main, fill=usercolor] (Erika) [below of=Max] {$Erika M.$}; 
 		
-		\draw (Jane) -- node[midway, right] {4} (Python);
+		\draw (Jane) -- node[midway, right] {4} (Java);
 		\draw (Jane) -- node[midway, above] {3} (MySQL);
 		\draw (Jane) -- node[midway, above] {3} (MongoDB);
 		\path (Jane) edge[bend left=90] node[midway, above] {1} (HDFS);
 		
-		\draw (John) -- node[midway, right] {3} (Java);
+		\draw (John) -- node[midway, right] {3} (Python);
 		\draw (John) -- node[midway, above] {2} (MySQL);
 		
-		%\path (Erika) edge[bend left=90] node[midway, above] {5} (Python); 
-		\draw (Erika) -- node[midway, above] {5} (Python);
-		%\draw (Erika) -- node[midway, right] {5} (HDFS);
+		\draw (Erika) -- node[midway, above] {5} (Java);
 		\path (Erika) edge[bend right=10] node[midway, right] {5} (HDFS); 
 		\draw (Erika) -- node[midway, above] {3} (Spark);
 		
-		\draw (Max) -- node[midway, above] {2} (Java);
-		\draw (Max) -- node[midway, above] {3} (Python);
+		\draw (Max) -- node[midway, above] {2} (Python);
+		\draw (Max) -- node[midway, above] {3} (Java);
 		\draw (Max) -- node[midway, right] {1} (MySQL);
 	\end{tikzpicture}
 
@@ -161,7 +161,6 @@ Um diesem entgegenzuwirken, ist in der Literatur die Implementierung hybrider Ve
 
 
 \newpage
-Neben nachbarschaftsbasierten Verfahren ist es auch möglich, Graphenalgorithmen zur Ähnlichkeitsbestimmung zu nutzen. 
 
 fokussieren die Bewertungen anderer Mitarbeiter \cite[S. 3]{jobMatcher:2020}. Hierbei werden Ähnlichkeitsberechnungen genutzt, um unbewertete Einträge anderer Mitarbeiter vorherzusagen. 
 
@@ -323,6 +322,8 @@ Ob eine speicher- oder modellbasierte Implementierung geeigneter ist, muss im Ei
 - \cite[S. 2]{duong:2018}: Finales Ziel ist es, die unbebobachtete Bewertung von Nutzer u fr item i zu bestimmen
 
 - \cite[S. 2]{duong:2018}: Neighboordhood aktuell sehr populär, da einfach zu implementierung und erklären den Grund hinter der Empfehlung
+
+- \cite[S. 1]{lien:2014}: Vorteil Collaborative: Text-Repräsentation nicht benötigt
 
 \newpage
 Aufbau:
