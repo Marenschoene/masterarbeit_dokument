@@ -41,6 +41,7 @@ Zahlreiche Wissenschaftler in der Literatur sind sich einig, dass für die Empfe
 
 \section{Wissensbasierte Empfehlungssysteme}
 \label{ch:empfehlungssysteme:wissensbasierteAnsaetze}
+% Anmerkung Andreas (21. Juni): Esco ist sehr allgemein
 Bei einem wissensbasierten Empfehlungssystem werden die Schlüsselwörter der Matrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} um weiteres Domänenwissen angereichert, welches in die Suche einbezogen wird \cite[S. 168f.]{recommenderSystems:2016}. Dieses Vorgehen wird zum Beispiel von der Anwendung SAP R/3 Human Resources in der Praxis angewendet \cite[S. 2]{malinowski:2006}.
 
 Unternehmen können beim Erstellen von Wissensdatenbanken auf bereits vorhandene Ontologien zurückgreifen. Beispielsweise stellt die Europäische Kommission mit \acs{ESCO} (\acl{ESCO}) explizit zum Zweck der Stellenbesetzung eine mehrsprachige Ontologie mit vordefinierten Kompetenzen, Fähigkeiten und Qualifikationen bereit \cite[S. 1ff.]{leVrang:2014}. Ein vergleichbares Angebot existiert mit \acs{ONet} (\acl{ONet}) auch von der Regierung der Vereinigten Staaten von Amerika \cite[S. 2]{aCombinedRepresentation:2018}.
@@ -98,7 +99,7 @@ Für diese Häufigkeitsverteilung prägte \textcite[S. 12]{anderson:2007} den Be
 
 Die in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb1} dargestellte Häufigkeitsverteilung von abgegebenen Bewertungen bzw. verkauften Produkten spiegelt \textcite[S. 1ff.]{anderson:2007} zu Folge einen allgemeinen Trend wider, welchen er im Zusammenhang mit der Digitalisierung beobachtete. Der Autor stellte fest, dass sich Menschen aufgrund der heute verfügbaren breiten Angebote wesentlich diverser orientieren, als es vor einigen Jahrzehnten der Fall war.
 
-Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} beobachtet werden. Dort haben MongoDB und Spark jeweils nur eine Bewertung. Für diese Fähigkeiten ist es über Ähnlichkeitsberechnungen im Bereich des speicherbasierten kollaborativen Filterns nicht möglich, für alle Angestellten robuste Vorhersagen zu ermitteln. Um diesem Problem zu begegnen, überführten \textcite[S. 2f.]{huang:2004} die bisher verwendete Matrixdarstellung in die Form eines bipartiten Graphen. Diese Datenstruktur zeichnet sich durch die Verwendung zwei unterschiedlicher Arten von Knoten aus \cite[S. 1f.]{cao:2021}. Diese nutzten \textcite{huang:2004} zur separaten Repräsentation von Nutzern und Elementen. Transaktionen und Bewertungen stellten die Forscher als gewichtete Kanten zwischen beiden Knotentypen dar. Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} zeigt die Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Datenstruktur eines solchen bipartiten Graphen. In diesem Beispiel sind die Knoten der Mitarbeiter rot und die Knoten der Fähigkeiten blau markiert.
+Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} beobachtet werden. Dort haben MongoDB und Spark jeweils nur eine Bewertung. Für diese Fähigkeiten ist es über Ähnlichkeitsberechnungen im Bereich des speicherbasierten kollaborativen Filterns nicht möglich, für alle Angestellten robuste Vorhersagen zu ermitteln. Um diesem Problem zu begegnen, kann die bisher verwendete Matrixdarstellung in die Form eines bipartiten Graphen überführt werden \cite[S. 2f.]{huang:2004}. Diese Datenstruktur zeichnet sich durch die Verwendung zwei unterschiedlicher Arten von Knoten zur separaten Speicherung von Nutzern und Elementen aus. Bewertungen stellen gewichtete Kanten im Graphen dar \cite[S. 1f.]{cao:2021}. Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} zeigt die Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Datenstruktur eines solchen bipartiten Graphen. In diesem Beispiel sind die Knoten der Mitarbeiter rot und die Knoten der Fähigkeiten blau markiert.
 
 \begin{figure}[h]
 	\centering
@@ -139,9 +140,39 @@ Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitswei
 	\label{fig:empfehlungssysteme:cf:speicherbasiert:abb2}
 \end{figure}
 
-\textcite[S. 7ff.]{huang:2004} bemerken mit Blick auf Darstellungen wie Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2}, dass bei nachbarschaftsbasierten Ansätzen nur Empfehlungen für Knoten bestimmt werden können, welche vom Zielknoten über drei Kanten zu erreichen sind. Im vorliegenden Beispiel ist zu erkennen, dass über solche Verfahren somit keine Bewertungs-Vorhersage für Jane Doe und Spark bzw. Erika Muster und MongoDB bestimmt werden können. Den Wissenschaftlern zu Folge eignet sich in einem solchen Fall der Einsatz graphenbasierter Algorithmen. Diese beachten auch transitive Verbindungen zwischen Knoten und beziehen diese in die Berechnung mit ein.
+\textcite[S. 7ff.]{huang:2004} bemerken mit Blick auf Darstellungen wie Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2}, dass bei nachbarschaftsbasierten Ansätzen nur Empfehlungen für Knoten bestimmt werden können, welche von einem Zielknoten über drei Kanten zu erreichen sind. Im vorliegenden Beispiel ist zu erkennen, dass über solche Verfahren somit keine Bewertungs-Vorhersagen für Jane Doe und Spark bzw. Erika Muster und MongoDB bestimmt werden können. Daher empfehlen die Wissenschaftlern den Einsatz graphenbasierter Algorithmen, welche auch transitive Verbindungen zwischen Knoten in die Berechnung mit einbeziehen.
 
-Ihr Verfahren sieht es vor, die Gewichte aller unabhängigen Wege zwischen dem Zielknoten und allen anderen Knoten zu summieren.  
+
+Der Algorithmus von \textcite[S. 7ff.]{huang:2004} nutzt die 
+
+
+sieht es vor, zunächst zwei Werte für die Variablen $M$ und $\alpha$ festzulegen. $M$ steht dabei für die maximal zulässige Anzahl an Kanten, welche zwischen zwei Knoten liegen dürfen. $\alpha$ steht für eine Zahl im Bereich von null bis eins. Je stärker transitive Beziehungen in die Berechnung einbezogen werden sollen, desto näher sollte sich der Wert von $\alpha$ den Wissenschaftlern zu Folge an eins annähern. Anschließend werden alle unabhängigen Wege zwischen zwei Zielknoten bestimmt, welche nicht mehr als $M$ Kanten enthalten.
+
+1,   2,   3,   4,   5
+1, 0.8, 0.6, 0.4, 0.2
+
+0.4, 0.6, 0.8 = 1.8 = 0.28
+0.6, 0.8, 0.6 = 2   = 0.25
+0.6, 1, 0.8   = 2.4 = 0.189
+
+p1: 1 -> 0,5
+
+Matrix R
+Customer C={c1, c2, ...}
+Produkte P={p1, p2, ...}
+E sind die Knoten zwischen C und P
+w ist die Gewichtungsfunktion: r:E->R+ --> Misst die Präferenz eines Nutzers für Produkte --> Umso höher, umso interessierter
+Wir möchten Ähnlichkeit zwischen Nutzer u und v herausfinden
+Jede Resource ist zu einem gewissen Teil mit jedem Nutzer verbunden --> Das Gewicht rp(u,v) gibt an, zu welchem Anteil einer Resource Kunde c würde an v verteilen
+Schritt 1: Jeder Nutzer gibt seine tatsächlichen BEwertungen ab --> Nach diesem Schritt hat Produkt p r(u,p)/R Bewertungen (also Anzahl Bewertungen des Nutzers für das Produkt geteilt durch alle seine Bewertungen)
+Schritt 2: Nutzer u bekommt Resourcen von allen Produkten, die er bewertet hat --> u bekommt r(u,p)/Rp , wobei Rp die Summe aller Kunden ist, die p bewertet haben
+
+(3/3)*()
+
+
+Wird der Wert auf drei gesetzt, entspricht das Ergebnis der Berechnung dem klassischen kollaborativen Filtern. 
+
+die Gewichte aller unabhängigen Wege zwischen dem Zielknoten und allen anderen Knoten zu summieren.  
 
 
 \newpage
