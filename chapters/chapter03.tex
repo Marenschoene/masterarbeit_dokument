@@ -140,16 +140,16 @@ Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitswei
 	\label{fig:empfehlungssysteme:cf:speicherbasiert:abb2}
 \end{figure}
 
-\textcite[S. 7ff.]{huang:2004} bemerken mit Blick auf Darstellungen wie Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2}, dass bei klassischen nachbarschaftsbasierten Ansätzen nur Empfehlungen für Knoten bestimmt werden können, welche von einem Zielknoten über drei Kanten zu erreichen sind. Im vorliegenden Beispiel ist zu erkennen, dass über solche Verfahren somit keine Bewertungs-Vorhersagen für Jane Doe und Spark bzw. Erika Muster und MongoDB bestimmt werden können. Für solche Sachverhalte im Kontext des Sparsity Problems empfehlen \textcite{huang:2004} den Einsatz graphenbasierter Algorithmen, welche auch transitive Verbindungen zwischen Knoten in die Berechnung mit einbeziehen können.
+\textcite[S. 7ff.]{huang:2004} bemerken mit Blick auf biparithe Graphen, dass bei klassischen nachbarschaftsbasierten Ansätzen im Bereich des kollaborativen Filterns nur Empfehlungen für Knoten bestimmt werden können, welche von einem Zielknoten über drei Kanten zu erreichen sind. In der vorliegenden Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} ist zu erkennen, dass über solche Verfahren somit keine Bewertungs-Vorhersagen für Jane Doe und Spark bzw. Erika Muster und MongoDB bestimmt werden können. Für solche Sachverhalte im Kontext des Sparsity Problems empfehlen \textcite{huang:2004} den Einsatz graphenbasierter Algorithmen, welche auch transitive Verbindungen zwischen Knoten in die Berechnung mit einbeziehen können.
 
-Ein in der Literatur häufig angewendetes Verfahren ist die Katz-Zentralität. Diese wird im Kontext graphenbasierter Empfehlungssysteme oft zur Verbindungsvorhersage (Link Prediction) genutzt. Diese Problemstellung ist unter anderem im Bereich der sozialen Medien verbreitet und verfolgt das Ziel, aus vorhandenen Kanten im Graphen bisher unbekannte Verbindungen vorherzusagen. Nah verwandt mit der Katz-Zentralität ist Googles PageRank-Algorithmus. Dieser bestimmt die Wichtigkeit von Webseiten über Verlinkungen \cite[S. 3ff.]{page:1999}.
+Ein in der Literatur häufig angewendetes Verfahren ist die Katz-Zentralität. Diese wird im Kontext graphenbasierter Empfehlungssysteme oft zur Verbindungsvorhersage (Link Prediction) genutzt. Diese Problemstellung ist unter anderem im Bereich der sozialen Medien verbreitet und verfolgt das Ziel, aus vorhandenen Kanten im Graphen bisher unbekannte Verbindungen vorherzusagen. Nah verwandt mit der Katz-Zentralität ist Googles PageRank-Algorithmus. Dieser stellt Verlinkungen im Internet über Kanten dar und bestimmt darüber die Wichtigkeit von Webseiten, welche in den Ergebnissen der Suchmaschine ausgegeben werden \cite[S. 3ff.]{page:1999}.
 
 Die Katz-Zentralität kann über folgende Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} bestimmt werden \cite[S. 4]{libenNowell:2007}:
 \begin{equation}
 	(I - \beta * M)^{-1} - I
 	\label{frml:empfehlungssysteme:cf:speicherbasiert:formel4}
 \end{equation}
-In Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} steht $M$ für die Adjazenzmatrix des betrachteten Graphen. Diese gibt an, wie viele Kanten zwischen den jeweiligen Knoten bestehen. Sie lässt sich für den Graphen aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} über Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2} ermitteln. Dort ist zu erkennen, wie viele Verbindungen von einem Knoten (Zeile) im  zu jedem anderen Knoten (Spalte) existieren.
+In Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} steht $M$ für die Adjazenzmatrix des betrachteten Graphen. Diese gibt an, wie viele Kanten zwischen den jeweiligen Knoten bestehen. Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2} zeigt für den Graphen aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2}, wie viele Verbindungen von einem Knoten (Zeile) im  zu jedem anderen Knoten (Spalte) existieren.
 
 \begin{table}[h]
 	\centering
@@ -170,12 +170,11 @@ In Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} steht $M$ 
 	\caption{Anzahl an Verbindungen im Graphen aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2}}
 	\label{tbl:empfehlungssysteme:arbeitsweise:tbl2}
 \end{table}
+Der mit Zahlen versehene Bereich von Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2} entspricht der Adjazenzmatrix für den Graphen aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2}.
 
-$\beta$ steht in Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} für eine Zahl im Bereich von null bis eins. Diese kann frei festgelegt werden. \textcite{huang:2004} empfehlen, den Wert umso weiter an eins anzunähern, je stärker transitive Beziehungen in der Berechnung gewichtet werden sollen.
-% $\beta$ darf nicht größer sein als $1/\lambda_1$ --> Größter Eigenvektor
+Der Parameter $\beta$ steht in Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} für eine Zahl im Bereich von null bis eins. Diese darf jedoch den Wert $\frac{1}{\lambda_1}$ nicht übersteigen darf. $\lambda_1$ entspricht dabei dem größten Eigenwert der untersuchten Matrix. \textcite{huang:2004} empfehlen, den Wert umso höher anzusetzen, je stärker transitive Beziehungen in der Berechnung gewichtet werden sollen.
 
-Für Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2} ergeben sich mit $\beta = 0.125$ durch Berechnung der Katz-Zentralität die in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl3} dargestellten Werte. Die vollständige Berechnung kann in Appendix \ref{ch:nebenrechnungen:katzZentralitaet} nachvollzogen werden.
-
+Für Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2} ergeben sich mit $\beta = 0.125$ durch Bestimmung der Katz-Zentralität die in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl3} dargestellten Werte. Die vollständige Berechnung kann in Appendix \ref{ch:nebenrechnungen:katzZentralitaet} nachvollzogen werden.
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
