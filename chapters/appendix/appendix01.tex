@@ -1,24 +1,83 @@
 %************************************************
-\chapter{Programm-Beispiele}
-\label{ch:programmbeispiele}
+\chapter{Nebenrechnungen}
+\label{ch:nebenrechnungen}
 %************************************************
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.6\textwidth]{gfx/programm1x.png}
-	\caption{Implementierung einer Wege-Suche in der Programmiersprache Java}
-	\label{fig:programmbeispiele:grafik1}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.6\textwidth]{gfx/programm2.png}
-\caption{Implementierung eines Quantenorakels zur Wege-Suche in Pseudocode}
-\label{fig:programmbeispiele:grafik2}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.7\textwidth]{gfx/programm3.png}
-\caption{Implementierung eines Quantenorakels zur Negierung der Amplitude des gesuchten Weges im ersten Schritt der Grover-Iteration in Pseudocode}
-\label{fig:programmbeispiele:grafik3}
-\end{figure}
+\section{Bestimmung der Katz-Zentralität}
+\label{ch:nebenrechnungen:katzZentralitaet}
+Bestimmung der Katz-Zentralität für Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2} anhand der Formel \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} mit $\beta = 0.125$:
+\begin{equation}
+	M = \begin{bmatrix}
+		0 & 0 & 0 & 0 & 0 & 4 & 3 & 3 & 0 & 0\\
+		0 & 0 & 0 & 0 & 3 & 0 & 2 & 0 & 1 & 0\\
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 5 & 3\\
+		0 & 0 & 0 & 0 & 2 & 3 & 1 & 0 & 0 & 0\\
+		0 & 3 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0\\
+		4 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0\\
+		3 & 2 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+		3 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 1 & 5 & 0 & 0 & 0 & 0 & 0 & 0 & 5\\
+		0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+	\end{bmatrix}
+	\label{frml:berechnungDerKatzZentralitaet:formel1}
+\end{equation}
+\begin{equation}
+	\beta * M = \begin{bmatrix}
+		0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.5 & 0.375 & 0.375 & 0.0 & 0.0\\
+		0.0 & 0.0 & 0.0 & 0.0 & 0.375 & 0.0 & 0.25 & 0.0 & 0.125 & 0.0\\
+		0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.625 & 0.375\\
+		0.0 & 0.0 & 0.0 & 0.0 & 0.25 & 0.375 & 0.125 & 0.0 & 0.0 & 0.0\\
+		0.0 & 0.375 & 0.0 & 0.25 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
+		0.5 & 0.0 & 0.0 & 0.375 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
+		0.375 & 0.25 & 0.0 & 0.125 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
+		0.375 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
+		0.0 & 0.125 & 0.625 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.625\\
+		0.0 & 0.0 & 0.375 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0
+	\end{bmatrix}
+	\label{frml:berechnungDerKatzZentralitaet:formel2}
+\end{equation}
+\begin{gather}
+	\nonumber I - \beta * M = \\
+	\begin{bmatrix}
+		1.0 & 0.0 & 0.0 & 0.0 & 0.0 & -0.5 & -0.375 & -0.375 & 0.0 & 0.0\\
+		0.0 & 1.0 & 0.0 & 0.0 & -0.375 & 0.0 & -0.25 & 0.0 & -0.125 & 0.0\\
+		0.0 & 0.0 & 1.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & -0.625 & -0.375\\
+		0.0 & 0.0 & 0.0 & 1.0 & -0.25 & -0.375 & -0.125 & 0.0 & 0.0 & 0.0\\
+		0.0 & -0.375 & 0.0 & -0.25 & 1.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
+		-0.5 & 0.0 & 0.0 & -0.375 & 0.0 & 1.0 & 0.0 & 0.0 & 0.0 & 0.0\\
+		-0.375 & -0.25 & 0.0 & -0.125 & 0.0 & 0.0 & 1.0 & 0.0 & 0.0 & 0.0\\
+		-0.375 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 1.0 & 0.0 & 0.0\\
+		0.0 & -0.125 & -0.625 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 1.0 & -0.625\\
+		0.0 & 0.0 & -0.375 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 1.0
+	\end{bmatrix}
+	\label{frml:berechnungDerKatzZentralitaet:formel3}
+\end{gather}
+\begin{equation}
+	(I - \beta * M)^{-1} \approx \begin{bmatrix}
+		2.67 & 0.48 & 0.19 & 0.88 & 0.40 & 1.66 & 1.23 & 1.00 & 0.16 & 0.16\\
+		0.48 & 1.45 & 0.48 & 0.37 & 0.64 & 0.38 & 0.59 & 0.18 & 0.48 & 0.48\\
+		0.12 & 0.35 & 3.22 & 0.09 & 0.15 & 0.09 & 0.14 & 0.04 & 2.06 & 2.50\\
+		0.88 & 0.37 & 0.13 & 1.60 & 0.54 & 1.04 & 0.62 & 0.33 & 0.12 & 0.12\\
+		0.40 & 0.64 & 0.21 & 0.54 & 1.37 & 0.40 & 0.38 & 0.15 & 0.21 & 0.21\\
+		1.66 & 0.38 & 0.13 & 1.04 & 0.40 & 2.22 & 0.85 & 0.62 & 0.13 & 0.13\\
+		1.23 & 0.59 & 0.20 & 0.62 & 0.38 & 0.85 & 1.69 & 0.46 & 0.20 & 0.20\\
+		1.00 & 0.18 & 0.06 & 0.33 & 0.15 & 0.62 & 0.46 & 1.37 & 0.06 & 0.06\\
+		0.16 & 0.48 & 2.83 & 0.12 & 0.21 & 0.13 & 0.20 & 0.06 & 2.83 & 2.83\\
+		0.04 & 0.13 & 1.21 & 0.03 & 0.06 & 0.03 & 0.05 & 0.02 & 0.77 & 1.93
+	\end{bmatrix}
+	\label{frml:berechnungDerKatzZentralitaet:formel4}
+\end{equation}
+\begin{equation}
+	(I - \beta * M)^{-1} - I \approx \begin{bmatrix}
+		1.67 & 0.48 & 0.19 & 0.88 & 0.40 & 1.66 & 1.23 & 1.00 & 0.16 & 0.16\\
+		0.48 & 0.45 & 0.48 & 0.37 & 0.64 & 0.38 & 0.59 & 0.18 & 0.48 & 0.48\\
+		0.12 & 0.35 & 2.22 & 0.09 & 0.15 & 0.09 & 0.14 & 0.04 & 2.06 & 2.50\\
+		0.88 & 0.37 & 0.13 & 0.60 & 0.54 & 1.04 & 0.62 & 0.33 & 0.12 & 0.12\\
+		0.40 & 0.64 & 0.21 & 0.54 & 0.37 & 0.40 & 0.38 & 0.15 & 0.21 & 0.21\\
+		1.66 & 0.38 & 0.13 & 1.04 & 0.40 & 1.22 & 0.85 & 0.62 & 0.13 & 0.13\\
+		1.23 & 0.59 & 0.20 & 0.62 & 0.38 & 0.85 & 0.69 & 0.46 & 0.20 & 0.20\\
+		1.00 & 0.18 & 0.06 & 0.33 & 0.15 & 0.62 & 0.46 & 0.37 & 0.06 & 0.06\\
+		0.16 & 0.48 & 2.83 & 0.12 & 0.21 & 0.13 & 0.20 & 0.06 & 1.83 & 2.83\\
+		0.04 & 0.13 & 1.21 & 0.03 & 0.06 & 0.03 & 0.05 & 0.02 & 0.77 & 0.93
+	\end{bmatrix}
+	\label{frml:berechnungDerKatzZentralitaet:formel5}
+\end{equation}

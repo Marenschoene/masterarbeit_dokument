@@ -142,24 +142,59 @@ Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitswei
 
 \textcite[S. 7ff.]{huang:2004} bemerken mit Blick auf Darstellungen wie Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2}, dass bei klassischen nachbarschaftsbasierten Ansätzen nur Empfehlungen für Knoten bestimmt werden können, welche von einem Zielknoten über drei Kanten zu erreichen sind. Im vorliegenden Beispiel ist zu erkennen, dass über solche Verfahren somit keine Bewertungs-Vorhersagen für Jane Doe und Spark bzw. Erika Muster und MongoDB bestimmt werden können. Für solche Sachverhalte im Kontext des Sparsity Problems empfehlen \textcite{huang:2004} den Einsatz graphenbasierter Algorithmen, welche auch transitive Verbindungen zwischen Knoten in die Berechnung mit einbeziehen können.
 
-Ein häufig angewendetes Verfahren ist die Katz-Zentralität. Diese wird im Kontext graphenbasierter Empfehlungssysteme oft zur Verbindungsvorhersage (Link Prediction) genutzt. Diese Problemstellung ist unter anderem im Bereich der sozialen Medien verbreitet und verfolgt das Ziel, aus vorhandenen Kanten im Graphen bisher unbekannte Verbindungen vorherzusagen. \textcite{huang:2004} empfehlen zur Berechnung der Katz-Zentralität, zunächst zwei Werte für die Variablen $M$ und $\beta$ festzulegen. $M$ steht dabei für die maximal zulässige Anzahl an Kanten, die zwischen den beiden Knoten liegen dürfen, für welche eine Verbindung vorhergesagt werden soll. $\beta$ steht für eine Zahl im Bereich von null bis eins. Diese kann frei festgelegt werden. \textcite{huang:2004} empfehlen, den Wert umso weiter an eins anzunähern, je stärker transitive Beziehungen in der Berechnung gewichtet werden sollen. Die Katz-Zentralität kann anschließend über die folgende Gleichung \ref{frml:empfehlungssysteme:cf:formel1} bestimmt werden:
+Ein in der Literatur häufig angewendetes Verfahren ist die Katz-Zentralität. Diese wird im Kontext graphenbasierter Empfehlungssysteme oft zur Verbindungsvorhersage (Link Prediction) genutzt. Diese Problemstellung ist unter anderem im Bereich der sozialen Medien verbreitet und verfolgt das Ziel, aus vorhandenen Kanten im Graphen bisher unbekannte Verbindungen vorherzusagen. Nah verwandt mit der Katz-Zentralität ist Googles PageRank-Algorithmus. Dieser bestimmt die Wichtigkeit von Webseiten über Verlinkungen \cite[S. 3ff.]{page:1999}.
+
+Die Katz-Zentralität kann über folgende Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} bestimmt werden \cite[S. 4]{libenNowell:2007}:
 \begin{equation}
-	W(x,y) := \sum_{l=1}^{M} \beta^{l} * |paths_{x,y}^{\langle l \rangle}|
-	\label{frml:empfehlungssysteme:cf:formel1}
+	(I - \beta * M)^{-1} - I
+	\label{frml:empfehlungssysteme:cf:speicherbasiert:formel4}
 \end{equation}
-Zur Anwendung von Gleichung \ref{frml:empfehlungssysteme:cf:formel1} wird $l$ zunächst auf eins gesetzt und bis der Wert $M$ erreicht ist, in jedem Durchgang um zwei erhöht. In jedem Durchlauf werden alle unabhängigen Wege zwischen zwei den beiden Zielknoten bestimmt, welche über $l$ Kanten zu erreichen sind und in $|paths_{x,y}^{\langle l \rangle}|$ eingesetzt. Die Kantengewichte werden dabei als mehrere parallele Kanten gewertet. Die Multiplikation mit $\beta^{l}$ hat zur Folge, dass längere Wege eine schwächere Auswirkung auf das Endergebnis haben.
+In Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} steht $M$ für die Adjazenzmatrix des betrachteten Graphen. Diese gibt an, wie viele Kanten zwischen den jeweiligen Knoten bestehen. Sie lässt sich für den Graphen aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} über Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2} ermitteln. Dort ist zu erkennen, wie viele Verbindungen von einem Knoten (Zeile) im  zu jedem anderen Knoten (Spalte) existieren.
 
-Würde anhand von Gleichung \ref{frml:empfehlungssysteme:cf:formel1} beispielsweise die Katz-Zentralität für Jane Doe und Java mit $M=3$ und $\beta=0.5$ bestimmt werden, ergäbe sich als Ergebnis der Wert $0.625$. Dieser entsteht, da der Knoten Java von Jane Doe über fünf unabhängigen Wege erreicht werden kann. Diese lauten: $2*$(Jane D., Python, Max M., Java), $1*$(Jane D., MySQL, Max M., Java) und $2*$(Jane D., MySQL, John D., Java). Dabei entsteht die folgende Rechnung \ref{frml:empfehlungssysteme:cf:formel2}:
-\begin{equation}
-	W(Jane D., Java) := 0.5^{1}*0+0.5^{3}*(2+1+2) = 0.625
-	\label{frml:empfehlungssysteme:cf:formel2}
-\end{equation}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+		& \begin{sideways}Jane D.\end{sideways} & \begin{sideways}John D.\end{sideways} & \begin{sideways}Erika M.\end{sideways} & \begin{sideways}Max M.\end{sideways} & \begin{sideways}Java\end{sideways} & \begin{sideways}Python\end{sideways} & \begin{sideways}MySQL\end{sideways} & \begin{sideways}MongoDB\end{sideways} & \begin{sideways}HDFS\end{sideways} & \begin{sideways}Spark\end{sideways} \\
+		\hline
+		Jane D.  & 0 & 0 & 0 & 0 & 0 & 4 & 3 & 3 & 0 & 0\\
+		John D.  & 0 & 0 & 0 & 0 & 3 & 0 & 2 & 0 & 1 & 0\\
+		Erika M. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 5 & 3\\
+		Max M.   & 0 & 0 & 0 & 0 & 2 & 3 & 1 & 0 & 0 & 0\\
+		Java     & 0 & 3 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0\\
+		Pyhton   & 4 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0\\
+		MySQL    & 3 & 2 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+		MongoDB  & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		HDFS     & 0 & 1 & 5 & 0 & 0 & 0 & 0 & 0 & 0 & 5\\
+		Spark    & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+	\end{tabular}
+	\caption{Anzahl an Verbindungen im Graphen aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2}}
+	\label{tbl:empfehlungssysteme:arbeitsweise:tbl2}
+\end{table}
 
-\textcite{guns:2014, libenNowell:2007}
+$\beta$ steht in Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} für eine Zahl im Bereich von null bis eins. Diese kann frei festgelegt werden. \textcite{huang:2004} empfehlen, den Wert umso weiter an eins anzunähern, je stärker transitive Beziehungen in der Berechnung gewichtet werden sollen.
+% $\beta$ darf nicht größer sein als $1/\lambda_1$ --> Größter Eigenvektor
 
-$\beta$ darf nicht größer sein als $1/\lambda_1$ --> Größter Eigenvektor
+Für Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2} ergeben sich mit $\beta = 0.125$ durch Berechnung der Katz-Zentralität die in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl3} dargestellten Werte. Die vollständige Berechnung kann in Appendix \ref{ch:nebenrechnungen:katzZentralitaet} nachvollzogen werden.
 
-
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+		& \begin{sideways}Jane D.\end{sideways} & \begin{sideways}John D.\end{sideways} & \begin{sideways}Erika M.\end{sideways} & \begin{sideways}Max M.\end{sideways} & \begin{sideways}Java\end{sideways} & \begin{sideways}Python\end{sideways} & \begin{sideways}MySQL\end{sideways} & \begin{sideways}MongoDB\end{sideways} & \begin{sideways}HDFS\end{sideways} & \begin{sideways}Spark\end{sideways} \\ 
+		\hline
+		Jane D.  & 1.67 & 0.48 & 0.19 & 0.88 & 0.40 & 1.66 & 1.23 & 1.00 & 0.16 & 0.16\\
+		John D.  & 0.48 & 0.45 & 0.48 & 0.37 & 0.64 & 0.38 & 0.59 & 0.18 & 0.48 & 0.48\\
+		Erika M. & 0.12 & 0.35 & 2.22 & 0.09 & 0.15 & 0.09 & 0.14 & 0.04 & 2.06 & 2.50\\
+		Max M.   & 0.88 & 0.37 & 0.13 & 0.60 & 0.54 & 1.04 & 0.62 & 0.33 & 0.12 & 0.12\\
+		Java     & 0.40 & 0.64 & 0.21 & 0.54 & 0.37 & 0.40 & 0.38 & 0.15 & 0.21 & 0.21\\
+		Pyhton   & 1.66 & 0.38 & 0.13 & 1.04 & 0.40 & 1.22 & 0.85 & 0.62 & 0.13 & 0.13\\
+		MySQL    & 1.23 & 0.59 & 0.20 & 0.62 & 0.38 & 0.85 & 0.69 & 0.46 & 0.20 & 0.20\\
+		MongoDB  & 1.00 & 0.18 & 0.06 & 0.33 & 0.15 & 0.62 & 0.46 & 0.37 & 0.06 & 0.06\\
+		HDFS     & 0.16 & 0.48 & 2.83 & 0.12 & 0.21 & 0.13 & 0.20 & 0.06 & 1.83 & 2.83\\
+		Spark    & 0.04 & 0.13 & 1.21 & 0.03 & 0.06 & 0.03 & 0.05 & 0.02 & 0.77 & 0.93
+	\end{tabular}
+	\caption{Berechnete Katz-Zentralität mit $\beta = 0.125$ für Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2}}
+	\label{tbl:empfehlungssysteme:arbeitsweise:tbl3}
+\end{table}
 
 \newpage
 Ein Problem, welches weder nachbarschafts- noch graphenbasierte Verfahren beseitigen können, ist das Phänomen des Cold Starts.
