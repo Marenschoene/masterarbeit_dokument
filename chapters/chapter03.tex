@@ -101,11 +101,10 @@ Die in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb1} dargestell
 
 Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} beobachtet werden. Dort haben MongoDB und Spark jeweils nur eine Bewertung. Für diese Fähigkeiten ist es über Ähnlichkeitsberechnungen im Bereich des speicherbasierten kollaborativen Filterns somit nicht möglich, für alle Angestellten robuste Vorhersagen zu ermitteln. Um diesem Problem zu begegnen, kann die bisher verwendete Matrixdarstellung in die Form eines bipartiten Graphen überführt werden \cite[S. 2f.]{huang:2004}. Diese Datenstruktur zeichnet sich durch die Verwendung zwei unterschiedlicher Arten von Knoten zur separaten Speicherung von Nutzern und Elementen aus. Bewertungen werden bei dieser Darstellungsform über gewichtete Kanten im Graphen dargestellt \cite[S. 1f.]{cao:2021}. Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} zeigt die Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Datenstruktur eines bipartiten Graphen. In der Grafik sind die Knoten der Mitarbeiter rot und die Knoten der Fähigkeiten blau markiert.
 
+\definecolor{itemcolor}{RGB}{179,217,255}
+\definecolor{usercolor}{RGB}{255,204,179}
 \begin{figure}[h]
-	\centering
-	\definecolor{itemcolor}{RGB}{179,217,255}
-	\definecolor{usercolor}{RGB}{255,204,179}
-	
+	\centering	
 	\begin{tikzpicture}[node distance={32mm}, thick, main/.style = {draw, circle}] 
 		\node[main, fill=itemcolor] (MongoDB) {$MongoDB$}; 
 		\node[main, fill=itemcolor] (Python) [below right of=MongoDB] {$Python$}; 
@@ -210,21 +209,25 @@ Modellbasierte Ansätze verwenden Verfahren aus den Bereichen des Data Minings u
 
 In der Literatur sind verschiedenste Verfahren zur Implementierung von modellbasierten Empfehlungssystemen wie Bestimmung neuronaler Netze \cite[S. 5ff.]{personJobFit:2018}, Anwendung des naiven Bayes-Klassifikators \cite[S. 2]{valdividezodiaz:2019}, Durchführung von Matrix-Faktorisierungsverfahren \cite[S. 2ff.]{ortega:2016} und Berechnung von Entscheidungsbäumen \cite[S. 1ff.]{yu:2012} verbreitet. 
 
-Exemplarisch wird im folgenden Teil das Lernen eines Modells auf Basis eines Entscheidungsbaumes demonstriert. Zur Vereinfachung der Berechnung werden die Spalten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} reduziert und die Bewertungen auf boolsche Werte geändert. Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} enthält die vereinfachten Daten.
+Exemplarisch wird im folgenden Teil das Lernen eines Modells auf Basis eines Entscheidungsbaumes demonstriert. Zur Vereinfachung der Berechnung zeigt Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} die Bewertungen von nur zwei Fähigkeiten mit boolschen Werten.
 
+\newcolumntype{g}{>{\columncolor{itemcolor}}c}
 \begin{table}[h]
 	\centering
-	\begin{tabular}{c|c|c}
-		& Python & MySQL\\ 
+	\begin{tabular}{c|c|c|g}
+		& C & C\# & C++\\ 
 		\hline
-		Doe, Jane & 1 & 1\\
-		Doe, John & 0 & 1\\
-		Muster, Erika & 0 & 0\\
-		Muster, Max & 1 & 1
+		Doe, Jane     & false & true  & false\\
+		Doe, John     & true  & false & true\\
+		Muster, Erika & false & false & true\\
+		Muster, Max   & true  & false & true\\
+		... 		  & ...   & ...   & ...\\ 
 	\end{tabular}
-	\caption{Beispiel für die Matrixdarstellung von Fähigkeiten mit boolschen Bewertungen}
+	\caption{ Matrixdarstellung von Fähigkeiten mit boolschen Bewertungen}
 	\label{tbl:empfehlungssysteme:cf:modellbasiert:tbl1}
 \end{table}
+
+In Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} ist die letzte Spalte blau eingefärbt. Diese enthält in diesem Beispiel die abhängige Variable, deren Wert über die übrigen unabhängigen Variablen in den restlichen Tabellenspalten vorhergesagt werden soll.
 
 \newpage
 % Es könnte noch ein Satz rein, wann sich eher itembased und wann userbased eignet
