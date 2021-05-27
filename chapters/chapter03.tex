@@ -206,7 +206,25 @@ Unabhängig von der konkreten Art der Implementierung ist ein großer Nachteil a
 
 \subsection{Modellbasierte Verfahren}
 \label{ch:empfehlungssysteme:cf:modellbasiert}
+Modellbasierte Ansätze verwenden Verfahren aus den Bereichen des Data Minings und des maschinellen Lernens zur Generierung von Vorschlägen. Hierbei berechnen Wissenschaftler statistische Modelle, bevor sie ihr Empfehlungssystem ihren Nutzern zur Verfügung stellen. Dieses Vorgehen hat den Vorteil, dass in der Produktivumgebung eingesetzte Recommender Eninges auch bei großen Datenmengen wesentlich effizienter Vorschläge bestimmen können als es bei speicherbasierten Verfahren möglich ist \cite[S. 8]{yang:2016}.
 
+In der Literatur sind verschiedenste Verfahren zur Implementierung von modellbasierten Empfehlungssystemen wie Bestimmung neuronaler Netze \cite[S. 5ff.]{personJobFit:2018}, Anwendung des naiven Bayes-Klassifikators \cite[S. 2]{valdividezodiaz:2019}, Durchführung von Matrix-Faktorisierungsverfahren \cite[S. 2ff.]{ortega:2016} und Berechnung von Entscheidungsbäumen \cite[S. 1ff.]{yu:2012} verbreitet. 
+
+Exemplarisch wird im folgenden Teil das Lernen eines Modells auf Basis eines Entscheidungsbaumes demonstriert. Zur Vereinfachung der Berechnung werden die Spalten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} reduziert und die Bewertungen auf boolsche Werte geändert. Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} enthält die vereinfachten Daten.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c}
+		& Python & MySQL\\ 
+		\hline
+		Doe, Jane & 1 & 1\\
+		Doe, John & 0 & 1\\
+		Muster, Erika & 0 & 0\\
+		Muster, Max & 1 & 1
+	\end{tabular}
+	\caption{Beispiel für die Matrixdarstellung von Fähigkeiten mit boolschen Bewertungen}
+	\label{tbl:empfehlungssysteme:cf:modellbasiert:tbl1}
+\end{table}
 
 \newpage
 % Es könnte noch ein Satz rein, wann sich eher itembased und wann userbased eignet
@@ -214,11 +232,14 @@ Unabhängig von der konkreten Art der Implementierung ist ein großer Nachteil a
 - \cite[S. 8]{yang:2016}: Modellerstellung offline
 - Su  and  Khoshgoftaar: Vorteil speicherbasiert: Neue Nutzer können einfach hinzugefügt werden --> Geht bei modelbased nicht
 - Speicherbasiert ist laut Su einfacher zu implementieren
+% Fluch der Dimensionalität --> https://reader.elsevier.com/reader/sd/pii/S1877050915007462?token=004D1714622D9F8D4ABCC3AEFB3824FDA9C5E08FFA6365E5EF57C7B6B3F51F5B68F07DAE7435E7A7B85D5506C1EA4CE7&originRegion=eu-west-1&originCreation=20210527150831 --> Bei PCR gehen Informationen verloren
 % 3. Cold Start
 
 Ein Problem, welches weder speicher- noch modellbasierte Verfahren beseitigen können, ist das Phänomen des Cold Starts.
 
-
+Ob eine speicher- oder modellbasierte Implementierung geeigneter ist, müssen HR-Manager im Einzelfall je nach Situation in ihrem Unternehmen bewerten. \textcite[S. 4]{peerToPeer:2008} stellen fest, dass speicherbasierte Ansätze in der Praxis häufig wesentlich einfacher umzusetzen sind, da weniger Parameter aufeinander abgestimmt werden müssen. Modellbasierte Ansätze benötigen dafür im produktiven Einsatz eine kürzere Berechnungszeit, welche laut \textcite[S. 2]{weightedSimilarity:2015} insbesondere bei steigender Datenmenge vorteilhaft ist.\\
+Um die Vorzüge verschiedener Verfahren zu vereinen, ist es außerdem möglich, mehrere der vorgesteellten Ansätze in einer Software zu kombinieren. Solche Anwendungen werden als hybride Empfehlungssysteme bezeichnet \cite[S. 8]{malinowski:2008}. Diese eigenen sich auch für einen guten Umgang mit dem Cold Start- und dem Sparse Data-Problem.
+%bieten modellbasierte Verfahren einen einfacheren Umgang mit dem Cold Start- und dem Sparse Data-Problem \cite[S. 4]{peerToPeer:2008}.
 
 
 
