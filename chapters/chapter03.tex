@@ -1,3 +1,7 @@
+\definecolor{exxetagray}{gray}{0.75}
+\definecolor{itemcolor}{RGB}{179,217,255}
+\definecolor{usercolor}{RGB}{255,204,179}
+
 \shorthandoff{"}
 \chapter{Empfehlungssysteme}
 \label{ch:empfehlungssysteme}
@@ -101,8 +105,6 @@ Die in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb1} dargestell
 
 Das Sparsity Problem kann auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} beobachtet werden. Dort haben MongoDB und Spark jeweils nur eine Bewertung. Für diese Fähigkeiten ist es über Ähnlichkeitsberechnungen im Bereich des speicherbasierten kollaborativen Filterns somit nicht möglich, für alle Angestellten robuste Vorhersagen zu ermitteln. Um diesem Problem zu begegnen, kann die bisher verwendete Matrixdarstellung in die Form eines bipartiten Graphen überführt werden \cite[S. 2f.]{huang:2004}. Diese Datenstruktur zeichnet sich durch die Verwendung zwei unterschiedlicher Arten von Knoten zur separaten Speicherung von Nutzern und Elementen aus. Bewertungen werden bei dieser Darstellungsform über gewichtete Kanten im Graphen dargestellt \cite[S. 1f.]{cao:2021}. Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} zeigt die Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Datenstruktur eines bipartiten Graphen. In der Grafik sind die Knoten der Mitarbeiter rot und die Knoten der Fähigkeiten blau markiert.
 
-\definecolor{itemcolor}{RGB}{179,217,255}
-\definecolor{usercolor}{RGB}{255,204,179}
 \begin{figure}[h]
 	\centering	
 	\begin{tikzpicture}[node distance={32mm}, thick, main/.style = {draw, circle}] 
@@ -209,11 +211,38 @@ Unabhängig von der konkreten Art der Implementierung ist ein großer Nachteil a
 
 \subsection{Modellbasierte Verfahren}
 \label{ch:empfehlungssysteme:cf:modellbasiert}
-Modellbasierte Verfahren verwenden Ansätze aus den Bereichen des Data Minings und des maschinellen Lernens zur Generierung von Vorschlägen. Hierbei berechnen Wissenschaftler statistische Modelle, bevor sie ihr Empfehlungssystem den Nutzern zur Verfügung stellen. Dieses Vorgehen hat den Vorteil, dass in der Produktivumgebung eingesetzte Recommender Eninges auch bei großen Datenmengen wesentlich effizienter Vorschläge bestimmen können als es bei speicherbasierten Verfahren möglich ist \cite[S. 8]{yang:2016}.
+Modellbasierte Verfahren verwenden Ansätze aus den Bereichen des Data Minings und des maschinellen Lernens zur Generierung von Vorschlägen. Hierbei berechnen Wissenschaftler statistische Modelle, bevor sie ihr Empfehlungssystem den Nutzern zur Verfügung stellen. Dieses Vorgehen hat den Vorteil, dass in der Produktivumgebung keine Berechnungen mehr auf allen Daten ausgeführt werden müssen. Somit ist die Vorschlagsbestimmung insbesondere bei großen Datenmengen effizienter als bei speicherbasierten Verfahren \cite[S. 8]{yang:2016}.
 
-Bei modellbasierten Verfahren ist es üblich,
+Wie in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} dargestellt, ist es bei modellbasierten Verfahren üblich, den vorhandenen Datensatz in Trainings- (rot) und Testdaten (blau) zu untergliedern. Die Aufteilung kann gleichverteilt oder in anderen Verhältnissen wie 80 Prozent Trainings- und 20 Prozent Testdaten \cite[S. 12]{najafabadi:2017} erfolgen. 
 
-In der Literatur sind verschiedenste Verfahren zur Implementierung von modellbasierten Empfehlungssystemen wie Bestimmung neuronaler Netze \cite[S. 5ff.]{personJobFit:2018}, Anwendung des naiven Bayes-Klassifikators \cite[S. 2]{valdividezodiaz:2019}, Durchführung von Matrix-Faktorisierungsverfahren \cite[S. 2ff.]{ortega:2016} und Berechnung von Entscheidungsbäumen \cite[S. 1ff.]{yu:2012} verbreitet. 
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c}
+		& Java & Python & MySQL & MongoDB & HDFS & Spark\\ 
+		\hline
+		\cellcolor{usercolor}... & \cellcolor{usercolor}... & \cellcolor{usercolor}... & \cellcolor{usercolor}... & \cellcolor{usercolor}... & \cellcolor{usercolor}... & \cellcolor{exxetagray}...\\
+		\cellcolor{usercolor}Doe, Jane & \cellcolor{usercolor}0 & \cellcolor{usercolor}4 & \cellcolor{usercolor}3 & \cellcolor{usercolor}3 & \cellcolor{usercolor}0 & \cellcolor{exxetagray}0\\
+		\cellcolor{usercolor}Doe, John & \cellcolor{usercolor}3 & \cellcolor{usercolor}0 & \cellcolor{usercolor}2 & \cellcolor{usercolor}0 & \cellcolor{usercolor}1 & \cellcolor{exxetagray}0\\
+		\hline
+		\cellcolor{itemcolor}Muster, Erika & \cellcolor{itemcolor}0 & \cellcolor{itemcolor}0 & \cellcolor{itemcolor}0 & \cellcolor{itemcolor}0 & \cellcolor{itemcolor}5 & \cellcolor{exxetagray}3\\
+		\cellcolor{itemcolor}Muster, Max & \cellcolor{itemcolor}2 & \cellcolor{itemcolor}3 & \cellcolor{itemcolor}1 & \cellcolor{itemcolor}0 & \cellcolor{itemcolor}0 & \cellcolor{exxetagray}0\\
+		\cellcolor{itemcolor}... & \cellcolor{itemcolor}... & \cellcolor{itemcolor}... & \cellcolor{itemcolor}... & \cellcolor{itemcolor}... & \cellcolor{itemcolor}... & \cellcolor{exxetagray}...\\ 
+	\end{tabular}
+	\caption{Beispiel für die Matrixdarstellung von Fähigkeiten}
+	\label{tbl:empfehlungssysteme:cf:modellbasiert:tbl1}
+\end{table}
+
+Das Ziel modellbasierter Verfahren ist es, statistische Modelle zur Vorhersage der in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} grau markierten letzten Spalte zu entwickeln. Diese wird als Klassen- bzw. abhängige Variable bezeichnet. Die Trainingsdaten werden dabei zur Entwicklung des Modells genutzt. Hierfür sind in der Literatur verschiedenste Verfahren wie Implementierung neuronaler Netze \cite[S. 5ff.]{personJobFit:2018}, Anwendung des naiven Bayes-Klassifikators \cite[S. 2]{valdividezodiaz:2019}, Durchführung von Matrix-Faktorisierungsverfahren \cite[S. 2ff.]{ortega:2016} oder Berechnung von Entscheidungsbäumen \cite[S. 1ff.]{yu:2012} verbreitet. Das durch die Anwendung solcher Verfahren entstehende Modell wird anschließend durch die Testdaten evaluiert und hinsichtlich Zuverlässigkeit der Vorhersagen bewertet.
+
+Wie an den Spalten in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} zu erkennen ist, existieren in der Praxis häufig sehr viele Merkmale bzw. Dimensionen, welche zur Entwicklung von Modellen relevant sein können. Je mehr Dimensionen vorhanden sind, desto mehr Daten benötigen Wissenschaftler, um aussagekräftige Modelle erstellen zu können. Wie bereits in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sind Daten in der Praxis aufgrund des Sparsity Problems meist sehr schwach besetzt und können somit die Modellbildung bei vielen Merkmalen erheblich erschweren. xyz prägte für diesen Sachverhalt den Ausdruck "Fluch der Dimensionalität". Um trotz zahlreichen Dimensionen und verhältnismäßig wenigen Daten Empfehlungen generieren zu können, stellen verschiedene Autoren in der Literatur Verfahren zur Dimensionsreduzierung vor. Bekannt ist beispielsweise die Hauptkomponentenanalyse, welche im englischsprachigen Raum als \ac{PCA} bezeichnet wird.
+
+Modellbasierte Verfahren haben den Nachteil, dass diese stets den Zustand der Daten zum Zeitpunkt des Trainings des Modells abbilden. Werden beispielsweise Mitarbeiter oder Fähigkeiten in der Datenbank hinzugefügt bzw. entfernt oder Bewertungen verändert, müsste das statistische Modell neu trainiert werden, um diese Anpassungen zu erfassen. Dieser Prozess wird in der Literatur als sehr aufwändig beschrieben. Speicherbasierte Verfahren können Änderungen dagegen unmittelbar bei der Bestimmung von Empfehlungen berücksichtigen.
+
+Ein Problem, welches weder speicher- noch modellbasierte Verfahren im Bereich des kollaborativen Filterns zuverlässig lösen können, ist der sogenannte Kaltstart (Cold Start). Dieser tritt auf, wenn neue Nutzer oder Fähigkeiten in die Datenbank hinzugefügt werden, welchen noch keine Bewertung zugeordnet ist. In solchen Fällen ist die gesamte Zeile bzw. Spalte in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mit fehlenden Einträgen gekennzeichnet und im entsprechenden Graphen in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} existiert keine Kante von der betrachteten Entität zu anderen Knoten. Somit ist es weder über speicherbasierte Ähnlichkeitsberechnungen, noch mittels graphenbasierter Algorithmen oder statistischen Modellen möglich, zuverlässige Vorhersagen zu bestimmen. Eine Lösung für den Kaltstart können Verfahren im Bereich des inhaltsbasierten Filterns liefern.
+
+\section{Inhaltsbasiertes Filtern}
+\label{ch:empfehlungssysteme:cfundcb}
+
 
 \newpage
 - \cite[S. 2]{weightedSimilarity:2015}: Deutlich weniger Rechenzeit
@@ -283,9 +312,6 @@ Solche, auf Ähnlichkeitsberechnungen basierende Implementierung, werden als "sp
 Ob eine speicher- oder modellbasierte Implementierung geeigneter ist, muss im Einzelfall entschieden werden. \textcite[S. 4]{peerToPeer:2008} stellen diesbezüglich fest, dass speicherbasierte Ansätze in der Praxis häufig wesentlich einfacher umzusetzen sind, da weniger Parameter aufeinander abgestimmt werden müssen. Modellbasierte Ansätze benötigen dafür eine kürzere Berechnungszeit, welche laut \textcite[S. 2]{weightedSimilarity:2015} insbesondere bei steigender Datenmenge vorteilhaft ist. Außerdem bieten modellbasierte Verfahren einen einfacheren Umgang mit dem Cold Start- und dem Sparse Data-Problem \cite[S. 4]{peerToPeer:2008}.
 
 \textcite[S. 1]{malinowski:2008} kritisieren jedoch, dass auch ein hybrides Empfehlungssystem nicht ausreicht, um Mitarbeiter für Projekte zu empfehlen. Deren Einschätzung zu Folge ist die Implementierung eines bilateralen Empfehlungssystems notwendig.
-
-\section{Inhaltsbasiertes Filtern}
-\label{ch:empfehlungssysteme:cfundcb}
 
 \newpage
 - \cite[S. xvii]{recommenderSystems:2016}: Thema der RS erhielt eine steigende Wichtigkeit in den 90ern, als das Web ein wichtiges Medium für Wirtschaft und Online-Handel wurde --> Es wurde früh erkannt, dass das Web unerreichte Möglichkeiten zur Personalisierung bereit hielt, welche in anderen Kanälen nicht zur Verfügung standen --> Web bot einfache Datensammlung und Nutzeroberfläche, um empfohlene Items in einer unaufdringlichen Weise anzuzeigen
