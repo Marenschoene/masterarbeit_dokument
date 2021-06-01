@@ -212,47 +212,38 @@ Unabhängig von der konkreten Art der Implementierung ist ein großer Nachteil a
 
 \subsection{Modellbasierte Verfahren}
 \label{ch:empfehlungssysteme:cf:modellbasiert}
-Modellbasierte Verfahren verwenden Ansätze aus den Bereichen des Data Minings und des maschinellen Lernens zur Generierung von Vorschlägen. Hierbei berechnen Wissenschaftler statistische Modelle, bevor sie ihr Empfehlungssystem den Nutzern zur Verfügung stellen. Dieses Vorgehen hat den Vorteil, dass in der Produktivumgebung keine Berechnungen mehr auf allen Daten ausgeführt werden müssen. Somit ist die Vorschlagsbestimmung insbesondere bei großen Datenmengen effizienter als bei speicherbasierten Verfahren \cite[S. 8]{yang:2016}.
+Modellbasierte Verfahren verwenden Ansätze aus dem Bereich des Data Minings zur Generierung von Vorschlägen. Hierbei berechnen Wissenschaftler statistische Modelle, bevor sie ihr Empfehlungssystem den Nutzern zur Verfügung stellen \cite[S. 2]{cui:2020}. Dieses Vorgehen hat den Vorteil, dass in der Produktivumgebung keine Berechnungen mehr auf allen Daten ausgeführt werden müssen. Somit ist die Vorschlagsbestimmung insbesondere bei großen Datenmengen effizienter als bei speicherbasierten Verfahren \cite[S. 8]{yang:2016}.
 
-Wie in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} dargestellt, ist es bei modellbasierten Verfahren üblich, den vorhandenen Datensatz in Trainings- (rot) und Testdaten (blau) zu untergliedern. Die Aufteilung kann gleichverteilt oder in anderen Verhältnissen wie 80 Prozent Trainings- und 20 Prozent Testdaten \cite[S. 12]{najafabadi:2017} erfolgen. 
+Wie in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} dargestellt, ist es bei modellbasierten Verfahren üblich, den vorhandenen Datensatz in Trainings- (rot) und Testdaten (blau) zu untergliedern \cite[S. 71f.]{recommenderSystems:2016}. %Bei Modellentwicklungen zur Vervollständigung von Matrizen nutzen Wissenschaftler häufig die beobachteten Felder als Trainings- und die unbeobachteten Einträge als Testdaten \cite[S. 71f.]{recommenderSystems:2016}. Die Aufteilung kann beispielsweise im Verhältnis von 80 Prozent Trainings- und 20 Prozent Testdaten erfolgen \cite[S. 12]{najafabadi:2017}. 
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|c|c}
 		& Java & Python & MySQL & MongoDB & HDFS & Spark\\ 
 		\hline
-		\cellcolor{usercolor}... & \cellcolor{usercolor}... & \cellcolor{usercolor}... & \cellcolor{usercolor}... & \cellcolor{usercolor}... & \cellcolor{usercolor}... & \cellcolor{exxetagray}...\\
-		\cellcolor{usercolor}Doe, Jane & \cellcolor{usercolor}0 & \cellcolor{usercolor}4 & \cellcolor{usercolor}3 & \cellcolor{usercolor}3 & \cellcolor{usercolor}0 & \cellcolor{exxetagray}0\\
-		\cellcolor{usercolor}Doe, John & \cellcolor{usercolor}3 & \cellcolor{usercolor}0 & \cellcolor{usercolor}2 & \cellcolor{usercolor}0 & \cellcolor{usercolor}1 & \cellcolor{exxetagray}0\\
-		\hline
-		\cellcolor{itemcolor}Muster, Erika & \cellcolor{itemcolor}0 & \cellcolor{itemcolor}0 & \cellcolor{itemcolor}0 & \cellcolor{itemcolor}0 & \cellcolor{itemcolor}5 & \cellcolor{exxetagray}3\\
-		\cellcolor{itemcolor}Muster, Max & \cellcolor{itemcolor}2 & \cellcolor{itemcolor}3 & \cellcolor{itemcolor}1 & \cellcolor{itemcolor}0 & \cellcolor{itemcolor}0 & \cellcolor{exxetagray}0\\
-		\cellcolor{itemcolor}... & \cellcolor{itemcolor}... & \cellcolor{itemcolor}... & \cellcolor{itemcolor}... & \cellcolor{itemcolor}... & \cellcolor{itemcolor}... & \cellcolor{exxetagray}...\\ 
+		Doe, Jane 		& \cellcolor{itemcolor}2 & \cellcolor{usercolor}4 & \cellcolor{itemcolor}3 & \cellcolor{usercolor}3 & \cellcolor{itemcolor}2 & \cellcolor{usercolor}1\\
+		Doe, John 		& \cellcolor{usercolor}3 & \cellcolor{itemcolor}4 & \cellcolor{usercolor}2 & \cellcolor{itemcolor}1 & \cellcolor{usercolor}1 & \cellcolor{itemcolor}3\\
+		Muster, Erika 	& \cellcolor{itemcolor}5 & \cellcolor{usercolor}2 & \cellcolor{itemcolor}3 & \cellcolor{usercolor}2 & \cellcolor{usercolor}5 & \cellcolor{usercolor}3\\
+		Muster, Max 	& \cellcolor{usercolor}2 & \cellcolor{usercolor}3 & \cellcolor{usercolor}1 & \cellcolor{itemcolor}4 & \cellcolor{usercolor}1 & \cellcolor{itemcolor}2
 	\end{tabular}
-	\caption{Beispiel für die Matrixdarstellung von Fähigkeiten}
+	\caption{Beispiel für eine Matrixdarstellung von Fähigkeiten mit Unterteilung in Trainings- und Testdaten}
 	\label{tbl:empfehlungssysteme:cf:modellbasiert:tbl1}
 \end{table}
 
-Das Ziel modellbasierter Verfahren ist es, statistische Modelle zur Vorhersage der in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} grau markierten letzten Spalte zu entwickeln. Diese wird als Klassen- bzw. abhängige Variable bezeichnet. Die Trainingsdaten werden dabei zur Entwicklung des Modells genutzt. Hierfür sind in der Literatur verschiedenste Verfahren wie Implementierung neuronaler Netze \cite[S. 5ff.]{personJobFit:2018}, Anwendung des naiven Bayes-Klassifikators \cite[S. 2]{valdividezodiaz:2019}, Durchführung von Matrix-Faktorisierungsverfahren \cite[S. 2ff.]{ortega:2016} oder Berechnung von Entscheidungsbäumen \cite[S. 1ff.]{yu:2012} verbreitet. Das durch die Anwendung solcher Verfahren entstehende Modell wird anschließend durch die Testdaten evaluiert und hinsichtlich Zuverlässigkeit der Vorhersagen bewertet.
+Die Trainingsdaten werden genutzt, um statistische Modelle zur Vorhersage von Bewertungen zu entwickeln \cite[S. 71f.]{recommenderSystems:2016}. Dabei sind in der Literatur verschiedene Verfahren wie die Implementierung neuronaler Netze \cite[S. 5ff.]{personJobFit:2018}, die Anwendung des naiven Bayes-Klassifikators \cite[S. 2]{valdividezodiaz:2019}, die Durchführung von Matrix-Faktorisierungsverfahren \cite[S. 2ff.]{ortega:2016} oder die Berechnung von Entscheidungsbäumen \cite[S. 1ff.]{yu:2012} verbreitet. Das durch die Anwendung solcher Verfahren entstehende Modell wird anschließend durch die Testdaten evaluiert und hinsichtlich der Genauigkeit der Vorhersagen bewertet \cite[S. 12]{najafabadi:2017}. Hierbei ist es beispielsweise möglich, bekannte Einträge in der Matrix temporär zu entfernen, diese anschließend durch das trainierte Modell vorherzusagen und daraufhin tatsächliche und vorhergesagte Werte zu vergleichen \cite[S. 3f.]{kang:2016}.
 
-Wie an den Spalten in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} zu erkennen ist, existieren in der Praxis häufig sehr viele Merkmale bzw. Dimensionen, welche zur Entwicklung von Modellen relevant sein können. Je mehr Dimensionen vorhanden sind, desto mehr Daten benötigen Wissenschaftler, um aussagekräftige Modelle erstellen zu können. Wie bereits in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sind Daten in der Praxis aufgrund des Sparsity Problems meist sehr schwach besetzt und können somit die Modellbildung bei vielen Merkmalen erheblich erschweren. xyz prägte für diesen Sachverhalt den Ausdruck "Fluch der Dimensionalität". Um trotz zahlreichen Dimensionen und verhältnismäßig wenigen Daten Empfehlungen generieren zu können, stellen verschiedene Autoren in der Literatur Verfahren zur Dimensionsreduzierung vor. Bekannt ist beispielsweise die Hauptkomponentenanalyse, welche im englischsprachigen Raum als \ac{PCA} bezeichnet wird.
+Wie an den Spalten in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} zu erkennen ist, existieren in der Praxis häufig sehr viele Merkmale bzw. Dimensionen, welche zur Entwicklung von Modellen relevant sein können. Zusätzlich sind Matrizen, wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, in der Praxis aufgrund des Sparsity Problems meist sehr schwach besetzt. \textcite[S. 94]{bellman:1961} prägte für diesen Sachverhalt den Ausdruck "Fluch der Dimensionalität"\footnote{"Curse of dimensionality" - \textcite[S. 94]{bellman:1961}}. \textcite[S. 1]{boratto:2014} stellen fest, dass in solchen Situationen keine statistisch aussagekräftigen Modelle erstellt werden können. Um trotz zahlreicher Dimensionen und verhältnismäßig wenigen Daten Empfehlungen generieren zu können, stellen verschiedene Autoren in der Literatur Verfahren zur Dimensionsreduzierung vor. Besonders verbreitet ist dabei die Hauptkomponentenanalyse, welche im englischsprachigen Raum als \ac{PCA} bezeichnet wird \cite[S. 1ff.]{vaswani:2018}.
 
-Modellbasierte Verfahren haben den Nachteil, dass diese stets den Zustand der Daten zum Zeitpunkt des Trainings des Modells abbilden. Werden beispielsweise Mitarbeiter oder Fähigkeiten in der Datenbank hinzugefügt bzw. entfernt oder Bewertungen verändert, müsste das statistische Modell neu trainiert werden, um diese Anpassungen zu erfassen. Dieser Prozess wird in der Literatur als sehr aufwändig beschrieben. Speicherbasierte Verfahren können Änderungen dagegen unmittelbar bei der Bestimmung von Empfehlungen berücksichtigen.
+\textcite[S. 1f.]{pennock:2000} kritisieren an modellbasierten Verfahren, dass diese stets den Zustand der Daten zum Zeitpunkt des Trainings des Modells abbilden. Werden beispielsweise Fähigkeiten in der Datenbank hinzugefügt bzw. entfernt oder Bewertungen verändert, muss gegebenenfalls das statistische Modell neu trainiert werden, um diese Anpassungen zu erfassen. Speicherbasierte Verfahren können den Autoren zu Folge solche Änderungen dagegen unmittelbar bei der Bestimmung von Empfehlungen berücksichtigen.
 
-Ein Problem, welches weder speicher- noch modellbasierte Verfahren im Bereich des kollaborativen Filterns zuverlässig lösen können, ist der sogenannte Kaltstart (Cold Start). Dieser tritt auf, wenn neue Nutzer oder Fähigkeiten in die Datenbank hinzugefügt werden, welchen noch keine Bewertung zugeordnet ist. In solchen Fällen ist die gesamte Zeile bzw. Spalte in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mit fehlenden Einträgen gekennzeichnet und im entsprechenden Graphen in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} existiert keine Kante von der betrachteten Entität zu anderen Knoten. Somit ist es weder über speicherbasierte Ähnlichkeitsberechnungen, noch mittels graphenbasierter Algorithmen oder statistischen Modellen möglich, zuverlässige Vorhersagen zu bestimmen. Eine Lösung für den Kaltstart können Verfahren im Bereich des inhaltsbasierten Filterns liefern.
+Ein Problem, welches weder speicher- noch modellbasierte Verfahren im Bereich des kollaborativen Filterns zuverlässig lösen können, ist der sogenannte Kaltstart (Cold Start). Dieser tritt auf, wenn neue Nutzer oder Fähigkeiten in die Datenbank hinzugefügt werden, welchen noch keine Bewertung zugeordnet ist \cite[S. 5]{huang:2004}. In solchen Fällen ist die gesamte Zeile bzw. Spalte in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mit fehlenden Einträgen gekennzeichnet und im entsprechenden Graphen in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} existiert keine Kante von der betrachteten Entität zu anderen Knoten. Somit ist es weder über speicherbasierte Ähnlichkeitsberechnungen, noch mittels graphenbasierter Algorithmen oder statistischen Modellen möglich, zuverlässige Vorhersagen zu bestimmen. Eine Lösung für den Kaltstart können Verfahren im Bereich des inhaltsbasierten Filterns liefern.
 
 \section{Inhaltsbasiertes Filtern}
 \label{ch:empfehlungssysteme:cfundcb}
 
 
 \newpage
-- \cite[S. 2]{weightedSimilarity:2015}: Deutlich weniger Rechenzeit
-- Su  and  Khoshgoftaar: Vorteil speicherbasiert: Neue Nutzer können einfach hinzugefügt werden --> Geht bei modelbased nicht
-- Speicherbasiert ist laut Su einfacher zu implementieren
-% Fluch der Dimensionalität --> https://reader.elsevier.com/reader/sd/pii/S1877050915007462?token=004D1714622D9F8D4ABCC3AEFB3824FDA9C5E08FFA6365E5EF57C7B6B3F51F5B68F07DAE7435E7A7B85D5506C1EA4CE7&originRegion=eu-west-1&originCreation=20210527150831 --> Bei PCR gehen Informationen verloren
-% 3. Cold Start
-
-Ein Problem, welches weder speicher- noch modellbasierte Verfahren beseitigen können, ist das Phänomen des Cold Starts.
+% - \cite[S. 2]{weightedSimilarity:2015}: Deutlich weniger Rechenzeit
 
 Ob eine speicher- oder modellbasierte Implementierung geeigneter ist, müssen HR-Manager im Einzelfall je nach Situation in ihrem Unternehmen bewerten. \textcite[S. 4]{peerToPeer:2008} stellen fest, dass speicherbasierte Ansätze in der Praxis häufig wesentlich einfacher umzusetzen sind, da weniger Parameter aufeinander abgestimmt werden müssen. Modellbasierte Ansätze benötigen dafür im produktiven Einsatz eine kürzere Berechnungszeit, welche laut \textcite[S. 2]{weightedSimilarity:2015} insbesondere bei steigender Datenmenge vorteilhaft ist.\\
 Um die Vorzüge verschiedener Verfahren zu vereinen, ist es außerdem möglich, mehrere der vorgesteellten Ansätze in einer Software zu kombinieren. Solche Anwendungen werden als hybride Empfehlungssysteme bezeichnet \cite[S. 8]{malinowski:2008}. Diese eigenen sich auch für einen guten Umgang mit dem Cold Start- und dem Sparse Data-Problem.
@@ -261,7 +252,7 @@ Um die Vorzüge verschiedener Verfahren zu vereinen, ist es außerdem möglich, 
 
 
 
-- \cite[S. 5]{huang:2004}: Cold-Start kann als ein Sonderfall des Sparse Data Problems betrachtet werden / Gute Quellen für hybrid
+- 
 
 
 
