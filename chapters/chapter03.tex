@@ -230,7 +230,8 @@ Wie in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} dargestellt, i
 	\label{tbl:empfehlungssysteme:cf:modellbasiert:tbl1}
 \end{table}
 
-Die Trainingsdaten werden genutzt, um statistische Modelle zur Vorhersage von Bewertungen zu entwickeln \cite[S. 71f.]{recommenderSystems:2016}. Dabei sind in der Literatur verschiedene Verfahren wie die Implementierung neuronaler Netze \cite[S. 5ff.]{personJobFit:2018}, die Anwendung des naiven Bayes-Klassifikators \cite[S. 2]{valdividezodiaz:2019}, die Durchführung von Matrix-Faktorisierungsverfahren \cite[S. 2ff.]{ortega:2016} oder die Berechnung von Entscheidungsbäumen \cite[S. 1ff.]{yu:2012} verbreitet. Das durch die Anwendung solcher Verfahren entstehende Modell wird anschließend durch die Testdaten evaluiert und hinsichtlich der Genauigkeit der Vorhersagen bewertet \cite[S. 12]{najafabadi:2017}. Hierbei ist es beispielsweise möglich, bekannte Einträge in der Matrix temporär zu entfernen, diese anschließend durch das trainierte Modell vorherzusagen und daraufhin tatsächliche und vorhergesagte Werte zu vergleichen \cite[S. 3f.]{kang:2016}.
+Die Trainingsdaten werden genutzt, um statistische Modelle zur Vorhersage von Bewertungen zu entwickeln \cite[S. 71f.]{recommenderSystems:2016}.  Diese werden anschließend durch die Testdaten evaluiert und hinsichtlich der Genauigkeit der Vorhersagen bewertet. Hierbei ist es beispielsweise möglich, bekannte Einträge in der Matrix temporär zu entfernen, diese anschließend durch das trainierte Modell vorherzusagen und daraufhin tatsächliche und vorhergesagte Werte zu vergleichen \cite[S. 3ff.]{kang:2016}.
+% die Implementierung neuronaler Netze \cite[S. 5ff.]{personJobFit:2018}, die Anwendung des naiven Bayes-Klassifikators \cite[S. 2]{valdividezodiaz:2019}, die Durchführung von Matrix-Faktorisierungsverfahren \cite[S. 2ff.]{ortega:2016} oder die Berechnung von Entscheidungsbäumen \cite[S. 1ff.]{yu:2012} verbreitet.
 
 Wie an den Spalten in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} zu erkennen ist, existieren in der Praxis häufig sehr viele Merkmale bzw. Dimensionen, welche zur Entwicklung von Modellen relevant sein können. Zusätzlich sind Matrizen, wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, in der Praxis aufgrund des Sparsity Problems meist sehr schwach besetzt. \textcite[S. 94]{bellman:1961} prägte für diesen Sachverhalt den Ausdruck "Fluch der Dimensionalität"\footnote{"Curse of dimensionality" - \textcite[S. 94]{bellman:1961}}. \textcite[S. 1]{boratto:2014} stellen fest, dass in solchen Situationen keine statistisch aussagekräftigen Modelle erstellt werden können. Um trotz zahlreicher Dimensionen und verhältnismäßig wenigen Daten Empfehlungen generieren zu können, stellen verschiedene Autoren in der Literatur Verfahren zur Dimensionsreduzierung vor. Besonders verbreitet ist dabei die Hauptkomponentenanalyse, welche im englischsprachigen Raum als \ac{PCA} bezeichnet wird \cite[S. 1ff.]{vaswani:2018}.
 
@@ -239,42 +240,10 @@ Wie an den Spalten in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1}
 Ein Problem, welches weder speicher- noch modellbasierte Verfahren im Bereich des kollaborativen Filterns zuverlässig lösen können, ist der sogenannte Kaltstart (Cold Start). Dieser tritt auf, wenn neue Nutzer oder Fähigkeiten in die Datenbank hinzugefügt werden, welchen noch keine Bewertung zugeordnet ist \cite[S. 5]{huang:2004}. In solchen Fällen ist die gesamte Zeile bzw. Spalte in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mit fehlenden Einträgen gekennzeichnet und im entsprechenden Graphen in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} existiert keine Kante von der betrachteten Entität zu anderen Knoten. Somit ist es weder über speicherbasierte Ähnlichkeitsberechnungen, noch mittels graphenbasierter Algorithmen oder statistischen Modellen möglich, zuverlässige Vorhersagen zu bestimmen. Eine Lösung für den Kaltstart können Verfahren im Bereich des inhaltsbasierten Filterns liefern.
 
 \section{Inhaltsbasiertes Filtern}
-\label{ch:empfehlungssysteme:cfundcb}
-
-
-\newpage
-% - \cite[S. 2]{weightedSimilarity:2015}: Deutlich weniger Rechenzeit
-
-Ob eine speicher- oder modellbasierte Implementierung geeigneter ist, müssen HR-Manager im Einzelfall je nach Situation in ihrem Unternehmen bewerten. \textcite[S. 4]{peerToPeer:2008} stellen fest, dass speicherbasierte Ansätze in der Praxis häufig wesentlich einfacher umzusetzen sind, da weniger Parameter aufeinander abgestimmt werden müssen. Modellbasierte Ansätze benötigen dafür im produktiven Einsatz eine kürzere Berechnungszeit, welche laut \textcite[S. 2]{weightedSimilarity:2015} insbesondere bei steigender Datenmenge vorteilhaft ist.\\
-Um die Vorzüge verschiedener Verfahren zu vereinen, ist es außerdem möglich, mehrere der vorgesteellten Ansätze in einer Software zu kombinieren. Solche Anwendungen werden als hybride Empfehlungssysteme bezeichnet \cite[S. 8]{malinowski:2008}. Diese eigenen sich auch für einen guten Umgang mit dem Cold Start- und dem Sparse Data-Problem.
-%bieten modellbasierte Verfahren einen einfacheren Umgang mit dem Cold Start- und dem Sparse Data-Problem \cite[S. 4]{peerToPeer:2008}.
-
-
-
-
-- 
-
-
-
-
-
-
-
-
-
-
-Um auch bei einer solch geringen Datendichte Empfehlungen generieren zu können, schlagen einige Wissenschaftler auch hier die Implementierung hybrider Verfahren vor \cite[S. 3]{weightedSimilarity:2015}.
-
-Grundsätzlich gilt es zu beachten, dass Algorithmen im Bereich des speicherbasierten kollaborativen Filterns ausreichende Fähigkeits-Daten benötigen, um robuste Empfehlungen zu generieren. Hat ein Angestellter noch keine Fähigkeiten bewertet oder verfügt er ausschließlich über Kenntnisse, welche kein anderer Mitarbeiter besitzt, wird dieser von den bisher vorgestellten Ähnlihckeitsberechnungen nicht berücksichtigt. Dieses Phänomen wird als "Cold Start"-Problem bezeichnet \cite[S. 1]{coldStart:2002}. 
-
-Um diesem entgegenzuwirken, ist in der Literatur die Implementierung hybrider Verfahren verbreitet. Diese kombinieren Ansätze des kollaborativen und inhaltsbasierten Filterns innerhalb eines Systems \cite[S. 8]{malinowski:2008}. So konnten beispielsweise \textcite[S. 8]{combiningCbAndCFCostSensitiveApproach:2017} nachweisen, dass sie durch die Implementierung eines hybriden Verfahrens die Empfehlungen bei Stellensuchen verbessern konnten. \textcite[S. 16]{hybridImmunizing:2017} zeigten, dass deren hybrides Job-Empfehlungssystem trotz der Kombination von kollaborativem und inhaltsbasiertem Filtern eine nach wie vor sehr hohe Performance aufweisen konnte.
-
-
-
+\label{ch:empfehlungssysteme:inhaltsbasiertesFiltern}
+Beim inhaltsbasierten Filtern werden die Daten anderer Anwender bei der Bestimmung von Vorhersagen nicht betrachtet. Algorithmen in diesem Bereich betrachten ausschließlich den Zielnutzer und vorhandene Elemente in der Datenbank. Der Empfehlungsprozess basiert dabei auf der Analyse ergänzender Informationen über Anwender und Elemente. Beispielsweise entwickelten \textcite{guo:2016} ein Job-Empfehlungssystem, 
 
 \newpage
-
-fokussieren die Bewertungen anderer Mitarbeiter \cite[S. 3]{jobMatcher:2020}. Hierbei werden Ähnlichkeitsberechnungen genutzt, um unbewertete Einträge anderer Mitarbeiter vorherzusagen. 
 
 - \cite[S. 33]{recommenderSystems:2016}: Beispiele zum kollaborativen Filtern: Kann über Nachbarschaften zwischen Nutzern (User-based Models) (Wenn Alice und Bob in der Vergangenheit ähnliche Filme bewertet haben, kann Alice Bewertung für Terminator genutzt werden, um Bobs nicht vergebene Bewertung für Terminator vorherzusagen) oder Nachbarschaft zwischen Items (Item-Based Models) --> Ähnliche Items werden vom Nutzer ähnlich bewertet --> Um Bobs Bewertung für Terminator vorherzusagen, können Bobs Bewertungen für Alien and Predator verwendet werden / Neighborhood Methoden können als Generalisierung von Nearest Neighbor Klassifikatoren aus der ML-Literatur betrachtet werden --> Unterschied: Beim Kollaborativen Filtern können Ähnlichkeiten sowohl in Spalten als auch Zeilen gefunden werden --> Bei ML nur in Rows
 
