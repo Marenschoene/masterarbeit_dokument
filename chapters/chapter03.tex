@@ -237,7 +237,11 @@ Ein Problem, welches weder speicher- noch modellbasierte Verfahren im Bereich de
 
 \section{Inhaltsbasiertes Filtern}
 \label{ch:empfehlungssysteme:inhaltsbasiertesFiltern}
-Beim inhaltsbasierten Filtern werden die Daten anderer Anwender bei der Bestimmung von Vorhersagen nicht genutzt. Algorithmen in diesem Bereich betrachten ausschließlich den Zielnutzer und vorhandene Elemente in der Datenbank. Der Empfehlungsprozess basiert dabei auf der Analyse ergänzender Informationen über Anwender und Elemente. Beispielsweise entwickelten \textcite{guo:2016} ein Job-Empfehlungssystem, 
+Beim inhaltsbasierten Filtern werden die Daten anderer Anwender bei der Bestimmung von Vorhersagen nicht genutzt. Algorithmen in diesem Bereich fokussieren dagegen Beschreibungen und Eigenschaften eines Zielnutzers und der Elemente in der Datenbank \cite[S. 139f.]{recommenderSystems:2016}.
+
+Beispielsweise entwickelten \textcite[S. 4ff.]{guo:2016} ein System zur Stellensuche auf Basis des inhaltsbasierten Filterns. Dieses extrahiert über Verfahren der Computerlinguistik aus unstrukturierten Stellenausschreibungen semantische Merkmalsmodelle. Über eine Benutzeroberfläche können Nutzer ihren Lebenslauf im System hochladen. Auch dieser wird unmittelbar in ein semantisches Merkmalsmodell überführt. Über Ähnlichkeitsberechnungen zwischen den Merkmalen der Bewerbung und den hinterlegten Merkmalsmodellen der Ausschreibungen, bestimmt das Empfehlungssystem die passendsten Stellen und gibt diese an den Nutzer zurück.
+
+Einen ähnlichen Ansatz verfolgten auch \textcite[S. 2f.]{liu:2019}. 
 
 \newpage
 \section{Wissensbasierte Empfehlungssysteme}
