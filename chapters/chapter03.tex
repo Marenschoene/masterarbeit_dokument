@@ -159,7 +159,7 @@ Der mit Zahlen versehene Bereich von Tabelle \ref{tbl:empfehlungssysteme:arbeits
 		\hline
 		Jane D.  & 0 & 0 & 0 & 0 & 0 & 4 & 3 & 3 & 0 & 0\\
 		John D.  & 0 & 0 & 0 & 0 & 3 & 0 & 2 & 0 & 1 & 0\\
-		Erika M. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 5 & 3\\
+		Erika M. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 5 & 3\\%5 auf 2
 		Max M.   & 0 & 0 & 0 & 0 & 2 & 3 & 1 & 0 & 0 & 0\\
 		Java     & 0 & 3 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0\\
 		Pyhton   & 4 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0\\
@@ -233,15 +233,13 @@ Wie an den Spalten in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1}
 
 \textcite[S. 1f.]{pennock:2000} kritisieren an modellbasierten Verfahren, dass diese stets den Zustand der Daten zum Zeitpunkt des Trainings des Modells abbilden. Werden beispielsweise Fähigkeiten in der Datenbank hinzugefügt bzw. entfernt oder Bewertungen signifikant verändert, muss gegebenenfalls das statistische Modell neu trainiert werden, um diese Anpassungen zu erfassen. Speicherbasierte Verfahren können den Autoren zu Folge solche Änderungen dagegen unmittelbar berücksichtigen.
 
-Ein Problem, welches weder speicher- noch modellbasierte Verfahren im Bereich des kollaborativen Filterns zuverlässig lösen können, ist der sogenannte Kaltstart (Cold Start). Dieser tritt auf, wenn neue Nutzer oder Fähigkeiten in die Datenbank hinzugefügt werden, welchen noch keine Bewertung zugeordnet ist \cite[S. 5]{huang:2004}. In solchen Fällen ist die gesamte Zeile bzw. Spalte in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mit fehlenden Einträgen gekennzeichnet. Im entsprechenden Graphen in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} existiert somit keine Kante von der betrachteten Entität zu anderen Knoten. Daher ist es weder über speicherbasierte Ähnlichkeitsberechnungen, noch mittels graphenbasierter Algorithmen oder statistischen Modellen möglich, zuverlässige Vorhersagen zu bestimmen. Eine Lösung für den Kaltstart können jedoch Verfahren im Bereich des inhaltsbasierten Filterns liefern.
+Ein Problem, welches weder speicher- noch modellbasierte Verfahren im Bereich des kollaborativen Filterns zuverlässig lösen können, ist der sogenannte Kaltstart (Cold Start). Dieser tritt auf, wenn neue Nutzer oder Fähigkeiten in die Datenbank hinzugefügt werden, welchen noch keine Bewertung zugeordnet ist \cite[S. 5]{huang:2004}. In solchen Fällen ist die gesamte Zeile bzw. Spalte in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mit fehlenden Einträgen gekennzeichnet. Im entsprechenden Graphen in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} existiert somit keine Kante von der betrachteten Entität zu anderen Knoten. Daher ist es weder über speicherbasierte Ähnlichkeitsberechnungen, noch mittels graphenbasierter Algorithmen oder statistischen Modellen möglich, zuverlässige Vorhersagen zu bestimmen. Eine Lösung für den Kaltstart können jedoch Verfahren im Bereich des inhaltsbasierten Filterns bieten.
 
 \section{Inhaltsbasiertes Filtern}
 \label{ch:empfehlungssysteme:inhaltsbasiertesFiltern}
-Beim inhaltsbasierten Filtern werden die Daten anderer Anwender bei der Bestimmung von Vorhersagen nicht genutzt. Algorithmen in diesem Bereich fokussieren dagegen Beschreibungen und Eigenschaften eines Zielnutzers und der Elemente in der Datenbank \cite[S. 139f.]{recommenderSystems:2016}.
+Beim inhaltsbasierten Filtern werden die Daten anderer Anwender bei der Bestimmung von Vorhersagen nicht genutzt. Algorithmen in diesem Bereich fokussieren dafür Beschreibungen und Eigenschaften eines Zielnutzers und der Elemente in der Datenbank \cite[S. 139f.]{recommenderSystems:2016}.
 
-Beispielsweise entwickelten \textcite[S. 4ff.]{guo:2016} ein System zur Stellensuche auf Basis des inhaltsbasierten Filterns. Dieses extrahiert über Verfahren der Computerlinguistik aus unstrukturierten Stellenausschreibungen semantische Merkmalsmodelle. Über eine Benutzeroberfläche können Nutzer ihren Lebenslauf im System hochladen. Auch dieser wird unmittelbar in ein semantisches Merkmalsmodell überführt. Über Ähnlichkeitsberechnungen zwischen den Merkmalen der Bewerbung und den hinterlegten Merkmalsmodellen der Ausschreibungen, bestimmt das Empfehlungssystem die passendsten Stellen und gibt diese an den Nutzer zurück.
-
-Einen ähnlichen Ansatz verfolgten auch \textcite[S. 2f.]{liu:2019}. 
+In Bezug auf Job-Empfehlungssysteme ist eine in der Literatur verbreitete Vorgehensweise, über Methoden aus der Computerlinguistik aus unstrukturierten Stellenausschreibungen und Lebensläufen semantische Merkmale zu extrahieren. Dabei werden über Ähnlichkeitsberechnungen zwischen den Merkmalsmodellen Empfehlungen generiert. Beispielsweise entwickelten \textcite[S. 4ff.]{guo:2016} ein solches System für Bewerber zur Stellensuche. \textcite[S. 3ff.]{prospect:2010} implementierten eine vergleichbare Anwendung für Unternehmen, um passende Bewerber bei der Stellenbesetzung auszuwählen.
 
 \newpage
 \section{Wissensbasierte Empfehlungssysteme}
