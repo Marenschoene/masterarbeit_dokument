@@ -1,6 +1,72 @@
 \shorthandoff{"}
 \chapter{Verwandte Arbeiten}
 \label{ch:verwandteArbeiten}
+\textcite{malinowski:2008}:
+
+S. 1\\
+- System zur Auswahl von Individuen für Teams
+- Bestehende Systeme betrachten nur Skills - Match zwischen Person und Teammitgliedern wird nicht beachtet
+- Entwickeln relationales Empfehlungssystem zur automatisierten Vorauswahl von Kandidaten, die am besten zu zukünftigen Teammitgliedern passen
+
+S. 2\\
+- Manche Industrien wie Consulting arbeiten schon länger Projektorientiert
+
+S. 3\\
+- Beziehen sich auf den person-environment (P-E) fit
+- IS-Unterstützungsansatz benötigt 2 Dimensionen: 1. Person-Job und 2. Person-Team
+- Fokus auf internes Team-Staffing
+
+S. 4\\
+- Edwards sagt, dass P-J fit aus zwei Klassen besteht: 1. Wünsche und 2. Demand-Abilities
+- Einige Autoren sagen P-T ist gut wenn suplementär, andere sagen wenn komplementär --> Werbel und Johnson sagen, dass beide beachtet werden müssen
+
+S. 5\\
+- Bestehende HR-Systeme verfügen über eine interne Skill-Datenbank, über welche über Abfragen Kandidaten mit passenden Eigenschaften ermittelt werden können\\
+- 3 Nachteile bestehender Systeme: 1. Einfaches Schlüsselwort-Matching; 2. Viele fokussieren ausschließlich auf Demand-Abilities; 3. Keine Beachtung des P-T Fits
+
+S. 6\\
+- Setzen hohes Vertrauen zwischen Teammitgliedern voraus --> Wichtiger Indikator für P-T Fit
+- setzen auf Kontepte der sozial network analysis (SNA)
+- Ziel: Vorhersage von Vertrauen zwischen Personen, die sich nicht kennen
+- System benötigt zwei Dimensionen: 1. Unäre Attribute wie Fähigkeiten, um Fit zwischen Person und Task zu bestimmen; 2. Relationale Attribute, um den fit zwischen Individuum und Teammitgliedern zu bestimmen --> in beiden Fällen müssen auch die Needs einbezogen werden --> Daraus ergeben sich die 3 Haupt-funktionalen-Anforderungen: 1. Multilateraler Prozess, sodass Präferezen mehrerer Personen einbezogen werden müssen; 2. Muss Fit zwischen Person und anderen Teammitgliedern beachten; 3. Individuen können nicht in mehreren Teams zur selben Zeit arbeiten
+- Entwickeln ein Vertrauens-Berchnungs-Modell, welchen das Vertrauen zwischen zuvor unbekannten Individuen vorhersagt; Beachten außerdem soziales Kapital der Kandidaten in Ergänzung zu deren menschlichem Kapital
+
+S. 7\\
+- Annahme: Trust kann als ein Wert ausgedrückt werden
+- Vertrauen unterscheidet sich von Person zu Person, deshalb bildet jede Person ihr eigenes "Web of Trust" --> Wichtig, da Vertrauen von einem Kandidaten zu jedem anderen Teammitglied und umgekehrt bestimmt werden müssen --> Mann kann nicht einfach davon ausgehen, dass Person A Person B vertraut, nur weil es umgekehrt der Fall ist
+- Vertrauen ist ein Wert zw. 0 und 1 --> 0 = Gar kein Vertrauen, 1 = Vertrauenswürdig
+- $t'_{AC} = t_{A->B->C}$ heißt: A vertraut C über den Pfad über B --> Genannt "Vertrauenspfad" --> Pfad muss direkt sein
+- Es muss auch möglich sein, Vertrauen zu berechnen, wenn es keine direkte Verbindung gibt --> Wird über Nutzer-Attribute bestimmt (Content)
+
+S. 8\\
+- Färber wendeten ein Probailistic Latent Aspect Model (PLSA) an, um Personen für Stellen zu empfehlen --> Gehört zu den modelbased Methoden
+- Hier werden die Präferenzen der Nutzer als konvexe Kombination unterliegender latenter Aspekte betrachtet --> Die verschiedenen Aspekte, die einer Bewertung unerliegen können modelliert werden, was zu guten Empfehlungen führt
+
+S. 9\\
+- Kollaborative Trust-Vorhersage:
+- Über Kollaboratives Filtern sollen Kanten (Vertrauen) vorhergesagt werden --> Voraussetzung: Explizite Vertrauensbewertungen benötigt
+- Um Vertrauensbeziehungen zu modellieren wurde ein PLSA Modell in den Kontext der relationalen Empfehlung adaptiert --> Erlaubt es, latente Aspekte zu erfassen, welche einer Vertrauensbewertung von Personen unterliegen
+- Modell-Parameter werden durch den Expectation Maximization Algorithmus bestimmt welcher der Standardalgorithmus für Maximum Lielihood Estimation in Latenten Variablen Modellen ist --> Hat 2 Schritte: --> Ergeben, mit welcher Wahrscheinlichkeit Person A Person B zu einem bestimmten Wert vertraut
+
+S. 10\\
+- Bestimmten ein Latent Aspect Model, um Jobs für Kandidaten basierend auf vorherigen Bewertungen zu empfehlen --> Modell wurde genutzt, um Ähnlichkeiten zwischen Kandidaten zu bestimmen basierend auf vorherigen Job-Bewertungen
+- Sie erstellten Segmente von Kandidaten mit ähnlichen Präferenz-Strukturen basierend auf den Latenten Aspekten, welche sie aus vorherigen Job-Profilen ermittelten
+- Ein Nutzer kann auch zu mehreren Segmenten gehören --> Unterschied zu Clustering, wo ein Nutzer immer nur in einem Cluster siein kann
+
+S. 11
+- Berechnung der Differenz von Wahrscheinlichkeiten, dass zwei Nutzer zum Selben Segment gehören, welches von latent Variable z gebildet wird --> Differenzen werden aufaddiert für alle Latent Aspekte und durch die Anzahl an Segmenten geteilt --> Gibt es kein gemeinsam Bewertetes Job-Profil, ist der Ähnlichkeitswert 0 --> $t'_{AB}=sim_{AB}$
+- Angenommen es gibt die drei Nutzer A, B und C und diese haben sich nicht explizit bewertet, haben aber eine Ähnliche Präferenzstruktur, was die Bewertungen angeht --> DiesePräferenzstrukturen werden genutzt, um einen Ähnlichkeitsbasierte Trust-Werte zu bestimmen
+
+- Oben beschriebene Szenarien werden kombiniert ausgeführt, sodass mehr als ein Trust-Pfad zwischen Individuen existieren kann --> Bestimmten Durchschnitt zur Aggregation
+- Grad an Vertrauen wird als höher bewertet, wenn die Anzahl an --> Daher noch Verrechnung mti der allgemein Vertrauenswürdigsten Verbindung des Zielnutzers
+
+S. 12\\
+- Über die Pfade wurde dann der durchschnittliche Vertrauenswert von allem Gruppenmitgliedern zum neuen Mitglied und umgekehrt bestimmt --> Wie verrechnet wird nicht gesagt
+
+\newpage
+Die Idee des bilateralen Empfehlungssystems basiert auf dem Konzept des Person-Job Fits aus der Organisationspsychologie \cite[S. 3]{malinowski:2006}. In diesem Fachgebiet untersuchten verschiedene Wissenschaftler, unter welchen Bedingungen eine Person aus psychologischer Sicht für eine Stelle geeignet ist. Dabei stellten sie fest, dass neben der Befähigung des Mitarbeiters auch dessen Wünsche bzw. Bedürfnisse zur vorgesehenen Stelle passen müssen \cite[S. 2ff.]{edwards:1991}. Aus diesem Grund sollten beide Faktoren laut \textcite[S. 1]{malinowski:2006} auch von Recommender Systems berücksichtigt werden. Betrachtet eine IT-Anwendung neben den Anforderungen an die Fähigkeiten des Mitarbeiters auch dessen Wünsche, sprechen die Wissenschaftler von einem bilateralen Empfehlungssystem.\\
+Zu diesen Systemen ist zu bemerken, dass die Wünsche des Mitarbeiters in der Literatur nicht einheitlich interpretiert werden. So entwickelten \textcite[S. 1ff.]{applyingDataMining:2014} ein bilaterales Empfehlungssystem auf Basis von Data Mining-Technologien. Sie verstanden dabei unter den Wünschen des Nutzers dessen Präferenzen für ein bestimmtes Gehalt oder die Bekanntheit eines potenziellen Arbeitgebers. \textcite[S. 4ff.]{malinowski:2006} interpretierten die Wünsche des Nutzers dagegen als dessen Präferenz für bestimmte Stellenprofile.\\
+Allgemein ist festzustellen, dass zu bilateralen Empfehlungssystemen bislang nur sehr wenig Literatur existiert \cite[S. 2f.]{jobRecommenderSystemsASurvey:2012}.\\
 
 % Dieses System berücksichtigt Präferenzen von Kandidaten und Arbeitgebern
 % Hybrid, da Profilähnlichkeit (Contentbased) und Kollaboratives Filtern
