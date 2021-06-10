@@ -57,7 +57,7 @@ S. 10\\
 
 S. 11
 - Berechnung der Differenz von Wahrscheinlichkeiten, dass zwei Nutzer zum Selben Segment gehören, welches von latent Variable z gebildet wird --> Differenzen werden aufaddiert für alle Latent Aspekte und durch die Anzahl an Segmenten geteilt --> Gibt es kein gemeinsam Bewertetes Job-Profil, ist der Ähnlichkeitswert 0 --> $t'_{AB}=sim_{AB}$
-- Angenommen es gibt die drei Nutzer A, B und C und diese haben sich nicht explizit bewertet, haben aber eine Ähnliche Präferenzstruktur, was die Bewertungen angeht --> DiesePräferenzstrukturen werden genutzt, um einen Ähnlichkeitsbasierte Trust-Werte zu bestimmen
+- Angenommen es gibt die drei Nutzer A, B und C und diese haben sich nicht explizit bewertet, haben aber eine Ähnliche Präferenzstruktur, was die Bewertungen angeht --> Diese Präferenzstrukturen werden genutzt, um einen Ähnlichkeitsbasierte Trust-Werte zu bestimmen
 
 - Oben beschriebene Szenarien werden kombiniert ausgeführt, sodass mehr als ein Trust-Pfad zwischen Individuen existieren kann --> Bestimmten Durchschnitt zur Aggregation
 - Grad an Vertrauen wird als höher bewertet, wenn die Anzahl an --> Daher noch Verrechnung mti der allgemein Vertrauenswürdigsten Verbindung des Zielnutzers
@@ -80,6 +80,42 @@ S. 14\\
 
 Persönliche Kritik\\
 - Sie können nachweisen dass ihr System eine gute Genauigkeit aufweist, was aber fehlt: Wie werden Endergebnisse verrechnet? Ist bilateraler Ansatz tatsächlich besser? Ist Ansatz überhaupt der Richtige, also wie findet HR die Ergebnisse bzw. wie finden Studenten die Ergebnisse?
+
+\textcite{malinowski:2005}:\\
+S. 3\\
+- bilaterales Prozess --> Beachtet Präferenzen von HR-Experte und Kandidaten bzw. Teammitgliedern / Beachtet Verbindungen zu anderen Personen
+- Färber 2003 entwickelten ein Empfehlungssystem zur Empfehlung von Kandidaten --> Dieses Modell wird in dieser Arbeit erweitert
+
+S. 4\\
+- Anmerkung: Klingt für mich so, als hätten Färber 2003 das latente Modell entwickelt, um auf Jobs zu matchen, aber die Team-Komponente nicht beachtet
+
+S. 5\\
+- Beschreibung des Trust-Modells
+- Es gibt explizites Vertrauen: Explizit erfasst zB durch Fragebogen
+
+S. 6\\
+- Zwei Möglichkeiten: Multiplikation oder PLSA-Modell (kollaboratives Filtern), um den kollaborativen Trust zu bestimmen --> Ergibt eine Matrix, welche die Wahrscheinlichkeit enthält, dass ein Kandidat einen anderen Kandidaten mit dem Wert v vertraut
+- Annahme aus Literatur: Personen tendieren dazu sich mehr zu vertrauen, wenn sie selbe Werte und Verhaltensweisen teilen --> Berechnen Ähnlichkeiten zwischen Personen basierend auf ihren Job-Präferenzen --> Nutzen dafür ein adaptiertes PLSA Modell, um Job-Präferenzen basierend auf zuvor bewerteten Jobs vorherzusagen --> Erstellten Segmenten von Kandidaten mit ähnlihcen Präferenz-Strukturen basierend auf den latenten Aspkten, welche sie von den bewerteten Job-Profilen erhielten --> Ein Nutzer kann zu mehreren Segmenten gehören
+
+S. 7\\
+- Eine latente Variable bildet ein Segment und sie berechneten
+
+S. 9\\
+- 1. Schritt: PLSA Modell, um Kandidaten für Stellen zu empfehlen, die zur Stelle passen --> Gibt eine Liste mit den Top N passenden Kandidaten zurück, die Input für Schritt 2 sind --> Hier wird der Trust berechnet (Hier kommt System von oben zum Einsatz )--> Danach gibt es dann zwei Listen für PT und PJ --> Verrechnung über eine Formel --> Diese ist laut Forschern noch nicht optimal --> Priorität haben Wünsche der HR-Manager
+
+S. 10\\
+- Job-Recommender wie bei Färber
+
+S. 11\\
+- 1. Schritt: Modell wird mit vergangenen Bewertungen trainiert
+- 2. Schritt: Relationaler Aspekt: Vertrauensberechnung
+- Danach Finale Liste
+
+Anmerkung von mir:
+- Keine Evaluation
+
+
+
 
 \newpage
 So entwickelten \textcite[S. 1ff.]{applyingDataMining:2014} ein bilaterales Empfehlungssystem auf Basis von Data Mining-Technologien. Sie verstanden dabei unter den Wünschen des Nutzers dessen Präferenzen für ein bestimmtes Gehalt oder die Bekanntheit eines potenziellen Arbeitgebers. \textcite[S. 4ff.]{malinowski:2006} interpretierten die Wünsche des Nutzers dagegen als dessen Präferenz für bestimmte Stellenprofile.\\
