@@ -1,6 +1,8 @@
 \shorthandoff{"}
 \chapter{Verwandte Arbeiten}
 \label{ch:verwandteArbeiten}
+Dieses Kapitel behandelt bilaterale Empfehlungssysteme. Diese Art von Anwendungen kombinieren die in Kapitel \ref{ch:personEnvironmentFit} betrachteten Erkenntnisse zum Konzept des \acp{PEFit} mit denen in Kapitel xyz vorgestellten Implementierungsmethoden von Empfehlungssystemen (Quelle).
+
 \textcite{malinowski:2008}:
 
 S. 1\\
@@ -62,10 +64,25 @@ S. 11
 
 S. 12\\
 - Über die Pfade wurde dann der durchschnittliche Vertrauenswert von allem Gruppenmitgliedern zum neuen Mitglied und umgekehrt bestimmt --> Wie verrechnet wird nicht gesagt
+- System soll nur Vorauswahl treffen --> Finale Entscheidung trifft HR
+
+S. 13\\
+- HR-Manager erhielten Liste mit relevanten Kandidaten --> Aus diesen kann HR dann auswählen
+- Erstellten eine ROC-Kurve: Sensitivity (hit rate) war die Wahrscheinlihkeit, dass ein relevanter Kandidat empfohlen wurde; 1-Sensitivity (miss rate) war die Wahrscheinlichkeit, dass ein irrelevanter Kandidat empfohlen wurde
+- ROC-Kurve plottete die Miss-Rate auf der x-Achse gegen die Hit-Rate auf der y-Achse --> Cut-Off-Value definiert die Suchlänge und bestimmt wie viele der Top-Kandidaten in der Liste aktuell betrachtet werden , wenn die Genauigkeit bewertet wird
+- N=21 Studenten von zwei Universitäten
+- 1. Phase: Studenten erhalten 100 echte Job-Profile und sollten auf einer Skala von 1 bis 5 bewerten, wie sehr die Profile ihre Präferenzen bzgl. mittel- oder langfristigen Karriereperspektiven erfüllen --> Job-Präferenzdaten wurden als Inputdaten für den Recommender genutzt
+- 2. Phase: Studenten fügten Informationen über die Beziehungen zu anderen Teilnehmern hinzu --> Sollten Vertrauen ausdrücken --> 1 bis 5
+- Relationales RS wurde mit einem Subset der Daten trainiert --> Trainings- und Testdaten --> Vergleich mit Originaldaten, um Qualität des Systems zu messen
+
+S. 14\\
+- Auch ROC-Kurve, um Vertrauen vorherzusagen --> dazu pro Student 10 Verbindungen zufällig entfernt und vorhergesagt
+
+Persönliche Kritik\\
+- Sie können nachweisen dass ihr System eine gute Genauigkeit aufweist, was aber fehlt: Wie werden Endergebnisse verrechnet? Ist bilateraler Ansatz tatsächlich besser? Ist Ansatz überhaupt der Richtige, also wie findet HR die Ergebnisse bzw. wie finden Studenten die Ergebnisse?
 
 \newpage
-Die Idee des bilateralen Empfehlungssystems basiert auf dem Konzept des Person-Job Fits aus der Organisationspsychologie \cite[S. 3]{malinowski:2006}. In diesem Fachgebiet untersuchten verschiedene Wissenschaftler, unter welchen Bedingungen eine Person aus psychologischer Sicht für eine Stelle geeignet ist. Dabei stellten sie fest, dass neben der Befähigung des Mitarbeiters auch dessen Wünsche bzw. Bedürfnisse zur vorgesehenen Stelle passen müssen \cite[S. 2ff.]{edwards:1991}. Aus diesem Grund sollten beide Faktoren laut \textcite[S. 1]{malinowski:2006} auch von Recommender Systems berücksichtigt werden. Betrachtet eine IT-Anwendung neben den Anforderungen an die Fähigkeiten des Mitarbeiters auch dessen Wünsche, sprechen die Wissenschaftler von einem bilateralen Empfehlungssystem.\\
-Zu diesen Systemen ist zu bemerken, dass die Wünsche des Mitarbeiters in der Literatur nicht einheitlich interpretiert werden. So entwickelten \textcite[S. 1ff.]{applyingDataMining:2014} ein bilaterales Empfehlungssystem auf Basis von Data Mining-Technologien. Sie verstanden dabei unter den Wünschen des Nutzers dessen Präferenzen für ein bestimmtes Gehalt oder die Bekanntheit eines potenziellen Arbeitgebers. \textcite[S. 4ff.]{malinowski:2006} interpretierten die Wünsche des Nutzers dagegen als dessen Präferenz für bestimmte Stellenprofile.\\
+So entwickelten \textcite[S. 1ff.]{applyingDataMining:2014} ein bilaterales Empfehlungssystem auf Basis von Data Mining-Technologien. Sie verstanden dabei unter den Wünschen des Nutzers dessen Präferenzen für ein bestimmtes Gehalt oder die Bekanntheit eines potenziellen Arbeitgebers. \textcite[S. 4ff.]{malinowski:2006} interpretierten die Wünsche des Nutzers dagegen als dessen Präferenz für bestimmte Stellenprofile.\\
 Allgemein ist festzustellen, dass zu bilateralen Empfehlungssystemen bislang nur sehr wenig Literatur existiert \cite[S. 2f.]{jobRecommenderSystemsASurvey:2012}.\\
 
 % Dieses System berücksichtigt Präferenzen von Kandidaten und Arbeitgebern
