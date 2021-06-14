@@ -187,7 +187,7 @@ S. 9\\
 
 \textcite{ding:2016}:\\
 S. 1:\\
-- Entwickelten ein wechselseitiges Empfehlungssystem zum Recrutment von Absolventen
+- Entwickelten ein wechselseitiges Empfehlungssystem zum Recruitment von Absolventen
 - Nutzt dafür historische Daten der Universität über Absolventen und frühere Absolventen
 - Nutzen CF und CB
 - System betrachtet Anforderungen von Absolventen UND Arbeitgebern
@@ -199,7 +199,16 @@ S. 2\\
 - Jobsuchende können grundlegende Informationen und Job-Präferenzen in das Recommender System eingeben / Nach Registrierung liest RS automatisch ihre Bildungsinformationen aus dem historischen Daten-Repository
 - Arbeitgeber können grundlegende Informationen über Job-Anforderungen eingeben / Nach Registierung liest RS automatisch alle Bildungsinformationen ehemaliger Absolventen, welche in den letzten drei Jahren bei diesem Arbeitgeber angefangen haben
 - Danach hilft RRSGR die richtigen Bewerber an den Arbeitgeber zu empfehlen
-- Weiter bei IV
+- Für Absolventen g hilft RRSGR ähnliche ehemalige Absolventen zu finden, welche ähnihce Performance wie g während ihrer Universitätszeit hatten --> Dann kombiniert mit den Jobs aus dem Internet und Jobs von den ehemaligen Absolventen, hilft RRSGR eine Job-Liste für g zu erstellen --> Als letztes priority k-medoids clustering hilft, die meist repräsentativen k jobs auszuwählen und diese auf dem Bildschirm des Nutzers anzuzeigen
+- Für Arbeitgeber wird RRSGR helfen die ehemaligen Absolventen zu finden, welche vom Arbeitgeber von dieser Universität in den letzten drei Jahren angestellt wurden --> Dann hilft RRSGR Kandidaten zu finden, welche eine ähnliche Performance mit den angestellten ehemaligen Studenten aufweist --> Als letztes werden die meist repräsentativen k Absolven an den Arbeitgeber empfohlen
+
+S. 3\\
+- Jede Entität hat ein Profil; Zwei Entitäten können über korrespondierende Felder in ihren Profilen verglichen werden; Manche wichtigen Felder werden ausgewählt um die Ähnlihckeit zwischen zwei Entitäten zu bestimmen
+- Ähnlichkeit zwischen zwei Entitäten kann über die gewichtete Summe der Ähnlichkeit jedes korrespondierenden Feldes bestimmt werden
+- Um die Diversität zu erhöhen, wählt RRSGR nicht die top k Entitäten im Sinne der Nachbarschafts-Selektion aus --> Binary Trees helfen, zu alleviate überspezifikation und concentration bias
+- Priority k-medoids Clustering: Zur Erhöhung der Diversität bei der Auswahl der k Empfehlungen --> Implementiert über priority cover-tree --> Balance zwischen hohem Rank und Diversität
+
+- Vergleich in Evaluation mit content-based Profile-Similarity (CPS) und CCR und iHR werden mit RRSGR vergleichen / Performance vergleichbar mit iHR --> RRSGR kann aber mehr Diversität bieten
 
 
 \newpage
