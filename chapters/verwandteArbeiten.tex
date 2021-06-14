@@ -210,6 +210,25 @@ S. 3\\
 
 - Vergleich in Evaluation mit content-based Profile-Similarity (CPS) und CCR und iHR werden mit RRSGR vergleichen / Performance vergleichbar mit iHR --> RRSGR kann aber mehr Diversität bieten
 
+\textcite{wenxing:2015}\\
+S. 1\\
+- Mobil Reciprocal Job Recommender System, genannt iHR+
+- Teilten Features von Job-Suchenden und Jobs in zwei Kategorien, eine zur Selbst-Beschreibung des Job-Suchenden oder einen Job un ddie andere präsentiert die Präferenzen von ihnen
+- Bi-Directionale Präferenz basiert auf Cross-Similarity und wurde dann berechnet, um eine reciprocale Empfehlung zu erhalten
+- Wechselseitiges Empfehlungssystem erstmals vorgestellt von Pizzato et al
+
+S. 2\\
+- Relationen unter Nutzern werden über cross-similarity modelliert, welche indizieren die bi-directionale Präferenz zwischen denen
+- Es gibt zwei Sets von Nutzern: Job-Suchende J und Recruiter R; Jeder Nutzer hat eine Selbst-Beschreibung Fs und eine Präferenz Fp, welche beschreibt, was er bevorzugt
+- Cross-Similarity: Es gibt einen Jobsuchenden j und einen Recruiter r --> die Präferenz von j zu r (Pjr) ist definiert als die Ähnlichkeit zwischen $F_j^p$ und $F_r^s$; Die Präferenz von r zu j (Prj)ist definiert als die Ähnlichkeit zwischen Präferenz des Recruiters und Selbstbeschreibung es Suchenden / Bidirektionale Präferenz CS zwischen j und r ist definiert als die gewichtete Summe von Pjr und Prj
+
+- Kosinus-Ähnlichkeit
+- Zuerst werden die basic Features der Nutzer extrahiert --> Dann Features in Vektoren
+
+S. 3\\
+- Dann Ähnlichkeitsberechnung
+- Anmerkung von mir: Keine Evaluation und keine Anlehnung an P-E Fit, trifft es aber
+
 
 \newpage
 So entwickelten \textcite[S. 1ff.]{applyingDataMining:2014} ein bilaterales Empfehlungssystem auf Basis von Data Mining-Technologien. Sie verstanden dabei unter den Wünschen des Nutzers dessen Präferenzen für ein bestimmtes Gehalt oder die Bekanntheit eines potenziellen Arbeitgebers. \textcite[S. 4ff.]{malinowski:2006} interpretierten die Wünsche des Nutzers dagegen als dessen Präferenz für bestimmte Stellenprofile.\\
