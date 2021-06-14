@@ -229,6 +229,27 @@ S. 3\\
 - Dann Ähnlichkeitsberechnung
 - Anmerkung von mir: Keine Evaluation und keine Anlehnung an P-E Fit, trifft es aber
 
+\textcite{oezcan:2016}\\
+S. 1\\
+- Wechselseitiges Empfehlungssystem CCRS --> Es können Job-Angebote veröffentlicht weren; Kandidaten können wechselseitig Feedback erhalten, durch das Nutzerprofil, Interaktion und Präferenz-Information und alles zusammen
+
+S. 2\\
+- Kandidatenprofil besteht aus 19 Merkmalen
+
+S. 3\\
+- Zusätzlich gibt es 9 weitere Merkmale, Reflektieren die Aktionen der job-Ausschreibenden Unternehmen auf dem CV des Kandidaten (z.B. CV geöffnet, gedruckt, etc.)
+- Und es gibt Job-Profil Features (z.B. Ort, Unternehmen, Sektor, etc.)
+
+- Empfehlungserstellung für den Kandidaten: 1. Die 10 Prozent ähnlichsten Kandidaten zum Kandidat werden bestimmt --> Wenn es kein Cod Start ist, wird auch der Kandidat selbst zur Liste hinzugefügt --> Danach werden die vorherigen Job, auf welche die Kandidaten der Kandidatenliste sich beworben haben werden in eine Job-Liset hinzugefügt --> Zusätzlich werden die ersten 1 Prozent der ählichsten Jobs zu den Jobs in der Jobliste zur Jobliste hinzugefügt / Verwendung der Kosinus-Ähnlichkeit
+
+S. 4\\
+- Der Rückgabe-Wert der Jobs in der Liste wird über die Interaktionen auf den CVs der Personen bestimmt, welche sich auf einen Job beworben haben --> Dieser Label-Wert wird für jeden Job über Methoden der Klassifikation und die Antwort der Jobs in der Jobliste, die wahrscheinlich gesendet wird, wird über diese Art berechet --> Ziel-Kandidaten-Feedback-Wert der Jobs wird als FB bezeichnet --> So erhält man die Information, ob sie den Zielkandidaten für jeden Job in der Liste bevorzugen werden
+- Merke: Man versucht hier vorherzusagen, wie die Unternehmen reagieren werden, wenn sich der Zielkandidat auf den Job bewoibt --> Dazu werden die Interaktionen auf den CVs analysiert, welche sich kürzlich für den Job beworben haben --> Anwort wird über Klassifikation bestimmt --> JoblistFB
+- Dann wird noch ein Importance Wert für die Jobs erstellt --> Für jeden Kandidaten wird ein Konfidenzwert berechnet, indem die Bewerbungen im System, welche kürzlich carried out von den Kandidaten wurden --> Konfidenzwert wird über die Ähnlichkeit zu Jobs bestimmt, auf welche sich ein Kandidat beworben hat --> Ist die Ähnlichkeit zwischen den Jobs, auf die sich ein Kandidat beworben hat, sehr hoch, ist der Konfidenzwert für diesen Kandidaten hoch --> Jeder Kandidat bietet seinen Konfidenz-Wert an den Job, an den er sich beworben hat --> Wichtigkeitswert der Jobs wird über die Summe der Kandidaten bestimmt, welche sich auf diesen Job beworben haben --> Diese wichtigkeitswerte werden als Score Wert der Jobs und Namen als SV akzeptiert --> Ein Score Value wird für jeden Job in der JobList (JobListScore) geboten
+- FB-Wert und SV-Werte jedes Jobs werden multipliziert und die Jobs werden den Zielkandidaten nach diesen Werten präsentiert
+
+S. 6\\
+- CCRS zeigte in der Evaluation eine bessere Performance im Vergeich zu anderen Systemen wie iHR+
 
 \newpage
 So entwickelten \textcite[S. 1ff.]{applyingDataMining:2014} ein bilaterales Empfehlungssystem auf Basis von Data Mining-Technologien. Sie verstanden dabei unter den Wünschen des Nutzers dessen Präferenzen für ein bestimmtes Gehalt oder die Bekanntheit eines potenziellen Arbeitgebers. \textcite[S. 4ff.]{malinowski:2006} interpretierten die Wünsche des Nutzers dagegen als dessen Präferenz für bestimmte Stellenprofile.\\
