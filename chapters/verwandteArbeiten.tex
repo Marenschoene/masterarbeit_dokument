@@ -3,6 +3,8 @@
 \label{ch:verwandteArbeiten}
 Dieses Kapitel behandelt bilaterale Empfehlungssysteme. Diese Art von Anwendungen kombinieren die in Kapitel \ref{ch:personEnvironmentFit} betrachteten Erkenntnisse zum Konzept des \acp{PEFit} mit denen in Kapitel xyz vorgestellten Implementierungsmethoden von Empfehlungssystemen (Quelle).
 
+Bei der Durchsicht der Literatur ist festzustellen, dass 
+
 \textcite{malinowski:2008}:
 
 S. 1\\
@@ -313,6 +315,30 @@ S. 5\\
 - Externe Website wird gecrawlt --> Informationen werden durch einen Ontologie Checker klassifiziert --> Es gibt schon eine vordefinierte Ontologie --> Ontologie-Checker matcht Daten mit Ontologie und verfiziert die Klassifikation --> Danach Speicherung
 - Profile Analyzer-Komponente macht die Empfehlungen --> Wenn ein Nutzer die Liste ändert, list der Analyzer die Liste ein und berechnet die Gewichte darin neu. Über Vergleich zwischen den Differenzen der Distanzen in den Gewichten mit aktuell offnenen Jobs, wird eine Liste mit empfohlenen Jobs erstellt --> Liste wird zusätzlich alle 4 Stunden aktualisiert
 - Präferenz-Analyzer interpretiert die expliziten Nutzerpräferenzen und macht eine Empfehlung in der Form von bevorzugten Jobs / Nach Berechnugn der Ähnlichkeit von Jobs zu den Nutzerpräferenzen zeigt es die Liste an
+
+\textcite{applyingDataMining:2014}\\
+Anmerkung von mir: --> Nicht bilateral\\
+- rein content-based
+S. 2\\
+- Es sollen Empfehlungen auf zwei Wegen generiert werden: 1. Kandidaten für Rekruiter und 2. Jobs an Kandidaten, welche zu ihrem Profil passen --> Dieses Paper fokussiert nur den zweiten Part
+
+S. 3\\
+- Zwei Kategorien: Kandidat und Job / Jedes hat Features
+- Kandidaten werden auf Basis ihrer Daten in verschiedene Gruppen geteilt, damit man das Verhalten des Kandidaten für die jeweilige Gruppe herausfinden kann / Gruppe zur Auswahl eines bestimmten Jobs auf der Basis von 4 Parametern
+- Einbeziehung von Domänenwissen zu Job-Verwandten Themen und Skills in der Featureliste des Kandidaten --> S. 4 z.B. Objektorientierte Sprachen C++, Java, etc.
+
+S. 4\\
+- Es wurde ein Entscheidungsbaum erstellt, um Kandidaten und Jobs in Gruppen zu teilen --> Basierend auf Merkmalen
+
+S. 5\\
+Ablauf:
+1. Auswahl aller Jobs, für die der Kandidat überhaupt qualifiziert ist + Entfernen redundanter Jobs
+2. Content Based ISmilarity über Kosinusdistanz mit benötigten und vorhandenen Skills werden berechnet
+3. Anwendung des Entscheidungsbaums: Erstmal Kategorisierung der Jobs; \\
+
+S. 6
+- Ab 10 Bewerbungen werden auch vergangene Bewerbungsdaten des Kandidaten in den Empfehlungsprozess einbezogen
+
 
 \newpage
 So entwickelten \textcite[S. 1ff.]{applyingDataMining:2014} ein bilaterales Empfehlungssystem auf Basis von Data Mining-Technologien. Sie verstanden dabei unter den Wünschen des Nutzers dessen Präferenzen für ein bestimmtes Gehalt oder die Bekanntheit eines potenziellen Arbeitgebers. \textcite[S. 4ff.]{malinowski:2006} interpretierten die Wünsche des Nutzers dagegen als dessen Präferenz für bestimmte Stellenprofile.\\
