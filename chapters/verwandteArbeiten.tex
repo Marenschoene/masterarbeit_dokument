@@ -286,7 +286,33 @@ S. 3\\
 
 S. 4\\
 - Es gibt Job-Profile, die beschreiben, welche Skills ein Kandidat haben sollte
-- recommender management subsystem (RMS): 
+- recommender management subsystem (RMS): HR-Manager kann einstellen, nach welchen Kriterien die Kandidaten ausgewählt werden sollen
+- Dazu muss RMS auf Job-Profile über eine Schnittstelle zugreifen
+- job requisition management subsystem (JRMS) --> muss auch mit Profilen verbunden werden -> Kandidaten können damit entscheiden, ob sie eine bestimmte Aktivität ausführen können --> Dafür gibt es ein prescreening/self-assessment management system (PSAMS) --> Nach dem Assessment kann sich der Kandidat auf eine Stelle bewerben
+
+\textcite{lee:2007}\\
+S. 2\\
+- Entwickelten das Job Empfehlungssystem Proactive
+- Ziel: Studenten an der Universität Pittsburgh bei der Jobsuche zu helfen
+
+S. 3\\
+- Zum Beginn der Session zeigt Proactive Job-Postings der letzten 24 Stunden --> Wenn man auf den Titel klick, sieht man die zugehörige Details
+- Wenn ein Nutzer diesen Job interessant findet, fügt er ihn auf seine Interessen-Liste hinzu
+- Basierend auf den Eigenschaften der favorisierten Job, werden Empfehlungen generiert --> Also immer wenn ein Job zu den Favoriten hinzugefügt wird, wird eine Liste mit Empfohlenen Jobs generiert
+- Auch können Nutzer ihre bevorzugte Job-Kategorie auswählen und verschiedene Informationen hinsichtlich Jobs, wie Ort, Bildung, etc. hinzufügen
+- Nach der Analyse der Präferenzen des Nutzers, schlägt das System eine Gruppe von Jobs als "Preferred Jobs" vor
+- Es gibt zwei Gruppen von Nutzern: 1. Studenten, die eine Karriere in der Informations Technologie machen wollen --> Besuchen Job-Such-Seiten, um Karriereziele zu erstellen und ihren zukünftigen Weg zu planen / 2. Jobsuchende, die schon im Job sind, aber einen neuen Job suchen --> Haben klare Karriereziele und präferieren Ergebnisse nah an ihren vordefinierten Interessen
+- Es gibt 4 Interfaces: Kürzliche Jobs, Erweiterte Suche, Empfohlene Jobs und bevorzugte Jobs --> Kürzliche Jobs werden beim Login angezgit --> Stammen alle aus der Externen Quelle Yahoo! HotJobs der letzten 24 Stunden --> Informationen sind gleich für alle Nutzer
+
+S. 4\\
+- Auf allen 4 Seiten kann der Nutzer Jobs zu Favoriten hinzufügen --> System interpretiert dies als aktuelle Job-Interessen / Durch Analyse der Charakteristiken jeder Facette des Jobs werden empfohlene Jobs empfohlen
+- Proactive bietet ein Menü für die Einstellung der Nutzerpräferenzen --> Nutzer können hier Job-Kategorien, Orte, Gehalt, etc. festlegen
+- Wenn sie Präferenzen erstellen, generiert das System bevorzugte Jobs
+
+S. 5\\
+- Externe Website wird gecrawlt --> Informationen werden durch einen Ontologie Checker klassifiziert --> Es gibt schon eine vordefinierte Ontologie --> Ontologie-Checker matcht Daten mit Ontologie und verfiziert die Klassifikation --> Danach Speicherung
+- Profile Analyzer-Komponente macht die Empfehlungen --> Wenn ein Nutzer die Liste ändert, list der Analyzer die Liste ein und berechnet die Gewichte darin neu. Über Vergleich zwischen den Differenzen der Distanzen in den Gewichten mit aktuell offnenen Jobs, wird eine Liste mit empfohlenen Jobs erstellt --> Liste wird zusätzlich alle 4 Stunden aktualisiert
+- Präferenz-Analyzer interpretiert die expliziten Nutzerpräferenzen und macht eine Empfehlung in der Form von bevorzugten Jobs / Nach Berechnugn der Ähnlichkeit von Jobs zu den Nutzerpräferenzen zeigt es die Liste an
 
 \newpage
 So entwickelten \textcite[S. 1ff.]{applyingDataMining:2014} ein bilaterales Empfehlungssystem auf Basis von Data Mining-Technologien. Sie verstanden dabei unter den Wünschen des Nutzers dessen Präferenzen für ein bestimmtes Gehalt oder die Bekanntheit eines potenziellen Arbeitgebers. \textcite[S. 4ff.]{malinowski:2006} interpretierten die Wünsche des Nutzers dagegen als dessen Präferenz für bestimmte Stellenprofile.\\
