@@ -1,29 +1,66 @@
 \shorthandoff{"}
 \chapter{Verwandte Arbeiten}
 \label{ch:verwandteArbeiten}
-Bilaterale Empfehlungssysteme kombinieren das in Kapitel \ref{ch:personEnvironmentFit} betrachtete psychologische Konzept des \acp{PEFit} mit den in Kapitel xyz vorgestellten Implementierungsmethoden von Empfehlungssystemen (Quelle).
-
 Bei der Durchsicht der Literatur ist festzustellen, dass bereits zahlreiche Publikationen den Anspruch verfolgten, bilaterale Systeme zur automatisierten Bestimmung des \acp{PJFit} zu entwickeln. Jedoch beziehen sich einige Forscher dabei nicht auf das entsprechende Konzept der Psychologie. Die Bestimmung der Kongruenz findet dabei häufig ausschließlich auf der Ebene des Anforderungen-Fähigkeiten Fits statt. Dieser Sachverhalt ist beispielsweise in den Veröffentlichungen von \textcite[S. 1ff.]{luo:2019}, \textcite[S. 1ff.]{qin:2018} und \textcite[S. 1ff.]{personJobFit:2018} zu beobachten. \textcite[S. 1, Z. 1f.]{personJobFit:2018} definierten den \ac{PJFit} als den "Prozess, bei dem das richtige Talent mit der richtigen Stelle zusammengeführt wird, indem die Talentkompetenzen identifiziert werden, welche für die Stelle erforderlich sind."\footnote{"process of matching the right talent for the right job by identifying talent competencies that are required for the job." - \textcite[S. 1, Z. 1f.]{personJobFit:2018}} Dementsprechend stellten die Wissenschaftler in ihrer Publikation ein System vor, welches über modellbasierte Verfahren aus unstrukturierten Bewerbungsdaten lernte, ob eine Person aufgrund ihrer Fähigkeiten für die Anforderungen einer Stelle geeignet ist \cite[S. 1ff.]{personJobFit:2018}. Ähnliche Systeme entwickelten \textcite[S. 1ff.]{qin:2018} und \textcite[S. 1ff.]{luo:2019}. In beiden Fällen bereiteten die Wissenschaftler Stellenausschreibungen und Lebensläufe durch modellbasierte Verfahren strukturiert auf. Diese Daten nutzten die Forscher, um über ein neuronales Netz vorauszusagen, ob eine ausreichende Übereinstimmung zwischen den Fähigkeiten der Kandidaten und der offenen Stellen vorhanden ist. 
+
+Während die von xyz vorgestellten Systeme ausschließlich den Anforderungen-Fähigkeiten Fit ...
+
+
+
+Bilaterale Empfehlungssysteme kombinieren das in Kapitel \ref{ch:personEnvironmentFit} betrachtete psychologische Konzept des \acp{PEFit} mit den in Kapitel xyz vorgestellten Implementierungsmethoden von Empfehlungssystemen (Quelle).
 
 Erstmals erwähnt wurde das Konzept des bilateralen Empfehlungssystems von \textcite{malinowski:2005}. In deren Umfeld wurden zwei Recommender Engines entwickelt, welche in mehreren Publikationen vorgestellt wurden. Eine der beiden Anwendungen verfolgte das Ziel, neue Personen für bestehende Teams zu empfehlen. Dabei wurde eine Vertrauensbeziehung zwischen Teammitgliedern und Außenstehenden vorhergesagt, um passende Vorschläge zu erstellen. Das andere System sollte Empfehlungen zur Besetzung offener Stellen generieren und dabei sowohl Präferenzen von Arbeitssuchenden als auch Personalsachbearbeitern beachten. Beide Systeme basieren auf einem von \textcite{faerber:2003} vorgestellten, nicht-bilateralen Empfehlungssystem zur Stellenbesetzung.
 
 \textcite{faerber:2003}\\
 S. 4\\
 - Es müssen Kriterien bestimmt werden, um die Performance vorauszusagen
+- In der Auswahl-Theorie heißen die zum Zeitpunkt der Auswahlentscheidung verfügbaren Informationen Vorhersage-Daten, welche aus individuellen Attributen bestehen; Die Methode der Vorhersage wird Predictor genannt
+- Prediction selbst bezieht sich auf die Bewertung der Kriterien basierend auf den Predictor Daten; es gibt zwei Typen: Mechanisch: Ohne Mensch; Klinisch: mit Mensch (S. 5)
 
 S. 5\\
-- Attribute sind oft nicht gut messbar
+- Predictor-Data sind oft nicht gut messbar
+- Assessment-Methode bedeutet: Bestimmter Weg ein menschliches Attribut zu messen
 
 S. 6\\
 - Hybrides System --> CB und CF --> Beheben so Sparsity Problem
+- CB und CF werden gleichzeitig angewendet
 
 S. 7\\
+- Das latente Model ist zu CB und CF nochmal extra
+- Beim CF schauen sie nach X,Y-Beobachtungen
 - X sind User
 - Y sind Objekte
 - Z sind latent Aspekt Variablen
+(x,y) ist eine Beobachtung --> Nutzer x hat auf Objekt y zugegriffen --> daraus leitet sich latente Variable z ab
+- Annahme: x und y sind unabhängig (voneinnder) und hängen von z ab
+- Asymmetrisches Modell genutzt, um die das Wahrscheinlichkeits-Modell zu bestimmen --> Wahrscheinlichkeit x,y zu beobachten
+- Symmetrisches Modell genutzt, um die Parameter des Modells vorherzusagen --> Nutzung des M-Algorithmus
+- Meine Annahme: Das läuft über kollaboratives Filtern und raus kommen die Präferenzwerte
 
 S. 8\\
+- Jetzt wird zusätzlich der Content betrachtet
+	- Meine Annahme: Zuvor haben sie Nutzer und Objekte als ganzes vergleichen --> Jetzt nehmen sie z.B. nur den Lebenslauf --> Deshalb Content-Based
+- Hier beginnt das eigentliche Modell von Färber et al.
+- Zusätzliche Methode für Präferenz-Werte
+- v wird eingeführt --> Ist der Rating-Wert (0,1)
+- x ist der die Methode bzw. der Rekruiter (laut anderer Quelle) --> Diese bekommt eine Job-Beschreibung als Eingabe (S. 9) --> Über klinisches Assesment Methode wird bestimmt, welche Attribute genutzt werden --> WElche Inputdaten (z.B. Lebenslauf) werden betrachtet zum Bewerten des Attributes --> Bis hier rein kollaborativ (???) --> Klinisch heißt: Wird vom Menschen ausgeführt
+- z ist der latente Aspekt
+- y ist die Person
+- v ist der geprüfte Attributwert
+- a sind die Inputdaten (Attribute der Person)
+--> Dann kennen wir die Parameter des Modells (durch EM-Algorithmus)
+- dann kommt v dazu
+- Bild dazu
 
+S. 9\\
+- Vorgehen:
+- Definierten Ziel-Jobbeschreibung und zeigten sie einem menschlichen Bewerter
+- 4 Job-BEchreibungen --> Ausgewählte Werte für Profil 1 wurden zu x1 zugeordnet, etc.
+- Nutzen 60 zugewiesene Bewertungen der 70 Profile, um die Modellparameter zu bestimmen
+- Sie haben die Daten, ob eine Person für eine Stelle genommen wurde oder nciht --> Jetzt verteilen sie diese Bewertung auf alle Attribute, die sie aus dem Resume gewinnen konnten
+- Dann wurde das Modell bestimmt
+- Ranking nach Wahrscheinlichkeit, dass geeignet für den Job
+- SChauen, welche Attribute a wichtig sind, um v für x vorherzusagen
 
 \textcite{malinowski:2005}:\\
 S. 3\\
@@ -42,6 +79,7 @@ S. 6\\
 - Annahme aus Literatur: Personen tendieren dazu sich mehr zu vertrauen, wenn sie selbe Werte und Verhaltensweisen teilen --> Berechnen Ähnlichkeiten zwischen Personen basierend auf ihren Job-Präferenzen --> Nutzen dafür ein adaptiertes PLSA Modell, um Job-Präferenzen basierend auf zuvor bewerteten Jobs vorherzusagen --> Erstellten Segmenten von Kandidaten mit ähnlihcen Präferenz-Strukturen basierend auf den latenten Aspkten, welche sie von den bewerteten Job-Profilen erhielten --> Ein Nutzer kann zu mehreren Segmenten gehören
 
 S. 7\\
+- Bezieht sich auf CF
 - Eine latente Variable bildet ein Segment und sie berechneten
 
 S. 9\\
@@ -99,9 +137,6 @@ S. 6\\
 S. 7\\
 - Ähnliche Evaluation für Job-recommender
 - Ungelöste Herausforderung: Integration der beiden Systeme
-
-\textcite{faerber:2003}:\\
-- Meiner Ansicht nach nicht besonders
 
 \textcite{keim:2007}:
 S. 4\\
@@ -221,7 +256,7 @@ S. 2\\
 - Arbeitgeber können grundlegende Informationen über Job-Anforderungen eingeben / Nach Registierung liest RS automatisch alle Bildungsinformationen ehemaliger Absolventen, welche in den letzten drei Jahren bei diesem Arbeitgeber angefangen haben
 - Danach hilft RRSGR die richtigen Bewerber an den Arbeitgeber zu empfehlen
 - Für Absolventen g hilft RRSGR ähnliche ehemalige Absolventen zu finden, welche ähnihce Performance wie g während ihrer Universitätszeit hatten --> Dann kombiniert mit den Jobs aus dem Internet und Jobs von den ehemaligen Absolventen, hilft RRSGR eine Job-Liste für g zu erstellen --> Als letztes priority k-medoids clustering hilft, die meist repräsentativen k jobs auszuwählen und diese auf dem Bildschirm des Nutzers anzuzeigen
-- Für Arbeitgeber wird RRSGR helfen die ehemaligen Absolventen zu finden, welche vom Arbeitgeber von dieser Universität in den letzten drei Jahren angestellt wurden --> Dann hilft RRSGR Kandidaten zu finden, welche eine ähnliche Performance mit den angestellten ehemaligen Studenten aufweist --> Als letztes werden die meist repräsentativen k Absolven an den Arbeitgeber empfohlen
+- Für Arbeitgeber wird RRSGR helfen die ehemaligen Absolventen zu finden, welche vom Arbeitgeber von dieser Universität in den letzten drei Jahren angestellt wurden --> Dann hilft RRSGR Kandidaten zu finden, welche eine ähnliche Performance mit den angestellten ehemaligen Studenten aufweist --> Als letztes werden die meist repräsentativen k Absolventen an den Arbeitgeber empfohlen
 
 S. 3\\
 - Jede Entität hat ein Profil; Zwei Entitäten können über korrespondierende Felder in ihren Profilen verglichen werden; Manche wichtigen Felder werden ausgewählt um die Ähnlihckeit zwischen zwei Entitäten zu bestimmen
