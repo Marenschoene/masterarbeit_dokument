@@ -1,15 +1,27 @@
 \shorthandoff{"}
 \chapter{Verwandte Arbeiten}
 \label{ch:verwandteArbeiten}
-Bei der Durchsicht der Literatur ist festzustellen, dass bereits zahlreiche Publikationen den Anspruch verfolgten, bilaterale Systeme zur automatisierten Bestimmung des \acp{PJFit} zu entwickeln. Jedoch beziehen sich einige Forscher dabei nicht auf das entsprechende Konzept der Psychologie. Die Bestimmung der Kongruenz findet dabei häufig ausschließlich auf der Ebene des Anforderungen-Fähigkeiten Fits statt. Dieser Sachverhalt ist beispielsweise in den Veröffentlichungen von \textcite[S. 1ff.]{luo:2019}, \textcite[S. 1ff.]{qin:2018} und \textcite[S. 1ff.]{personJobFit:2018} zu beobachten. \textcite[S. 1, Z. 1f.]{personJobFit:2018} definierten den \ac{PJFit} als den "Prozess, bei dem das richtige Talent mit der richtigen Stelle zusammengeführt wird, indem die Talentkompetenzen identifiziert werden, welche für die Stelle erforderlich sind."\footnote{"process of matching the right talent for the right job by identifying talent competencies that are required for the job." - \textcite[S. 1, Z. 1f.]{personJobFit:2018}} Dementsprechend stellten die Wissenschaftler in ihrer Publikation ein System vor, welches über modellbasierte Verfahren aus unstrukturierten Bewerbungsdaten lernte, ob eine Person aufgrund ihrer Fähigkeiten für die Anforderungen einer Stelle geeignet ist \cite[S. 1ff.]{personJobFit:2018}. Ähnliche Systeme entwickelten \textcite[S. 1ff.]{qin:2018} und \textcite[S. 1ff.]{luo:2019}. In beiden Fällen bereiteten die Wissenschaftler Stellenausschreibungen und Lebensläufe durch modellbasierte Verfahren strukturiert auf. Diese Daten nutzten die Forscher, um über ein neuronales Netz vorauszusagen, ob eine ausreichende Übereinstimmung zwischen den Fähigkeiten der Kandidaten und der offenen Stellen vorhanden ist. 
+Bei der Durchsicht der Literatur ist festzustellen, dass bereits zahlreiche Publikationen den Anspruch verfolgten, bilaterale Systeme zur automatisierten Bestimmung des \acp{PJFit} zu entwickeln. Jedoch beziehen sich einige Forscher dabei nicht auf das entsprechende Konzept der Psychologie. Die Bestimmung der Kongruenz findet dabei häufig ausschließlich auf der Ebene des Anforderungen-Fähigkeiten Fits statt. Dieser Sachverhalt ist beispielsweise in den Veröffentlichungen von \textcite[S. 1ff.]{luo:2019}, \textcite[S. 1ff.]{qin:2018} und \textcite[S. 1ff.]{personJobFit:2018} zu beobachten. \textcite[S. 1, Z. 1f.]{personJobFit:2018} definierten den \ac{PJFit} als den "Prozess, bei dem das richtige Talent mit der richtigen Stelle zusammengeführt wird, indem die Talentkompetenzen identifiziert werden, welche für die Stelle erforderlich sind."\footnote{"process of matching the right talent for the right job by identifying talent competencies that are required for the job." - \textcite[S. 1, Z. 1f.]{personJobFit:2018}} Dementsprechend stellten die Wissenschaftler in ihrer Publikation ein System vor, welches über modellbasierte Verfahren aus unstrukturierten Bewerbungsdaten lernte, ob eine Person aufgrund ihrer Fähigkeiten für die Anforderungen einer Stelle geeignet ist \cite[S. 1ff.]{personJobFit:2018}. Ähnliche Systeme entwickelten auch \textcite[S. 1ff.]{qin:2018} und \textcite[S. 1ff.]{luo:2019}. In beiden Fällen bereiteten die Wissenschaftler Stellenausschreibungen und Lebensläufe durch modellbasierte Verfahren strukturiert auf. Diese Daten nutzten die Forscher, um über ein neuronales Netz vorauszusagen, ob eine ausreichende Übereinstimmung zwischen den Fähigkeiten der Kandidaten und den Anforderungen der offenen Stellen vorhanden ist. 
 
-Während die von xyz vorgestellten Systeme ausschließlich den Anforderungen-Fähigkeiten Fit ...
+Empfehlungssysteme, welche neben dem Anforderungen-Fähigkeiten Fit auch den Bedürfnisse-Angebote Fit betrachten, bezeichneten \textcite[S. 4]{malinowski:2006} als bilaterale Empfehlungssysteme. Solche Anwendungen kombinieren folglich das in Kapitel \ref{ch:personEnvironmentFit} betrachtete psychologische Konzept des \acp{PEFit} mit den in Kapitel xyz vorgestellten Implementierungsmethoden von Empfehlungssystemen.
 
+Forscher im Umfeld von \textcite[S. 1ff.]{malinowski:2006} entwickelten zwei Recommender Engines, welche sie in mehreren Publikationen vorstellten. Eine der beiden Anwendungen verfolgte das Ziel, neue Personen für bestehende Teams zu empfehlen. Dabei versuchten die Wissenschaftler vorherzusagen, wie stark sich die Teammitglieder gegenseitig vertrauen würden \cite[S. 1]{malinowski:2006}\cite[S. 5ff.]{keim:2005}. Das andere System sollte Empfehlungen zur Besetzung offener Stellen generieren und dabei Präferenzen von Arbeitssuchenden und Personalsachbearbeitern beachten \cite[S. 1ff.]{malinowski:2005}. Darüber hinaus stellte \textcite[S. 5ff.]{keim:2007} ein System vor, welches beide Ansätze innerhalb einer Anwendung integrierte. Alle diese Implementierungsansätze basieren auf einem von \textcite[S. 6ff.]{faerber:2003} vorgestellten Empfehlungssystem.
 
+\textcite[S. 4ff.]{faerber:2003} entwickelten eine Recommender Engine zur Empfehlung von Personen für offene Stellen in Unternehmen. Dabei verfolgten sie einen hybriden Ansatz. Dieser ist in Abbildung \ref{fig:verwandteArbeiten:abb1} modelliert. Darin steht $a$ für die Attribute des Bewerbers, welche beispielsweise aus dessen Lebenslauf gewonnen wurden. Die Variable $x$ symbolisiert einen Personalsachbearbeiter mitsamt eines Stellenprofils, welches dieser besetzen soll. Dessen Entscheidung, ob ein Bewerber für die Tätigkeit qualifiziert ist oder nicht, wird über den boolschen Wert $v$ ausgedrückt. \textcite[S. 4ff.]{faerber:2003} bestimmten aus diesen Faktoren ein latentes Variablenmodell. Hierbei wurden aus bekannten Entscheidungen eines Personalsachbearbeiters $x$ hinsichtlich der Eignung $v$ eines Bewerbers $a$ für eine Stelle nicht direkt messbare Variablen $z$ abgeleitet, welche die Beurteilung beeinflussten. Über die latenten Variablen $z$ und die Attribute $a$ bestimmten die Wissenschaftler Wahrscheinlichkeiten, mit welchen ein Personalsachbearbeiter einen Bewerber ablehnen bzw. akzeptieren würde. 
 
-Bilaterale Empfehlungssysteme kombinieren das in Kapitel \ref{ch:personEnvironmentFit} betrachtete psychologische Konzept des \acp{PEFit} mit den in Kapitel xyz vorgestellten Implementierungsmethoden von Empfehlungssystemen (Quelle).
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.25\textwidth]{gfx/faerber.png}
+	\caption{Modell des hybriden Empfehlungssystems von \textcite[S. 8]{faerber:2003}}
+	\label{fig:verwandteArbeiten:abb1}
+\end{figure}
 
-Erstmals erwähnt wurde das Konzept des bilateralen Empfehlungssystems von \textcite{malinowski:2005}. In deren Umfeld wurden zwei Recommender Engines entwickelt, welche in mehreren Publikationen vorgestellt wurden. Eine der beiden Anwendungen verfolgte das Ziel, neue Personen für bestehende Teams zu empfehlen. Dabei wurde eine Vertrauensbeziehung zwischen Teammitgliedern und Außenstehenden vorhergesagt, um passende Vorschläge zu erstellen. Das andere System sollte Empfehlungen zur Besetzung offener Stellen generieren und dabei sowohl Präferenzen von Arbeitssuchenden als auch Personalsachbearbeitern beachten. Beide Systeme basieren auf einem von \textcite{faerber:2003} vorgestellten, nicht-bilateralen Empfehlungssystem zur Stellenbesetzung.
+Präferenzen von Nutzern sind convexe Kombinationen unterliegender latenter Aspekte
+- x ist Rekruiter mit Job-Beschreibung
+- a sin die Attribute des Kandidaten
+- y ist ein quadruple wie 
+
+- CV-Recommender empfiehtlt CVs, welche ähnlich zu Lebensläufen sind, welche zuvor vom selben Recruiter für spezifische Job-Profile berücksichtigt wurden
 
 \textcite{faerber:2003}\\
 S. 4\\
@@ -38,6 +50,7 @@ S. 7\\
 - Meine Annahme: Das läuft über kollaboratives Filtern und raus kommen die Präferenzwerte
 
 S. 8\\
+- kann mit Präferenz-Werten umgehen
 - Jetzt wird zusätzlich der Content betrachtet
 	- Meine Annahme: Zuvor haben sie Nutzer und Objekte als ganzes vergleichen --> Jetzt nehmen sie z.B. nur den Lebenslauf --> Deshalb Content-Based
 - Hier beginnt das eigentliche Modell von Färber et al.
@@ -60,7 +73,7 @@ S. 9\\
 - Sie haben die Daten, ob eine Person für eine Stelle genommen wurde oder nciht --> Jetzt verteilen sie diese Bewertung auf alle Attribute, die sie aus dem Resume gewinnen konnten
 - Dann wurde das Modell bestimmt
 - Ranking nach Wahrscheinlichkeit, dass geeignet für den Job
-- SChauen, welche Attribute a wichtig sind, um v für x vorherzusagen
+- Schauen, welche Attribute a wichtig sind, um v für x vorherzusagen
 
 \textcite{malinowski:2005}:\\
 S. 3\\
