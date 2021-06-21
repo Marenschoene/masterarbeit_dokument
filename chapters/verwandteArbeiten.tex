@@ -5,75 +5,41 @@ Bei der Durchsicht der Literatur ist festzustellen, dass bereits zahlreiche Publ
 
 Empfehlungssysteme, welche neben dem Anforderungen-Fähigkeiten Fit auch den Bedürfnisse-Angebote Fit betrachten, bezeichneten \textcite[S. 4]{malinowski:2006} als bilaterale Empfehlungssysteme. Solche Anwendungen kombinieren folglich das in Kapitel \ref{ch:personEnvironmentFit} betrachtete psychologische Konzept des \acp{PEFit} mit den in Kapitel xyz vorgestellten Implementierungsmethoden von Empfehlungssystemen.
 
-Forscher im Umfeld von \textcite[S. 1ff.]{malinowski:2006} entwickelten zwei Recommender Engines, welche sie in mehreren Publikationen vorstellten. Eine der beiden Anwendungen verfolgte das Ziel, neue Personen für bestehende Teams zu empfehlen. Dabei versuchten die Wissenschaftler vorherzusagen, wie stark sich die Teammitglieder gegenseitig vertrauen würden \cite[S. 1]{malinowski:2006}\cite[S. 5ff.]{keim:2005}. Das andere System sollte Empfehlungen zur Besetzung offener Stellen generieren und dabei Präferenzen von Arbeitssuchenden und Personalsachbearbeitern beachten \cite[S. 1ff.]{malinowski:2005}. Darüber hinaus stellte \textcite[S. 5ff.]{keim:2007} ein System vor, welches beide Ansätze innerhalb einer Anwendung integrierte. Alle diese Implementierungsansätze basieren auf einem von \textcite[S. 6ff.]{faerber:2003} vorgestellten Empfehlungssystem.
+Forscher im Umfeld von \textcite[S. 1ff.]{malinowski:2006} entwickelten zwei Recommender Engines, welche sie in mehreren Publikationen vorstellten. Diese bezogen sich auf das in Kapitel \ref{ch:personEnvironmentFit} vorgestellte Konzept des \acp{PEFit} \cite[S. 4f.]{keim:2007}\cite[S. 3f.]{keim:2005}\cite[S. 3f.]{malinowski:2005}\cite[S. 3f.]{malinowski:2006}. Eine der beiden Anwendungen verfolgte das Ziel, neue Personen für bestehende Teams zu empfehlen. Dabei versuchten die Wissenschaftler vorherzusagen, wie stark sich die Teammitglieder gegenseitig vertrauen würden \cite[S. 5ff.]{keim:2005}\cite[S. 1]{malinowski:2006}. Das andere System sollte Empfehlungen zur Besetzung offener Stellen generieren und dabei Präferenzen von Arbeitssuchenden und Personalsachbearbeitern beachten \cite[S. 1ff.]{malinowski:2005}. Darüber hinaus stellte \textcite[S. 5ff.]{keim:2007} ein System vor, welches beide Ansätze innerhalb einer Anwendung integrierte. Alle diese Implementierungsansätze basieren auf einem von \textcite[S. 6ff.]{faerber:2003} vorgestellten Empfehlungssystem.
 
 \textcite[S. 4ff.]{faerber:2003} entwickelten eine Recommender Engine zur Empfehlung von Personen für offene Stellen in Unternehmen. Dabei verfolgten sie einen hybriden Ansatz. Dieser ist in Abbildung \ref{fig:verwandteArbeiten:abb1} modelliert. Darin steht $a$ für die Attribute des Bewerbers, welche beispielsweise aus dessen Lebenslauf gewonnen wurden. Die Variable $x$ symbolisiert einen Personalsachbearbeiter mitsamt eines Stellenprofils, welches dieser besetzen soll. Dessen Entscheidung, ob ein Bewerber für die Tätigkeit qualifiziert ist oder nicht, wird über den boolschen Wert $v$ ausgedrückt. \textcite[S. 4ff.]{faerber:2003} bestimmten aus diesen Faktoren ein latentes Variablenmodell. Hierbei wurden aus bekannten Entscheidungen eines Personalsachbearbeiters $x$ hinsichtlich der Eignung $v$ eines Bewerbers $a$ für eine Stelle nicht direkt messbare Variablen $z$ abgeleitet, welche die Beurteilung beeinflussten. Über die latenten Variablen $z$ und die Attribute $a$ bestimmten die Wissenschaftler Wahrscheinlichkeiten, mit welchen ein Personalsachbearbeiter einen Bewerber ablehnen bzw. akzeptieren würde. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.25\textwidth]{gfx/faerber.png}
+	\includegraphics[width=0.3\textwidth]{gfx/faerber.png}
 	\caption{Modell des hybriden Empfehlungssystems von \textcite[S. 8]{faerber:2003}}
 	\label{fig:verwandteArbeiten:abb1}
 \end{figure}
 
-Präferenzen von Nutzern sind convexe Kombinationen unterliegender latenter Aspekte
-- x ist Rekruiter mit Job-Beschreibung
-- a sin die Attribute des Kandidaten
-- y ist ein quadruple wie 
+In ihrer Publikation erweiterten \textcite{malinowski:2006} das von \textcite[S. 4ff.]{faerber:2003} entwickelte Verfahren. Hierbei verfolgten sie das Ziel, neben den Präferenzen der Personalsachbearbeiter auch Stellen passend zu den Vorlieben der Bewerber zu empfehlen.
 
-- CV-Recommender empfiehtlt CVs, welche ähnlich zu Lebensläufen sind, welche zuvor vom selben Recruiter für spezifische Job-Profile berücksichtigt wurden
+\textcite{malinowski:2006}:\\
+S. 1:\\
+- Match zwischen Job und Kandidat muss Präferenzen von Recruiter und Kandidat berücksichtigen
 
-\textcite{faerber:2003}\\
+S. 3\\
+- Match zwischen Task und Teammitgliedern
+
 S. 4\\
-- Es müssen Kriterien bestimmt werden, um die Performance vorauszusagen
-- In der Auswahl-Theorie heißen die zum Zeitpunkt der Auswahlentscheidung verfügbaren Informationen Vorhersage-Daten, welche aus individuellen Attributen bestehen; Die Methode der Vorhersage wird Predictor genannt
-- Prediction selbst bezieht sich auf die Bewertung der Kriterien basierend auf den Predictor Daten; es gibt zwei Typen: Mechanisch: Ohne Mensch; Klinisch: mit Mensch (S. 5)
+- CV-Recommender: CVs werden empfohlen, welch ähnlich zu den Lebensläufen sind, welche uvor vom selben Rekruiter für das Job-Profil ausgewählt wurden --> Hybrid: Latent Aspect Model / Variable x: Rekruiter und Job-Beschreibung; z Präferenz-Faktoren; v=qualifiziert oder nicht; a sind Attribute des Kandidaten
+- S. 4f.: Job-Recommender: Zweites Empfehlungssystem, das Jobs an Kandidaten basierend auf ihren Präferenz-Profilen empfiehlt, welche auf vorherigen Präferenz-Bewertungen basieren / Implementierung ähnlich zum CV-Recommender; x ist das Ziel-Profil; z sind die latenten Faktoren; v Ziel-Attributwert (trifft meine Präferenzen / trifft meine Präferenzen nicht); y ist Kandidat
 
 S. 5\\
-- Predictor-Data sind oft nicht gut messbar
-- Assessment-Methode bedeutet: Bestimmter Weg ein menschliches Attribut zu messen
+- Evaluation mit N=32 Studenten aus 2 deutschen Unis
+- 1. Phase: Studenten bieten ihren Lebenslauf über ein Web-Interface ein --> Liegt strukturiert vor, konnten auch ihren CV als ganzes Dokument hochladen (Falls für HR benötigt)
+- 2. Phase: Studenten erhalten 100 echte Job-Profile, welche zufällig aus einem Job-Portal im Internet heruntergeladen wurden; Studenten sollten Job Profile auf einer Skala von 1 bis 5 bewerten
 
 S. 6\\
-- Hybrides System --> CB und CF --> Beheben so Sparsity Problem
-- CB und CF werden gleichzeitig angewendet
+- Evaluation CV-Recommender: 10 Job-Profile wurden genommen -> Eine Person bewertete das Match zwischen den 32 Studentenprofilen --> Auf Basis von 10 der Kandidaten und 5 der Jobprofile wurde das Modell trainiert --> Modell sagte übrige Profile vorher ...
 
 S. 7\\
-- Das latente Model ist zu CB und CF nochmal extra
-- Beim CF schauen sie nach X,Y-Beobachtungen
-- X sind User
-- Y sind Objekte
-- Z sind latent Aspekt Variablen
-(x,y) ist eine Beobachtung --> Nutzer x hat auf Objekt y zugegriffen --> daraus leitet sich latente Variable z ab
-- Annahme: x und y sind unabhängig (voneinnder) und hängen von z ab
-- Asymmetrisches Modell genutzt, um die das Wahrscheinlichkeits-Modell zu bestimmen --> Wahrscheinlichkeit x,y zu beobachten
-- Symmetrisches Modell genutzt, um die Parameter des Modells vorherzusagen --> Nutzung des M-Algorithmus
-- Meine Annahme: Das läuft über kollaboratives Filtern und raus kommen die Präferenzwerte
-
-S. 8\\
-- kann mit Präferenz-Werten umgehen
-- Jetzt wird zusätzlich der Content betrachtet
-	- Meine Annahme: Zuvor haben sie Nutzer und Objekte als ganzes vergleichen --> Jetzt nehmen sie z.B. nur den Lebenslauf --> Deshalb Content-Based
-- Hier beginnt das eigentliche Modell von Färber et al.
-- Zusätzliche Methode für Präferenz-Werte
-- v wird eingeführt --> Ist der Rating-Wert (0,1)
-- x ist der die Methode bzw. der Rekruiter (laut anderer Quelle) --> Diese bekommt eine Job-Beschreibung als Eingabe (S. 9) --> Über klinisches Assesment Methode wird bestimmt, welche Attribute genutzt werden --> WElche Inputdaten (z.B. Lebenslauf) werden betrachtet zum Bewerten des Attributes --> Bis hier rein kollaborativ (???) --> Klinisch heißt: Wird vom Menschen ausgeführt
-- z ist der latente Aspekt
-- y ist die Person
-- v ist der geprüfte Attributwert
-- a sind die Inputdaten (Attribute der Person)
---> Dann kennen wir die Parameter des Modells (durch EM-Algorithmus)
-- dann kommt v dazu
-- Bild dazu
-
-S. 9\\
-- Vorgehen:
-- Definierten Ziel-Jobbeschreibung und zeigten sie einem menschlichen Bewerter
-- 4 Job-BEchreibungen --> Ausgewählte Werte für Profil 1 wurden zu x1 zugeordnet, etc.
-- Nutzen 60 zugewiesene Bewertungen der 70 Profile, um die Modellparameter zu bestimmen
-- Sie haben die Daten, ob eine Person für eine Stelle genommen wurde oder nciht --> Jetzt verteilen sie diese Bewertung auf alle Attribute, die sie aus dem Resume gewinnen konnten
-- Dann wurde das Modell bestimmt
-- Ranking nach Wahrscheinlichkeit, dass geeignet für den Job
-- Schauen, welche Attribute a wichtig sind, um v für x vorherzusagen
+- Ähnliche Evaluation für Job-recommender
+- Ungelöste Herausforderung: Integration der beiden Systeme
 
 \textcite{malinowski:2005}:\\
 S. 3\\
@@ -127,29 +93,6 @@ S. 5\\
 
 S. 7\\
 - Planten Validierung über einen Studentenworkshop
-
-\textcite{malinowski:2006}:\\
-S. 1:\\
-- Match zwischen Job und Kandidat muss Präferenzen von Recruiter und Kandidat berücksichtigen
-
-S. 3\\
-- Match zwischen Task und Teammitgliedern
-
-S. 4\\
-- CV-Recommender: CVs werden empfohlen, welch ähnlich zu den Lebensläufen sind, welche uvor vom selben Rekruiter für das Job-Profil ausgewählt wurden --> Hybrid: Latent Aspect Model / Variable x: Rekruiter und Job-Beschreibung; z Präferenz-Faktoren; v=qualifiziert oder nicht; a sind Attribute des Kandidaten
-- S. 4f.: Job-Recommender: Zweites Empfehlungssystem, das Jobs an Kandidaten basierend auf ihren Präferenz-Profilen empfiehlt, welche auf vorherigen Präferenz-Bewertungen basieren / Implementierung ähnlich zum CV-Recommender; x ist das Ziel-Profil; z sind die latenten Faktoren; v Ziel-Attributwert (trifft meine Präferenzen / trifft meine Präferenzen nicht); y ist Kandidat
-
-S. 5\\
-- Evaluation mit N=32 Studenten aus 2 deutschen Unis
-- 1. Phase: Studenten bieten ihren Lebenslauf über ein Web-Interface ein --> Liegt strukturiert vor, konnten auch ihren CV als ganzes Dokument hochladen (Falls für HR benötigt)
-- 2. Phase: Studenten erhalten 100 echte Job-Profile, welche zufällig aus einem Job-Portal im Internet heruntergeladen wurden; Studenten sollten Job Profile auf einer Skala von 1 bis 5 bewerten
-
-S. 6\\
-- Evaluation CV-Recommender: 10 Job-Profile wurden genommen -> Eine Person bewertete das Match zwischen den 32 Studentenprofilen --> Auf Basis von 10 der Kandidaten und 5 der Jobprofile wurde das Modell trainiert --> Modell sagte übrige Profile vorher ...
-
-S. 7\\
-- Ähnliche Evaluation für Job-recommender
-- Ungelöste Herausforderung: Integration der beiden Systeme
 
 \textcite{keim:2007}:
 S. 4\\
@@ -435,4 +378,57 @@ Allgemein ist festzustellen, dass zu bilateralen Empfehlungssystemen bislang nur
 % Dieses System berücksichtigt Präferenzen von Kandidaten und Arbeitgebern
 % Hybrid, da Profilähnlichkeit (Contentbased) und Kollaboratives Filtern
 \textcite[S. 1ff.]{lu:2013} kombinierten Methoden des inhaltsbasierten Filterns und Nutzerinteraktionen innerhalb eines hybriden graphenbasierten Empfehlungssystems. Die Wissenschaftler erstellten ein Jobportal, in welchem Stellensuchende, Arbeitgeber und Jobausschreibungen in Form von Knoten existierten. Jede dieser Entitäten verfügte über entsprechende textuelle Profilbeschreibungen. Kanten wurden im Graphen hinzugefügt, wenn eine hohe Ähnlichkeit zwischen zwei Profilen bestand. Zusätzlich legte deren System für sämtliche Interaktionen zwischen den Entitäten, wie dem Besuch eines Profils oder dem Bewerben auf eine Stelle, Kanten an. Ein auf dem PageRank basierender Algorithmus unterstützte Stellensuchende und Arbeitgeber auf Grundlage des Graphen bei der Auswahl geeigneter Ausschreibungen bzw. Kandidaten.
+
+ERLEDIGT:
+\textcite{faerber:2003}\\
+S. 4\\
+- Es müssen Kriterien bestimmt werden, um die Performance vorauszusagen
+- In der Auswahl-Theorie heißen die zum Zeitpunkt der Auswahlentscheidung verfügbaren Informationen Vorhersage-Daten, welche aus individuellen Attributen bestehen; Die Methode der Vorhersage wird Predictor genannt
+- Prediction selbst bezieht sich auf die Bewertung der Kriterien basierend auf den Predictor Daten; es gibt zwei Typen: Mechanisch: Ohne Mensch; Klinisch: mit Mensch (S. 5)
+
+S. 5\\
+- Predictor-Data sind oft nicht gut messbar
+- Assessment-Methode bedeutet: Bestimmter Weg ein menschliches Attribut zu messen
+
+S. 6\\
+- Hybrides System --> CB und CF --> Beheben so Sparsity Problem
+- CB und CF werden gleichzeitig angewendet
+
+S. 7\\
+- Das latente Model ist zu CB und CF nochmal extra
+- Beim CF schauen sie nach X,Y-Beobachtungen
+- X sind User
+- Y sind Objekte
+- Z sind latent Aspekt Variablen
+(x,y) ist eine Beobachtung --> Nutzer x hat auf Objekt y zugegriffen --> daraus leitet sich latente Variable z ab
+- Annahme: x und y sind unabhängig (voneinnder) und hängen von z ab
+- Asymmetrisches Modell genutzt, um die das Wahrscheinlichkeits-Modell zu bestimmen --> Wahrscheinlichkeit x,y zu beobachten
+- Symmetrisches Modell genutzt, um die Parameter des Modells vorherzusagen --> Nutzung des M-Algorithmus
+- Meine Annahme: Das läuft über kollaboratives Filtern und raus kommen die Präferenzwerte
+
+S. 8\\
+- kann mit Präferenz-Werten umgehen
+- Jetzt wird zusätzlich der Content betrachtet
+- Meine Annahme: Zuvor haben sie Nutzer und Objekte als ganzes vergleichen --> Jetzt nehmen sie z.B. nur den Lebenslauf --> Deshalb Content-Based
+- Hier beginnt das eigentliche Modell von Färber et al.
+- Zusätzliche Methode für Präferenz-Werte
+- v wird eingeführt --> Ist der Rating-Wert (0,1)
+- x ist der die Methode bzw. der Rekruiter (laut anderer Quelle) --> Diese bekommt eine Job-Beschreibung als Eingabe (S. 9) --> Über klinisches Assesment Methode wird bestimmt, welche Attribute genutzt werden --> WElche Inputdaten (z.B. Lebenslauf) werden betrachtet zum Bewerten des Attributes --> Bis hier rein kollaborativ (???) --> Klinisch heißt: Wird vom Menschen ausgeführt
+- z ist der latente Aspekt
+- y ist die Person
+- v ist der geprüfte Attributwert
+- a sind die Inputdaten (Attribute der Person)
+--> Dann kennen wir die Parameter des Modells (durch EM-Algorithmus)
+- dann kommt v dazu
+- Bild dazu
+
+S. 9\\
+- Vorgehen:
+- Definierten Ziel-Jobbeschreibung und zeigten sie einem menschlichen Bewerter
+- 4 Job-BEchreibungen --> Ausgewählte Werte für Profil 1 wurden zu x1 zugeordnet, etc.
+- Nutzen 60 zugewiesene Bewertungen der 70 Profile, um die Modellparameter zu bestimmen
+- Sie haben die Daten, ob eine Person für eine Stelle genommen wurde oder nciht --> Jetzt verteilen sie diese Bewertung auf alle Attribute, die sie aus dem Resume gewinnen konnten
+- Dann wurde das Modell bestimmt
+- Ranking nach Wahrscheinlichkeit, dass geeignet für den Job
+- Schauen, welche Attribute a wichtig sind, um v für x vorherzusagen
 \shorthandon{"}
