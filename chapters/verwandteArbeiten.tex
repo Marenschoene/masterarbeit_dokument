@@ -29,7 +29,9 @@ In ihrer Publikation erweiterten \textcite[S. 4f.]{malinowski:2006} das von \tex
 
 Zum Vorgehen von \textcite[S. 3ff.]{malinowski:2006} ist festzustellen, dass das bilaterale Empfehlungssystem ursprünglich in Anlehnung an den \ac{PEFit} entwickelt wurde. Dabei sollten sowohl Präferenzen von Personalsachbearbeitern als auch Vorlieben von Stellensuchenden berücksichtigt werden. Allerdings ist es in der entwickelten Anwendung nur möglich, entweder zu den Präferenzen von Personalsachbearbeitern passende Kandidaten oder mit den Vorlieben der Bewerber kompatible Stellen zu ermitteln. Es ist nicht vorgesehen, Kandidaten für Positionen zu empfehlen und dabei gleichzeitig die Präferenzen von Bewerbern und Personalsachbearbeitern zu berücksichtigen. Daher ist kritisch anzumerken, dass die Anwendung von \textcite[S. 3ff.]{malinowski:2006} zwar die Präferenzen beider Parteien berücksichtigte, dieses Vorgehen aber nicht vollständig dem Gedanken des \acp{PEFit} entspricht.
 
-In einer anderen Veröffentlichung präsentierten \textcite{malinowski:2005} ein Empfehlungssystem, welches Personen für Teams vorschlagen sollte. Hierbei wurden einerseits die Präferenzen des Personalsachbearbeiters hinsichtlich der fachlichen Eignung der Kandidaten als auch die Präferenzen der bestehenden Teammitglieder bezüglich der persönlichen Kompatibilität in den Empfehlungsprozess einbezogen. Die fachliche Eignung des Kandidaten bestimmten die Wissenschaftler über das von \textcite{faerber:2003} entwickelte Empfehlungssystem. Die Komponente zur Bestimmung der Kompatibilität mit den übrigen Teammitgliedern ergänzten \textcite{malinowski:2005} im Rahmen ihrer Publikation. Um den Fit zwischen Person und Team zu bestimmen, entwickelten die Wissenschaftler drei Ansätze, um das Vertrauen zwischen Teammitgliedern zu berechnen. Diese sind in Abbildung \ref{fig:verwandteArbeiten:abb2} dargestellt.
+In einer anderen Veröffentlichung präsentierten \textcite{malinowski:2005} ein Empfehlungssystem, welches Personen für Teams vorschlagen sollte. Hierbei wurden einerseits die Präferenzen des Personalsachbearbeiters hinsichtlich der fachlichen Eignung der Kandidaten als auch die Präferenzen der bestehenden Teammitglieder bezüglich der persönlichen Kompatibilität in den Empfehlungsprozess einbezogen.
+
+Um dieses Ziel zu erreichen, sah es das System von \textcite{malinowski:2005} bei der Besetzung einer Stelle in einem bestehenden Projektteam zunächst vor, aus allen verfügbaren Personen über das Verfahren von \textcite{faerber:2003} die N fachlich geeignetsten Kandidaten zu bestimmen. Diese dienten als Eingabe für eine weitere Komponente, über welche die Wissenschaftler das potentielle Vertrauen zwischen möglichen Kandidaten und vorhanden Teammitgliedern berechneten. Um das Vertrauen zu bestimmen, nutzten die Forscher drei separate Ansätze. Diese sind in Abbildung \ref{fig:verwandteArbeiten:abb2} dargestellt.
 
 \begin{figure}[h]
 	\centering
@@ -51,45 +53,16 @@ Ansatz (b) in Abbildung \ref{fig:verwandteArbeiten:abb2} zeigt die Berechnung de
 
 Das dritte Verfahren (c) beruhte auf der Annahme, dass Personen sich stark vertrauen würden, wenn sie ähnliche persönliche Präferenzen teilen. Hierzu erstellten \textcite{malinowski:2005} ein latentes Variablenmodell vergleichbar zu Abbildung \ref{fig:verwandteArbeiten:abb1}. Über dieses bestimmten sie für jedes Teammitglied diejenigen latenten Variablen $z$, welche für dieses bei der Bewertung vergangener Stellen besonders wichtig waren. Diese Variablen $z$ und die gemeinsam bewerteten Stellenprofile nutzen die Wissenschaftler, um über die Ähnlichkeit zwischen Personen deren Vertrauen zu bestimmen.
 
-Abschließend aggregierten \textcite{malinowski:2005} alle ermittelten Vertrauenswerte von einer Person zu einer anderen unter Berücksichtigung der Anzahl gemeinsam bewerteter Stellenprofile zu einer finalen Vertrauensbewertung.
+Die erhaltenen Vertrauenswerte zwischen den Personen aggregierten \textcite{malinowski:2005} unter Berücksichtigung der Anzahl gemeinsam bewerteter Stellenprofile zu einer finalen Vertrauensbewertung.
 
-Das 
+Im letzten Schritt des Systems errechneten \textcite{malinowski:2005} aus den Ergebnissen der Komponente von \textcite{faerber:2003} und ihres Vertrauensmoduls eine gemeinsame Ergebnisliste. Hierzu wendeten sie die folgende Formel \ref{frml:verwandteArbeiten:formel2} an:
+\begin{equation}
+	R' = \alpha * t'_{M*y} * (1-\alpha) * r'_{x,y,v}
+	\label{frml:verwandteArbeiten:formel2}
+\end{equation}
+In Formel \ref{frml:verwandteArbeiten:formel2} stand $t'_{M*y}$ für die Liste der Vertrauensbeziehungen und $r'_{x,y,v}$ für die fachlichen Bewertungen der Kandidaten. Für $\alpha$ setzten die Wissenschaftler den Wert 0.5 ein. Jedoch merkten \textcite{malinowski:2005} zu Formel \ref{frml:verwandteArbeiten:formel2} an, dass diese noch nicht optimal sei und weiterer Forschung bedarf.
 
 \newpage
-\textcite{malinowski:2005}:\\
-S. 3\\
-- bilaterales Prozess --> Beachtet Präferenzen von HR-Experte und Kandidaten bzw. Teammitgliedern / Beachtet Verbindungen zu anderen Personen
-- Färber 2003 entwickelten ein Empfehlungssystem zur Empfehlung von Kandidaten --> Dieses Modell wird in dieser Arbeit erweitert
-
-S. 4\\
-- Anmerkung: Klingt für mich so, als hätten Färber 2003 das latente Modell entwickelt, um auf Jobs zu matchen, aber die Team-Komponente nicht beachtet
-
-S. 5\\
-- Beschreibung des Trust-Modells
-- Es gibt explizites Vertrauen: Explizit erfasst zB durch Fragebogen
-
-S. 6\\
-- Zwei Möglichkeiten: Multiplikation oder PLSA-Modell (kollaboratives Filtern), um den kollaborativen Trust zu bestimmen --> Ergibt eine Matrix, welche die Wahrscheinlichkeit enthält, dass ein Kandidat einen anderen Kandidaten mit dem Wert v vertraut
-- Annahme aus Literatur: Personen tendieren dazu sich mehr zu vertrauen, wenn sie selbe Werte und Verhaltensweisen teilen --> Berechnen Ähnlichkeiten zwischen Personen basierend auf ihren Job-Präferenzen --> Nutzen dafür ein adaptiertes PLSA Modell, um Job-Präferenzen basierend auf zuvor bewerteten Jobs vorherzusagen --> Erstellten Segmenten von Kandidaten mit ähnlihcen Präferenz-Strukturen basierend auf den latenten Aspkten, welche sie von den bewerteten Job-Profilen erhielten --> Ein Nutzer kann zu mehreren Segmenten gehören
-
-S. 7\\
-- Bezieht sich auf CF
-- Eine latente Variable bildet ein Segment und sie berechneten
-
-S. 9\\
-- 1. Schritt: PLSA Modell, um Kandidaten für Stellen zu empfehlen, die zur Stelle passen --> Gibt eine Liste mit den Top N passenden Kandidaten zurück, die Input für Schritt 2 sind --> Hier wird der Trust berechnet (Hier kommt System von oben zum Einsatz )--> Danach gibt es dann zwei Listen für PT und PJ --> Verrechnung über eine Formel --> Diese ist laut Forschern noch nicht optimal --> Priorität haben Wünsche der HR-Manager
-
-S. 10\\
-- Job-Recommender wie bei Färber
-
-S. 11\\
-- 1. Schritt: Modell wird mit vergangenen Bewertungen trainiert
-- 2. Schritt: Relationaler Aspekt: Vertrauensberechnung
-- Danach Finale Liste
-
-Anmerkung von mir:
-- Keine Evaluation
-
 \textcite{keim:2005}:\\
 S. 3\\
 - System zur personalisierten Suche nach Individuen
@@ -477,4 +450,38 @@ S. 6\\
 S. 7\\
 - Ähnliche Evaluation für Job-recommender
 - Ungelöste Herausforderung: Integration der beiden Systeme
+
+\textcite{malinowski:2005}:\\
+S. 3\\
+- bilaterales Prozess --> Beachtet Präferenzen von HR-Experte und Kandidaten bzw. Teammitgliedern / Beachtet Verbindungen zu anderen Personen
+- Färber 2003 entwickelten ein Empfehlungssystem zur Empfehlung von Kandidaten --> Dieses Modell wird in dieser Arbeit erweitert
+
+S. 4\\
+- Anmerkung: Klingt für mich so, als hätten Färber 2003 das latente Modell entwickelt, um auf Jobs zu matchen, aber die Team-Komponente nicht beachtet
+
+S. 5\\
+- Beschreibung des Trust-Modells
+- Es gibt explizites Vertrauen: Explizit erfasst zB durch Fragebogen
+
+S. 6\\
+- Zwei Möglichkeiten: Multiplikation oder PLSA-Modell (kollaboratives Filtern), um den kollaborativen Trust zu bestimmen --> Ergibt eine Matrix, welche die Wahrscheinlichkeit enthält, dass ein Kandidat einen anderen Kandidaten mit dem Wert v vertraut
+- Annahme aus Literatur: Personen tendieren dazu sich mehr zu vertrauen, wenn sie selbe Werte und Verhaltensweisen teilen --> Berechnen Ähnlichkeiten zwischen Personen basierend auf ihren Job-Präferenzen --> Nutzen dafür ein adaptiertes PLSA Modell, um Job-Präferenzen basierend auf zuvor bewerteten Jobs vorherzusagen --> Erstellten Segmenten von Kandidaten mit ähnlihcen Präferenz-Strukturen basierend auf den latenten Aspkten, welche sie von den bewerteten Job-Profilen erhielten --> Ein Nutzer kann zu mehreren Segmenten gehören
+
+S. 7\\
+- Bezieht sich auf CF
+- Eine latente Variable bildet ein Segment und sie berechneten
+
+S. 9\\
+- 1. Schritt: PLSA Modell, um Kandidaten für Stellen zu empfehlen, die zur Stelle passen --> Gibt eine Liste mit den Top N passenden Kandidaten zurück, die Input für Schritt 2 sind --> Hier wird der Trust berechnet (Hier kommt System von oben zum Einsatz )--> Danach gibt es dann zwei Listen für PT und PJ --> Verrechnung über eine Formel --> Diese ist laut Forschern noch nicht optimal --> Priorität haben Wünsche der HR-Manager
+
+S. 10\\
+- Job-Recommender wie bei Färber
+
+S. 11\\
+- 1. Schritt: Modell wird mit vergangenen Bewertungen trainiert
+- 2. Schritt: Relationaler Aspekt: Vertrauensberechnung
+- Danach Finale Liste
+
+Anmerkung von mir:
+- Keine Evaluation
 \shorthandon{"}
