@@ -36,7 +36,7 @@ In einer anderen Veröffentlichung präsentierten \textcite{malinowski:2005} ein
 	
 	\subfloat[Transitive Beziehung]{\includegraphics[width = 0.33\textwidth]{gfx/trustmodelA.png}}
 	\subfloat[Kollaboratives Filtern]{\includegraphics[width = 0.33\textwidth]{gfx/trustmodelB.png}}
-	\subfloat[Inhaltsbasiertes Filtern]{\includegraphics[width = 0.33\textwidth]{gfx/trustmodelC.png}}
+	\subfloat[Ähnlichkeitsberechnung über latente Variablen]{\includegraphics[width = 0.33\textwidth]{gfx/trustmodelC.png}}
 	
 	\caption{Ansätze zur Berechnung des Vertrauens zwischen Teammitgliedern \cite[S. 5]{malinowski:2005}}
 	\label{fig:verwandteArbeiten:abb2}
@@ -49,7 +49,9 @@ Die Anwendung der ersten beiden Ansätze (a) und (b) zur Vorhersage des Vertraue
 \end{equation}
 Ansatz (b) in Abbildung \ref{fig:verwandteArbeiten:abb2} zeigt die Berechnung des Vertrauens zwischen zwei Personen über speicherbasiertes kollaboratives Filtern wie es in Kapitel \ref{ch:empfehlungssysteme:cf} vorgestellt wurde. Hierbei wurde die Ähnlichkeit zwischen Person A und Person C genutzt, um den Vertrauenswert zwischen Person C und Person B vorherzusagen.
 
-Das dritte Verfahren (c) beruhte auf der Annahme, 
+Das dritte Verfahren (c) beruhte auf der Annahme, dass Personen sich stark vertrauen würden, wenn sie ähnliche persönliche Präferenzen teilen. Hierzu erstellten \textcite{malinowski:2005} ein latentes Variablenmodell vergleichbar zu Abbildung \ref{fig:verwandteArbeiten:abb1}. Über dieses bestimmten sie für jedes Teammitglied diejenigen latenten Variablen $z$, welche für dieses bei der Bewertung vergangener Stellen besonders wichtig waren. Diese Variablen $z$ und die gemeinsam bewerteten Stellenprofile nutzen die Wissenschaftler, um über die Ähnlichkeit zwischen Personen deren Vertrauen zu bestimmen.
+
+Abschließend aggregierten \textcite{malinowski:2005} alle ermittelten Vertrauenswerte von einer Person zu einer anderen unter Berücksichtigung der Anzahl gemeinsam bewerteter Stellenprofile zu einer finalen Vertrauensbewertung.
 
 \newpage
 \textcite{malinowski:2005}:\\
