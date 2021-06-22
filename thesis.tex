@@ -38,6 +38,7 @@
                 ngerman,american,%
                 ]{scrreprt}
 \usepackage[utf8]{inputenc}
+\usepackage[inline]{trackchanges} %% For correction
 %*************************************************************************
 % Note: Make all your adjustments in here
 %*************************************************************************
@@ -57,8 +58,11 @@
 %*************************************************************************
 %\hyphenation{put special hyphenation here}
 
-% Keine Einrückung bei neuem Absatz
-\usepackage[parfill]{parskip}
+\usepackage[parfill]{parskip} % Clear new Line
+\usepackage{tikz} % Graph
+\usepackage{rotating} % Rotate Table-Head
+\usepackage{color, colortbl} % Table-Color
+%\usepackage{pgfplots} % Function-Graph
 
 %*************************************************************************
 % GO!GO!GO! MOVE IT!
@@ -79,13 +83,14 @@
 %\cleardoublepage\include{frontbackmatter/Dedication}
 %\cleardoublepage\include{frontbackmatter/Foreword}
 \cleardoublepage\include{frontbackmatter/Declaration}
+%\cleardoublepage\include{frontbackmatter/Gleichstellungsklausel}
 %\cleardoublepage\include{frontbackmatter/AbstractEN}
 %\cleardoublepage\include{frontbackmatter/AbstractDE}
 %\cleardoublepage\include{frontbackmatter/Publications}
 %\cleardoublepage\include{frontbackmatter/Acknowledgments}
 \cleardoublepage\include{frontbackmatter/Contents}
 \cleardoublepage\include{frontbackmatter/Figures}
-%\cleardoublepage\include{frontbackmatter/Tables}
+\cleardoublepage\include{frontbackmatter/Tables}
 %\cleardoublepage\include{frontbackmatter/Listings}
 \cleardoublepage\include{frontbackmatter/Acronyms}
 %*************************************************************************
@@ -97,11 +102,11 @@
 % Alwas use \cleardoublepage before \part{...}.
 \cleardoublepage
 \part{Thesis}\label{pt:thesis}
-\include{chapters/chapter01}
-\include{chapters/chapter02}
-%\include{chapters/chapter03}
-%\include{chapters/chapter04}
-\include{chapters/chapter05}
+\include{chapters/einleitung}
+\include{chapters/personEnvironmentFit}
+\include{chapters/empfehlungssysteme}
+\include{chapters/verwandteArbeiten}
+\include{chapters/fazit}
 %\include{chapters/examples/chapter01}
 %\include{chapters/examples/chapter02}
 %\include{chapters/examples/chapter03}
@@ -112,7 +117,7 @@
 %\renewcommand{\thechapter}{\alph{chapter}}
 \cleardoublepage
 \part{Appendix}\label{pt:appendix}
-%\include{chapters/appendix/appendix01}
+\include{chapters/appendix/appendix01}
 %\include{chapters/appendix/appendix02}
 %\include{chapters/appendix/appendix03}
 %\include{chapters/appendix/appendix05}
