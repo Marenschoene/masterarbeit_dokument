@@ -8,8 +8,18 @@ This LaTeX-template might be used to write a bachelor or master thesis at the Co
 * Install Docker
 * Execute: ``bash compile.sh``
 
-## Table of contents
+## Zeitplan
+| Monat        | Aufgabe                              | Status                                                                              |
+|--------------|--------------------------------------|-------------------------------------------------------------------------------------|
+| April        | Grundlagen: Person-Environment Fit   | Noch offen: Exakte Quellen in einem Kapitel noch aus Büchern der Fernleihe benötigt |
+| Mai          | Grundlagen: Empfehlungssysteme       | Inhaltlich geschrieben / In Review                                                  |
+| Juni         | Verwandte Arbeiten                   | In Arbeit                                                                           |
+| Ab Ende Juni | Konzeptentwicklung                   | Offen                                                                               |
+| Juli         | Implementierung                      | Offen                                                                               |
+| Ab Ende Juli | Evaluation                           | Offen                                                                               |
+| September    | Einleitung / Fazit / Puffer / Abgabe | Offen                                                                               |
 
+## Table of contents
 * [Configuration](#configuration)
   * [thesis.tex](#thesistex "Configuration options in the thesis.tex file")
     * [Two-sided vs. one-sided](#two-sided-vs-one-sided)

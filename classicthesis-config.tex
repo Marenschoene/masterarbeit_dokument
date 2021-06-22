@@ -95,7 +95,8 @@
   maxbibnames=10, % default: 3, et al.
   firstinits=true,
   %backref=true,%
-  natbib=true % natbib compatibility mode (\citep and \citet still work)
+  natbib=true, % natbib compatibility mode (\citep and \citet still work)
+  doi=false,isbn=false,url=false,eprint=false
 }{biblatex}
   \usepackage{biblatex}
 
@@ -196,7 +197,7 @@
 % ********************************************************************
 \hypersetup{%
   %draft, % hyperref's draft mode, for printing see below
-  colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+  colorlinks=true, linktocpage=true, pdfstartpage=1, pdfstartview=FitV,%
   % uncomment the following line if you want to have black links (e.g., for printing)
   %colorlinks=false, linktocpage=false, pdfstartpage=3, pdfstartview=FitV, pdfborder={0 0 0},%
   breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
