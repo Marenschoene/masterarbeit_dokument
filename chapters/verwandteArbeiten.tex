@@ -3,7 +3,7 @@
 \label{ch:verwandteArbeiten}
 Bei der Durchsicht der Literatur ist festzustellen, dass bereits zahlreiche Publikationen den Anspruch verfolgten, bilaterale Systeme zur automatisierten Bestimmung des \acp{PJFit} zu entwickeln. Jedoch beziehen sich einige Forscher dabei nicht auf das in Kapitel \ref{ch:personEnvironmentFit} vorgestellte Konzept der Psychologie. Obwohl der Begriff des \acp{PJFit} verwendet wird, bestimmen die Wissenschaftler die Kongruenz dabei häufig ausschließlich auf der Ebene des Anforderungen-Fähigkeiten Fits. Dieser Sachverhalt ist beispielsweise in den Veröffentlichungen von \textcite[S. 1ff.]{luo:2019}, \textcite[S. 1ff.]{qin:2018} und \textcite[S. 1ff.]{personJobFit:2018} zu beobachten.
 
-\section{Nicht auf dem PE-Fit basierende Systeme}
+\section{Nicht auf dem PE-Fit basierende nicht-bilaterale Systeme}
 \label{ch:verwandteArbeiten:nichtAufDemPEFitBasierend}
 \textcite[S. 1, Z. 1f.]{personJobFit:2018} definierten den \ac{PJFit} als den "Prozess, bei dem das richtige Talent mit der richtigen Stelle zusammengeführt wird, indem die Talentkompetenzen identifiziert werden, welche für die Stelle erforderlich sind."\footnote{"process of matching the right talent for the right job by identifying talent competencies that are required for the job." - \textcite[S. 1, Z. 1f.]{personJobFit:2018}} Dementsprechend stellten die Wissenschaftler in ihrer Publikation ein System vor, welches über modellbasierte Verfahren aus unstrukturierten Bewerbungsdaten lernte, ob eine Person aufgrund ihrer Fähigkeiten für die Anforderungen einer Stelle geeignet ist \cite[S. 1ff.]{personJobFit:2018}. Ähnliche Systeme entwickelten auch \textcite[S. 1ff.]{qin:2018} und \textcite[S. 1ff.]{luo:2019}. In beiden Fällen bereiteten die Wissenschaftler Stellenausschreibungen und Lebensläufe durch modellbasierte Verfahren strukturiert auf. Diese Daten nutzten die Forscher, um über ein neuronales Netz vorauszusagen, ob eine ausreichende Übereinstimmung zwischen den Fähigkeiten der Kandidaten und den Anforderungen der offenen Stellen vorhanden ist. 
 
@@ -31,7 +31,7 @@ Zu diesem Vorgehen von \textcite[S. 3ff.]{malinowski:2006} ist festzustellen, da
 
 In einer weiteren Veröffentlichung präsentierten \textcite[S. 1]{malinowski:2005} ein Empfehlungssystem, welches Personen für Teams vorschlagen sollte. Hierbei wurden einerseits die Präferenzen des Personalsachbearbeiters hinsichtlich der fachlichen Eignung der Kandidaten als auch die Präferenzen der bestehenden Teammitglieder bezüglich der persönlichen Zusammenarbeit in den Empfehlungsprozess einbezogen.
 
-Um dieses Ziel zu erreichen, sah es das System von \textcite[S. 4ff.]{malinowski:2005} in einem ersten Schritt vor, über das Verfahren von \textcite[S. 8ff.]{faerber:2003} aus allen verfügbaren Personen die N fachlich geeignetsten Kandidaten zu bestimmen. Diese dienten als Eingabe für eine weitere Komponente, über welche die Wissenschaftler das potentielle Vertrauen zwischen den N Kandidaten und den vorhanden Teammitgliedern berechneten. Um das Vertrauen zu bestimmen, nutzten die Forscher drei separate Ansätze. Diese sind in Abbildung \ref{fig:verwandteArbeiten:abb2} dargestellt.
+Um dieses Ziel zu erreichen, sah es das System von \textcite[S. 4ff.]{malinowski:2005} in einem ersten Schritt vor, über das Verfahren von \textcite[S. 8ff.]{faerber:2003} aus allen verfügbaren Personen die N fachlich geeignetsten Kandidaten zu bestimmen. Diese dienten als Eingabe für eine weitere Komponente, über welche die Wissenschaftler das potentielle Vertrauen zwischen den N Kandidaten und den vorhanden Teammitgliedern berechneten. Um das Vertrauen zu bestimmen, nutzten die Forscher drei separate Ansätze. Diese sind in Abbildung \ref{fig:verwandteArbeiten:abb2} dargestellt und wurden auch in der Publikation von \textcite[S. 5ff.]{keim:2005} diskutiert.
 
 \begin{figure}[h]
 	\centering
@@ -44,7 +44,7 @@ Um dieses Ziel zu erreichen, sah es das System von \textcite[S. 4ff.]{malinowski
 	\label{fig:verwandteArbeiten:abb2}
 \end{figure}
 
-Die Anwendung der ersten beiden Ansätze (a) und (b) zur Vorhersage des Vertrauens zwischen potentiellen Teammitgliedern aus Abbildung \ref{fig:verwandteArbeiten:abb2} setzt laut \textcite{malinowski:2005} voraus, dass bekannte Vertrauensbewertungen von Teamkollegen vorhanden sind. Diese können den Wissenschaftlern zu Folge beispielsweise über Fragebögen ermittelt werden.
+Die Anwendung der ersten beiden Ansätze (a) und (b) zur Vorhersage des Vertrauens zwischen potentiellen Teammitgliedern aus Abbildung \ref{fig:verwandteArbeiten:abb2} setzt laut \textcite[S. 4ff.]{malinowski:2005} voraus, dass bekannte Vertrauensbewertungen von Teamkollegen vorhanden sind. Diese können den Wissenschaftlern zu Folge beispielsweise über Fragebögen ermittelt werden.
 
 Bei Ansatz (a) nahmen \textcite[S. 5f.]{malinowski:2005} an, dass eine Vertrauensbeziehung über Multiplikation berechnet werden kann, wenn transitiv eine direkte Beziehung zwischen zwei Personen besteht. Zur Berechnung der Beziehung $t'_{AC}$ wendeten die Wissenschaftler folgende Formel \ref{frml:verwandteArbeiten:formel1} an:
 \begin{equation}
@@ -66,25 +66,6 @@ In Formel \ref{frml:verwandteArbeiten:formel2} stand $t'_{M*y}$ für die Liste d
 % Evaluation dieses Systems fehlt in Paper
 
 \newpage
-\textcite{keim:2005}:\\
-S. 3\\
-- System zur personalisierten Suche nach Individuen
-- Anforderungen: 1. Kandidat muss Fähigkeiten besitzen (unäre Attribute) und 2. Zusammenarbeit mit anderen Teammitgliedern muss erfolgreich sein (relationale Attribute)
-- Den Kandidaten auszuwählen ist eine bilaterale Entscheidung
-- Bilateraler Prozess: Präferenzen mehrerer Personen; Es müssen relationale Attribute betrachtet werden; Ein Individuum kann nur einmal ausgewählt werden
-
-S. 4\\
-- Zwei Ansätze: CV-Recommender und ein Sozial Network Browser
-- CV-Recommender: Empfiehlt CVs, die ähnlich sind zu Lebensläufen, die zuvor vom selben Rekruiter für ein Job-Profil betrachtet wurde --> Basiert auf dem latent aspect Model; Bild: Recruiter und Job-Beschreibung sind Variable X, Präferenz-Faktoren sind Variable Z, Rekruiter bewertet ein Profil mit geeignet oder ungeeignet --> Nicht Person, sondern Summe der Attribute werden bewertet --> Variable V a sind die Content-Elemente des Lebenslaufs des Kandidaten
-- Social Network Browser
-
-S. 5\\
-- Vertrauen kann in einem einzelnen Wert ausgedrückt werden
-- 3 Arten Vertrauen zu berechnen; 1. Multiplikation, 2. Kollaboratives Filtern, 3. Ähnlihckeitsberechnung --> 3. Basierend auf Profilen werden Ähnlichkeiten berechnet --> Ähnichkeiten zwischen Nutzerpaaren --> Basierend auf Distanzen und auf den Chrakteristiken, sagt System vor aus ob Beziehung besteht
-
-S. 7\\
-- Planten Validierung über einen Studentenworkshop
-
 \textcite{keim:2007}:
 S. 4\\
 - Entwickelten ein mehrschichtiges Framework zum Partnermatching und Teamstaffing
@@ -488,4 +469,23 @@ S. 11\\
 
 Anmerkung von mir:
 - Keine Evaluation
+
+\textcite{keim:2005}:\\
+S. 3\\
+- System zur personalisierten Suche nach Individuen
+- Anforderungen: 1. Kandidat muss Fähigkeiten besitzen (unäre Attribute) und 2. Zusammenarbeit mit anderen Teammitgliedern muss erfolgreich sein (relationale Attribute)
+- Den Kandidaten auszuwählen ist eine bilaterale Entscheidung
+- Bilateraler Prozess: Präferenzen mehrerer Personen; Es müssen relationale Attribute betrachtet werden; Ein Individuum kann nur einmal ausgewählt werden
+
+S. 4\\
+- Zwei Ansätze: CV-Recommender und ein Sozial Network Browser
+- CV-Recommender: Empfiehlt CVs, die ähnlich sind zu Lebensläufen, die zuvor vom selben Rekruiter für ein Job-Profil betrachtet wurde --> Basiert auf dem latent aspect Model; Bild: Recruiter und Job-Beschreibung sind Variable X, Präferenz-Faktoren sind Variable Z, Rekruiter bewertet ein Profil mit geeignet oder ungeeignet --> Nicht Person, sondern Summe der Attribute werden bewertet --> Variable V a sind die Content-Elemente des Lebenslaufs des Kandidaten / Anmerkung von mir: Klingt nach dem Ansatz von \textcite{faerber:2003} --> Es ist der Ansatz
+- Social Network Browser
+
+S. 5\\
+- Vertrauen kann in einem einzelnen Wert ausgedrückt werden
+- 3 Arten Vertrauen zu berechnen; 1. Multiplikation, 2. Kollaboratives Filtern, 3. Ähnlihckeitsberechnung --> 3. Basierend auf Profilen werden Ähnlichkeiten berechnet --> Ähnichkeiten zwischen Nutzerpaaren --> Basierend auf Distanzen und auf den Chrakteristiken, sagt System vor aus ob Beziehung besteht
+
+S. 7\\
+- Planten Validierung über einen Studentenworkshop
 \shorthandon{"}
