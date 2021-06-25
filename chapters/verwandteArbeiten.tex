@@ -7,8 +7,7 @@ Bei der Durchsicht der Literatur ist festzustellen, dass bereits zahlreiche Publ
 \label{ch:verwandteArbeiten:nichtAufDemPEFitBasierend}
 \textcite[S. 1, Z. 1f.]{personJobFit:2018} definierten den \ac{PJFit} als den "Prozess, bei dem das richtige Talent mit der richtigen Stelle zusammengeführt wird, indem die Talentkompetenzen identifiziert werden, welche für die Stelle erforderlich sind."\footnote{"process of matching the right talent for the right job by identifying talent competencies that are required for the job." - \textcite[S. 1, Z. 1f.]{personJobFit:2018}} Dementsprechend stellten die Wissenschaftler in ihrer Publikation ein System vor, welches über modellbasierte Verfahren aus unstrukturierten Bewerbungsdaten lernte, ob eine Person aufgrund ihrer Fähigkeiten für die Anforderungen einer Stelle geeignet ist \cite[S. 1ff.]{personJobFit:2018}. Ähnliche Systeme entwickelten auch \textcite[S. 1ff.]{qin:2018} und \textcite[S. 1ff.]{luo:2019}. In beiden Fällen bereiteten die Wissenschaftler Stellenausschreibungen und Lebensläufe durch modellbasierte Verfahren strukturiert auf. Diese Daten nutzten die Forscher, um über ein neuronales Netz vorauszusagen, ob eine ausreichende Übereinstimmung zwischen den Fähigkeiten der Kandidaten und den Anforderungen der offenen Stellen vorhanden ist. 
 
-% Malinowski 2008 fehlt
-Empfehlungssysteme, welche neben dem Anforderungen-Fähigkeiten Fit auch den Bedürfnisse-Angebote Fit betrachten, bezeichneten \textcite[S. 4]{malinowski:2006} als bilaterale Empfehlungssysteme. Im Umfeld dieser Wissenschaftler entwickelten verschiedene Forschergruppen zwei Recommender Engines, welche in mehreren Publikationen vorgestellt wurden. In beiden Fällen bezogen sich die Wissenschaftler auf das in Kapitel \ref{ch:personEnvironmentFit} vorgestellte Konzept des \acp{PEFit} \cite[S. 4f.]{keim:2007}\cite[S. 3f.]{keim:2005}\cite[S. 3f.]{malinowski:2005}\cite[S. 3f.]{malinowski:2006}.
+Empfehlungssysteme, welche neben dem Anforderungen-Fähigkeiten Fit auch den Bedürfnisse-Angebote Fit betrachten, bezeichneten \textcite[S. 4]{malinowski:2006} als bilaterale Empfehlungssysteme. Im Umfeld dieser Wissenschaftler entwickelten verschiedene Forschergruppen zwei Recommender Engines, welche in mehreren Publikationen vorgestellt wurden. In beiden Fällen bezogen sich die Wissenschaftler auf das in Kapitel \ref{ch:personEnvironmentFit} vorgestellte Konzept des \acp{PEFit} \cite[S. 4f.]{keim:2007}\cite[S. 3f.]{keim:2005}\cite[S. 3f.]{malinowski:2005}\cite[S. 3f.]{malinowski:2006}\cite[S. 3ff.]{malinowski:2008}.
 
 \section{Auf dem PE-Fit basierende bilaterale Systeme}
 \label{ch:verwandteArbeiten:aufDemPEFitBasierendeBilateraleSysteme}
@@ -25,13 +24,15 @@ Eine der beiden Anwendungen aus dem Umfeld von \textcite[S. 1ff.]{malinowski:200
 
 In Abbildung \ref{fig:verwandteArbeiten:abb1} steht $a$ für die Attribute des Bewerbers, welche beispielsweise aus dessen Lebenslauf gewonnen wurden. Variable $x$ symbolisiert einen Personalsachbearbeiter mitsamt eines Stellenprofils, welches dieser besetzen soll. Dessen Entscheidung, ob ein Bewerber für die Tätigkeit qualifiziert ist oder nicht, wurde über den boolschen Wert $v$ ausgedrückt. \textcite[S. 4ff.]{faerber:2003} bestimmten aus diesen Faktoren ein latentes Variablenmodell. Hierbei wurden aus bekannten Entscheidungen eines Personalsachbearbeiters $x$ hinsichtlich der Eignung $v$ eines Bewerbers $a$ für eine Stelle nicht direkt messbare Variablen $z$ abgeleitet, welche dessen Beurteilungen beeinflussten. Über die latenten Variablen $z$ und die Attribute $a$ bestimmten die Wissenschaftler Wahrscheinlichkeiten, mit welchen ein Personalsachbearbeiter die vorliegenden Attribute eines Kandidaten als qualifiziert oder unqualifiziert bewerten würde.
 
-In ihrer Publikation erweiterten \textcite[S. 4f.]{malinowski:2006} das von \textcite[S. 4ff.]{faerber:2003} entwickelte Verfahren. Hierbei verfolgten die Wissenschaftler das Ziel, zusätzlich zur Empfehlung von Kandidaten für Arbeitsplätze auch Stellen für Arbeitssuchende passend zu deren Vorlieben zu empfehlen. Dazu ergänzten sie eine weitere Komponente für Stellensuchende im System, welche sich ebenfalls am Aufbau von Abbildung \ref{fig:verwandteArbeiten:abb1} orientierte. Bei der neuen Komponenten stand $x$ für den Kandidaten und $a$ für die Attribute der Stellenausschreibung. Auch hier bestimmten die Forscher latente Variablen $z$, welche sie über vergangene Stellenprofil-Bewertungen von Studenten ermittelten. Über diese sagten sie voraus, mit welcher Wahrscheinlichkeit ein Kandidat eine Stelle als passend zu seinen Präferenzen bewerten würde. 
+In ihrer Publikation erweiterten \textcite[S. 4f.]{malinowski:2006} das von \textcite[S. 4ff.]{faerber:2003} entwickelte Verfahren. Hierbei verfolgten die Wissenschaftler das Ziel, zusätzlich zur Empfehlung von Kandidaten für Arbeitsplätze auch Stellen für Arbeitssuchende passend zu deren Vorlieben zu empfehlen. Dazu ergänzten sie eine weitere Komponente für Stellensuchende im System, welche sich ebenfalls am Aufbau von Abbildung \ref{fig:verwandteArbeiten:abb1} orientierte. Bei der neuen Komponenten stand $x$ für den Kandidaten und $a$ für die Attribute der Stellenausschreibung. Auch hier bestimmten die Forscher latente Variablen $z$, welche sie über vergangene Stellenprofil-Bewertungen von Studenten ermittelten. Über diese sagten sie voraus, mit welcher Wahrscheinlichkeit ein Kandidat eine Stelle als passend zu seinen Präferenzen bewerten würde.
+
+Bei einer Evaluation des Systems stellten \textcite[S. 6f.]{malinowski:2006} fest, dass die Ergebnisse der Komponente zur Empfehlung von Kandidaten nahezu vergleichbar zur manuellen Auswahl eines menschlichen Personalsachbearbeiters war. Auch beim Stellenempfehlungssystem kamen die Wissenschaftler zu der Erkenntnis, dass deren Ergebnisse bis auf einzelne Ausnahmen vergleichbar zur manuellen Auswahl der Kandidaten waren. Auch \textcite[S. 7]{keim:2007} bestätigte, dass beide Empfehlungsmodule eine hohe Genauigkeit aufweisen konnten.
 
 Zu diesem Vorgehen von \textcite[S. 3ff.]{malinowski:2006} ist festzustellen, dass das bilaterale Empfehlungssystem ursprünglich in Anlehnung an das Konzept des \acp{PEFit} entwickelt wurde. Dabei sollten sowohl Präferenzen von Personalsachbearbeitern als auch Vorlieben von Stellensuchenden berücksichtigt werden. Allerdings ist es in der vorgestellten Anwendung nur möglich, entweder zu den Präferenzen von Personalsachbearbeitern passende Kandidaten oder mit den Vorlieben von Bewerbern kompatible Stellen zu ermitteln. Es ist nicht vorgesehen, Kandidaten für Positionen zu empfehlen und dabei gleichzeitig die Präferenzen von Bewerbern und Personalsachbearbeitern zu berücksichtigen. Daher ist kritisch anzumerken, dass die Anwendung von \textcite[S. 3ff.]{malinowski:2006} zwar die Präferenzen beider Parteien berücksichtigte, dieses Vorgehen aber nicht vollständig der Theorie des \acp{PEFit} entspricht.
 
-In einer weiteren Veröffentlichung präsentierten \textcite[S. 1]{malinowski:2005} ein Empfehlungssystem, welches Personen für Teams vorschlagen sollte. Einerseits berücksichtigten die Wissenschaftler hierbei die Präferenzen von Personalsachbearbeitern hinsichtlich der fachlichen Eignung der Kandidaten berücksichtigt. Andererseits beachteten sie auch die Präferenzen von Teammitgliedern und potentiellem Kandidaten bezüglich der persönlichen Zusammenarbeit.
+In einer weiteren Veröffentlichungen präsentierten \textcite[S. 1]{malinowski:2005} ein Empfehlungssystem, welches Personen für Teams vorschlagen sollte. Einerseits berücksichtigten die Wissenschaftler hierbei die Präferenzen von Personalsachbearbeitern hinsichtlich der fachlichen Eignung der Kandidaten berücksichtigt. Andererseits beachteten sie auch die Präferenzen von Teammitgliedern und potentiellem Kandidaten bezüglich der persönlichen Zusammenarbeit.
 
-Um dieses Ziel zu erreichen, sah es das System von \textcite[S. 4ff.]{malinowski:2005} in einem ersten Schritt vor, über das Verfahren von \textcite[S. 8ff.]{faerber:2003} aus allen verfügbaren Personen die $N$ fachlich geeignetsten Kandidaten passend zu den Präferenzen des Personalsachbearbeiters zu bestimmen. Diese dienten als Eingabe für eine weitere Komponente, über welche die Wissenschaftler das potentielle Vertrauen zwischen den $N$ Kandidaten und den vorhanden Teammitgliedern berechneten. Um das Vertrauen zu bestimmen, nutzten die Forscher drei separate Ansätze. Diese sind in Abbildung \ref{fig:verwandteArbeiten:abb2} dargestellt und wurden auch in der Publikation von \textcite[S. 5ff.]{keim:2005} diskutiert.
+Um dieses Ziel zu erreichen, sah es das System von \textcite[S. 4ff.]{malinowski:2005} in einem ersten Schritt vor, über das Verfahren von \textcite[S. 8ff.]{faerber:2003} aus allen verfügbaren Personen die $N$ fachlich geeignetsten Kandidaten passend zu den Präferenzen des Personalsachbearbeiters zu bestimmen. Diese dienten als Eingabe für eine weitere Komponente, über welche die Wissenschaftler das potentielle Vertrauen zwischen den $N$ Kandidaten und den vorhanden Teammitgliedern berechneten. Um das Vertrauen zu bestimmen, nutzten die Forscher drei separate Ansätze. Diese sind in Abbildung \ref{fig:verwandteArbeiten:abb2} dargestellt und wurden auch in den Publikationen von \textcite[S. 5ff.]{keim:2005} und \textcite[S. 6ff.]{malinowski:2008} vorgestellt.
 
 \begin{figure}[h]
 	\centering
@@ -63,7 +64,8 @@ Im letzten Schritt des Systems errechneten \textcite[S. 9f.]{malinowski:2005} au
 	\label{frml:verwandteArbeiten:formel2}
 \end{equation}
 In Formel \ref{frml:verwandteArbeiten:formel2} stand $t'_{M*y}$ für die Liste der Vertrauensbeziehungen und $r'_{x,y,v}$ für die fachlichen Bewertungen der Kandidaten. Für $\alpha$ setzten die Wissenschaftler den Wert 0.5 ein \cite[S. 4ff.]{malinowski:2005}. Jedoch merkten \textcite[S. 9]{malinowski:2005} zu Formel \ref{frml:verwandteArbeiten:formel2} an, dass diese noch nicht optimal sei und weiterer Forschung bedarf.
-% Evaluation dieses Systems fehlt in Paper
+
+% Evaluation
 
 In einer weiteren Veröffentlichung stellte \textcite[S. 1ff.]{keim:2007} in Ergänzung zu den vorherigen Anwendungen von \textcite[S. 6ff.]{faerber:2003}, \textcite[S. 4ff.]{keim:2005}, \textcite[S. 4ff.]{malinowski:2005} und \textcite[S. 3ff.]{malinowski:2006} das in Abbildung \ref{fig:verwandteArbeiten:abb3} dargestellte Framework vor. Dieses verfolgte das Ziel, Kandidaten in passende Projektteams einzuordnen und dabei sowohl Fähigkeiten als auch zwischenmenschliche Attribute zu berücksichtigen \cite[S. 1ff.]{keim:2007}.
 
@@ -79,119 +81,15 @@ In Abbildung \ref{fig:verwandteArbeiten:abb3} ist zu erkennen, dass die zweite E
 Das Lebenslaufempfehlungssystem (CV recommender) in Abbildung \ref{fig:verwandteArbeiten:abb3} entsprach der von \textcite[S. 8ff.]{faerber:2003} entwickelten Anwendung, welche anhand von Abbildung \ref{fig:verwandteArbeiten:abb1} vorgestellt wurde \cite[S. 6]{keim:2007}. Beim Stellenempfehlungssystem (Job recommender) handelte es sich um die von \textcite[S. 4ff.]{malinowski:2006} adaptierte Version des Lebenslaufempfehlungssystems mit welcher Personen zu ihren Präferenzen passende Stellenausschreibungen ermitteln konnten \cite[S. 6]{keim:2007}. Das vorhersagende Vertrauensmodul (Predictive Trust module) entsprach dem anhand von Abbildung \ref{fig:verwandteArbeiten:abb2} behandelten Ansatz zur Vorhersage von Vertrauensbeziehungen zwischen potentiellen Teammitgliedern \cite[S. 8]{keim:2007}. Dieses wurde in den Publikationen von \textcite[S. 5ff.]{keim:2005} und \textcite[S. 4ff.]{malinowski:2005} detailliert vorgestellt. Vergleichbar zu einer in der Veröffentlichung von \textcite[S. 4f.]{keim:2005} vorgestellten Anwendung ist auch das beschreibende Vertrauensmodul (Descriptive trust module). Diese Komponente erfasste explizit vergebene Vertrauensbewertungen von Teammitgliedern in Form einer Ontologie und repräsentiert diese in Form eines Graphen. Über diese Darstellung konnten Anwender soziale Beziehungen durchsuchen und analysieren. Auf diese Weise sollten sie besser entscheiden können, mit welchen Personen sie eine Zusammenarbeit eingehen möchten \cite[S. 7]{keim:2007}.
 
 Ähnlich zur Publikation von \textcite[S. 3ff.]{malinowski:2006} muss auch zur Veröffentlichung von \textcite[S. 5ff.]{keim:2007} kritisch bemerkt werden, dass die Forscher die Resultate der einzelnen Module nicht zu einem Ergebnis zusammenfassten. Die Implementierung der oben in Abbildung \ref{fig:verwandteArbeiten:abb3} dargestellten Aggregationsebene (Aggregation layer) ließen die Wissenschaftler in ihrer Publikation offen \cite[S. 8]{keim:2007}.
-
 %Das von \textcite{keim:2007} vorgestellte System enthielt mit dem beschreibenden und dem vorhersagenden Vertrauensmodul somit zwar Komponenten, welche bilaterale Vertrauensbeziehungen modellieren bzw. bei der Empfehlungsbestimmung berücksichtigten. Damit handelte es sich bei der Suche nach potentiell vertrauenswürdigen Teamkollegen um einen bilateralen Prozess, da Präferenzen von bestehenden Teammitgliedern und potentiellen Kandidaten berücksichtigt wurden. Es wurde jedoch nicht beachtet, ob die Person auch fachlich für die Stelle geeignet war oder ob die Position inhaltlich den Vorstellungen des Kandidaten entsprach.
 
+Zusammenfassend ist zu den Publikationen aus dem Umfeld von \textcite[S. 4]{malinowski:2006} festzustellen, dass diese zahlreiche einzelne Empfehlungssysteme entwickelten. Diese unterstützten insbesondere die Auswahl fachlich geeigneter Stellen bzw. Kandidaten und die Zusammenführung von Personen in bestehende Teams. Bei der Implementierung dieser Systeme bezogen sich die Wissenschaftler auf das Konzept des \acp{PEFit}. Jedoch muss kritisch bemerkt werden, dass die einzelnen Module nur in Kombination tatsächlich bilaterale Empfehlungen generieren können. Die Integration verschiedener Ansätze wurde jedoch ausschließlich in der Publikation von \textcite[S. 4ff.]{malinowski:2005} vorgenommen. Hierbei wurden Kandidaten entsprechend der fachlichen Präferenzen von Personalsachbearbeitern ausgewählt und unter Beachtung des gegenseitigen Vertrauens mit den potentiellen Teammitgliedern sortiert. In den Publikationen der Forscher konnte jedoch keine Methode identifiziert werden, bei welcher eine Anwendung Stellen passend zu den fachlichen Präferenzen von Personalsachbearbeitern und Kandidaten bestimmte. Außerdem ist festzustellen, dass die Wissenschaftler ihre Systeme zwar evaluieren, hierbei 
+
+\section{Nicht auf dem PE-Fit basierende bilaterale Systeme}
+\label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme}
+ 
+
 \newpage
-\textcite{keim:2007}:
-S. 4\\
-- Entwickelten ein mehrschichtiges Framework zum Partnermatching und Teamstaffing
-- Für erfolgreiches Partner-Matching: 1. Individuen müssen mit Rollen oder Jobs zusammengebracht werden, für welche sie die richtigen Fähigkeiten und Fertigkeiten haben; 2. Individuen müssen mit anderen Individuen, z.B. ihren potentiellen Teammitgliedern oder Arbeitspartnern zusammengeführt werden
-
-S. 5\\
-- Entwickelten ein modulares Framework zur Entscheidungsunterstützung
-- 3 Ebenen: 1. Speichert unäre und binäre Attribute / 2. Bietet Module, welche als Filter für diese Daten arbeiten --> Zum Filtern für Rekruiter und Kandidaten / 3. Aggregation --> Fügt die Ergebnisse der einzelnen Module zusammen
-
-S. 6\\
-- CV-Recommender: Im System von 2003 wurden nur Entscheidungen aus Sicht des Rekruiters unterstützt --> Bild mit x,z,v,a --> Sucht Kandidaten basierend auf vorherigen Entscheidungen des Rekuriters aus
-- Job-Recommender: Unterstützt Jobsuchende und Teammitglieder bei der Jobsuche oder beim finden von Rollen in Projekten, die ihre Präferenzen treffen könnten --> Funktioniert ähnlich zu CV-Recommender --> Verweis auf \textcite{malinowski:2006}
-- Validierung mit 32 Studenten: ROC-Kurve
-
-S. 7\\
-- Deskriptives Trust-Modul: Etablierten eine Trust-Ontology mit Elementen von Network-based or historic und ituational und swift trust --> Modul unterstützt Nutzer dabei qualifizierte Entscheidungen zu treffen, auf welchen vertrauensvolle Beziehungen aufgebaut werden können --> entscheidung bleibt aber beim Nutzer
-- Nutzer können angeben, wie sehr sie anderen Personen vertrauen, wie lange die Partnerschaft besteht und andere Angaben
-- Entstehendes Netzwerk kann dann durchsucht werden
-- wtf
-
-S. 8\\
-- Implementierten 3 Ansätze, um den Nutzer bei der Identifikation von 
-
-S. 9\\
-- Aggregation wird nicht vorgenommen
-
-\textcite{malinowski:2008}:
-- Anmerkung: Findet hier die Evaluation statt?
-S. 1\\
-- System zur Auswahl von Individuen für Teams
-- Bestehende Systeme betrachten nur Skills - Match zwischen Person und Teammitgliedern wird nicht beachtet
-- Entwickeln relationales Empfehlungssystem zur automatisierten Vorauswahl von Kandidaten, die am besten zu zukünftigen Teammitgliedern passen
-
-S. 2\\
-- Manche Industrien wie Consulting arbeiten schon länger Projektorientiert
-
-S. 3\\
-- Beziehen sich auf den person-environment (P-E) fit
-- IS-Unterstützungsansatz benötigt 2 Dimensionen: 1. Person-Job und 2. Person-Team
-- Fokus auf internes Team-Staffing
-
-S. 4\\
-- Edwards sagt, dass P-J fit aus zwei Klassen besteht: 1. Wünsche und 2. Demand-Abilities
-- Einige Autoren sagen P-T ist gut wenn suplementär, andere sagen wenn komplementär --> Werbel und Johnson sagen, dass beide beachtet werden müssen
-
-S. 5\\
-- Bestehende HR-Systeme verfügen über eine interne Skill-Datenbank, über welche über Abfragen Kandidaten mit passenden Eigenschaften ermittelt werden können\\
-- 3 Nachteile bestehender Systeme: 1. Einfaches Schlüsselwort-Matching; 2. Viele fokussieren ausschließlich auf Demand-Abilities; 3. Keine Beachtung des P-T Fits
-
-S. 6\\
-- Setzen hohes Vertrauen zwischen Teammitgliedern voraus --> Wichtiger Indikator für P-T Fit
-- setzen auf Kontepte der sozial network analysis (SNA)
-- Ziel: Vorhersage von Vertrauen zwischen Personen, die sich nicht kennen
-- System benötigt zwei Dimensionen: 1. Unäre Attribute wie Fähigkeiten, um Fit zwischen Person und Task zu bestimmen; 2. Relationale Attribute, um den fit zwischen Individuum und Teammitgliedern zu bestimmen --> in beiden Fällen müssen auch die Needs einbezogen werden --> Daraus ergeben sich die 3 Haupt-funktionalen-Anforderungen: 1. Multilateraler Prozess, sodass Präferezen mehrerer Personen einbezogen werden müssen; 2. Muss Fit zwischen Person und anderen Teammitgliedern beachten; 3. Individuen können nicht in mehreren Teams zur selben Zeit arbeiten
-- Entwickeln ein Vertrauens-Berchnungs-Modell, welchen das Vertrauen zwischen zuvor unbekannten Individuen vorhersagt; Beachten außerdem soziales Kapital der Kandidaten in Ergänzung zu deren menschlichem Kapital
-
-S. 7\\
-- Annahme: Trust kann als ein Wert ausgedrückt werden
-- Vertrauen unterscheidet sich von Person zu Person, deshalb bildet jede Person ihr eigenes "Web of Trust" --> Wichtig, da Vertrauen von einem Kandidaten zu jedem anderen Teammitglied und umgekehrt bestimmt werden müssen --> Mann kann nicht einfach davon ausgehen, dass Person A Person B vertraut, nur weil es umgekehrt der Fall ist
-- Vertrauen ist ein Wert zw. 0 und 1 --> 0 = Gar kein Vertrauen, 1 = Vertrauenswürdig
-- $t'_{AC} = t_{A->B->C}$ heißt: A vertraut C über den Pfad über B --> Genannt "Vertrauenspfad" --> Pfad muss direkt sein
-- Es muss auch möglich sein, Vertrauen zu berechnen, wenn es keine direkte Verbindung gibt --> Wird über Nutzer-Attribute bestimmt (Content)
-
-S. 8\\
-- Färber wendeten ein Probailistic Latent Aspect Model (PLSA) an, um Personen für Stellen zu empfehlen --> Gehört zu den modelbased Methoden
-- Hier werden die Präferenzen der Nutzer als konvexe Kombination unterliegender latenter Aspekte betrachtet --> Die verschiedenen Aspekte, die einer Bewertung unerliegen können modelliert werden, was zu guten Empfehlungen führt
-
-S. 9\\
-- Kollaborative Trust-Vorhersage:
-- Über Kollaboratives Filtern sollen Kanten (Vertrauen) vorhergesagt werden --> Voraussetzung: Explizite Vertrauensbewertungen benötigt
-- Um Vertrauensbeziehungen zu modellieren wurde ein PLSA Modell in den Kontext der relationalen Empfehlung adaptiert --> Erlaubt es, latente Aspekte zu erfassen, welche einer Vertrauensbewertung von Personen unterliegen
-- Modell-Parameter werden durch den Expectation Maximization Algorithmus bestimmt welcher der Standardalgorithmus für Maximum Lielihood Estimation in Latenten Variablen Modellen ist --> Hat 2 Schritte: --> Ergeben, mit welcher Wahrscheinlichkeit Person A Person B zu einem bestimmten Wert vertraut
-
-S. 10\\
-- Bestimmten ein Latent Aspect Model, um Jobs für Kandidaten basierend auf vorherigen Bewertungen zu empfehlen --> Modell wurde genutzt, um Ähnlichkeiten zwischen Kandidaten zu bestimmen basierend auf vorherigen Job-Bewertungen
-- Sie erstellten Segmente von Kandidaten mit ähnlichen Präferenz-Strukturen basierend auf den Latenten Aspekten, welche sie aus vorherigen Job-Profilen ermittelten
-- Ein Nutzer kann auch zu mehreren Segmenten gehören --> Unterschied zu Clustering, wo ein Nutzer immer nur in einem Cluster siein kann
-
-S. 11
-- Berechnung der Differenz von Wahrscheinlichkeiten, dass zwei Nutzer zum Selben Segment gehören, welches von latent Variable z gebildet wird --> Differenzen werden aufaddiert für alle Latent Aspekte und durch die Anzahl an Segmenten geteilt --> Gibt es kein gemeinsam Bewertetes Job-Profil, ist der Ähnlichkeitswert 0 --> $t'_{AB}=sim_{AB}$
-- Angenommen es gibt die drei Nutzer A, B und C und diese haben sich nicht explizit bewertet, haben aber eine Ähnliche Präferenzstruktur, was die Bewertungen angeht --> Diese Präferenzstrukturen werden genutzt, um einen Ähnlichkeitsbasierte Trust-Werte zu bestimmen
-
-- Oben beschriebene Szenarien werden kombiniert ausgeführt, sodass mehr als ein Trust-Pfad zwischen Individuen existieren kann --> Bestimmten Durchschnitt zur Aggregation
-- Grad an Vertrauen wird als höher bewertet, wenn die Anzahl an --> Daher noch Verrechnung mti der allgemein Vertrauenswürdigsten Verbindung des Zielnutzers
-
-S. 12\\
-- Über die Pfade wurde dann der durchschnittliche Vertrauenswert von allem Gruppenmitgliedern zum neuen Mitglied und umgekehrt bestimmt --> Wie verrechnet wird nicht gesagt
-- System soll nur Vorauswahl treffen --> Finale Entscheidung trifft HR
-
-S. 13\\
-- HR-Manager erhielten Liste mit relevanten Kandidaten --> Aus diesen kann HR dann auswählen
-- Erstellten eine ROC-Kurve: Sensitivity (hit rate) war die Wahrscheinlihkeit, dass ein relevanter Kandidat empfohlen wurde; 1-Sensitivity (miss rate) war die Wahrscheinlichkeit, dass ein irrelevanter Kandidat empfohlen wurde
-- ROC-Kurve plottete die Miss-Rate auf der x-Achse gegen die Hit-Rate auf der y-Achse --> Cut-Off-Value definiert die Suchlänge und bestimmt wie viele der Top-Kandidaten in der Liste aktuell betrachtet werden , wenn die Genauigkeit bewertet wird
-- N=21 Studenten von zwei Universitäten
-- 1. Phase: Studenten erhalten 100 echte Job-Profile und sollten auf einer Skala von 1 bis 5 bewerten, wie sehr die Profile ihre Präferenzen bzgl. mittel- oder langfristigen Karriereperspektiven erfüllen --> Job-Präferenzdaten wurden als Inputdaten für den Recommender genutzt
-- 2. Phase: Studenten fügten Informationen über die Beziehungen zu anderen Teilnehmern hinzu --> Sollten Vertrauen ausdrücken --> 1 bis 5
-- Relationales RS wurde mit einem Subset der Daten trainiert --> Trainings- und Testdaten --> Vergleich mit Originaldaten, um Qualität des Systems zu messen
-
-S. 14\\
-- Auch ROC-Kurve, um Vertrauen vorherzusagen --> dazu pro Student 10 Verbindungen zufällig entfernt und vorhergesagt
-
-Persönliche Kritik\\
-- Sie können nachweisen dass ihr System eine gute Genauigkeit aufweist, was aber fehlt: Wie werden Endergebnisse verrechnet? Ist bilateraler Ansatz tatsächlich besser? Ist Ansatz überhaupt der Richtige, also wie findet HR die Ergebnisse bzw. wie finden Studenten die Ergebnisse?
-
-
-
-
-
-
 \textcite{ding:2016}:\\
 S. 1:\\
 - Entwickelten ein wechselseitiges Empfehlungssystem zum Recruitment von Absolventen
@@ -505,4 +403,108 @@ S. 5\\
 
 S. 7\\
 - Planten Validierung über einen Studentenworkshop
+
+\textcite{keim:2007}:
+S. 4\\
+- Entwickelten ein mehrschichtiges Framework zum Partnermatching und Teamstaffing
+- Für erfolgreiches Partner-Matching: 1. Individuen müssen mit Rollen oder Jobs zusammengebracht werden, für welche sie die richtigen Fähigkeiten und Fertigkeiten haben; 2. Individuen müssen mit anderen Individuen, z.B. ihren potentiellen Teammitgliedern oder Arbeitspartnern zusammengeführt werden
+
+S. 5\\
+- Entwickelten ein modulares Framework zur Entscheidungsunterstützung
+- 3 Ebenen: 1. Speichert unäre und binäre Attribute / 2. Bietet Module, welche als Filter für diese Daten arbeiten --> Zum Filtern für Rekruiter und Kandidaten / 3. Aggregation --> Fügt die Ergebnisse der einzelnen Module zusammen
+
+S. 6\\
+- CV-Recommender: Im System von 2003 wurden nur Entscheidungen aus Sicht des Rekruiters unterstützt --> Bild mit x,z,v,a --> Sucht Kandidaten basierend auf vorherigen Entscheidungen des Rekuriters aus
+- Job-Recommender: Unterstützt Jobsuchende und Teammitglieder bei der Jobsuche oder beim finden von Rollen in Projekten, die ihre Präferenzen treffen könnten --> Funktioniert ähnlich zu CV-Recommender --> Verweis auf \textcite{malinowski:2006}
+- Validierung mit 32 Studenten: ROC-Kurve
+
+S. 7\\
+- Deskriptives Trust-Modul: Etablierten eine Trust-Ontology mit Elementen von Network-based or historic und ituational und swift trust --> Modul unterstützt Nutzer dabei qualifizierte Entscheidungen zu treffen, auf welchen vertrauensvolle Beziehungen aufgebaut werden können --> entscheidung bleibt aber beim Nutzer
+- Nutzer können angeben, wie sehr sie anderen Personen vertrauen, wie lange die Partnerschaft besteht und andere Angaben
+- Entstehendes Netzwerk kann dann durchsucht werden
+- wtf
+
+S. 8\\
+- Implementierten 3 Ansätze, um den Nutzer bei der Identifikation von 
+
+S. 9\\
+- Aggregation wird nicht vorgenommen
+
+\textcite{malinowski:2008}:\\
+- Anmerkung: Findet hier die Evaluation statt?\\
+S. 1\\
+- System zur Auswahl von Individuen für Teams
+- Bestehende Systeme betrachten nur Skills - Match zwischen Person und Teammitgliedern wird nicht beachtet
+- Entwickeln relationales Empfehlungssystem zur automatisierten Vorauswahl von Kandidaten, die am besten zu zukünftigen Teammitgliedern passen
+
+S. 2\\
+- Manche Industrien wie Consulting arbeiten schon länger Projektorientiert
+
+S. 3\\
+- Beziehen sich auf den person-environment (P-E) fit
+- IS-Unterstützungsansatz benötigt 2 Dimensionen: 1. Person-Job und 2. Person-Team
+- Fokus auf internes Team-Staffing
+
+S. 4\\
+- Edwards sagt, dass P-J fit aus zwei Klassen besteht: 1. Wünsche und 2. Demand-Abilities
+- Einige Autoren sagen P-T ist gut wenn suplementär, andere sagen wenn komplementär --> Werbel und Johnson sagen, dass beide beachtet werden müssen
+
+S. 5\\
+- Bestehende HR-Systeme verfügen über eine interne Skill-Datenbank, über welche über Abfragen Kandidaten mit passenden Eigenschaften ermittelt werden können\\
+- 3 Nachteile bestehender Systeme: 1. Einfaches Schlüsselwort-Matching; 2. Viele fokussieren ausschließlich auf Demand-Abilities; 3. Keine Beachtung des P-T Fits
+
+S. 6\\
+- Setzen hohes Vertrauen zwischen Teammitgliedern voraus --> Wichtiger Indikator für P-T Fit
+- setzen auf Kontepte der sozial network analysis (SNA)
+- Ziel: Vorhersage von Vertrauen zwischen Personen, die sich nicht kennen
+- System benötigt zwei Dimensionen: 1. Unäre Attribute wie Fähigkeiten, um Fit zwischen Person und Task zu bestimmen; 2. Relationale Attribute, um den fit zwischen Individuum und Teammitgliedern zu bestimmen --> in beiden Fällen müssen auch die Needs einbezogen werden --> Daraus ergeben sich die 3 Haupt-funktionalen-Anforderungen: 1. Multilateraler Prozess, sodass Präferezen mehrerer Personen einbezogen werden müssen; 2. Muss Fit zwischen Person und anderen Teammitgliedern beachten; 3. Individuen können nicht in mehreren Teams zur selben Zeit arbeiten
+- Entwickeln ein Vertrauens-Berchnungs-Modell, welchen das Vertrauen zwischen zuvor unbekannten Individuen vorhersagt; Beachten außerdem soziales Kapital der Kandidaten in Ergänzung zu deren menschlichem Kapital
+
+S. 7\\
+- Annahme: Trust kann als ein Wert ausgedrückt werden
+- Vertrauen unterscheidet sich von Person zu Person, deshalb bildet jede Person ihr eigenes "Web of Trust" --> Wichtig, da Vertrauen von einem Kandidaten zu jedem anderen Teammitglied und umgekehrt bestimmt werden müssen --> Mann kann nicht einfach davon ausgehen, dass Person A Person B vertraut, nur weil es umgekehrt der Fall ist
+- Vertrauen ist ein Wert zw. 0 und 1 --> 0 = Gar kein Vertrauen, 1 = Vertrauenswürdig
+- $t'_{AC} = t_{A->B->C}$ heißt: A vertraut C über den Pfad über B --> Genannt "Vertrauenspfad" --> Pfad muss direkt sein
+- Es muss auch möglich sein, Vertrauen zu berechnen, wenn es keine direkte Verbindung gibt --> Wird über Nutzer-Attribute bestimmt (Content)
+
+S. 8\\
+- Färber wendeten ein Probailistic Latent Aspect Model (PLSA) an, um Personen für Stellen zu empfehlen --> Gehört zu den modelbased Methoden
+- Hier werden die Präferenzen der Nutzer als konvexe Kombination unterliegender latenter Aspekte betrachtet --> Die verschiedenen Aspekte, die einer Bewertung unerliegen können modelliert werden, was zu guten Empfehlungen führt
+
+S. 9\\
+- Kollaborative Trust-Vorhersage:
+- Über Kollaboratives Filtern sollen Kanten (Vertrauen) vorhergesagt werden --> Voraussetzung: Explizite Vertrauensbewertungen benötigt
+- Um Vertrauensbeziehungen zu modellieren wurde ein PLSA Modell in den Kontext der relationalen Empfehlung adaptiert --> Erlaubt es, latente Aspekte zu erfassen, welche einer Vertrauensbewertung von Personen unterliegen
+- Modell-Parameter werden durch den Expectation Maximization Algorithmus bestimmt welcher der Standardalgorithmus für Maximum Lielihood Estimation in Latenten Variablen Modellen ist --> Hat 2 Schritte: --> Ergeben, mit welcher Wahrscheinlichkeit Person A Person B zu einem bestimmten Wert vertraut
+
+S. 10\\
+- Bestimmten ein Latent Aspect Model, um Jobs für Kandidaten basierend auf vorherigen Bewertungen zu empfehlen --> Modell wurde genutzt, um Ähnlichkeiten zwischen Kandidaten zu bestimmen basierend auf vorherigen Job-Bewertungen
+- Sie erstellten Segmente von Kandidaten mit ähnlichen Präferenz-Strukturen basierend auf den Latenten Aspekten, welche sie aus vorherigen Job-Profilen ermittelten
+- Ein Nutzer kann auch zu mehreren Segmenten gehören --> Unterschied zu Clustering, wo ein Nutzer immer nur in einem Cluster siein kann
+
+S. 11
+- Berechnung der Differenz von Wahrscheinlichkeiten, dass zwei Nutzer zum Selben Segment gehören, welches von latent Variable z gebildet wird --> Differenzen werden aufaddiert für alle Latent Aspekte und durch die Anzahl an Segmenten geteilt --> Gibt es kein gemeinsam Bewertetes Job-Profil, ist der Ähnlichkeitswert 0 --> $t'_{AB}=sim_{AB}$
+- Angenommen es gibt die drei Nutzer A, B und C und diese haben sich nicht explizit bewertet, haben aber eine Ähnliche Präferenzstruktur, was die Bewertungen angeht --> Diese Präferenzstrukturen werden genutzt, um einen Ähnlichkeitsbasierte Trust-Werte zu bestimmen
+
+- Oben beschriebene Szenarien werden kombiniert ausgeführt, sodass mehr als ein Trust-Pfad zwischen Individuen existieren kann --> Bestimmten Durchschnitt zur Aggregation
+- Grad an Vertrauen wird als höher bewertet, wenn die Anzahl an --> Daher noch Verrechnung mti der allgemein Vertrauenswürdigsten Verbindung des Zielnutzers
+
+S. 12\\
+- Über die Pfade wurde dann der durchschnittliche Vertrauenswert von allem Gruppenmitgliedern zum neuen Mitglied und umgekehrt bestimmt --> Wie verrechnet wird nicht gesagt
+- System soll nur Vorauswahl treffen --> Finale Entscheidung trifft HR
+
+S. 13\\
+- HR-Manager erhielten Liste mit relevanten Kandidaten --> Aus diesen kann HR dann auswählen
+- Erstellten eine ROC-Kurve: Sensitivity (hit rate) war die Wahrscheinlihkeit, dass ein relevanter Kandidat empfohlen wurde; 1-Sensitivity (miss rate) war die Wahrscheinlichkeit, dass ein irrelevanter Kandidat empfohlen wurde
+- ROC-Kurve plottete die Miss-Rate auf der x-Achse gegen die Hit-Rate auf der y-Achse --> Cut-Off-Value definiert die Suchlänge und bestimmt wie viele der Top-Kandidaten in der Liste aktuell betrachtet werden , wenn die Genauigkeit bewertet wird
+- N=21 Studenten von zwei Universitäten
+- 1. Phase: Studenten erhalten 100 echte Job-Profile und sollten auf einer Skala von 1 bis 5 bewerten, wie sehr die Profile ihre Präferenzen bzgl. mittel- oder langfristigen Karriereperspektiven erfüllen --> Job-Präferenzdaten wurden als Inputdaten für den Recommender genutzt
+- 2. Phase: Studenten fügten Informationen über die Beziehungen zu anderen Teilnehmern hinzu --> Sollten Vertrauen ausdrücken --> 1 bis 5
+- Relationales RS wurde mit einem Subset der Daten trainiert --> Trainings- und Testdaten --> Vergleich mit Originaldaten, um Qualität des Systems zu messen
+
+S. 14\\
+- Auch ROC-Kurve, um Vertrauen vorherzusagen --> dazu pro Student 10 Verbindungen zufällig entfernt und vorhergesagt
+
+Persönliche Kritik\\
+- Sie können nachweisen dass ihr System eine gute Genauigkeit aufweist, was aber fehlt: Wie werden Endergebnisse verrechnet? Ist bilateraler Ansatz tatsächlich besser? Ist Ansatz überhaupt der Richtige, also wie findet HR die Ergebnisse bzw. wie finden Studenten die Ergebnisse?
 \shorthandon{"}
