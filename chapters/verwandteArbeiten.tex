@@ -112,34 +112,12 @@ Der Begriff der wechselseitigen Empfehlungssysteme wurde erstmals von \textcite[
 
 Wechselseitige Empfehlungssysteme zum \ac{PJFit} wurden von \textcite{buettner:2014}, \textcite{ding:2016}, \textcite{wenxing:2015}, \textcite{oezcan:2016}, \textcite{laumer:2009}, \textcite{lee:2007} und \textcite{le:2019} vorgestellt. Diese Autoren bezogen sich nicht direkt auf das Konzept des \acp{PEFit}. Dennoch entwickelten sie Systeme, welche sowohl Präferenzen von Stellensuchenden als auch Personalsachbearbeitern gleichermaßen in den Vorschlagsprozess einbezogen. 
 
-\textcite{ding:2016} entwickelten ein wechselseitiges Empfehlungssystem zur Einstellung von Hochschulabsolventen.
+\textcite[S. 1ff.]{ding:2016} entwickelten ein wechselseitiges Empfehlungssystem zur Einstellung von Hochschulabsolventen. Zur Empfehlung geeigneter Stellen für Kandidaten griff das System auf Informationen über den Nutzer und ehemalige Absolventen der Universität zu. Stellenempfehlungen wurden hierbei über ein mehrstufiges Verfahren bestimmt. Dieses berechnete die Ähnlichkeit des Kandidaten zu vergangenen Absolventen und nutzte deren Stellenentscheidungen als Grundlage für Vorschläge. Zur Empfehlung geeigneter Absolventen für Arbeitgeber lud die Anwendung Informationen über ehemalige Graduierende der Universität, welche nach dem Studium in diesem Unternehmen eine Tätigkeit begonnen hatten. Auch in diesem Fall wurde das mehrstufige Verfahren angewendet, welches als Grundlage für die Empfehlungen die Ähnlichkeit der historischen Absolventen zu den Daten aktueller Graduierender verwendete.
+% Hierbei griffen sie auf historische Daten einer Universität zurück. Die Anwendung erlaubte es Absolventen Profile mit Stellenpräferenzen und Arbeitgebern Profile mit Stellenanforderungen zu erstellen. 
+
+Kritisch ist zum Vorgehen von \textcite[S. 1ff.]{ding:2016} anzumerken, dass die Autoren aus der Anstellung eines Absolventen automatisch auf gegenseitige Präferenzen von Arbeitgeber und Graduierendem schlossen. Jedoch könnte ein Berufseinsteiger auch eine weniger präferierte Stelle angenommen haben, da dessen Wunschposition nicht verfügbar war oder mit einem anderen Kandidaten besetzt wurde. Ebenso könnte ein Arbeitgeber einen weniger passenden Absolventen eingestellt haben, da kein idealer Bewerber vorhanden war oder sich dieser für einen anderen Arbeitgeber entschieden hat. Positiv ist zu diesem Vorgehen jedoch anzumerken, dass ohne hohen Datenerhebungsaufwand auskommt und beispielsweise keine umfangreichen Fragebögen ausgefüllt werden müssen.
 
 \newpage
-\textcite{ding:2016}:\\
-S. 1:\\
-- Entwickelten ein wechselseitiges Empfehlungssystem zum Recruitment von Absolventen
-- Nutzt dafür historische Daten der Universität über Absolventen und frühere Absolventen
-- Nutzen CF und CB
-- System betrachtet Anforderungen von Absolventen UND Arbeitgebern
-- Nutzt historische Informationen der Universität über Absolventen und frühere Absolventen --> Verbessert Genauigkeit
-- Anmerkung von mir: Ist zwar wechselseitig, bezieht sich aber nicht auf den P-E Fit
-
-S. 2\\
-- Es gibt 2 Arten von Nutzern: Arbeitgeber und aktuelle Absolventen (Jobsuchende)
-- Jobsuchende können grundlegende Informationen und Job-Präferenzen in das Recommender System eingeben / Nach Registrierung liest RS automatisch ihre Bildungsinformationen aus dem historischen Daten-Repository
-- Arbeitgeber können grundlegende Informationen über Job-Anforderungen eingeben / Nach Registierung liest RS automatisch alle Bildungsinformationen ehemaliger Absolventen, welche in den letzten drei Jahren bei diesem Arbeitgeber angefangen haben
-- Danach hilft RRSGR die richtigen Bewerber an den Arbeitgeber zu empfehlen
-- Für Absolventen g hilft RRSGR ähnliche ehemalige Absolventen zu finden, welche ähnihce Performance wie g während ihrer Universitätszeit hatten --> Dann kombiniert mit den Jobs aus dem Internet und Jobs von den ehemaligen Absolventen, hilft RRSGR eine Job-Liste für g zu erstellen --> Als letztes priority k-medoids clustering hilft, die meist repräsentativen k jobs auszuwählen und diese auf dem Bildschirm des Nutzers anzuzeigen
-- Für Arbeitgeber wird RRSGR helfen die ehemaligen Absolventen zu finden, welche vom Arbeitgeber von dieser Universität in den letzten drei Jahren angestellt wurden --> Dann hilft RRSGR Kandidaten zu finden, welche eine ähnliche Performance mit den angestellten ehemaligen Studenten aufweist --> Als letztes werden die meist repräsentativen k Absolventen an den Arbeitgeber empfohlen
-
-S. 3\\
-- Jede Entität hat ein Profil; Zwei Entitäten können über korrespondierende Felder in ihren Profilen verglichen werden; Manche wichtigen Felder werden ausgewählt um die Ähnlihckeit zwischen zwei Entitäten zu bestimmen
-- Ähnlichkeit zwischen zwei Entitäten kann über die gewichtete Summe der Ähnlichkeit jedes korrespondierenden Feldes bestimmt werden
-- Um die Diversität zu erhöhen, wählt RRSGR nicht die top k Entitäten im Sinne der Nachbarschafts-Selektion aus --> Binary Trees helfen, zu alleviate überspezifikation und concentration bias
-- Priority k-medoids Clustering: Zur Erhöhung der Diversität bei der Auswahl der k Empfehlungen --> Implementiert über priority cover-tree --> Balance zwischen hohem Rank und Diversität
-
-- Vergleich in Evaluation mit content-based Profile-Similarity (CPS) und CCR und iHR werden mit RRSGR vergleichen / Performance vergleichbar mit iHR --> RRSGR kann aber mehr Diversität bieten
-
 \textcite{wenxing:2015}\\
 S. 1\\
 - Mobil Reciprocal Job Recommender System, genannt iHR+
@@ -532,4 +510,33 @@ S. 14\\
 
 Persönliche Kritik\\
 - Sie können nachweisen dass ihr System eine gute Genauigkeit aufweist, was aber fehlt: Wie werden Endergebnisse verrechnet? Ist bilateraler Ansatz tatsächlich besser? Ist Ansatz überhaupt der Richtige, also wie findet HR die Ergebnisse bzw. wie finden Studenten die Ergebnisse?
+
+\textcite{ding:2016}:\\
+- S. 1: nutzten historische Informationen von vorherigen Absolventen\\
+- S. 2: Sowohl aktuelle Absolventen als auch Arbeitgeber können das System nutzen / Aktuelle Absolventen können grundlegende Informationen und Job-Präferenzen hinterlegen --> Nach der Registrierung lädt System automatisch die Informationen der Hochschule / Arbeitgeber können Informationen über Job-Anforderungen hinterlegen --> Nach Registrierung lädt System die edu-Informationen vergangener Absolventen, welche in den letzten 3 Jahren bei diesem Arbeitgeber angefangen haben / Für Absolventen hilft das System Studenten mit ähnlichen Hochschul-Leistungen zu finden und kombiniert dies mit den extrahierten Jobs aus dem Internet und Jobs, welche die vorherigen Absolventen ausgewählt haben / Arbeitgebern werden Kandidaten empfohlen, welche eine ähnliche Performance aufwiesen wie vorherige Absolventen, welche beim Arbeitgeber angefangen haben\\
+- S. 3: Ähnlichkeitsberechnung erfolgt über Felder in den Profilen / Vergleich u.a. mit reinem Inhaltsbasierten Filtern und \textcite{hong:2013} -->Effektiv
+
+S. 1:\\
+- Entwickelten ein wechselseitiges Empfehlungssystem zum Recruitment von Absolventen
+- Nutzt dafür historische Daten der Universität über Absolventen und frühere Absolventen
+- Nutzen CF und CB
+- System betrachtet Anforderungen von Absolventen UND Arbeitgebern
+- Nutzt historische Informationen der Universität über Absolventen und frühere Absolventen --> Verbessert Genauigkeit
+- Anmerkung von mir: Ist zwar wechselseitig, bezieht sich aber nicht auf den P-E Fit
+
+S. 2\\
+- Es gibt 2 Arten von Nutzern: Arbeitgeber und aktuelle Absolventen (Jobsuchende)
+- Jobsuchende können grundlegende Informationen und Job-Präferenzen in das Recommender System eingeben / Nach Registrierung liest RS automatisch ihre Bildungsinformationen aus dem historischen Daten-Repository
+- Arbeitgeber können grundlegende Informationen über Job-Anforderungen eingeben / Nach Registierung liest RS automatisch alle Bildungsinformationen ehemaliger Absolventen, welche in den letzten drei Jahren bei diesem Arbeitgeber angefangen haben
+- Danach hilft RRSGR die richtigen Bewerber an den Arbeitgeber zu empfehlen
+- Für Absolventen g hilft RRSGR ähnliche ehemalige Absolventen zu finden, welche ähnihce Performance wie g während ihrer Universitätszeit hatten --> Dann kombiniert mit den Jobs aus dem Internet und Jobs von den ehemaligen Absolventen, hilft RRSGR eine Job-Liste für g zu erstellen --> Als letztes priority k-medoids clustering hilft, die meist repräsentativen k jobs auszuwählen und diese auf dem Bildschirm des Nutzers anzuzeigen
+- Für Arbeitgeber wird RRSGR helfen die ehemaligen Absolventen zu finden, welche vom Arbeitgeber von dieser Universität in den letzten drei Jahren angestellt wurden --> Dann hilft RRSGR Kandidaten zu finden, welche eine ähnliche Performance mit den angestellten ehemaligen Studenten aufweist --> Als letztes werden die meist repräsentativen k Absolventen an den Arbeitgeber empfohlen
+
+S. 3\\
+- Jede Entität hat ein Profil; Zwei Entitäten können über korrespondierende Felder in ihren Profilen verglichen werden; Manche wichtigen Felder werden ausgewählt um die Ähnlihckeit zwischen zwei Entitäten zu bestimmen
+- Ähnlichkeit zwischen zwei Entitäten kann über die gewichtete Summe der Ähnlichkeit jedes korrespondierenden Feldes bestimmt werden
+- Um die Diversität zu erhöhen, wählt RRSGR nicht die top k Entitäten im Sinne der Nachbarschafts-Selektion aus --> Binary Trees helfen, zu alleviate überspezifikation und concentration bias
+- Priority k-medoids Clustering: Zur Erhöhung der Diversität bei der Auswahl der k Empfehlungen --> Implementiert über priority cover-tree --> Balance zwischen hohem Rank und Diversität
+
+- Vergleich in Evaluation mit content-based Profile-Similarity (CPS) und CCR und iHR werden mit RRSGR vergleichen / Performance vergleichbar mit iHR --> RRSGR kann aber mehr Diversität bieten
 \shorthandon{"}
