@@ -115,13 +115,24 @@ Wechselseitige Empfehlungssysteme zum \ac{PJFit} wurden von \textcite{buettner:2
 \textcite[S. 1ff.]{ding:2016} entwickelten ein wechselseitiges Empfehlungssystem zur Einstellung von Hochschulabsolventen. Zur Empfehlung geeigneter Stellen für Kandidaten griff das System auf Informationen über den Nutzer und ehemalige Absolventen der Universität zu. Stellenempfehlungen wurden hierbei über ein mehrstufiges Verfahren bestimmt. Dieses berechnete die Ähnlichkeit des Kandidaten zu vergangenen Absolventen und nutzte deren Stellenentscheidungen als Grundlage für Vorschläge. Zur Empfehlung geeigneter Absolventen für Arbeitgeber lud die Anwendung Informationen über ehemalige Graduierende der Universität, welche nach dem Studium in diesem Unternehmen eine Tätigkeit begonnen hatten. Auch in diesem Fall wurde das mehrstufige Verfahren angewendet, welches als Grundlage für die Empfehlungen die Ähnlichkeit der historischen Absolventen zu den Daten aktueller Graduierender verwendete.
 % Hierbei griffen sie auf historische Daten einer Universität zurück. Die Anwendung erlaubte es Absolventen Profile mit Stellenpräferenzen und Arbeitgebern Profile mit Stellenanforderungen zu erstellen. 
 
-Kritisch ist zum Vorgehen von \textcite[S. 1ff.]{ding:2016} anzumerken, dass die Autoren aus der Anstellung eines Absolventen automatisch auf gegenseitige Präferenzen von Arbeitgeber und Graduierendem schlossen. Jedoch könnte ein Berufseinsteiger auch eine weniger präferierte Stelle angenommen haben, da dessen Wunschposition nicht verfügbar war oder mit einem anderen Kandidaten besetzt wurde. Ebenso könnte ein Arbeitgeber einen weniger passenden Absolventen eingestellt haben, da kein idealer Bewerber vorhanden war oder sich dieser für einen anderen Arbeitgeber entschieden hat. Positiv ist zu diesem Vorgehen jedoch anzumerken, dass ohne hohen Datenerhebungsaufwand auskommt und beispielsweise keine umfangreichen Fragebögen ausgefüllt werden müssen.
+Kritisch ist zum Vorgehen von \textcite[S. 1ff.]{ding:2016} anzumerken, dass die Autoren aus der Anstellung eines Absolventen automatisch auf gegenseitige Präferenzen von Arbeitgeber und Graduierendem schlossen. Jedoch könnte ein Berufseinsteiger auch eine weniger präferierte Stelle angenommen haben, da dessen Wunschposition nicht verfügbar war oder mit einem anderen Kandidaten besetzt wurde. Ebenso könnte ein Arbeitgeber einen weniger passenden Absolventen eingestellt haben, da kein idealer Bewerber vorhanden war oder sich dieser für einen anderen Arbeitgeber entschieden hat. Positiv ist zu diesem Vorgehen jedoch anzumerken, dass dieses mit sehr vielen impliziten Daten arbeitete und beispielsweise keine umfangreichen Fragebögen ausgefüllt werden mussten.
+
+Ein weiteres wechselseitiges Empfehlungssystem zur Stellenbesetzung präsentierten \textcite{hong:2013b}.
+
+S. 2: Liefert Erklärungen / Hauptquelle: Nutzerprofile \\
+S. 3: Analysierten Nutzerinformationen von verschiedenen Quellen --> Packen diese Infos in Nutzer Selbstbeschreibung und Nutzer Präferenzen / Nutzen verschiedene Empfehlungsstrategien --> Kombinierten diese Ergebnisse / 2 Nutzergruppen: Jobsuchende und Recruiter / Suchende können Informationen eingeben, Lebenläufe hinzufügen und Jobempfehlungen erhalten; Recruiter genauso / Ein Nutzerprofil hat 3 Informationen: Basisinformation, Extrahierte Informationen und Verhalten\\
+S. 4f: Contentbasierte Ähnlichkeit: Einträge, die auf Präferenzen des Zielnutzers schließen lassen, werden ausgewählt --> Suchbegriff --> Ähnlichkeitsberechnung --> Passende Profile werden geladen\\
+S. 5: Kollaboratives Filtern: Nutzt Verhaltensdaten(z.B. welche Profile angesehen wurden) --> Bestimmt Ähnliche Nutzer und schlägt Profile vor, welche diese auch angesehen haben / Wechselseitige Empfehlung: Ziel: wir haben nutzer u und v --> Selbstbeschreibung von u trifft Präferenzprofil von v und umgekehrt\\
+S. 6: Achteten auf Diversität, wenn ein Recruiter 2 sehr ähnliche Kandidaten bekommt, muss er hohen Aufwand investieren, um die Unterschiede herauszufinden
+
+\textcite{wenxing:2015}:\\
+- 
 
 \newpage
 \textcite{wenxing:2015}\\
 S. 1\\
 - Mobil Reciprocal Job Recommender System, genannt iHR+
-- Teilten Features von Job-Suchenden und Jobs in zwei Kategorien, eine zur Selbst-Beschreibung des Job-Suchenden oder einen Job un ddie andere präsentiert die Präferenzen von ihnen
+- Teilten Features von Job-Suchenden und Jobs in zwei Kategorien, eine zur Selbst-Beschreibung des Job-Suchenden oder einen Job und die andere präsentiert die Präferenzen von ihnen
 - Bi-Directionale Präferenz basiert auf Cross-Similarity und wurde dann berechnet, um eine reciprocale Empfehlung zu erhalten
 - Wechselseitiges Empfehlungssystem erstmals vorgestellt von Pizzato et al
 
@@ -182,7 +193,7 @@ S. 7\\
 - Gutes Bild zum Ansatz
 - Anmerkung von mir: Hat System nicht implementiert
 
-\textcite{hong:2013}\\
+\textcite{hong:2013b}\\
 S. 1:\\
 - Entwickelten iHR (oben ging es um iHR+)
 
@@ -270,13 +281,10 @@ S. 4\\
 \newpage
 So entwickelten \textcite[S. 1ff.]{applyingDataMining:2014} ein bilaterales Empfehlungssystem auf Basis von Data Mining-Technologien. Sie verstanden dabei unter den Wünschen des Nutzers dessen Präferenzen für ein bestimmtes Gehalt oder die Bekanntheit eines potenziellen Arbeitgebers. \textcite[S. 4ff.]{malinowski:2006} interpretierten die Wünsche des Nutzers dagegen als dessen Präferenz für bestimmte Stellenprofile.\\
 Allgemein ist festzustellen, dass zu bilateralen Empfehlungssystemen bislang nur sehr wenig Literatur existiert \cite[S. 2f.]{jobRecommenderSystemsASurvey:2012}.\\
-=======
->>>>>>> master
 
 % Dieses System berücksichtigt Präferenzen von Kandidaten und Arbeitgebern
 % Hybrid, da Profilähnlichkeit (Contentbased) und Kollaboratives Filtern
 \textcite[S. 1ff.]{lu:2013} kombinierten Methoden des inhaltsbasierten Filterns und Nutzerinteraktionen innerhalb eines hybriden graphenbasierten Empfehlungssystems. Die Wissenschaftler erstellten ein Jobportal, in welchem Stellensuchende, Arbeitgeber und Jobausschreibungen in Form von Knoten existierten. Jede dieser Entitäten verfügte über entsprechende textuelle Profilbeschreibungen. Kanten wurden im Graphen hinzugefügt, wenn eine hohe Ähnlichkeit zwischen zwei Profilen bestand. Zusätzlich legte deren System für sämtliche Interaktionen zwischen den Entitäten, wie dem Besuch eines Profils oder dem Bewerben auf eine Stelle, Kanten an. Ein auf dem PageRank basierender Algorithmus unterstützte Stellensuchende und Arbeitgeber auf Grundlage des Graphen bei der Auswahl geeigneter Ausschreibungen bzw. Kandidaten.
-<<<<<<< HEAD
 
 ERLEDIGT:
 \textcite{faerber:2003}\\
