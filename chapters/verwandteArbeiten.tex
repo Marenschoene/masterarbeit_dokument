@@ -110,7 +110,7 @@ Neben denen in diesem Kapitel vorgestellten Publikationen wurden bei der Literat
 \label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme}
 Der Begriff der wechselseitigen Empfehlungssysteme wurde erstmals von \textcite[S. 1]{pizzato:2010} eingeführt, welche eine Recommender Engine im Bereich des Online-Datings entwickelten. Die Autoren verwendeten dabei die Bezeichnung der Wechselseitigkeit, da ihr System sowohl die Präferenzen des aktiven Nutzers als auch der potentiellen Partner gleichermaßen berücksichtigen sollte \cite[S. 1]{pizzato:2010}. In ihrer Publikation nannten \textcite[S. 3]{pizzato:2010} die Veröffentlichung von \textcite[S. 1ff.]{malinowski:2006} als verwandte Arbeit. Hierzu stellten sie fest, dass auch bilaterale Empfehlungssysteme die Präferenzen von zwei Parteien betrachten. Eine klare Unterscheidung zwischen bilateralen und wechselseitigen Empfehlungssystemen nahmen die Autoren jedoch nicht vor \cite[S. 3]{pizzato:2010}. Erst in einer späteren Publikation hielten \textcite[S. 8]{pizzato:2013} eindeutig fest, dass wechselseitig und bilateral zwei unterschiedliche Begriffe für dasselbe Konzept von Empfehlungssystemen sind.
 
-Wechselseitige Empfehlungssysteme zum \ac{PJFit} wurden von \textcite{buettner:2014}, \textcite{ding:2016}, \textcite{wenxing:2015}, \textcite{oezcan:2016}, \textcite{lee:2007} und \textcite{le:2019} vorgestellt. Diese Autoren bezogen sich mit Ausnahme von \textcite{buettner:2014} nicht direkt auf das Konzept des \acp{PEFit}. Dennoch entwickelten sie Systeme, welche sowohl Präferenzen von Stellensuchenden als auch Personalsachbearbeitern gleichermaßen in den Vorschlagsprozess einbezogen. 
+Wechselseitige Empfehlungssysteme zum \ac{PJFit} wurden von \textcite{buettner:2014}, \textcite{ding:2016}, \textcite{wenxing:2015}, \textcite{oezcan:2016} und \textcite{le:2019} vorgestellt. Diese Autoren bezogen sich mit Ausnahme von \textcite{buettner:2014} nicht direkt auf das Konzept des \acp{PEFit}. Dennoch entwickelten sie Systeme, welche sowohl Präferenzen von Stellensuchenden als auch Personalsachbearbeitern gleichermaßen in den Vorschlagsprozess einbezogen. 
 
 \subsection{System zur Einstellung von Hochschulabsolventen}
 \label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:absolventen}
@@ -188,53 +188,6 @@ S. 7\\
 - Gutes Bild zum Ansatz
 - Anmerkung von mir: Hat System nicht implementiert
 
-\textcite{lee:2007}\\
-S. 2\\
-- Entwickelten das Job Empfehlungssystem Proactive
-- Ziel: Studenten an der Universität Pittsburgh bei der Jobsuche zu helfen
-
-S. 3\\
-- Zum Beginn der Session zeigt Proactive Job-Postings der letzten 24 Stunden --> Wenn man auf den Titel klick, sieht man die zugehörige Details
-- Wenn ein Nutzer diesen Job interessant findet, fügt er ihn auf seine Interessen-Liste hinzu
-- Basierend auf den Eigenschaften der favorisierten Job, werden Empfehlungen generiert --> Also immer wenn ein Job zu den Favoriten hinzugefügt wird, wird eine Liste mit Empfohlenen Jobs generiert
-- Auch können Nutzer ihre bevorzugte Job-Kategorie auswählen und verschiedene Informationen hinsichtlich Jobs, wie Ort, Bildung, etc. hinzufügen
-- Nach der Analyse der Präferenzen des Nutzers, schlägt das System eine Gruppe von Jobs als "Preferred Jobs" vor
-- Es gibt zwei Gruppen von Nutzern: 1. Studenten, die eine Karriere in der Informations Technologie machen wollen --> Besuchen Job-Such-Seiten, um Karriereziele zu erstellen und ihren zukünftigen Weg zu planen / 2. Jobsuchende, die schon im Job sind, aber einen neuen Job suchen --> Haben klare Karriereziele und präferieren Ergebnisse nah an ihren vordefinierten Interessen
-- Es gibt 4 Interfaces: Kürzliche Jobs, Erweiterte Suche, Empfohlene Jobs und bevorzugte Jobs --> Kürzliche Jobs werden beim Login angezgit --> Stammen alle aus der Externen Quelle Yahoo! HotJobs der letzten 24 Stunden --> Informationen sind gleich für alle Nutzer
-
-S. 4\\
-- Auf allen 4 Seiten kann der Nutzer Jobs zu Favoriten hinzufügen --> System interpretiert dies als aktuelle Job-Interessen / Durch Analyse der Charakteristiken jeder Facette des Jobs werden empfohlene Jobs empfohlen
-- Proactive bietet ein Menü für die Einstellung der Nutzerpräferenzen --> Nutzer können hier Job-Kategorien, Orte, Gehalt, etc. festlegen
-- Wenn sie Präferenzen erstellen, generiert das System bevorzugte Jobs
-
-S. 5\\
-- Externe Website wird gecrawlt --> Informationen werden durch einen Ontologie Checker klassifiziert --> Es gibt schon eine vordefinierte Ontologie --> Ontologie-Checker matcht Daten mit Ontologie und verfiziert die Klassifikation --> Danach Speicherung
-- Profile Analyzer-Komponente macht die Empfehlungen --> Wenn ein Nutzer die Liste ändert, list der Analyzer die Liste ein und berechnet die Gewichte darin neu. Über Vergleich zwischen den Differenzen der Distanzen in den Gewichten mit aktuell offnenen Jobs, wird eine Liste mit empfohlenen Jobs erstellt --> Liste wird zusätzlich alle 4 Stunden aktualisiert
-- Präferenz-Analyzer interpretiert die expliziten Nutzerpräferenzen und macht eine Empfehlung in der Form von bevorzugten Jobs / Nach Berechnugn der Ähnlichkeit von Jobs zu den Nutzerpräferenzen zeigt es die Liste an
-
-\textcite{applyingDataMining:2014}\\
-Anmerkung von mir: --> Nicht bilateral\\
-- rein content-based
-S. 2\\
-- Es sollen Empfehlungen auf zwei Wegen generiert werden: 1. Kandidaten für Rekruiter und 2. Jobs an Kandidaten, welche zu ihrem Profil passen --> Dieses Paper fokussiert nur den zweiten Part
-
-S. 3\\
-- Zwei Kategorien: Kandidat und Job / Jedes hat Features
-- Kandidaten werden auf Basis ihrer Daten in verschiedene Gruppen geteilt, damit man das Verhalten des Kandidaten für die jeweilige Gruppe herausfinden kann / Gruppe zur Auswahl eines bestimmten Jobs auf der Basis von 4 Parametern
-- Einbeziehung von Domänenwissen zu Job-Verwandten Themen und Skills in der Featureliste des Kandidaten --> S. 4 z.B. Objektorientierte Sprachen C++, Java, etc.
-
-S. 4\\
-- Es wurde ein Entscheidungsbaum erstellt, um Kandidaten und Jobs in Gruppen zu teilen --> Basierend auf Merkmalen
-
-S. 5\\
-Ablauf:
-1. Auswahl aller Jobs, für die der Kandidat überhaupt qualifiziert ist + Entfernen redundanter Jobs
-2. Content Based ISmilarity über Kosinusdistanz mit benötigten und vorhandenen Skills werden berechnet
-3. Anwendung des Entscheidungsbaums: Erstmal Kategorisierung der Jobs; \\
-
-S. 6
-- Ab 10 Bewerbungen werden auch vergangene Bewerbungsdaten des Kandidaten in den Empfehlungsprozess einbezogen
-
 \textcite{le:2019}
 S. 1\\
 - Intrpretierbares System zeigt Gründe an, weshalb ein Job empfohlen bzw. nicht empfohlen wurde an einige Leute und umgekehrt
@@ -256,6 +209,8 @@ S. 3\\
 
 S. 4\\
 - Matching Model: Soll aus Intention-Vektoren vorhersagen, ob es zu einem Interview kommen wird
+
+\textcite[S. 1ff.]{lu:2013}
 
 \newpage
 So entwickelten \textcite[S. 1ff.]{applyingDataMining:2014} ein bilaterales Empfehlungssystem auf Basis von Data Mining-Technologien. Sie verstanden dabei unter den Wünschen des Nutzers dessen Präferenzen für ein bestimmtes Gehalt oder die Bekanntheit eines potenziellen Arbeitgebers. \textcite[S. 4ff.]{malinowski:2006} interpretierten die Wünsche des Nutzers dagegen als dessen Präferenz für bestimmte Stellenprofile.\\
@@ -560,4 +515,27 @@ S. 3\\
 \textcite{hong:2013b}\\
 S. 1:\\
 - Entwickelten iHR (oben ging es um iHR+)
+
+\textcite{applyingDataMining:2014}\\
+Anmerkung von mir: --> Nicht bilateral\\
+- rein content-based
+S. 2\\
+- Es sollen Empfehlungen auf zwei Wegen generiert werden: 1. Kandidaten für Rekruiter und 2. Jobs an Kandidaten, welche zu ihrem Profil passen --> Dieses Paper fokussiert nur den zweiten Part
+
+S. 3\\
+- Zwei Kategorien: Kandidat und Job / Jedes hat Features
+- Kandidaten werden auf Basis ihrer Daten in verschiedene Gruppen geteilt, damit man das Verhalten des Kandidaten für die jeweilige Gruppe herausfinden kann / Gruppe zur Auswahl eines bestimmten Jobs auf der Basis von 4 Parametern
+- Einbeziehung von Domänenwissen zu Job-Verwandten Themen und Skills in der Featureliste des Kandidaten --> S. 4 z.B. Objektorientierte Sprachen C++, Java, etc.
+
+S. 4\\
+- Es wurde ein Entscheidungsbaum erstellt, um Kandidaten und Jobs in Gruppen zu teilen --> Basierend auf Merkmalen
+
+S. 5\\
+Ablauf:
+1. Auswahl aller Jobs, für die der Kandidat überhaupt qualifiziert ist + Entfernen redundanter Jobs
+2. Content Based ISmilarity über Kosinusdistanz mit benötigten und vorhandenen Skills werden berechnet
+3. Anwendung des Entscheidungsbaums: Erstmal Kategorisierung der Jobs; \\
+
+S. 6
+- Ab 10 Bewerbungen werden auch vergangene Bewerbungsdaten des Kandidaten in den Empfehlungsprozess einbezogen
 \shorthandon{"}
