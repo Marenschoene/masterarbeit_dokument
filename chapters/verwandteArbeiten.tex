@@ -112,45 +112,34 @@ Der Begriff der wechselseitigen Empfehlungssysteme wurde erstmals von \textcite[
 
 Wechselseitige Empfehlungssysteme zum \ac{PJFit} wurden von \textcite{buettner:2014}, \textcite{ding:2016}, \textcite{wenxing:2015}, \textcite{oezcan:2016}, \textcite{laumer:2009}, \textcite{lee:2007} und \textcite{le:2019} vorgestellt. Diese Autoren bezogen sich nicht direkt auf das Konzept des \acp{PEFit}. Dennoch entwickelten sie Systeme, welche sowohl Präferenzen von Stellensuchenden als auch Personalsachbearbeitern gleichermaßen in den Vorschlagsprozess einbezogen. 
 
+\subsection{System zur Einstellung von Hochschulabsolventen}
+\label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:absolventen}
 \textcite[S. 1ff.]{ding:2016} entwickelten ein wechselseitiges Empfehlungssystem zur Einstellung von Hochschulabsolventen. Zur Empfehlung geeigneter Stellen für Kandidaten griff das System auf Informationen über den Nutzer und ehemalige Absolventen der Universität zu. Stellenempfehlungen wurden hierbei über ein mehrstufiges Verfahren bestimmt. Dieses berechnete die Ähnlichkeit des Kandidaten zu vergangenen Absolventen und nutzte deren Stellenentscheidungen als Grundlage für Vorschläge. Zur Empfehlung geeigneter Absolventen für Arbeitgeber lud die Anwendung Informationen über ehemalige Graduierende der Universität, welche nach dem Studium in diesem Unternehmen eine Tätigkeit begonnen hatten. Auch in diesem Fall wurde das mehrstufige Verfahren angewendet, welches als Grundlage für die Empfehlungen die Ähnlichkeit der historischen Absolventen zu den Daten aktueller Graduierender verwendete.
 % Hierbei griffen sie auf historische Daten einer Universität zurück. Die Anwendung erlaubte es Absolventen Profile mit Stellenpräferenzen und Arbeitgebern Profile mit Stellenanforderungen zu erstellen. 
 
 Kritisch ist zum Vorgehen von \textcite[S. 1ff.]{ding:2016} anzumerken, dass die Autoren aus der Anstellung eines Absolventen automatisch auf gegenseitige Präferenzen von Arbeitgeber und Graduierendem schlossen. Jedoch könnte ein Berufseinsteiger auch eine weniger präferierte Stelle angenommen haben, da dessen Wunschposition nicht verfügbar war oder mit einem anderen Kandidaten besetzt wurde. Ebenso könnte ein Arbeitgeber einen weniger passenden Absolventen eingestellt haben, da kein idealer Bewerber vorhanden war oder sich dieser für einen anderen Arbeitgeber entschieden hat. Positiv ist zu diesem Vorgehen jedoch anzumerken, dass dieses mit sehr vielen impliziten Daten arbeitete und beispielsweise keine umfangreichen Fragebögen ausgefüllt werden mussten.
 
-Ein weiteres wechselseitiges Empfehlungssystem zur Stellenbesetzung präsentierten \textcite{hong:2013b}.
+\subsection{System zur Empfehlung von Nutzern}
+\label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:nutzer}
+Ein weiteres wechselseitiges Empfehlungssystem zur Stellenbesetzung präsentierten \textcite[S. 1ff.]{wenxing:2015}. Bei dieser Anwendung handelte es sich um ein System zur Empfehlung von Nutzern, welches Stellensuchenden passende Personalsachbearbeiter und umgekehrt vorschlug. Wie in Abbildung \ref{fig:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:abb1} dargestellt, teilte die Anwendung die hinterlegten Informationen der beiden Gruppen von Nutzern in die Kategorien Selbstbeschreibung und Präferenz.
 
-S. 2: Liefert Erklärungen / Hauptquelle: Nutzerprofile \\
-S. 3: Analysierten Nutzerinformationen von verschiedenen Quellen --> Packen diese Infos in Nutzer Selbstbeschreibung und Nutzer Präferenzen / Nutzen verschiedene Empfehlungsstrategien --> Kombinierten diese Ergebnisse / 2 Nutzergruppen: Jobsuchende und Recruiter / Suchende können Informationen eingeben, Lebenläufe hinzufügen und Jobempfehlungen erhalten; Recruiter genauso / Ein Nutzerprofil hat 3 Informationen: Basisinformation, Extrahierte Informationen und Verhalten\\
-S. 4f: Contentbasierte Ähnlichkeit: Einträge, die auf Präferenzen des Zielnutzers schließen lassen, werden ausgewählt --> Suchbegriff --> Ähnlichkeitsberechnung --> Passende Profile werden geladen\\
-S. 5: Kollaboratives Filtern: Nutzt Verhaltensdaten(z.B. welche Profile angesehen wurden) --> Bestimmt Ähnliche Nutzer und schlägt Profile vor, welche diese auch angesehen haben / Wechselseitige Empfehlung: Ziel: wir haben nutzer u und v --> Selbstbeschreibung von u trifft Präferenzprofil von v und umgekehrt\\
-S. 6: Achteten auf Diversität, wenn ein Recruiter 2 sehr ähnliche Kandidaten bekommt, muss er hohen Aufwand investieren, um die Unterschiede herauszufinden
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{gfx/hong-tabelle.png}
+	\caption{Tabelle mit Merkmalskategorien im wechselseitigen Empfehlungssystem von \textcite[S. 2]{wenxing:2015}}
+	\label{fig:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:abb1}
+\end{figure}
 
-\textcite{wenxing:2015}:\\
-- 
+Wie in Abbildung \ref{fig:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:abb1} zu erkennen, entsprach jedes Merkmal in der Selbstbeschreibung der Jobsuchenden einem Merkmal der Präferenzen der Personalsachbearbeiter und umgekehrt. Empfehlungen berechnete das Empfehlungssystem über die Kosinus-Ähnlichkeit, welche anhand von Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel1} vorgestellt wurde. Hierbei stellte die Anwendung die Merkmale der Nutzer in Form von Vektoren da. Zur Vorschlagsbestimmung für Stellensuchende bestimmte das System die Ähnlichkeit zwischen der Selbstbeschreibung des zugreifenden Anwenders und den Präferenzen aller verfügbaren Personalsachbearbeiter. Außerdem wurde die Ähnlichkeit zwischen den Selbstbeschreibungen der Personalsachbearbeiter und den Präferenzen des zugreifenden Nutzers bestimmt. In einem letzten Schritt addierte das System die in den beiden vorherigen Rechenschritten erhaltenen Ähnlichkeiten zwischen zugreifendem Nutzer und Personalsachbearbeitern auf und gab die $N$ HR-Mitarbeiter zurück, bei welchen der höchste wechselseitige Wert bestimmt werden konnte. Die Berechnung der relevantesten Stellensuchenden aus Sicht der Personalsachbearbeiter wurde analog durchgeführt \cite[S. 2f.]{wenxing:2015}.
+
+Positiv ist zum Vorgehen von \textcite[S. 1ff.]{wenxing:2015} anzumerken, dass dieses das Konzept des \acp{PEFit} sehr exakt erfüllte, auch wenn sich die Wissenschaftler nicht direkt auf diese Theorie bezogen. So fand auf Seiten beider Anwendergruppen eine eindeutige Einteilung in Nachfrage- und Angebotsperspektive statt, welche bei der Berechnung von Empfehlungen gleichermaßen berücksichtigt wurden. Kritisch ist festzustellen, dass die in Abbildung \ref{fig:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:abb1} dargestellten Präferenzen von den Nutzern nicht, wie in Kapitel \ref{ch:personEnvironmentFit:wichtigkeiten} behandelt, gewichtet werden konnten. Somit arbeitete das Empfehlungssystem mit der impliziten Prämisse, dass jede ermittelte Präferenz gleich wichtig sei. Außerdem wurde nicht evaluiert, ob das wechselseitige Empfehlungssystem wie geplant zu einer "win-win Situation"\footnote{"win-win situation" - \textcite[S. 3, Z. 45f.]{wenxing:2015}} \cite[S. 3, Z. 45f.]{wenxing:2015} führte. So wäre es auch denkbar, dass das System statt eines gemeinsamen optimalen Ergebnisses einen kleinsten gemeinsamen Nenner bestimmte, mit welchem weder Stellensuchende noch Personalsachbearbeiter zufrieden wären.
+
+Eine Evaluation führten \textcite[S. 8]{hong:2013b} lediglich mit einem Vorgängersystem der vorgestellten Anwendung durch. Dabei verglichen die Wissenschaftler die Nutzererfahrung ihres wechselseitigen Empfehlungssystems mit klassischem kollaborativem und inhaltsbasiertem Filtern anhand einer Nutzerstudie. Das wechselseitige Empfehlungssystem wurde hierbei in den Punkten Interpretierbarkeit, Diversität und Sortierung besser als die beiden anderen Methoden bewertet. Unter dem Gesichtspunkt der Relevanz stuften die Nutzer die Ergebnisse des wechselseitigen Empfehlungssystems jedoch lediglich als ähnlich relevant zu den Resultaten des klassischen kollaborativen Filterns ein. Somit ist fraglich, ob die Realisierung des wechselseitigen Empfehlungssystems aus wirtschaftlicher Sicht lohnenswert ist. Außerdem muss kritisiert werden, die Bewertungen nicht nach Nutzergruppen aufgeschlüsselt wurden. Somit ist nicht feststellbar, ob die Ergebnisse der beiden Gruppen voneinander abwichen. Im Sinne des \acp{PEFit} muss darüber hinaus angemerkt werden, dass die Relevanz für sämtliche Nutzer anhand gleicher Fragen erhoben wurde. Somit kann nicht festgestellt werden, ob das wechselseitige Empfehlungssystem die Erkenntnisse der Psychologen aus Kapitel \ref{ch:personEnvironmentFit:supplementaryUndComplementary} bestätigen kann. Deren Forschungen zu Folge führt ein \ac{PEFit} aus Sicht der Personalsachbearbeiter zu einer guten Arbeitsleistung und aus Perspektive der Angestellten zu einer hohen Zufriedenheit.
 
 \newpage
-\textcite{wenxing:2015}\\
-S. 1\\
-- Mobil Reciprocal Job Recommender System, genannt iHR+
-- Teilten Features von Job-Suchenden und Jobs in zwei Kategorien, eine zur Selbst-Beschreibung des Job-Suchenden oder einen Job und die andere präsentiert die Präferenzen von ihnen
-- Bi-Directionale Präferenz basiert auf Cross-Similarity und wurde dann berechnet, um eine reciprocale Empfehlung zu erhalten
-- Wechselseitiges Empfehlungssystem erstmals vorgestellt von Pizzato et al
-
-S. 2\\
-- Relationen unter Nutzern werden über cross-similarity modelliert, welche indizieren die bi-directionale Präferenz zwischen denen
-- Es gibt zwei Sets von Nutzern: Job-Suchende J und Recruiter R; Jeder Nutzer hat eine Selbst-Beschreibung Fs und eine Präferenz Fp, welche beschreibt, was er bevorzugt
-- Cross-Similarity: Es gibt einen Jobsuchenden j und einen Recruiter r --> die Präferenz von j zu r (Pjr) ist definiert als die Ähnlichkeit zwischen $F_j^p$ und $F_r^s$; Die Präferenz von r zu j (Prj)ist definiert als die Ähnlichkeit zwischen Präferenz des Recruiters und Selbstbeschreibung es Suchenden / Bidirektionale Präferenz CS zwischen j und r ist definiert als die gewichtete Summe von Pjr und Prj
-
-- Kosinus-Ähnlichkeit
-- Zuerst werden die basic Features der Nutzer extrahiert --> Dann Features in Vektoren
-
-S. 3\\
-- Dann Ähnlichkeitsberechnung
-- Anmerkung von mir: Keine Evaluation und keine Anlehnung an P-E Fit, trifft es aber
-
 \textcite{oezcan:2016}\\
 S. 1\\
-- Wechselseitiges Empfehlungssystem CCRS --> Es können Job-Angebote veröffentlicht weren; Kandidaten können wechselseitig Feedback erhalten, durch das Nutzerprofil, Interaktion und Präferenz-Information und alles zusammen
+- Wechselseitiges Empfehlungssystem CCRS --> Es können Job-Angebote veröffentlicht werden; Kandidaten können wechselseitig Feedback erhalten, durch das Nutzerprofil, Interaktion und Präferenz-Information und alles zusammen
 
 S. 2\\
 - Kandidatenprofil besteht aus 19 Merkmalen
@@ -192,10 +181,6 @@ S. 7\\
 - Aggregation-Funktion A stellt ein Multi Criteria Decision Making (MCDM) Problem da --> Problem: Ein sehr niedriger Wert kann durch einen sehr hohen Wert ausgeglichen werden
 - Gutes Bild zum Ansatz
 - Anmerkung von mir: Hat System nicht implementiert
-
-\textcite{hong:2013b}\\
-S. 1:\\
-- Entwickelten iHR (oben ging es um iHR+)
 
 \textcite{laumer:2009}\\
 - Anmerkung: Forschten am HRIS in FFM
@@ -547,4 +532,38 @@ S. 3\\
 - Priority k-medoids Clustering: Zur Erhöhung der Diversität bei der Auswahl der k Empfehlungen --> Implementiert über priority cover-tree --> Balance zwischen hohem Rank und Diversität
 
 - Vergleich in Evaluation mit content-based Profile-Similarity (CPS) und CCR und iHR werden mit RRSGR vergleichen / Performance vergleichbar mit iHR --> RRSGR kann aber mehr Diversität bieten
+
+\textcite{hong:2013b}:\\
+S. 2: Liefert Erklärungen / Hauptquelle: Nutzerprofile \\
+S. 3: Analysierten Nutzerinformationen von verschiedenen Quellen --> Packen diese Infos in Nutzer Selbstbeschreibung und Nutzer Präferenzen / Nutzen verschiedene Empfehlungsstrategien --> Kombinierten diese Ergebnisse / 2 Nutzergruppen: Jobsuchende und Recruiter / Suchende können Informationen eingeben, Lebenläufe hinzufügen und Jobempfehlungen erhalten; Recruiter genauso / Ein Nutzerprofil hat 3 Informationen: Basisinformation, Extrahierte Informationen und Verhalten\\
+S. 4f: Contentbasierte Ähnlichkeit: Einträge, die auf Präferenzen des Zielnutzers schließen lassen, werden ausgewählt --> Suchbegriff --> Ähnlichkeitsberechnung --> Passende Profile werden geladen\\
+S. 5: Kollaboratives Filtern: Nutzt Verhaltensdaten(z.B. welche Profile angesehen wurden) --> Bestimmt Ähnliche Nutzer und schlägt Profile vor, welche diese auch angesehen haben / Wechselseitige Empfehlung: Ziel: wir haben nutzer u und v --> Selbstbeschreibung von u trifft Präferenzprofil von v und umgekehrt\\
+S. 6: Achteten auf Diversität, wenn ein Recruiter 2 sehr ähnliche Kandidaten bekommt, muss er hohen Aufwand investieren, um die Unterschiede herauszufinden
+
+\textcite{wenxing:2015}:\\
+- S. 1: Merkmale von Job-Suchenden und Recruitern werden in 2 Kategorien geteilt: Selbstbeschreibung und Präferenzen / Bilaterale Beziehungen zwischen Nutzern wurden als Cross-Similarity modelliert\\
+- S. 2: Es gibt zwei Sets an Nutzern: Job-Suchende und Recruiter --> Jeder Nutzer verwaltet eine Selbtsbeschreibung und eine Präferenz, welche beschreibt was er präferiert / Cross-Similarity: Präferenz eines Suchenden für einen Rekruiter ist definiert als die Ähnlichkeit zwischen der Präferenz des Suchenden und der Selbstbeschreibung des Rekruiters (und umgekehrt) --> Bi-Dikretionale Präferenz zwischen j und r ist definiert als die gewichtete Summe von den beiden Präferenz-Berechnungen / Anmerkung: Es werden keine Stellen, sondern tatsächlich Nutzer empfohlen / Teilten nutzerspezifische Infos in zwei Kategorien: Selbstbeschreibung und Präferenz --> Features in Vektoren --> Es gibt eine eins-zu-eins-Korrespondenz zwischen Selbstbeschreibung und Präferenzen / Ähnlichkeitsberechnung über Kosinusdistanz\\
+- S. 3: Bestimmten Präferenzwert für Suchenden und Recruiter --> Addierten beide Werte auf --> Empfehle die Nutzer mit dem höchsten Wert
+
+S. 1\\
+- Mobil Reciprocal Job Recommender System, genannt iHR+
+- Teilten Features von Job-Suchenden und Jobs in zwei Kategorien, eine zur Selbst-Beschreibung des Job-Suchenden oder einen Job und die andere präsentiert die Präferenzen von ihnen
+- Bi-Directionale Präferenz basiert auf Cross-Similarity und wurde dann berechnet, um eine reciprocale Empfehlung zu erhalten
+- Wechselseitiges Empfehlungssystem erstmals vorgestellt von Pizzato et al
+
+S. 2\\
+- Relationen unter Nutzern werden über cross-similarity modelliert, welche indizieren die bi-directionale Präferenz zwischen denen
+- Es gibt zwei Sets von Nutzern: Job-Suchende J und Recruiter R; Jeder Nutzer hat eine Selbst-Beschreibung Fs und eine Präferenz Fp, welche beschreibt, was er bevorzugt
+- Cross-Similarity: Es gibt einen Jobsuchenden j und einen Recruiter r --> die Präferenz von j zu r (Pjr) ist definiert als die Ähnlichkeit zwischen $F_j^p$ und $F_r^s$; Die Präferenz von r zu j (Prj)ist definiert als die Ähnlichkeit zwischen Präferenz des Recruiters und Selbstbeschreibung es Suchenden / Bidirektionale Präferenz CS zwischen j und r ist definiert als die gewichtete Summe von Pjr und Prj
+
+- Kosinus-Ähnlichkeit
+- Zuerst werden die basic Features der Nutzer extrahiert --> Dann Features in Vektoren
+
+S. 3\\
+- Dann Ähnlichkeitsberechnung
+- Anmerkung von mir: Keine Evaluation und keine Anlehnung an P-E Fit, trifft es aber
+
+\textcite{hong:2013b}\\
+S. 1:\\
+- Entwickelten iHR (oben ging es um iHR+)
 \shorthandon{"}
