@@ -110,7 +110,7 @@ Neben denen in diesem Kapitel vorgestellten Publikationen wurden bei der Literat
 \label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme}
 Der Begriff der wechselseitigen Empfehlungssysteme wurde erstmals von \textcite[S. 1]{pizzato:2010} eingeführt, welche eine Recommender Engine im Bereich des Online-Datings entwickelten. Die Autoren verwendeten dabei die Bezeichnung der Wechselseitigkeit, da ihr System sowohl die Präferenzen des aktiven Nutzers als auch der potentiellen Partner gleichermaßen berücksichtigen sollte \cite[S. 1]{pizzato:2010}. In ihrer Publikation nannten \textcite[S. 3]{pizzato:2010} die Veröffentlichung von \textcite[S. 1ff.]{malinowski:2006} als verwandte Arbeit. Hierzu stellten sie fest, dass auch bilaterale Empfehlungssysteme die Präferenzen von zwei Parteien betrachten. Eine klare Unterscheidung zwischen bilateralen und wechselseitigen Empfehlungssystemen nahmen die Autoren jedoch nicht vor \cite[S. 3]{pizzato:2010}. Erst in einer späteren Publikation hielten \textcite[S. 8]{pizzato:2013} eindeutig fest, dass wechselseitig und bilateral zwei unterschiedliche Begriffe für dasselbe Konzept von Empfehlungssystemen sind.
 
-Wechselseitige Empfehlungssysteme zum \ac{PJFit} wurden von \textcite{buettner:2014}, \textcite{ding:2016}, \textcite{wenxing:2015}, \textcite{oezcan:2016}, \textcite{laumer:2009}, \textcite{lee:2007} und \textcite{le:2019} vorgestellt. Diese Autoren bezogen sich nicht direkt auf das Konzept des \acp{PEFit}. Dennoch entwickelten sie Systeme, welche sowohl Präferenzen von Stellensuchenden als auch Personalsachbearbeitern gleichermaßen in den Vorschlagsprozess einbezogen. 
+Wechselseitige Empfehlungssysteme zum \ac{PJFit} wurden von \textcite{buettner:2014}, \textcite{ding:2016}, \textcite{wenxing:2015}, \textcite{oezcan:2016}, \textcite{laumer:2009}, \textcite{lee:2007} und \textcite{le:2019} vorgestellt. Diese Autoren bezogen sich mit Ausnahme von \textcite{buettner:2014} nicht direkt auf das Konzept des \acp{PEFit}. Dennoch entwickelten sie Systeme, welche sowohl Präferenzen von Stellensuchenden als auch Personalsachbearbeitern gleichermaßen in den Vorschlagsprozess einbezogen. 
 
 \subsection{System zur Einstellung von Hochschulabsolventen}
 \label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:absolventen}
@@ -119,9 +119,9 @@ Wechselseitige Empfehlungssysteme zum \ac{PJFit} wurden von \textcite{buettner:2
 
 Kritisch ist zum Vorgehen von \textcite[S. 1ff.]{ding:2016} anzumerken, dass die Autoren aus der Anstellung eines Absolventen automatisch auf gegenseitige Präferenzen von Arbeitgeber und Graduierendem schlossen. Jedoch könnte ein Berufseinsteiger auch eine weniger präferierte Stelle angenommen haben, da dessen Wunschposition nicht verfügbar war oder mit einem anderen Kandidaten besetzt wurde. Ebenso könnte ein Arbeitgeber einen weniger passenden Absolventen eingestellt haben, da kein idealer Bewerber vorhanden war oder sich dieser für einen anderen Arbeitgeber entschieden hat. Positiv ist zu diesem Vorgehen jedoch anzumerken, dass dieses mit sehr vielen impliziten Daten arbeitete und beispielsweise keine umfangreichen Fragebögen ausgefüllt werden mussten.
 
-\subsection{iHR+}
+\subsection{Wechselseitige Empfehlungen mittels Kosinus-Distanz}
 \label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:nutzer}
-Ein weiteres wechselseitiges Empfehlungssystem zur Stellenbesetzung präsentierten \textcite[S. 1ff.]{wenxing:2015} unter dem Namen iHR+. Dieses System richtete sich an Personalsachbearbeiter und Stellensuchende. Wie in Abbildung \ref{fig:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:abb1} dargestellt, teilte die Anwendung die hinterlegten Informationen der beiden Gruppen von Nutzern in die Kategorien Selbstbeschreibung und Präferenz.
+Ein weiteres wechselseitiges Empfehlungssystem zur Stellenbesetzung präsentierten \textcite[S. 1ff.]{wenxing:2015}. Dieses System richtete sich an Personalsachbearbeiter und Stellensuchende. Wie in Abbildung \ref{fig:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:abb1} dargestellt, teilte die Anwendung die hinterlegten Informationen der beiden Gruppen von Nutzern in die Kategorien Selbstbeschreibung und Präferenz.
 
 \begin{figure}[h]
 	\centering
@@ -136,6 +136,11 @@ Positiv ist zum Vorgehen von \textcite[S. 1ff.]{wenxing:2015} anzumerken, dass d
 
 Eine Evaluation führten \textcite[S. 1ff.]{hong:2013b} lediglich mit einem Vorgängersystem der vorgestellten Anwendung durch. Hierbei bestimmten die Wissenschaftler wechselseitige Empfehlungen mit einem hybriden System, welches die Ergebnisse von kollaborativem Filtern, inhaltsbasiertem Filtern und einem Greedy-Algorithmus kombinierte. In der Evaluation verglichen die Wissenschaftler die Nutzererfahrung ihres wechselseitigen Empfehlungssystems dem rein klassische kollaborativen und rein inhaltsbasierten Filtern anhand einer Nutzerstudie. Das wechselseitige Empfehlungssystem wurde hierbei in den Punkten Interpretierbarkeit, Diversität und Sortierung besser als die beiden anderen Methoden bewertet. Unter dem Gesichtspunkt der Relevanz stuften die Nutzer die Ergebnisse des wechselseitigen Empfehlungssystems jedoch lediglich als ähnlich relevant zu den Resultaten des klassischen kollaborativen Filterns ein. Somit ist fraglich, ob die Realisierung des wechselseitigen Empfehlungssystems aus wirtschaftlicher Sicht lohnenswert ist. Außerdem muss kritisiert werden, die Bewertungen nicht nach Nutzergruppen aufgeschlüsselt wurden. Somit ist nicht feststellbar, ob die Ergebnisse der beiden Gruppen voneinander abwichen. Im Sinne des \acp{PEFit} muss darüber hinaus angemerkt werden, dass die Relevanz für sämtliche Nutzer anhand gleicher Fragen erhoben wurde. Somit kann nicht festgestellt werden, ob das wechselseitige Empfehlungssystem die Erkenntnisse der Psychologen aus Kapitel \ref{ch:personEnvironmentFit:supplementaryUndComplementary} bestätigen kann. Deren Forschungen zu Folge führt ein \ac{PEFit} aus Sicht der Personalsachbearbeiter zu einer guten Arbeitsleistung und aus Perspektive der Angestellten zu einer hohen Zufriedenheit.
 
+Ein System basierend auf Berechnung der Kosinus-Ähnlichkeit präsentierten auch \textcite[S. 1ff.]{oezcan:2016}. Dieses bezog zusätzlich Nutzerinteraktionen in den wechselseitigen Empfehlungsprozess ein.
+
+\subsection{Özcan}
+\label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:oezcan}
+
 \newpage
 \textcite{oezcan:2016}\\
 S. 1\\
@@ -148,7 +153,7 @@ S. 3\\
 - Zusätzlich gibt es 9 weitere Merkmale, Reflektieren die Aktionen der job-Ausschreibenden Unternehmen auf dem CV des Kandidaten (z.B. CV geöffnet, gedruckt, etc.)
 - Und es gibt Job-Profil Features (z.B. Ort, Unternehmen, Sektor, etc.)
 
-- Empfehlungserstellung für den Kandidaten: 1. Die 10 Prozent ähnlichsten Kandidaten zum Kandidat werden bestimmt --> Wenn es kein Cod Start ist, wird auch der Kandidat selbst zur Liste hinzugefügt --> Danach werden die vorherigen Job, auf welche die Kandidaten der Kandidatenliste sich beworben haben werden in eine Job-Liset hinzugefügt --> Zusätzlich werden die ersten 1 Prozent der ählichsten Jobs zu den Jobs in der Jobliste zur Jobliste hinzugefügt / Verwendung der Kosinus-Ähnlichkeit
+- Empfehlungserstellung für den Kandidaten: 1. Die 10 Prozent ähnlichsten Kandidaten zum Kandidat werden bestimmt --> Wenn es kein Cold Start ist, wird auch der Kandidat selbst zur Liste hinzugefügt --> Danach werden die vorherigen Job, auf welche die Kandidaten der Kandidatenliste sich beworben haben werden in eine Job-Liset hinzugefügt --> Zusätzlich werden die ersten 1 Prozent der ählichsten Jobs zu den Jobs in der Jobliste zur Jobliste hinzugefügt / Verwendung der Kosinus-Ähnlichkeit
 
 S. 4\\
 - Der Rückgabe-Wert der Jobs in der Liste wird über die Interaktionen auf den CVs der Personen bestimmt, welche sich auf einen Job beworben haben --> Dieser Label-Wert wird für jeden Job über Methoden der Klassifikation und die Antwort der Jobs in der Jobliste, die wahrscheinlich gesendet wird, wird über diese Art berechet --> Ziel-Kandidaten-Feedback-Wert der Jobs wird als FB bezeichnet --> So erhält man die Information, ob sie den Zielkandidaten für jeden Job in der Liste bevorzugen werden
