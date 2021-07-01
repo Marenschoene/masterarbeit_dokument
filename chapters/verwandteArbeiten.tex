@@ -106,7 +106,7 @@ Darüber hinaus muss die Evaluation der Systeme kritisch betrachtet werden. Häu
 
 Neben denen in diesem Kapitel vorgestellten Publikationen wurden bei der Literaturrecherche weitere Ansätze identifiziert, bilaterale Empfehlungssysteme zu implementieren. Die Autoren dieser Veröffentlichungen bezeichneten ihre Anwendungen jedoch nicht als bilateral sondern als wechselseitig. % Quellen
 
-\section{Nicht auf dem PE-Fit basierende wechselseitige Systeme}
+\section{Wechselseitige Systeme zum Person-Job Fit}
 \label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme}
 Der Begriff der wechselseitigen Empfehlungssysteme wurde erstmals von \textcite[S. 1]{pizzato:2010} eingeführt, welche eine Recommender Engine im Bereich des Online-Datings entwickelten. Die Autoren verwendeten dabei die Bezeichnung der Wechselseitigkeit, da ihr System sowohl die Präferenzen des aktiven Nutzers als auch der potentiellen Partner gleichermaßen berücksichtigen sollte \cite[S. 1]{pizzato:2010}. In ihrer Publikation nannten \textcite[S. 3]{pizzato:2010} die Veröffentlichung von \textcite[S. 1ff.]{malinowski:2006} als verwandte Arbeit. Hierzu stellten sie fest, dass auch bilaterale Empfehlungssysteme die Präferenzen von zwei Parteien betrachten. Eine klare Unterscheidung zwischen bilateralen und wechselseitigen Empfehlungssystemen nahmen die Autoren jedoch nicht vor \cite[S. 3]{pizzato:2010}. Erst in einer späteren Publikation hielten \textcite[S. 8]{pizzato:2013} eindeutig fest, dass wechselseitig und bilateral zwei unterschiedliche Begriffe für dasselbe Konzept von Empfehlungssystemen sind.
 
@@ -136,7 +136,7 @@ Positiv ist zum Vorgehen von \textcite[S. 1ff.]{wenxing:2015} anzumerken, dass d
 
 Eine Evaluation führten \textcite[S. 1ff.]{hong:2013b} lediglich mit einem Vorgängersystem der vorgestellten Anwendung durch. Hierbei bestimmten die Wissenschaftler wechselseitige Empfehlungen mit einem hybriden System, welches die Ergebnisse von kollaborativem Filtern, inhaltsbasiertem Filtern und einem Greedy-Algorithmus kombinierte. In der Evaluation verglichen die Wissenschaftler die Nutzererfahrung ihres wechselseitigen Empfehlungssystems dem rein klassische kollaborativen und rein inhaltsbasierten Filtern anhand einer Nutzerstudie. Das wechselseitige Empfehlungssystem wurde hierbei in den Punkten Interpretierbarkeit, Diversität und Sortierung besser als die beiden anderen Methoden bewertet. Unter dem Gesichtspunkt der Relevanz stuften die Nutzer die Ergebnisse des wechselseitigen Empfehlungssystems jedoch lediglich als ähnlich relevant zu den Resultaten des klassischen kollaborativen Filterns ein. Somit ist fraglich, ob die Realisierung des wechselseitigen Empfehlungssystems aus wirtschaftlicher Sicht lohnenswert ist. Außerdem muss kritisiert werden, die Bewertungen nicht nach Nutzergruppen aufgeschlüsselt wurden. Somit ist nicht feststellbar, ob die Ergebnisse der beiden Gruppen voneinander abwichen. Im Sinne des \acp{PEFit} muss darüber hinaus angemerkt werden, dass die Relevanz für sämtliche Nutzer anhand gleicher Fragen erhoben wurde. Somit kann nicht festgestellt werden, ob das wechselseitige Empfehlungssystem die Erkenntnisse der Psychologen aus Kapitel \ref{ch:personEnvironmentFit:supplementaryUndComplementary} bestätigen kann. Deren Forschungen zu Folge führt ein \ac{PEFit} aus Sicht der Personalsachbearbeiter zu einer guten Arbeitsleistung und aus Perspektive der Angestellten zu einer hohen Zufriedenheit.
 
-Ein System basierend auf Berechnung der Kosinus-Ähnlichkeit präsentierten auch \textcite[S. 1ff.]{oezcan:2016}. Dieses bezog zusätzlich Nutzerinteraktionen in den wechselseitigen Empfehlungsprozess ein.
+%Ein System basierend auf Berechnung der Kosinus-Ähnlichkeit präsentierten auch \textcite[S. 1ff.]{oezcan:2016}. Dieses bezog zusätzlich Nutzerinteraktionen in den wechselseitigen Empfehlungsprozess ein.
 
 \newpage
 \textcite{le:2019}
@@ -147,7 +147,7 @@ S. 1\\
 S. 2\\
 - Kritik an bestehenden Systemen u.a. Qin und Zhu: Verschiedene Intentionen/Erwartungen von Arbeitgeber und Jobsuchendem werden nicht einbezogen
 - Bezieht perspektiven/Intentionen von Employer und Jobsuchendem ein
-- Ees werden zwei Vektoren ersetllt, um Intentionen von Suchenden und Arbeitgeber zu modellieren und ein dritter Task sagt das finale Ranking vorher
+- Es werden zwei Vektoren ersetllt, um Intentionen von Suchenden und Arbeitgeber zu modellieren und ein dritter Task sagt das finale Ranking vorher
 - Bezieht sich nicht auf eine klare Liste von Fähigkeiten
 - Daten werden aus Job-Ausschreibung und Lebenslauf bezogen --> Bestimmen den Matching-Degree
 - Zwei Schritte: 1. Intentionen von Suchenden und Arbeitgebern werden separat modelliert --> Bei Arbeitgeber werden die Lebensläufe passend zu Job-Posting sortiert und umgekehrt / 2. Finale Entscheidung: Einbeziehung der bilateralen Informationen von beiden
