@@ -138,32 +138,15 @@ Eine Evaluation führten \textcite[S. 1ff.]{hong:2013b} lediglich mit einem Vorg
 
 Ein System basierend auf Berechnung der Kosinus-Ähnlichkeit präsentierten auch \textcite[S. 1ff.]{oezcan:2016}. Dieses bezog zusätzlich Nutzerinteraktionen in den wechselseitigen Empfehlungsprozess ein.
 
-\subsection{Özcan}
+\subsection{Einbeziehung von Nutzerinteraktionen}
 \label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:oezcan}
+\textcite[S. 1ff.]{oezcan:2016} entwickelten ein mehrstufiges Verfahren zur Bestimmung von Stellenempfehlungen für Kandidaten unter Berücksichtigung wechselseitiger Präferenzen. Hierfür bezogen die Wissenschaftler Profil-Informationen und Nutzerinteraktionen in den Empfehlungsprozess ein.
+
+Der erste Schritt des Systems von \textcite[S. 1ff.]{oezcan:2016} sah es vor, die zehn Prozent ähnlichsten Kandidaten zu einem Zielnutzer zu bestimmen und in eine Liste hinzuzufügen. Sofern kein Cold Start vorlag, wurde auch der Zielkandidat selbst der Liste angehängt. Im zweiten Schritt des Verfahrens lud die Anwendung sämtliche Stellen, auf welche sich die Kandidaten in der Liste in der Vergangenheit beworben hatten. Ausgehend von diesen Stellen wurden zusätzlich die ein Prozent ähnlichsten Ausschreibungen zu den vorhandenen Stellen bestimmt und in die Liste hinzugefügt. Im dritten Schritt nutzten \textcite[S. 1ff.]{oezcan:2016} die Interaktionen von Arbeitgebern auf Nutzerprofilen. Hier wurde beispielsweise beachtet, ob die Arbeitgeber einen Lebenslauf geöffnet oder ausgedruckt hatten. Mit Hilfe dieser Interaktionen und bekannten Reaktionen auf vergangene Bewerbungen wurde eine modellbasierte Klassifikation durchgeführt, über welche ein Wert $FB$ vorausgesagt wurde, welcher die Reaktion des Unternehmens auf eine potentielle Bewerbung angab. Anschließend bestimmten die Wissenschaftler einen Wichtigkeitswert $SV$ für jede Stelle in der Liste. Zu diesem Zweck bestimmte die Anwendung für jeden Kandidaten die Ähnlichkeit aller Stellen, auf welche sich dieser beworben hatte. Der $SV$-Wert wurde für jede Stelle bestimmt, indem die erhaltenen Ähnlichkeitswerte jedes Bewerbers auf den vorliegenden Arbeitsplatz aufsummiert wurden. Die finale Sortierung berechneten die Wissenschaftler abschließend über die Multiplikation von $FB$ und $SV$.
+
+
 
 \newpage
-\textcite{oezcan:2016}\\
-S. 1\\
-- Wechselseitiges Empfehlungssystem CCRS --> Es können Job-Angebote veröffentlicht werden; Kandidaten können wechselseitig Feedback erhalten, durch das Nutzerprofil, Interaktion und Präferenz-Information und alles zusammen
-
-S. 2\\
-- Kandidatenprofil besteht aus 19 Merkmalen
-
-S. 3\\
-- Zusätzlich gibt es 9 weitere Merkmale, Reflektieren die Aktionen der job-Ausschreibenden Unternehmen auf dem CV des Kandidaten (z.B. CV geöffnet, gedruckt, etc.)
-- Und es gibt Job-Profil Features (z.B. Ort, Unternehmen, Sektor, etc.)
-
-- Empfehlungserstellung für den Kandidaten: 1. Die 10 Prozent ähnlichsten Kandidaten zum Kandidat werden bestimmt --> Wenn es kein Cold Start ist, wird auch der Kandidat selbst zur Liste hinzugefügt --> Danach werden die vorherigen Job, auf welche die Kandidaten der Kandidatenliste sich beworben haben werden in eine Job-Liset hinzugefügt --> Zusätzlich werden die ersten 1 Prozent der ählichsten Jobs zu den Jobs in der Jobliste zur Jobliste hinzugefügt / Verwendung der Kosinus-Ähnlichkeit
-
-S. 4\\
-- Der Rückgabe-Wert der Jobs in der Liste wird über die Interaktionen auf den CVs der Personen bestimmt, welche sich auf einen Job beworben haben --> Dieser Label-Wert wird für jeden Job über Methoden der Klassifikation und die Antwort der Jobs in der Jobliste, die wahrscheinlich gesendet wird, wird über diese Art berechet --> Ziel-Kandidaten-Feedback-Wert der Jobs wird als FB bezeichnet --> So erhält man die Information, ob sie den Zielkandidaten für jeden Job in der Liste bevorzugen werden
-- Merke: Man versucht hier vorherzusagen, wie die Unternehmen reagieren werden, wenn sich der Zielkandidat auf den Job bewoibt --> Dazu werden die Interaktionen auf den CVs analysiert, welche sich kürzlich für den Job beworben haben --> Anwort wird über Klassifikation bestimmt --> JoblistFB
-- Dann wird noch ein Importance Wert für die Jobs erstellt --> Für jeden Kandidaten wird ein Konfidenzwert berechnet, indem die Bewerbungen im System, welche kürzlich carried out von den Kandidaten wurden --> Konfidenzwert wird über die Ähnlichkeit zu Jobs bestimmt, auf welche sich ein Kandidat beworben hat --> Ist die Ähnlichkeit zwischen den Jobs, auf die sich ein Kandidat beworben hat, sehr hoch, ist der Konfidenzwert für diesen Kandidaten hoch --> Jeder Kandidat bietet seinen Konfidenz-Wert an den Job, an den er sich beworben hat --> Wichtigkeitswert der Jobs wird über die Summe der Kandidaten bestimmt, welche sich auf diesen Job beworben haben --> Diese wichtigkeitswerte werden als Score Wert der Jobs und Namen als SV akzeptiert --> Ein Score Value wird für jeden Job in der JobList (JobListScore) geboten
-- FB-Wert und SV-Werte jedes Jobs werden multipliziert und die Jobs werden den Zielkandidaten nach diesen Werten präsentiert
-
-S. 6\\
-- CCRS zeigte in der Evaluation eine bessere Performance im Vergeich zu anderen Systemen wie iHR+
-
 \textcite{buettner:2014}:\\
 S. 1\\
 - Bezug auf Person-Organization Environment fit
@@ -535,4 +518,31 @@ Ablauf:
 
 S. 6
 - Ab 10 Bewerbungen werden auch vergangene Bewerbungsdaten des Kandidaten in den Empfehlungsprozess einbezogen
+
+\textcite{oezcan:2016}\\
+- S. 1: Wechselseitig / Nutzen Profil, Präferenzen und Interaktion beider Seiten / System macht Job-Empfehlungen für einen Kandidaten durch Nutzung der Bewerbungen anderer Kandidaten, welche diesem ähnlich sind und den Präferenz-Informationen dieser Jobs / Vermeidung von Cold Start\\
+- S. 2: Händelt Präferenzen über Klassifikation / Profil des Kandidaten enthält 19 Features\\
+- S. 3: 9 zusätzliche Features, diese spiegeln die Interaktionen von Unternehmen auf dem Lebenslauf des Kandidaten wider (z.B. Geöffnet, Gedruckt, etc.) und Job-Profil-Merkmale wie Ort, Unternehmen, Sektor, geforderte Erfahrung etc. / Empfehlungsliste für Kandidat: Es werden die ersten 10 Prozent ähnlichsten Kandidaten zu ihm bestimmt (Wenn kein Cold Start, wird Kandidat selbst auch noch hinzugefügt) --> Dann werden die vergangenen Jobs, auf welche sich die Kandidaten beworben haben in eine Job-Liste hinzugefügt --> DIe 1 Prozent ählichsten Jobs zu den Jobs in der Liste werden auch noch hinzugefügt --> Zur Berechnugn der Ähnlichkeit wird die Kosinus-Distanz verwendet\\
+- S. 4: Der Rückgabewert der Jobs in der Liste wird über die Interaktionen auf dem CV der Kandidaten bestimmt, welche sich zuvor auf die Jobs beworben haben --> Diese Werte werden für jeden Job über Klassifikation bestimmt --> So wird bestimmt, ob die Arbeitgeber den Kandidaten präfeieren werden oder nicht --> FB-Wert / Es werden Wichtigkeitswerte für jeden Kandidaten bestimmt: Es wird für jeden Kandidaten der die Ähnlichkeit aller Jobs bestimmt, auf die er sich beworben hat --> Wenn dieser Wert hoch ist, ist der Vertrauenswert hoch --> Jeder Kandidat bietet seinen Konfidenzwert an die Stelle, auf die er sich beworben hat --> Wichtigkeitswert des Jobs wird über die Summe aller Kandidaten bestimmt, welche sich auf diesen Job beoworben haben --> SV-Wert / Ranking: FB-Wert und SV-Wert für jeden Job werden multipliziert und in der Reihenfolge ausgegeben
+
+S. 1\\
+- Wechselseitiges Empfehlungssystem CCRS --> Es können Job-Angebote veröffentlicht werden; Kandidaten können wechselseitig Feedback erhalten, durch das Nutzerprofil, Interaktion und Präferenz-Information und alles zusammen
+
+S. 2\\
+- Kandidatenprofil besteht aus 19 Merkmalen
+
+S. 3\\
+- Zusätzlich gibt es 9 weitere Merkmale, Reflektieren die Aktionen der job-Ausschreibenden Unternehmen auf dem CV des Kandidaten (z.B. CV geöffnet, gedruckt, etc.)
+- Und es gibt Job-Profil Features (z.B. Ort, Unternehmen, Sektor, etc.)
+
+- Empfehlungserstellung für den Kandidaten: 1. Die 10 Prozent ähnlichsten Kandidaten zum Kandidat werden bestimmt --> Wenn es kein Cold Start ist, wird auch der Kandidat selbst zur Liste hinzugefügt --> Danach werden die vorherigen Job, auf welche die Kandidaten der Kandidatenliste sich beworben haben werden in eine Job-Liset hinzugefügt --> Zusätzlich werden die ersten 1 Prozent der ählichsten Jobs zu den Jobs in der Jobliste zur Jobliste hinzugefügt / Verwendung der Kosinus-Ähnlichkeit
+
+S. 4\\
+- Der Rückgabe-Wert der Jobs in der Liste wird über die Interaktionen auf den CVs der Personen bestimmt, welche sich auf einen Job beworben haben --> Dieser Label-Wert wird für jeden Job über Methoden der Klassifikation und die Antwort der Jobs in der Jobliste, die wahrscheinlich gesendet wird, wird über diese Art berechet --> Ziel-Kandidaten-Feedback-Wert der Jobs wird als FB bezeichnet --> So erhält man die Information, ob sie den Zielkandidaten für jeden Job in der Liste bevorzugen werden
+- Merke: Man versucht hier vorherzusagen, wie die Unternehmen reagieren werden, wenn sich der Zielkandidat auf den Job bewoibt --> Dazu werden die Interaktionen auf den CVs analysiert, welche sich kürzlich für den Job beworben haben --> Anwort wird über Klassifikation bestimmt --> JoblistFB
+- Dann wird noch ein Importance Wert für die Jobs erstellt --> Für jeden Kandidaten wird ein Konfidenzwert berechnet, indem die Bewerbungen im System, welche kürzlich carried out von den Kandidaten wurden --> Konfidenzwert wird über die Ähnlichkeit zu Jobs bestimmt, auf welche sich ein Kandidat beworben hat --> Ist die Ähnlichkeit zwischen den Jobs, auf die sich ein Kandidat beworben hat, sehr hoch, ist der Konfidenzwert für diesen Kandidaten hoch --> Jeder Kandidat bietet seinen Konfidenz-Wert an den Job, an den er sich beworben hat --> Wichtigkeitswert der Jobs wird über die Summe der Kandidaten bestimmt, welche sich auf diesen Job beworben haben --> Diese wichtigkeitswerte werden als Score Wert der Jobs und Namen als SV akzeptiert --> Ein Score Value wird für jeden Job in der JobList (JobListScore) geboten
+- FB-Wert und SV-Werte jedes Jobs werden multipliziert und die Jobs werden den Zielkandidaten nach diesen Werten präsentiert
+
+S. 6\\
+- CCRS zeigte in der Evaluation eine bessere Performance im Vergeich zu anderen Systemen wie iHR+
 \shorthandon{"}
