@@ -110,7 +110,7 @@ Neben denen in diesem Kapitel vorgestellten Publikationen wurden bei der Literat
 \label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme}
 Der Begriff der wechselseitigen Empfehlungssysteme wurde erstmals von \textcite[S. 1]{pizzato:2010} eingeführt, welche eine Recommender Engine im Bereich des Online-Datings entwickelten. Die Autoren verwendeten dabei die Bezeichnung der Wechselseitigkeit, da ihr System sowohl die Präferenzen des aktiven Nutzers als auch der potentiellen Partner gleichermaßen berücksichtigen sollte \cite[S. 1]{pizzato:2010}. In ihrer Publikation nannten \textcite[S. 3]{pizzato:2010} die Veröffentlichung von \textcite[S. 1ff.]{malinowski:2006} als verwandte Arbeit. Hierzu stellten sie fest, dass auch bilaterale Empfehlungssysteme die Präferenzen von zwei Parteien betrachten. Eine klare Unterscheidung zwischen bilateralen und wechselseitigen Empfehlungssystemen nahmen die Autoren jedoch nicht vor \cite[S. 3]{pizzato:2010}. Erst in einer späteren Publikation hielten \textcite[S. 8]{pizzato:2013} eindeutig fest, dass wechselseitig und bilateral zwei unterschiedliche Begriffe für dasselbe Konzept von Empfehlungssystemen sind.
 
-Wechselseitige Empfehlungssysteme zum \ac{PJFit} wurden von \textcite{buettner:2014}, \textcite{ding:2016}, \textcite{wenxing:2015}, \textcite{oezcan:2016} und \textcite{le:2019} vorgestellt. Diese Autoren bezogen sich mit Ausnahme von \textcite{buettner:2014} nicht direkt auf das Konzept des \acp{PEFit}. Dennoch entwickelten sie Systeme, welche sowohl Präferenzen von Stellensuchenden als auch Personalsachbearbeitern gleichermaßen in den Vorschlagsprozess einbezogen. 
+Wechselseitige Empfehlungssysteme zum \ac{PJFit} wurden von \textcite{buettner:2014}, \textcite{ding:2016}, \textcite{wenxing:2015} und \textcite{le:2019} vorgestellt. Diese Autoren bezogen sich mit Ausnahme von \textcite{buettner:2014} nicht direkt auf das Konzept des \acp{PEFit}. Dennoch entwickelten sie Systeme, welche sowohl Präferenzen von Stellensuchenden als auch Personalsachbearbeitern gleichermaßen in den Vorschlagsprozess einbezogen. 
 
 \subsection{System zur Einstellung von Hochschulabsolventen}
 \label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:absolventen}
@@ -138,38 +138,7 @@ Eine Evaluation führten \textcite[S. 1ff.]{hong:2013b} lediglich mit einem Vorg
 
 Ein System basierend auf Berechnung der Kosinus-Ähnlichkeit präsentierten auch \textcite[S. 1ff.]{oezcan:2016}. Dieses bezog zusätzlich Nutzerinteraktionen in den wechselseitigen Empfehlungsprozess ein.
 
-\subsection{Einbeziehung von Nutzerinteraktionen}
-\label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:oezcan}
-\textcite[S. 1ff.]{oezcan:2016} entwickelten ein mehrstufiges Verfahren zur Bestimmung von Stellenempfehlungen für Kandidaten unter Berücksichtigung wechselseitiger Präferenzen. Hierfür bezogen die Wissenschaftler Profil-Informationen und Nutzerinteraktionen in den Empfehlungsprozess ein.
-
-Der erste Schritt des Systems von \textcite[S. 1ff.]{oezcan:2016} sah es vor, die zehn Prozent ähnlichsten Kandidaten zu einem Zielnutzer zu bestimmen und in eine Liste hinzuzufügen. Sofern kein Cold Start vorlag, wurde auch der Zielkandidat selbst der Liste angehängt. Im zweiten Schritt des Verfahrens lud die Anwendung sämtliche Stellen, auf welche sich die Kandidaten in der Liste in der Vergangenheit beworben hatten. Ausgehend von diesen Stellen wurden zusätzlich die ein Prozent ähnlichsten Ausschreibungen zu den vorhandenen Stellen bestimmt und in die Liste hinzugefügt. Im dritten Schritt nutzten \textcite[S. 1ff.]{oezcan:2016} die Interaktionen von Arbeitgebern auf Nutzerprofilen. Hier wurde beispielsweise beachtet, ob die Arbeitgeber einen Lebenslauf geöffnet oder ausgedruckt hatten. Mit Hilfe dieser Interaktionen und bekannten Reaktionen auf vergangene Bewerbungen wurde eine modellbasierte Klassifikation durchgeführt, über welche ein Wert $FB$ vorausgesagt wurde, welcher die Reaktion des Unternehmens auf eine potentielle Bewerbung angab. Anschließend bestimmten die Wissenschaftler einen Wichtigkeitswert $SV$ für jede Stelle in der Liste. Zu diesem Zweck bestimmte die Anwendung für jeden Kandidaten die Ähnlichkeit aller Stellen, auf welche sich dieser beworben hatte. Der $SV$-Wert wurde für jede Stelle bestimmt, indem die erhaltenen Ähnlichkeitswerte jedes Bewerbers auf den vorliegenden Arbeitsplatz aufsummiert wurden. Die finale Sortierung berechneten die Wissenschaftler abschließend über die Multiplikation von $FB$ und $SV$.
-
-
-
 \newpage
-\textcite{buettner:2014}:\\
-S. 1\\
-- Bezug auf Person-Organization Environment fit
-- Zeigt, wie Informationen aus Sozialen Netzwerken genutzt werden können, um einen P-OE fit zu bestimmen
-- Kritik: Soziale Interaktionen werden von bestehenden Systemen kaum betrachtet
-- Betrachtet auch das Match zwischen Persönlichkeit des Bewerbers un der Organisationskultur
-
-S. 2\\
-- Maurer und Cook (3): Zeigen, dass P-OE fit eine Schlüsselrolle bei der Qualität von Bewerbungen spielt
-
-S. 3\\
-- Diese Arbeit beachtet beim P-J Fit nur demands-abilities
-
-S. 6\\
-- In Ergänzung zu Malinowski betrachtet dieser Autor auch den Culture-Fit --> Malinowski richtete sich nur an Unternehmensinternes Staffing
-- Kombiniert CB mit CF für Online Soziale Netzwerke Recruiting / Content Based
-- System erhält als Input einen Kandidaten und eine Stelle und gibt eine echte Zahl zurück --> Wird in drei Sub-Funktionen unterteilt: P-O, P-G, P-J und einer Aggregierungsfunktion A --> Kombiniert diese sub-Funktionen über die aggregation der relativen Wichtigkeit placed on the sub-fits
-
-S. 7\\
-- Aggregation-Funktion A stellt ein Multi Criteria Decision Making (MCDM) Problem da --> Problem: Ein sehr niedriger Wert kann durch einen sehr hohen Wert ausgeglichen werden
-- Gutes Bild zum Ansatz
-- Anmerkung von mir: Hat System nicht implementiert
-
 \textcite{le:2019}
 - ist bilateral
 S. 1\\
@@ -194,6 +163,29 @@ S. 4\\
 - Matching Model: Soll aus Intention-Vektoren vorhersagen, ob es zu einem Interview kommen wird
 
 \textcite[S. 1ff.]{lu:2013}
+
+\textcite{buettner:2014}:\\
+S. 1\\
+- Bezug auf Person-Organization Environment fit
+- Zeigt, wie Informationen aus Sozialen Netzwerken genutzt werden können, um einen P-OE fit zu bestimmen
+- Kritik: Soziale Interaktionen werden von bestehenden Systemen kaum betrachtet
+- Betrachtet auch das Match zwischen Persönlichkeit des Bewerbers un der Organisationskultur
+
+S. 2\\
+- Maurer und Cook (3): Zeigen, dass P-OE fit eine Schlüsselrolle bei der Qualität von Bewerbungen spielt
+
+S. 3\\
+- Diese Arbeit beachtet beim P-J Fit nur demands-abilities
+
+S. 6\\
+- In Ergänzung zu Malinowski betrachtet dieser Autor auch den Culture-Fit --> Malinowski richtete sich nur an Unternehmensinternes Staffing
+- Kombiniert CB mit CF für Online Soziale Netzwerke Recruiting / Content Based
+- System erhält als Input einen Kandidaten und eine Stelle und gibt eine echte Zahl zurück --> Wird in drei Sub-Funktionen unterteilt: P-O, P-G, P-J und einer Aggregierungsfunktion A --> Kombiniert diese sub-Funktionen über die aggregation der relativen Wichtigkeit placed on the sub-fits
+
+S. 7\\
+- Aggregation-Funktion A stellt ein Multi Criteria Decision Making (MCDM) Problem da --> Problem: Ein sehr niedriger Wert kann durch einen sehr hohen Wert ausgeglichen werden
+- Gutes Bild zum Ansatz
+- Anmerkung von mir: Hat System nicht implementiert
 
 \newpage
 % Dieses System berücksichtigt Präferenzen von Kandidaten und Arbeitgebern
@@ -545,4 +537,10 @@ S. 4\\
 
 S. 6\\
 - CCRS zeigte in der Evaluation eine bessere Performance im Vergeich zu anderen Systemen wie iHR+
+
+\subsection{Einbeziehung von Nutzerinteraktionen}
+\label{ch:verwandteArbeiten:nichtAufDemPEFitBasierendeBilateraleSysteme:oezcan}
+\textcite[S. 1ff.]{oezcan:2016} entwickelten ein mehrstufiges Verfahren zur Bestimmung von Stellenempfehlungen für Kandidaten unter Berücksichtigung wechselseitiger Präferenzen. Hierfür bezogen die Wissenschaftler Profil-Informationen und Nutzerinteraktionen in den Empfehlungsprozess ein.
+
+Der erste Schritt des Systems von \textcite[S. 1ff.]{oezcan:2016} sah es vor, die zehn Prozent ähnlichsten Kandidaten zu einem Zielnutzer zu bestimmen und in eine Liste hinzuzufügen. Sofern kein Cold Start vorlag, wurde auch der Zielkandidat selbst der Liste angehängt. Im zweiten Schritt des Verfahrens lud die Anwendung sämtliche Stellen, auf welche sich die Kandidaten in der Liste in der Vergangenheit beworben hatten. Ausgehend von diesen Stellen wurden zusätzlich die ein Prozent ähnlichsten Ausschreibungen zu den vorhandenen Stellen bestimmt und in die Liste hinzugefügt. Im dritten Schritt nutzten \textcite[S. 1ff.]{oezcan:2016} die Interaktionen von Arbeitgebern auf Nutzerprofilen. Hier wurde beispielsweise beachtet, ob die Arbeitgeber einen Lebenslauf geöffnet oder ausgedruckt hatten. Mit Hilfe dieser Interaktionen und bekannten Reaktionen auf vergangene Bewerbungen wurde eine modellbasierte Klassifikation durchgeführt, über welche ein Wert $FB$ vorausgesagt wurde, welcher die Reaktion des Unternehmens auf eine potentielle Bewerbung angab. Anschließend bestimmten die Wissenschaftler einen Wichtigkeitswert $SV$ für jede Stelle in der Liste. Zu diesem Zweck bestimmte die Anwendung für jeden Kandidaten die Ähnlichkeit aller Stellen, auf welche sich dieser beworben hatte. Der $SV$-Wert wurde für jede Stelle bestimmt, indem die erhaltenen Ähnlichkeitswerte jedes Bewerbers auf den vorliegenden Arbeitsplatz aufsummiert wurden. Die finale Sortierung berechneten die Wissenschaftler abschließend über die Multiplikation von $FB$ und $SV$.
 \shorthandon{"}
