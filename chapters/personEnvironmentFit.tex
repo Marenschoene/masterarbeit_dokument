@@ -155,19 +155,22 @@ Derartige Multiplikationen mit einem Differenzwert haben zur Folge, dass die in 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{gfx/Locke.png}
+	
+	\subfloat[Algebraische Differenz]{\includegraphics[width = 0.5\textwidth]{gfx/Locke-A.png}}
+	\subfloat[Absolute Differenz]{\includegraphics[width = 0.5\textwidth]{gfx/Locke-B.png}}
+	
 	\caption{Stauchung von Funktionsgraphen durch Wichtigkeitswerte \cite[S. 1305]{locke:1976}}
 	%(Aus \cite[S. 13f.]{edwards:2008}, nach \cite[S. 1305]{locke:1976})
 	\label{fig:personEnvironmentFit:wichtigkeiten:abb1}
 \end{figure}
 
-Im linken Teil von Abbildung \ref{fig:personEnvironmentFit:wichtigkeiten:abb1} ist eine monotone Funktion basierend auf einer algebraischen Differenzberechnung dargestellt. Die rechte Hälfte der Grafik zeigt den Verlauf einer Berechnung mit absoluter Differenz. In beiden Darstellungen ist zu erkennen, dass die Kurven bei geringer Wichtigkeit ausschließlich im mittleren Bereich von moderat niedrig bis moderat hoch verlaufen. Ist einem Individuum das jeweilige Bedürfnis dagegen sehr wichtig, füllt die Kurve den gesamten verfügbaren Bereich von niedrig bis hoch. Die Ausnutzung des größeren Gebiets führt zur Stauchung der Funktionsgraphen und damit zu einem stärkeren Ansteigen bzw. Absinken der Zufriedenheit des Individuums. 
+Im linken Teil (a) von Abbildung \ref{fig:personEnvironmentFit:wichtigkeiten:abb1} ist eine monotone Funktion basierend auf einer algebraischen Differenzberechnung dargestellt. Die rechte Seite der Grafik (b) zeigt den Verlauf einer Berechnung mit absoluter Differenz. In beiden Darstellungen ist zu erkennen, dass die Kurven bei geringer Wichtigkeit ausschließlich im mittleren Bereich von moderat niedrig bis moderat hoch verlaufen. Ist einem Individuum das jeweilige Bedürfnis dagegen sehr wichtig, füllt die Kurve den gesamten verfügbaren Bereich von niedrig bis hoch. Die Ausnutzung des größeren Gebiets führt zur Stauchung der Funktionsgraphen und damit zu einem stärkeren Ansteigen bzw. Absinken der Zufriedenheit des Individuums. 
 
-\textcite[S. 51ff.]{edwards:1991}\cite[S. 9ff.]{edwards:1990}\cite[S. 2ff.]{edwards:1993}\cite[S. 2ff.]{edwards:1993b} kritisierte Berechnungen, wie in Gleichung \ref{fig:personEnvironmentFit:wichtigkeiten:formel1} dargestellt, in mehreren seiner Arbeiten. Dabei diskutierte er insbesondere die Multiplikation mit dem Differenzwert. Der Wissenschaftler ist der Auffassung, dass die aus der Differenzberechnung resultierenden zweidimensionalen Grafiken die Komplexität eines \acp{PEFit} nicht vollständig abbilden. Deshalb empfahl er die Berechnungen mittels Regressionsgleichungen durchzuführen.
+\textcite[S. 51ff.]{edwards:1991}\cite[S. 9ff.]{edwards:1990}\cite[S. 2ff.]{edwards:1993}\cite[S. 2ff.]{edwards:1993b} kritisierte Berechnungen, wie in Gleichung \ref{fig:personEnvironmentFit:wichtigkeiten:formel1} dargestellt, in mehreren seiner Arbeiten. Dabei diskutierte er insbesondere die Multiplikation mit dem Differenzwert. Der Wissenschaftler war der Auffassung, dass die aus der Differenzberechnung resultierenden zweidimensionalen Grafiken die Komplexität eines \acp{PEFit} nicht vollständig abbilden. Deshalb empfahl er, die Berechnungen mittels Regressionsgleichungen durchzuführen.
 
 \section{Anwendung von Regressionsgleichungen}
 \label{ch:personEnvironmentFit:regressionsgleichungen}
-In seinen Publikationen empfiehlt \textcite[S. 51ff.]{edwards:1991}\cite[S. 9ff.]{edwards:1990}\cite[S. 2ff.]{edwards:1993}\cite[S. 2ff.]{edwards:1993b} Multiplikationen separat für jeden Wert von Person und Umgebung anzuwenden. Formel \ref{fig:personEnvironmentFit:wichtigkeiten:formel1} könnte hierfür zu folgender Regressionsgleichung umgestellt werden (vgl. \cite[S. 9f.]{edwards:1990}, \cite[S. 2f.]{edwards:1993b}):
+In seinen Publikationen empfahl \textcite[S. 51ff.]{edwards:1991}\cite[S. 9ff.]{edwards:1990}\cite[S. 2ff.]{edwards:1993}\cite[S. 2ff.]{edwards:1993b}, Multiplikationen separat für jeden Wert von Person und Umgebung durchzuführen. Formel \ref{fig:personEnvironmentFit:wichtigkeiten:formel1} könnte hierfür zu folgender Regressionsgleichung \ref{fig:personEnvironmentFit:wichtigkeiten:formel2} umgestellt werden \cite[S. 9f.]{edwards:1990}, \cite[S. 2f.]{edwards:1993b}.
 \begin{equation}
 	Y = b_1 * P - b_2 * E
 	\label{fig:personEnvironmentFit:wichtigkeiten:formel2}
@@ -177,13 +180,13 @@ Die Koeffizienten $b_1$ und $b_2$ stehen in Gleichung \ref{fig:personEnvironment
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{gfx/drei_d_modell.png}
-	\caption{Hier eine Beschreibung einfügen \cite[S. 57]{edwards:1991}}
+	\caption{Dreidimensionale Beziehung von P-E Fit und Zufriedenheit \cite[S. 57]{edwards:1991}}
 	\label{fig:personEnvironmentFit:wichtigkeiten:abb2}
 \end{figure}
 
 Um die stärkere Aussagekraft der Regressionsgleichung zu untermauern, werteten \textcite[S. 18ff.]{edwards:1993b}  in ihrer Publikation einen umfangreichen Datensatz von \textcite[S. 9ff.]{mechanismsOfJobStressAndStrain:1982} erneut aus. Dieser wurde ursprünglich durch Multiplikationen mit Differenzwerten aus Person und Umgebung analysiert. \textcite[S. 18ff.]{edwards:1993b} gelang es, durch Anwendung von Regressionsgleichungen im Vergleich zur erstmaligen Untersuchung einen wesentlich höheren Anteil an Varianz zu erklären \cite[S. 8]{su:2015}.
 
-Um einen solchen Prozess zu Automatisieren, sollten ausreichende Datenmengen der Mitarbeiter zur Berechnung bereitgestellt werden. Beispielsweise beobachteten \textcite[S. 3]{mitre:2014} bei der Analyse von Fähigkeiten, dass ein Großteil der Kenntnisse von nur sehr wenigen Mitarbeitern bewertet wurden. In solchen Fällen können Algorithmen eingesetzt werden, welche die unbewerteten Fähigkeiten der Angestellten vorhersagen. Dadurch können die fehlenden Daten ebenfalls in die Berechnung einbezogen werden. Solche Algorithmen kommen unter anderem bei der Implementierung von Empfehlungssystemen zum Einsatz.
+Um einen solchen Prozess zur Bestimmung des \acp{PEFit} zu Automatisieren, sollten ausreichende Datenmengen der Mitarbeiter zur Berechnung bereitgestellt werden. Beispielsweise beobachteten \textcite[S. 3]{mitre:2014} bei der Analyse von Fähigkeiten in deren erhobenen Daten, dass ein Großteil der Kenntnisse von nur sehr wenigen Mitarbeitern bewertet wurden. In solchen Fällen können Algorithmen eingesetzt werden, welche die unbewerteten Fähigkeiten der Angestellten vorhersagen. Dadurch können die fehlenden Daten ebenfalls in die Berechnung einbezogen werden. Solche Algorithmen kommen unter anderem bei der Implementierung von Empfehlungssystemen zum Einsatz.
 %Zu den Analysen von \textcite[S. 18ff.]{edwards:1993b} bzw. \textcite{mechanismsOfJobStressAndStrain:1982} muss betont werden, dass durch die Datenerhebung vorab Kennzahlen zu Person, Umgebung und Ergebnis festgestellt wurden. Die Forscher untersuchten anhand der Daten, über welche Fit-Berechnung am zuverlässigsten auf das Ergebnis geschlossen werden kann.\\
 %Neben Edwards stellte auch \textcite[S. 3]{schneider:2001}\cite[S. 2]{schneider:1978} Mängel an bestehenden Person-Environment Fit-Untersuchungen fest. Er betrachtete die Kongruenz von Person und Arbeitsplätzen. Bei der Literaturrecherche bemerkte er, dass bei der Fit-Bestimmung nur selten die vollständige P-E Kongruenz berechnet wird. Meist fokussieren Forscher seinen Beobachtungen zu Folge dabei häufig ausschließlich den Anforderungen-Fähigkeiten Fit. Dieses Phänomen lässt sich auch bei Publikationen zu IT-basierten Empfehlungssystemen dieser Domäne beobachten.
 %Um die stärkere Aussagekraft der Regressionsgleichung zu untermauern, werteten \textcite[S. 18ff.]{edwards:1993b}  in ihrer Publikation einen umfangreichen Datensatz von \textcite{mechanismsOfJobStressAndStrain:1982} erneut aus. Dieser wurde ursprünglich durch Multiplikationen mit Differenzwerten aus Person und Umgebung analysiert. \textcite[S. 18ff.]{edwards:1993b} gelang es, durch Anwendung von Regressionsgleichungen im Vergleich zur erstmaligen Untersuchung einen wesentlich höheren Anteil an Varianz zu erklären \cite[S. 8]{su:2015}.
