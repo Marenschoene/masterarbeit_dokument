@@ -4,14 +4,14 @@
 
 Zu erhebende Daten:\\
 - Skills sind im Intranet gespeichert: Bewertung auf einer Skala von 1 bis 5\\
-- Zusätzlich Teamzuordnung im Intranet --> Kantengewicht: 1\\
-- Für jeden Mitarbeiter erheben: Wichtigkeit (true/false)\\
-- Für jeden Mitarbeiter erheben: Welche Auswirkung hat es, wenn im Projekt nicht ausgelastet (Kurve A bis C)
+- Zusätzlich Teamzuordnung im Intranet --> Kantengewicht: 1 --> Gedanken mit dem Manager (Kann mehr) in Ausarbeitung aufnehmen\\
+- Für jeden Mitarbeiter erheben: Wichtigkeit (true/false) --> Auch für Dinge, die man noch nicht kann\\
+- Für jeden Mitarbeiter erheben: Welche Auswirkung hat es, wenn im Projekt nicht ausgelastet (Kurve A bis C) --> Alle drei Antwortmöglichkeiten positiv formulieren --> z.B. Freiräume nutzen
 
 Erstellen des Graphen:\\
 - Aus Skills (kollaboratives Filtern) und Teamzuordnung (Inhaltsbasiertes Filtern) einen tripartiten Graphen erstellen\\
 - Sinnvolle Kanten: Nutzer-Skill / Nutzer-Team // Besser: Nutzer-Skill und Nutzer-Manager --> Weniger Knoten\\
-- Entscheidung gegen Mittelwertzentrierung
+- Entscheidung gegen Mittelwertzentrierung --> Bewertung befolgt auf Tatsachen, klare Skala, wenig subjektiv
 
 % Johannes: 404
 % Jan: 366
@@ -43,10 +43,10 @@ Erstellen des Graphen:\\
 		\draw (Alexander) -- node[midway, above] {5} (HDFS);
 		\draw (Alexander) -- node[midway, left] {3} (Spark);
 		
-		\draw (Johannes) -- node[midway, above] {1} (JES32);
-		%\draw (Johannes) -- node[midway, above] {1} (Jan);
-		%\draw (Jan) -- node[midway, above] {1} (Alexander);
-		\draw (Jan) -- node[midway, above] {1} (JES32);
+		%\draw (Johannes) -- node[midway, above] {1} (JES32);
+		\draw (Johannes) -- node[midway, above] {1} (Jan);
+		\draw (Jan) -- node[midway, above] {1} (Alexander);
+		%\draw (Jan) -- node[midway, above] {1} (JES32);
 	\end{tikzpicture}
 	
 	\caption{Darstellung der Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Datenstruktur eines Graphen}
