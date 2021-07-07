@@ -2,6 +2,12 @@
 \chapter{Methodik}
 \label{ch:methodik}
 
+\section{Art der Forschung}
+\label{ch:methodik:art}
+Die vorliegende Master-Thesis verfolgt das Ziel, die folgende Forschungsfrage zu beantworten: xyz. Um diese Fragestellung zu untersuchen, soll zunächst eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt werden. Hierfür sollen zwei Versionen einer Anwendung zur Empfehlung von Mitarbeitern für offene Projektpositionen in Unternehmen entwickelt werden.
+
+\section{Versuchsaufbau}
+\label{ch:methodik:versuchsaufbau}
 Zu erhebende Daten:\\
 - Skills sind im Intranet gespeichert: Bewertung auf einer Skala von 1 bis 5\\
 - Zusätzlich Teamzuordnung im Intranet --> Kantengewicht: 1 --> Gedanken mit dem Manager (Kann mehr) in Ausarbeitung aufnehmen\\
@@ -30,7 +36,7 @@ Erstellen des Graphen:\\
 		\node[main, fill=usercolor] (Jan) [above left of=HDFS] {$Jan H.$}; 
 		\node[main, fill=usercolor] (Alexander) [above right of=HDFS] {$Alex G.$};
 		
-		\node[main, fill=exxetagray] (JES32) [above right of=Johannes] {$JES 3.2$};
+		%\node[main, fill=exxetagray] (JES32) [above right of=Johannes] {$JES 3.2$};
 		
 		\draw (Johannes) -- node[midway, right] {4} (Python);
 		\draw (Johannes) -- node[midway, above] {3} (MySQL);
@@ -72,6 +78,8 @@ Algorithmus:\\
 - Ausgabe der sortierten Liste (mit allen Mitarbeitern (zB 25))\\
 - Eingabe der Projektposition und Algorithmus für jede Projektposition wiederholen
 
+\section{Geplante Evaluation}
+\label{ch:methodik:evaluation}
 Evaluation für Projektmanager:\\
 - Erhält für jedes Projekt beide Listen und gibt auf einer Skala von 1 bis 5 an, wie hoch der die Leistung der empfohlenen Mitarbeiter in diesem Projekt einschätzen würde
 
