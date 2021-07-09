@@ -6,15 +6,15 @@
 \label{ch:methodik:art}
 Die vorliegende Master-Thesis verfolgt das Ziel, die folgende Forschungsfrage zu beantworten: xyz.
 
-Um diese Fragestellung zu untersuchen, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. Hierfür werden zwei Versionen eines Empfehlungssystems zur Besetzung offener Projektpositionen in Unternehmen entwickelt. Eine der beiden Anwendungen verfolgt einen unilateralen, die andere einen bilateralen Ansatz. Beide Empfehlungssysteme erhalten als Eingabe dieselben offenen Projektpositionen. Für diese Stellen sortieren die Anwendungen die vorhandenen Mitarbeiter des Betriebs und geben diese in Form einer Liste zurück. Die Ausgaben beider Systeme werden Projektmanagern des Unternehmens vorgelegt, woraufhin diese auf einer vordefinierten Skala bewerten, welche Arbeitsleistung sie von den in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Die Angestellten erhalten die Beschreibungen der offenen Projektpositionen und bewerten auf einer vordefinierten Skala, wie zufrieden sie voraussichtlich mit der Tätigkeit auf den vorliegenden Projektpositionen sein werden. Hierbei wird überprüft, ob eine hohe erwartete Zufriedenheit des Angestellten mit einer hohen Positionierung in den Ergebnislisten der Empfehlungssysteme korreliert.
+Um diese Fragestellung zu untersuchen, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. Hierfür werden zwei Versionen eines Empfehlungssystems zur Besetzung offener Projektpositionen entwickelt. Eine der beiden Anwendungen soll einen unilateralen, die andere einen bilateralen Ansatz verfolgen. Beide Empfehlungssysteme erhalten als Eingabe dieselben offenen Projektpositionen. Für diese Stellen sortieren die Anwendungen die vorhandenen Mitarbeiter des Betriebs und geben diese in Form einer Liste zurück. Die Ausgaben beider Systeme werden Projektmanagern des Unternehmens vorgelegt, woraufhin diese auf einer vordefinierten Skala bewerten, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Die Angestellten erhalten die Beschreibungen der offenen Projektpositionen und bewerten auf einer vordefinierten Skala, wie zufrieden sie voraussichtlich mit der Tätigkeit auf den vorliegenden Projektpositionen sein werden. Hierbei wird überprüft, ob eine hohe erwartete Zufriedenheit des Angestellten mit einer hohen Positionierung in den Ergebnislisten der Empfehlungssysteme korreliert.
 
 \section{Versuchsaufbau}
 \label{ch:methodik:versuchsaufbau}
-Durchgeführt wird das Experiment mit Projektmanagern und Mitarbeitern der EXXETA AG mit Hauptsitz in Karlsruhe. Das Unternehmen ist spezialisiert auf IT-Beratungsleistungen und arbeitet vorrangig projektbasiert. Passende Angestellte zu offenen Projektpositionen zuzuordnen ist in diesem Betrieb dementsprechend eine häufig auftretende Aufgabe. Daher liegen Informationen über die Fähigkeiten der Mitarbeiter bereits in einer strukturieren Form vor.
+Durchgeführt wird das Experiment mit Projektmanagern und Mitarbeitern der EXXETA AG mit Hauptsitz in Karlsruhe. Das Unternehmen ist spezialisiert auf IT-Beratungsleistungen und arbeitet vorrangig projektbasiert. Passende Angestellte zu offenen Projektpositionen zuzuordnen ist in diesem Betrieb dementsprechend eine häufig auftretende Aufgabe. Daher liegen Informationen über die Mitarbeiter bereits in einer strukturieren Form vor. Diese Daten dienen im Experiment als Eingabe für einen unilateralen Empfehlungsalgorithmus.
 
-\subsection{Benötigte Daten}
-\label{ch:methodik:versuchsaufbau:daten}
-Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort steht eine Liste mit 551 Fähigkeiten wie beispielsweise "Java", "DSGVO" und "Digitale Transformation" zur Verfügung, welche die Angestellten auf einer vordefinierten Skala bewerten können. Hierbei stehen sechs Abstufungen zur Verfügung, welche in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellt sind.
+\subsection{Unilaterales Empfehlungssystem}
+\label{ch:methodik:versuchsaufbau:unilateral}
+Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort steht eine Liste mit 551 Fähigkeiten wie beispielsweise "Java", "DSGVO" und "Digitale Transformation" zur Verfügung. Diese können die Angestellten über die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellte Skala bewerten.
 
 \begin{figure}[h]
 	\centering
@@ -23,9 +23,59 @@ Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort s
 	\label{fig:methodik:versuchsaufbau:daten:abb1}
 \end{figure}
 
-Die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellten Abstufungen werden beim Speichern in Ganzzahlen von null ("Ich habe Grundkenntnisse") bis sechs ("Ich habe auf Konferenzen zu dem Thema Vorträge gehalten") übertragen. Diese numerischen Bewertungen können für alle Mitarbeiter des Unternehmens über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} abgefragt werden.
+Die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellten Abstufungen werden beim Speichern in ganzzahlige Werte von null ("Ich habe Grundkenntnisse") bis sechs ("Ich habe auf Konferenzen zu dem Thema Vorträge gehalten") übertragen.
 
-Auch ist es möglich, über die Schnittstelle Informationen über die Team-Zuordnungen im Unternehmen zu erhalten. Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1}
+Zur Empfehlung von Mitarbeitern für offene Projektpositionen wird in dieser Arbeit mit der in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellten Katz-Zentralität ein speicherbasierter Graphenalgorithmus angewendet. Ein Vorteil dieses Ansatzes ist die zuverlässige Lösung des Sparsity Problems. Ein weiterer Nutzen gegenüber modellbasierten Methoden ist die Langlebigkeit. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Ansatz weiterhin unverändert anwendbar. Die dabei zu erwartende hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments unter 1.000 Mitarbeiter im Unternehmen befinden.
+
+Um neben dem Sparsity Problem auch den Kaltstart zu beheben, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Bei der EXXETA AG arbeiten stets Mitarbeiter in einem Team, welche ähnliche Kompetenzen beherrschen. Beim Teammanager handelt es sich um eine fachliche Führungskraft, die in der Regel stärker ausgeprägte Fähigkeiten als der Rest des Teams besitzt. Um Rechenleistung einzusparen werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Teamzuordnung wird stattdessen über direkte Kanten zwischen den Teammitgliedern dargestellt. Das Kantengewicht von Teammitglieder zu Teammitglied beträgt eins und das Gewicht von Teammitglied zu Teammanager zwei. Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass auch für Mitarbeiter ohne vergebene Bewertungen aussagekräftige Beurteilungen bestimmt werden können. Außerdem erhalten die Teammanager durch das höhere Kantengewicht eine höhere Zentralität im Graphen. Deren beherrschte Fähigkeiten sind meist repräsentativ für ihr Team und deren Kompetenzen sind gleichzeitig stärker ausgeprägt als bei den übrigen Kollegen. Daher profitiert der Rest des Teams transitiv stark von den hinterlegten Fähigkeiten ihres Managers.
+
+Die Fähigkeitsbewertungen und Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} abgefragt werden. Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} zeigt auszugsweise ein Beispiel für die Rückgabe der Daten für John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}.
+
+Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Bewertungen der Fähigkeiten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mit Beziehungen der Teammitgliedern in Form eines bipartiten Graphen. In der Darstellung wird Jane Doe als Teammanager betrachtet.
+
+\begin{figure}[h]
+	\centering	
+	\begin{tikzpicture}[node distance={32mm}, thick, main/.style = {draw, circle}] 
+		\node[main, fill=itemcolor] (MongoDB) {$MongoDB$}; 
+		\node[main, fill=itemcolor] (Python) [below right of=MongoDB] {$Python$}; 
+		\node[main, fill=itemcolor] (MySQL) [above right of=Python] {$MySQL$}; 
+		\node[main, fill=itemcolor] (Java) [below right of=MySQL] {$Java$}; 
+		\node[main, fill=itemcolor] (HDFS) [above right of=Java] {$HDFS$}; 
+		\node[main, fill=itemcolor] (Spark) [below right of=HDFS] {$Spark$};
+		
+		\node[main, fill=usercolor] (Jane) [above right of=MongoDB] {$Jane D.$}; 
+		\node[main, fill=usercolor] (John) [above left of=HDFS] {$John D.$}; 
+		\node[main, fill=usercolor] (Max) [below of=MySQL] {$Max M.$};
+		\node[main, fill=usercolor] (Erika) [above right of=HDFS] {$Erika M.$}; 
+		
+		\draw (Jane) -- node[midway, right] {4} (Python);
+		\draw (Jane) -- node[midway, above] {3} (MySQL);
+		\draw (Jane) -- node[midway, above] {3} (MongoDB);
+		
+		\draw (John) -- node[midway, right] {1} (HDFS);		
+		\draw (John) -- node[midway, right] {3} (Java);
+		\draw (John) -- node[midway, above] {2} (MySQL);
+		
+		\draw (Erika) -- node[midway, above] {5} (HDFS);
+		\draw (Erika) -- node[midway, left] {3} (Spark);
+		
+		\draw (Max) -- node[midway, above] {2} (Java);
+		\draw (Max) -- node[midway, above] {3} (Python);
+		\draw (Max) -- node[midway, right] {1} (MySQL);
+		
+		\draw (Jane) -- node[midway, above] {2} (John);
+		\draw (Jane) -- node[midway, left] {2} (Max);
+		\path (Jane) edge[bend left=25] node[midway, above] {2} (Erika);
+		
+		\draw (John) -- node[midway, right] {1} (Max);
+		\draw (John) -- node[midway, above] {1} (Erika);
+		
+		\path (Max) edge[bend right=40] node[midway, below] {1} (Erika);
+	\end{tikzpicture}
+	
+	\caption{Graph aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} mit zusätzlicher Teamzuordnung}
+	\label{fig:methodik:versuchsaufbau:unilateral:abb1}
+\end{figure}
 
 \begin{minipage}{\linewidth}
 \lstinputlisting[
@@ -33,8 +83,10 @@ Auch ist es möglich, über die Schnittstelle Informationen über die Team-Zuord
 	caption=Beispiel für einen Auszug aus einem Mitarbeiter-\acsu{JSON} der \acsu{REST}-Schnittstelle des Intranets der EXXETA AG,
 	captionpos=b,
 	label=qc:methodik:versuchsaufbau:daten:qc1
-]{gfx/jane.json}
+]{gfx/john.json}
 \end{minipage}
+
+Vor Berechnung der Katz-Zentralität werden die Bewertungen der Fähigkeiten der Mitarbeiter um eins erhöht. Damit symbolisiert ein Kantengewicht von null ausschließlich nicht vergebene Beurteilungen. Außerdem wird auf eine Mittelwert-Zentrierung verzichtet. 
 
 \newpage
 Sucht ein Projektmanager nach passenden Mitarbeitern für eine offene Projektposition, definiert dieser zunächst die für die Position benötigten Fähigkeiten mit

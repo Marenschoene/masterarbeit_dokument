@@ -1,17 +1,17 @@
 {
-	"name":"Jane",
+	"name":"John",
 	"lastname":"Doe",
 	"position":"Consultant",
-	"userName":"jane.doe@exxeta.com",
-	"mail":"jane.doe@exxeta.com",
+	"userName":"john.doe@exxeta.com",
+	"mail":"john.doe@exxeta.com",
 	"team":{
 		"name":"Java Enterprise Solutions 3",
 		"manager":null,
 		"colleagues":[
 			{
 				"id":"abc-001",
-				"name":"John Doe",
-				"username":"John.Doe@EXXETA.com",
+				"name":"Erika Muster",
+				"username":"Erika.Muster@EXXETA.com",
 				"teamName":"Java Enterprise Solutions 3"
 			},
 			{
@@ -24,25 +24,25 @@
 	},
 	"skills":[
 		{
-			"name":"Python",
-			"level":4,
+			"name":"Java",
+			"level":3,
 			"description":null
 		},
 		{
 			"name":"MySQL",
-			"level":3,
+			"level":2,
 			"description":null
 		},
 		{
-			"name":"MongoDB",
-			"level":3,
+			"name":"HDFS",
+			"level":1,
 			"description":null
 		}
 	],
 	"manager":{
 		"id":"N/A",
-		"name":"Erika Muster",
-		"username":"Erika.Muster@EXXETA.com",
+		"name":"Jane Doe",
+		"username":"Jane.Doe@EXXETA.com",
 		"teamName":"Java Enterprise Solutions"
 	}
 }
