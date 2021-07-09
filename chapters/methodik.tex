@@ -8,12 +8,23 @@ Die vorliegende Master-Thesis verfolgt das Ziel, die folgende Forschungsfrage zu
 
 Um diese Fragestellung zu untersuchen, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. Hierfür werden zwei Versionen eines Empfehlungssystems zum Vorschlagen von Mitarbeitern für offene Projektpositionen in einem Unternehmen entwickelt. Eine der beiden Anwendungen verfolgt einen unilateralen, die andere einen bilateralen Ansatz. Beide Empfehlungssysteme erhalten als Eingabe dieselben offenen Projektpositionen, für welche sie die vorhandenen Mitarbeiter des Betriebs sortieren und in Form einer Liste zurückgeben sollen. Die Listen beider Systeme werden Projektmanagern des Unternehmens vorgelegt, woraufhin diese auf einer vordefinierten Skala bewerten, welche Arbeitsleistung sie von den in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Die Angestellten erhalten die Beschreibungen der offenen Projektpositionen und bewerten auf einer vordefinierten Skala, wie zufrieden sie voraussichtlich mit der Tätigkeit auf den vorliegenden Projektpositionen sein werden. Hierbei wird überprüft, ob eine hohe erwartete Zufriedenheit des Angestellten mit einer hohen Positionierung in den Ergebnislisten der Empfehlungssysteme korreliert.
 
-Durchgeführt wird das Experiment mit Projektmanagern und Mitarbeitern der EXXETA AG mit Hauptsitz in Karlsruhe. Das Unternehmen ist spezialisiert auf IT-Beratungsleistungen und arbeitet vorrangig projektbasiert. Passende Angestellte zu offenen Projektpositionen zuzuordnen ist dort eine häufig auftretende Aufgabe. Dementsprechend pflegen die Mitarbeiter ihre Fähigkeiten in einem Intranet in einer strukturieren Form, welche als Eingabe für die Empfehlungssysteme genutzt werden können.
-
 \section{Versuchsaufbau}
 \label{ch:methodik:versuchsaufbau}
+Durchgeführt wird das Experiment mit Projektmanagern und Mitarbeitern der EXXETA AG mit Hauptsitz in Karlsruhe. Das Unternehmen ist spezialisiert auf IT-Beratungsleistungen und arbeitet vorrangig projektbasiert. Passende Angestellte zu offenen Projektpositionen zuzuordnen ist im Betrieb eine häufig auftretende Aufgabe. Dementsprechend liegen Informationen über das Fähigkeiten der Mitarbeiter in einer strukturieren Form vor.
+
+\subsection{Benötigte Daten}
+\label{ch:methodik:versuchsaufbau:daten}
+Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort steht eine Liste mit 551 Fähigkeiten wie beispielsweise "Java", "DSGVO" und "Digitale Transformation" zur Verfügung, welche die Angestellten auf einer vordefinierten Skala bewerten können. Hierbei stehen die folgenden sechs Abstufungen zur Verfügung: "Ich habe Grundkenntnisse", "Ich habe es schon in einem Projekt eingesetzt", "Ich habe es in einem Projekt eingeführt", "Ich habe Kollegen geholfen es einzusetzen", "Ich habe eine Schulung zu dem Thema gehalten" und "Ich habe auf Konferenzen zu dem Thema Vorträge gehalten". Diese Bewertungen können für alle Mitarbeiter über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} abgefragt werden.
+
+Auch ist es möglich, über die Schnittstelle Informationen über die Team-Zuordnungen im Unternehmen zu erhalten.
+
+\newpage
+Sucht ein Projektmanager nach passenden Mitarbeitern für eine offene Projektposition, definiert dieser zunächst die für die Position benötigten Fähigkeiten mit
+
+Dementsprechend pflegen die Mitarbeiter ihre Fähigkeiten in einem Intranet in einer strukturieren Form, welche als Eingabe für die Empfehlungssysteme genutzt werden.
+
 Zu erhebende Daten:\\
-- Skills sind im Intranet gespeichert: Bewertung auf einer Skala von 1 bis 5\\
+- Skills sind im Intranet gespeichert: Bewertung auf einer Skala von 1 bis 6\\
 - Zusätzlich Teamzuordnung im Intranet --> Kantengewicht: 1 --> Gedanken mit dem Manager (Kann mehr) in Ausarbeitung aufnehmen\\
 - Für jeden Mitarbeiter erheben: Wichtigkeit (true/false) --> Auch für Dinge, die man noch nicht kann\\
 - Für jeden Mitarbeiter erheben: Welche Auswirkung hat es, wenn im Projekt nicht ausgelastet (Kurve A bis C) --> Alle drei Antwortmöglichkeiten positiv formulieren --> z.B. Freiräume nutzen
