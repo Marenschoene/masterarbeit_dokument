@@ -1,24 +1,21 @@
 {
 	"name":"Jane",
+	"lastname":"Doe",
 	"position":"Consultant",
+	"userName":"jane.doe@exxeta.com",
+	"mail":"jane.doe@exxeta.com",
 	"team":{
 		"name":"Java Enterprise Solutions 3",
 		"manager":null,
 		"colleagues":[
 			{
 				"id":"abc-001",
-				"name":"Erika Muster",
-				"username":"Erika.Muster@EXXETA.com",
-				"teamName":"Java Enterprise Solutions 3"
-			},
-			{
-				"id":"abc-002",
 				"name":"John Doe",
 				"username":"John.Doe@EXXETA.com",
 				"teamName":"Java Enterprise Solutions 3"
 			},
 			{
-				"id":"abc-003",
+				"id":"abc-002",
 				"name":"Max Muster",
 				"username":"Max.Muster@EXXETA.com",
 				"teamName":"Java Enterprise Solutions 3"
@@ -42,12 +39,10 @@
 			"description":null
 		}
 	],
-	"lastname":"Doe",
 	"manager":{
 		"id":"N/A",
-		"name":"Kari Nordmann",
-		"username":"kari.nordmann@exxeta.com",
+		"name":"Erika Muster",
+		"username":"Erika.Muster@EXXETA.com",
 		"teamName":"Java Enterprise Solutions"
-	},
-	"userName":"jane.doe@exxeta.com"
+	}
 }

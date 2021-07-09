@@ -14,15 +14,27 @@ Durchgeführt wird das Experiment mit Projektmanagern und Mitarbeitern der EXXET
 
 \subsection{Benötigte Daten}
 \label{ch:methodik:versuchsaufbau:daten}
-Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort steht eine Liste mit 551 Fähigkeiten wie beispielsweise "Java", "DSGVO" und "Digitale Transformation" zur Verfügung, welche die Angestellten auf einer vordefinierten Skala bewerten können. Hierbei stehen die folgenden sechs Abstufungen zur Verfügung: "Ich habe Grundkenntnisse", "Ich habe es schon in einem Projekt eingesetzt", "Ich habe es in einem Projekt eingeführt", "Ich habe Kollegen geholfen es einzusetzen", "Ich habe eine Schulung zu dem Thema gehalten" und "Ich habe auf Konferenzen zu dem Thema Vorträge gehalten". Diese Bewertungen können für alle Mitarbeiter über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} abgefragt werden.
+Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort steht eine Liste mit 551 Fähigkeiten wie beispielsweise "Java", "DSGVO" und "Digitale Transformation" zur Verfügung, welche die Angestellten auf einer vordefinierten Skala bewerten können. Hierbei stehen sechs Abstufungen zur Verfügung, welche in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellt sind.
 
-Auch ist es möglich, über die Schnittstelle Informationen über die Team-Zuordnungen im Unternehmen zu erhalten.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{gfx/skill-level.png}
+	\caption{Hinzufügen einer Fähigkeit mit Angabe des entsprechenden Kenntnisniveaus im EXXETA-Intranet}
+	\label{fig:methodik:versuchsaufbau:daten:abb1}
+\end{figure}
 
+Die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellten Abstufungen werden beim Speichern in Ganzzahlen von null ("Ich habe Grundkenntnisse") bis sechs ("Ich habe auf Konferenzen zu dem Thema Vorträge gehalten") übertragen. Diese numerischen Bewertungen können für alle Mitarbeiter des Unternehmens über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} abgefragt werden.
+
+Auch ist es möglich, über die Schnittstelle Informationen über die Team-Zuordnungen im Unternehmen zu erhalten. Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1}
+
+\begin{minipage}{\linewidth}
 \lstinputlisting[
 	language=json,
-	caption=Auszug eines Mitarbeiter-\acp{JSON} der \ac{REST}-Schnittstelle des Intranets der EXXETA AG,
-	captionpos=b
+	caption=Beispiel für einen Auszug aus einem Mitarbeiter-\acsu{JSON} der \acsu{REST}-Schnittstelle des Intranets der EXXETA AG,
+	captionpos=b,
+	label=qc:methodik:versuchsaufbau:daten:qc1
 ]{gfx/jane.json}
+\end{minipage}
 
 \newpage
 Sucht ein Projektmanager nach passenden Mitarbeitern für eine offene Projektposition, definiert dieser zunächst die für die Position benötigten Fähigkeiten mit
