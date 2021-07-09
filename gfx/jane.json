@@ -1,0 +1,53 @@
+{
+	"name":"Jane",
+	"position":"Consultant",
+	"team":{
+		"name":"Java Enterprise Solutions 3",
+		"manager":null,
+		"colleagues":[
+			{
+				"id":"abc-001",
+				"name":"Erika Muster",
+				"username":"Erika.Muster@EXXETA.com",
+				"teamName":"Java Enterprise Solutions 3"
+			},
+			{
+				"id":"abc-002",
+				"name":"John Doe",
+				"username":"John.Doe@EXXETA.com",
+				"teamName":"Java Enterprise Solutions 3"
+			},
+			{
+				"id":"abc-003",
+				"name":"Max Muster",
+				"username":"Max.Muster@EXXETA.com",
+				"teamName":"Java Enterprise Solutions 3"
+			}
+		]
+	},
+	"skills":[
+		{
+			"name":"Python",
+			"level":4,
+			"description":null
+		},
+		{
+			"name":"MySQL",
+			"level":3,
+			"description":null
+		},
+		{
+			"name":"MongoDB",
+			"level":3,
+			"description":null
+		}
+	],
+	"lastname":"Doe",
+	"manager":{
+		"id":"N/A",
+		"name":"Kari Nordmann",
+		"username":"kari.nordmann@exxeta.com",
+		"teamName":"Java Enterprise Solutions"
+	},
+	"userName":"jane.doe@exxeta.com"
+}
