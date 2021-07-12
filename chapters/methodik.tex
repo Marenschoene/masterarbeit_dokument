@@ -4,13 +4,13 @@
 
 \section{Art der Forschung}
 \label{ch:methodik:art}
-Um die Forschungsfrage dieser Master-Thesis zu untersuchen, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext werden für einen A/B-Test zwei Versionen eines Empfehlungssystems zur Besetzung offener Projektpositionen entwickelt. Eine der beiden Anwendungen soll einen unilateralen, die andere einen bilateralen Ansatz verfolgen. Beide Empfehlungssysteme erhalten als Eingabe dieselben offenen Projektpositionen. Für diese Stellen sortieren die Anwendungen die vorhandenen Mitarbeiter eines Betriebs und geben diese in Form einer Liste zurück.
+Um die Forschungsfrage dieser Master-Thesis zu beantworten, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext werden für einen A/B-Test zwei Versionen eines Empfehlungssystems zur Besetzung offener Projektpositionen entwickelt. Eine der beiden Anwendungen verfolgt einen unilateralen, die andere einen bilateralen Ansatz. Beide Empfehlungssysteme erhalten als Eingabe dieselben offenen Projektpositionen. Für diese Stellen sortieren die Anwendungen die vorhandenen Mitarbeiter eines Betriebs und geben diese in Form einer Liste zurück.
 
-Die Ausgaben beider Systeme werden Projektmanagern des Unternehmens vorgelegt. Diese bewerten auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten.
+Die Ausgaben beider Systeme werden Projektmanagern vorgelegt. Diese bewerten auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Dabei wird geprüft, ob die erwartete Leistung der Angestellten des bilateralen Empfehlungssystems höher bewertet wird als die der unilateralen Variante.
 
-Die Angestellten erhalten die Beschreibungen der offenen Projektpositionen und bewerten ebenfalls auf einer vordefinierten Skala, wie zufrieden sie voraussichtlich mit der Tätigkeit auf den vorliegenden Projektpositionen sein werden. Hierbei wird für beide Empfehlungssysteme überprüft, ob eine hohe erwartete Zufriedenheit der Angestellten mit einer hohen Positionierung in den Ergebnislisten korreliert.
+Die Angestellten erhalten die Beschreibungen der offenen Projektpositionen. Daraufhin bewerten sie ebenfalls auf einer vordefinierten Skala, wie zufrieden sie voraussichtlich mit der Tätigkeit auf den vorliegenden Projektpositionen sein werden. Hierbei wird für beide Empfehlungssysteme überprüft, ob eine hohe erwartete Zufriedenheit der Angestellten mit einer hohen Positionierung in den Ergebnislisten korreliert.
 
-Abschließend werden die Bewertungen von Projektmanagern und Angestellten hinsichtlich der Ergebnisse der beiden Empfehlungssysteme verglichen. Hierbei wird bestimmt, ob die Resultate der bilateralen Recommender Engine im direkten Vergleich mit dem unilateralen Ansatz sowohl auf Seiten der Projektmanager eine höhere erwartete Leistung als auch aus Perspektive der Mitarbeiter für eine höhere erwartete Zufriedenheit sorgt.
+Abschließend werden die Bewertungen von Projektmanagern und Angestellten hinsichtlich der Ergebnisse der beiden Empfehlungssysteme verglichen. Hierbei wird bestimmt, ob die bilaterale Recommender Engine im direkten Vergleich mit dem unilateralen Ansatz sowohl auf Seiten der Projektmanager für eine höhere erwartete Leistung als auch aus Perspektive der Mitarbeiter für eine höhere erwartete Zufriedenheit sorgt.
 
 \section{Versuchsaufbau}
 \label{ch:methodik:versuchsaufbau}
@@ -27,17 +27,17 @@ Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort s
 
 Die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellten Abstufungen werden beim Speichern in ganzzahlige Werte von null ("Ich habe Grundkenntnisse") bis sechs ("Ich habe auf Konferenzen zu dem Thema Vorträge gehalten") übertragen.
 
-Aufgrund dieser klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} kann Bias bei der Selbsteinschätzung weitgehend ausgeschlossen werden. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen grundsätzlich besser oder schlechter einschätzen als andere Kollegen. Dieser Sachverhalt kann insbesondere auf längere Berufserfahrung zurückgeführt werden. Daher wird bei der Empfehlungsbestimmung auf eine Mittelwert-Zentrierung verzichtet.
+Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} kann Bias bei der Selbsteinschätzung weitgehend ausgeschlossen werden. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen bewusst besser oder schlechter einschätzen als andere Kollegen. Dieser Sachverhalt kann insbesondere auf längere Berufserfahrung zurückgeführt werden. Daher wird bei der Empfehlungsbestimmung auf eine Mittelwert-Zentrierung verzichtet.
 
-Die Kompetenzen der Mitarbeiter und die zugehörigen Bewertungen dienen im Experiment als Eingabe für das unilaterale Empfehlungssystem.
+Die Kompetenzen der Mitarbeiter und die zugehörigen Bewertungen dienen im Experiment als Eingabe für einen grundlegenden Algorithmus, welcher für unilaterales und bilaterales Empfehlungssystem gleich ist.
 
-\subsection{Unilaterales Empfehlungssystem}
-\label{ch:methodik:versuchsaufbau:unilateral}
-Um im unilateralen Empfehlungssystem Mitarbeiter für offene Projektpositionen vorzuschlagen, wird die Katz-Zentralität angewendet. Dieser speicherbasierte Graphenalgorithmus wurde in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellt. Ein Nutzen dieses Ansatzes ist die zuverlässige Lösung des Sparsity Problems. Vorteilhaft gegenüber modellbasierten Methoden ist außerdem die Langlebigkeit des Verfahrens. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Ansatz weiterhin unverändert anwendbar. Die dabei zu erwartende hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments unter 1.000 Mitarbeiter im Unternehmen befinden.
+\subsection{Grundlegender Algorithmus}
+\label{ch:methodik:versuchsaufbau:grundlegend}
+Um durch das unilaterale Empfehlungssystem Mitarbeiter für offene Projektpositionen vorzuschlagen, wird die Katz-Zentralität angewendet. Dieser speicherbasierte Graphenalgorithmus wurde in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellt. Ein Nutzen dieses Ansatzes ist die zuverlässige Lösung des Sparsity Problems. Vorteilhaft gegenüber modellbasierten Methoden ist außerdem die Langlebigkeit des Verfahrens. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Ansatz weiterhin unverändert anwendbar. Die dabei zu erwartende hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments unter 1.000 Mitarbeiter im Unternehmen befinden.
 
-Um neben dem Sparsity Problem auch den Kaltstart zu beheben, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Bei der EXXETA AG arbeiten stets Mitarbeiter in einem Team, welche ähnliche Kompetenzen beherrschen. Der Leiter des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten in der Regel repräsentativ für sein Team sind. Seine Kompetenzen sind jedoch stärker ausgeprägt. Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht von Teammitglieder zu Teammitglied beträgt eins und das Gewicht von Teammitglied zu seinem Manager zwei. Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass auch für Mitarbeiter ohne vergebene Bewertungen aussagekräftige Beurteilungen bestimmt werden können. Außerdem erhalten die Teammanager durch das höhere Kantengewicht eine stärkere Zentralität im Graphen.  Daher profitieren sämtliche Teammitglieder transitiv von den hinterlegten Fähigkeiten ihres Managers.
+Um neben dem Sparsity Problem auch den Kaltstart zu beheben, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Bei der EXXETA AG arbeiten stets Mitarbeiter in einem Team, welche ähnliche Kompetenzen beherrschen. Der Leiter des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für sein Team sind. Seine Kompetenzen sind jedoch in der Regel stärker ausgeprägt.
 
-Die Fähigkeitsbewertungen und Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} aus dem Intranet abgefragt werden. Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} zeigt beispielhaft einen Auszug aus den zurückgegebenen Daten von John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}.
+Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter der EXXETA AG, könnten seine zurückgegebenen Daten dem folgenden Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen.
 
 %\begin{minipage}{\linewidth}
 	\lstinputlisting[
@@ -48,9 +48,11 @@ Die Fähigkeitsbewertungen und Teamzuordnungen können für alle Mitarbeiter der
 	]{gfx/john.json}
 %\end{minipage}
 
-In Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass eine Bewertung von eins in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} einer Beurteilung von null im zurückgegebenen \ac{JSON} entspricht. Damit ein Kantengewicht von null ausschließlich nicht vergebene Kompetenz-Einschätzungen symbolisiert, werden die Bewertungen vor Berechnung der Katz-Zentralität um eins erhöht.
+In Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass eine Bewertung von eins in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} einer Beurteilung von null im zurückgegebenen \ac{JSON} entspricht. Damit ein Kantengewicht von null ausschließlich nicht vergebene Kompetenz-Einschätzungen symbolisiert, werden die Bewertungen vor der Empfehlungsberechnung um eins erhöht.
 
-Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und Teamzuordnungen der Mitarbeiter aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines bipartiten Graphen. In der Grafik wird Jane Doe als Teammanager betrachtet.
+Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern beträgt eins und das Gewicht von einem Teammitglied zu seinem Manager zwei. Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass auch für Mitarbeiter ohne explizite Bewertungen aussagekräftige Beurteilungen bestimmt werden können. Außerdem erhalten die Teammanager durch das höhere Kantengewicht eine stärkere Zentralität im Graphen.  Daher profitieren sämtliche Teammitglieder transitiv von den repräsentativen Fähigkeiten ihres Managers.
+
+Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und Teamzuordnungen der Mitarbeiter aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen. In der Grafik wird Jane Doe als Teammanagerin betrachtet.
 
 \begin{figure}[h]
 	\centering	
@@ -96,10 +98,15 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 	\label{fig:methodik:versuchsaufbau:unilateral:abb1}
 \end{figure}
 
-Zur Anwendung des unilateralen Empfehlungssystems gibt ein Projektmanager die für eine offene Projektposition relevanten Fähigkeiten mitsamt des benötigten Kompetenzniveaus in das System ein. Diese Daten werden wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} im Kontext der Gruppen-Recommender Engines beschrieben, in Form eines Pseudo-Mitarbeiters ebenfalls in den bipartiten Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} eingefügt. Anhand dieser Daten folgt die Bestimmung der Katz-Zentralität. Anschließend wird für jede vom Projektmanager geforderte Kompetenz die absolute Differenz zwischen Pseudomitarbeiter und allen anderen Angestellten bestimmt. Im letzten Schritt werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
+Vor der Berechnung der Katz-Zentralität muss ein Projektmanager zunächst die für eine offene Projektposition relevanten Fähigkeiten mitsamt der benötigten Kompetenzniveaus festlegen. Diese Daten werden, wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} im Kontext der Gruppen-Recommender Engines beschrieben, in Form eines Pseudo-Mitarbeiters ebenfalls in den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} eingefügt. Anhand dieser Datenstruktur folgt die Bestimmung der Katz-Zentralität. Die dabei entstehende Matrix dient als Eingabe für das unilaterale und das bilaterale Empfehlungssystem. Beide Anwendungen unterscheiden sich folglich wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Ergebnisse des Katz-Algorithmus sortieren.
+
+\subsection{Unilaterales Empfehlungssystem}
+\label{ch:methodik:versuchsaufbau:unilateral}
+Anschließend wird für jede vom Projektmanager geforderte Kompetenz die absolute Differenz zwischen Pseudomitarbeiter und allen anderen Angestellten bestimmt. Im letzten Schritt werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
 
 \subsection{Bilaterales Empfehlungssystem}
 \label{ch:methodik:versuchsaufbau:bilateral}
+
 
 \newpage
 Zu erhebende Daten:\\
