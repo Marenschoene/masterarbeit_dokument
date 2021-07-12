@@ -6,7 +6,7 @@
 \label{ch:methodik:art}
 Um die Forschungsfrage dieser Master-Thesis zu beantworten, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext werden für einen A/B-Test zwei Versionen eines Empfehlungssystems zur Besetzung offener Projektpositionen entwickelt. Eine der beiden Anwendungen verfolgt einen unilateralen, die andere einen bilateralen Ansatz. Beide Empfehlungssysteme erhalten als Eingabe dieselben offenen Projektpositionen. Für diese Stellen sortieren die Anwendungen die vorhandenen Mitarbeiter eines Betriebs und geben diese in Form einer Liste zurück.
 
-Die Ausgaben beider Systeme werden Projektmanagern vorgelegt. Diese bewerten auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Dabei wird geprüft, ob die erwartete Leistung der Angestellten des bilateralen Empfehlungssystems höher bewertet wird als die der unilateralen Variante.
+Die Ausgaben beider Systeme werden Projektmanagern für jede offene Projektposition vorgelegt. Diese bewerten für jede Liste auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Dabei wird geprüft, ob die erwartete Leistung der Angestellten des bilateralen Empfehlungssystems höher bewertet wird als die der unilateralen Variante.
 
 Die Angestellten erhalten die Beschreibungen der offenen Projektpositionen. Daraufhin bewerten sie ebenfalls auf einer vordefinierten Skala, wie zufrieden sie voraussichtlich mit der Tätigkeit auf den vorliegenden Projektpositionen sein werden. Hierbei wird für beide Empfehlungssysteme überprüft, ob eine hohe erwartete Zufriedenheit der Angestellten mit einer hohen Positionierung in den Ergebnislisten korreliert.
 
@@ -100,13 +100,12 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 
 Vor der Berechnung der Katz-Zentralität muss ein Projektmanager zunächst die für eine offene Projektposition relevanten Fähigkeiten mitsamt der benötigten Kompetenzniveaus festlegen. Diese Daten werden, wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} im Kontext der Gruppen-Recommender Engines beschrieben, in Form eines Pseudo-Mitarbeiters ebenfalls in den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} eingefügt. Anhand dieser Datenstruktur folgt die Bestimmung der Katz-Zentralität. Die dabei entstehende Matrix dient als Eingabe für das unilaterale und das bilaterale Empfehlungssystem. Beide Anwendungen unterscheiden sich folglich wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Ergebnisse des Katz-Algorithmus sortieren.
 
-\subsection{Unilaterales Empfehlungssystem}
+\subsection{Unilateraler Empfehlungsansatz}
 \label{ch:methodik:versuchsaufbau:unilateral}
 Anschließend wird für jede vom Projektmanager geforderte Kompetenz die absolute Differenz zwischen Pseudomitarbeiter und allen anderen Angestellten bestimmt. Im letzten Schritt werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
 
-\subsection{Bilaterales Empfehlungssystem}
+\subsection{Bilateraler Empfehlungsansatz}
 \label{ch:methodik:versuchsaufbau:bilateral}
-
 
 \newpage
 Zu erhebende Daten:\\
