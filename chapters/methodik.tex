@@ -4,40 +4,49 @@
 
 \section{Art der Forschung}
 \label{ch:methodik:art}
-%Die vorliegende Master-Thesis verfolgt das Ziel, die folgende Forschungsfrage zu beantworten: xyz.
-Um die Forschungsfrage dieser Master-Thesis zu untersuchen, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. Hierfür werden zur Durchführung eines A/B-Tests zwei Versionen eines Empfehlungssystems zur Besetzung offener Projektpositionen entwickelt. Eine der beiden Anwendungen soll einen unilateralen, die andere einen bilateralen Ansatz verfolgen. Beide Empfehlungssysteme erhalten als Eingabe dieselben offenen Projektpositionen. Für diese Stellen sortieren die Anwendungen die vorhandenen Mitarbeiter des Betriebs und geben diese in Form einer Liste zurück. Die Ausgaben beider Systeme werden Projektmanagern des Unternehmens vorgelegt. Daraufhin bewerten diese auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Die Angestellten erhalten die Beschreibungen der offenen Projektpositionen und bewerten ebenfalls auf einer vordefinierten Skala, wie zufrieden sie voraussichtlich mit der Tätigkeit auf den vorliegenden Projektpositionen sein werden. Hierbei wird überprüft, ob eine hohe erwartete Zufriedenheit des Angestellten mit einer hohen Positionierung in den Ergebnislisten der Empfehlungssysteme korreliert.
+Um die Forschungsfrage dieser Master-Thesis zu untersuchen, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext werden für einen A/B-Test zwei Versionen eines Empfehlungssystems zur Besetzung offener Projektpositionen entwickelt. Eine der beiden Anwendungen soll einen unilateralen, die andere einen bilateralen Ansatz verfolgen. Beide Empfehlungssysteme erhalten als Eingabe dieselben offenen Projektpositionen. Für diese Stellen sortieren die Anwendungen die vorhandenen Mitarbeiter eines Betriebs und geben diese in Form einer Liste zurück.
+
+Die Ausgaben beider Systeme werden Projektmanagern des Unternehmens vorgelegt. Diese bewerten auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten.
+
+Die Angestellten erhalten die Beschreibungen der offenen Projektpositionen und bewerten ebenfalls auf einer vordefinierten Skala, wie zufrieden sie voraussichtlich mit der Tätigkeit auf den vorliegenden Projektpositionen sein werden. Hierbei wird für beide Empfehlungssysteme überprüft, ob eine hohe erwartete Zufriedenheit der Angestellten mit einer hohen Positionierung in den Ergebnislisten korreliert.
+
+Abschließend werden die Bewertungen von Projektmanagern und Angestellten hinsichtlich der Ergebnisse der beiden Empfehlungssysteme verglichen. Hierbei wird bestimmt, ob die Resultate der bilateralen Recommender Engine im direkten Vergleich mit dem unilateralen Ansatz sowohl auf Seiten der Projektmanager eine höhere erwartete Leistung als auch aus Perspektive der Mitarbeiter für eine höhere erwartete Zufriedenheit sorgt.
 
 \section{Versuchsaufbau}
 \label{ch:methodik:versuchsaufbau}
-Durchgeführt wird das Experiment mit Projektmanagern und Mitarbeitern der EXXETA AG mit Hauptsitz in Karlsruhe. Das Unternehmen ist spezialisiert auf IT-Beratungsleistungen und arbeitet vorrangig projektbasiert. Passende Angestellte zu offenen Projektpositionen zuzuordnen ist in diesem Betrieb dementsprechend eine häufig auftretende Aufgabe. Daher liegen Informationen über die Mitarbeiter bereits in einer strukturieren Form vor. Diese Daten dienen im Experiment als Eingabe für einen unilateralen Empfehlungsalgorithmus.
+Durchgeführt wird das Experiment mit Projektmanagern und Mitarbeitern der EXXETA AG mit Hauptsitz in Karlsruhe. Das Unternehmen ist spezialisiert auf IT-Beratungsleistungen und arbeitet vorrangig projektbasiert. Passende Angestellte zu offenen Projektpositionen zuzuordnen ist in diesem Betrieb dementsprechend eine häufig auftretende Aufgabe. Daher liegen Informationen über die Kompetenzen der Mitarbeiter bereits in einer strukturieren Form vor.
 
-\subsection{Unilaterales Empfehlungssystem}
-\label{ch:methodik:versuchsaufbau:unilateral}
 Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort steht eine Liste mit 551 Fähigkeiten wie beispielsweise "Java", "DSGVO" und "Digitale Transformation" zur Verfügung. Diese können die Angestellten über die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellte Skala bewerten.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{gfx/skill-level.png}
+	\includegraphics[width=1\textwidth]{gfx/skill-level.png}
 	\caption{Hinzufügen einer Fähigkeit mit Angabe des entsprechenden Kenntnisniveaus im EXXETA-Intranet}
 	\label{fig:methodik:versuchsaufbau:daten:abb1}
 \end{figure}
 
 Die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellten Abstufungen werden beim Speichern in ganzzahlige Werte von null ("Ich habe Grundkenntnisse") bis sechs ("Ich habe auf Konferenzen zu dem Thema Vorträge gehalten") übertragen.
 
+Aufgrund dieser klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} kann Bias bei der Selbsteinschätzung weitgehend ausgeschlossen werden. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen grundsätzlich besser oder schlechter einschätzen als andere Kollegen. Dieser Sachverhalt kann insbesondere auf längere Berufserfahrung zurückgeführt werden. Daher wird bei der Empfehlungsbestimmung auf eine Mittelwert-Zentrierung verzichtet.
+
+Die Kompetenzen der Mitarbeiter und die zugehörigen Bewertungen dienen im Experiment als Eingabe für das unilaterale Empfehlungssystem.
+
+\subsection{Unilaterales Empfehlungssystem}
+\label{ch:methodik:versuchsaufbau:unilateral}
 Um im unilateralen Empfehlungssystem Mitarbeiter für offene Projektpositionen vorzuschlagen, wird die Katz-Zentralität angewendet. Dieser speicherbasierte Graphenalgorithmus wurde in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellt. Ein Nutzen dieses Ansatzes ist die zuverlässige Lösung des Sparsity Problems. Vorteilhaft gegenüber modellbasierten Methoden ist außerdem die Langlebigkeit des Verfahrens. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Ansatz weiterhin unverändert anwendbar. Die dabei zu erwartende hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments unter 1.000 Mitarbeiter im Unternehmen befinden.
 
 Um neben dem Sparsity Problem auch den Kaltstart zu beheben, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Bei der EXXETA AG arbeiten stets Mitarbeiter in einem Team, welche ähnliche Kompetenzen beherrschen. Der Leiter des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten in der Regel repräsentativ für sein Team sind. Seine Kompetenzen sind jedoch stärker ausgeprägt. Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht von Teammitglieder zu Teammitglied beträgt eins und das Gewicht von Teammitglied zu seinem Manager zwei. Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass auch für Mitarbeiter ohne vergebene Bewertungen aussagekräftige Beurteilungen bestimmt werden können. Außerdem erhalten die Teammanager durch das höhere Kantengewicht eine stärkere Zentralität im Graphen.  Daher profitieren sämtliche Teammitglieder transitiv von den hinterlegten Fähigkeiten ihres Managers.
 
 Die Fähigkeitsbewertungen und Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} aus dem Intranet abgefragt werden. Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} zeigt beispielhaft einen Auszug aus den zurückgegebenen Daten von John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}.
 
-\begin{minipage}{\linewidth}
+%\begin{minipage}{\linewidth}
 	\lstinputlisting[
 	language=json,
 	caption=Beispiel für ein Mitarbeiter-\acsu{JSON} der \acsu{REST}-Schnittstelle des Intranets der EXXETA AG (Auszug),
 	captionpos=b,
 	label=qc:methodik:versuchsaufbau:daten:qc1
 	]{gfx/john.json}
-\end{minipage}
+%\end{minipage}
 
 In Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass eine Bewertung von eins in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} einer Beurteilung von null im zurückgegebenen \ac{JSON} entspricht. Damit ein Kantengewicht von null ausschließlich nicht vergebene Kompetenz-Einschätzungen symbolisiert, werden die Bewertungen vor Berechnung der Katz-Zentralität um eins erhöht.
 
@@ -87,9 +96,10 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 	\label{fig:methodik:versuchsaufbau:unilateral:abb1}
 \end{figure}
 
-Bei der Berechnung der Katz-Zentralität wird auf eine Mittelwert-Zentrierung verzichtet. Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} kann Bias bei der Selbsteinschätzung weitgehend ausgeschlossen werden. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen grundsätzlich besser oder schlechter einschätzen als andere Kollegen. Dieser Sachverhalt kann insbesondere auf längere Berufserfahrung zurückgeführt werden.
+Zur Anwendung des unilateralen Empfehlungssystems gibt ein Projektmanager die für eine offene Projektposition relevanten Fähigkeiten mitsamt des benötigten Kompetenzniveaus in das System ein. Diese Daten werden wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} im Kontext der Gruppen-Recommender Engines beschrieben, in Form eines Pseudo-Mitarbeiters ebenfalls in den bipartiten Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} eingefügt. Anhand dieser Daten folgt die Bestimmung der Katz-Zentralität. Anschließend wird für jede vom Projektmanager geforderte Kompetenz die absolute Differenz zwischen Pseudomitarbeiter und allen anderen Angestellten bestimmt. Im letzten Schritt werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
 
-Sucht ein Projektmanager nach passenden Mitarbeitern für eine offene Projektposition, definiert dieser zunächst die für die Position benötigten Fähigkeiten mit
+\subsection{Bilaterales Empfehlungssystem}
+\label{ch:methodik:versuchsaufbau:bilateral}
 
 \newpage
 Zu erhebende Daten:\\
