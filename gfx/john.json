@@ -25,17 +25,17 @@
 	"skills":[
 		{
 			"name":"Java",
-			"level":3,
-			"description":null
-		},
-		{
-			"name":"MySQL",
 			"level":2,
 			"description":null
 		},
 		{
-			"name":"HDFS",
+			"name":"MySQL",
 			"level":1,
+			"description":null
+		},
+		{
+			"name":"HDFS",
+			"level":0,
 			"description":null
 		}
 	],
