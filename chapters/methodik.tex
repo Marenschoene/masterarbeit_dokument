@@ -31,6 +31,8 @@ Um neben dem Sparsity Problem auch den Kaltstart zu beheben, werden zusätzlich 
 
 Die Fähigkeitsbewertungen und Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} aus dem Intranet abgefragt werden. Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} zeigt beispielhaft einen Auszug aus den zurückgegebenen Daten von John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}.
 
+In Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass eine Bewertung von eins in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} einer Beurteilung von null im zurückgegebenen \ac{JSON} entspricht. Damit ein Kantengewicht von null ausschließlich nicht vergebene Kompetenz-Einschätzungen symbolisiert, werden die Bewertungen vor Berechnung der Katz-Zentralität um eins erhöht.
+
 Die Darstellung der Kompetenzen und Teamzuordnungen der Mitarbeiter aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines bipartiten Graphen ist in Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zu erkennen. In der Grafik wird Jane Doe als Teammanager betrachtet.
 
 \begin{figure}[h]
@@ -80,69 +82,23 @@ Die Darstellung der Kompetenzen und Teamzuordnungen der Mitarbeiter aus Tabelle 
 \begin{minipage}{\linewidth}
 \lstinputlisting[
 	language=json,
-	caption=Beispiel für einen Auszug aus einem Mitarbeiter-\acsu{JSON} der \acsu{REST}-Schnittstelle des Intranets der EXXETA AG,
+	caption=Beispiel für ein Mitarbeiter-\acsu{JSON} der \acsu{REST}-Schnittstelle des Intranets der EXXETA AG (Auszug),
 	captionpos=b,
 	label=qc:methodik:versuchsaufbau:daten:qc1
 ]{gfx/john.json}
 \end{minipage}
 
-Vor Berechnung der Katz-Zentralität werden die Bewertungen der Fähigkeiten der Mitarbeiter um eins erhöht. Damit symbolisiert ein Kantengewicht von null ausschließlich nicht vergebene Beurteilungen. Außerdem wird auf eine Mittelwert-Zentrierung verzichtet. 
+Bei der Berechnung der Katz-Zentralität wird auf eine Mittelwert-Zentrierung verzichtet. Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} kann Bias bei der Selbsteinschätzung weitgehend ausgeschlossen werden. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen grundsätzlich besser oder schlechter einschätzen als andere Kollegen. Dieser Sachverhalt kann insbesondere auf längere Berufserfahrung zurückgeführt werden.
 
 \newpage
 Sucht ein Projektmanager nach passenden Mitarbeitern für eine offene Projektposition, definiert dieser zunächst die für die Position benötigten Fähigkeiten mit
 
-Dementsprechend pflegen die Mitarbeiter ihre Fähigkeiten in einem Intranet in einer strukturieren Form, welche als Eingabe für die Empfehlungssysteme genutzt werden.
-
 Zu erhebende Daten:\\
-- Skills sind im Intranet gespeichert: Bewertung auf einer Skala von 1 bis 6\\
-- Zusätzlich Teamzuordnung im Intranet --> Kantengewicht: 1 --> Gedanken mit dem Manager (Kann mehr) in Ausarbeitung aufnehmen\\
 - Für jeden Mitarbeiter erheben: Wichtigkeit (true/false) --> Auch für Dinge, die man noch nicht kann\\
 - Für jeden Mitarbeiter erheben: Welche Auswirkung hat es, wenn im Projekt nicht ausgelastet (Kurve A bis C) --> Alle drei Antwortmöglichkeiten positiv formulieren --> z.B. Freiräume nutzen
 
 Erstellen des Graphen:\\
 - Aus Skills (kollaboratives Filtern) und Teamzuordnung (Inhaltsbasiertes Filtern) einen tripartiten Graphen erstellen\\
-- Sinnvolle Kanten: Nutzer-Skill / Nutzer-Team // Besser: Nutzer-Skill und Nutzer-Manager --> Weniger Knoten\\
-- Entscheidung gegen Mittelwertzentrierung --> Bewertung befolgt auf Tatsachen, klare Skala, wenig subjektiv
-
-% Johannes: 404
-% Jan: 366
-% Alexander: 20
-\begin{figure}[h]
-	\centering	
-	\begin{tikzpicture}[node distance={32mm}, thick, main/.style = {draw, circle}] 
-		\node[main, fill=itemcolor] (MongoDB) {$MongoDB$}; 
-		\node[main, fill=itemcolor] (Python) [below right of=MongoDB] {$Python$}; 
-		\node[main, fill=itemcolor] (MySQL) [above right of=Python] {$MySQL$}; 
-		\node[main, fill=itemcolor] (Java) [below right of=MySQL] {$Java$}; 
-		\node[main, fill=itemcolor] (HDFS) [above right of=Java] {$HDFS$}; 
-		\node[main, fill=itemcolor] (Spark) [below right of=HDFS] {$Spark$};
-		
-		\node[main, fill=usercolor] (Johannes) [above right of=MongoDB] {$Joh L.$}; 
-		\node[main, fill=usercolor] (Jan) [above left of=HDFS] {$Jan H.$}; 
-		\node[main, fill=usercolor] (Alexander) [above right of=HDFS] {$Alex G.$};
-		
-		%\node[main, fill=exxetagray] (JES32) [above right of=Johannes] {$JES 3.2$};
-		
-		\draw (Johannes) -- node[midway, right] {4} (Python);
-		\draw (Johannes) -- node[midway, above] {3} (MySQL);
-		\draw (Johannes) -- node[midway, above] {3} (MongoDB);
-		
-		\draw (Jan) -- node[midway, right] {1} (HDFS);		
-		\draw (Jan) -- node[midway, right] {3} (Java);
-		\draw (Jan) -- node[midway, above] {2} (MySQL);
-		
-		\draw (Alexander) -- node[midway, above] {5} (HDFS);
-		\draw (Alexander) -- node[midway, left] {3} (Spark);
-		
-		%\draw (Johannes) -- node[midway, above] {1} (JES32);
-		\draw (Johannes) -- node[midway, above] {1} (Jan);
-		\draw (Jan) -- node[midway, above] {1} (Alexander);
-		%\draw (Jan) -- node[midway, above] {1} (JES32);
-	\end{tikzpicture}
-	
-	\caption{Darstellung der Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Datenstruktur eines Graphen}
-	\label{fig:methodik:abb1}
-\end{figure}
 
 Eingabe der offenen Projektposition:\\
 - Benötigt: Fähigkeiten und Wichtigkeit (Boolean)
