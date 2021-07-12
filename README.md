@@ -9,15 +9,14 @@ This LaTeX-template might be used to write a bachelor or master thesis at the Co
 * Execute: ``bash compile.sh``
 
 ## Zeitplan
-| Monat        | Aufgabe                              | Status                                                                              |
-|--------------|--------------------------------------|-------------------------------------------------------------------------------------|
-| April        | Grundlagen: Person-Environment Fit   | Noch offen: Exakte Quellen in einem Kapitel noch aus Büchern der Fernleihe benötigt |
-| Mai          | Grundlagen: Empfehlungssysteme       | Inhaltlich geschrieben / In Review                                                  |
-| Juni         | Verwandte Arbeiten                   | In Arbeit                                                                           |
-| Ab Ende Juni | Konzeptentwicklung                   | Offen                                                                               |
-| Juli         | Implementierung                      | Offen                                                                               |
-| Ab Ende Juli | Evaluation                           | Offen                                                                               |
-| September    | Einleitung / Fazit / Puffer / Abgabe | Offen                                                                               |
+| Monat        | Aufgabe                                   | Status                                                                              |
+|--------------|-------------------------------------------|-------------------------------------------------------------------------------------|
+| April        | Grundlagen: Person-Environment Fit        | Noch offen: Exakte Quellen in einem Kapitel noch aus Büchern der Fernleihe benötigt |
+| Mai          | Grundlagen: Empfehlungssysteme            | Done                                                                                |
+| Juni         | Verwandte Arbeiten                        | In Review                                                                           |
+| Juli 		   | Konzept + Implementierung + Datenerhebung | In Arbeit                                                                           |
+| August       | Evaluation + Diskussion                   | Offen                                                                               |
+| September    | Einleitung / Fazit / Puffer / Abgabe      | Offen                                                                               |
 
 ## Table of contents
 * [Configuration](#configuration)

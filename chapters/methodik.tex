@@ -40,12 +40,12 @@ Um neben dem Sparsity Problem auch den Kaltstart zu beheben, werden zusätzlich 
 Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter der EXXETA AG, könnten seine zurückgegebenen Daten dem folgenden Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen.
 
 %\begin{minipage}{\linewidth}
-	\lstinputlisting[
-	language=json,
-	caption=Beispiel für ein Mitarbeiter-\acsu{JSON} der \acsu{REST}-Schnittstelle des Intranets der EXXETA AG (Auszug),
-	captionpos=b,
-	label=qc:methodik:versuchsaufbau:daten:qc1
-	]{gfx/john.json}
+\lstinputlisting[
+language=json,
+caption=Beispiel für ein Mitarbeiter-\acsu{JSON} der \acsu{REST}-Schnittstelle des Intranets der EXXETA AG (Auszug),
+captionpos=b,
+label=qc:methodik:versuchsaufbau:daten:qc1
+]{gfx/john.json}
 %\end{minipage}
 
 In Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass eine Bewertung von eins in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} einer Beurteilung von null im zurückgegebenen \ac{JSON} entspricht. Damit ein Kantengewicht von null ausschließlich nicht vergebene Kompetenz-Einschätzungen symbolisiert, werden die Bewertungen vor der Empfehlungsberechnung um eins erhöht.
