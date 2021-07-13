@@ -128,14 +128,29 @@ Anhand der Daten des Graphen folgt die Bestimmung der Katz-Zentralität. Für di
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
 \end{table}
 
-Diese in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} dargestellte Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungs-Komponente. Beide Module unterscheiden sich, wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Ergebnisse des Katz-Algorithmus sortieren.
+Diese in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} dargestellte Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungskomponente. Beide Module unterscheiden sich, wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Ergebnisse des Katz-Algorithmus sortieren.
 
-\subsection{Unilaterale Empfehlungs-Komponente}
+\subsection{Unilaterale Empfehlungskomponente}
 \label{ch:methodik:versuchsaufbau:unilateral}
-Zur Bestimmung der 
-Anschließend wird für jede vom Projektmanager geforderte Kompetenz die absolute Differenz zwischen Pseudomitarbeiter und allen anderen Angestellten bestimmt. Im letzten Schritt werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
+Die unilaterale Empfehlungskomponente bestimmt Vorschläge, indem sie für jede vom Projektmanager geforderte Kompetenz die in Gleichung \ref{fig:personEnvironmentFit:auswirkungenErhoehterAngebote:formel3} vorgestellte quadrierte Differenz zwischen dem Pseudomitarbeiter und allen anderen Angestellten bestimmt. Anschließend werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
 
-\subsection{Bilaterale Empfehlungs-Komponente}
+Für Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} ergibt sich damit die in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} dargestellte Ausgabe. Die vollständige Berechnung kann in Anhang x nachvollzogen werden.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c}
+		Positionierung & Mitarbeiter & Abweichung\\
+		\hline
+		1 & Jane D.  & 1.3\\
+		2 & John D.  & 0.5\\
+		3 & Erika M. & 0.4\\
+		4 & Max M.   & 0.8
+	\end{tabular}
+	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}}
+	\label{tbl:methodik:versuchsaufbau:unilateral:tbl2}
+\end{table}
+
+\subsection{Bilaterale Empfehlungskomponente}
 \label{ch:methodik:versuchsaufbau:bilateral}
 
 \newpage
