@@ -108,7 +108,26 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 	\label{fig:methodik:versuchsaufbau:unilateral:abb1}
 \end{figure}
 
-Anhand der Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} folgt die Bestimmung der Katz-Zentralität. Die dabei entstehende Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungs-Komponente. Beide Module unterscheiden sich, wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Ergebnisse des Katz-Algorithmus sortieren.
+Anhand der Daten des Graphen folgt die Bestimmung der Katz-Zentralität. Für die Beispieldaten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} ergibt sich mit $\beta = 0.1$ die folgende Matrix \ref{frml:methodik:versuchsaufbau:unilateral:formel1}. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:katzZentralitaetPseudoMitarbeiter} nachvollzogen werden.
+
+\begin{gather}
+	\begin{bmatrix}
+		77.19 & 43.00 & 47.69 & 52.75 & 45.71 & 23.45 & 65.39 & 37.33 & 37.17 & 28.15 & 28.02\\
+		43.00 & 23.94 & 26.58 & 29.33 & 25.25 & 13.35 & 36.10 & 20.82 & 20.47 & 15.79 & 15.55\\
+		47.69 & 26.58 & 29.77 & 32.48 & 28.17 & 14.47 & 40.09 & 22.87 & 22.76 & 18.04 & 17.68\\
+		52.75 & 29.33 & 32.48 & 35.89 & 31.12 & 16.18 & 44.61 & 25.38 & 25.16 & 19.17 & 19.08\\
+		45.71 & 25.25 & 28.17 & 31.12 & 27.33 & 13.80 & 38.95 & 21.87 & 22.21 & 16.61 & 16.95\\
+		23.45 & 13.35 & 14.47 & 16.18 & 13.80 & 7.24 & 19.75 & 11.32 & 11.17 & 8.57 & 8.48\\
+		65.39 & 36.10 & 40.09 & 44.61 & 38.95 & 19.75 & 55.12 & 31.30 & 31.30 & 23.65 & 23.71\\
+		37.33 & 20.82 & 22.87 & 25.38 & 21.87 & 11.32 & 31.30 & 17.90 & 17.76 & 13.52 & 13.42\\
+		37.17 & 20.47 & 22.76 & 25.16 & 22.21 & 11.17 & 31.30 & 17.76 & 17.82 & 13.43 & 13.49\\
+		28.15 & 15.79 & 18.04 & 19.17 & 16.61 & 8.57 & 23.65 & 13.52 & 13.43 & 10.60 & 10.40\\
+		28.02 & 15.55 & 17.68 & 19.08 & 16.95 & 8.48 & 23.71 & 13.42 & 13.49 & 10.40 & 10.39
+	\end{bmatrix}
+	\label{frml:methodik:versuchsaufbau:unilateral:formel1}
+\end{gather}
+
+Diese entstehende Matrix \ref{frml:methodik:versuchsaufbau:unilateral:formel1} dient als Eingabe für die unilaterale und die bilaterale Empfehlungs-Komponente. Beide Module unterscheiden sich, wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Ergebnisse des Katz-Algorithmus sortieren.
 
 \subsection{Unilaterale Empfehlungs-Komponente}
 \label{ch:methodik:versuchsaufbau:unilateral}
