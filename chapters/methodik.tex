@@ -87,18 +87,15 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 		\draw (Max) -- node[midway, above] {3} (Python);
 		\draw (Max) -- node[midway, right] {1} (MySQL);
 		
-		\draw (Jane) -- node[midway, above] {1} (John);
-		\draw (Jane) -- node[midway, left] {1} (Max);
-		\path (Jane) edge[bend left=25] node[midway, above] {1} (Erika);
+		\draw (Jane) -- node[midway, above] {\kantengewicht} (John);
+		\draw (Jane) -- node[midway, left] {\kantengewicht} (Max);
+		\path (Jane) edge[bend left=25] node[midway, above] {\kantengewicht} (Erika);
 		
-		\draw (John) -- node[midway, right] {1} (Max);
-		\draw (John) -- node[midway, above] {1} (Erika);
+		\draw (John) -- node[midway, right] {\kantengewicht} (Max);
+		\draw (John) -- node[midway, above] {\kantengewicht} (Erika);
 		
-		\path (Max) edge[bend right=40] node[midway, above] {1} (Erika);
+		\path (Max) edge[bend right=40] node[midway, above] {\kantengewicht} (Erika);
 		
-		%\draw (Projekt) -- node[midway, above] {4} (Java);
-		%\draw (Projekt) -- node[midway, above] {2} (HDFS);
-		%\draw (Projekt) -- node[midway, above] {3} (Spark);
 		\path (Projekt) edge[bend left=40] node[midway, above] {3} (MongoDB);
 		\path (Projekt) edge[bend left=25] node[midway, above] {4} (Python);
 		\path (Projekt) edge[bend right=25] node[midway, above] {3} (Spark);
