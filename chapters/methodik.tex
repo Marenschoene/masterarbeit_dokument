@@ -50,7 +50,7 @@ label=qc:methodik:versuchsaufbau:daten:qc1
 
 In Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass die Bewertungen in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} um eins höher sind, als die Beurteilungen im zurückgegebenen \ac{JSON}. Damit ein Kantengewicht von null ausschließlich nicht vergebene Einschätzungen symbolisiert, werden die Bewertungen des \acp{JSON} vor der Empfehlungsberechnung um eins erhöht.
 
-Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern beträgt dabei eins und das Gewicht von einem Angestellten zu seinem Manager zwei. Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen aussagekräftige Beurteilungen bestimmt werden können. Außerdem erhalten die Teammanager durch das höhere Kantengewicht eine stärkere Zentralität im Graphen.  Daher profitieren sämtliche Teammitglieder transitiv von den repräsentativen Fähigkeiten ihres Managers.
+Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager beträgt eins. Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass die vorhandenen Bewertungen wenig verzerrt werden und dennoch auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen aussagekräftige Beurteilungen bestimmt werden können.
 
 Um Empfehlungen erhalten zu können, muss ein Projektmanager die für eine offene Projektposition relevanten Fähigkeiten mitsamt der benötigten Kompetenzniveaus festlegen. Diese Daten werden, wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} im Kontext der Gruppen-Recommender Engines beschrieben, in Form eines Pseudo-Mitarbeiters ebenfalls in den Graphen eingefügt.
 
@@ -87,9 +87,9 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 		\draw (Max) -- node[midway, above] {3} (Python);
 		\draw (Max) -- node[midway, right] {1} (MySQL);
 		
-		\draw (Jane) -- node[midway, above] {2} (John);
-		\draw (Jane) -- node[midway, left] {2} (Max);
-		\path (Jane) edge[bend left=25] node[midway, above] {2} (Erika);
+		\draw (Jane) -- node[midway, above] {1} (John);
+		\draw (Jane) -- node[midway, left] {1} (Max);
+		\path (Jane) edge[bend left=25] node[midway, above] {1} (Erika);
 		
 		\draw (John) -- node[midway, right] {1} (Max);
 		\draw (John) -- node[midway, above] {1} (Erika);
@@ -115,17 +115,17 @@ Anhand der Daten des Graphen folgt die Bestimmung der Katz-Zentralität. Für di
 	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
 		& \begin{sideways}Jane D.\end{sideways} & \begin{sideways}John D.\end{sideways} & \begin{sideways}Erika M.\end{sideways} & \begin{sideways}Max M.\end{sideways} & \begin{sideways}Projekt\end{sideways} & \begin{sideways}Java\end{sideways} & \begin{sideways}Python\end{sideways} & \begin{sideways}MySQL\end{sideways} & \begin{sideways}MongoDB\end{sideways} & \begin{sideways}HDFS\end{sideways} & \begin{sideways}Spark\end{sideways} \\
 		\hline
-		Jane D.  & 77 & 43 & 48 & 53 & 46 & 23 & 65 & 37 & 37 & 28 & 28\\
-		John D.  & 43 & 24 & 27 & 29 & 25 & 13 & 36 & 21 & 20 & 16 & 16\\
-		Erika M. & 48 & 27 & 30 & 32 & 28 & 14 & 40 & 23 & 23 & 18 & 18\\
-		Max M.   & 53 & 29 & 32 & 36 & 31 & 16 & 45 & 25 & 25 & 19 & 19\\
-		Projekt  & 46 & 25 & 28 & 31 & 27 & 14 & 39 & 22 & 22 & 17 & 17\\
-		Java     & 23 & 13 & 14 & 16 & 14 & 7 & 20 & 11 & 11 & 9 & 8\\
-		Python   & 65 & 36 & 40 & 45 & 39 & 20 & 55 & 31 & 31 & 24 & 24\\
-		MySQL    & 37 & 21 & 23 & 25 & 22 & 11 & 31 & 18 & 18 & 14 & 13\\
-		MongoDB  & 37 & 20 & 23 & 25 & 22 & 11 & 31 & 18 & 18 & 13 & 13\\
-		HDFS     & 28 & 16 & 18 & 19 & 17 & 9 & 24 & 14 & 13 & 11 & 10\\
-		Spark    & 28 & 16 & 18 & 19 & 17 & 8 & 24 & 13 & 13 & 10 & 10
+		Jane D.  & 3.0 & 1.6 & 1.7 & 2.1 & 2.1 & 0.9 & 3.1 & 1.7 & 1.8 & 1.0 & 1.1\\
+		John D.  & 1.6 & 0.9 & 1.0 & 1.2 & 1.0 & 0.8 & 1.4 & 1.0 & 0.8 & 0.7 & 0.6\\
+		Erika M. & 1.7 & 1.0 & 1.4 & 1.2 & 1.2 & 0.6 & 1.5 & 0.8 & 0.9 & 1.3 & 1.1\\
+		Max M.   & 2.1 & 1.2 & 1.2 & 1.4 & 1.4 & 0.8 & 2.1 & 1.1 & 1.0 & 0.7 & 0.8\\
+		Projekt  & 2.1 & 1.0 & 1.2 & 1.4 & 1.7 & 0.6 & 2.4 & 1.0 & 1.5 & 0.7 & 1.2\\
+		Java     & 0.9 & 0.8 & 0.6 & 0.8 & 0.6 & 0.4 & 0.8 & 0.5 & 0.4 & 0.4 & 0.3\\
+		Python   & 3.1 & 1.4 & 1.5 & 2.1 & 2.4 & 0.8 & 2.8 & 1.4 & 1.6 & 0.9 & 1.2\\
+		MySQL    & 1.7 & 1.0 & 0.8 & 1.1 & 1.0 & 0.5 & 1.4 & 0.8 & 0.8 & 0.5 & 0.5\\
+		MongoDB  & 1.8 & 0.8 & 0.9 & 1.0 & 1.5 & 0.4 & 1.6 & 0.8 & 1.0 & 0.5 & 0.7\\
+		HDFS     & 1.0 & 0.7 & 1.3 & 0.7 & 0.7 & 0.4 & 0.9 & 0.5 & 0.5 & 0.7 & 0.6\\
+		Spark    & 1.1 & 0.6 & 1.1 & 0.8 & 1.2 & 0.3 & 1.2 & 0.5 & 0.7 & 0.6 & 0.7
 	\end{tabular}
 	\caption{Adjazenzmatrix nach Berechnung der Katz-Zentralität für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
