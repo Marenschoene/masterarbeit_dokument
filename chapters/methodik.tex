@@ -112,17 +112,17 @@ Anhand der Daten des Graphen folgt die Bestimmung der Katz-Zentralität. Für di
 	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
 		& \begin{sideways}Jane D.\end{sideways} & \begin{sideways}John D.\end{sideways} & \begin{sideways}Erika M.\end{sideways} & \begin{sideways}Max M.\end{sideways} & \begin{sideways}Projekt\end{sideways} & \begin{sideways}Java\end{sideways} & \begin{sideways}Python\end{sideways} & \begin{sideways}MySQL\end{sideways} & \begin{sideways}MongoDB\end{sideways} & \begin{sideways}HDFS\end{sideways} & \begin{sideways}Spark\end{sideways} \\
 		\hline
-		Jane D.  & 2.2 & 1.1 & 1.2 & 1.5 & 1.6 & 0.6 & 2.4 & 1.3 & 1.4 & 0.7 & 0.8\\
-		John D.  & 1.1 & 0.7 & 0.8 & 0.9 & 0.7 & 0.7 & 1.0 & 0.8 & 0.5 & 0.6 & 0.4\\
-		Erika M. & 1.2 & 0.8 & 1.1 & 0.9 & 0.9 & 0.4 & 1.1 & 0.6 & 0.6 & 1.1 & 0.9\\
-		Max M.   & 1.5 & 0.9 & 0.9 & 1.0 & 1.1 & 0.7 & 1.6 & 0.8 & 0.8 & 0.5 & 0.6\\
-		Projekt  & 1.6 & 0.7 & 0.9 & 1.1 & 1.4 & 0.4 & 2.0 & 0.7 & 1.2 & 0.5 & 1.0\\
-		Java     & 0.6 & 0.7 & 0.4 & 0.7 & 0.4 & 0.3 & 0.6 & 0.4 & 0.3 & 0.3 & 0.2\\
-		Python   & 2.4 & 1.0 & 1.1 & 1.6 & 2.0 & 0.6 & 2.2 & 1.1 & 1.3 & 0.6 & 0.9\\
-		MySQL    & 1.3 & 0.8 & 0.6 & 0.8 & 0.7 & 0.4 & 1.1 & 0.6 & 0.6 & 0.4 & 0.4\\
-		MongoDB  & 1.4 & 0.5 & 0.6 & 0.8 & 1.2 & 0.3 & 1.3 & 0.6 & 0.8 & 0.4 & 0.6\\
-		HDFS     & 0.7 & 0.6 & 1.1 & 0.5 & 0.5 & 0.3 & 0.6 & 0.4 & 0.4 & 0.6 & 0.5\\
-		Spark    & 0.8 & 0.4 & 0.9 & 0.6 & 1.0 & 0.2 & 0.9 & 0.4 & 0.6 & 0.5 & 0.6
+		Jane D.  & 1.3 & 0.5 & 0.4 & 0.8 & 1.1 & 0.3 & 1.6 & 0.8 & 1.0 & 0.3 & 0.4\\
+		John D.  & 0.5 & 0.3 & 0.3 & 0.4 & 0.3 & 0.5 & 0.4 & 0.4 & 0.2 & 0.3 & 0.2\\
+		Erika M. & 0.4 & 0.3 & 0.7 & 0.3 & 0.5 & 0.2 & 0.5 & 0.2 & 0.3 & 0.9 & 0.6\\
+		Max M.   & 0.8 & 0.4 & 0.3 & 0.5 & 0.6 & 0.4 & 1.0 & 0.5 & 0.4 & 0.2 & 0.3\\
+		Projekt  & 1.1 & 0.3 & 0.5 & 0.6 & 1.1 & 0.2 & 1.4 & 0.4 & 0.9 & 0.3 & 0.8\\
+		Java     & 0.3 & 0.5 & 0.2 & 0.4 & 0.2 & 0.2 & 0.3 & 0.2 & 0.1 & 0.1 & 0.1\\
+		Python   & 1.6 & 0.4 & 0.5 & 1.0 & 1.4 & 0.3 & 1.5 & 0.6 & 0.9 & 0.3 & 0.6\\
+		MySQL    & 0.8 & 0.4 & 0.2 & 0.5 & 0.4 & 0.2 & 0.6 & 0.4 & 0.4 & 0.2 & 0.2\\
+		MongoDB  & 1.0 & 0.2 & 0.3 & 0.4 & 0.9 & 0.1 & 0.9 & 0.4 & 0.6 & 0.2 & 0.4\\
+		HDFS     & 0.3 & 0.3 & 0.9 & 0.2 & 0.3 & 0.1 & 0.3 & 0.2 & 0.2 & 0.5 & 0.3\\
+		Spark    & 0.4 & 0.2 & 0.6 & 0.3 & 0.8 & 0.1 & 0.6 & 0.2 & 0.4 & 0.3 & 0.4
 	\end{tabular}
 	\caption{Adjazenzmatrix nach Berechnung der Katz-Zentralität für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
@@ -132,6 +132,7 @@ Diese in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} dargestellte 
 
 \subsection{Unilaterale Empfehlungs-Komponente}
 \label{ch:methodik:versuchsaufbau:unilateral}
+Zur Bestimmung der 
 Anschließend wird für jede vom Projektmanager geforderte Kompetenz die absolute Differenz zwischen Pseudomitarbeiter und allen anderen Angestellten bestimmt. Im letzten Schritt werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
 
 \subsection{Bilaterale Empfehlungs-Komponente}
