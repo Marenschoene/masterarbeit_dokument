@@ -6,7 +6,6 @@
 	"mail":"john.doe@exxeta.com",
 	"team":{
 		"name":"Java Enterprise Solutions 3",
-		"manager":null,
 		"colleagues":[
 			{
 				"id":"abc-001",
