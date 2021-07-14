@@ -16,3 +16,54 @@ Für die unilaterale Empfehlungskomponente relevante Daten aus Tabelle \ref{tbl:
 	\caption{Für die unilaterale Empfehlungskomponente relevante Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}}
 	\label{tbl:nebenrechnungen:unilateral:tbl1}
 \end{table}
+
+Berechnung der Abweichung für Jane Doe:
+\begin{gather}
+	\nonumber (1.55-1.44)^2 + (0.99-0.94)^2 + (0.45-0.76)^2\\
+	\nonumber = 0.0121 + 0.0025 + 0.0961\\
+	\nonumber = 0.1107\\
+	\approx 0.11
+	\label{frml:nebenrechnungen:unilateral:jane}
+\end{gather}
+
+Berechnung der Abweichung für John Doe:
+\begin{gather}
+	\nonumber (0.40-1.44)^2 + (0.22-0.94)^2 + (0.17-0.76)^2\\
+	\nonumber = 1.0816 + 0.5184 + 0.3481\\
+	\nonumber = 1.9481\\
+	\approx 1.95
+	\label{frml:nebenrechnungen:unilateral:john}
+\end{gather}
+
+Berechnung der Abweichung für Erika Muster:
+\begin{gather}
+	\nonumber (0.45-1.44)^2 + (0.27-0.94)^2 + (0.64-0.76)^2\\
+	\nonumber = 0.9801 + 0.4489 + 0.0144\\
+	\nonumber = 1.4434\\
+	\approx 1.44
+	\label{frml:nebenrechnungen:unilateral:erika}
+\end{gather}
+
+Berechnung der Abweichung für Max Muster:
+\begin{gather}
+	\nonumber (1.00-1.44)^2 + (0.41-0.94)^2 + (0.27-0.76)^2\\
+	\nonumber = 0.1936 + 0.2809 + 0.2401\\
+	\nonumber = 0.7146\\
+	\approx 0.71
+	\label{frml:nebenrechnungen:unilateral:max}
+\end{gather}
+
+Ausgabe:
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c}
+		Positionierung & Mitarbeiter & Abweichung\\
+		\hline
+		1 & Jane D.  & 0.11\\
+		2 & Max M.   & 0.71\\
+		3 & Erika M. & 1.44\\
+		4 & John D.  & 1.95
+	\end{tabular}
+	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Tabelle \ref{tbl:nebenrechnungen:unilateral:tbl1}}
+	\label{tbl:nebenrechnungen:unilateral:ausgabe}
+\end{table}
