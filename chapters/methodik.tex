@@ -27,17 +27,17 @@ Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort s
 
 Die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellten Abstufungen werden beim Speichern in ganzzahlige Werte von null ("Ich habe Grundkenntnisse") bis sechs ("Ich habe auf Konferenzen zu dem Thema Vorträge gehalten") übertragen.
 
-Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} kann Bias bei der Selbsteinschätzung weitgehend ausgeschlossen werden. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen bewusst besser oder schlechter einschätzen als andere Kollegen. Dieser Sachverhalt kann insbesondere auf längere Berufserfahrung zurückgeführt werden. Daher wird bei der Empfehlungsbestimmung auf eine Mittelwert-Zentrierung verzichtet.
+Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} kann der in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angesprochene Bias bei der Selbsteinschätzung weitgehend ausgeschlossen werden. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen bewusst besser oder schlechter einschätzen als andere Kollegen. Dieser Sachverhalt kann insbesondere auf längere Berufserfahrung zurückgeführt werden. Aus diesen Gründen wird bei der Empfehlungsbestimmung auf eine Mittelwert-Zentrierung verzichtet.
 
-Die Kompetenzen der Mitarbeiter und die zugehörigen Bewertungen dienen im Experiment als Eingabe für einen grundlegenden Algorithmus, welcher sowohl für das unilaterale als auch das bilaterale Empfehlungssystem gleich ist.
+Die Kompetenzen der Mitarbeiter und die zugehörigen Bewertungen dienen im Experiment als Eingabe für einen grundlegenden Algorithmus, welcher sowohl für das unilaterale, als auch das bilaterale Empfehlungssystem gleich ist.
 
 \subsection{Grundlegender Algorithmus}
 \label{ch:methodik:versuchsaufbau:grundlegend}
-Um Mitarbeiter für offene Projektpositionen vorzuschlagen, wird zunächst die Katz-Zentralität angewendet. Dieser speicherbasierte Graphenalgorithmus wurde in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellt. Ein Nutzen dieses Ansatzes ist die zuverlässige Lösung des Sparsity Problems. Vorteilhaft gegenüber modellbasierten Methoden ist außerdem die Langlebigkeit des Verfahrens. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Ansatz weiterhin unverändert anwendbar. Die dabei zu erwartende hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments unter 1.000 Mitarbeiter im Unternehmen befinden.
+Um Mitarbeiter für offene Projektpositionen vorzuschlagen, wird zunächst die Katz-Zentralität angewendet. Dieser speicherbasierte Graphenalgorithmus wurde in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellt. Ein Grund für die Auswahl dieses Ansatzes ist die zuverlässige Lösung des Sparsity Problems. Vorteilhaft gegenüber modellbasierten Methoden ist außerdem die Langlebigkeit des Verfahrens. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Ansatz weiterhin unverändert anwendbar. Die dabei zu erwartende hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments unter 1.000 Mitarbeiter im Unternehmen befinden.
 
 Um neben dem Sparsity Problem auch den Kaltstart zu beheben, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Bei der EXXETA AG arbeiten stets Mitarbeiter in einem Team, welche ähnliche Kompetenzen beherrschen. Deren Manager ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für sein Team sind. Seine Kompetenzen sind jedoch in der Regel stärker ausgeprägt.
 
-Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem \ac{JSON} in Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Jane Doe wird in diesem und den folgenden Beispielen ls Team-Managerin betrachtet.
+Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem \ac{JSON} in Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Jane Doe wird in diesem und den folgenden Beispielen als Team-Managerin betrachtet.
 
 %\begin{minipage}{\linewidth}
 \lstinputlisting[
@@ -48,13 +48,13 @@ label=qc:methodik:versuchsaufbau:daten:qc1
 ]{gfx/john.json}
 %\end{minipage}
 
-Wie bereits im Kontext von \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, ist in Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} zu erkennen, dass die Bewertungen in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} um eins höher sind, als die Beurteilungen im zurückgegebenen \ac{JSON}. Damit ein Kantengewicht von null ausschließlich nicht vergebene Einschätzungen symbolisiert, werden die Bewertungen des \acp{JSON} vor der Empfehlungsberechnung um eins erhöht.
+Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, sind die Bewertungen in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} um eins höher als die Beurteilungen im \ac{JSON} aus Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1}. Damit ein Kantengewicht von null ausschließlich nicht vergebene Einschätzungen symbolisiert, werden die Bewertungen des \acp{JSON} vor der Empfehlungsberechnung um eins erhöht.
 
-Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager beträgt \kantengewicht. Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass die vorhandenen Bewertungen wenig verzerrt werden und dennoch auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen aussagekräftige Beurteilungen bestimmt werden können.
+Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager beträgt \kantengewichtString. Dies ist die höchste zulässige Beurteilung auf der Skala in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1}. Dieser Wert wird verwendet, da die Teamzugehörigkeit als besonders aussagekräftig für die Vorhersage von Kompetenzen eingeschätzt werden.%Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass die vorhandenen Bewertungen wenig verzerrt werden und dennoch auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen Beurteilungen bestimmt werden können.
 
 Um Empfehlungen erhalten zu können, muss ein Projektmanager die für eine offene Projektposition relevanten Fähigkeiten mitsamt der benötigten Kompetenzniveaus festlegen. Diese Daten werden, wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} im Kontext der Gruppen-Recommender Engines beschrieben, in Form eines Pseudo-Mitarbeiters ebenfalls in den Graphen eingefügt.
 
-Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen. Außerdem wurde eine offene Projektposition in Form eines Pseudo-Mitarbeiters eingefügt.
+Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen. In diesen wurde beispielhaft auch eine offene Projektposition in Form eines Pseudo-Mitarbeiters eingefügt.
 
 \begin{figure}[h]
 	\centering	
@@ -105,38 +105,20 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 	\label{fig:methodik:versuchsaufbau:unilateral:abb1}
 \end{figure}
 
-Anhand der Daten des Graphen folgt die Bestimmung der Katz-Zentralität. Bei der Berechnung wird in Formel \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} für $\beta = (1/\lambda)/2$ eingesetzt. $\lambda$ entspricht dabei, wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} dargestellt, dem größten Eigenwert der Adjazenzmatrix $M$.
+Anhand der Daten des Graphen folgt die Berechnung der Katz-Zentralität mit Formel \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4}. Dabei wird der Wert von $\beta$ über folgende Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} bestimmt: 
+\begin{equation}
+	\beta = \frac{1/\lambda}{4}
+	\label{frml:methodik:versuchsaufbau:grundlegend:formel1}
+\end{equation}
+Durch das in in Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} dargelegt, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix $M$. Aufgrund der Division durch vier ist $\beta$ stets so groß, dass von einem Zielknoten weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Knoten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten eine höhere Priorität in der Berechnung, welche von den Teamkollegen eines Zielnutzers beherrscht werden.
 
-Für die Beispieldaten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} ergibt sich damit $\beta \approx 0.058$. Nach Berechnung der Katz-Zentralität entsteht die in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} abgebildete Matrix. In der Darstellung wurden sehr kleine Werte auf 0.0 gerundet. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:katzZentralitaetPseudoMitarbeiter} nachvollzogen werden.
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
-		& \begin{sideways}Jane D.\end{sideways} & \begin{sideways}John D.\end{sideways} & \begin{sideways}Erika M.\end{sideways} & \begin{sideways}Max M.\end{sideways} & \begin{sideways}Projekt\end{sideways} & \begin{sideways}Java\end{sideways} & \begin{sideways}Python\end{sideways} & \begin{sideways}MySQL\end{sideways} & \begin{sideways}MongoDB\end{sideways} & \begin{sideways}HDFS\end{sideways} & \begin{sideways}Spark\end{sideways} \\
-		\hline
-		Jane D.  & 0.2 & 0.1 & 0.0 & 0.1 & 0.1 & 0.0 & 0.3 & 0.2 & 0.2 & 0.0 & 0.0\\
-		John D.  & 0.1 & 0.1 & 0.1 & 0.1 & 0.0 & 0.2 & 0.0 & 0.1 & 0.0 & 0.1 & 0.0\\
-		Erika M. & 0.0 & 0.1 & 0.1 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.3 & 0.2\\
-		Max M.   & 0.1 & 0.1 & 0.0 & 0.1 & 0.1 & 0.1 & 0.2 & 0.1 & 0.0 & 0.0 & 0.0\\
-		Projekt  & 0.1 & 0.0 & 0.0 & 0.1 & 0.1 & 0.0 & 0.3 & 0.0 & 0.2 & 0.0 & 0.2\\
-		Java     & 0.0 & 0.2 & 0.0 & 0.1 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
-		Python   & 0.3 & 0.0 & 0.0 & 0.2 & 0.3 & 0.0 & 0.2 & 0.1 & 0.1 & 0.0 & 0.1\\
-		MySQL    & 0.2 & 0.1 & 0.0 & 0.1 & 0.0 & 0.0 & 0.1 & 0.1 & 0.0 & 0.0 & 0.0\\
-		MongoDB  & 0.2 & 0.0 & 0.0 & 0.0 & 0.2 & 0.0 & 0.1 & 0.0 & 0.1 & 0.0 & 0.0\\
-		HDFS     & 0.0 & 0.1 & 0.3 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.1 & 0.1\\
-		Spark    & 0.0 & 0.0 & 0.2 & 0.0 & 0.2 & 0.0 & 0.1 & 0.0 & 0.0 & 0.1 & 0.1
-	\end{tabular}
-	\caption{Adjazenzmatrix nach Berechnung der Katz-Zentralität für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
-	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
-\end{table}
-
-Diese in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} dargestellte Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungskomponente. Beide Module unterscheiden sich, wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Ergebnisse des Katz-Algorithmus sortieren.
+Die nach Berechnung der Katz-Zentralität entstehende Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungskomponente. Beide Module unterscheiden sich, wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Mitarbeiter sortieren.
 
 \subsection{Unilaterale Empfehlungskomponente}
 \label{ch:methodik:versuchsaufbau:unilateral}
 Die unilaterale Empfehlungskomponente bestimmt Vorschläge, indem sie für jede vom Projektmanager geforderte Kompetenz die in Gleichung \ref{fig:personEnvironmentFit:auswirkungenErhoehterAngebote:formel3} vorgestellte quadrierte Differenz zwischen dem Pseudomitarbeiter und allen anderen Angestellten bestimmt. Anschließend werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
 
-Für Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} ergibt sich damit die in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} dargestellte Ausgabe. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
+Für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} ergibt sich damit die in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} dargestellte Ausgabe. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
 
 \begin{table}[h]
 	\centering
@@ -148,7 +130,7 @@ Für Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} ergibt sich damit
 		3 & Erika M. & 0.11\\
 		4 & John D.  & 0.16
 	\end{tabular}
-	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}}
+	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl2}
 \end{table}
 

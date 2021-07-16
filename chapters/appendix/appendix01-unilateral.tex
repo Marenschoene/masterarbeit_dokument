@@ -1,5 +1,49 @@
 \section{Berechnung der unilateralen Empfehlungskomponente}
 \label{ch:nebenrechnungen:unilateral}
+Darstellung von Graph \ref{fig:methodik:versuchsaufbau:unilateral:abb1} in Form einer Tabelle:
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
+		& \begin{sideways}Jane D.\end{sideways} & \begin{sideways}John D.\end{sideways} & \begin{sideways}Erika M.\end{sideways} & \begin{sideways}Max M.\end{sideways} & \begin{sideways}Projekt\end{sideways} & \begin{sideways}Java\end{sideways} & \begin{sideways}Python\end{sideways} & \begin{sideways}MySQL\end{sideways} & \begin{sideways}MongoDB\end{sideways} & \begin{sideways}HDFS\end{sideways} & \begin{sideways}Spark\end{sideways} \\
+		\hline
+		Jane D.  & 0 & \kantengewicht & \kantengewicht & \kantengewicht & 0 & 0 & 4 & 3 & 3 & 0 & 0\\
+		John D.  & \kantengewicht & 0 & \kantengewicht & \kantengewicht & 0 & 3 & 0 & 2 & 0 & 1 & 0\\
+		Erika M. & \kantengewicht & \kantengewicht & 0 & \kantengewicht & 0 & 0 & 0 & 0 & 0 & 5 & 3\\
+		Max M.   & \kantengewicht & \kantengewicht & \kantengewicht & 0 & 0 & 2 & 3 & 1 & 0 & 0 & 0\\
+		Projekt  & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 0 & 3 & 0 & 3\\
+		Java     & 0 & 3 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		Python   & 4 & 0 & 0 & 3 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+		MySQL    & 3 & 2 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		MongoDB  & 3 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0\\
+		HDFS     & 0 & 1 & 5 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		Spark    & 0 & 0 & 3 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0
+	\end{tabular}
+	\caption{Anzahl an Verbindungen im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\label{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl1}
+\end{table}
+
+Bestimmung der Katz-Zentralität für Graph \ref{fig:methodik:versuchsaufbau:unilateral:abb1} anhand der Formel \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} mit $\beta = \frac{1/\lambda}{4}$. Damit ergibt sich für die Daten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl1} $\beta \approx 0.011$. Nach Berechnung des Algorithmus ergeben sich die Werte aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c}
+		& Java & Python & MySQL & MongoDB & HDFS & Spark\\ 
+		\hline
+		Doe, Jane     & 0.0052 & 0.0061 & 0.0935 & 0.0032 & 0.0951 & 0.0033\\
+		Doe, John     & 0.0011 & 0.0005 & 0.0072 & 0.0017 & 0.0378 & 0.0442\\
+		Muster, Erika & 0.0012 & 0.0006 & 0.0061 & 0.0002 & 0.0164 & 0.0001\\
+		Muster, Max   & 0.0002 & 0.0002 & 0.0031 & 0.0012 & 0.0032 & 0.0331\\
+		Projekt       & 0.0357 & 0.0163 & 0.0938 & 0.0031 & 0.0941 & 0.0005\\
+	\end{tabular}
+	\caption{Ergebnisse nach Bestimmung der Katz-Zentralität für Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl1}}
+	\label{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}
+\end{table}
+
+
+
+
+
+
 Für die unilaterale Empfehlungskomponente relevante Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}:
 
 \begin{table}[h]
