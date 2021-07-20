@@ -37,11 +37,11 @@ Die Kompetenzbewertungen der Mitarbeiter und die für ein Projekt benötigten F�
 
 \subsection{Grundlegender Algorithmus}
 \label{ch:methodik:versuchsaufbau:grundlegend}
-Die Mitarbeiter des Unternehmens und deren Fähigkeiten werden, wie in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} dargestellt, in Form eines Graphen angeordnet. Zusätzlich wird das zu besetzende Projekt, wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} im Kontext der Gruppen-Recommender Engines beschrieben, in Form eines Pseudo-Mitarbeiters in den Graphen eingefügt.
+Die Mitarbeiter des Unternehmens und deren Fähigkeiten werden in Form eines Graphen angeordnet. Zusätzlich wird das zu besetzende Projekt, wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} im Kontext der Gruppen-Recommender Engines beschrieben, in Form eines Pseudo-Mitarbeiters eingefügt.
 
 Um das Sparsity Problem zu beheben, wird der Algorithmus von Katz angewendet. Dieser speicherbasierte Graphenalgorithmus wurde in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellt. Vorteilhaft gegenüber modellbasierten Methoden ist auch die Langlebigkeit des Verfahrens. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Ansatz weiterhin unverändert anwendbar. Die dabei zu erwartende hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments unter 1.000 Mitarbeiter im Unternehmen befinden.
 
-Um neben dem Sparsity Problem auch den Kaltstart zu beheben, werden vor Berechnung des Algorithmus zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Bei der EXXETA AG arbeiten stets Mitarbeiter in einem Team, welche ähnliche Kompetenzen beherrschen. Der Manager des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für seine Mitarbeiter sind. Seine Kompetenzen sind jedoch in der Regel stärker ausgeprägt.
+Um neben dem Sparsity Problem auch einem Kaltstart vorzubeugen, werden vor Berechnung des Algorithmus zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Bei der EXXETA AG arbeiten stets Mitarbeiter in einem Team, welche ähnliche Kompetenzen beherrschen. Der Manager des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für seine Mitarbeiter sind. Seine Kompetenzen sind jedoch in der Regel stärker ausgeprägt.
 
 Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine REST-Schnittstelle in Form von JSON aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem JSON in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Jane Doe wird in diesem und den folgenden Beispielen als Team-Managerin betrachtet.
 
@@ -54,11 +54,11 @@ label=qc:methodik:versuchsaufbau:daten:qc1
 ]{gfx/john.json}
 %\end{minipage}
 
-Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, sind die Bewertungen in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} um eins höher als die Beurteilungen im JSON aus Listing \ref{qc:methodik:versuchsaufbau:daten:qc1}. Damit ein Kantengewicht von 0 ausschließlich nicht vergebene Einschätzungen symbolisiert, werden die Bewertungen des JSONs vor der Empfehlungsberechnung um eins erhöht.
+Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, sind die Bewertungen der Kompetenzen im JSON aus Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} um eins niedriger als in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}. Vor der Überführung der Daten in Form eines Graphen werden die sechsstufigen Beurteilungen der Mitarbeiter-Fähigkeiten auf die zweistufige Skala der Projektmanager angepasst. Hierbei werden Bewertungen von 0 bis zwei zu einem Kantengewicht von \kantengewichtString und Beurteilungen von drei bis fünf zu einem Kantengewicht von \kantengewichtHochString. Ein Gewicht von 0 symbolisiert damit ausschließlich nicht bewertete Fähigkeiten.
 
-Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager beträgt \kantengewichtString. Dieser Wert wird verwendet, um die Teamzugehörigkeit insbesondere zur Vermeidung eines Kaltstarts schwach in die Berechnung mit einzubeziehen, die individuellen Beurteilungen der Mitarbeiter aber dennoch höher zu gewichten.%Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass die vorhandenen Bewertungen wenig verzerrt werden und dennoch auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen Beurteilungen bestimmt werden können.
+Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird entsprechend dem Kompetenzniveau "Grundkenntnisse" auf \kantengewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit insbesondere zur Vermeidung eines Kaltstarts schwach in die Berechnung mit einzubeziehen, die individuellen Beurteilungen der Mitarbeiter aber höher zu gewichten.%Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass die vorhandenen Bewertungen wenig verzerrt werden und dennoch auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen Beurteilungen bestimmt werden können.
 
-Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen. In diesen wurde beispielhaft auch eine offene Projektposition in Form eines Pseudo-Mitarbeiters eingefügt.
+Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen. Außerdem wurde eine offene Projektposition in Form eines Pseudo-Mitarbeiters eingefügt.
 
 \begin{figure}[h]
 	\centering	
@@ -76,20 +76,20 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 		\node[main, fill=usercolor] (Erika) [above right of=HDFS] {$Erika M.$};
 		\node[main, fill=usercolor] (Projekt) [below of=Java] {$Projekt$}; 
 		
-		\draw (Jane) -- node[midway, right] {4} (Python);
-		\draw (Jane) -- node[midway, above] {3} (MySQL);
-		\draw (Jane) -- node[midway, above] {3} (MongoDB);
+		\draw (Jane) -- node[midway, right] {\kantengewichtHoch} (Python);
+		\draw (Jane) -- node[midway, above] {\kantengewicht} (MySQL);
+		\draw (Jane) -- node[midway, above] {\kantengewicht} (MongoDB);
 		
-		\draw (John) -- node[midway, right] {1} (HDFS);		
-		\draw (John) -- node[midway, right] {3} (Java);
-		\draw (John) -- node[midway, above] {2} (MySQL);
+		\draw (John) -- node[midway, right] {\kantengewicht} (HDFS);		
+		\draw (John) -- node[midway, right] {\kantengewicht} (Java);
+		\draw (John) -- node[midway, above] {\kantengewicht} (MySQL);
 		
-		\draw (Erika) -- node[midway, above] {5} (HDFS);
-		\draw (Erika) -- node[midway, right] {3} (Spark);
+		\draw (Erika) -- node[midway, above] {\kantengewichtHoch} (HDFS);
+		\draw (Erika) -- node[midway, right] {\kantengewicht} (Spark);
 		
-		\draw (Max) -- node[midway, above] {2} (Java);
-		\draw (Max) -- node[midway, above] {3} (Python);
-		\draw (Max) -- node[midway, right] {1} (MySQL);
+		\draw (Max) -- node[midway, above] {\kantengewicht} (Java);
+		\draw (Max) -- node[midway, above] {\kantengewicht} (Python);
+		\draw (Max) -- node[midway, right] {\kantengewicht} (MySQL);
 		
 		\draw (Jane) -- node[midway, above] {\kantengewicht} (John);
 		\draw (Jane) -- node[midway, left] {\kantengewicht} (Max);
@@ -100,23 +100,25 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 		
 		\path (Max) edge[bend right=40] node[midway, above] {\kantengewicht} (Erika);
 		
-		\path (Projekt) edge[bend left=40] node[midway, above] {3} (MongoDB);
-		\path (Projekt) edge[bend left=25] node[midway, above] {4} (Python);
-		\path (Projekt) edge[bend right=25] node[midway, above] {3} (Spark);
+		\path (Projekt) edge[bend left=40] node[midway, above] {\kantengewicht} (MongoDB);
+		\path (Projekt) edge[bend left=25] node[midway, above] {\kantengewichtHoch} (Python);
+		\path (Projekt) edge[bend right=25] node[midway, above] {\kantengewicht} (Spark);
 	\end{tikzpicture}
 	
 	\caption{Graph aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} mit zusätzlicher Teamzuordnung und offener Projektposition}
 	\label{fig:methodik:versuchsaufbau:unilateral:abb1}
 \end{figure}
 
-Anhand der Daten des Graphen folgt die Berechnung der Katz-Zentralität mit Formel \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4}. Dabei wird der Wert von $\beta$ über folgende Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} bestimmt: 
+Anhand der Daten des Graphen folgt die Berechnung der Katz-Zentralität anhand von Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4}. Dabei wird der Wert von $\beta$ über folgende Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} bestimmt: 
 \begin{equation}
 	\beta = \frac{1/\lambda}{\nenner}
 	\label{frml:methodik:versuchsaufbau:grundlegend:formel1}
 \end{equation}
-Durch das in in Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} dargelegt, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix $M$. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielknoten weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Knoten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten eine höhere Priorität in der Berechnung, welche von den Teamkollegen eines Zielnutzers beherrscht werden.
+Durch das in in Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} dargelegt, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielknoten weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Knoten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten eine höhere Priorität in der Berechnung, welche von den Teamkollegen eines Zielnutzers beherrscht werden.
 
 Die nach Berechnung der Katz-Zentralität entstehende Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungskomponente. Beide Module unterscheiden sich, wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Mitarbeiter sortieren.
+
+% TODO: Auswirkung der Katz-Berechnung
 
 \subsection{Unilaterale Empfehlungskomponente}
 \label{ch:methodik:versuchsaufbau:unilateral}
