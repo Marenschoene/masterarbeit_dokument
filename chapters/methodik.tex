@@ -27,7 +27,7 @@ Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort s
 	\label{fig:methodik:versuchsaufbau:daten:abb1}
 \end{figure}
 
-Die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellten Abstufungen werden beim Speichern in ganzzahlige Werte von null ("Ich habe Grundkenntnisse") bis sechs ("Ich habe auf Konferenzen zu dem Thema Vorträge gehalten") übertragen.
+Die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellten Abstufungen werden beim Speichern in ganzzahlige Werte von 0 ("Ich habe Grundkenntnisse") bis sechs ("Ich habe auf Konferenzen zu dem Thema Vorträge gehalten") übertragen.
 
 Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} kann der in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angesprochene Bias bei der Selbsteinschätzung weitgehend ausgeschlossen werden. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen bewusst besser oder schlechter einschätzen als andere Kollegen. Dieser Sachverhalt kann insbesondere auf längere Berufserfahrung zurückgeführt werden. Aus diesen Gründen wird bei der Empfehlungsbestimmung auf eine Mittelwert-Zentrierung verzichtet.
 
@@ -50,7 +50,7 @@ label=qc:methodik:versuchsaufbau:daten:qc1
 ]{gfx/john.json}
 %\end{minipage}
 
-Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, sind die Bewertungen in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} um eins höher als die Beurteilungen im \ac{JSON} aus Listing \ref{qc:methodik:versuchsaufbau:daten:qc1}. Damit ein Kantengewicht von null ausschließlich nicht vergebene Einschätzungen symbolisiert, werden die Bewertungen des \acp{JSON} vor der Empfehlungsberechnung um eins erhöht.
+Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, sind die Bewertungen in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} um eins höher als die Beurteilungen im \ac{JSON} aus Listing \ref{qc:methodik:versuchsaufbau:daten:qc1}. Damit ein Kantengewicht von 0 ausschließlich nicht vergebene Einschätzungen symbolisiert, werden die Bewertungen des \acp{JSON} vor der Empfehlungsberechnung um eins erhöht.
 
 Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager beträgt \kantengewichtString. Dieser Wert wird verwendet, um die Teamzugehörigkeit insbesondere zur Vermeidung eines Kaltstarts schwach in die Berechnung mit einzubeziehen, die individuellen Beurteilungen der Mitarbeiter aber dennoch höher zu gewichten.%Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass die vorhandenen Bewertungen wenig verzerrt werden und dennoch auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen Beurteilungen bestimmt werden können.
 
