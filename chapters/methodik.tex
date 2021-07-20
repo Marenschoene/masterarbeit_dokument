@@ -37,7 +37,7 @@ Um Mitarbeiter für offene Projektpositionen vorzuschlagen, wird zunächst die K
 
 Um neben dem Sparsity Problem auch den Kaltstart zu beheben, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Bei der EXXETA AG arbeiten stets Mitarbeiter in einem Team, welche ähnliche Kompetenzen beherrschen. Deren Manager ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für sein Team sind. Seine Kompetenzen sind jedoch in der Regel stärker ausgeprägt.
 
-Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem \ac{JSON} in Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Jane Doe wird in diesem und den folgenden Beispielen als Team-Managerin betrachtet.
+Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem \ac{JSON} in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Jane Doe wird in diesem und den folgenden Beispielen als Team-Managerin betrachtet.
 
 %\begin{minipage}{\linewidth}
 \lstinputlisting[
@@ -48,7 +48,7 @@ label=qc:methodik:versuchsaufbau:daten:qc1
 ]{gfx/john.json}
 %\end{minipage}
 
-Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, sind die Bewertungen in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} um eins höher als die Beurteilungen im \ac{JSON} aus Quellcode \ref{qc:methodik:versuchsaufbau:daten:qc1}. Damit ein Kantengewicht von null ausschließlich nicht vergebene Einschätzungen symbolisiert, werden die Bewertungen des \acp{JSON} vor der Empfehlungsberechnung um eins erhöht.
+Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, sind die Bewertungen in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} um eins höher als die Beurteilungen im \ac{JSON} aus Listing \ref{qc:methodik:versuchsaufbau:daten:qc1}. Damit ein Kantengewicht von null ausschließlich nicht vergebene Einschätzungen symbolisiert, werden die Bewertungen des \acp{JSON} vor der Empfehlungsberechnung um eins erhöht.
 
 Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager beträgt \kantengewichtString. Dieser Wert wird verwendet, um die Teamzugehörigkeit insbesondere zur Vermeidung eines Kaltstarts schwach in die Berechnung mit einzubeziehen, die individuellen Beurteilungen der Mitarbeiter aber dennoch höher zu gewichten.%Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass die vorhandenen Bewertungen wenig verzerrt werden und dennoch auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen Beurteilungen bestimmt werden können.
 
