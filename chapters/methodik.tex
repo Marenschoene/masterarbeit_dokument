@@ -4,7 +4,7 @@
 
 \section{Art der Forschung}
 \label{ch:methodik:art}
-Um die Forschungsfrage dieser Master-Thesis zu beantworten, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext werden zwei Versionen eines Empfehlungssystems zur Besetzung offener Projektpositionen entwickelt. Eine der beiden Anwendungen verfolgt einen unilateralen, die andere einen bilateralen Ansatz. Beide Empfehlungssysteme erhalten als Eingabe dieselben offenen Projektpositionen und Mitarbeiter. Für die eingegebenen Stellen sortieren die Anwendungen die vorhandenen Angestellten und geben diese in Form einer Liste zurück.
+Um die Forschungsfrage dieser Master-Thesis zu beantworten, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext werden zwei Versionen eines Empfehlungssystems zur Besetzung offener Projektpositionen entwickelt. Eine der beiden Anwendungen verfolgt einen unilateralen, die andere einen bilateralen Ansatz. Beide Empfehlungssysteme erhalten dieselben offenen Projektpositionen und Mitarbeiter als Eingabe. Anschließend sortieren sie die vorhandenen Angestellten für die offenen Stellen und geben diese in Form einer Liste zurück.
 
 Die Ausgaben beider Systeme werden Projektmanagern vorgelegt. Diese bewerten für jede Liste auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Dabei wird evaluiert, ob sie die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Empfehlungssystems höher bewerten, als die der unilateralen Variante.
 
@@ -12,7 +12,7 @@ Die Angestellten des Unternehmens erhalten die Beschreibungen der offenen Projek
 
 Abschließend werden die Bewertungen von Projektmanagern und Angestellten hinsichtlich der Ergebnisse der beiden Empfehlungssysteme verglichen. Dabei wird bestimmt, ob die bilaterale Recommender Engine im direkten Vergleich mit dem unilateralen Ansatz sowohl auf Seiten der Projektmanager für eine höhere erwartete Leistung als auch aus Perspektive der Mitarbeiter für eine gesteigerte prognostizierte Zufriedenheit sorgt.
 
-Im Rahmen der vorliegenden Master-Thesis wird ausschließlich der komplementäre \ac{PEFit} betrachtet. Im Sinne des ergänzenden Fits wird vorausgesetzt, dass eine grundlegende Übereinstimmung der Werte der Angestellten und des Unternehmen bzw. den Projekttätigkeiten bereits bei der Einstellung vorgenommen wurde.
+Im Rahmen der vorliegenden Master-Thesis wird ausschließlich der komplementäre \ac{PEFit} betrachtet. Im Sinne der ergänzenden Kongruenz wird vorausgesetzt, dass eine grundlegende Übereinstimmung der Werte der Angestellten und des Unternehmen bzw. den Projekttätigkeiten bereits vor der Anstellung der Arbeitnehmer vorgenommen wurde.
 
 \section{Versuchsaufbau}
 \label{ch:methodik:versuchsaufbau}
@@ -31,30 +31,32 @@ Die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellten Abst
 
 Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} kann der in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angesprochene Bias bei der Selbsteinschätzung weitgehend ausgeschlossen werden. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen bewusst besser oder schlechter einschätzen als andere Kollegen. Dieser Sachverhalt kann insbesondere auf längere Berufserfahrung zurückgeführt werden. Aus diesen Gründen wird bei der Empfehlungsbestimmung auf eine Mittelwert-Zentrierung verzichtet.
 
-Die Kompetenzen der Mitarbeiter und die zugehörigen Bewertungen dienen im Experiment als Eingabe für einen grundlegenden Algorithmus, welcher sowohl für das unilaterale, als auch das bilaterale Empfehlungssystem gleich ist.
+Damit ein Projektmanager Empfehlungen erhalten kann, muss er die für eine offene Projektposition relevanten Fähigkeiten mitsamt der benötigten Kompetenzniveaus festlegen. Für den praktischen Einsatz im Unternehmen wird es aufgrund der zahlreichen Projektanfragen als zu umständlich bewertet, wenn Projektmanager bei jedem Projekt jede Fähigkeit auf einer Skala von eins bis sechs bewerten müssen. Daher werden die Kompetenzniveaus aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} auf die Abstufungen "Grundkenntnisse" und "Fortgeschritten" vereinfacht. "Grundkenntnisse" entspricht dabei den ersten drei Stufen und "Fortgeschritten" den oberen drei Fähigkeitsniveaus in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1}.
+
+Die Kompetenzbewertungen der Mitarbeiter und die für ein Projekt benötigten Fähigkeiten dienen im Experiment als Eingabe für einen grundlegenden Algorithmus, welcher sowohl für das unilaterale, als auch das bilaterale Empfehlungssystem gleich ist.
 
 \subsection{Grundlegender Algorithmus}
 \label{ch:methodik:versuchsaufbau:grundlegend}
-Um Mitarbeiter für offene Projektpositionen vorzuschlagen, wird zunächst die Katz-Zentralität angewendet. Dieser speicherbasierte Graphenalgorithmus wurde in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellt. Ein Grund für die Auswahl dieses Ansatzes ist die zuverlässige Lösung des Sparsity Problems. Vorteilhaft gegenüber modellbasierten Methoden ist außerdem die Langlebigkeit des Verfahrens. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Ansatz weiterhin unverändert anwendbar. Die dabei zu erwartende hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments unter 1.000 Mitarbeiter im Unternehmen befinden.
+Die Mitarbeiter des Unternehmens und deren Fähigkeiten werden, wie in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} dargestellt, in Form eines Graphen angeordnet. Zusätzlich wird das zu besetzende Projekt, wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} im Kontext der Gruppen-Recommender Engines beschrieben, in Form eines Pseudo-Mitarbeiters in den Graphen eingefügt.
 
-Um neben dem Sparsity Problem auch den Kaltstart zu beheben, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Bei der EXXETA AG arbeiten stets Mitarbeiter in einem Team, welche ähnliche Kompetenzen beherrschen. Deren Manager ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für sein Team sind. Seine Kompetenzen sind jedoch in der Regel stärker ausgeprägt.
+Um das Sparsity Problem zu beheben wird der Algorithmus von Katz angewendet. Dieser speicherbasierte Graphenalgorithmus wurde in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellt. Vorteilhaft gegenüber modellbasierten Methoden ist auch die Langlebigkeit des Verfahrens. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Ansatz weiterhin unverändert anwendbar. Die dabei zu erwartende hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments unter 1.000 Mitarbeiter im Unternehmen befinden.
 
-Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine \acsu{REST}-Schnittstelle in Form von \acsu{JSON} aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem \ac{JSON} in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Jane Doe wird in diesem und den folgenden Beispielen als Team-Managerin betrachtet.
+Um neben dem Sparsity Problem auch den Kaltstart zu beheben, werden vor Berechnung des Algorithmus zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Bei der EXXETA AG arbeiten stets Mitarbeiter in einem Team, welche ähnliche Kompetenzen beherrschen. Der Manager des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für seine Mitarbeiter sind. Seine Kompetenzen sind jedoch in der Regel stärker ausgeprägt.
+
+Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine REST-Schnittstelle in Form von JSON aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem JSON in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Jane Doe wird in diesem und den folgenden Beispielen als Team-Managerin betrachtet.
 
 %\begin{minipage}{\linewidth}
 \lstinputlisting[
 language=json,
-caption=Beispiel für ein Mitarbeiter-\acsu{JSON} der \acsu{REST}-Schnittstelle des Intranets der EXXETA AG (Auszug),
+caption=Beispiel für ein Mitarbeiter-JSON der REST-Schnittstelle des Intranets der EXXETA AG (Auszug),
 captionpos=b,
 label=qc:methodik:versuchsaufbau:daten:qc1
 ]{gfx/john.json}
 %\end{minipage}
 
-Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, sind die Bewertungen in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} um eins höher als die Beurteilungen im \ac{JSON} aus Listing \ref{qc:methodik:versuchsaufbau:daten:qc1}. Damit ein Kantengewicht von 0 ausschließlich nicht vergebene Einschätzungen symbolisiert, werden die Bewertungen des \acp{JSON} vor der Empfehlungsberechnung um eins erhöht.
+Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, sind die Bewertungen in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} um eins höher als die Beurteilungen im JSON aus Listing \ref{qc:methodik:versuchsaufbau:daten:qc1}. Damit ein Kantengewicht von 0 ausschließlich nicht vergebene Einschätzungen symbolisiert, werden die Bewertungen des \acp{JSON} vor der Empfehlungsberechnung um eins erhöht.
 
 Um Rechenleistung einzusparen, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager beträgt \kantengewichtString. Dieser Wert wird verwendet, um die Teamzugehörigkeit insbesondere zur Vermeidung eines Kaltstarts schwach in die Berechnung mit einzubeziehen, die individuellen Beurteilungen der Mitarbeiter aber dennoch höher zu gewichten.%Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass die vorhandenen Bewertungen wenig verzerrt werden und dennoch auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen Beurteilungen bestimmt werden können.
-
-Um Empfehlungen erhalten zu können, muss ein Projektmanager die für eine offene Projektposition relevanten Fähigkeiten mitsamt der benötigten Kompetenzniveaus festlegen. Diese Daten werden, wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} im Kontext der Gruppen-Recommender Engines beschrieben, in Form eines Pseudo-Mitarbeiters ebenfalls in den Graphen eingefügt.
 
 Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen. In diesen wurde beispielhaft auch eine offene Projektposition in Form eines Pseudo-Mitarbeiters eingefügt.
 
@@ -174,4 +176,6 @@ Evaluation für Projektmanager:\\
 Evaluation für Mitarbeiter:\\
 - Jeder Mitarbeiter muss für jedes Projekt auf einer Skala von 1 bis 5 bewerten, wie zufrieden er wäre, wenn er darin arbeiten würde\\
 - Ergebnisliste wird in Intervalle geteilt --> z.B. Zufriedenheit 5 bedeutet bei 25 Teilnehmern, dass der Nutzer im ersten Intervall sein muss --> Abweichung bestimmen --> Je weniger Abweichung, desto besser --> Durchschnittliche Abweichung von unilateral und bilateral vergleichen
+
+Es wird bewusst darauf verzichtet, zusätzliche Stellenbeschreibungen oder Auftraggeber zu nennen, die die Bewertung verzerren könnten. Mitarbeiter und Projektmanager erhalten ausschließlich Informationen, die auch vom Empfehlungssystem verarbeitet werden.
 \shorthandon{"}
