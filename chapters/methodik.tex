@@ -41,6 +41,10 @@ Die Mitarbeiter des Unternehmens und deren Fähigkeiten werden in Form eines Gra
 
 Um das Sparsity Problem zu beheben, wird der Algorithmus von Katz angewendet. Dieser speicherbasierte Graphenalgorithmus wurde in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellt. Vorteilhaft gegenüber modellbasierten Methoden ist hierbei auch die Langlebigkeit des Verfahrens. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Ansatz weiterhin unverändert anwendbar. Die dabei zu erwartende hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments unter 1.000 Mitarbeiter im Unternehmen befinden.
 
+x
+% Gehört zum Prozess
+% Kaltstarts nur in Ausnahmefällen wie bei Werkstudenten oder neuen Mitarbeitern
+
 Um neben dem Sparsity Problem auch einem Kaltstart vorzubeugen, werden vor Berechnung des Algorithmus zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Bei der EXXETA AG arbeiten stets Mitarbeiter in einem Team, welche ähnliche Kompetenzen beherrschen. Der Manager des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für seine Mitarbeiter sind. Seine Kompetenzen sind jedoch in der Regel stärker ausgeprägt.
 
 Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine REST-Schnittstelle in Form von JSON aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem JSON in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Jane Doe wird in diesem und den folgenden Beispielen als Team-Managerin betrachtet.
@@ -115,9 +119,6 @@ Anhand der Daten des Graphen folgt die Berechnung der Katz-Zentralität anhand v
 	\label{frml:methodik:versuchsaufbau:grundlegend:formel1}
 \end{equation}
 Durch das in in Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} dargelegt, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielknoten weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Knoten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten eine höhere Priorität in der Berechnung, welche von den Teamkollegen eines Zielnutzers beherrscht werden.
-
-% Gehört zum Prozess
-% Kaltstarts nur in Ausnahmefällen wie bei Werkstudenten oder neuen Mitarbeitern
 
 Die nach Berechnung der Katz-Zentralität entstehende Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungskomponente. Beide Module unterscheiden sich, wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Mitarbeiter sortieren.
 
