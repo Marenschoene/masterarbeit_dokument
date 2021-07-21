@@ -116,7 +116,8 @@ Anhand der Daten des Graphen folgt die Berechnung der Katz-Zentralität anhand v
 \end{equation}
 Durch das in in Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} dargelegt, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielknoten weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Knoten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten eine höhere Priorität in der Berechnung, welche von den Teamkollegen eines Zielnutzers beherrscht werden.
 
-% TODO: Auswirkung der Katz-Berechnung
+% Gehört zum Prozess
+% Kaltstarts nur in Ausnahmefällen wie bei Werkstudenten oder neuen Mitarbeitern
 
 Die nach Berechnung der Katz-Zentralität entstehende Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungskomponente. Beide Module unterscheiden sich, wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Mitarbeiter sortieren.
 
