@@ -12,7 +12,7 @@ Die Angestellten des Unternehmens erhalten Übersichten über die für die offen
 
 Abschließend werden die Bewertungen von Projektmanagern und Angestellten hinsichtlich der Ergebnisse der beiden Empfehlungssysteme verglichen. Dabei wird bestimmt, ob die bilaterale Recommender Engine im direkten Vergleich mit dem unilateralen Ansatz sowohl auf Seiten der Projektmanager für eine höhere erwartete Leistung als auch aus Perspektive der Mitarbeiter für eine gesteigerte prognostizierte Zufriedenheit sorgte.
 
-Im Rahmen der vorliegenden Master-Thesis wird ausschließlich der komplementäre \ac{PEFit} betrachtet. Für die ergänzende Kongruenz wird vorausgesetzt, dass eine grundlegende Übereinstimmung der Werte der Angestellten und des Unternehmen bzw. den Projekttätigkeiten bereits vor der Anstellung der Arbeitnehmer vorgenommen wurde.
+Im Rahmen der vorliegenden Master-Thesis wird ausschließlich der komplementäre \ac{PEFit} auf Facetten-Ebene betrachtet. Hierbei werden einzig die für offene Projektpositionen benötigten Kompetenzen zur Bestimmung der Kongruenz herangezogen. Weitere Faktoren wie Kundennamen, Branche oder Beschreibungen werden nicht berücksichtigt. Im Sinne des ergänzenden \acp{PEFit} wird vorausgesetzt, dass eine grundlegende Übereinstimmung der Werte der Angestellten und des Unternehmen bzw. den Projekttätigkeiten bereits vor der Anstellung der Arbeitnehmer vorgenommen wurde.
 
 \section{Versuchsaufbau}
 \label{ch:methodik:versuchsaufbau}
@@ -122,7 +122,9 @@ Die nach Berechnung der Katz-Zentralität entstehende Matrix dient als Eingabe f
 
 \subsection{Unilaterale Empfehlungskomponente}
 \label{ch:methodik:versuchsaufbau:unilateral}
-Die unilaterale Empfehlungskomponente bestimmt Vorschläge, indem sie für jede vom Projektmanager geforderte Kompetenz die in Gleichung \ref{fig:personEnvironmentFit:auswirkungenErhoehterAngebote:formel3} vorgestellte quadrierte Differenz zwischen dem Pseudomitarbeiter und allen anderen Angestellten bestimmt. Anschließend werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
+Die unilaterale Empfehlungskomponente fokussiert bei der Bestimmung von Vorschlägen ausschließlich die Präferenzen des Projektmanagers. Im Sinne des \acp{PEFit} wird folglich nur die Anforderungen-Fähigkeiten Kongruenz betrachtet.
+
+Zu diesem Zweck wird für jede vom Projektmanager geforderte Kompetenz die in Gleichung \ref{fig:personEnvironmentFit:auswirkungenErhoehterAngebote:formel3} vorgestellte quadrierte Differenz zwischen dem Pseudomitarbeiter und allen anderen Angestellten bestimmt. Anschließend werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
 
 Für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} ergibt sich damit die in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} dargestellte Ausgabe. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
 
