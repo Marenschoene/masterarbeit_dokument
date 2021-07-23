@@ -44,7 +44,7 @@ Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt
 
 Um Kaltstarts auch in solchen Ausnahmefällen vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Dieses Vorgehen hat außerdem den Effekt, dass Kompetenzen bei Mitarbeitern durch die Berechnung der Katz-Zentralität feingranular besser bewertet werden, wenn ihre direkten Kollegen diese Fähigkeiten beherrschen. Dieses Vorgehen ist im Falle der EXXETA AG als sinnvoll zu bewerten, da dort stets Mitarbeiter mit ähnlichem fachlichem Hintergrund in einem Team tätig sind. Der Manager des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für seine Mitarbeiter sind. Dessen Kompetenzen sind jedoch in der Regel stärker ausgeprägt.
 
-Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine REST-Schnittstelle in Form von JSON aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem JSON in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Jane Doe wird in diesem und den folgenden Beispielen als Team-Managerin betrachtet.
+Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine REST-Schnittstelle in Form von JSON aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem JSON in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. In diesem und den folgenden Beispielen werden Jane Doe und Max Muster sowie Erika Muster und John Doe als Mitglieder jeweils eines Teams betrachtet.
 
 %\begin{minipage}{\linewidth}
 \lstinputlisting[
@@ -59,7 +59,7 @@ Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1
 
 Vor Überführung der Daten in Form eines Graphen werden die sechsstufigen Beurteilungen der Mitarbeiter-Fähigkeiten aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} auf die zweistufige Skala der Projektmanager angepasst. Hierbei werden Bewertungen auf dem Niveau "Grundkenntnisse" auf ein Kantengewicht von \kantengewichtString und Beurteilungen auf der Ebene "Fortgeschritten" auf ein Kantengewicht von \kantengewichtHochString vereinfacht. Ein Gewicht von 0 symbolisiert damit ausschließlich nicht bewertete Fähigkeiten.
 
-Um eine weitere Erhöhung der Komplexität des Algorithmus zu vermeiden, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird entsprechend dem Kompetenzniveau "Grundkenntnisse" auf \kantengewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit schwach in die Berechnung mit einzubeziehen, die individuellen Beurteilungen der Mitarbeiter jedoch höher zu gewichten.%Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass die vorhandenen Bewertungen wenig verzerrt werden und dennoch auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen Beurteilungen bestimmt werden können.
+Um eine weitere Erhöhung der Komplexität des Algorithmus zu vermeiden, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird auf \teamgewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit schwach in die Berechnung mit einzubeziehen, die individuellen Beurteilungen der Mitarbeiter jedoch höher zu gewichten.%Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass die vorhandenen Bewertungen wenig verzerrt werden und dennoch auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen Beurteilungen bestimmt werden können.
 
 Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen.%Außerdem wurde eine offene Projektposition in Form eines Pseudo-Mitarbeiters eingefügt.
 
@@ -94,14 +94,14 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 		\draw (Max) -- node[midway, above] {\kantengewicht} (Python);
 		\draw (Max) -- node[midway, right] {\kantengewicht} (MySQL);
 		
-		\draw (Jane) -- node[midway, above] {\kantengewicht} (John);
-		\draw (Jane) -- node[midway, left] {\kantengewicht} (Max);
-		\path (Jane) edge[bend left=25] node[midway, above] {\kantengewicht} (Erika);
+		%\draw (Jane) -- node[midway, above] {\kantengewicht} (John);
+		\draw (Jane) -- node[midway, left] {\teamgewicht} (Max);
+		%\path (Jane) edge[bend left=25] node[midway, above] {\kantengewicht} (Erika);
 		
-		\draw (John) -- node[midway, right] {\kantengewicht} (Max);
-		\draw (John) -- node[midway, above] {\kantengewicht} (Erika);
+		%\draw (John) -- node[midway, right] {\kantengewicht} (Max);
+		\draw (John) -- node[midway, above] {\teamgewicht} (Erika);
 		
-		\path (Max) edge[bend right=40] node[midway, above] {\kantengewicht} (Erika);
+		%\path (Max) edge[bend right=40] node[midway, above] {\kantengewicht} (Erika);
 		
 		%\path (Projekt) edge[bend left=40] node[midway, above] {\kantengewicht} (MongoDB);
 		%\path (Projekt) edge[bend left=25] node[midway, above] {\kantengewichtHoch} (Python);
@@ -125,6 +125,40 @@ Die nach Berechnung der Katz-Zentralität entstehende Matrix dient als Eingabe f
 \label{ch:methodik:versuchsaufbau:unilateral}
 Die unilaterale Empfehlungskomponente fokussiert bei der Bestimmung von Vorschlägen ausschließlich die Präferenzen des Projektmanagers. Im Sinne des \acp{PEFit} wird folglich nur die Anforderungen-Fähigkeiten Kongruenz betrachtet.
 
+Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ändern sich bei Berechnung des Algorithmus von Katz die Kompetenzbewertungen. Somit es ist nicht ohne Weiteres möglich, die Eingaben eines Projektmanagers mit den Werten in der Ergebnis-Matrix zu vergleichen.
+
+Jedoch ist festzustellen, dass sich die Beurteilungen, welche ursprünglich einem gemeinsamen Kompetenzniveau entsprachen, auch nach Berechnung des Katz-Algorithmus auf einem vergleichbaren Niveau befinden. Die Werte innerhalb eines Kompetenzbereichs sind lediglich feingranular unterschiedlich. Dieses Phänomen ist in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu beobachten. Dort sind die Bewertungen der Fähigkeit Python aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} vor und nach der Berechnung des Katz-Algorithmus eingetragen. Gleiche Kompetenzniveaus sind in der Tabelle durch einheitliche Hintergrundfarben gekennzeichnet.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c}
+		Kompetenzniveau & Name & Bewertung & Ergebnis des Katz-Algorithmus \\
+		\hline
+		\rowcolor{exxetagray} Keine Kenntnisse & Erika M.  & 0                  & 0.43\\
+		\rowcolor{exxetagray} Keine Kenntnisse & John D.   & 0                  & 0.92\\
+		\hline
+		\rowcolor{usercolor}  Grundkenntnisse  & Max M.    & \kantengewicht     & 1.93\\
+		\hline
+		\rowcolor{itemcolor}  Fortgeschritten  & Jane D.   & \kantengewichtHoch & 2.77
+	\end{tabular}
+	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz Python im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
+\end{table}
+
+Würde ein Projektmanager einen Mitarbeiter mit einem bestimmten Kenntnisniveau in der Programmiersprache Python suchen, können die Daten in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} dennoch nach wie vor verwendet werden. Hierfür wird der Angestellte mit dem höchstem höchsten Ergebnis des Katz-Algorithmus im gesuchten Kompetenzbereich als geeignetster Mitarbeiter für die vorliegenden Fähigkeit definiert. Zur Bestimmung des \acp{PEFit} dient dessen Bewertung als Nullpunkt in Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2}, welche bereits in Kapitel \ref{ch:personEnvironmentFit:auswirkungenErhoehterAngebote} diskutiert wurde.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{gfx/ueberschuss_supply_motive.png}
+	\caption{Auswirkungen eines Bedürfnisse-Angebote Misfits\\(Eigene Darstellung in Anlehnung an \cite[S. 23]{edwards:2008})}
+	\label{fig:methodik:versuchsaufbau:unilateral:abb2}
+\end{figure}
+
+Zur Bestimmung des Anforderungen-Fähigkeiten Fits wird angenommen, dass Projektmanager anstreben, offene Projektpositionen mit fachlich optimal passenden Mitarbeitern zu besetzen. Folglich vermeiden sie sowohl eine Über- als auch eine Unterqualifizierung ihrer Angestellten. Aus diesem Grund wird Kurve B aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} in der unilateralen Empfehlungskomponente durch quadrierte Differenzberechnung implementiert.
+
+Der Algorithmus der unilateralen Empfehlungskomponente wird anhand der folgenden beispielhaften Projektposition erläutert.
+
+\newpage
 Zu diesem Zweck wird für jede vom Projektmanager geforderte Kompetenz die in Gleichung \ref{fig:personEnvironmentFit:auswirkungenErhoehterAngebote:formel3} vorgestellte quadrierte Differenz zwischen dem Pseudomitarbeiter und allen anderen Angestellten bestimmt. Anschließend werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
 
 Für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} ergibt sich damit die in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} dargestellte Ausgabe. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.

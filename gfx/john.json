@@ -9,14 +9,8 @@
 		"colleagues":[
 			{
 				"id":"abc-001",
-				"name":"Erika Muster",
-				"username":"Erika.Muster@EXXETA.com",
-				"teamName":"Java Enterprise Solutions 3"
-			},
-			{
-				"id":"abc-002",
-				"name":"Max Muster",
-				"username":"Max.Muster@EXXETA.com",
+				"name":"Jane Doe",
+				"username":"Jane.Doe@EXXETA.com",
 				"teamName":"Java Enterprise Solutions 3"
 			}
 		]
@@ -38,10 +32,5 @@
 			"description":null
 		}
 	],
-	"manager":{
-		"id":"N/A",
-		"name":"Jane Doe",
-		"username":"Jane.Doe@EXXETA.com",
-		"teamName":"Java Enterprise Solutions"
-	}
+	"manager": null
 }
