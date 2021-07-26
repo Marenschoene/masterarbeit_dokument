@@ -8,11 +8,10 @@ Um die Forschungsfrage dieser Master-Thesis zu beantworten, wird eine quantitati
 
 Die Ausgaben beider Systeme werden Projektmanagern vorgelegt. Diese bewerten für jede Liste auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Dabei wird evaluiert, ob sie die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Empfehlungssystems höher bewerten, als die der unilateralen Variante.
 
-Die Angestellten des Unternehmens erhalten Übersichten über offenen Projektpositionen. Daraufhin bewerten sie auf einer vordefinierten Skala, wie zufrieden sie mit einer Tätigkeit auf den vorliegenden Projektpositionen wären. Hierbei wird für beide Empfehlungssysteme überprüft, ob eine hohe erwartete Zufriedenheit der Angestellten mit einer hohen Positionierung in den Ergebnislisten korreliert.
+Die Mitarbeiter des Unternehmens erhalten Übersichten über offenen Projektpositionen. Daraufhin bewerten sie auf einer vordefinierten Skala, wie zufrieden sie mit einer Tätigkeit auf den vorliegenden Projektpositionen wären. Dabei wird überprüft, ob das bilaterale Empfehlungssystem die Angestellten für die offene Projektpositionen höher positioniert, bei welchen diese eine hohe Zufriedenheit erwarten.
+%Abschließend werden die Bewertungen von Projektmanagern und Angestellten hinsichtlich der Ergebnisse der beiden Empfehlungssysteme verglichen. Dabei wird bestimmt, ob die bilaterale Recommender Engine im direkten Vergleich mit dem unilateralen Ansatz sowohl auf Seiten der Projektmanager für eine höhere erwartete Leistung als auch aus Perspektive der Mitarbeiter für eine gesteigerte prognostizierte Zufriedenheit sorgt.
 
-Abschließend werden die Bewertungen von Projektmanagern und Angestellten hinsichtlich der Ergebnisse der beiden Empfehlungssysteme verglichen. Dabei wird bestimmt, ob die bilaterale Recommender Engine im direkten Vergleich mit dem unilateralen Ansatz sowohl auf Seiten der Projektmanager für eine höhere erwartete Leistung als auch aus Perspektive der Mitarbeiter für eine gesteigerte prognostizierte Zufriedenheit sorgt.
-
-Im Rahmen der vorliegenden Master-Thesis wird ausschließlich der komplementäre \ac{PEFit} auf Facetten-Ebene betrachtet. Hierbei werden einzig die für offene Projektpositionen benötigten Kompetenzen zur Bestimmung der Kongruenz herangezogen. Weitere Faktoren wie Kundennamen, Branche oder Projektbeschreibungen werden nicht berücksichtigt. Im Sinne des ergänzenden \acp{PEFit} wird vorausgesetzt, dass eine Übereinstimmung der Werte von Angestellten und des Unternehmens bzw. der Projekttätigkeiten bereits vor Anstellung der Arbeitnehmer überprüft wurde.
+Im Rahmen der vorliegenden Master-Thesis wird ausschließlich der komplementäre \ac{PEFit} auf Facetten-Ebene betrachtet. Hierbei werden einzig die für offene Projektpositionen benötigten Kompetenzen zur Bestimmung der Kongruenz herangezogen. Weitere Faktoren wie Kundennamen, Branche oder Projektbeschreibungen werden nicht berücksichtigt. Im Sinne des ergänzenden \acp{PEFit} wird vorausgesetzt, dass eine Übereinstimmung der Werte von Angestellten und des Unternehmens bzw. der Projekttätigkeiten bereits vor Anstellung der Arbeitnehmer überprüft wurde. Aus diesem Grund wird dieser im Experiment nicht untersucht.
 
 \section{Versuchsaufbau}
 \label{ch:methodik:versuchsaufbau}
@@ -38,13 +37,13 @@ Die Kompetenzbewertungen der Mitarbeiter und die für ein Projekt benötigten F�
 \subsection{Grundlegender Algorithmus}
 \label{ch:methodik:versuchsaufbau:grundlegend}
 % Zusätzlich wird das zu besetzende Projekt als Pseudo-Mitarbeiter eingefügt.
-Die Mitarbeiter der EXXETA AG und deren Fähigkeiten werden in Form eines Graphen dargestellt. Um das Sparsity Problem zu beheben, wird das Verfahren von Katz angewendet. Dieser speicherbasierte Graphenalgorithmus wurde in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellt. Vorteilhaft gegenüber modellbasierten Methoden ist insbesondere die Langlebigkeit des Ansatzes. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist das speicherbasierte Verfahren weiterhin ohne zusätzlichen manuellen Aufwand im Betrieb anwendbar. Die zu erwartende hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments weniger als 1.000 Mitarbeiter im Unternehmen befinden.
+Die Mitarbeiter der EXXETA AG und deren Fähigkeiten werden in Form eines Graphen dargestellt. Um das Sparsity Problem zu lösen, wird der speicherbasierte Algorithmus von Katz aus Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angewendet. Da die Anwendung auch über die Master-Thesis hinaus im Unternehmen eingesetzt werden soll, ist insbesondere die Langlebigkeit des Verfahrens vorteilhaft gegenüber modellbasierten Methoden. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Algorithmus weiterhin ohne zusätzlichen manuellen Aufwand im Betrieb anwendbar. Die hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments weniger als 1.000 Mitarbeiter im Unternehmen befinden.
 
-Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt der Algorithmus von Katz für eine feingranulare Anpassung vorhandener Beurteilungen. Dass Bewertungen von Mitarbeitern gänzlich fehlen, kann bei er EXXETA AG weitgehend ausgeschlossen werden. Führungskräfte fordern hier die Angestellten regelmäßig dazu auf, ihre Kompetenzen im Intranet aktuell zu halten und diese beispielsweise im Rahmen des Mitarbeiter-Jahresgespräches zu pflegen. Angestellte ohne Bewertungen sind folglich nur in Ausnahmefällen zu erwarten. Hierzu zählen beispielsweise Werkstudenten und neue Mitarbeiter.
+Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt der Algorithmus von Katz für eine feingranulare Anpassung vorhandener Beurteilungen. Dass Bewertungen von Mitarbeitern gänzlich fehlen, kann bei er EXXETA AG weitgehend ausgeschlossen werden. Führungskräfte fordern ihre Angestellten regelmäßig dazu auf, ihre Kompetenzen im Intranet aktuell zu halten und diese beispielsweise im Rahmen des Mitarbeiter-Jahresgespräches zu pflegen. Angestellte ohne Bewertungen sind folglich nur in Ausnahmefällen zu erwarten. Hierzu zählen beispielsweise Werkstudenten und neue Mitarbeiter.
 
-Um Kaltstarts auch in solchen Ausnahmefällen vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Dieses Vorgehen hat außerdem den Effekt, dass Kompetenzen bei Mitarbeitern durch die Berechnung der Katz-Zentralität feingranular besser bewertet werden, wenn ihre direkten Kollegen diese Fähigkeiten beherrschen. Dieses Vorgehen ist im Falle der EXXETA AG als sinnvoll zu bewerten, da dort stets Mitarbeiter mit ähnlichem fachlichem Hintergrund in einem Team tätig sind. Der Manager des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für seine Mitarbeiter sind. Dessen Kompetenzen sind jedoch in der Regel stärker ausgeprägt.
+Um Kaltstarts auch in solchen Ausnahmefällen vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Dieses Vorgehen hat außerdem den Vorteil, dass die Kompetenzen der Mitarbeiter bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn ihre direkten Kollegen diese Fähigkeiten ebenfalls beherrschen. Dieses Vorgehen ist im Falle der EXXETA AG als sinnvoll zu bewerten, da dort stets Mitarbeiter mit ähnlichem fachlichem Hintergrund in einem Team tätig sind. Auch der Manager des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für seine Mitarbeiter sind. Seine Kompetenzen sind jedoch in der Regel stärker ausgeprägt.
 
-Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine REST-Schnittstelle in Form von JSON aus dem Intranet abgefragt werden. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem JSON in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. In diesem und den folgenden Beispielen werden Jane Doe und Max Muster sowie Erika Muster und John Doe als Mitglieder jeweils eines Teams betrachtet.
+Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine REST-Schnittstelle in Form von JSON aus dem Intranet abgefragt werden. Einzelne Mitarbeiter sind dabei eindeutig über ihre E-Mail-Adresse identifizierbar. Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem JSON in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Nicht relevante Informationen wurden im vorliegenden Auszug entfernt. In diesem und den folgenden Beispielen werden Jane Doe und Max Muster sowie Erika Muster und John Doe als Mitglieder jeweils eines Teams betrachtet. 
 
 %\begin{minipage}{\linewidth}
 \lstinputlisting[
@@ -112,40 +111,37 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 	\label{fig:methodik:versuchsaufbau:unilateral:abb1}
 \end{figure}
 
-Die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} dienen als Grundlage zur Berechnung der Katz-Zentralität anhand von Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4}. Dabei wird der Wert von $\beta$ über folgende Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} bestimmt: 
+Die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} dienen als Grundlage zur Berechnung des Katz-Algorithmus anhand von Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4}. Dabei wird der Wert von $\beta$ über folgende Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} bestimmt: 
 \begin{equation}
 	\beta = \frac{1/\lambda}{\nenner}
 	\label{frml:methodik:versuchsaufbau:grundlegend:formel1}
 \end{equation}
-Durch das in in Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} dargelegt, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielknoten weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Knoten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten eine höhere Priorität in der Berechnung, welche mit den direkten Teamkollegen eines Zielnutzers in Verbindung stehen.
+Durch das in in Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} dargelegt, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielknoten weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Knoten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten eine höhere Priorität in der Berechnung, welche mit den direkten Teamkollegen bzw. den beherrschten Kompetenzen eines Zielnutzers in Verbindung stehen.
 
-Die nach Berechnung der Katz-Zentralität entstehende Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungskomponente. Beide Module unterscheiden sich, wie bei einem A/B-Test gefordert, ausschließlich in der Art, über welche sie die Mitarbeiter sortieren.
+Die nach Berechnung der Katz-Zentralität entstehende Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungskomponente. Beide Module unterscheiden sich ausschließlich in der Art, wie sie die Mitarbeiter sortieren.
 
 \subsection{Unilaterale Empfehlungskomponente}
 \label{ch:methodik:versuchsaufbau:unilateral}
 Die unilaterale Empfehlungskomponente fokussiert bei der Bestimmung von Vorschlägen ausschließlich die Präferenzen des Projektmanagers. Im Sinne des \acp{PEFit} wird folglich nur die Anforderungen-Fähigkeiten Kongruenz betrachtet.
 
-Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ändern sich bei Berechnung des Algorithmus von Katz die Kompetenzbewertungen. Somit es ist nicht ohne Weiteres möglich, die Eingaben eines Projektmanagers mit den Werten in der Ergebnis-Matrix zu vergleichen.
-
-Jedoch ist festzustellen, dass sich die Beurteilungen, welche ursprünglich einem gemeinsamen Kompetenzniveau entsprachen, auch nach Berechnung des Katz-Algorithmus auf einem vergleichbaren Niveau befinden. Die Werte innerhalb eines Kompetenzbereichs sind lediglich feingranular unterschiedlich. Dieses Phänomen ist in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu beobachten. Dort sind die Bewertungen der Fähigkeit Python aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} vor und nach der Berechnung des Katz-Algorithmus eingetragen. Gleiche Kompetenzniveaus sind in der Tabelle durch einheitliche Hintergrundfarben gekennzeichnet.
+Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ändern sich bei Berechnung des Verfahrens von Katz die Kompetenzbewertungen. Somit es ist nicht ohne Weiteres möglich, die Eingaben eines Projektmanagers mit den Werten in der Ergebnis-Matrix zu vergleichen. Allerdings befinden sich die Beurteilungen, welche ursprünglich einem gemeinsamen Kompetenzniveau entsprachen, auch nach Berechnung des Algorithmus auf einem vergleichbaren Niveau. Die Werte innerhalb eines Kompetenzbereichs sind lediglich feingranular unterschiedlich. Dieses Phänomen ist in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu beobachten. Dort sind die Bewertungen der Fähigkeit MySQL aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} vor und nach der Berechnung des Katz-Algorithmus eingetragen. Gleiche Kompetenzniveaus sind in der Tabelle durch einheitliche Hintergrundfarben gekennzeichnet.
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c}
 		Kompetenzniveau & Name & Bewertung & Ergebnis des Katz-Algorithmus \\
 		\hline
-		\rowcolor{exxetagray} Keine Kenntnisse & Erika M.  & 0                  & 0.43\\
-		\rowcolor{exxetagray} Keine Kenntnisse & John D.   & 0                  & 0.92\\
+		\rowcolor{usercolor} Keine Kenntnisse & Erika M.  & 0                  & 0.565\\
 		\hline
-		\rowcolor{usercolor}  Grundkenntnisse  & Max M.    & \kantengewicht     & 1.93\\
-		\hline
-		\rowcolor{itemcolor}  Fortgeschritten  & Jane D.   & \kantengewichtHoch & 2.77
+		\rowcolor{itemcolor} Grundkenntnisse  & John D.   & \kantengewicht     & 1.202\\
+		\rowcolor{itemcolor} Grundkenntnisse  & Max M.    & \kantengewicht     & 1.623\\
+		\rowcolor{itemcolor} Grundkenntnisse  & Jane D.   & \kantengewicht     & 1.996
 	\end{tabular}
-	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz Python im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz MySQL im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
 \end{table}
 
-Würde ein Projektmanager einen Mitarbeiter mit einem bestimmten Kenntnisniveau in der Programmiersprache Python suchen, können die Daten in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} dennoch nach wie vor verwendet werden. Hierfür wird der Angestellte mit dem höchstem höchsten Ergebnis des Katz-Algorithmus im gesuchten Kompetenzbereich als geeignetster Mitarbeiter für die vorliegenden Fähigkeit definiert. Zur Bestimmung des \acp{PEFit} dient dessen Bewertung als Nullpunkt in Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2}, welche bereits in Kapitel \ref{ch:personEnvironmentFit:auswirkungenErhoehterAngebote} diskutiert wurde.
+Sucht ein Projektmanager nach einem Mitarbeiter mit Grundkenntnissen im Umgang mit MySQL, wird der Angestellte mit dem höchsten Wert im gesuchten Kompetenzbereich der Ergebnis-Matrix als geeignetster Kandidat für die nachgefragte Fähigkeit definiert. In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} wäre dies Jane Doe. Zur Bestimmung des \acp{PEFit} dient ihre Bewertung in der Ergebnis-Matrix für die Kompetenz MySQL als Nullpunkt in Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2}.
 
 \begin{figure}[h]
 	\centering
@@ -154,11 +150,11 @@ Würde ein Projektmanager einen Mitarbeiter mit einem bestimmten Kenntnisniveau 
 	\label{fig:methodik:versuchsaufbau:unilateral:abb2}
 \end{figure}
 
-Zur Bestimmung des Anforderungen-Fähigkeiten Fits wird angenommen, dass Projektmanager anstreben, offene Projektpositionen mit fachlich optimal passenden Mitarbeitern zu besetzen. Folglich vermeiden sie sowohl eine Über- als auch eine Unterqualifizierung ihrer Angestellten. Aus diesem Grund wird Kurve B aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} in der unilateralen Empfehlungskomponente durch quadrierte Differenzberechnung implementiert.
-
-Der Algorithmus der unilateralen Empfehlungskomponente wird anhand der folgenden beispielhaften Projektposition erläutert. (Java: Fortgeschritten, MySQL: Grundkenntnisse; Spark: Grundkenntnisse)
+Zur Bestimmung des Anforderungen-Fähigkeiten Fits wird angenommen, dass Projektmanager anstreben, offene Projektpositionen mit fachlich optimal passenden Mitarbeitern zu besetzen. Folglich vermeiden sie sowohl eine Über- als auch eine Unterqualifizierung ihrer Angestellten. Aus diesem Grund wird der \ac{PEFit} anhand von Kurve B aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} in der unilateralen Empfehlungskomponente durch quadrierte Differenzberechnung bestimmt.
 
 \newpage
+Der Algorithmus der unilateralen Empfehlungskomponente wird anhand der folgenden beispielhaften Projektposition erläutert. (Java: Fortgeschritten, MySQL: Grundkenntnisse; Spark: Grundkenntnisse)
+
 Zu diesem Zweck wird für jede vom Projektmanager geforderte Kompetenz die in Gleichung \ref{fig:personEnvironmentFit:auswirkungenErhoehterAngebote:formel3} vorgestellte quadrierte Differenz zwischen dem Pseudomitarbeiter und allen anderen Angestellten bestimmt. Anschließend werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
 
 Für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} ergibt sich damit die in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} dargestellte Ausgabe. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
