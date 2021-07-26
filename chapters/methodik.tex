@@ -76,7 +76,6 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 		\node[main, fill=usercolor] (John) [above left of=HDFS] {$John D.$}; 
 		\node[main, fill=usercolor] (Max) [below of=MySQL] {$Max M.$};
 		\node[main, fill=usercolor] (Erika) [above right of=HDFS] {$Erika M.$};
-		%\node[main, fill=usercolor] (Projekt) [below of=Java] {$Projekt$}; 
 		
 		\draw (Jane) -- node[midway, right] {\kantengewichtHoch} (Python);
 		\draw (Jane) -- node[midway, above] {\kantengewicht} (MySQL);
@@ -102,9 +101,10 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 		
 		%\path (Max) edge[bend right=40] node[midway, above] {\kantengewicht} (Erika);
 		
+		%\node[main, fill=usercolor] (Projekt) [below of=Java] {$Projekt$}; 
 		%\path (Projekt) edge[bend left=40] node[midway, above] {\kantengewicht} (MongoDB);
-		%\path (Projekt) edge[bend left=25] node[midway, above] {\kantengewichtHoch} (Python);
 		%\path (Projekt) edge[bend right=25] node[midway, above] {\kantengewicht} (Spark);
+		%\draw (Projekt) -- node[midway, right] {\kantengewichtHoch} (Java);
 	\end{tikzpicture}
 	
 	\caption{Graph aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} mit zusätzlicher Teamzuordnung und offener Projektposition}
@@ -151,6 +151,8 @@ In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} wird der Angestellt
 \end{figure}
 
 Zur Bestimmung des Anforderungen-Fähigkeiten Fits wird angenommen, dass Projektmanager anstreben, offene Projektpositionen mit fachlich optimal passenden Mitarbeitern zu besetzen. Folglich vermeiden sie sowohl eine Über- als auch eine Unterqualifizierung ihrer Angestellten. Aus diesem Grund wird der \ac{PEFit} anhand von Kurve B aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} in der unilateralen Empfehlungskomponente durch quadrierte Differenzberechnung bestimmt.
+
+Ist kein Mitarbeiter im gesuchten Kompetenzbereich vorhanden, wird eine Ausnahmebehandlung ausgeführt. Wird nach Grundkenntnissen in einer bestimmten Fähigkeit gesucht und kein passender Kandidat gefunden, wird 
 
 \newpage
 Der Algorithmus der unilateralen Empfehlungskomponente wird anhand der folgenden beispielhaften Projektposition erläutert. (Java: Fortgeschritten, MySQL: Grundkenntnisse; Spark: Grundkenntnisse)
