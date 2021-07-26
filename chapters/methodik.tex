@@ -131,7 +131,7 @@ Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ände
 	\begin{tabular}{c|c|c|c}
 		Kompetenzniveau & Name & Bewertung & Ergebnis des Katz-Algorithmus \\
 		\hline
-		\rowcolor{usercolor} Keine Kenntnisse & Erika M.  & 0                  & 0.565\\
+		\rowcolor{exxetagray} Keine Kenntnisse & Erika M.  & 0                  & 0.565\\
 		\hline
 		\rowcolor{itemcolor} Grundkenntnisse  & John D.   & \kantengewicht     & 1.202\\
 		\rowcolor{itemcolor} Grundkenntnisse  & Max M.    & \kantengewicht     & 1.623\\
@@ -154,26 +154,23 @@ Zur Bestimmung des Anforderungen-Fähigkeiten Fits wird angenommen, dass Projekt
 
 Ist kein Mitarbeiter im gesuchten Kompetenzbereich vorhanden, wird eine Ausnahmebehandlung ausgeführt. Wird nach Grundkenntnissen in einer bestimmten Fähigkeit gesucht und dabei kein passender Kandidat gefunden, wird der wenig qualifizierteste Angestellte auf fortgeschrittenem Niveau als Referenz genutzt. Sucht ein Projektmanager erfolglos nach Mitarbeitern mit fortgeschrittenen Kenntnissen, wird der am Besten qualifizierte Kandidat mit Grundkenntnissen als Referenz verwendet. Sind ausschließlich Mitarbeiter ohne Kenntnisse vorhanden, wird die gesuchte Kompetenz übersprungen, da in diesem Fall kein Mitarbeiter im Graphen mit dieser Fähigkeit verbunden ist und somit alle Kantengewichte 0 sind.
 
-\newpage
-Der Algorithmus der unilateralen Empfehlungskomponente wird anhand der folgenden beispielhaften Projektposition erläutert. (Java: Fortgeschritten, MySQL: Grundkenntnisse; Spark: Grundkenntnisse)
-
-Zu diesem Zweck wird für jede vom Projektmanager geforderte Kompetenz die in Gleichung \ref{fig:personEnvironmentFit:auswirkungenErhoehterAngebote:formel3} vorgestellte quadrierte Differenz zwischen dem Pseudomitarbeiter und allen anderen Angestellten bestimmt. Anschließend werden die Mitarbeiter nach geringster Abweichung sortiert und an den Projektmanager zurückgegeben.
-
-Für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} ergibt sich damit die in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} dargestellte Ausgabe. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
+Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis der unilateralen Empfehlungsbestimmung für ein Beispielprojekt mit gesuchten fortgeschrittenen Kenntnissen in Java und benötigten Grundkenntnissen in MySQL und HDFS. Verwendet wurden dabei die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c}
 		Positionierung & Mitarbeiter & Abweichung\\
 		\hline
-		1 & Jane D.  & 0.03\\
-		2 & Max M.   & 0.08\\
-		3 & Erika M. & 0.11\\
-		4 & John D.  & 0.16
+		1 & Jane D.  & 0.317\\
+		2 & Max M.   & 0.502\\
+		3 & John D.  & 0.651\\
+		4 & Erika M. & 2.592
 	\end{tabular}
 	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl2}
 \end{table}
+
+Ähnlich zum unilateralen Algorithmus arbeitet auch die bilaterale Empfehlungskomponente. Diese bezieht neben dem Anforderungen-Fähigkeiten Fit auch die Präferenzen der Mitarbeiter bzw. die Bedürfnisse-Angebote Kongruenz in die Berechnung mit ein.
 
 \subsection{Bilaterale Empfehlungskomponente}
 \label{ch:methodik:versuchsaufbau:bilateral}

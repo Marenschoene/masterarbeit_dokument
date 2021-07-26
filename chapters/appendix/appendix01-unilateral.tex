@@ -1,99 +1,69 @@
 \section{Berechnung der unilateralen Empfehlungskomponente}
 \label{ch:nebenrechnungen:unilateral}
-Darstellung von Graph \ref{fig:methodik:versuchsaufbau:unilateral:abb1} in Form einer Tabelle:
+% TODO: Python statt Java; MongoDB statt MySQL
+Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl1} zeigt das zu besetzende Beispiel-Projekt. In den Tabellen dieses Kapitels sind fehlende Kenntnisse grau, Grundkenntnisse blau und fortgeschrittene Kompetenzen rot markiert.
 \begin{table}[h]
 	\centering
-	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
-		& \begin{sideways}Jane D.\end{sideways} & \begin{sideways}John D.\end{sideways} & \begin{sideways}Erika M.\end{sideways} & \begin{sideways}Max M.\end{sideways} & \begin{sideways}Projekt\end{sideways} & \begin{sideways}Java\end{sideways} & \begin{sideways}Python\end{sideways} & \begin{sideways}MySQL\end{sideways} & \begin{sideways}MongoDB\end{sideways} & \begin{sideways}HDFS\end{sideways} & \begin{sideways}Spark\end{sideways} \\
+	\begin{tabular}{c|c}
+		Fähigkeit & Kompetenzniveau \\
 		\hline
-		Jane D.  & 0 & \kantengewicht & \kantengewicht & \kantengewicht & 0 & 0 & 4 & 3 & 3 & 0 & 0\\
-		John D.  & \kantengewicht & 0 & \kantengewicht & \kantengewicht & 0 & 3 & 0 & 2 & 0 & 1 & 0\\
-		Erika M. & \kantengewicht & \kantengewicht & 0 & \kantengewicht & 0 & 0 & 0 & 0 & 0 & 5 & 3\\
-		Max M.   & \kantengewicht & \kantengewicht & \kantengewicht & 0 & 0 & 2 & 3 & 1 & 0 & 0 & 0\\
-		Projekt  & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 0 & 3 & 0 & 3\\
-		Java     & 0 & 3 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-		Python   & 4 & 0 & 0 & 3 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
-		MySQL    & 3 & 2 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-		MongoDB  & 3 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0\\
-		HDFS     & 0 & 1 & 5 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-		Spark    & 0 & 0 & 3 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0
+		Java  & \cellcolor{usercolor}Fortgeschritten\\
+		MySQL & \cellcolor{itemcolor}Grundkenntnisse\\
+		HDFS  & \cellcolor{itemcolor}Grundkenntnisse
 	\end{tabular}
-	\caption{Anzahl an Verbindungen im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\caption{Zu besetzendes Beispiel-Projekt}
 	\label{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl1}
 \end{table}
 
-Bestimmung der Katz-Zentralität für Graph \ref{fig:methodik:versuchsaufbau:unilateral:abb1} anhand der Formel \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} mit $\beta = \frac{1/\lambda}{4}$. Damit ergibt sich für die Daten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl1} $\beta \approx 0.011$. Nach Berechnung des Algorithmus ergeben sich die Werte aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c}
-		& Java & Python & MySQL & MongoDB & HDFS & Spark\\ 
-		\hline
-		Doe, Jane     & 0.0052 & 0.0061 & 0.0935 & 0.0032 & 0.0951 & 0.0033\\
-		Doe, John     & 0.0011 & 0.0005 & 0.0072 & 0.0017 & 0.0378 & 0.0442\\
-		Muster, Erika & 0.0012 & 0.0006 & 0.0061 & 0.0002 & 0.0164 & 0.0001\\
-		Muster, Max   & 0.0002 & 0.0002 & 0.0031 & 0.0012 & 0.0032 & 0.0331\\
-		Projekt       & 0.0357 & 0.0163 & 0.0938 & 0.0031 & 0.0941 & 0.0005\\
-	\end{tabular}
-	\caption{Ergebnisse nach Bestimmung der Katz-Zentralität für Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl1}}
-	\label{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}
-\end{table}
-
-
-
-
-
-
-Für die unilaterale Empfehlungskomponente relevante Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}:
+Relevante Ergebnis-Spalten des Katz-Algorithmus für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} anhand von Formel \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} mit $\beta = \frac{1/\lambda}{\nenner}$. Für die weitere Berechnung verwendete Referenz-Werte sind hervorgehoben.
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c}
-		& \begin{sideways}Python\end{sideways} & \begin{sideways}MongoDB\end{sideways} & \begin{sideways}Spark\end{sideways} \\
+		& Java & MySQL & HDFS\\ 
 		\hline
-		Jane D.  & 0.31 & 0.22 & 0.03\\
-		John D.  & 0.03 & 0.01 & 0.01\\
-		Erika M. & 0.03 & 0.02 & 0.21\\
-		Max M.   & 0.22 & 0.03 & 0.02\\
-		Projekt  & 0.30 & 0.22 & 0.21\\
+		Doe, Jane     & \cellcolor{exxetagray}0.907 & \cellcolor{itemcolor}\textbf{1.996} & \cellcolor{exxetagray}0.612\\
+		Doe, John     & \cellcolor{itemcolor}0.887 & \cellcolor{itemcolor}1.202 & \cellcolor{itemcolor}\textbf{1.161}\\
+		Muster, Erika & \cellcolor{exxetagray}0.416 & \cellcolor{exxetagray}0.565 & \cellcolor{usercolor}1.569\\
+		Muster, Max   & \cellcolor{itemcolor}\textbf{1.031} & \cellcolor{itemcolor}1.623 & \cellcolor{exxetagray}0.559
 	\end{tabular}
-	\caption{Für die unilaterale Empfehlungskomponente relevante Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}}
-	\label{tbl:nebenrechnungen:unilateral:tbl1}
+	\caption{Ergebnisse des Katz-Algorithmus für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\label{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}
 \end{table}
 
-Berechnung der Abweichung für Jane Doe mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:unilateral:tbl1}:
+Berechnung der Abweichung für Jane Doe mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (0.31-0.30)^2 + (0.22-0.22)^2 + (0.03-0.21)^2\\
-	\nonumber = 0.0001 + 0 + 0.0324\\
-	\nonumber = 0.0325\\
-	\approx 0.03
+	\nonumber (0.907-1.031)^2 + (1.996-1.996)^2 + (0.612-1.161)^2\\
+	\nonumber = 0.015376 + 0 + 0,301401\\
+	\nonumber = 0.316777\\
+	\approx 0.317
 	\label{frml:nebenrechnungen:unilateral:jane}
 \end{gather}
 
-Berechnung der Abweichung für John Doe mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:unilateral:tbl1}:
+Berechnung der Abweichung für John Doe mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (0.03-0.30)^2 + (0.01-0.22)^2 + (0.01-0.21)^2\\
-	\nonumber = 0.0729 + 0.0441 + 0.04\\
-	\nonumber = 0.157\\
-	\approx 0.16
+	\nonumber (0.887-1.031)^2 + (1.202-1.996)^2 + (1.161-1.161)^2\\
+	\nonumber = 0.020736 + 0.630436 + 0\\
+	\nonumber = 0.651172\\
+	\approx 0.651
 	\label{frml:nebenrechnungen:unilateral:john}
 \end{gather}
 
-Berechnung der Abweichung für Erika Muster mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:unilateral:tbl1}:
+Berechnung der Abweichung für Erika Muster mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (0.03-0.30)^2 + (0.02-0.22)^2 + (0.21-0.21)^2\\
-	\nonumber = 0.0729 + 0.04 + 0\\
-	\nonumber = 0.1129\\
-	\approx 0.11
+	\nonumber (0.416-1.031)^2 + (0.565-1.996)^2 + (1.569-1.161)^2\\
+	\nonumber = 0.378225 + 2.047761 + 0.166464\\
+	\nonumber = 2.59245\\
+	\approx 2.592
 	\label{frml:nebenrechnungen:unilateral:erika}
 \end{gather}
 
-Berechnung der Abweichung für Max Muster mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:unilateral:tbl1}:
+Berechnung der Abweichung für Max Muster mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (0.22-0.30)^2 + (0.03-0.22)^2 + (0.02-0.21)^2\\
-	\nonumber = 0.0064 + 0.0361 + 0.0361\\
-	\nonumber = 0.0786\\
-	\approx 0.08
+	\nonumber (1.031-1.031)^2 + (1.623-1.996)^2 + (0.559-1.161)^2\\
+	\nonumber = 0 + 0.139129 + 0.362404\\
+	\nonumber = 0.501533\\
+	\approx 0.502
 	\label{frml:nebenrechnungen:unilateral:max}
 \end{gather}
 
@@ -103,11 +73,11 @@ Ausgabe:
 	\begin{tabular}{c|c|c}
 		Positionierung & Mitarbeiter & Abweichung\\
 		\hline
-		1 & Jane D.  & 0.03\\
-		2 & Max M.   & 0.08\\
-		3 & Erika M. & 0.11\\
-		4 & John D.  & 0.16
+		1 & Jane D.  & 0.317\\
+		2 & Max M.   & 0.502\\
+		3 & John D.  & 0.651\\
+		4 & Erika M. & 2.592
 	\end{tabular}
-	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Tabelle \ref{tbl:nebenrechnungen:unilateral:tbl1}}
+	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}}
 	\label{tbl:nebenrechnungen:unilateral:ausgabe}
 \end{table}
