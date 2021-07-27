@@ -131,13 +131,13 @@ Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ände
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c}
-		Kompetenzniveau & Name & Bewertung & Ergebnis des Katz-Algorithmus \\
+		Name & Kompetenzniveau & Bewertung & Ergebnis \\
 		\hline
-		\rowcolor{exxetagray} Keine Kenntnisse & Erika M.  & 0                  & 0.565\\
+		 \rowcolor{exxetagray}Erika M. & Keine Kenntnisse & 0                  & 0.565\\
 		\hline
-		\rowcolor{itemcolor} Grundkenntnisse  & John D.   & \kantengewicht     & 1.202\\
-		\rowcolor{itemcolor} Grundkenntnisse  & Max M.    & \kantengewicht     & 1.623\\
-		\rowcolor{itemcolor} Grundkenntnisse  & Jane D.   & \kantengewicht     & 1.996
+		\rowcolor{itemcolor}John D. & Grundkenntnisse  & \kantengewicht     & 1.202\\
+		\rowcolor{itemcolor}Max M. & Grundkenntnisse  & \kantengewicht     & 1.623\\
+		\rowcolor{itemcolor}Jane D. & Grundkenntnisse  & \kantengewicht     & 1.996
 	\end{tabular}
 	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz MySQL im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
@@ -180,9 +180,25 @@ Um die Präferenzen der Mitarbeiter zu erheben, wird im Unternehmen eine Befragu
 
 Hinsichtlich der Kurven aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} wird von den Mitarbeitern erwartet, dass diese Unterforderung im Projekt vermeiden möchten. Daher wir auch in der bilateralen Empfehlungskomponente Linie B in Form einer quadrierten Differenzberechnung implementiert.
 
-Die bilaterale Empfehlungskomponente bezieht die Wünsche der Mitarbeitern in Form von Wichtigkeiten in die Berechnung ein. Hierbei werden die präferierten Kompetenzen der Angestellten vor der Differenzberechnung mit \faktorString multipliziert. Dieser Wert wird in Anlehnung an die Gewichte der Niveaus Grundkenntnisse von \kantengewicht und Fortgeschritten von \kantengewichtHoch, welche ebenfalls einer Verdopplung entsprechen gewählt. Diese Multiplikation hat zur Folge, dass Mitarbeiter für eine gesuchte Kompetenz innerhalb ihres beherrschten Niveaus aufsteigen oder die untere Grenze des nächst höheren Bereichs erreichen. Durch dieses Vorgehen befinden sich die Angestellten nach wie vor nahe ihres ursprünglichen Kompetenzbereichs, werden bei der Sortierung jedoch besser 
+Die bilaterale Empfehlungskomponente bezieht die Wünsche der Mitarbeitern in Form von Wichtigkeiten in die Berechnung ein. Wie in Kapitel \ref{ch:personEnvironmentFit:regressionsgleichungen} gefordert, werden hierbei die präferierten Kompetenzen der Angestellten vor der Differenzberechnung mit einem Parameter multipliziert. Die vorliegende Empfehlungskomponente verwendet dabei den Wert \faktorString. Dieser wird in Anlehnung an die Gewichte der Niveaus Grundkenntnisse (\kantengewichtString) und Fortgeschritten (\kantengewichtHochString) gewählt, welche ebenfalls einer Verdopplung entsprechen. Diese Multiplikation hat zur Folge, dass Mitarbeiter für eine gesuchte Kompetenz innerhalb ihres beherrschten Niveaus aufsteigen bzw. die untere Grenze des nächst höheren Bereichs erreichen. Sucht ein Projektmanager nach dieser Fähigkeit, wird der Angestellte bei der Sortierung folglich besser bewertet als bei der unilateralen Variante, übertrifft aber dennoch nicht die geeignetsten Mitarbeiter des nächst höheren Kompetenzniveaus.
 
-Wie in Kapitel \ref{ch:personEnvironmentFit:regressionsgleichungen} gefordert, werden auf diese Weise die Wichtigkeiten ausschließlich für den betrachteten Kompetenzwert der Person einbezogen.
+Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c}
+		Name & Kompetenzniveau & Bewertung & Präferenz & Erg. uni-/bilateral \\
+		\hline
+		\rowcolor{exxetagray}Erika M. & Keine Kenntnisse & 0 & true & 0.565/1.130\\
+		\hline
+		\rowcolor{itemcolor}John D. & Grundkenntnisse  & \kantengewicht & false & 1.202/1.202 \\
+		\rowcolor{itemcolor}Max M. & Grundkenntnisse  & \kantengewicht & true & 1.623/3.246\\
+		\rowcolor{itemcolor}Jane D. & Grundkenntnisse  & \kantengewicht & false & 1.996/1.996
+	\end{tabular}
+	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz MySQL im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} unter Einbeziehung von Präferenzen}
+	\label{tbl:methodik:versuchsaufbau:bilateral:tbl1}
+\end{table}
+
 
 \newpage
 \subsection{Systemarchitektur}
