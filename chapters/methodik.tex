@@ -180,9 +180,16 @@ Um die Präferenzen der Mitarbeiter zu erheben, wird im Unternehmen eine Befragu
 
 Hinsichtlich der Kurven aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} wird von den Mitarbeitern erwartet, dass diese Unterforderung im Projekt vermeiden möchten. Daher wir auch in der bilateralen Empfehlungskomponente Linie B in Form einer quadrierten Differenzberechnung implementiert.
 
-Die bilaterale Empfehlungskomponente bezieht die Wünsche der Mitarbeitern in Form von Wichtigkeiten in die Berechnung ein. Wie in Kapitel \ref{ch:personEnvironmentFit:regressionsgleichungen} gefordert, werden hierbei die präferierten Kompetenzen der Angestellten vor der Differenzberechnung mit einem Parameter multipliziert. Die vorliegende Empfehlungskomponente verwendet dabei den Wert \faktorString. Dieser wird in Anlehnung an die Gewichte der Niveaus Grundkenntnisse (\kantengewichtString) und Fortgeschritten (\kantengewichtHochString) gewählt, welche ebenfalls einer Verdopplung entsprechen. Diese Multiplikation hat zur Folge, dass Mitarbeiter für eine gesuchte Kompetenz innerhalb ihres beherrschten Niveaus aufsteigen bzw. die untere Grenze des nächst höheren Bereichs erreichen. Sucht ein Projektmanager nach dieser Fähigkeit, wird der Angestellte bei der Sortierung folglich besser bewertet als bei der unilateralen Variante, übertrifft aber dennoch nicht die geeignetsten Mitarbeiter des nächst höheren Kompetenzniveaus.
+Die bilaterale Empfehlungskomponente bezieht die Wünsche der Mitarbeitern in Form von Wichtigkeiten in die Berechnung ein. Wie in Kapitel \ref{ch:personEnvironmentFit:regressionsgleichungen} gefordert, werden hierbei die präferierten Kompetenzen der Angestellten vor der Differenzberechnung mit einem Parameter multipliziert. Die vorliegende Empfehlungskomponente verwendet dabei den Wert \faktorString. Dieser wird in Anlehnung an die Gewichte der Niveaus Grundkenntnisse (\kantengewichtString) und Fortgeschritten (\kantengewichtHochString) gewählt, welche ebenfalls einer Verdopplung entsprechen. Es wird die folgende Berechnung aus Gleichung \ref{frml:methodik:versuchsaufbau:bilateral:formel1} ausgeführt:
 
-Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1}
+\begin{equation}
+	Abweichung = (\faktor * P - E)^2
+	\label{frml:methodik:versuchsaufbau:bilateral:formel1}
+\end{equation}
+
+Die Multiplikation in Gleichung \ref{frml:methodik:versuchsaufbau:bilateral:formel1} hat zur Folge, dass Mitarbeiter für eine gesuchte Kompetenz innerhalb ihres beherrschten Niveaus aufsteigen bzw. die untere Grenze des nächst höheren Bereichs erreichen. Sucht ein Projektmanager nach dieser Fähigkeit, wird der Angestellte bei der Sortierung folglich besser bewertet als bei der unilateralen Variante, übertrifft aber dennoch nicht die geeignetsten Mitarbeiter des nächst höheren Kompetenzniveaus.
+
+Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} zeigt die Anpassung des Ergebnisses des Katz-Algorithmus bei Angabe von Wichtigkeiten am Beispiel der Fähigkeit MySQL aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}.
 
 \begin{table}[h]
 	\centering
@@ -199,6 +206,7 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1}
 	\label{tbl:methodik:versuchsaufbau:bilateral:tbl1}
 \end{table}
 
+In Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} ist an den Beispielen Erika und Max Muster zu erkennen, dass die Beurteilungen der Kompetenz MySQL durch die Angabe der Präferenz 
 
 \newpage
 \subsection{Systemarchitektur}
