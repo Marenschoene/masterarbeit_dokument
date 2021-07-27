@@ -176,11 +176,13 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis der
 
 \subsection{Bilaterale Empfehlungskomponente}
 \label{ch:methodik:versuchsaufbau:bilateral}
-Um die Präferenzen der Mitarbeiter zu erheben, wird im Unternehmen eine Befragung durchgeführt. Hierbei erhalten alle Angestellten eine Liste mit denen im Intranet hinterlegten Fähigkeiten. Auf dieser können sie über einen boolschen Wert für jede Kompetenz ausdrücken, ob sie diese zukünftig in einem Projekt anwenden möchten. Dabei können sie sowohl bereits beherrschte Fähigkeiten ausgewählt, als auch Kompetenzen, welche diese zukünftig erlernen bzw. erstmals anwenden möchten.
+Um die Präferenzen der Mitarbeiter zu erheben, wird im Unternehmen eine Befragung durchgeführt. Hierbei erhalten alle Angestellten eine Liste mit denen im Intranet hinterlegten Fähigkeiten. Auf dieser können sie über einen boolschen Wert für jede Kompetenz festlegen, ob sie diese zukünftig in einem Projekt anwenden möchten. Dabei können sie sowohl bereits beherrschte Fähigkeiten ausgewählt, als auch Kompetenzen, welche diese zukünftig erlernen bzw. erstmals einsetzen möchten.
 
 Hinsichtlich der Kurven aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} wird von den Mitarbeitern erwartet, dass diese Unterforderung im Projekt vermeiden möchten. Daher wir auch in der bilateralen Empfehlungskomponente Linie B in Form einer quadrierten Differenzberechnung implementiert.
 
-Die bilaterale Empfehlungskomponente bezieht die von den Mitarbeitern angegebenen Präferenzen bei der Bestimmung von Empfehlungen in Form von Wichtigkeiten in die Berechnung ein. Wie in Kapitel \ref{ch:personEnvironmentFit:regressionsgleichungen} gefordert, werden 
+Die bilaterale Empfehlungskomponente bezieht die Wünsche der Mitarbeitern in Form von Wichtigkeiten in die Berechnung ein. Hierbei werden die präferierten Kompetenzen der Angestellten vor der Differenzberechnung mit \faktorString multipliziert. Dieser Wert wird in Anlehnung an die Gewichte der Niveaus Grundkenntnisse von \kantengewicht und Fortgeschritten von \kantengewichtHoch, welche ebenfalls einer Verdopplung entsprechen gewählt. Diese Multiplikation hat zur Folge, dass die gewünschten Fähigkeiten der Mitarbeiter innerhalb ihres Kompetenzniveaus weiter aufsteigen. Durch dieses Vorgehen verbleiben 
+
+Wie in Kapitel \ref{ch:personEnvironmentFit:regressionsgleichungen} gefordert, werden auf diese Weise die Wichtigkeiten ausschließlich für den betrachteten Kompetenzwert der Person einbezogen.
 
 \newpage
 \subsection{Systemübersicht}
