@@ -1,15 +1,14 @@
 \section{Berechnung der unilateralen Empfehlungskomponente}
 \label{ch:nebenrechnungen:unilateral}
-% TODO: Python statt Java; MongoDB statt MySQL
 Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl1} zeigt das zu besetzende Beispiel-Projekt. In den Tabellen dieses Kapitels sind fehlende Kenntnisse grau, Grundkenntnisse blau und fortgeschrittene Kompetenzen rot markiert.
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c}
 		Fähigkeit & Kompetenzniveau \\
 		\hline
-		Java  & \cellcolor{usercolor}Fortgeschritten\\
-		MySQL & \cellcolor{itemcolor}Grundkenntnisse\\
-		HDFS  & \cellcolor{itemcolor}Grundkenntnisse
+		Python  & \cellcolor{usercolor}Fortgeschritten\\
+		MongoDB & \cellcolor{usercolor}Fortgeschritten\\
+		HDFS    & \cellcolor{itemcolor}Grundkenntnisse
 	\end{tabular}
 	\caption{Zu besetzendes Beispiel-Projekt}
 	\label{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl1}
@@ -20,12 +19,12 @@ Relevante Ergebnis-Spalten des Katz-Algorithmus für den Graphen aus Abbildung \
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c}
-		& Java & MySQL & HDFS\\ 
+		& Python & MongoDB & HDFS\\ 
 		\hline
-		Doe, Jane     & \cellcolor{exxetagray}0.907 & \cellcolor{itemcolor}\textbf{1.996} & \cellcolor{exxetagray}0.612\\
-		Doe, John     & \cellcolor{itemcolor}0.887 & \cellcolor{itemcolor}1.202 & \cellcolor{itemcolor}\textbf{1.161}\\
-		Muster, Erika & \cellcolor{exxetagray}0.416 & \cellcolor{exxetagray}0.565 & \cellcolor{usercolor}1.569\\
-		Muster, Max   & \cellcolor{itemcolor}\textbf{1.031} & \cellcolor{itemcolor}1.623 & \cellcolor{exxetagray}0.559
+		Doe, Jane     & \cellcolor{usercolor}\textbf{2.77} & \cellcolor{itemcolor}\textbf{1.09} & \cellcolor{exxetagray}0.61\\
+		Doe, John     & \cellcolor{exxetagray}0.92 & \cellcolor{exxetagray}0.32 & \cellcolor{itemcolor}\textbf{1.16}\\
+		Muster, Erika & \cellcolor{exxetagray}0.43 & \cellcolor{exxetagray}0.15 & \cellcolor{usercolor}1.57\\
+		Muster, Max   & \cellcolor{itemcolor}1.93 & \cellcolor{exxetagray}0.59 & \cellcolor{exxetagray}0.56
 	\end{tabular}
 	\caption{Ergebnisse des Katz-Algorithmus für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}
@@ -33,37 +32,37 @@ Relevante Ergebnis-Spalten des Katz-Algorithmus für den Graphen aus Abbildung \
 
 Berechnung der Abweichung für Jane Doe mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (0.907-1.031)^2 + (1.996-1.996)^2 + (0.612-1.161)^2\\
-	\nonumber = 0.015376 + 0 + 0,301401\\
-	\nonumber = 0.316777\\
-	\approx 0.317
+	\nonumber (2.77-2.77)^2 + (1.09-1.09)^2 + (0.61-1.16)^2\\
+	\nonumber = 0 + 0 + 0.3025\\
+	\nonumber = 0.3025\\
+	\approx 0.30
 	\label{frml:nebenrechnungen:unilateral:jane}
 \end{gather}
 
 Berechnung der Abweichung für John Doe mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (0.887-1.031)^2 + (1.202-1.996)^2 + (1.161-1.161)^2\\
-	\nonumber = 0.020736 + 0.630436 + 0\\
-	\nonumber = 0.651172\\
-	\approx 0.651
+	\nonumber (0.92-2.77)^2 + (0.32-1.09)^2 + (1.16-1.16)^2\\
+	\nonumber = 3.4225 + 0.5929 + 0\\
+	\nonumber = 4.0154\\
+	\approx 4.02
 	\label{frml:nebenrechnungen:unilateral:john}
 \end{gather}
 
 Berechnung der Abweichung für Erika Muster mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (0.416-1.031)^2 + (0.565-1.996)^2 + (1.569-1.161)^2\\
-	\nonumber = 0.378225 + 2.047761 + 0.166464\\
-	\nonumber = 2.59245\\
-	\approx 2.592
+	\nonumber (0.43-2.77)^2 + (0.15-1.09)^2 + (1.57-1.16)^2\\
+	\nonumber = 5.4756 + 0.8836 + 0.1681\\
+	\nonumber = 6.5273\\
+	\approx 6.53
 	\label{frml:nebenrechnungen:unilateral:erika}
 \end{gather}
 
 Berechnung der Abweichung für Max Muster mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (1.031-1.031)^2 + (1.623-1.996)^2 + (0.559-1.161)^2\\
-	\nonumber = 0 + 0.139129 + 0.362404\\
-	\nonumber = 0.501533\\
-	\approx 0.502
+	\nonumber (1.93-2.77)^2 + (0.59-1.09)^2 + (0.56-1.16)^2\\
+	\nonumber = 0.7056 + 0.25 + 0.36\\
+	\nonumber = 1.3156\\
+	\approx 1.32
 	\label{frml:nebenrechnungen:unilateral:max}
 \end{gather}
 
@@ -73,10 +72,10 @@ Ausgabe:
 	\begin{tabular}{c|c|c}
 		Positionierung & Mitarbeiter & Abweichung\\
 		\hline
-		1 & Jane D.  & 0.317\\
-		2 & Max M.   & 0.502\\
-		3 & John D.  & 0.651\\
-		4 & Erika M. & 2.592
+		1 & Jane D.  & 0.30\\
+		2 & Max M.   & 1.32\\
+		3 & John D.  & 4.02\\
+		4 & Erika M. & 6.53
 	\end{tabular}
 	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}}
 	\label{tbl:nebenrechnungen:unilateral:ausgabe}
