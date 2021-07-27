@@ -176,26 +176,15 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis der
 
 \subsection{Bilaterale Empfehlungskomponente}
 \label{ch:methodik:versuchsaufbau:bilateral}
-Um die Präferenzen der Mitarbeiter zu erheben, wird im Unternehmen eine Befragung durchgeführt. Hierbei erhalten alle Angestellten eine Liste mit den 551 Fähigkeiten des Intranets. Auf dieser können sie über einen boolschen Wert für jede Kompetenz ausdrücken, ob sie diese zukünftig in einem Projekt anwenden möchten. Dabei können sie sowohl bereits beherrschte Fähigkeiten ausgewählt, als auch Kompetenzen, welche diese zukünftig erlernen bzw. erstmals anwenden möchten.
+Um die Präferenzen der Mitarbeiter zu erheben, wird im Unternehmen eine Befragung durchgeführt. Hierbei erhalten alle Angestellten eine Liste mit denen im Intranet hinterlegten Fähigkeiten. Auf dieser können sie über einen boolschen Wert für jede Kompetenz ausdrücken, ob sie diese zukünftig in einem Projekt anwenden möchten. Dabei können sie sowohl bereits beherrschte Fähigkeiten ausgewählt, als auch Kompetenzen, welche diese zukünftig erlernen bzw. erstmals anwenden möchten.
 
 Hinsichtlich der Kurven aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} wird von den Mitarbeitern erwartet, dass diese Unterforderung im Projekt vermeiden möchten. Daher wir auch in der bilateralen Empfehlungskomponente Linie B in Form einer quadrierten Differenzberechnung implementiert.
 
+Die bilaterale Empfehlungskomponente bezieht die von den Mitarbeitern angegebenen Präferenzen bei der Bestimmung von Empfehlungen in Form von Wichtigkeiten in die Berechnung ein. Wie in Kapitel \ref{ch:personEnvironmentFit:regressionsgleichungen} gefordert, werden 
+
 \newpage
-Algorithmus:\\
-- Berechnung der Katz-Zentralität\\
-- Für jeden relevanten Mitarbeiter auf Basis von Abbildung \ref{fig:methodik:abb2} den finalen Wert bestimmen --> Hierbei je nach Wichtigkeit die Kurve stauchen --> Wenn für Projektmanger wichtig, die durchgezogene Linie doppelt so steil; Wenn für Mitarbeiter wichtig, rechte Seite doppelt so steil; Auswahl der Kurve anhand der Information des Mitarbeiters\\
-- Summe für alle Fähigkeiten eines Projektes für jeden Mitarbeiter berechnen
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.75\textwidth]{gfx/ueberschuss_supply_motive.png}
-	\caption{Auswirkungen eines Bedürfnisse-Angebote Misfits \cite[S. 23]{edwards:2008}\\(Bearbeitet von \myName)}
-	\label{fig:methodik:abb2}
-\end{figure}
-
-- Algorithmus einmal durchführen mit Wichtigkeiten und einmal ohne (bilateral vs. unilateral)\\
-- Ausgabe der sortierten Liste (mit allen Mitarbeitern (zB 25))\\
-- Eingabe der Projektposition und Algorithmus für jede Projektposition wiederholen
+\subsection{Systemübersicht}
+\label{ch:methodik:versuchsaufbau:systemuebersicht}
 
 \section{Evaluation}
 \label{ch:methodik:evaluation}
