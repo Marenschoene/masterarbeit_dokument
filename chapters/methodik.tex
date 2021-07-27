@@ -180,13 +180,13 @@ Um die Präferenzen der Mitarbeiter zu erheben, wird im Unternehmen eine Befragu
 
 Hinsichtlich der Kurven aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} wird von den Mitarbeitern erwartet, dass diese Unterforderung im Projekt vermeiden möchten. Daher wir auch in der bilateralen Empfehlungskomponente Linie B in Form einer quadrierten Differenzberechnung implementiert.
 
-Die bilaterale Empfehlungskomponente bezieht die Wünsche der Mitarbeitern in Form von Wichtigkeiten in die Berechnung ein. Hierbei werden die präferierten Kompetenzen der Angestellten vor der Differenzberechnung mit \faktorString multipliziert. Dieser Wert wird in Anlehnung an die Gewichte der Niveaus Grundkenntnisse von \kantengewicht und Fortgeschritten von \kantengewichtHoch, welche ebenfalls einer Verdopplung entsprechen gewählt. Diese Multiplikation hat zur Folge, dass die gewünschten Fähigkeiten der Mitarbeiter innerhalb ihres Kompetenzniveaus weiter aufsteigen. Durch dieses Vorgehen verbleiben 
+Die bilaterale Empfehlungskomponente bezieht die Wünsche der Mitarbeitern in Form von Wichtigkeiten in die Berechnung ein. Hierbei werden die präferierten Kompetenzen der Angestellten vor der Differenzberechnung mit \faktorString multipliziert. Dieser Wert wird in Anlehnung an die Gewichte der Niveaus Grundkenntnisse von \kantengewicht und Fortgeschritten von \kantengewichtHoch, welche ebenfalls einer Verdopplung entsprechen gewählt. Diese Multiplikation hat zur Folge, dass Mitarbeiter für eine gesuchte Kompetenz innerhalb ihres beherrschten Niveaus aufsteigen oder die untere Grenze des nächst höheren Bereichs erreichen. Durch dieses Vorgehen befinden sich die Angestellten nach wie vor nahe ihres ursprünglichen Kompetenzbereichs, werden bei der Sortierung jedoch besser 
 
 Wie in Kapitel \ref{ch:personEnvironmentFit:regressionsgleichungen} gefordert, werden auf diese Weise die Wichtigkeiten ausschließlich für den betrachteten Kompetenzwert der Person einbezogen.
 
 \newpage
-\subsection{Systemübersicht}
-\label{ch:methodik:versuchsaufbau:systemuebersicht}
+\subsection{Systemarchitektur}
+\label{ch:methodik:versuchsaufbau:systemarchitektur}
 
 \section{Evaluation}
 \label{ch:methodik:evaluation}
