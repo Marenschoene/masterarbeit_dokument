@@ -118,7 +118,9 @@ Die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:
 \end{equation}
 Durch das in in Formel \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} dargelegt, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielknoten weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Knoten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten ein höheres Gewicht in der Berechnung, welche mit den direkten Teamkollegen bzw. den beherrschten Kompetenzen eines Zielnutzers in Verbindung stehen.
 
-Die nach Berechnung der Katz-Zentralität entstehende Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungskomponente. Beide Module unterscheiden sich ausschließlich in der Art, wie sie die Mitarbeiter sortieren.
+Die nach Berechnung des Katz-Algorithmus entstehende Matrix dient als Eingabe für die unilaterale und die bilaterale Empfehlungskomponente. Beide Module unterscheiden sich ausschließlich in der Art, wie sie die Mitarbeiter sortieren.
+
+Zur effizienteren Vorschlagsbestimmung wird die Matrix zwischengespeichert. Somit muss die algorithmisch komplexe Berechnung des Katz-Algorithmus nur ausgeführt werden, wenn sich Daten im Unternehmen ändern. Wie bei speicherbasierten Verfahren üblich, können so immer die aktuellen Daten des Unternehmens betrachtet werden. Gleichzeitig wird eine zu modellbasierten Verfahren vergleichbare effiziente Berechnung der Empfehlungen erreicht.
 
 \subsection{Unilaterale Empfehlungskomponente}
 \label{ch:methodik:versuchsaufbau:unilateral}
