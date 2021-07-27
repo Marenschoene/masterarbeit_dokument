@@ -7,7 +7,7 @@ Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl1} zeigt das 
 		Fähigkeit & Kompetenzniveau \\
 		\hline
 		Python  & \cellcolor{usercolor}Fortgeschritten\\
-		MongoDB & \cellcolor{usercolor}Fortgeschritten\\
+		MySQL   & \cellcolor{usercolor}Fortgeschritten\\
 		HDFS    & \cellcolor{itemcolor}Grundkenntnisse
 	\end{tabular}
 	\caption{Zu besetzendes Beispiel-Projekt}
@@ -19,20 +19,20 @@ Relevante Ergebnis-Spalten des Katz-Algorithmus für den Graphen aus Abbildung \
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c}
-		& Python & MongoDB & HDFS\\ 
+		& Python & MySQL & HDFS\\ 
 		\hline
-		Doe, Jane     & \cellcolor{usercolor}\textbf{2.77} & \cellcolor{itemcolor}\textbf{1.09} & \cellcolor{exxetagray}0.61\\
-		Doe, John     & \cellcolor{exxetagray}0.92 & \cellcolor{exxetagray}0.32 & \cellcolor{itemcolor}\textbf{1.16}\\
-		Muster, Erika & \cellcolor{exxetagray}0.43 & \cellcolor{exxetagray}0.15 & \cellcolor{usercolor}1.57\\
-		Muster, Max   & \cellcolor{itemcolor}1.93 & \cellcolor{exxetagray}0.59 & \cellcolor{exxetagray}0.56
+		Doe, Jane     & \cellcolor{usercolor}\textbf{2.77} & \cellcolor{itemcolor}\textbf{2.00} & \cellcolor{exxetagray}0.61\\
+		Doe, John     & \cellcolor{exxetagray}0.92 & \cellcolor{itemcolor}1.20 & \cellcolor{itemcolor}\textbf{1.16}\\
+		Muster, Erika & \cellcolor{exxetagray}0.43 & \cellcolor{exxetagray}0.56 & \cellcolor{usercolor}1.57\\
+		Muster, Max   & \cellcolor{itemcolor}1.93 & \cellcolor{itemcolor}1.62 & \cellcolor{exxetagray}0.56
 	\end{tabular}
-	\caption{Ergebnisse des Katz-Algorithmus für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\caption{Relevante Ergebnisse des Katz-Algorithmus für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}
 \end{table}
 
 Berechnung der Abweichung für Jane Doe mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (2.77-2.77)^2 + (1.09-1.09)^2 + (0.61-1.16)^2\\
+	\nonumber (2.77-2.77)^2 + (2.00-2.00)^2 + (0.61-1.16)^2\\
 	\nonumber = 0 + 0 + 0.3025\\
 	\nonumber = 0.3025\\
 	\approx 0.30
@@ -41,28 +41,28 @@ Berechnung der Abweichung für Jane Doe mit den Werten aus Tabelle \ref{tbl:bere
 
 Berechnung der Abweichung für John Doe mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (0.92-2.77)^2 + (0.32-1.09)^2 + (1.16-1.16)^2\\
-	\nonumber = 3.4225 + 0.5929 + 0\\
-	\nonumber = 4.0154\\
-	\approx 4.02
+	\nonumber (0.92-2.77)^2 + (1.20-2.00)^2 + (1.16-1.16)^2\\
+	\nonumber = 3.4225 + 0.64 + 0\\
+	\nonumber = 4.0625\\
+	\approx 4.06
 	\label{frml:nebenrechnungen:unilateral:john}
 \end{gather}
 
 Berechnung der Abweichung für Erika Muster mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (0.43-2.77)^2 + (0.15-1.09)^2 + (1.57-1.16)^2\\
-	\nonumber = 5.4756 + 0.8836 + 0.1681\\
-	\nonumber = 6.5273\\
-	\approx 6.53
+	\nonumber (0.43-2.77)^2 + (0.56-2.00)^2 + (1.57-1.16)^2\\
+	\nonumber = 5.4756 + 2.0736 + 0.1681\\
+	\nonumber = 7.7173\\
+	\approx 7.72
 	\label{frml:nebenrechnungen:unilateral:erika}
 \end{gather}
 
 Berechnung der Abweichung für Max Muster mit den Werten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}:
 \begin{gather}
-	\nonumber (1.93-2.77)^2 + (0.59-1.09)^2 + (0.56-1.16)^2\\
-	\nonumber = 0.7056 + 0.25 + 0.36\\
-	\nonumber = 1.3156\\
-	\approx 1.32
+	\nonumber (1.93-2.77)^2 + (1.62-2.00)^2 + (0.56-1.16)^2\\
+	\nonumber = 0.7056 + 0.1444 + 0.36\\
+	\nonumber = 1.21\\
+	\approx 1.21
 	\label{frml:nebenrechnungen:unilateral:max}
 \end{gather}
 
@@ -73,9 +73,9 @@ Ausgabe:
 		Positionierung & Mitarbeiter & Abweichung\\
 		\hline
 		1 & Jane D.  & 0.30\\
-		2 & Max M.   & 1.32\\
-		3 & John D.  & 4.02\\
-		4 & Erika M. & 6.53
+		2 & Max M.   & 1.21\\
+		3 & John D.  & 4.06\\
+		4 & Erika M. & 7.72
 	\end{tabular}
 	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Tabelle \ref{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl2}}
 	\label{tbl:nebenrechnungen:unilateral:ausgabe}

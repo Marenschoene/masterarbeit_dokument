@@ -156,7 +156,7 @@ Zur Bestimmung des Anforderungen-Fähigkeiten Fits wird angenommen, dass Projekt
 
 Ist kein Mitarbeiter im gesuchten Kompetenzbereich vorhanden, wird eine Ausnahmebehandlung ausgeführt. Wird nach Grundkenntnissen in einer bestimmten Fähigkeit gesucht und dabei kein passender Kandidat gefunden, wird der wenig qualifizierteste Angestellte auf fortgeschrittenem Niveau als Referenz genutzt. Sucht ein Projektmanager erfolglos nach Mitarbeitern mit fortgeschrittenen Kenntnissen, wird der am Besten qualifizierte Kandidat mit Grundkenntnissen als Referenz verwendet. Sind ausschließlich Mitarbeiter ohne Kenntnisse vorhanden, wird die gesuchte Kompetenz übersprungen, da in diesem Fall kein Mitarbeiter im Graphen mit dieser Fähigkeit verbunden ist und somit alle Kantengewichte 0 sind.
 
-Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis der unilateralen Empfehlungsbestimmung für ein Beispielprojekt mit gesuchten fortgeschrittenen Kenntnissen in Python und MongoDB und benötigten Grundkenntnissen in HDFS. Verwendet wurden dabei die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
+Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis der unilateralen Empfehlungsbestimmung für ein Beispielprojekt mit gesuchten fortgeschrittenen Kenntnissen in Python und MySQL und benötigten Grundkenntnissen in HDFS. Verwendet wurden dabei die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
 
 \begin{table}[h]
 	\centering
@@ -164,9 +164,9 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis der
 		Positionierung & Mitarbeiter & Abweichung\\
 		\hline
 		1 & Jane D.  & 0.30\\
-		2 & Max M.   & 1.32\\
-		3 & John D.  & 4.02\\
-		4 & Erika M. & 6.53
+		2 & Max M.   & 1.21\\
+		3 & John D.  & 4.06\\
+		4 & Erika M. & 7.72
 	\end{tabular}
 	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl2}
