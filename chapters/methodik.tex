@@ -195,11 +195,11 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} zeigt die Anpassung des
 	\begin{tabular}{c|c|c|c|c}
 		Name & Kompetenzniveau & Bewertung & Präferenz & Erg. uni-/bilateral \\
 		\hline
-		\rowcolor{exxetagray}Erika M. & Keine Kenntnisse & 0 & true & 0.565/1.130\\
+		\rowcolor{exxetagray}Erika M. & Keine Kenntnisse & 0 & wahr & 0.565/1.130\\
 		\hline
-		\rowcolor{itemcolor}John D. & Grundkenntnisse  & \kantengewicht & false & 1.202/1.202 \\
-		\rowcolor{itemcolor}Max M. & Grundkenntnisse  & \kantengewicht & true & 1.623/3.246\\
-		\rowcolor{itemcolor}Jane D. & Grundkenntnisse  & \kantengewicht & false & 1.996/1.996
+		\rowcolor{itemcolor}John D. & Grundkenntnisse  & \kantengewicht & falsch & 1.202/1.202 \\
+		\rowcolor{itemcolor}Max M. & Grundkenntnisse  & \kantengewicht & wahr & 1.623/3.246\\
+		\rowcolor{itemcolor}Jane D. & Grundkenntnisse  & \kantengewicht & falsch & 1.996/1.996
 	\end{tabular}
 	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz MySQL im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} unter Einbeziehung von Präferenzen}
 	\label{tbl:methodik:versuchsaufbau:bilateral:tbl1}
@@ -207,7 +207,21 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} zeigt die Anpassung des
 
 In Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} ist an den Beispielen Erika und Max Muster zu erkennen, dass die Beurteilungen der Kompetenz MySQL durch Angabe der Präferenzen besser gewichtet sind als zuvor in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}. Beide Mitarbeiter befinden sich nach wie vor innerhalb ihres ursprünglichen Kompetenzniveaus, sind darin aber höher gewichtet als zuvor.
 
-Die Auswirkungen der Multiplikation aufgrund von Wichtigkeiten in der bilateralen Empfehlungskomponente kann in Tabelle x beobachtet werden. Wie im Beispiel aus Kapitel \ref{ch:methodik:versuchsaufbau:unilateral} soll hier eine offene Projektposition mit fortgeschrittenen Kenntnissen in Python und MySQL und Grundkenntnissen in HDFS mit den Mitarbeitern aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}. Dabei wird angenommen, dass Erika und Max Muster die Kompetenz MySQL und Jane und John Doe die Fähigkeit HDFS präferieren. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
+Die Auswirkungen der Multiplikation aufgrund von Wichtigkeiten in der bilateralen Empfehlungskomponente kann in Tabelle x beobachtet werden. Wie im Beispiel aus Kapitel \ref{ch:methodik:versuchsaufbau:unilateral} soll hier eine offene Projektposition mit fortgeschrittenen Kenntnissen in Python und MySQL und Grundkenntnissen in HDFS mit den Mitarbeitern aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}. Dabei wird angenommen, dass Erika und Max Muster MySQL, John Doe Python und Jane Doe keine der gesuchten Kompetenzen präferieren. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c}
+		Positionierung & Mitarbeiter & Abweichung\\
+		\hline
+		1 & John D.  & 1.57\\
+		2 & Max M.   & 2.15\\
+		3 & Jane D.  & 2.75\\
+		4 & Erika M. & 11.34
+	\end{tabular}
+	\caption{Ergebnisliste der bilateralen Empfehlungskomponente für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} unter Berücksichtigung von Präferenzen der Mitarbeiter}
+	\label{tbl:methodik:versuchsaufbau:bilateral:tbl2}
+\end{table}
 
 \newpage
 \subsection{Systemarchitektur}

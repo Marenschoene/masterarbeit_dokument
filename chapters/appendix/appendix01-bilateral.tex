@@ -1,4 +1,4 @@
-\section{Beispielrechnung der unilateralen Empfehlungskomponente}
+\section{Beispielrechnung der bilateralen Komponente}
 \label{ch:nebenrechnungen:bilateral}
 Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl1} zeigt das zu besetzende Beispiel-Projekt. In den Tabellen dieses Kapitels sind fehlende Kenntnisse grau, Grundkenntnisse blau und fortgeschrittene Kompetenzen rot markiert.
 \begin{table}[h]
@@ -14,17 +14,32 @@ Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl1} zeigt das zu besetzende Beispie
 	\label{tbl:nebenrechnungen:bilateral:tbl1}
 \end{table}
 
-Relevante Ergebnis-Spalten des Katz-Algorithmus für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} anhand von Formel \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} mit $\beta = \frac{1/\lambda}{\nenner}$. Für die weitere Berechnung verwendete Referenz-Werte sind hervorgehoben.
+Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl3} zeigt, welche der gesuchten Fähigkeiten die Mitarbeiter präferieren.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c}
+		Name & Python & MySQL & HDFS \\
+		\hline
+		Doe, Jane     & \cellcolor{usercolor}falsch & \cellcolor{usercolor}falsch & \cellcolor{SeaGreen}wahr\\
+		Doe, John     & \cellcolor{SeaGreen}wahr   & \cellcolor{SeaGreen}wahr   & \cellcolor{SeaGreen}wahr\\
+		Muster, Erika & \cellcolor{SeaGreen}wahr   & \cellcolor{usercolor}falsch & \cellcolor{usercolor}falsch\\
+		Muster, Max   & \cellcolor{usercolor}falsch & \cellcolor{SeaGreen}wahr   & \cellcolor{SeaGreen}wahr
+	\end{tabular}
+	\caption{Präferierte Kompetenzen der Mitarbeiter}
+	\label{tbl:nebenrechnungen:bilateral:tbl3}
+\end{table}
+
+Relevante Ergebnis-Spalten des Katz-Algorithmus für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} anhand von Formel \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} mit $\beta = \frac{1/\lambda}{\nenner}$. Präferierte Kompetenzen wurden mit \faktorFloat multipliziert. Für die weitere Berechnung verwendete Referenz-Werte sind hervorgehoben.
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c}
 		& Python & MySQL & HDFS\\ 
 		\hline
-		Doe, Jane     & \cellcolor{usercolor}\textbf{2.77} & \cellcolor{itemcolor}\textbf{2.00} & \cellcolor{exxetagray}0.61\\
-		Doe, John     & \cellcolor{exxetagray}0.92 & \cellcolor{itemcolor}1.20 & \cellcolor{itemcolor}\textbf{1.16}\\
-		Muster, Erika & \cellcolor{exxetagray}0.43 & \cellcolor{exxetagray}0.56 & \cellcolor{usercolor}1.57\\
-		Muster, Max   & \cellcolor{itemcolor}1.93 & \cellcolor{itemcolor}1.62 & \cellcolor{exxetagray}0.56
+		Doe, Jane     & \cellcolor{usercolor}\textbf{2.77} & \cellcolor{itemcolor}2.00 & \cellcolor{exxetagray}1.22\\
+		Doe, John     & \cellcolor{exxetagray}1.84 & \cellcolor{itemcolor}2.40 & \cellcolor{itemcolor}\textbf{2.32}\\
+		Muster, Erika & \cellcolor{exxetagray}0.86 & \cellcolor{exxetagray}0.56 & \cellcolor{usercolor}1.57\\
+		Muster, Max   & \cellcolor{itemcolor}1.93 & \cellcolor{itemcolor}\textbf{3.24} & \cellcolor{exxetagray}1.12
 	\end{tabular}
 	\caption{Relevante Ergebnisse des Katz-Algorithmus für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:nebenrechnungen:bilateral:tbl2}
@@ -32,37 +47,37 @@ Relevante Ergebnis-Spalten des Katz-Algorithmus für den Graphen aus Abbildung \
 
 Berechnung der Abweichung für Jane Doe mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2}:
 \begin{gather}
-	\nonumber (2.77-2.77)^2 + (2.00-2.00)^2 + (0.61-1.16)^2\\
-	\nonumber = 0 + 0 + 0.3025\\
-	\nonumber = 0.3025\\
-	\approx 0.30
+	\nonumber (2.77-2.77)^2 + (2.00-3.24)^2 + (1.22-2.32)^2\\
+	\nonumber = 0 + 1.5376 + 1.21\\
+	\nonumber = 2.7476\\
+	\approx 2.75
 	\label{frml:nebenrechnungen:bilateral:jane}
 \end{gather}
 
 Berechnung der Abweichung für John Doe mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2}:
 \begin{gather}
-	\nonumber (0.92-2.77)^2 + (1.20-2.00)^2 + (1.16-1.16)^2\\
-	\nonumber = 3.4225 + 0.64 + 0\\
-	\nonumber = 4.0625\\
-	\approx 4.06
+	\nonumber (1.84-2.77)^2 + (2.40-3.24)^2 + (2.32-2.32)^2\\
+	\nonumber = 0.8649 + 0.7056 + 0\\
+	\nonumber = 1.5705\\
+	\approx 1.57
 	\label{frml:nebenrechnungen:bilateral:john}
 \end{gather}
 
 Berechnung der Abweichung für Erika Muster mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2}:
 \begin{gather}
-	\nonumber (0.43-2.77)^2 + (0.56-2.00)^2 + (1.57-1.16)^2\\
-	\nonumber = 5.4756 + 2.0736 + 0.1681\\
-	\nonumber = 7.7173\\
-	\approx 7.72
+	\nonumber (0.86-2.77)^2 + (0.56-3.24)^2 + (1.57-2.32)^2\\
+	\nonumber = 3.6481 + 7.1824 + 0.5625\\
+	\nonumber = 11.393\\
+	\approx 11.34
 	\label{frml:nebenrechnungen:bilateral:erika}
 \end{gather}
 
 Berechnung der Abweichung für Max Muster mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2}:
 \begin{gather}
-	\nonumber (1.93-2.77)^2 + (1.62-2.00)^2 + (0.56-1.16)^2\\
-	\nonumber = 0.7056 + 0.1444 + 0.36\\
-	\nonumber = 1.21\\
-	\approx 1.21
+	\nonumber (1.93-2.77)^2 + (3.24-3.24)^2 + (1.12-2.32)^2\\
+	\nonumber = 0.7056 + 0 + 1.44\\
+	\nonumber = 2.1456\\
+	\approx 2.15
 	\label{frml:nebenrechnungen:bilateral:max}
 \end{gather}
 
@@ -72,11 +87,11 @@ Ausgabe:
 	\begin{tabular}{c|c|c}
 		Positionierung & Mitarbeiter & Abweichung\\
 		\hline
-		1 & Jane D.  & 0.30\\
-		2 & Max M.   & 1.21\\
-		3 & John D.  & 4.06\\
-		4 & Erika M. & 7.72
+		1 & John D.  & 1.57\\
+		2 & Max M.   & 2.15\\
+		3 & Jane D.  & 2.75\\
+		4 & Erika M. & 11.34
 	\end{tabular}
-	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2}}
-	\label{tbl:nebenrechnungen:unilateral:ausgabe}
+	\caption{Ergebnisliste der bilateralen Empfehlungskomponente für die Daten aus Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2}}
+	\label{tbl:nebenrechnungen:bilateral:ausgabe}
 \end{table}
