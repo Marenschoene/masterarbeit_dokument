@@ -229,11 +229,14 @@ Die Auswirkungen der Multiplikation aufgrund von Wichtigkeiten kann in Tabelle \
 	\label{tbl:methodik:versuchsaufbau:bilateral:tbl2}
 \end{table}
 
-An Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} ist zu erkennen,
-\newpage
+An Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} ist zu erkennen, dass John Doe und Max Muster aufgrund ihrer Präferenzen besser positioniert sind als zuvor in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2}. Erika Muster hat einen nach wie vor sehr großen Abstand zu allen anderen Mitarbeitern.
+
+Es ist festzustellen, dass der Algorithmus der unilateralen und der bilateralen Empfehlungskomponente abgesehen von der Multiplikation aufgrund von Präferenzen gleich ist. Zur effizienteren Berechnung ist es daher möglich, im Zwischenspeicher neben der Ergebnis-Matrix des Katz-Algorithmus eine zweite Matrix abzulegen, in welcher zusätzlich eine Multiplikation für die präferierten Kompetenzen ausgeführt wird. Auf diese Weise ist es ausreichend, eine Empfehlungskomponente zu implementieren. Ob die dabei entstehenden Vorschläge uni- oder bilateral sind, ist ausschließlich von der eingegebenen Matrix abhängig. Die zur Durchführung des Experiments benötigte Systemarchitektur besteht folglich aus zwei Diensten.
+
 \subsection{Systemarchitektur}
 \label{ch:methodik:versuchsaufbau:systemarchitektur}
 
+\newpage
 \section{Evaluation}
 \label{ch:methodik:evaluation}
 Evaluation für Projektmanager:\\
