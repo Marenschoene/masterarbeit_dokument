@@ -4,9 +4,9 @@
 
 \section{Art der Forschung}
 \label{ch:methodik:art}
-Um die Forschungsfrage dieser Master-Thesis zu beantworten, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext werden zwei Versionen eines Empfehlungssystems zur Besetzung offener Projektpositionen entwickelt. Eine der beiden Anwendungen verfolgt einen unilateralen, die andere einen bilateralen Ansatz. Beide Empfehlungssysteme erhalten dieselben offenen Projektpositionen und Mitarbeiter als Eingabe. Anschließend sortieren sie die vorhandenen Angestellten für die offenen Stellen und geben diese in Form von Listen zurück.
+Um die Forschungsfrage dieser Master-Thesis zu beantworten, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext werden zwei Schnittstellen eines Empfehlungssystems zur Besetzung offener Projektpositionen implementiert. Einer der beiden Endpunkte verfolgt einen unilateralen, der andere einen bilateralen Ansatz. Beide Empfehlungsverfahren erhalten dieselben offenen Projektpositionen und Mitarbeiter als Eingabe. Anschließend sortieren sie die vorhandenen Angestellten für die offenen Stellen und geben diese in Form von Listen zurück.
 
-Die Ausgaben beider Systeme werden Projektmanagern vorgelegt. Diese bewerten für jede Liste auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Dabei wird evaluiert, ob sie die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Empfehlungssystems höher bewerten, als die der unilateralen Variante.
+Die Ausgaben beider Schnittstellen werden Projektmanagern vorgelegt. Diese bewerten für jede Liste auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Dabei wird evaluiert, ob sie die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Verfahrens höher bewerten, als die der unilateralen Variante.
 
 Die Mitarbeiter des Unternehmens erhalten Übersichten über offenen Projektpositionen. Daraufhin bewerten sie auf einer vordefinierten Skala, wie zufrieden sie mit einer Tätigkeit auf den vorliegenden Projektpositionen wären. Dabei wird überprüft, ob das bilaterale Empfehlungssystem die Angestellten für die offene Projektpositionen höher positioniert, bei welchen diese eine hohe Zufriedenheit erwarten.
 %Abschließend werden die Bewertungen von Projektmanagern und Angestellten hinsichtlich der Ergebnisse der beiden Empfehlungssysteme verglichen. Dabei wird bestimmt, ob die bilaterale Recommender Engine im direkten Vergleich mit dem unilateralen Ansatz sowohl auf Seiten der Projektmanager für eine höhere erwartete Leistung als auch aus Perspektive der Mitarbeiter für eine gesteigerte prognostizierte Zufriedenheit sorgt.
@@ -32,11 +32,10 @@ Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:me
 
 Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene Projektpositionen relevanten Fähigkeiten mitsamt der benötigten Kenntnisniveaus festlegen. Die Kompetenzen bestimmen die Verantwortlichen in der Regel anhand eingehender Projektanfragen, welche Kunden in unstrukturierter Form einreichen. Derartige Anfragen werden täglich in großer Anzahl bearbeitet. Daher wird es für den praktischen Einsatz als sehr umständlich bewertet, wenn Verantwortliche für jede angefragte Projektposition sämtliche Fähigkeiten auf der Skala von eins bis sechs bewerten müssen. Aus diesem Grund werden die Kompetenzniveaus aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} auf die Abstufungen "Grundkenntnisse" und "Fortgeschritten" vereinfacht. "Grundkenntnisse" entspricht dabei den ersten drei Stufen und "Fortgeschritten" den oberen drei Fähigkeitsniveaus in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1}. Die Priorisierung mittels Abstufungen kann gemäß Kapitel \ref{ch:personEnvironmentFit:wichtigkeiten} als Ausdruck von Wichtigkeiten seitens der Projektmanager betrachtet werden.
 
-Die Kompetenzbewertungen der Mitarbeiter und die für ein Projekt benötigten Fähigkeiten dienen im Experiment als Eingabe für einen grundlegenden Algorithmus, welcher sowohl für das unilaterale, als auch das bilaterale Empfehlungssystem gleich ist.
+Die Kompetenzbewertungen der Mitarbeiter und die für ein Projekt benötigten Fähigkeiten dienen im Experiment als Eingabe für einen grundlegenden Algorithmus, welcher sowohl für das unilaterale, als auch das bilaterale Empfehlungssystem gleich ist.%das Empfehlungssystem, dessen Architektur aus zwei Diensten besteht.
 
 \subsection{Grundlegender Algorithmus}
 \label{ch:methodik:versuchsaufbau:grundlegend}
-% Zusätzlich wird das zu besetzende Projekt als Pseudo-Mitarbeiter eingefügt.
 Die Mitarbeiter der EXXETA AG und deren Fähigkeiten werden in Form eines Graphen dargestellt. Um das Sparsity Problem zu lösen, wird der speicherbasierte Algorithmus von Katz aus Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angewendet. Da die Anwendung auch über die Master-Thesis hinaus im Unternehmen eingesetzt werden soll, ist insbesondere die Langlebigkeit des Verfahrens vorteilhaft gegenüber modellbasierten Methoden. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Algorithmus weiterhin ohne zusätzlichen manuellen Aufwand im Betrieb anwendbar. Die hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments weniger als 1.000 Mitarbeiter im Unternehmen befinden.
 
 Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt der Algorithmus von Katz für eine feingranulare Anpassung vorhandener Beurteilungen. Dass Bewertungen von Mitarbeitern gänzlich fehlen, kann bei er EXXETA AG weitgehend ausgeschlossen werden. Führungskräfte fordern ihre Angestellten regelmäßig dazu auf, ihre Kompetenzen im Intranet aktuell zu halten und diese beispielsweise im Rahmen des Mitarbeiter-Jahresgespräches zu pflegen. Angestellte ohne Bewertungen sind folglich nur in Ausnahmefällen zu erwarten. Hierzu zählen beispielsweise Werkstudenten und neue Mitarbeiter.
@@ -122,10 +121,9 @@ Durch das in in Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1}
 
 Zur effizienteren Vorschlagsbestimmung wird die Ergebnismatrix zwischengespeichert. Somit muss die algorithmisch komplexe Berechnung des Katz-Algorithmus nur ausgeführt werden, wenn sich Daten im Unternehmen ändern. Dieses Vorgehen ermöglicht es, immer die aktuellen Daten des Unternehmens bei der Empfehlungsberechnung zu betrachten und gleichzeitig eine zu modellbasierten Verfahren vergleichbare Effizienz zu erreichen.
 
-% TODO: Hier Systemarchitektur
 Die Bestimmung der Empfehlungen anhand der zwischengespeicherten Matrix erfolgt in zwei separaten Empfehlungskomponenten. Eine der beiden Module verfolgt einen unilateralen, die andere einen bilateralen Ansatz. Beide Module unterscheiden sich ausschließlich in der Art, wie sie die Mitarbeiter sortieren.
 
-\subsection{Unilaterale Empfehlungskomponente}
+\subsection{Unilateraler Empfehlungsansatz}
 \label{ch:methodik:versuchsaufbau:unilateral}
 Die unilaterale Empfehlungskomponente fokussiert bei der Bestimmung von Vorschlägen ausschließlich die Präferenzen des Projektmanagers. Im Sinne des \acp{PEFit} wird folglich nur die Anforderungen-Fähigkeiten Kongruenz betrachtet.
 
@@ -181,7 +179,7 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis ein
 
 Ähnlich zum unilateralen Algorithmus arbeitet auch die bilaterale Empfehlungskomponente. Diese bezieht neben dem Anforderungen-Fähigkeiten Fit auch die Präferenzen der Mitarbeiter bzw. die Bedürfnisse-Angebote Kongruenz in die Berechnung mit ein.
 
-\subsection{Bilaterale Empfehlungskomponente}
+\subsection{Bilateraler Empfehlungsansatz}
 \label{ch:methodik:versuchsaufbau:bilateral}
 Die Präferenzen der Mitarbeiter werden im Unternehmen über eine Befragung erhoben. Zu diesem Zweck erhalten die Angestellten eine Liste mit den Fähigkeiten aus dem Intranet. Auf dieser können sie über einen boolschen Wert für jede Kompetenz festlegen, ob sie diese zukünftig in Projekten anwenden möchten. Sie können dabei sowohl bereits beherrschte Fähigkeiten auswählen, als auch Kompetenzen, welche diese zukünftig erst erlernen bzw. erstmals einsetzen möchten.
 
