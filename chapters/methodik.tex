@@ -129,7 +129,9 @@ Die Bestimmung der Empfehlungen anhand der zwischengespeicherten Matrix erfolgt 
 \label{ch:methodik:versuchsaufbau:unilateral}
 Die unilaterale Empfehlungskomponente fokussiert bei der Bestimmung von Vorschlägen ausschließlich die Präferenzen des Projektmanagers. Im Sinne des \acp{PEFit} wird folglich nur die Anforderungen-Fähigkeiten Kongruenz betrachtet.
 
-Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ändern sich bei Berechnung des Verfahrens von Katz die Kompetenzbewertungen. Somit es ist nicht ohne Weiteres möglich, die Eingaben eines Projektmanagers mit den Werten in der Ergebnis-Matrix zu vergleichen. Allerdings befinden sich die Beurteilungen, welche ursprünglich einem gemeinsamen Kompetenzniveau entsprachen, auch nach Berechnung des Algorithmus auf einem vergleichbaren Niveau. Die Werte innerhalb eines Kompetenzbereichs sind lediglich feingranular unterschiedlich. Dieses Phänomen ist in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu beobachten. Dort sind die Bewertungen der Fähigkeit MySQL aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} vor und nach der Berechnung des Katz-Algorithmus eingetragen. Gleiche Kompetenzniveaus sind in der Tabelle durch einheitliche Hintergrundfarben gekennzeichnet.
+Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ändern sich bei Berechnung des Verfahrens von Katz die Kompetenzbewertungen. Somit es ist nicht ohne Weiteres möglich, die Eingaben eines Projektmanagers mit den Werten in der Ergebnis-Matrix zu vergleichen.
+
+Allerdings befinden sich die Beurteilungen, welche ursprünglich einem gemeinsamen Kompetenzniveau entsprachen, auch nach Berechnung des Algorithmus auf einem vergleichbaren Niveau. Die Werte innerhalb eines Kompetenzbereichs sind lediglich feingranular unterschiedlich. Dieses Phänomen ist in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu beobachten. Dort sind die Bewertungen der Fähigkeit MySQL aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} vor und nach der Berechnung des Katz-Algorithmus eingetragen. Gleiche Kompetenzniveaus sind in der Tabelle durch einheitliche Hintergrundfarben gekennzeichnet.
 
 \begin{table}[h]
 	\centering
@@ -138,15 +140,17 @@ Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ände
 		\hline
 		 \rowcolor{exxetagray}Erika M. & Keine Kenntnisse & 0                  & 0.565\\
 		\hline
-		\rowcolor{itemcolor}John D. & Grundkenntnisse  & \kantengewicht     & 1.202\\
-		\rowcolor{itemcolor}Max M. & Grundkenntnisse  & \kantengewicht     & 1.623\\
-		\rowcolor{itemcolor}Jane D. & Grundkenntnisse  & \kantengewicht     & 1.996
+		\rowcolor{itemcolor}John D.    & Grundkenntnisse  & \kantengewicht     & 1.202\\
+		\rowcolor{itemcolor}Max M.     & Grundkenntnisse  & \kantengewicht     & 1.623\\
+		\rowcolor{itemcolor}Jane D.    & Grundkenntnisse  & \kantengewicht     & 1.996
 	\end{tabular}
 	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz MySQL im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
 \end{table}
 
-In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} wird der Angestellte mit dem höchsten Wert im gesuchten Kompetenzbereich der Ergebnis-Matrix als geeignetster Kandidat für die Kompetenz MySQL definiert. Würde ein Mitarbeiter mit Grundkenntnissen gesucht werden, wäre Jane Doe somit am qualifiziertesten. Zur Bestimmung des \acp{PEFit} dient ihre Bewertung für die Kompetenz MySQL als Nullpunkt in Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2}.
+In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} ist veranschaulicht, dass sich die Bewertungen der drei Angestellten mit Grundkenntnissen in MySQL auch nach Berechnung des Katz-Algorithmus auf einem vergleichbaren Niveau befinden. Die Beurteilungen sind, wie erwartet, feingranular unterschiedlich. Auch der Abstand zu Erika Muster ist nach wie vor erkennbar.
+
+Wird anhand der Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} ein Mitarbeiter mit der Fähigkeit MySQL gesucht, kann folglich der Angestellte mit dem höchsten Wert im gesuchten Kompetenzbereich als geeignetster Kandidat betrachtet werden. Im vorliegenden Beispiel wäre somit Jane Doe die qualifizierteste Mitarbeiterin für die Suche nach einem Angestellten mit Grundkenntnissen im Umgang mit MySQL. Ihre Bewertung dient daher bei der Bestimmung des \acp{PEFit} für das gesuchte Kompetenzniveau in MySQL als Nullpunkt in Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2}.
 
 \begin{figure}[h]
 	\centering
@@ -155,11 +159,11 @@ In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} wird der Angestellt
 	\label{fig:methodik:versuchsaufbau:unilateral:abb2}
 \end{figure}
 
-Zur Bestimmung des Anforderungen-Fähigkeiten Fits wird angenommen, dass Projektmanager anstreben, offene Projektpositionen mit fachlich optimal passenden Mitarbeitern zu besetzen. Folglich vermeiden sie sowohl eine Über- als auch eine Unterqualifizierung ihrer Angestellten. Aus diesem Grund wird der \ac{PEFit} anhand von Kurve B aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} in der unilateralen Empfehlungskomponente durch quadrierte Differenzberechnung bestimmt.
+Zur Bestimmung des Anforderungen-Fähigkeiten Fits wird angenommen, dass Projektmanager anstreben, offene Projektpositionen mit fachlich optimal passenden Mitarbeitern zu besetzen. Folglich vermeiden sie sowohl eine Über- als auch eine Unterqualifizierung ihrer Angestellten. Aus diesem Grund wird der \ac{PEFit} anhand von Kurve B bestimmt. Dabei wird die quadrierte Differenzberechnung angewendet.
 
-Ist kein Mitarbeiter im gesuchten Kompetenzbereich vorhanden, wird eine Ausnahmebehandlung ausgeführt. Wird nach Grundkenntnissen in einer bestimmten Fähigkeit gesucht und dabei kein passender Kandidat gefunden, wird der wenig qualifizierteste Angestellte auf fortgeschrittenem Niveau als Referenz genutzt. Sucht ein Projektmanager erfolglos nach Mitarbeitern mit fortgeschrittenen Kenntnissen, wird der am Besten qualifizierte Kandidat mit Grundkenntnissen als Referenz verwendet. Sind ausschließlich Mitarbeiter ohne Kenntnisse vorhanden, wird die gesuchte Kompetenz übersprungen, da in diesem Fall kein Mitarbeiter im Graphen mit dieser Fähigkeit verbunden ist und somit alle Kantengewichte 0 sind.
+Ist kein Mitarbeiter im gesuchten Kompetenzbereich vorhanden, wird eine Ausnahmebehandlung durchgeführt. Wird nach Grundkenntnissen in einer bestimmten Fähigkeit gesucht und dabei kein passender Kandidat gefunden, wird der wenig qualifizierteste Angestellte auf fortgeschrittenem Niveau als Referenz genutzt. Sucht ein Projektmanager erfolglos nach Mitarbeitern mit fortgeschrittenen Kenntnissen, wird der am Besten qualifizierte Kandidat mit Grundkenntnissen als Referenz verwendet. Sind ausschließlich Mitarbeiter ohne Kenntnisse vorhanden, wird die gesuchte Kompetenz übersprungen, da in diesem Fall kein Mitarbeiter im Graphen mit dieser Fähigkeit verbunden ist und somit alle Kantengewichte 0 sein müssen.
 
-Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis der unilateralen Empfehlungsbestimmung für ein Beispielprojekt mit gesuchten fortgeschrittenen Kenntnissen in Python und MySQL und benötigten Grundkenntnissen in HDFS. Verwendet wurden dabei die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
+Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis einer unilateralen Empfehlungsbestimmung für ein Beispielprojekt mit fortgeschrittenen Kenntnissen in Python und MySQL und Grundkenntnissen in HDFS. Verwendet wurden dabei die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
 
 \begin{table}[h]
 	\centering
@@ -179,19 +183,18 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis der
 
 \subsection{Bilaterale Empfehlungskomponente}
 \label{ch:methodik:versuchsaufbau:bilateral}
-Um die Präferenzen der Mitarbeiter zu erheben, wird im Unternehmen eine Befragung durchgeführt. Hierbei erhalten alle Angestellten eine Liste mit denen im Intranet hinterlegten Fähigkeiten. Auf dieser können sie über einen boolschen Wert für jede Kompetenz festlegen, ob sie diese zukünftig in einem Projekt anwenden möchten. Dabei können sie sowohl bereits beherrschte Fähigkeiten ausgewählt, als auch Kompetenzen, welche diese zukünftig erlernen bzw. erstmals einsetzen möchten.
+Die Präferenzen der Mitarbeiter werden im Unternehmen über eine Befragung erhoben. Zu diesem Zweck erhalten die Angestellten eine Liste mit den Fähigkeiten aus dem Intranet. Auf dieser können sie über einen boolschen Wert für jede Kompetenz festlegen, ob sie diese zukünftig in Projekten anwenden möchten. Sie können dabei sowohl bereits beherrschte Fähigkeiten auswählen, als auch Kompetenzen, welche diese zukünftig erst erlernen bzw. erstmals einsetzen möchten.
 
-Hinsichtlich der Kurven aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} wird von den Mitarbeitern erwartet, dass diese Unterforderung im Projekt vermeiden möchten. Daher wir auch in der bilateralen Empfehlungskomponente Linie B in Form einer quadrierten Differenzberechnung implementiert.
+Hinsichtlich der Linien aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} wird von den Mitarbeitern erwartet, dass diese Unterforderung im Projekt vermeiden möchten. Daher wird auch in diesem Modul Kurve B über die quadrierte Differenzberechnung implementiert.
 
-Die bilaterale Empfehlungskomponente bezieht die Wünsche der Mitarbeitern in Form von Wichtigkeiten in die Berechnung ein. Wie in Kapitel \ref{ch:personEnvironmentFit:regressionsgleichungen} gefordert, werden hierbei die präferierten Kompetenzen der Angestellten vor der Differenzberechnung mit einem Parameter multipliziert. Die vorliegende Empfehlungskomponente verwendet dabei den Wert \faktorString. Dieser wird in Anlehnung an die Gewichte der Niveaus Grundkenntnisse (\kantengewichtString) und Fortgeschritten (\kantengewichtHochString) gewählt, welche ebenfalls einer Verdopplung entsprechen. Es wird die folgende Berechnung aus Gleichung \ref{frml:methodik:versuchsaufbau:bilateral:formel1} ausgeführt:
+Die bilaterale Empfehlungskomponente bezieht die Wünsche der Mitarbeitern in Form von Wichtigkeiten in die Berechnung ein. Wie in Kapitel \ref{ch:personEnvironmentFit:regressionsgleichungen} gefordert, werden hierbei die präferierten Kompetenzen der Angestellten vor der Differenzberechnung mit einem Parameter multipliziert. Die vorliegende Empfehlungskomponente verwendet dabei den Faktor \faktorString. Dieser wird in Anlehnung an die Gewichte der Niveaus Grundkenntnisse (\kantengewichtString) und Fortgeschritten (\kantengewichtHochString) gewählt, welche ebenfalls einer Verdopplung entsprechen. Bei der quadrierten Differenzbestimmung wird somit die folgende Berechnung aus Gleichung \ref{frml:methodik:versuchsaufbau:bilateral:formel1} ausgeführt:
 \begin{equation}
 	Abweichung = (\faktor * P - E)^2
 	\label{frml:methodik:versuchsaufbau:bilateral:formel1}
 \end{equation}
+Die Multiplikation in Gleichung \ref{frml:methodik:versuchsaufbau:bilateral:formel1} hat zur Folge, dass Mitarbeiter für eine Kompetenz innerhalb ihres beherrschten Niveaus aufsteigen bzw. die untere Grenze des nächst höheren Bereichs erreichen. Sucht ein Projektmanager nach einer Fähigkeit, welche ein Angestellter präferiert, wird dieser bei der Sortierung folglich besser bewertet als bei der unilateralen Variante. Dennoch übertrifft er nicht die geeignetsten Mitarbeiter des nächst höheren Kompetenzniveaus.
 
-Die Multiplikation in Gleichung \ref{frml:methodik:versuchsaufbau:bilateral:formel1} hat zur Folge, dass Mitarbeiter für eine gesuchte Kompetenz innerhalb ihres beherrschten Niveaus aufsteigen bzw. die untere Grenze des nächst höheren Bereichs erreichen. Sucht ein Projektmanager nach dieser Fähigkeit, wird der Angestellte bei der Sortierung folglich besser bewertet als bei der unilateralen Variante, übertrifft aber dennoch nicht die geeignetsten Mitarbeiter des nächst höheren Kompetenzniveaus.
-
-Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} zeigt die Anpassung des Ergebnisses des Katz-Algorithmus bei Angabe von Wichtigkeiten am Beispiel der Fähigkeit MySQL aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}.
+Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} zeigt die Anpassungen der Ergebnisse des Katz-Algorithmus durch Angabe von Wichtigkeiten am Beispiel der Fähigkeit MySQL aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}.
 
 \begin{table}[h]
 	\centering
@@ -208,9 +211,9 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} zeigt die Anpassung des
 	\label{tbl:methodik:versuchsaufbau:bilateral:tbl1}
 \end{table}
 
-In Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} ist an den Beispielen Erika und Max Muster zu erkennen, dass die Beurteilungen der Kompetenz MySQL durch Angabe der Präferenzen besser gewichtet sind als zuvor in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}. Beide Mitarbeiter befinden sich nach wie vor innerhalb ihres ursprünglichen Kompetenzniveaus, sind darin aber höher gewichtet als zuvor.
+In Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} ist an Erika und Max Muster zu erkennen, dass die Beurteilungen der Kompetenz MySQL durch Angabe der Präferenzen besser gewichtet sind als zuvor in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}. Beide Mitarbeiter befinden sich dennoch nach wie vor innerhalb ihres ursprünglichen Kompetenzniveaus, sind darin aber höher gewichtet als zuvor.
 
-Die Auswirkungen der Multiplikation aufgrund von Wichtigkeiten in der bilateralen Empfehlungskomponente kann in Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} beobachtet werden. Wie im Beispiel aus Kapitel \ref{ch:methodik:versuchsaufbau:unilateral} soll hier eine offene Projektposition mit fortgeschrittenen Kenntnissen in Python und MySQL und Grundkenntnissen in HDFS mit den Mitarbeitern aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}. Dabei wird angenommen, dass Erika Muster Python und MySQL, Max Muster MySQL und HDFS, Jane Doe HDFS und John Doe Python, MySQL und HDFS präferieren. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:bilateral} nachvollzogen werden.
+Die Auswirkungen der Multiplikation aufgrund von Wichtigkeiten kann in Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} beobachtet werden. Analog zum Beispiel aus Kapitel \ref{ch:methodik:versuchsaufbau:unilateral} soll hier eine offene Projektposition mit fortgeschrittenen Kenntnissen in Python und MySQL und Grundkenntnissen in HDFS mit Mitarbeitern aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} besetzt werden. Dabei wird angenommen, dass Erika Muster Python und MySQL, Max Muster MySQL und HDFS, Jane Doe HDFS und John Doe Python, MySQL und HDFS präferieren. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:bilateral} nachvollzogen werden.
 
 \begin{table}[h]
 	\centering
@@ -226,7 +229,11 @@ Die Auswirkungen der Multiplikation aufgrund von Wichtigkeiten in der bilaterale
 	\label{tbl:methodik:versuchsaufbau:bilateral:tbl2}
 \end{table}
 
+An Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} ist zu erkennen,
 \newpage
+\subsection{Systemarchitektur}
+\label{ch:methodik:versuchsaufbau:systemarchitektur}
+
 \section{Evaluation}
 \label{ch:methodik:evaluation}
 Evaluation für Projektmanager:\\
