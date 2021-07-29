@@ -4,9 +4,9 @@
 
 \section{Art der Forschung}
 \label{ch:methodik:art}
-Um die Forschungsfrage dieser Master-Thesis zu beantworten, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext werden zwei Schnittstellen eines Empfehlungssystems zur Besetzung offener Projektpositionen implementiert. Einer der beiden Endpunkte verfolgt einen unilateralen, der andere einen bilateralen Ansatz. Beide Empfehlungsverfahren erhalten dieselben offenen Projektpositionen und Mitarbeiter als Eingabe. Anschließend sortieren sie die vorhandenen Angestellten für die offenen Stellen und geben diese in Form von Listen zurück.
+Um die Forschungsfrage dieser Master-Thesis zu beantworten, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext werden zwei Varianten eines Empfehlungssystems zur Besetzung offener Projektpositionen entwickelt. Eines der beiden Verfahren implementiert einen unilateralen, das andere einen bilateralen Empfehlungsansatz. Beide Varianten erhalten dieselben offenen Projektpositionen und Mitarbeiter als Eingabe. Anschließend sortieren sie die vorhandenen Angestellten für die offenen Stellen und geben diese in Form von Listen zurück.
 
-Die Ausgaben beider Schnittstellen werden Projektmanagern vorgelegt. Diese bewerten für jede Liste auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern erwarten. Dabei wird evaluiert, ob sie die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Verfahrens höher bewerten, als die der unilateralen Variante.
+Die Ausgaben beider Verfahren werden Projektmanagern vorgelegt. Diese bewerten für jede Liste auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern für bestimmte vorausgewählte offene Projektpositionen erwarten. Dabei wird evaluiert, ob sie die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Ansatzes höher bewerten, als die der unilateralen Variante.
 
 Die Mitarbeiter des Unternehmens erhalten Übersichten über offenen Projektpositionen. Daraufhin bewerten sie auf einer vordefinierten Skala, wie zufrieden sie mit einer Tätigkeit auf den vorliegenden Projektpositionen wären. Dabei wird überprüft, ob das bilaterale Empfehlungssystem die Angestellten für die offene Projektpositionen höher positioniert, bei welchen diese eine hohe Zufriedenheit erwarten.
 %Abschließend werden die Bewertungen von Projektmanagern und Angestellten hinsichtlich der Ergebnisse der beiden Empfehlungssysteme verglichen. Dabei wird bestimmt, ob die bilaterale Recommender Engine im direkten Vergleich mit dem unilateralen Ansatz sowohl auf Seiten der Projektmanager für eine höhere erwartete Leistung als auch aus Perspektive der Mitarbeiter für eine gesteigerte prognostizierte Zufriedenheit sorgt.
@@ -32,7 +32,10 @@ Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:me
 
 Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene Projektpositionen relevanten Fähigkeiten mitsamt der benötigten Kenntnisniveaus festlegen. Die Kompetenzen bestimmen die Verantwortlichen in der Regel anhand eingehender Projektanfragen, welche Kunden in unstrukturierter Form einreichen. Derartige Anfragen werden täglich in großer Anzahl bearbeitet. Daher wird es für den praktischen Einsatz als sehr umständlich bewertet, wenn Verantwortliche für jede angefragte Projektposition sämtliche Fähigkeiten auf der Skala von eins bis sechs bewerten müssen. Aus diesem Grund werden die Kompetenzniveaus aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} auf die Abstufungen "Grundkenntnisse" und "Fortgeschritten" vereinfacht. "Grundkenntnisse" entspricht dabei den ersten drei Stufen und "Fortgeschritten" den oberen drei Fähigkeitsniveaus in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1}. Die Priorisierung mittels Abstufungen kann gemäß Kapitel \ref{ch:personEnvironmentFit:wichtigkeiten} als Ausdruck von Wichtigkeiten seitens der Projektmanager betrachtet werden.
 
-Die Kompetenzbewertungen der Mitarbeiter und die für ein Projekt benötigten Fähigkeiten dienen im Experiment als Eingabe für einen grundlegenden Algorithmus, welcher sowohl für das unilaterale, als auch das bilaterale Empfehlungssystem gleich ist.%das Empfehlungssystem, dessen Architektur aus zwei Diensten besteht.
+Die Kompetenzbewertungen der Mitarbeiter und die für ein Projekt benötigten Fähigkeiten dienen im Experiment als Eingabe für das Empfehlungssystem, dessen Architektur aus zwei Diensten besteht.%einen grundlegenden Algorithmus, welcher sowohl für das unilaterale, als auch das bilaterale Empfehlungssystem gleich ist.
+
+\subsection{Systemarchitektur}
+\label{ch:methodik:versuchsaufbau:systemarchitektur}
 
 \subsection{Grundlegender Algorithmus}
 \label{ch:methodik:versuchsaufbau:grundlegend}
@@ -230,9 +233,6 @@ Die Auswirkungen der Multiplikation aufgrund von Wichtigkeiten kann in Tabelle \
 An Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} ist zu erkennen, dass John Doe und Max Muster aufgrund ihrer Präferenzen besser positioniert sind als zuvor in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2}. Erika Muster hat einen nach wie vor sehr großen Abstand zu allen anderen Mitarbeitern.
 
 Es ist festzustellen, dass der Algorithmus der unilateralen und der bilateralen Empfehlungskomponente abgesehen von der Multiplikation aufgrund von Präferenzen gleich ist. Zur effizienteren Berechnung ist es daher möglich, im Zwischenspeicher neben der Ergebnis-Matrix des Katz-Algorithmus eine zweite Matrix abzulegen, in welcher zusätzlich eine Multiplikation für die präferierten Kompetenzen ausgeführt wird. Auf diese Weise ist es ausreichend, eine Empfehlungskomponente zu implementieren. Ob die dabei entstehenden Vorschläge uni- oder bilateral sind, ist ausschließlich von der eingegebenen Matrix abhängig. Die zur Durchführung des Experiments benötigte Systemarchitektur besteht folglich aus zwei Diensten.
-
-\subsection{Systemarchitektur}
-\label{ch:methodik:versuchsaufbau:systemarchitektur}
 
 \newpage
 \section{Evaluation}
