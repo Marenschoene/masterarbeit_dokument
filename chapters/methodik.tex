@@ -31,11 +31,29 @@ Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:me
 
 Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene Projektpositionen nachgefragten Fähigkeiten mitsamt der benötigten Kenntnisniveaus festlegen. Die relevanten Kompetenzen bestimmen die Verantwortlichen in der Regel anhand eingehender Projektanfragen, welche Kunden in unstrukturierter Form einreichen. Derartige Anfragen werden täglich in großer Anzahl bearbeitet. Daher wird es für den praktischen Einsatz als sehr umständlich bewertet, wenn Verantwortliche für jede angefragte Projektposition sämtliche Fähigkeiten auf der sechsstufigen Skala bewerten müssen. Aus diesem Grund werden die Kompetenzniveaus aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} auf die Abstufungen "Grundkenntnisse" und "Fortgeschritten" vereinfacht. "Grundkenntnisse" entspricht dabei den ersten drei Stufen und "Fortgeschritten" den oberen drei Fähigkeitsniveaus in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1}. Die Priorisierung der Kompetenzen über diese Abstufungen kann gemäß Kapitel \ref{ch:personEnvironmentFit:wichtigkeiten} als Ausdruck von Wichtigkeiten seitens der Projektmanager betrachtet werden.
 
-Die Kompetenzbewertungen der Mitarbeiter und die für ein Projekt benötigten Fähigkeiten dienen im Experiment als Eingabe für das Empfehlungssystem, dessen Architektur aus drei Diensten besteht.%einen grundlegenden Algorithmus, welcher sowohl für das unilaterale, als auch das bilaterale Empfehlungssystem gleich ist.
+Die EXXETA AG erhebt keine Präferenzen ihrer Mitarbeiter bezüglich deren Kompetenzen. Um diese Vorlieben ebenfalls in die Empfehlungsprozess einzubeziehen, werden diese im Rahmen dieser Thesis über eine Umfrage erhoben. Die Angestellten des Bereichs \ac{JES} erhalten zu diesem Zweck einen Fragebogen mit den 551 Fähigkeiten des Intranets. Dabei werden sie gebeten, sämtliche Kompetenzen auszuwählen, welche sie gerne im Projekt anwenden möchten. Ein Auszug aus dem Fragebogen ist in Abbildung \ref{fig:methodik:versuchsaufbau:abb1} dargestellt.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{gfx/Umfage_Faehigkeiten.png}
+	\caption{Auszug aus der Umfrage zur Erhebung der Mitarbeiter-Präferenzen}
+	\label{fig:methodik:versuchsaufbau:abb1}
+\end{figure}
+
+Die Kompetenzbewertungen der Mitarbeiter und deren Präferenzen dienen im Experiment als Grundlage für das Empfehlungssystem, dessen Architektur aus drei Diensten besteht.
 
 \section{Systemarchitektur}
 \label{ch:methodik:systemarchitektur}
+Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt die im Rahmen dieser Master-Thesis implementierte Systemarchitektur des Empfehlungssystems.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{gfx/Systemarchitektur.png}
+	\caption{Systemarchitektur des Empfehlungssystems}
+	\label{fig:methodik:systemarchitekturn:abb1}
+\end{figure}
+
+Im folgenden werden die einzelnen Komponenten der Anwendung erläutert.
 
 \subsection{Grundlegender Algorithmus}
 \label{ch:methodik:versuchsaufbau:grundlegend}
