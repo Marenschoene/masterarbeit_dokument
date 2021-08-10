@@ -4,7 +4,7 @@
 
 \section{Art der Forschung}
 \label{ch:methodik:art}
-Um die Forschungsfrage dieser Master-Thesis zu beantworten, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext wird ein Empfehlungssystem entwickelt, welches sowohl uni- als auch bilaterale Vorschläge zur Besetzung offener Projektpositionen erstellt. Für beide Ansätze werden dieselben Projektbeschreibungen und Mitarbeiter als Eingabe verwendet. Die Verfahren unterscheiden sich lediglich in der Art, über welche sie die vorhandenen Angestellten für die offenen Stellen sortieren.
+Um die Forschungsfrage dieser Master-Thesis zu beantworten, wird eine quantitative Forschungsarbeit in Form eines Experiments mit einer anschließenden Fallstudie durchgeführt. In diesem Kontext wird ein Empfehlungssystem entwickelt, welches sowohl uni- als auch bilaterale Vorschläge zur Besetzung offener Projektpositionen erstellt. Für beide Ansätze werden dieselben Projektbeschreibungen und Mitarbeiter als Eingabe verwendet. Die Verfahren unterscheiden sich lediglich in der Art, über welche sie die vorhandenen Angestellten für die offenen Stellen sortieren.
 
 Projektmanager erhalten die Ausgaben beider Verfahren. Daraufhin bewerten sie auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern für vorausgewählte Projektpositionen erwarten. Dabei wird evaluiert, ob sie die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Ansatzes höher bewerten, als die der unilateralen Variante.
 
@@ -40,10 +40,22 @@ Die EXXETA AG erhebt keine Präferenzen ihrer Mitarbeiter bezüglich deren Kompe
 	\label{fig:methodik:versuchsaufbau:abb1}
 \end{figure}
 
-Die Kompetenzbewertungen der Mitarbeiter und deren Präferenzen dienen im Experiment als Grundlage für das Empfehlungssystem, dessen Architektur aus drei Diensten besteht.
+Die Kompetenzbewertungen der Mitarbeiter und deren Präferenzen dienen im Experiment als Grundlage für das Empfehlungssystem, welches primär auf der Datenstruktur eines Graphen basiert.
 
-\section{Systemarchitektur}
-\label{ch:methodik:systemarchitektur}
+\section{Verwendete Datenstruktur}
+\label{ch:methodik:datenstruktur}
+Die Mitarbeiter der EXXETA AG und deren Fähigkeiten werden in der Datenstruktur eines Graphen dargestellt. Um das Sparsity Problem zu lösen, wird der speicherbasierte Algorithmus von Katz aus Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angewendet. Da die Anwendung auch über die Master-Thesis hinaus im Unternehmen zum Einsatz kommen soll, ist insbesondere die Langlebigkeit des Verfahrens vorteilhaft gegenüber modellbasierten Methoden. Sollten sich nach Durchführung des Experiments Daten im Unternehmen verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Algorithmus weiterhin ohne zusätzlichen manuellen Aufwand im Betrieb anwendbar. Die hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments weniger als 1.000 Mitarbeiter im Unternehmen befinden.
+
+Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt der Algorithmus von Katz für eine feingranulare Anpassung vorhandener Beurteilungen. Dass Bewertungen von Mitarbeitern gänzlich fehlen, kann bei er EXXETA AG weitgehend ausgeschlossen werden. Führungskräfte fordern ihre Angestellten regelmäßig dazu auf, ihre Kompetenzen im Intranet aktuell zu halten und diese beispielsweise im Rahmen des Mitarbeiter-Jahresgespräches zu pflegen. Angestellte ohne Bewertungen sind folglich nur in Ausnahmefällen zu erwarten. Hierzu zählen beispielsweise Werkstudenten und neue Mitarbeiter.
+
+Um Kaltstarts auch in solchen Ausnahmefällen vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen der Mitarbeiter bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn deren direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieses Vorgehen ist im Falle der EXXETA AG als sinnvoll zu bewerten, da dort stets Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig sind. Auch der Manager des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für seine Mitarbeiter sind.%Seine Kompetenzen sind in der Regel jedoch stärker ausgeprägt.
+
+Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine REST-Schnittstelle in Form von JSON aus dem Intranet abgefragt werden. Einzelne Mitarbeiter sind dabei eindeutig über ihre E-Mail-Adresse identifizierbar.
+
+In der vorliegenden Problemstellung werden nicht die Daten aller Angestellten des Unternehmens verwendet. Es wird ausschließlich auf Informationen über Mitarbeiter zurückgegriffen, welche im Rahmen der Befragung Präferenzen spezifiziert haben. Aus diesem Grund wird die REST-Schnittstelle des Intranets im Rahmen der vorliegenden Master-Thesis 
+
+\subsection{Systemarchitektur}
+\label{ch:methodik:versuchsaufbau:systemarchitektur}
 Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt die im Rahmen dieser Master-Thesis implementierte Systemarchitektur des Empfehlungssystems.
 
 \begin{figure}[h]
@@ -57,24 +69,8 @@ Im folgenden werden die einzelnen Komponenten der Anwendung erläutert.
 
 \subsection{Grundlegender Algorithmus}
 \label{ch:methodik:versuchsaufbau:grundlegend}
-Die Mitarbeiter der EXXETA AG und deren Fähigkeiten werden in Form eines Graphen dargestellt. Um das Sparsity Problem zu lösen, wird der speicherbasierte Algorithmus von Katz aus Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angewendet. Da die Anwendung auch über die Master-Thesis hinaus im Unternehmen eingesetzt werden soll, ist insbesondere die Langlebigkeit des Verfahrens vorteilhaft gegenüber modellbasierten Methoden. Sollten sich nach Durchführung des Experiments Daten im Unternehmen signifikant verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist der speicherbasierte Algorithmus weiterhin ohne zusätzlichen manuellen Aufwand im Betrieb anwendbar. Die hohe Komplexität ist in der vorliegenden Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments weniger als 1.000 Mitarbeiter im Unternehmen befinden.
 
-Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt der Algorithmus von Katz für eine feingranulare Anpassung vorhandener Beurteilungen. Dass Bewertungen von Mitarbeitern gänzlich fehlen, kann bei er EXXETA AG weitgehend ausgeschlossen werden. Führungskräfte fordern ihre Angestellten regelmäßig dazu auf, ihre Kompetenzen im Intranet aktuell zu halten und diese beispielsweise im Rahmen des Mitarbeiter-Jahresgespräches zu pflegen. Angestellte ohne Bewertungen sind folglich nur in Ausnahmefällen zu erwarten. Hierzu zählen beispielsweise Werkstudenten und neue Mitarbeiter.
 
-Um Kaltstarts auch in solchen Ausnahmefällen vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Dieses Vorgehen hat außerdem den Vorteil, dass die Kompetenzen der Mitarbeiter bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn ihre direkten Kollegen diese Fähigkeiten ebenfalls beherrschen. Dieses Vorgehen ist im Falle der EXXETA AG als sinnvoll zu bewerten, da dort stets Mitarbeiter mit ähnlichem fachlichem Hintergrund in einem Team tätig sind. Auch der Manager des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für seine Mitarbeiter sind. Seine Kompetenzen sind in der Regel jedoch stärker ausgeprägt.
-
-Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine REST-Schnittstelle in Form von JSON aus dem Intranet abgefragt werden. Einzelne Mitarbeiter sind dabei eindeutig über ihre E-Mail-Adresse identifizierbar.
-
-Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem JSON in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Nicht relevante Informationen wurden im vorliegenden Auszug entfernt. In diesem und den folgenden Beispielen werden Jane Doe und Max Muster sowie Erika Muster und John Doe als Mitglieder jeweils eines Teams betrachtet. 
-
-%\begin{minipage}{\linewidth}
-\lstinputlisting[
-language=json,
-caption=Beispiel für ein Mitarbeiter-JSON der REST-Schnittstelle des Intranets der EXXETA AG (Auszug),
-captionpos=b,
-label=qc:methodik:versuchsaufbau:daten:qc1
-]{gfx/john.json}
-%\end{minipage}
 
 Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, sind die Bewertungen der Kompetenzen im JSON aus Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} um eins niedriger als in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}.
 
@@ -265,4 +261,15 @@ Evaluation für Mitarbeiter:\\
 Es wird bewusst darauf verzichtet, zusätzliche Stellenbeschreibungen oder Auftraggeber zu nennen, die die Bewertung verzerren könnten. Mitarbeiter und Projektmanager erhalten ausschließlich Informationen, die auch vom Empfehlungssystem verarbeitet werden.
 
 - Caching!!!
+
+Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem JSON in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Nicht relevante Informationen wurden im vorliegenden Auszug entfernt. In diesem und den folgenden Beispielen werden Jane Doe und Max Muster sowie Erika Muster und John Doe als Mitglieder jeweils eines Teams betrachtet. 
+
+%\begin{minipage}{\linewidth}
+\lstinputlisting[
+language=json,
+caption=Beispiel für ein Mitarbeiter-JSON der REST-Schnittstelle des Intranets der EXXETA AG (Auszug),
+captionpos=b,
+label=qc:methodik:versuchsaufbau:daten:qc1
+]{gfx/john.json}
+%\end{minipage}
 \shorthandon{"}
