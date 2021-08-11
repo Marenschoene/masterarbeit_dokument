@@ -158,10 +158,6 @@ Durch das in in Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1}
 
 bilateral
 
-Zur effizienteren Vorschlagsbestimmung wird die Ergebnismatrix zwischengespeichert. Somit muss der Martrixservice die algorithmisch komplexe Berechnung des Katz-Algorithmus nur bei sich ändernder Datenlage im Unternehmen erneut ausführen. Dieses Vorgehen kombiniert die Vorteile von speicher- und modellbasierten Empfehlungsansätzen. Wie bei speicherbasierten Verfahren üblich greift der Matrixservice stets auf die aktuellen Daten des Unternehmens zurück. Durch die Zwischenspeicherung der Ergebnisse der Matrixberechnung ist es gleichzeitig möglich, der Empfehlungsberechnung eine zu modellbasierten Verfahren vergleichbare Effizienz zu erreichen.
-
-Die Implementierung des Matrixservices erfolgte in der Programmiersprache Python in Kombination mit dem Web-Framework Flask. Für die Matrixberechnungen wird das Paket Numpy eingesetzt. Als Zwischenspeicher kommt der Schlüssel-Wert-Speicher Redis zum Einsatz.
-
 Eine Auszug einer beispielhaften Rückgabe des Matrixservices ist in Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:matrixservice:qc1} dargestellt.
 
 \lstinputlisting[
@@ -170,6 +166,10 @@ caption=Beispiel für die Rückgabe des Matrixservices (Auszug),
 captionpos=b,
 label=qc:methodik:versuchsaufbau:systemarchitektur:matrixservice:qc1
 ]{gfx/john-matrix.json}
+
+Zur effizienteren Vorschlagsbestimmung werden die Ergebnisse des Matrixservices zwischengespeichert. Somit muss der Dienst die algorithmisch komplexe Berechnung des Katz-Algorithmus erst bei veränderter Datenlage im Unternehmen erneut ausführen. Dieses Vorgehen kombiniert die Vorteile von speicher- und modellbasierten Empfehlungsansätzen. Wie bei speicherbasierten Verfahren üblich greift der Matrixservice stets auf die aktuellen Daten des Unternehmens zurück. Durch die Zwischenspeicherung der Ergebnisse der Matrixberechnung ist es gleichzeitig möglich, der Empfehlungsberechnung eine zu modellbasierten Verfahren vergleichbare Effizienz zu erreichen.
+
+Die Implementierung des Matrixservices erfolgte in der Programmiersprache Python in Kombination mit dem Web-Framework Flask. Für die Matrixberechnungen wird das Paket Numpy eingesetzt. Als Zwischenspeicher kommt der Schlüssel-Wert-Speicher Redis zum Einsatz.
 
 Kotlin entfernt
 
