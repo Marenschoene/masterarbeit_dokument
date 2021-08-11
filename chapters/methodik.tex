@@ -102,9 +102,9 @@ Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt
 
 Um Kaltstarts auch in solchen Fällen vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Über dieses Vorgehen sind stets sämtliche Mitarbeiter des Bereichs \acl{JES} über den Abteilungsleiter bzw. alle Angestellten der EXXETA AG über den Vorstand miteinander verbunden. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen der Mitarbeiter bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn deren direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieser Ansatz ist im Falle der EXXETA AG als sinnvoll zu bewerten, da dort stets Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig sind. Auch die Teammanager sind fachliche Führungskräfte, deren Fähigkeiten weitgehend repräsentativ für ihre Mitarbeiter sind.
 
-Um eine weitere Erhöhung der Komplexität des Algorithmus von Katz zu vermeiden, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird auf \teamgewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit schwach in die Berechnung mit einzubeziehen, sodass die tatsächlichen Kompetenz-Beurteilungen nur feingranular korrigiert werden.
+Um eine weitere Erhöhung der Komplexität des Algorithmus von Katz zu vermeiden, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird auf \teamgewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit schwach in die Berechnung mit einzubeziehen, höhere individuelle Kompetenzbewertungen jedoch weiterhin stärker zu gewichten.
 
-Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen. Die Präferenzen der Angestellten werden hierbei nicht berücksichtigt.
+Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen.
 
 \begin{figure}[h]
 	\centering	
@@ -154,11 +154,9 @@ Im Matrixservice wird der Wert von $\beta$ über folgende Gleichung \ref{frml:me
 	\beta = \frac{1/\lambda}{\nenner}
 	\label{frml:methodik:versuchsaufbau:grundlegend:formel1}
 \end{equation}
-Durch das in in Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} erläutert, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix $M$ des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielnutzer weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Fähigkeiten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten ein höheres Gewicht, welche mit den direkten Teamkollegen bzw. den unmittelbar beherrschten Kompetenzen eines Zielnutzers in Verbindung stehen.
+Durch das in in Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} erläutert, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix $M$ des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielnutzer weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Fähigkeiten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten ein höheres Gewicht, welche direkt mit dem Zielnutzer bzw. dessen direkten Teamkollegen in Verbindung stehen.
 
-Die Ergebnisse der Matrixberechnung dienen als Grundlage für die unilaterale Empfehlungsbestimmung. Für die bilaterale Vorschlagsgenerierung wird angenommen, dass Projektmanager stets denjenigen Mitarbeiter für eine offene Projektposition auswählen, welcher für das gesuchte Kompetenzniveau die höchste Bewertung 
-
-Da Projektmanager bei der Suche nach geeigneten Kandidaten keine sechs-, sondern eine zweistufige Skala verwenden, werden die Ergebnisse der Matrixberechnung, wie in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellt, für jede Fähigkeit auf die Kompetenzebenen "Keine Kenntnisse", "Grundkenntnisse" und "Fortgeschritten" eingeteilt. 
+Die Ergebnisse der Matrixberechnung dienen als Grundlage für die Empfehlungsbestimmung. Es wird angenommen, dass Projektmanager stets denjenigen Mitarbeiter für eine bestimmte Kompetenz auswählen, welcher für das gesuchte Niveau  Grundkenntnisse bzw. Fortgeschritten die höchste Bewertung aufweist. Aus diesem Grund wird die sechsstufige Skala des Intranets auf die in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellten Kompetenzniveaus vereinfacht. 
 
 \begin{table}[h]
 	\centering
@@ -180,7 +178,9 @@ Da Projektmanager bei der Suche nach geeigneten Kandidaten keine sechs-, sondern
 	\label{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1}
 \end{table}
 
-Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} zu erkennen, befinden sich in der ersten Gruppe sämtliche Mitarbeiter, welche die betrachtete Kompetenz nicht im Intranet bewertet haben. In das Niveau "Grundkenntnisse" werden sämtliche Angestellten eingeteilt, welche die Fähigkeit auf der Skala aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} mit einer der unteren drei Bewertungen beurteilt haben. In der Gruppe "Fortgeschritten" befinden sich analog sämtliche Angestellte, welche die Kompetenz mit einer der oberen drei Stufen bewertet haben.
+Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} zu erkennen, befinden sich in der ersten Gruppe sämtliche Mitarbeiter, welche die gesuchte Kompetenz nicht im Intranet bewertet haben. In das Niveau "Grundkenntnisse" werden sämtliche Angestellten eingeteilt, welche die Fähigkeit auf der Skala aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} mit einer der unteren drei Bewertungen beurteilt haben. In der Gruppe "Fortgeschritten" befinden sich analog sämtliche Angestellte, welche die Kompetenz mit einer der oberen drei Stufen bewertet haben.
+
+
 
 \newpage
 für die Fähigkeit MySQL und die Beispielmitarbeiter aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} sind in Abbildung x dargestellt. Die Angestellten 
