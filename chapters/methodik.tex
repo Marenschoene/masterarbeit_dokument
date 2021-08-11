@@ -156,7 +156,37 @@ Im Matrixservice wird der Wert von $\beta$ über folgende Gleichung \ref{frml:me
 \end{equation}
 Durch das in in Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} erläutert, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix $M$ des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielnutzer weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Fähigkeiten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten ein höheres Gewicht, welche mit den direkten Teamkollegen bzw. den unmittelbar beherrschten Kompetenzen eines Zielnutzers in Verbindung stehen.
 
-bilateral
+Die Ergebnisse der Matrixberechnung dienen als Grundlage für die unilaterale Empfehlungsbestimmung. Für die bilaterale Vorschlagsgenerierung wird angenommen, dass Projektmanager stets denjenigen Mitarbeiter für eine offene Projektposition auswählen, welcher für das gesuchte Kompetenzniveau die höchste Bewertung 
+
+Da Projektmanager bei der Suche nach geeigneten Kandidaten keine sechs-, sondern eine zweistufige Skala verwenden, werden die Ergebnisse der Matrixberechnung, wie in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellt, für jede Fähigkeit auf die Kompetenzebenen "Keine Kenntnisse", "Grundkenntnisse" und "Fortgeschritten" eingeteilt. 
+
+\begin{table}[h]
+	\centering
+	\begin{tabularx}{\textwidth}{c|X}
+		\textbf{Kompetenzniveau} & \textbf{Bewertung im Intranet}\\
+		\hline
+		Keine Kenntnisse & -\\
+		\hline
+		& Ich habe Grundkenntnisse\\
+		Grundkenntnisse & Ich habe es schon in einem Projekt eingesetzt\\
+		& Ich habe es in einem Projekt eingeführt\\
+		\hline
+		& Ich habe Kollegen geholfen es einzusetzen\\
+		Fortgeschritten & Ich habe eine Schulung zu dem Thema gehalten\\
+		& Ich habe auf Konferenzen zu dem Thema Vorträge gehalten\\
+		\hline
+	\end{tabularx}
+	\caption{Im Matrixservice verwendete Kompetenzniveaus}
+	\label{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1}
+\end{table}
+
+Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} zu erkennen, befinden sich in der ersten Gruppe sämtliche Mitarbeiter, welche die betrachtete Kompetenz nicht im Intranet bewertet haben. In das Niveau "Grundkenntnisse" werden sämtliche Angestellten eingeteilt, welche die Fähigkeit auf der Skala aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} mit einer der unteren drei Bewertungen beurteilt haben. In der Gruppe "Fortgeschritten" befinden sich analog sämtliche Angestellte, welche die Kompetenz mit einer der oberen drei Stufen bewertet haben.
+
+\newpage
+für die Fähigkeit MySQL und die Beispielmitarbeiter aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} sind in Abbildung x dargestellt. Die Angestellten 
+
+
+
 
 Eine Auszug einer beispielhaften Rückgabe des Matrixservices ist in Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:matrixservice:qc1} dargestellt.
 
