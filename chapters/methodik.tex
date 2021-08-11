@@ -44,7 +44,7 @@ Die Kompetenzbewertungen der Mitarbeiter und deren Präferenzen dienen im Experi
 
 \section{Aufbau des hybriden Empfehlungssystems}
 \label{ch:methodik:versuchsaufbau:systemarchitektur}
-Dem im Rahmen dieser Master-Thesis implementieren Empfehlungssystem liegt eine Microservice-Architektur zu Grunde, welche aus drei Diensten besteht. Sämtliche Komponenten werden in Form von Docker-Containern ausgeliefert. Die Orchestrierung des Gesamtsystems erfolgt über Docker-Compose. Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt einen Überblick über die zugrundeliegende Systemarchitektur.
+Dem im Rahmen dieser Master-Thesis implementieren Empfehlungssystem liegt eine Microservice-Architektur zu Grunde, welche aus drei Diensten besteht. Sämtliche Komponenten werden in Form von Docker-Containern ausgeliefert. Die Orchestrierung des Gesamtsystems erfolgt über Docker-Compose. Die Dienste kommunizieren untereinander über REST. Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt einen Überblick über die zugrundeliegende Systemarchitektur.
 
 \begin{figure}[h]
 	\centering
@@ -144,17 +144,38 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 	\label{fig:methodik:versuchsaufbau:unilateral:abb1}
 \end{figure}
 
-Die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} dienen als Grundlage zur Berechnung des Katz-Algorithmus anhand von Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4}. Dabei wird der Wert von $\beta$ über folgende Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} bestimmt: 
+Die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} dienen als Grundlage zur Berechnung des Katz-Algorithmus anhand von Gleichung \ref{frml:methodik:versuchsaufbau:systemarchitektur:matrixservice:formel1}, welche in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} vorgestellt wurde.
+\begin{equation}
+	(I - \beta * M)^{-1} - I
+	\label{frml:methodik:versuchsaufbau:systemarchitektur:matrixservice:formel1}
+\end{equation}
+Im Matrixservice wird der Wert von $\beta$ über folgende Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} bestimmt:
 \begin{equation}
 	\beta = \frac{1/\lambda}{\nenner}
 	\label{frml:methodik:versuchsaufbau:grundlegend:formel1}
 \end{equation}
-Durch das in in Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} dargelegt, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielknoten weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Knoten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten ein höheres Gewicht in der Berechnung, welche mit den direkten Teamkollegen bzw. den unmittelbar beherrschten Kompetenzen eines Zielnutzers in Verbindung stehen.
+Durch das in in Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} erläutert, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix $M$ des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielnutzer weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Fähigkeiten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten ein höheres Gewicht, welche mit den direkten Teamkollegen bzw. den unmittelbar beherrschten Kompetenzen eines Zielnutzers in Verbindung stehen.
 
-Zur effizienteren Vorschlagsbestimmung wird die Ergebnismatrix zwischengespeichert. Somit muss die algorithmisch komplexe Berechnung des Katz-Algorithmus nur ausgeführt werden, wenn sich Daten im Unternehmen ändern. Dieses Vorgehen ermöglicht es, immer die aktuellen Daten des Unternehmens bei der Empfehlungsberechnung zu betrachten und gleichzeitig eine zu modellbasierten Verfahren vergleichbare Effizienz zu erreichen.
+bilateral
 
-Die Bestimmung der Empfehlungen anhand der zwischengespeicherten Matrix erfolgt in zwei separaten Empfehlungskomponenten. Eine der beiden Module verfolgt einen unilateralen, die andere einen bilateralen Ansatz. Beide Module unterscheiden sich ausschließlich in der Art, wie sie die Mitarbeiter sortieren.
+Zur effizienteren Vorschlagsbestimmung wird die Ergebnismatrix zwischengespeichert. Somit muss der Martrixservice die algorithmisch komplexe Berechnung des Katz-Algorithmus nur bei sich ändernder Datenlage im Unternehmen erneut ausführen. Dieses Vorgehen kombiniert die Vorteile von speicher- und modellbasierten Empfehlungsansätzen. Wie bei speicherbasierten Verfahren üblich greift der Matrixservice stets auf die aktuellen Daten des Unternehmens zurück. Durch die Zwischenspeicherung der Ergebnisse der Matrixberechnung ist es gleichzeitig möglich, der Empfehlungsberechnung eine zu modellbasierten Verfahren vergleichbare Effizienz zu erreichen.
 
+Die Implementierung des Matrixservices erfolgte in der Programmiersprache Python in Kombination mit dem Web-Framework Flask. Für die Matrixberechnungen wird das Paket Numpy eingesetzt. Als Zwischenspeicher kommt der Schlüssel-Wert-Speicher Redis zum Einsatz.
+
+Eine Auszug einer beispielhaften Rückgabe des Matrixservices ist in Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:matrixservice:qc1} dargestellt.
+
+\lstinputlisting[
+language=json,
+caption=Beispiel für die Rückgabe des Matrixservices (Auszug),
+captionpos=b,
+label=qc:methodik:versuchsaufbau:systemarchitektur:matrixservice:qc1
+]{gfx/john-matrix.json}
+
+Kotlin entfernt
+
+Die finale Bestimmung der uni- und bilateralen Empfehlungen anhand der Rückgabe des Matrixservices erfolgt im Recommendationservice.
+
+\newpage
 \subsection{Unilateraler Empfehlungsansatz}
 \label{ch:methodik:versuchsaufbau:unilateral}
 Die unilaterale Empfehlungskomponente fokussiert bei der Bestimmung von Vorschlägen ausschließlich die Präferenzen des Projektmanagers. Im Sinne des \acp{PEFit} wird folglich nur die Anforderungen-Fähigkeiten Kongruenz betrachtet.

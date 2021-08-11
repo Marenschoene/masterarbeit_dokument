@@ -1,0 +1,10 @@
+[...,
+"john.doe@exxeta":{
+	".NET":{
+		"bilateralLevel":0.0042752109389263765,
+		"originalLevel":0,
+		"preference":false,
+		"unilateralLevel":0.0042752109389263765
+	},
+},
+... ]
