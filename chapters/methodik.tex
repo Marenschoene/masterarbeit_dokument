@@ -75,9 +75,9 @@ Beim Intranetservice aus Abbildung \ref{fig:methodik:systemarchitekturn:abb1} ha
 \label{ch:methodik:versuchsaufbau:systemarchitektur:intranetservice}
 Das Intranet der EXXETA AG bietet eine REST-Schnittstelle, welche Informationen über sämtliche Mitarbeiter des Unternehmens in Form von JSON zurückgibt. Über diese können unter anderem die Kompetenzbewertungen und die Teamzuordnungen der Angestellten abgefragt werden. Einzelne Mitarbeiter sind dabei eindeutig über ihre E-Mail-Adresse identifizierbar.
 
-In der vorliegenden Problemstellung werden nicht die Daten aller Angestellten des Unternehmens benötigt. Der Empfehlungsalgorithmus benötigt ausschließlich die Informationen von denjenigen Mitarbeitern, welche im Rahmen der Umfrage Präferenzen bezüglich eingesetzter Kompetenzen spezifiziert haben.
+In der vorliegenden Problemstellung werden nicht die Daten aller Angestellten des Unternehmens benötigt. Der Empfehlungsalgorithmus verwendet ausschließlich die Informationen von denjenigen Mitarbeitern, welche im Rahmen der Umfrage Präferenzen bezüglich eingesetzter Kompetenzen spezifiziert haben.
 
-Die Aufgabe des Intranetservices besteht darin, die Rückgabe der Schnittstelle des Intranets der EXXETA AG mit den erhobenen Präferenzen der Umfrage zu kombinieren und sämtliche nicht benötigten Informationen zu Gunsten der Datensparsamkeit zu entfernen. Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} zeigt einen beispielhaften Auszug aus der Rückgabe des Intranetservices.
+Die Aufgabe des Intranetservices besteht darin, die Rückgabe der Schnittstelle des Intranets der EXXETA AG mit den erhobenen Präferenzen der Umfrage zu kombinieren. Außerdem entfernt er sämtliche nicht benötigten Informationen zu Gunsten der Datensparsamkeit. Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} zeigt einen beispielhaften Auszug aus der Rückgabe des Intranetservices.
 
 %\begin{minipage}{\linewidth}
 \lstinputlisting[
@@ -88,11 +88,15 @@ label=qc:methodik:versuchsaufbau:daten:qc1
 ]{gfx/john.json}
 %\end{minipage}
 
-\newpage
+In Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass die ganzzahligen Kompetenz-Bewertungen des Intranets um eins erhöht werden. Somit reichen die Beurteilungen beherrschter Fähigkeiten von eins bis sechs. Lediglich Kompetenzen, welche ein Mitarbeiter präferiert, aber noch nicht beherrscht, verfügen über eine Bewertung von 0.
 
-\section{Verwendetes Empfehlungsverfahren}
-\label{ch:methodik:empfehlungsmethode}
-Das im Rahmen dieser Master-Thesis implementierte Empfehlungssystem basiert auf der Datenstruktur eines Graphen. Dabei werden die Mitarbeiter der EXXETA AG und deren Fähigkeiten in Form von Knoten dargestellt. Um das Sparsity Problem zu lösen, wird der speicherbasierte Algorithmus von Katz aus Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angewendet. Da die Anwendung auch über die Master-Thesis hinaus im Unternehmen zum Einsatz kommen soll, ist insbesondere die Langlebigkeit des Verfahrens vorteilhaft gegenüber modellbasierten Methoden. Sollten sich nach Durchführung des Experiments Daten im Unternehmen verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist das Empfehlungssystem weiterhin ohne zusätzlichen manuellen Aufwand im Betrieb anwendbar. Die hohe algorithmische Komplexität des Katz-Algorithmus ist für die vorliegende Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments weniger als 1.000 Mitarbeiter im Unternehmen befinden.
+Die Implementierung des Intranetservices erfolgte in der Programmiersprache Kotlin. Als Web-Framework wurde Spring Boot in Kombination mit GraalVM Native Image-Compiler verwendet, welcher die Startzeit und den Speicherverbrauch des Dienstes stark reduziert.
+
+Die Daten des Intranetservices dienen als Eingabe für den Matrixservice, welcher zur Optimierung der Empfehlungsbestimmung die Sparsity- und Kaltstart-Problematik löst.
+
+\subsection{Matrixservice}
+\label{ch:methodik:versuchsaufbau:systemarchitektur:matrixservice}
+Der Matrixservice greift auf die Datenstruktur eines Graphen zurück. Dabei werden die Mitarbeiter der EXXETA AG und deren Fähigkeiten in Form von Knoten dargestellt. Um das Sparsity Problem zu lösen, wird der speicherbasierte Algorithmus von Katz aus Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angewendet. Da die Anwendung auch über die Master-Thesis hinaus im Unternehmen zum Einsatz kommen soll, ist insbesondere die Langlebigkeit des Verfahrens vorteilhaft gegenüber modellbasierten Methoden. Sollten sich nach Durchführung des Experiments Daten im Unternehmen verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist das Empfehlungssystem weiterhin ohne zusätzlichen manuellen Aufwand im Betrieb anwendbar. Die hohe algorithmische Komplexität des Katz-Algorithmus ist für die vorliegende Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments weniger als 1.000 Mitarbeiter im Unternehmen befinden.
 
 Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt der Algorithmus von Katz für eine feingranulare Anpassung vorhandener Beurteilungen. Dass Bewertungen von Mitarbeitern gänzlich fehlen, kann bei er EXXETA AG weitgehend ausgeschlossen werden. Führungskräfte fordern ihre Angestellten regelmäßig dazu auf, ihre Kompetenzen im Intranet aktuell zu halten und diese beispielsweise im Rahmen des Mitarbeiter-Jahresgespräches zu pflegen. Angestellte ohne Bewertungen sind folglich nur in Ausnahmefällen zu erwarten. Hierzu zählen beispielsweise Werkstudenten und neue Mitarbeiter.
 
