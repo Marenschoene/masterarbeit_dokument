@@ -1,36 +1,31 @@
+[...,
 {
-	"name":"John",
-	"lastname":"Doe",
-	"position":"Consultant",
 	"userName":"john.doe@exxeta.com",
-	"mail":"john.doe@exxeta.com",
-	"team":{
-		"name":"Java Enterprise Solutions 3",
-		"colleagues":[
-			{
-				"id":"abc-001",
-				"name":"Jane Doe",
-				"username":"Jane.Doe@EXXETA.com",
-				"teamName":"Java Enterprise Solutions 3"
-			}
-		]
-	},
+	"manager":null,
 	"skills":[
 		{
+			"name":"HDFS",
+			"level":1,
+			"preference":true
+		},
+		{
 			"name":"Java",
-			"level":2,
-			"description":null
+			"level":3,
+			"preference":false
 		},
 		{
 			"name":"MySQL",
-			"level":1,
-			"description":null
+			"level":2,
+			"preference":true
 		},
 		{
-			"name":"HDFS",
+			"name":"Python",
 			"level":0,
-			"description":null
+			"preference":true
 		}
 	],
-	"manager": null
-}
+	"colleagues":[
+		"jane.doe@exxeta.com"
+	]
+},
+... ]

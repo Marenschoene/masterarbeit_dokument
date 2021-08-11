@@ -2,7 +2,7 @@
 \chapter{Methodik}
 \label{ch:methodik}
 
-\section{Art der Forschung}
+\section{Forschungsart}
 \label{ch:methodik:art}
 Um die Forschungsfrage der vorliegenden Master-Thesis zu untersuchen, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext wird ein Empfehlungssystem entwickelt, welches sowohl uni- als auch bilaterale Vorschläge zur Besetzung offener Projektpositionen generiert. Für beide Ansätze werden dieselben Projektbeschreibungen und Mitarbeiter als Eingabe verwendet. Die beiden Empfehlungsverfahren unterscheiden sich lediglich in der Art, in welcher sie die vorhandenen Angestellten für die eingegebenen Stellen sortieren. Zur Beantwortung der Forschungsfrage wird eine Fallstudie mit Projektmanagern und -mitarbeitern durchgeführt.
 
@@ -42,6 +42,54 @@ Die EXXETA AG erhebt keine Präferenzen der Mitarbeiter bezüglich ihrer Kompete
 
 Die Kompetenzbewertungen der Mitarbeiter und deren Präferenzen dienen im Experiment als Grundlage für ein hybrides Empfehlungssystem.
 
+\section{Aufbau des hybriden Empfehlungssystems}
+\label{ch:methodik:versuchsaufbau:systemarchitektur}
+Dem im Rahmen dieser Master-Thesis implementieren Empfehlungssystem liegt eine Microservice-Architektur zu Grunde, welche aus drei Diensten besteht. Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt einen Überblick über die Systemarchitektur der Anwendung.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{gfx/Systemarchitektur.png}
+	\caption{Systemarchitektur des hybriden Empfehlungssystems}
+	\label{fig:methodik:systemarchitekturn:abb1}
+\end{figure}
+
+Um die Funktionsweisen und Rückgaben der verschiedenen Dienste des Systems aus Abbildung \ref{fig:methodik:systemarchitekturn:abb1} anhand von Beispielen zu verdeutlichen, werden Mitarbeiter und Kompetenzbewertungen aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} verwendet. Dabei wird vorausgesetzt, dass Jane Doe und Max Muster bzw. John Doe und Erika Muster in jeweils einem Team tätig sind. Zusätzlich wird angenommen, dass die Mitarbeiter die Präferenzen aus Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1} im Rahmen der Umfrage angegeben haben.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c|c}
+		& Java & Python & MySQL & MongoDB & HDFS & Spark & Kotlin\\ 
+		\hline
+		Jane D. & \cellcolor{usercolor}Falsch & \cellcolor{usercolor}Falsch & \cellcolor{usercolor}Falsch & \cellcolor{usercolor}Falsch & \cellcolor{itemcolor}Wahr & \cellcolor{usercolor}Falsch & \cellcolor{itemcolor}Wahr\\
+		John D. & \cellcolor{usercolor}Falsch & \cellcolor{itemcolor}Wahr & \cellcolor{itemcolor}Wahr & \cellcolor{usercolor}Falsch & \cellcolor{itemcolor}Wahr & \cellcolor{usercolor}Falsch & \cellcolor{usercolor}Falsch\\
+		Erika M. & \cellcolor{usercolor}Falsch & \cellcolor{itemcolor}Wahr & \cellcolor{usercolor}Falsch & \cellcolor{usercolor}Falsch & \cellcolor{usercolor}Falsch & \cellcolor{usercolor}Falsch & \cellcolor{usercolor}Falsch\\
+		Max M. & \cellcolor{usercolor}Falsch & \cellcolor{usercolor}Falsch & \cellcolor{itemcolor}Wahr & \cellcolor{usercolor}Falsch & \cellcolor{itemcolor}Wahr & \cellcolor{usercolor}Falsch & \cellcolor{usercolor}Falsch
+	\end{tabular}
+	\caption{Beispiel für die Präferenzangaben von Mitarbeitern mit boolschen Werten (w/f)}
+	\label{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1}
+\end{table}
+
+Beim Intranetservice aus Abbildung \ref{fig:methodik:systemarchitekturn:abb1} handelt es sich um einen Dienst, welcher im Rahmen des Experiments das Intranet der EXXETA AG simuliert.
+
+\subsection{Intranetservice}
+\label{ch:methodik:versuchsaufbau:systemarchitektur:intranetservice}
+Das Intranet der EXXETA AG bietet eine REST-Schnittstelle, welche Informationen über sämtliche Mitarbeiter des Unternehmens in Form von JSON zurückgibt. Über diese können unter anderem die Kompetenzbewertungen und die Teamzuordnungen der Angestellten abgefragt werden. Einzelne Mitarbeiter sind dabei eindeutig über ihre E-Mail-Adresse identifizierbar.
+
+In der vorliegenden Problemstellung werden nicht die Daten aller Angestellten des Unternehmens benötigt. Der Empfehlungsalgorithmus benötigt ausschließlich die Informationen von denjenigen Mitarbeitern, welche im Rahmen der Umfrage Präferenzen bezüglich eingesetzter Kompetenzen spezifiziert haben.
+
+Die Aufgabe des Intranetservices besteht darin, die Rückgabe der Schnittstelle des Intranets der EXXETA AG mit den erhobenen Präferenzen der Umfrage zu kombinieren und sämtliche nicht benötigten Informationen zu Gunsten der Datensparsamkeit zu entfernen. Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} zeigt einen beispielhaften Auszug aus der Rückgabe des Intranetservices.
+
+%\begin{minipage}{\linewidth}
+\lstinputlisting[
+language=json,
+caption=Beispiel für die Rückgabe des Intranetservices (Auszug),
+captionpos=b,
+label=qc:methodik:versuchsaufbau:daten:qc1
+]{gfx/john.json}
+%\end{minipage}
+
+\newpage
+
 \section{Verwendetes Empfehlungsverfahren}
 \label{ch:methodik:empfehlungsmethode}
 Das im Rahmen dieser Master-Thesis implementierte Empfehlungssystem basiert auf der Datenstruktur eines Graphen. Dabei werden die Mitarbeiter der EXXETA AG und deren Fähigkeiten in Form von Knoten dargestellt. Um das Sparsity Problem zu lösen, wird der speicherbasierte Algorithmus von Katz aus Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angewendet. Da die Anwendung auch über die Master-Thesis hinaus im Unternehmen zum Einsatz kommen soll, ist insbesondere die Langlebigkeit des Verfahrens vorteilhaft gegenüber modellbasierten Methoden. Sollten sich nach Durchführung des Experiments Daten im Unternehmen verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist das Empfehlungssystem weiterhin ohne zusätzlichen manuellen Aufwand im Betrieb anwendbar. Die hohe algorithmische Komplexität des Katz-Algorithmus ist für die vorliegende Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments weniger als 1.000 Mitarbeiter im Unternehmen befinden.
@@ -50,22 +98,7 @@ Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt
 
 Um Kaltstarts auch in solchen Ausnahmefällen vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen der Mitarbeiter bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn deren direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieses Vorgehen ist im Falle der EXXETA AG als sinnvoll zu bewerten, da dort stets Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig sind. Auch der Manager des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für seine Mitarbeiter sind.%Seine Kompetenzen sind in der Regel jedoch stärker ausgeprägt.
 
-Die Bewertungen der Fähigkeiten und die Teamzuordnungen können für alle Mitarbeiter der EXXETA AG über eine REST-Schnittstelle in Form von JSON aus dem Intranet abgefragt werden. Einzelne Mitarbeiter sind dabei eindeutig über ihre E-Mail-Adresse identifizierbar.
 
-In der vorliegenden Problemstellung werden nicht die Daten aller Angestellten des Unternehmens verwendet. Es wird ausschließlich auf Informationen über Mitarbeiter zurückgegriffen, welche im Rahmen der Befragung Präferenzen spezifiziert haben. Aus diesem Grund wird die REST-Schnittstelle des Intranets im Rahmen der vorliegenden Master-Thesis 
-
-\section{Systemarchitektur}
-\label{ch:methodik:versuchsaufbau:systemarchitektur}
-Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt die im Rahmen dieser Master-Thesis implementierte Systemarchitektur des Empfehlungssystems.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.75\textwidth]{gfx/Systemarchitektur.png}
-	\caption{Systemarchitektur des Empfehlungssystems}
-	\label{fig:methodik:systemarchitekturn:abb1}
-\end{figure}
-
-Im folgenden werden die einzelnen Komponenten der Anwendung erläutert.
 
 \subsection{Grundlegender Algorithmus}
 \label{ch:methodik:versuchsaufbau:grundlegend}
@@ -261,15 +294,4 @@ Evaluation für Mitarbeiter:\\
 Es wird bewusst darauf verzichtet, zusätzliche Stellenbeschreibungen oder Auftraggeber zu nennen, die die Bewertung verzerren könnten. Mitarbeiter und Projektmanager erhalten ausschließlich Informationen, die auch vom Empfehlungssystem verarbeitet werden.
 
 - Caching!!!
-
-Wäre John Doe aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ein Mitarbeiter des Unternehmens, würden seine zurückgegebenen Daten dem JSON in Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} entsprechen. Nicht relevante Informationen wurden im vorliegenden Auszug entfernt. In diesem und den folgenden Beispielen werden Jane Doe und Max Muster sowie Erika Muster und John Doe als Mitglieder jeweils eines Teams betrachtet. 
-
-%\begin{minipage}{\linewidth}
-\lstinputlisting[
-language=json,
-caption=Beispiel für ein Mitarbeiter-JSON der REST-Schnittstelle des Intranets der EXXETA AG (Auszug),
-captionpos=b,
-label=qc:methodik:versuchsaufbau:daten:qc1
-]{gfx/john.json}
-%\end{minipage}
 \shorthandon{"}
