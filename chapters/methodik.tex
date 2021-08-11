@@ -88,7 +88,7 @@ label=qc:methodik:versuchsaufbau:daten:qc1
 ]{gfx/john.json}
 %\end{minipage}
 
-In Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass die ganzzahligen Kompetenz-Bewertungen des Intranets um eins erhöht werden. Somit reichen die Beurteilungen beherrschter Fähigkeiten von eins bis sechs. Lediglich Kompetenzen, welche ein Mitarbeiter präferiert, aber noch nicht beherrscht, verfügen über eine Bewertung von 0.
+In Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass die ganzzahligen Kompetenz-Bewertungen des Intranets um eins erhöht werden. Somit reichen die Beurteilungen beherrschter Fähigkeiten anstelle von 0 bis fünf nun von eins bis sechs. Auf diese Weise verfügen lediglich Kompetenzen, welche Mitarbeiter präferieren, aber nicht beherrschen, über eine Bewertung von 0.
 
 Die Implementierung des Intranetservices erfolgte in der Programmiersprache Kotlin. Als Web-Framework wurde Spring Boot in Kombination mit GraalVM Native Image-Compiler verwendet, welcher die Startzeit und den Speicherverbrauch des Dienstes stark reduziert.
 
@@ -96,26 +96,15 @@ Die Daten des Intranetservices dienen als Eingabe für den Matrixservice, welche
 
 \subsection{Matrixservice}
 \label{ch:methodik:versuchsaufbau:systemarchitektur:matrixservice}
-Der Matrixservice greift auf die Datenstruktur eines Graphen zurück. Dabei werden die Mitarbeiter der EXXETA AG und deren Fähigkeiten in Form von Knoten dargestellt. Um das Sparsity Problem zu lösen, wird der speicherbasierte Algorithmus von Katz aus Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angewendet. Da die Anwendung auch über die Master-Thesis hinaus im Unternehmen zum Einsatz kommen soll, ist insbesondere die Langlebigkeit des Verfahrens vorteilhaft gegenüber modellbasierten Methoden. Sollten sich nach Durchführung des Experiments Daten im Unternehmen verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist das Empfehlungssystem weiterhin ohne zusätzlichen manuellen Aufwand im Betrieb anwendbar. Die hohe algorithmische Komplexität des Katz-Algorithmus ist für die vorliegende Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments weniger als 1.000 Mitarbeiter im Unternehmen befinden.
+Der Matrixservice basiert auf der Datenstruktur eines Graphen. Hierbei werden die Mitarbeiter der EXXETA AG und deren Fähigkeiten in Form von Knoten dargestellt. Um das Sparsity Problem zu lösen, wird der speicherbasierte Algorithmus von Katz aus Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angewendet. Da die Anwendung auch über die Master-Thesis hinaus im Unternehmen zum Einsatz kommen soll, ist insbesondere die Langlebigkeit des Verfahrens vorteilhaft gegenüber modellbasierten Methoden. Sollten sich nach Durchführung des Experiments Daten im Unternehmen verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist das Empfehlungssystem weiterhin ohne zusätzlichen manuellen Aufwand im Betrieb anwendbar. Die hohe algorithmische Komplexität des Katz-Algorithmus ist für die vorliegende Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments weniger als 1.000 Mitarbeiter im Unternehmen befinden.
 
-Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt der Algorithmus von Katz für eine feingranulare Anpassung vorhandener Beurteilungen. Dass Bewertungen von Mitarbeitern gänzlich fehlen, kann bei er EXXETA AG weitgehend ausgeschlossen werden. Führungskräfte fordern ihre Angestellten regelmäßig dazu auf, ihre Kompetenzen im Intranet aktuell zu halten und diese beispielsweise im Rahmen des Mitarbeiter-Jahresgespräches zu pflegen. Angestellte ohne Bewertungen sind folglich nur in Ausnahmefällen zu erwarten. Hierzu zählen beispielsweise Werkstudenten und neue Mitarbeiter.
+Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt der Algorithmus von Katz für eine feingranulare Anpassung vorhandener Beurteilungen. Dass Mitarbeiter keine einzige Fähigkeit bewertet haben, kann bei er EXXETA AG weitgehend ausgeschlossen werden. Führungskräfte fordern ihre Angestellten regelmäßig dazu auf, ihre Kompetenzen im Intranet aktuell zu halten und diese beispielsweise im Rahmen des Mitarbeiter-Jahresgespräches zu pflegen. Angestellte ohne Bewertungen sind folglich nur in Ausnahmefällen zu erwarten. Hierzu zählen unter anderem Werkstudenten und neue Mitarbeiter. Dennoch können Kaltstarts nicht vollständig ausgeschlossen werden. So wäre es beispielsweise denkbar, dass einzelne Mitarbeiter Kompetenzen beherrschen, über welche kein anderer Angestellter verfügt. Bei einem solchen Sachverhalt besteht im Graphen keine Kante zwischen den beiden Mitarbeitern.
 
-Um Kaltstarts auch in solchen Ausnahmefällen vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen der Mitarbeiter bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn deren direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieses Vorgehen ist im Falle der EXXETA AG als sinnvoll zu bewerten, da dort stets Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig sind. Auch der Manager des Teams ist eine fachliche Führungskraft, dessen Fähigkeiten weitgehend repräsentativ für seine Mitarbeiter sind.%Seine Kompetenzen sind in der Regel jedoch stärker ausgeprägt.
+Um Kaltstarts auch in solchen Fällen vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Über dieses Vorgehen sind stets sämtliche Mitarbeiter des Bereichs \acl{JES} über den Abteilungsleiter bzw. alle Angestellten der EXXETA AG über den Vorstand miteinander verbunden. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen der Mitarbeiter bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn deren direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieser Ansatz ist im Falle der EXXETA AG als sinnvoll zu bewerten, da dort stets Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig sind. Auch die Teammanager sind fachliche Führungskräfte, deren Fähigkeiten weitgehend repräsentativ für ihre Mitarbeiter sind.
 
+Um eine weitere Erhöhung der Komplexität des Algorithmus von Katz zu vermeiden, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird auf \teamgewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit schwach in die Berechnung mit einzubeziehen, sodass die tatsächlichen Kompetenz-Beurteilungen nur feingranular korrigiert werden.
 
-
-\subsection{Grundlegender Algorithmus}
-\label{ch:methodik:versuchsaufbau:grundlegend}
-
-
-
-Wie bereits im Kontext von Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} erläutert, sind die Bewertungen der Kompetenzen im JSON aus Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} um eins niedriger als in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}.
-
-Vor Überführung der Daten der REST-Schnittstelle in die Datenstruktur eines Graphen, werden die sechsstufigen Beurteilungen der Fähigkeiten der Mitarbeiter auf die zweistufige Skala der Projektmanager angepasst. Hierbei werden Bewertungen auf dem Niveau "Grundkenntnisse" auf ein Kantengewicht von \kantengewichtString und "fortgeschrittene" Beurteilungen auf \kantengewichtHochString vereinfacht. Diese Werte entsprechen den höchstmöglichen Bewertungen auf dem jeweiligen Kompetenzniveau. Ein Gewicht von 0 symbolisiert ausschließlich nicht bewertete Fähigkeiten.
-
-Um eine weitere Erhöhung der Komplexität des Algorithmus von Katz zu vermeiden, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird auf \teamgewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit schwach in die Berechnung mit einzubeziehen, die individuellen Beurteilungen der Mitarbeiter jedoch höher zu gewichten.%Über diesen Ansatz sind alle Teammitglieder schwach miteinander verbunden, sodass die vorhandenen Bewertungen wenig verzerrt werden und dennoch auch im Fall eines Kaltstarts für Mitarbeiter ohne explizite Bewertungen Beurteilungen bestimmt werden können.
-
-Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen.%Außerdem wurde eine offene Projektposition in Form eines Pseudo-Mitarbeiters eingefügt.
+Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen. Die Präferenzen der Angestellten werden hierbei nicht berücksichtigt.
 
 \begin{figure}[h]
 	\centering	
@@ -130,39 +119,28 @@ Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellun
 		\node[main, fill=usercolor] (Jane) [above right of=MongoDB] {$Jane D.$}; 
 		\node[main, fill=usercolor] (John) [above left of=HDFS] {$John D.$}; 
 		\node[main, fill=usercolor] (Max) [below of=MySQL] {$Max M.$};
-		\node[main, fill=usercolor] (Erika) [above right of=HDFS] {$Erika M.$};
+		\node[main, fill=usercolor] (Erika) [above right of=HDFS] {$Erika M.$}; 
 		
-		\draw (Jane) -- node[midway, right] {\kantengewichtHoch} (Python);
-		\draw (Jane) -- node[midway, above] {\kantengewicht} (MySQL);
-		\draw (Jane) -- node[midway, above] {\kantengewicht} (MongoDB);
+		\draw (Jane) -- node[midway, right] {4} (Python);
+		\draw (Jane) -- node[midway, above] {3} (MySQL);
+		\draw (Jane) -- node[midway, above] {3} (MongoDB);
+		\draw (Jane) -- node[midway, left] {1} (Max);
 		
-		\draw (John) -- node[midway, right] {\kantengewicht} (HDFS);		
-		\draw (John) -- node[midway, right] {\kantengewicht} (Java);
-		\draw (John) -- node[midway, above] {\kantengewicht} (MySQL);
+		\draw (John) -- node[midway, right] {1} (HDFS);		
+		\draw (John) -- node[midway, right] {3} (Java);
+		\draw (John) -- node[midway, above] {2} (MySQL);
+		\draw (John) -- node[midway, above] {1} (Erika);
 		
-		\draw (Erika) -- node[midway, above] {\kantengewichtHoch} (HDFS);
-		\draw (Erika) -- node[midway, right] {\kantengewicht} (Spark);
+		%\path (Erika) edge[bend right=10] node[midway, right] {5} (HDFS); 
+		\draw (Erika) -- node[midway, above] {5} (HDFS);
+		\draw (Erika) -- node[midway, right] {3} (Spark);
 		
-		\draw (Max) -- node[midway, above] {\kantengewicht} (Java);
-		\draw (Max) -- node[midway, above] {\kantengewicht} (Python);
-		\draw (Max) -- node[midway, right] {\kantengewicht} (MySQL);
-		
-		%\draw (Jane) -- node[midway, above] {\kantengewicht} (John);
-		\draw (Jane) -- node[midway, left] {\teamgewicht} (Max);
-		%\path (Jane) edge[bend left=25] node[midway, above] {\kantengewicht} (Erika);
-		
-		%\draw (John) -- node[midway, right] {\kantengewicht} (Max);
-		\draw (John) -- node[midway, above] {\teamgewicht} (Erika);
-		
-		%\path (Max) edge[bend right=40] node[midway, above] {\kantengewicht} (Erika);
-		
-		%\node[main, fill=usercolor] (Projekt) [below of=Java] {$Projekt$}; 
-		%\path (Projekt) edge[bend left=40] node[midway, above] {\kantengewicht} (MongoDB);
-		%\path (Projekt) edge[bend right=25] node[midway, above] {\kantengewicht} (Spark);
-		%\draw (Projekt) -- node[midway, right] {\kantengewichtHoch} (Java);
+		\draw (Max) -- node[midway, above] {2} (Java);
+		\draw (Max) -- node[midway, above] {3} (Python);
+		\draw (Max) -- node[midway, right] {1} (MySQL);
 	\end{tikzpicture}
 	
-	\caption{Graph aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} mit zusätzlicher Teamzuordnung und offener Projektposition}
+	\caption{Graph aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} mit zusätzlicher Teamzuordnung}
 	\label{fig:methodik:versuchsaufbau:unilateral:abb1}
 \end{figure}
 
@@ -298,4 +276,6 @@ Evaluation für Mitarbeiter:\\
 Es wird bewusst darauf verzichtet, zusätzliche Stellenbeschreibungen oder Auftraggeber zu nennen, die die Bewertung verzerren könnten. Mitarbeiter und Projektmanager erhalten ausschließlich Informationen, die auch vom Empfehlungssystem verarbeitet werden.
 
 - Caching!!!
+
+Vor Überführung der Daten der REST-Schnittstelle in die Datenstruktur eines Graphen, werden die sechsstufigen Beurteilungen der Fähigkeiten der Mitarbeiter auf die zweistufige Skala der Projektmanager angepasst. Hierbei werden Bewertungen auf dem Niveau "Grundkenntnisse" auf ein Kantengewicht von \kantengewichtString und "fortgeschrittene" Beurteilungen auf \kantengewichtHochString vereinfacht. Diese Werte entsprechen den höchstmöglichen Bewertungen auf dem jeweiligen Kompetenzniveau. Ein Gewicht von 0 symbolisiert ausschließlich nicht bewertete Fähigkeiten.
 \shorthandon{"}
