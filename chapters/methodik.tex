@@ -75,10 +75,10 @@ Das im Rahmen dieser Master-Thesis implementierte Empfehlungssystem basiert auf 
 	\begin{tabular}{c|c}
 		Nutzer & Präferierte Fähigkeiten\\
 		\hline
-		Jane Doe     & HDFS, Kotlin\\
-		John Doe     & Python, MySQL, HDFS\\
-		Erika Muster & Python\\
-		Max Muster   & MySQL, HDFS
+		Jane D.     & HDFS, Kotlin\\
+		John D.     & Python, MySQL, HDFS\\
+		Erika M.    & Python\\
+		Max M.      & MySQL, HDFS
 	\end{tabular}
 	\caption{Präferierte Fähigkeiten der Beispielnutzer}
 	\label{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1}
@@ -199,17 +199,7 @@ Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ände
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
 \end{table}
 
-In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} ist veranschaulicht, dass sich die Bewertungen der drei Angestellten mit Grundkenntnissen in MySQL auch nach Berechnung des Katz-Algorithmus auf einem vergleichbaren Niveau befinden. Die Beurteilungen sind innerhalb einer Stufe lediglich feingranular unterschiedlich.
-
-Zur unilateralen Empfehlungsbestimmung werden die Ergebnisse der Matrixberechnung ohne weitere Veränderung genutzt. Um bilaterale Vorschläge zu bestimmen, bezieht der Matrixservice zusätzlich die Präferenzen der Angestellten ein. Es wird angenommen, dass Projektmanager stets denjenigen Mitarbeiter für eine benötigte Kompetenz auswählen, welcher für das gesuchte Kompetenzniveau (Grundkenntnisse bzw. Fortgeschritten) die höchste Bewertung aufweist. Aus diesem Grund wird die sechsstufige Skala des Intranets nach der Ausführung des Katz-Algorithmus auf die in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellten Kompetenzniveaus vereinfacht. 
-
-
-
-
-
-
-
-
+Die in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} dargestellten Ergebnisse der Matrixberechnung werden in der weiteren Berechnung ohne weitere Veränderung für die unilaterale Empfehlungsbestimmung genutzt. Um bilaterale Vorschläge zu bestimmen, betrachtet der Matrixservice zusätzlich die Präferenzen der Angestellten. Es wird angenommen, dass Projektmanager stets denjenigen Mitarbeiter für eine benötigte Kompetenz auswählen, welcher für das gesuchte Kompetenzniveau (Grundkenntnisse bzw. Fortgeschritten) die höchste Bewertung aufweist. Aus diesem Grund wird die sechsstufige Skala des Intranets nach der Ausführung des Katz-Algorithmus auf die in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellten Kompetenzniveaus vereinfacht. 
 
 Wird anhand der Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} ein Mitarbeiter mit der Fähigkeit MySQL gesucht, kann folglich der Angestellte mit dem höchsten Wert im gesuchten Kompetenzbereich als geeignetster Kandidat betrachtet werden. Im vorliegenden Beispiel wäre somit Jane Doe die qualifizierteste Mitarbeiterin für die Suche nach einem Angestellten mit Grundkenntnissen im Umgang mit MySQL. Ihre Bewertung dient daher bei der Bestimmung des \acp{PEFit} für das gesuchte Kompetenzniveau in MySQL als Nullpunkt in Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2}.
 
