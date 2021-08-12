@@ -29,9 +29,9 @@ Die Abstufungen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} werden
 
 Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} kann der in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angesprochene Bias bei der Selbsteinschätzung weitgehend ausgeschlossen werden. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen bewusst besser oder schlechter bewerten als andere Kollegen. Dieser Sachverhalt ist insbesondere auf längere Berufserfahrung zurückzuführen. Aus diesen Gründen wird bei der Empfehlungsbestimmung auf eine Mittelwert-Zentrierung verzichtet.
 
-Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene Projektpositionen nachgefragten Fähigkeiten mitsamt der benötigten Kenntnisniveaus festlegen. Die relevanten Kompetenzen bestimmen die Verantwortlichen in der Regel anhand eingehender Projektanfragen, welche Kunden in unstrukturierter Form, beispielsweise über Telefon oder E-Mail, einreichen. Derartige Anfragen werden täglich in großer Anzahl bearbeitet. Daher wird es für den praktischen Einsatz als sehr umständlich bewertet, wenn Verantwortliche für jede Projektanfrage sämtliche Fähigkeiten auf der sechsstufigen Skala bewerten müssen. Aus diesem Grund werden die Kompetenzniveaus aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} zur Spezifikation ooffener Projektpositionen auf die Abstufungen "Grundkenntnisse" und "Fortgeschritten" vereinfacht. "Grundkenntnisse" entspricht dabei den ersten drei Stufen und "Fortgeschritten" den oberen drei Fähigkeitsniveaus in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1}. Die Priorisierung der Kompetenzen über diese Abstufungen wird gemäß Kapitel \ref{ch:personEnvironmentFit:wichtigkeiten} als Ausdruck von Wichtigkeiten seitens der Projektmanager betrachtet.
+Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene Projektpositionen nachgefragten Fähigkeiten mitsamt der benötigten Kenntnisniveaus festlegen. Die relevanten Kompetenzen bestimmen die Verantwortlichen in der Regel anhand eingehender Projektanfragen, welche Kunden in unstrukturierter Form, beispielsweise per Telefon oder E-Mail, einreichen. Derartige Anfragen werden täglich in großer Anzahl bearbeitet. Daher wird es für den praktischen Einsatz als sehr umständlich bewertet, wenn Verantwortliche für jede Projektanfrage sämtliche Fähigkeiten auf einer sechsstufigen Skala bewerten müssen. Aus diesem Grund werden die Kompetenzniveaus aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} bei der Spezifikation offener Projektpositionen auf die Abstufungen "Grundkenntnisse" und "Fortgeschritten" vereinfacht. "Grundkenntnisse" entspricht dabei den ersten drei Stufen und "Fortgeschritten" den oberen drei Fähigkeitsniveaus in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1}. Die Priorisierung der Kompetenzen über diese Abstufungen wird gemäß Kapitel \ref{ch:personEnvironmentFit:wichtigkeiten} als Ausdruck von Wichtigkeiten seitens der Projektmanager betrachtet.
 
-Die EXXETA AG erhebt keine Präferenzen der Mitarbeiter bezüglich ihrer Kompetenzen. Um deren Wünsche ebenfalls in die Empfehlungsprozess einzubeziehen, wird im Rahmen dieser Thesis eine Umfrage durchgeführt. Die Angestellten des Bereichs \acl{JES} erhalten zu diesem Zweck einen Fragebogen mit den \anzFaehigkeiten im Intranet hinterlegten Fähigkeiten. Dabei werden sie gebeten, sämtliche Kompetenzen auszuwählen, welche sie gerne in einem Projekt anwenden möchten. Ein Auszug aus dem Fragebogen ist in Abbildung \ref{fig:methodik:versuchsaufbau:abb1} dargestellt.
+Die EXXETA AG erhebt keine Präferenzen ihrer Mitarbeiter bezüglich deren Kompetenzen. Um die Wünsche der Angestellten ebenfalls in die Empfehlungsprozess einzubeziehen, wird im Rahmen dieser Master-Thesis eine Umfrage durchgeführt. Die Angestellten des Bereichs \acl{JES} erhalten zu diesem Zweck einen Fragebogen mit den \anzFaehigkeiten im Intranet hinterlegten Fähigkeiten. Dabei werden sie gebeten, sämtliche Kompetenzen auszuwählen, welche sie gerne in Projekten anwenden möchten. Ein Auszug aus dem Fragebogen ist in Abbildung \ref{fig:methodik:versuchsaufbau:abb1} dargestellt.
 
 \begin{figure}[h]
 	\centering
@@ -44,7 +44,7 @@ Die Kompetenzbewertungen der Mitarbeiter und deren Präferenzen dienen im Experi
 
 \section{Aufbau des hybriden Empfehlungssystems}
 \label{ch:methodik:versuchsaufbau:systemarchitektur}
-Dem im Rahmen dieser Master-Thesis implementieren Empfehlungssystem liegt eine Microservice-Architektur zu Grunde, welche aus drei Diensten besteht. Sämtliche Komponenten werden in Form von Docker-Containern ausgeliefert. Die Orchestrierung des Gesamtsystems erfolgt über Docker-Compose. Die Dienste kommunizieren untereinander über REST. Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt einen Überblick über die zugrundeliegende Systemarchitektur.
+Dem im Rahmen dieser Master-Thesis implementieren Empfehlungssystem liegt eine Microservice-Architektur zu Grunde, welche aus drei Diensten besteht. Sämtliche Komponenten werden in Form von Docker-Containern ausgeliefert. Die Orchestrierung des Gesamtsystems erfolgt über Docker-Compose. Die Dienste kommunizieren untereinander über HTTP. Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt einen Überblick über die zugrundeliegende Systemarchitektur.
 
 \begin{figure}[h]
 	\centering
@@ -57,15 +57,15 @@ Um die Funktionsweisen und Rückgaben der verschiedenen Dienste des Systems aus 
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{c|c|c|c|c|c|c|c}
-		& Java & Python & MySQL & MongoDB & HDFS & Spark & Kotlin\\
+	\begin{tabular}{c|c}
+		Nutzer & Präferierte Fähigkeiten\\
 		\hline
-		Jane D. & \cellcolor{usercolor}F. & \cellcolor{usercolor}F. & \cellcolor{usercolor}F. & \cellcolor{usercolor}F. & \cellcolor{itemcolor}W. & \cellcolor{usercolor}F. & \cellcolor{itemcolor}W.\\
-		John D. & \cellcolor{usercolor}F. & \cellcolor{itemcolor}W. & \cellcolor{itemcolor}W. & \cellcolor{usercolor}F. & \cellcolor{itemcolor}W. & \cellcolor{usercolor}F. & \cellcolor{usercolor}F.\\
-		Erika M. & \cellcolor{usercolor}F. & \cellcolor{itemcolor}W. & \cellcolor{usercolor}F. & \cellcolor{usercolor}F. & \cellcolor{usercolor}F. & \cellcolor{usercolor}F. & \cellcolor{usercolor}F.\\
-		Max M. & \cellcolor{usercolor}F. & \cellcolor{usercolor}F. & \cellcolor{itemcolor}W. & \cellcolor{usercolor}F. & \cellcolor{itemcolor}W. & \cellcolor{usercolor}F. & \cellcolor{usercolor}F.
+		Jane Doe     & HDFS, Kotlin\\
+		John Doe     & Python, MySQL, HDFS\\
+		Erika Muster & Python\\
+		Max Muster   & MySQL, HDFS
 	\end{tabular}
-	\caption{Beispiel für die Präferenzangaben von Mitarbeitern mit boolschen Werten (Wahr (W.)/Falsch (F.))}
+	\caption{Präferierte Fähigkeiten der Beispielnutzer}
 	\label{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1}
 \end{table}
 
