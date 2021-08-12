@@ -4,9 +4,9 @@
 
 \section{Forschungsart}
 \label{ch:methodik:art}
-Um die Forschungsfrage der vorliegenden Master-Thesis zu untersuchen, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext wird ein Empfehlungssystem entwickelt, welches sowohl uni- als auch bilaterale Vorschläge zur Besetzung offener Projektpositionen generiert. Für beide Ansätze werden dieselben Projektbeschreibungen und Mitarbeiter als Eingabe verwendet. Die beiden Empfehlungsverfahren unterscheiden sich lediglich in der Art, in welcher sie die vorhandenen Angestellten für die eingegebenen Stellen sortieren. Zur Beantwortung der Forschungsfrage wird eine Fallstudie mit Projektmanagern und -mitarbeitern durchgeführt.
+Um die Forschungsfrage der vorliegenden Master-Thesis zu untersuchen, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext wird ein Empfehlungssystem entwickelt, welches sowohl uni- als auch bilaterale Vorschläge zur Besetzung offener Projektpositionen generiert. Für beide Ansätze werden dieselben Projektbeschreibungen und Mitarbeiter als Eingabe verwendet. Die beiden Empfehlungsverfahren unterscheiden sich lediglich in der Art, in welcher sie die vorhandenen Angestellten für die eingegebenen Stellen sortieren.
 
-Die Projektmanager erhalten die sortierten Mitarbeiter beider Systeme für vorausgewählte Projektpositionen in Form von Listen. Anschließend bewerten sie auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern für die jeweiligen Stellen erwarten. Dabei wird evaluiert, ob sie die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Ansatzes höher bewerten, als die der unilateralen Variante.
+Zur Beantwortung der Forschungsfrage wird eine Fallstudie mit Projektmanagern und -mitarbeitern durchgeführt. Die Projektmanager erhalten die sortierten Mitarbeiter beider Systeme für vorausgewählte Projektpositionen in Form von Listen. Anschließend bewerten sie auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern für die jeweiligen Stellen erwarten. Dabei wird evaluiert, ob sie die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Ansatzes höher bewerten, als die der unilateralen Variante.
 
 Die Mitarbeiter des Unternehmens erhalten Übersichten über die vorausgewählten Projektpositionen. Daraufhin bewerten sie auf einer vordefinierten Skala, wie zufrieden sie mit einer Tätigkeit auf den vorliegenden Projektpositionen wären. Dabei wird überprüft, ob das bilaterale Empfehlungssystem die Angestellten für die Projektpositionen höher positioniert, bei welchen diese eine hohe Zufriedenheit erwarten bzw. niedriger positioniert, wenn diese eine geringe Zufriedenheit prognostizieren.
 
@@ -29,22 +29,46 @@ Die Abstufungen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} werden
 
 Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} kann der in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angesprochene Bias bei der Selbsteinschätzung weitgehend ausgeschlossen werden. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen bewusst besser oder schlechter bewerten als andere Kollegen. Dieser Sachverhalt ist insbesondere auf längere Berufserfahrung zurückzuführen. Aus diesen Gründen wird bei der Empfehlungsbestimmung auf eine Mittelwert-Zentrierung verzichtet.
 
-Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene Projektpositionen nachgefragten Fähigkeiten mitsamt der benötigten Kenntnisniveaus festlegen. Die relevanten Kompetenzen bestimmen die Verantwortlichen in der Regel anhand eingehender Projektanfragen, welche Kunden in unstrukturierter Form, beispielsweise per Telefon oder E-Mail, einreichen. Derartige Anfragen werden täglich in großer Anzahl bearbeitet. Daher wird es für den praktischen Einsatz als sehr umständlich bewertet, wenn Verantwortliche für jede Projektanfrage sämtliche Fähigkeiten auf einer sechsstufigen Skala bewerten müssen. Aus diesem Grund werden die Kompetenzniveaus aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} bei der Spezifikation offener Projektpositionen auf die Abstufungen "Grundkenntnisse" und "Fortgeschritten" vereinfacht. "Grundkenntnisse" entspricht dabei den ersten drei Stufen und "Fortgeschritten" den oberen drei Fähigkeitsniveaus in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1}. Die Priorisierung der Kompetenzen über diese Abstufungen wird gemäß Kapitel \ref{ch:personEnvironmentFit:wichtigkeiten} als Ausdruck von Wichtigkeiten seitens der Projektmanager betrachtet.
+Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene Projektpositionen nachgefragten Fähigkeiten mitsamt der benötigten Kenntnisniveaus festlegen. Die relevanten Kompetenzen bestimmen die Verantwortlichen in der Regel anhand eingehender Projektanfragen, welche Kunden in unstrukturierter Form, beispielsweise per Telefon oder E-Mail, einreichen. Derartige Anfragen werden täglich in großer Anzahl bearbeitet. Daher wird es für den praktischen Einsatz als sehr umständlich bewertet, wenn Verantwortliche für jede Projektanfrage sämtliche Fähigkeiten auf einer sechsstufigen Skala bewerten müssen. Aus diesem Grund werden die Kompetenzniveaus aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} bei der Spezifikation offener Projektpositionen auf die in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellten Kompetenzniveaus vereinfacht.
+
+\begin{table}[h]
+	\centering
+	\begin{tabularx}{\textwidth}{c|X}
+		Kompetenzniveau & Bewertung im Intranet\\
+		\hline
+		Keine Kenntnisse & -\\
+		\hline
+		& Ich habe Grundkenntnisse\\
+		Grundkenntnisse & Ich habe es schon in einem Projekt eingesetzt\\
+		& Ich habe es in einem Projekt eingeführt\\
+		\hline
+		& Ich habe Kollegen geholfen es einzusetzen\\
+		Fortgeschritten & Ich habe eine Schulung zu dem Thema gehalten\\
+		& Ich habe auf Konferenzen zu dem Thema Vorträge gehalten\\
+		\hline
+	\end{tabularx}
+	\caption{Vereinfachung der im Intranet hinterlegten Kompetenzbewertungen}
+	\label{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1}
+\end{table}
+
+Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} zu erkennen, befinden sich in der ersten Gruppe sämtliche Mitarbeiter, welche die gesuchte Kompetenz nicht im Intranet bewertet haben. In das Niveau "Grundkenntnisse" werden sämtliche Angestellten eingeteilt, welche die Fähigkeit auf der Skala aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} mit einer der unteren drei Bewertungen beurteilt haben. In der Gruppe "Fortgeschritten" befinden sich analog sämtliche Angestellte, welche die Kompetenz mit einer der oberen drei Stufen bewertet haben.
+
+Für die Suche nach geeigneten Mitarbeitern können Projektmanager für jede Fähigkeit eine der beiden Abstufungen "Grundkenntnisse" und "Fortgeschritten" angeben. Die Priorisierung der Kompetenzen über diese Abstufungen wird gemäß Kapitel \ref{ch:personEnvironmentFit:wichtigkeiten} als Ausdruck von Wichtigkeiten seitens der Projektmanager betrachtet.
 
 Die EXXETA AG erhebt keine Präferenzen ihrer Mitarbeiter bezüglich deren Kompetenzen. Um die Wünsche der Angestellten ebenfalls in die Empfehlungsprozess einzubeziehen, wird im Rahmen dieser Master-Thesis eine Umfrage durchgeführt. Die Angestellten des Bereichs \acl{JES} erhalten zu diesem Zweck einen Fragebogen mit den \anzFaehigkeiten im Intranet hinterlegten Fähigkeiten. Dabei werden sie gebeten, sämtliche Kompetenzen auszuwählen, welche sie gerne in Projekten anwenden möchten. Ein Auszug aus dem Fragebogen ist in Abbildung \ref{fig:methodik:versuchsaufbau:abb1} dargestellt.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{gfx/Umfage_Faehigkeiten.png}
+	\includegraphics[width=0.6\textwidth]{gfx/Umfage_Faehigkeiten.png}
 	\caption{Auszug aus der Umfrage zur Erhebung der Mitarbeiter-Präferenzen}
 	\label{fig:methodik:versuchsaufbau:abb1}
 \end{figure}
 
-Die Kompetenzbewertungen der Mitarbeiter und deren Präferenzen dienen im Experiment als Grundlage für ein hybrides Empfehlungssystem.
+Die Kompetenzbewertungen der Mitarbeiter und deren Präferenzen dienen im Experiment als Datengrundlage für ein hybrides Empfehlungssystem.
 
 \section{Aufbau des hybriden Empfehlungssystems}
 \label{ch:methodik:versuchsaufbau:systemarchitektur}
-Dem im Rahmen dieser Master-Thesis implementieren Empfehlungssystem liegt eine Microservice-Architektur zu Grunde, welche aus drei Diensten und einem Zwischenspeicher besteht. Um die Funktionsweisen und Rückgaben der verschiedenen Komponenten des Systems anhand von Beispielen zu erläutern, werden die Mitarbeiter und Kompetenzbewertungen aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} verwendet. Dabei wird festgelegt, dass Jane Doe und Max Muster bzw. John Doe und Erika Muster in jeweils einem Team tätig sind. Zusätzlich wird angenommen, dass die Mitarbeiter die Präferenzen aus Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1} im Rahmen der Umfrage ausgewählt haben.
+Das im Rahmen dieser Master-Thesis implementierte Empfehlungssystem basiert auf einer Microservice-Architektur, welche aus drei Diensten und einem Zwischenspeicher besteht. Um die Funktionsweisen und Rückgaben der verschiedenen Komponenten des Systems anhand von Beispielen zu erläutern, werden die Mitarbeiter und Kompetenzbewertungen aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} verwendet. Dabei wird festgelegt, dass Jane Doe und Max Muster bzw. John Doe und Erika Muster in jeweils einem Team tätig sind. Zusätzlich wird angenommen, dass die Mitarbeiter die Kompetenzen aus Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1} präferieren.
 
 \begin{table}[h]
 	\centering
@@ -60,11 +84,11 @@ Dem im Rahmen dieser Master-Thesis implementieren Empfehlungssystem liegt eine M
 	\label{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1}
 \end{table}
 
-Sämtliche Komponenten der Microservice-Architektur werden in Form von Docker-Containern ausgeliefert. Die Orchestrierung des Gesamtsystems erfolgt über Docker-Compose. Die Dienste kommunizieren untereinander über HTTP. Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt einen Überblick über die zugrundeliegende Systemarchitektur.
+Sämtliche Komponenten der Microservice-Architektur werden in Form von Docker-Containern ausgeliefert und über Docker-Compose orchestriert. Die Dienste kommunizieren untereinander über HTTP. Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt einen Überblick über die Systemarchitektur.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{gfx/Systemarchitektur.png}
+	\includegraphics[width=0.6\textwidth]{gfx/Systemarchitektur.png}
 	\caption{Systemarchitektur des hybriden Empfehlungssystems}
 	\label{fig:methodik:systemarchitekturn:abb1}
 \end{figure}
@@ -77,7 +101,7 @@ Das Intranet der EXXETA AG bietet eine REST-Schnittstelle, welche Informationen 
 
 In der vorliegenden Problemstellung werden nicht die Daten aller Angestellten des Unternehmens benötigt. Der Empfehlungsalgorithmus verwendet ausschließlich die Informationen von denjenigen Mitarbeitern, welche im Rahmen der Umfrage Präferenzen bezüglich eingesetzter Kompetenzen spezifiziert haben.
 
-Die Aufgabe des Intranetservices besteht darin, die Rückgabe der Schnittstelle des Intranets der EXXETA AG mit den erhobenen Präferenzen der Umfrage zu kombinieren. Außerdem werden sämtliche nicht benötigten Informationen zu Gunsten der Datensparsamkeit entfernt. Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} zeigt einen beispielhaften Auszug aus der Rückgabe des Intranetservices.
+Die Aufgabe des Intranetservices besteht darin, die Rückgabe der Schnittstelle des Intranets der EXXETA AG mit den erhobenen Präferenzen der Umfrage zu kombinieren. Außerdem werden sämtliche nicht benötigten Informationen und Mitarbeiter zu Gunsten der Datensparsamkeit entfernt. Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} zeigt einen beispielhaften Auszug aus der Rückgabe des Intranetservices.
 
 %\begin{minipage}{\linewidth}
 \lstinputlisting[
@@ -88,9 +112,9 @@ label=qc:methodik:versuchsaufbau:daten:qc1
 ]{gfx/john.json}
 %\end{minipage}
 
-In Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass die ganzzahligen Kompetenz-Bewertungen des Intranets um eins erhöht werden. Somit reichen die Beurteilungen beherrschter Fähigkeiten anstelle von 0 bis fünf nun von eins bis sechs. Auf diese Weise verfügen ausschließlich nicht beherrschte Kompetenzen über eine Bewertung von 0.
+In Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass die ganzzahligen Kompetenz-Bewertungen des tatsächlichen Intranets um eins erhöht werden. Somit reichen die Beurteilungen beherrschter Fähigkeiten anstelle von 0 bis fünf nun von eins bis sechs. Auf diese Weise verfügen ausschließlich nicht beherrschte Kompetenzen über eine Bewertung von 0.
 
-Die Implementierung des Intranetservices erfolgte in der Programmiersprache Kotlin. Als Web-Framework wurde Spring Boot in Kombination mit dem GraalVM Native Image-Compiler verwendet, welcher die Startzeit und den Speicherverbrauch des Dienstes stark reduziert.
+Die Implementierung des Intranetservices erfolgte in der Programmiersprache Kotlin. Als Framework wurde Spring Boot in Kombination mit dem GraalVM Native Image-Compiler verwendet, welcher die Startzeit und den Speicherverbrauch des Dienstes stark reduziert.
 
 Die Daten des Intranetservices dienen als Eingabe für den Matrixservice, welcher zur Optimierung der Empfehlungsbestimmung die Sparsity- und Kaltstart-Problematik löst.
 
@@ -156,29 +180,76 @@ Im Matrixservice wird der Wert von $\beta$ über folgende Gleichung \ref{frml:me
 \end{equation}
 Durch das in in Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} erläutert, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix $M$ des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielnutzer weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Fähigkeiten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten ein höheres Gewicht, welche direkt mit dem Zielnutzer bzw. dessen direkten Teamkollegen in Verbindung stehen.
 
-Zur unilateralen Empfehlungsbestimmung werden die Ergebnisse der Matrixberechnung ohne weitere Veränderung genutzt. Um bilaterale Vorschläge zu bestimmen, bezieht der Matrixservice zusätzlich die Präferenzen der Angestellten ein. Hierbei wird angenommen, dass Projektmanager stets denjenigen Mitarbeiter für eine benötigte Kompetenz auswählen, welcher für das gesuchte Niveau (Grundkenntnisse bzw. Fortgeschritten) die höchste Bewertung aufweist. Aus diesem Grund wird die sechsstufige Skala des Intranets nach der Ausführung des Katz-Algorithmus auf die in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellten Kompetenzniveaus vereinfacht. 
+Zur unilateralen Empfehlungsbestimmung werden die Ergebnisse der Matrixberechnung ohne weitere Veränderung genutzt. Um bilaterale Vorschläge zu bestimmen, bezieht der Matrixservice zusätzlich die Präferenzen der Angestellten ein. Hierbei wird angenommen, dass Projektmanager stets denjenigen Mitarbeiter für eine benötigte Kompetenz auswählen, welcher für das gesuchte Kompetenzniveau (Grundkenntnisse bzw. Fortgeschritten) die höchste Bewertung aufweist. Aus diesem Grund wird die sechsstufige Skala des Intranets nach der Ausführung des Katz-Algorithmus auf die in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellten Kompetenzniveaus vereinfacht. 
+
+Die unilaterale Empfehlungskomponente fokussiert bei der Bestimmung von Vorschlägen ausschließlich die Präferenzen des Projektmanagers. Im Sinne des \acp{PEFit} wird folglich nur die Anforderungen-Fähigkeiten Kongruenz betrachtet.
+
+Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ändern sich bei Berechnung des Verfahrens von Katz die Kompetenzbewertungen. Somit es ist nicht ohne Weiteres möglich, die Eingaben eines Projektmanagers mit den Werten in der Ergebnis-Matrix zu vergleichen.
+
+Allerdings befinden sich die Beurteilungen, welche ursprünglich einem gemeinsamen Kompetenzniveau entsprachen, auch nach Berechnung des Algorithmus auf einem vergleichbaren Niveau. Die Werte innerhalb eines Kompetenzbereichs sind lediglich feingranular unterschiedlich. Dieses Phänomen ist in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu beobachten. Dort sind die Bewertungen der Fähigkeit MySQL aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} vor und nach der Berechnung des Katz-Algorithmus eingetragen. Gleiche Kompetenzniveaus sind in der Tabelle durch einheitliche Hintergrundfarben gekennzeichnet.
 
 \begin{table}[h]
 	\centering
-	\begin{tabularx}{\textwidth}{c|X}
-		Kompetenzniveau & Bewertung im Intranet\\
+	\begin{tabular}{c|c|c|c}
+		Name & Kompetenzniveau & Wert & Ergebnis \\
 		\hline
-		Keine Kenntnisse & -\\
+		\rowcolor{exxetagray}Erika M. & Keine Kenntnisse & 0                  & 0.565\\
 		\hline
-		& Ich habe Grundkenntnisse\\
-		Grundkenntnisse & Ich habe es schon in einem Projekt eingesetzt\\
-		& Ich habe es in einem Projekt eingeführt\\
-		\hline
-		& Ich habe Kollegen geholfen es einzusetzen\\
-		Fortgeschritten & Ich habe eine Schulung zu dem Thema gehalten\\
-		& Ich habe auf Konferenzen zu dem Thema Vorträge gehalten\\
-		\hline
-	\end{tabularx}
-	\caption{Im Matrixservice verwendete Kompetenzniveaus}
-	\label{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1}
+		\rowcolor{itemcolor}John D.    & Grundkenntnisse  & \kantengewicht     & 1.202\\
+		\rowcolor{itemcolor}Max M.     & Grundkenntnisse  & \kantengewicht     & 1.623\\
+		\rowcolor{itemcolor}Jane D.    & Grundkenntnisse  & \kantengewicht     & 1.996
+	\end{tabular}
+	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz MySQL im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
 \end{table}
 
-Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} zu erkennen, befinden sich in der ersten Gruppe sämtliche Mitarbeiter, welche die gesuchte Kompetenz nicht im Intranet bewertet haben. In das Niveau "Grundkenntnisse" werden sämtliche Angestellten eingeteilt, welche die Fähigkeit auf der Skala aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} mit einer der unteren drei Bewertungen beurteilt haben. In der Gruppe "Fortgeschritten" befinden sich analog sämtliche Angestellte, welche die Kompetenz mit einer der oberen drei Stufen bewertet haben.
+In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} ist veranschaulicht, dass sich die Bewertungen der drei Angestellten mit Grundkenntnissen in MySQL auch nach Berechnung des Katz-Algorithmus auf einem vergleichbaren Niveau befinden. Die Beurteilungen sind, wie erwartet, feingranular unterschiedlich. Auch der Abstand zu Erika Muster ist nach wie vor erkennbar.
+
+Wird anhand der Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} ein Mitarbeiter mit der Fähigkeit MySQL gesucht, kann folglich der Angestellte mit dem höchsten Wert im gesuchten Kompetenzbereich als geeignetster Kandidat betrachtet werden. Im vorliegenden Beispiel wäre somit Jane Doe die qualifizierteste Mitarbeiterin für die Suche nach einem Angestellten mit Grundkenntnissen im Umgang mit MySQL. Ihre Bewertung dient daher bei der Bestimmung des \acp{PEFit} für das gesuchte Kompetenzniveau in MySQL als Nullpunkt in Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{gfx/ueberschuss_supply_motive.png}
+	\caption{Auswirkungen eines Bedürfnisse-Angebote Misfits\\(Eigene Darstellung in Anlehnung an \cite[S. 23]{edwards:2008})}
+	\label{fig:methodik:versuchsaufbau:unilateral:abb2}
+\end{figure}
+
+Zur Bestimmung des Anforderungen-Fähigkeiten Fits wird angenommen, dass Projektmanager anstreben, offene Projektpositionen mit fachlich optimal passenden Mitarbeitern zu besetzen. Folglich vermeiden sie sowohl eine Über- als auch eine Unterqualifizierung ihrer Angestellten. Aus diesem Grund wird der \ac{PEFit} anhand von Kurve B bestimmt. Dabei wird die quadrierte Differenzberechnung angewendet.
+
+Ist kein Mitarbeiter im gesuchten Kompetenzbereich vorhanden, wird eine Ausnahmebehandlung durchgeführt. Wird nach Grundkenntnissen in einer bestimmten Fähigkeit gesucht und dabei kein passender Kandidat gefunden, wird der wenig qualifizierteste Angestellte auf fortgeschrittenem Niveau als Referenz genutzt. Sucht ein Projektmanager erfolglos nach Mitarbeitern mit fortgeschrittenen Kenntnissen, wird der am Besten qualifizierte Kandidat mit Grundkenntnissen als Referenz verwendet. Sind ausschließlich Mitarbeiter ohne Kenntnisse vorhanden, wird die gesuchte Kompetenz übersprungen, da in diesem Fall kein Mitarbeiter im Graphen mit dieser Fähigkeit verbunden ist und somit alle Kantengewichte 0 sein müssen.
+
+Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis einer unilateralen Empfehlungsbestimmung für ein Beispielprojekt mit fortgeschrittenen Kenntnissen in Python und MySQL und Grundkenntnissen in HDFS. Verwendet wurden dabei die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c}
+		Positionierung & Mitarbeiter & Abweichung\\
+		\hline
+		1 & Jane D.  & 0.30\\
+		2 & Max M.   & 1.21\\
+		3 & John D.  & 4.06\\
+		4 & Erika M. & 7.72
+	\end{tabular}
+	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\label{tbl:methodik:versuchsaufbau:unilateral:tbl2}
+\end{table}
+
+Ähnlich zum unilateralen Algorithmus arbeitet auch die bilaterale Empfehlungskomponente. Diese bezieht neben dem Anforderungen-Fähigkeiten Fit auch die Präferenzen der Mitarbeiter bzw. die Bedürfnisse-Angebote Kongruenz in die Berechnung mit ein.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Um bilaterale Empfehlungen zu generieren, bestimmt der Matrixservice für sämtliche Fähigkeiten auf allen drei Kompetenzniveaus das höchste Ergebnis des Katz-Algorithmus. Präferiert ein Mitarbeiter eine bestimmte Fähigkeit, wird das höchste Resultat seines Kompetenzbereichs auf dessen Ergebnis addiert. Auf diese Weise 
 
@@ -228,7 +299,7 @@ Allerdings befinden sich die Beurteilungen, welche ursprünglich einem gemeinsam
 		\rowcolor{itemcolor}Jane D.    & Grundkenntnisse  & \kantengewicht     & 1.996
 	\end{tabular}
 	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz MySQL im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
-	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
+	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1x}
 \end{table}
 
 In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} ist veranschaulicht, dass sich die Bewertungen der drei Angestellten mit Grundkenntnissen in MySQL auch nach Berechnung des Katz-Algorithmus auf einem vergleichbaren Niveau befinden. Die Beurteilungen sind, wie erwartet, feingranular unterschiedlich. Auch der Abstand zu Erika Muster ist nach wie vor erkennbar.
@@ -239,7 +310,7 @@ Wird anhand der Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tb
 	\centering
 	\includegraphics[width=0.75\textwidth]{gfx/ueberschuss_supply_motive.png}
 	\caption{Auswirkungen eines Bedürfnisse-Angebote Misfits\\(Eigene Darstellung in Anlehnung an \cite[S. 23]{edwards:2008})}
-	\label{fig:methodik:versuchsaufbau:unilateral:abb2}
+	\label{fig:methodik:versuchsaufbau:unilateral:abb2x}
 \end{figure}
 
 Zur Bestimmung des Anforderungen-Fähigkeiten Fits wird angenommen, dass Projektmanager anstreben, offene Projektpositionen mit fachlich optimal passenden Mitarbeitern zu besetzen. Folglich vermeiden sie sowohl eine Über- als auch eine Unterqualifizierung ihrer Angestellten. Aus diesem Grund wird der \ac{PEFit} anhand von Kurve B bestimmt. Dabei wird die quadrierte Differenzberechnung angewendet.
@@ -259,7 +330,7 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis ein
 		4 & Erika M. & 7.72
 	\end{tabular}
 	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
-	\label{tbl:methodik:versuchsaufbau:unilateral:tbl2}
+	\label{tbl:methodik:versuchsaufbau:unilateral:tbl2x}
 \end{table}
 
 Ähnlich zum unilateralen Algorithmus arbeitet auch die bilaterale Empfehlungskomponente. Diese bezieht neben dem Anforderungen-Fähigkeiten Fit auch die Präferenzen der Mitarbeiter bzw. die Bedürfnisse-Angebote Kongruenz in die Berechnung mit ein.
