@@ -4,24 +4,24 @@
 	"manager":null,
 	"skills":[
 		{
-			"name":"HDFS",
+			"name":"Python",
+			"level":-1,
+			"preference":true
+		},
+		{
+			"name":"MySQL",
 			"level":1,
 			"preference":true
 		},
 		{
-			"name":"Java",
-			"level":3,
-			"preference":false
-		},
-		{
-			"name":"MySQL",
-			"level":2,
-			"preference":true
-		},
-		{
-			"name":"Python",
+			"name":"HDFS",
 			"level":0,
 			"preference":true
+		},
+		{
+			"name":"Java",
+			"level":2,
+			"preference":false
 		}
 	],
 	"colleagues":[
