@@ -187,7 +187,7 @@ Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ände
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c}
-		Name & Kompetenzniveau & Original-Bewertung & Katz-Ergebnis \\
+		Name & Kompetenzniveau & Original-Bewertung & Matrix-Ergebnis \\
 		\hline
 		\rowcolor{exxetagray}Erika M. & Keine Kenntnisse & 0 & 0.42\\
 		\hline
@@ -199,12 +199,14 @@ Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ände
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
 \end{table}
 
-Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu erkennen, haben Max Muster, Jane und John Doe auch nach Berechnung des Katz-Algorithmus vergleichbare Bewertungen. Es kann interpretiert werden, dass sich die drei Beispielangestellten ähnlich gut mit MySQL auskennen, Jane Doe die Fähigkeit jedoch wenig besser beherrscht als ihre beiden Kollegen. Präferiert einer der drei Mitarbeiter jedoch die gesuchte Kompetenz, ist davon auszugehen, dass dessen Bewertung aufgrund seiner Motivation höher ist als bei den anderen Angestellten innerhalb seines Niveaus. Aus diesem Grund addiert der Matrixservice in einem weiteren Rechenschritt für jede Fähigkeit 
+Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu erkennen, haben Max Muster, Jane und John Doe auch nach Berechnung des Katz-Algorithmus vergleichbare Bewertungen. Es kann interpretiert werden, dass sich die drei Beispielangestellten ähnlich gut mit MySQL auskennen, Jane Doe die Fähigkeit jedoch wenig besser beherrscht als ihre beiden Kollegen. Bei er unilateralen Empfehlungsbestimmung werden gemäß des Anforderungen-Fähigkeiten Fits ausschließlich Angestellte gesucht, welche die höchste Eignung für die Ansprüche des Projektmanagers aufweisen. Aus diesem Grund werden die Ergebnisse aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} als unilateraler Empfehlungswert gespeichert.
+
+Präferiert einer der drei Mitarbeiter jedoch die gesuchte Kompetenz, ist davon auszugehen, dass dessen Bewertung aufgrund seiner Motivation höher ist, als bei den anderen Angestellten innerhalb seines Niveaus. Aus diesem Grund bestimmt der Matrixservice in einem weiteren Rechenschritt für jede Kompetenz die höchste Bewertung innerhalb jedes der drei Kompetenzniveaus aus Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1}. Präferiert ein Mitarbeiter eine bestimmte Fähigkeit, addiert der Dienst anschließend die höchste Bewertung des Kompetenzniveaus des Mitarbeiters zu dessen Beurteilung. Durch dieses Vorgehen verbleiben die Angestellten bei ihrer ursprünglichen Bewertung, wenn sie die betrachtete Kompetenz nicht präferieren. Wünschen sich mehrere Mitarbeiter dagegen die Fähigkeit im Projekt anzuwenden, erhalten sie innerhalb des Kompetenzniveaus eine höhere Positionierung. Hierbei bleibt die ursprüngliche Reihenfolge der Angestellten gleich, sodass Projektmanager als ersten Vorschlag den fähigsten und zugleich motiviertesten Angestellten erhalten. Somit werden gemäß des ergänzenden \acp{PEFit} gleichzeitig die Präferenzen von Projektmanagern und Mitarbeitern betrachtet. Die Ergebnisse des beschriebenen Rechenschritts werden als bilateraler Empfehlungswert gespeichert. Die unilateralen und bilateralen Empfehlungswerte für die Beispielmitarbeiter sind in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl3} dargestellt.
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|c}
-		Name & Komp.-Niv. & Orig.-Bew. & Unil.-Erg. & Präferenz & Bil.-Erg.\\
+		Name & Komp.-Niv. & Orig.-Bew. & Unil.-Empf. & Präferenz & Bil.-Empf.\\
 		\hline
 		\rowcolor{exxetagray}Erika M. & Keine K. & 0 & 0.42 & Ja   & 0.84\\
 		\hline
@@ -216,12 +218,33 @@ Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu erkennen, ha
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl3}
 \end{table}
 
-müsste dessen Bewertung innerhalb seines Kompetenzniveaus erhöht werden, da 
+In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl3} ist zu erkennen, dass sich die Bewertungen der Fähigkeit MySQL auch nach Bestimmung des bilateralen Empfehlungswertes auf einem vergleichbaren Niveau befinden. So wurde beispielsweise die Beurteilung von Erika Muster erhöht, befindet sich aber dennoch unterhalb der geringsten Bewertung des nächst höheren Kompetenzbereichs.
+
+Listing \ref{qc:methodik:versuchsaufbau:daten:qc2} zeigt beispielhaft einen Auszug der Rückgabe des Matrixservice, welcher sowohl uni- als auch bilaterale Empfehlungswerte für den Mitarbeiter John Doe enthält.
+
+%\begin{minipage}{\linewidth}
+\lstinputlisting[
+language=json,
+caption=Beispiel für die Rückgabe des Matrixservices (Auszug),
+captionpos=b,
+label=qc:methodik:versuchsaufbau:daten:qc2
+]{gfx/john-matrix.json}
+%\end{minipage}
+
+In Listing \ref{qc:methodik:versuchsaufbau:daten:qc2} ist zu erkennen, dass jede Fähigkeit vier Attribute besitzt. Die Werte von uni- bzw. bilateralLevel stellen die uni- bzw. bilateralen Empfehlungswerte da, deren Berechnung \ref{tbl:methodik:versuchsaufbau:unilateral:tbl3} erläutert wurde. Das Attribut preference gibt an, ob der Mitarbeiter die Kompetenz präferiert und originalLevel gibt die originale Kompetenzbewertung des Angestellten aus dem Intranet wieder, wobei die Skala von 0 bis sechs verwendet wird, welche den Kantengewichten im Graphen entsprechen.
+
+Da die Berechnung des Katz-Algorithmus eine hohe algorithmische Komplexität besitzt, speichert der Matrixservice die Ergebnisse seiner Berechnung zur effizienteren Vorschlagsbestimmung in einem Pufferspeicher zwischen. Somit muss der Dienst die Berechnung erst bei veränderter Datenlage im Unternehmen erneut ausführen. Dieses Vorgehen kombiniert die Vorteile von speicher- und modellbasierten Empfehlungsansätzen. Wie bei speicherbasierten Verfahren üblich, greift der Matrixservice somit stets auf die aktuellen Daten des Unternehmens zurück. Durch die Zwischenspeicherung der Ergebnisse ist es dennoch gleichzeitig möglich, bei der Empfehlungsberechnung eine bei modellbasierten Verfahren übliche Effizienz zu erzielen.
+
+Die Implementierung des Matrixservices erfolgte in der Programmiersprache Python. Eingesetzt wurden zusätzlich das Framework Flask und das Paket Numpy, welches die Matrixberechnungen unterstützte. Als Pufferspeicher kommt der Schlüssel-Wert-Speicher Redis zum Einsatz.
 
 
 
-Auf Basis dieser Ergebnisse bezieht der Matrixservice zusätzlich die Präferenzen der Mitarbeiter für die bilaterale Empfehlungsbestimmung ein. 
 
+
+
+
+
+\newpage
 Bei der Bestimmung von Vorschlägen wird angenommen, dass Projektmanager stets denjenigen Mitarbeiter für eine benötigte Kompetenz auswählen, welcher für das gesuchte Kompetenzniveau die höchste Bewertung aufweist. In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} würde folglich Jane Doe als geeignetste Mitarbeiterin für die Fähigkeit MySQL auf dem Niveau Grundkenntnisse bewertet werden.
 
 Um ausgehend von den Ergebnissen des Katz-Algorithmus 
@@ -259,6 +282,14 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis ein
 
 Ähnlich zum unilateralen Algorithmus arbeitet auch die bilaterale Empfehlungskomponente. Diese bezieht neben dem Anforderungen-Fähigkeiten Fit auch die Präferenzen der Mitarbeiter bzw. die Bedürfnisse-Angebote Kongruenz in die Berechnung mit ein.
 
+ 
+
+
+\newpage
+- Bei unilateraler Ansatz lesen\\
+- Edwards beachtet\\
+
+Die Ergebnisse der Berechnung
 
 
 
@@ -268,33 +299,14 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis ein
 
 
 
- Somit es ist nicht ohne Weiteres möglich, die Eingaben eines Projektmanagers mit den Werten in der Ergebnis-Matrix zu vergleichen. 
+
+Somit es ist nicht ohne Weiteres möglich, die Eingaben eines Projektmanagers mit den Werten in der Ergebnis-Matrix zu vergleichen. 
 
 
 
 
 
 Um bilaterale Empfehlungen zu generieren, bestimmt der Matrixservice für sämtliche Fähigkeiten auf allen drei Kompetenzniveaus das höchste Ergebnis des Katz-Algorithmus. Präferiert ein Mitarbeiter eine bestimmte Fähigkeit, wird das höchste Resultat seines Kompetenzbereichs auf dessen Ergebnis addiert. Auf diese Weise 
-
-\newpage
-- Bei unilateraler Ansatz lesen\\
-- Edwards beachtet\\
-
-
-
-
-Eine Auszug einer beispielhaften Rückgabe des Matrixservices ist in Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:matrixservice:qc1} dargestellt.
-
-\lstinputlisting[
-language=json,
-caption=Beispiel für die Rückgabe des Matrixservices (Auszug),
-captionpos=b,
-label=qc:methodik:versuchsaufbau:systemarchitektur:matrixservice:qc1
-]{gfx/john-matrix.json}
-
-Zur effizienteren Vorschlagsbestimmung werden die Ergebnisse des Matrixservices zwischengespeichert. Somit muss der Dienst die algorithmisch komplexe Berechnung des Katz-Algorithmus erst bei veränderter Datenlage im Unternehmen erneut ausführen. Dieses Vorgehen kombiniert die Vorteile von speicher- und modellbasierten Empfehlungsansätzen. Wie bei speicherbasierten Verfahren üblich greift der Matrixservice stets auf die aktuellen Daten des Unternehmens zurück. Durch die Pufferspeicherung der Ergebnisse der Matrixberechnung ist es gleichzeitig möglich, der Empfehlungsberechnung eine zu modellbasierten Verfahren vergleichbare Effizienz zu erreichen.
-
-Die Implementierung des Matrixservices erfolgte in der Programmiersprache Python in Kombination mit dem Web-Framework Flask. Für die Matrixberechnungen wird das Paket Numpy eingesetzt. Als Pufferspeicher kommt der Schlüssel-Wert-Speicher Redis zum Einsatz.
 
 Kotlin entfernt
 
