@@ -44,16 +44,7 @@ Die Kompetenzbewertungen der Mitarbeiter und deren Präferenzen dienen im Experi
 
 \section{Aufbau des hybriden Empfehlungssystems}
 \label{ch:methodik:versuchsaufbau:systemarchitektur}
-Dem im Rahmen dieser Master-Thesis implementieren Empfehlungssystem liegt eine Microservice-Architektur zu Grunde, welche aus drei Diensten besteht. Sämtliche Komponenten werden in Form von Docker-Containern ausgeliefert. Die Orchestrierung des Gesamtsystems erfolgt über Docker-Compose. Die Dienste kommunizieren untereinander über HTTP. Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt einen Überblick über die zugrundeliegende Systemarchitektur.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.75\textwidth]{gfx/Systemarchitektur.png}
-	\caption{Systemarchitektur des hybriden Empfehlungssystems}
-	\label{fig:methodik:systemarchitekturn:abb1}
-\end{figure}
-
-Um die Funktionsweisen und Rückgaben der verschiedenen Dienste des Systems aus Abbildung \ref{fig:methodik:systemarchitekturn:abb1} anhand von Beispielen zu verdeutlichen, werden Mitarbeiter und Kompetenzbewertungen aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} verwendet. Dabei wird vorausgesetzt, dass Jane Doe und Max Muster bzw. John Doe und Erika Muster in jeweils einem Team tätig sind. Zusätzlich wird angenommen, dass die Mitarbeiter die Präferenzen aus Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1} im Rahmen der Umfrage angegeben haben.
+Dem im Rahmen dieser Master-Thesis implementieren Empfehlungssystem liegt eine Microservice-Architektur zu Grunde, welche aus drei Diensten und einem Zwischenspeicher besteht. Um die Funktionsweisen und Rückgaben der verschiedenen Komponenten des Systems anhand von Beispielen zu erläutern, werden die Mitarbeiter und Kompetenzbewertungen aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} verwendet. Dabei wird festgelegt, dass Jane Doe und Max Muster bzw. John Doe und Erika Muster in jeweils einem Team tätig sind. Zusätzlich wird angenommen, dass die Mitarbeiter die Präferenzen aus Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1} im Rahmen der Umfrage ausgewählt haben.
 
 \begin{table}[h]
 	\centering
@@ -69,15 +60,24 @@ Um die Funktionsweisen und Rückgaben der verschiedenen Dienste des Systems aus 
 	\label{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1}
 \end{table}
 
-Beim Intranetservice aus Abbildung \ref{fig:methodik:systemarchitekturn:abb1} handelt es sich um einen Dienst, welcher im Rahmen des Experiments das Intranet der EXXETA AG simuliert.
+Sämtliche Komponenten der Microservice-Architektur werden in Form von Docker-Containern ausgeliefert. Die Orchestrierung des Gesamtsystems erfolgt über Docker-Compose. Die Dienste kommunizieren untereinander über HTTP. Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt einen Überblick über die zugrundeliegende Systemarchitektur.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{gfx/Systemarchitektur.png}
+	\caption{Systemarchitektur des hybriden Empfehlungssystems}
+	\label{fig:methodik:systemarchitekturn:abb1}
+\end{figure}
+
+Beim oben in Abbildung \ref{fig:methodik:systemarchitekturn:abb1} dargestellten Intranetservice handelt es sich um einen Dienst, welcher im Rahmen des Experiments das Intranet der EXXETA AG simuliert.
 
 \subsection{Intranetservice}
 \label{ch:methodik:versuchsaufbau:systemarchitektur:intranetservice}
-Das Intranet der EXXETA AG bietet eine REST-Schnittstelle, welche Informationen über sämtliche Mitarbeiter des Unternehmens in Form von JSON zurückgibt. Über diese können unter anderem die Kompetenzbewertungen und die Teamzuordnungen der Angestellten abgefragt werden. Einzelne Mitarbeiter sind dabei eindeutig über ihre E-Mail-Adresse identifizierbar.
+Das Intranet der EXXETA AG bietet eine REST-Schnittstelle, welche Informationen über sämtliche Mitarbeiter des Unternehmens in Form von JSON bereitstellt. Über diese können beispielsweise die Kompetenzbewertungen und die Teamzuordnungen der Angestellten ermittelt werden. Einzelne Mitarbeiter sind dabei eindeutig über ihre E-Mail-Adresse identifizierbar.
 
 In der vorliegenden Problemstellung werden nicht die Daten aller Angestellten des Unternehmens benötigt. Der Empfehlungsalgorithmus verwendet ausschließlich die Informationen von denjenigen Mitarbeitern, welche im Rahmen der Umfrage Präferenzen bezüglich eingesetzter Kompetenzen spezifiziert haben.
 
-Die Aufgabe des Intranetservices besteht darin, die Rückgabe der Schnittstelle des Intranets der EXXETA AG mit den erhobenen Präferenzen der Umfrage zu kombinieren. Außerdem entfernt er sämtliche nicht benötigten Informationen zu Gunsten der Datensparsamkeit. Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} zeigt einen beispielhaften Auszug aus der Rückgabe des Intranetservices.
+Die Aufgabe des Intranetservices besteht darin, die Rückgabe der Schnittstelle des Intranets der EXXETA AG mit den erhobenen Präferenzen der Umfrage zu kombinieren. Außerdem werden sämtliche nicht benötigten Informationen zu Gunsten der Datensparsamkeit entfernt. Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} zeigt einen beispielhaften Auszug aus der Rückgabe des Intranetservices.
 
 %\begin{minipage}{\linewidth}
 \lstinputlisting[
@@ -88,9 +88,9 @@ label=qc:methodik:versuchsaufbau:daten:qc1
 ]{gfx/john.json}
 %\end{minipage}
 
-In Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass die ganzzahligen Kompetenz-Bewertungen des Intranets um eins erhöht werden. Somit reichen die Beurteilungen beherrschter Fähigkeiten anstelle von 0 bis fünf nun von eins bis sechs. Auf diese Weise verfügen lediglich Kompetenzen, welche Mitarbeiter präferieren, aber nicht beherrschen, über eine Bewertung von 0.
+In Listing \ref{qc:methodik:versuchsaufbau:daten:qc1} ist zu erkennen, dass die ganzzahligen Kompetenz-Bewertungen des Intranets um eins erhöht werden. Somit reichen die Beurteilungen beherrschter Fähigkeiten anstelle von 0 bis fünf nun von eins bis sechs. Auf diese Weise verfügen ausschließlich nicht beherrschte Kompetenzen über eine Bewertung von 0.
 
-Die Implementierung des Intranetservices erfolgte in der Programmiersprache Kotlin. Als Web-Framework wurde Spring Boot in Kombination mit GraalVM Native Image-Compiler verwendet, welcher die Startzeit und den Speicherverbrauch des Dienstes stark reduziert.
+Die Implementierung des Intranetservices erfolgte in der Programmiersprache Kotlin. Als Web-Framework wurde Spring Boot in Kombination mit dem GraalVM Native Image-Compiler verwendet, welcher die Startzeit und den Speicherverbrauch des Dienstes stark reduziert.
 
 Die Daten des Intranetservices dienen als Eingabe für den Matrixservice, welcher zur Optimierung der Empfehlungsbestimmung die Sparsity- und Kaltstart-Problematik löst.
 
@@ -100,9 +100,9 @@ Der Matrixservice basiert auf der Datenstruktur eines Graphen. Hierbei werden di
 
 Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt der Algorithmus von Katz für eine feingranulare Anpassung vorhandener Beurteilungen. Dass Mitarbeiter keine einzige Fähigkeit bewertet haben, kann bei er EXXETA AG weitgehend ausgeschlossen werden. Führungskräfte fordern ihre Angestellten regelmäßig dazu auf, ihre Kompetenzen im Intranet aktuell zu halten und diese beispielsweise im Rahmen des Mitarbeiter-Jahresgespräches zu pflegen. Angestellte ohne Bewertungen sind folglich nur in Ausnahmefällen zu erwarten. Hierzu zählen unter anderem Werkstudenten und neue Mitarbeiter. Dennoch können Kaltstarts nicht vollständig ausgeschlossen werden. So wäre es beispielsweise denkbar, dass einzelne Mitarbeiter Kompetenzen beherrschen, über welche kein anderer Angestellter verfügt. Bei einem solchen Sachverhalt besteht im Graphen keine Kante zwischen den beiden Mitarbeitern.
 
-Um Kaltstarts auch in solchen Fällen vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Über dieses Vorgehen sind stets sämtliche Mitarbeiter des Bereichs \acl{JES} über den Abteilungsleiter bzw. alle Angestellten der EXXETA AG über den Vorstand miteinander verbunden. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen der Mitarbeiter bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn deren direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieser Ansatz ist im Falle der EXXETA AG als sinnvoll zu bewerten, da dort stets Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig sind. Auch die Teammanager sind fachliche Führungskräfte, deren Fähigkeiten weitgehend repräsentativ für ihre Mitarbeiter sind.
+Um Kaltstarts auch in solchen Fällen vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Über dieses Vorgehen sind stets sämtliche Mitarbeiter des Bereichs \acl{JES} über den Abteilungsleiter bzw. alle Angestellten der EXXETA AG über den Vorstand miteinander verbunden. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen der Mitarbeiter bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn deren direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieser Ansatz ist im Falle der EXXETA AG als sinnvoll zu bewerten. Dort sind stets Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig. Auch die Teammanager sind fachliche Führungskräfte, deren Fähigkeiten weitgehend repräsentativ für ihre Mitarbeiter sind.
 
-Um eine weitere Erhöhung der Komplexität des Algorithmus von Katz zu vermeiden, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird auf \teamgewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit schwach in die Berechnung mit einzubeziehen, höhere individuelle Kompetenzbewertungen jedoch weiterhin stärker zu gewichten.
+Um eine weitere Erhöhung der algorithmischen Komplexität des Algorithmus von Katz zu vermeiden, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird auf \teamgewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit schwach in die Berechnung mit einzubeziehen, hohe individuelle Kompetenzbewertungen jedoch weiterhin stärker zu gewichten.
 
 Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Form eines Graphen.
 
@@ -156,12 +156,12 @@ Im Matrixservice wird der Wert von $\beta$ über folgende Gleichung \ref{frml:me
 \end{equation}
 Durch das in in Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} erläutert, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix $M$ des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielnutzer weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Fähigkeiten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten ein höheres Gewicht, welche direkt mit dem Zielnutzer bzw. dessen direkten Teamkollegen in Verbindung stehen.
 
-Zur unilateralen Empfehlungsbestimmung werden die Ergebnisse der Matrixberechnung ohne weitere Veränderung genutzt. Um bilaterale Vorschläge zu bestimmen bezieht der Matrixservice zusätzlich die Präferenzen der Angestellten ein. Hierbei wird angenommen, dass Projektmanager stets denjenigen Mitarbeiter für eine gesuchte Kompetenz auswählen, welcher für das gesuchte Niveau  Grundkenntnisse bzw. Fortgeschritten die höchste Bewertung aufweist. Aus diesem Grund wird die sechsstufige Skala des Intranets auf die in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellten Kompetenzniveaus vereinfacht. 
+Zur unilateralen Empfehlungsbestimmung werden die Ergebnisse der Matrixberechnung ohne weitere Veränderung genutzt. Um bilaterale Vorschläge zu bestimmen, bezieht der Matrixservice zusätzlich die Präferenzen der Angestellten ein. Hierbei wird angenommen, dass Projektmanager stets denjenigen Mitarbeiter für eine benötigte Kompetenz auswählen, welcher für das gesuchte Niveau (Grundkenntnisse bzw. Fortgeschritten) die höchste Bewertung aufweist. Aus diesem Grund wird die sechsstufige Skala des Intranets nach der Ausführung des Katz-Algorithmus auf die in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellten Kompetenzniveaus vereinfacht. 
 
 \begin{table}[h]
 	\centering
 	\begin{tabularx}{\textwidth}{c|X}
-		\textbf{Kompetenzniveau} & \textbf{Bewertung im Intranet}\\
+		Kompetenzniveau & Bewertung im Intranet\\
 		\hline
 		Keine Kenntnisse & -\\
 		\hline
