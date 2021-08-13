@@ -278,7 +278,7 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis der
 		3 & John D.  & 5.9\\
 		4 & Erika M. & 10.4
 	\end{tabular}
-	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für ein Beispielprojekt}
+	\caption{Ergebnisliste der bilateralen Empfehlungsbestimmung für ein Beispielprojekt}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl2}
 \end{table}
 
@@ -300,50 +300,13 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} zeigt die Ergebnisse de
 		3 & John D.  & 8.0\\
 		4 & Erika M. & 9.8
 	\end{tabular}
-	\caption{Ergebnisliste der bilateralen Empfehlungskomponente für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} unter Berücksichtigung von Präferenzen der Mitarbeiter}
+	\caption{Ergebnisliste der bilateralen Empfehlungsbestimmung für ein Beispielprojekt}
 	\label{tbl:methodik:versuchsaufbau:bilateral:tbl2}
 \end{table}
 
+In Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} ist zu erkennen, dass Max Muster aufgrund seiner Präferenzen besser positioniert sind, als zuvor in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2}. Außerdem hat sich der Abstand von Erika Muster auf John Doe verringert.
 
-
-
-
-\newpage
-Anpassungen der Ergebnisse des Katz-Algorithmus durch Angabe von Wichtigkeiten am Beispiel der Fähigkeit MySQL aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}.
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{c|c|c|c|c}
-		Name & Kompetenzniveau & Wert & Präferenz & Erg. uni-/bilateral \\
-		\hline
-		\rowcolor{exxetagray}Erika M. & Keine Kenntnisse & 0 & wahr & 0.565/1.130\\
-		\hline
-		\rowcolor{itemcolor}John D. & Grundkenntnisse  & \kantengewicht & falsch & 1.202/1.202 \\
-		\rowcolor{itemcolor}Max M. & Grundkenntnisse  & \kantengewicht & wahr & 1.623/3.246\\
-		\rowcolor{itemcolor}Jane D. & Grundkenntnisse  & \kantengewicht & falsch & 1.996/1.996
-	\end{tabular}
-	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz MySQL im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} unter Einbeziehung von Präferenzen}
-	\label{tbl:methodik:versuchsaufbau:bilateral:tbl1}
-\end{table}
-
-In Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} ist an Erika und Max Muster zu erkennen, dass die Beurteilungen der Kompetenz MySQL durch Angabe der Präferenzen besser gewichtet sind als zuvor in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1}. Beide Mitarbeiter befinden sich dennoch nach wie vor innerhalb ihres ursprünglichen Kompetenzniveaus, sind darin aber höher gewichtet als zuvor.
-
-
-
-
-
-
-
-An Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} ist zu erkennen, dass John Doe und Max Muster aufgrund ihrer Präferenzen besser positioniert sind als zuvor in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2}. Erika Muster hat einen nach wie vor sehr großen Abstand zu allen anderen Mitarbeitern.
-
-Es ist festzustellen, dass der Algorithmus der unilateralen und der bilateralen Empfehlungskomponente abgesehen von der Multiplikation aufgrund von Präferenzen gleich ist. Zur effizienteren Berechnung ist es daher möglich, im Pufferspeicher neben der Ergebnis-Matrix des Katz-Algorithmus eine zweite Matrix abzulegen, in welcher zusätzlich eine Multiplikation für die präferierten Kompetenzen ausgeführt wird. Auf diese Weise ist es ausreichend, eine Empfehlungskomponente zu implementieren. Ob die dabei entstehenden Vorschläge uni- oder bilateral sind, ist ausschließlich von der eingegebenen Matrix abhängig. Die zur Durchführung des Experiments benötigte Systemarchitektur besteht folglich aus zwei Diensten.
-
-\newpage
-
-- Edwards beachtet\\
-
-
-
+Wie der Intranetservice wurde auch der Empfehlungsservice in der Programmiersprache Kotlin implementiert. Ebenfalls kamen das Framework Spring Boot und der GraalVM Native Image-Compiler zum Einsatz.
 
 \section{Evaluation}
 \label{ch:methodik:evaluation}
