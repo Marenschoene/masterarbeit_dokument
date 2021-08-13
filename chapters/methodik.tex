@@ -306,11 +306,24 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} zeigt die Ergebnisse de
 
 In Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} ist zu erkennen, dass Max Muster aufgrund seiner Präferenzen besser positioniert sind, als zuvor in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2}. Außerdem hat sich der Abstand von Erika Muster auf John Doe verringert.
 
-Wie der Intranetservice wurde auch der Empfehlungsservice in der Programmiersprache Kotlin implementiert. Ebenfalls kamen das Framework Spring Boot und der GraalVM Native Image-Compiler zum Einsatz.
+Wie der Intranetservice wurde auch der Empfehlungsservice in der Programmiersprache Kotlin implementiert. Ebenfalls kamen das Framework Spring Boot und der GraalVM Native Image-Compiler zum Einsatz. Ein Auszug aus der vollständigen Ausgabe des Empfehlungsservices für die Projektanfrage ist in Listing \ref{qc:methodik:versuchsaufbau:daten:qc3} dargestellt.
 
-\section{Geplante Evaluation}
+%\begin{minipage}{\linewidth}
+\lstinputlisting[
+language=json,
+caption=Beispiel für die Rückgabe des Empfehlungsservices (Auszug),
+captionpos=b,
+label=qc:methodik:versuchsaufbau:daten:qc3
+]{gfx/john-empfehlungsservice.json}
+%\end{minipage}
+
+In Listing \ref{qc:methodik:versuchsaufbau:daten:qc3} ist zu erkennen, dass zu jedem Mitarbeiter die berechnete Abweichung unter der Bezeichnung recommendationValue zurückgegeben wird. Außerdem kann für jeden Angestellten entnommen werden, ob diese die jeweiligen gesuchten Fähigkeiten präferieren und welche Bewertung diese im Intranet für die Kompetenzen abgegeben haben.
+
+Die Ausgaben des Empfehlungsservices dienen im Rahmen der vorliegenden Master-Thesis als Grundlage für eine Fallstudie, welche zur Beantwortung der Forschungsfrage mit Projektmanagern und Mitarbeitern des Fachbereichs \acl{JES} der EXXETA AG durchgeführt wird.
+
+\section{Geplante Fallstudie}
 \label{ch:methodik:evaluation}
-Zur Beantwortung der Forschungsfrage wird eine Fallstudie mit Projektmanagern und -mitarbeitern der EXXETA AG durchgeführt. Hierfür definiert ein Projektmanager es Fachbereichs \acl{JES} fünf Projektpositionen. Dieser betrachtet die Stellen als repräsentativ für häufige Kundenanfrage an die Abteilung. Abbildung \ref{fig:methodik:evaluation:abb2} zeigt die vordefinierten Projektpositionen.
+Vor Durchführung der Fallstudie definiert ein Projektmanager des Fachbereichs \acl{JES} fünf Projektpositionen. Dieser betrachtet die Stellen als repräsentativ für häufige Kundenanfrage an die Abteilung. Abbildung \ref{fig:methodik:evaluation:abb2} zeigt die vordefinierten Projektpositionen.
 
 \begin{figure}[h]
 	\centering
