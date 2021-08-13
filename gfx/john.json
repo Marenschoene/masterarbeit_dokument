@@ -9,11 +9,6 @@
 			"preference":true
 		},
 		{
-			"name":"MySQL",
-			"level":1,
-			"preference":true
-		},
-		{
 			"name":"HDFS",
 			"level":0,
 			"preference":true
@@ -21,6 +16,11 @@
 		{
 			"name":"Java",
 			"level":2,
+			"preference":false
+		},
+		{
+			"name":"MySQL",
+			"level":1,
 			"preference":false
 		}
 	],

@@ -14,7 +14,7 @@ Im Rahmen der vorliegenden Master-Thesis wird ausschließlich der komplementäre
 
 Durchgeführt werden das Experiment und die Fallstudie mit Projektmanagern und Mitarbeitern des Fachbereichs \ac{JES} der EXXETA AG mit Hauptsitz in Karlsruhe. Das Unternehmen ist spezialisiert auf IT-Beratungsleistungen und arbeitet vorrangig projektbasiert. Passende Angestellte zu offenen Projektpositionen zuzuordnen ist in diesem Betrieb dementsprechend eine häufig auftretende Aufgabe.
 
-\section{Vorhandene Daten im Unternehmen}
+\section{Verwendete Daten des Unternehmens}
 \label{ch:methodik:versuchsaufbau}
 Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort steht eine Liste mit \anzFaehigkeiten Fähigkeiten wie beispielsweise "Java", "DSGVO" und "Digitale Transformation" zur Verfügung. Diese können die Angestellten über die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellte Skala bewerten.
 
@@ -76,9 +76,9 @@ Das im Rahmen dieser Master-Thesis implementierte Empfehlungssystem basiert auf 
 		Nutzer & Präferierte Fähigkeiten\\
 		\hline
 		Jane D.     & HDFS, Kotlin\\
-		John D.     & Python, MySQL, HDFS\\
+		John D.     & Python, HDFS\\
 		Erika M.    & MySQL, Python\\
-		Max M.      & HDFS
+		Max M.      & HDFS, MySQL
 	\end{tabular}
 	\caption{Präferierte Fähigkeiten der Beispielnutzer}
 	\label{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1}
@@ -122,13 +122,15 @@ Die Daten des Intranetservices dienen als Eingabe für den Matrixservice, welche
 Der Matrixservice basiert auf der Datenstruktur eines Graphen. Hierbei werden die Mitarbeiter der EXXETA AG und deren Fähigkeiten in Form von Knoten dargestellt. Um das Sparsity Problem zu lösen, wird der speicherbasierte Algorithmus von Katz angewendet. Da die Anwendung auch über die Master-Thesis hinaus im Unternehmen zum Einsatz kommen soll, ist insbesondere die Langlebigkeit des Verfahrens vorteilhaft gegenüber modellbasierten Methoden. Sollten sich nach Durchführung des Experiments Daten im Unternehmen verändern oder neue Kompetenzen im Intranet hinzugefügt werden, ist das Empfehlungssystem weiterhin ohne zusätzlichen manuellen Aufwand im Betrieb einsetzbar.%Die hohe algorithmische Komplexität des Katz-Algorithmus ist für die vorliegende Problemstellung tolerierbar, da sich zum Zeitpunkt des Experiments weniger als 1.000 Mitarbeiter im Unternehmen befinden.
 
 %Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sorgt der Algorithmus von Katz für eine feingranulare Anpassung vorhandener Beurteilungen.
-Im Intranet der EXXETA AG ist zu beobachten, dass einige Mitarbeiter keine einzige Fähigkeit bewertet haben. Hierbei handelt es sich beispielsweise um neue Angestellte oder Mitarbeiter, welche bereits ausgelastet sind und daher vorerst für die Besetzung weiterer Projektpositionen nicht berücksichtigt werden. Hinsichtlich der Beurteilungen ist außerdem zu erwarten, dass manche spezialisierte Mitarbeiter ausschließlich Kompetenzen bewerten könnten, über welche kein anderer Angestellter verfügt. Haben Mitarbeiter keine Fähigkeiten bewertet oder verfügen sie ausschließlich über Kompetenzen, welcher kein weiterer Angestellter beherrscht, sind diese im Graphen mit keiner anderen Person verbunden. Somit kann ein Kaltstart bei der Empfehlungsbestimmung auftreten.
+Im Intranet der EXXETA AG ist zu beobachten, dass einige Mitarbeiter keine einzige Fähigkeit bewertet haben. Hierbei handelt es sich beispielsweise um neue Angestellte oder Mitarbeiter, welche bereits ausgelastet sind und daher vorerst für die Besetzung weiterer Projektpositionen nicht berücksichtigt werden.
+
+Hinsichtlich der Beurteilungen ist außerdem zu erwarten, dass manche spezialisierte Mitarbeiter ausschließlich Kompetenzen bewerten könnten, über welche kein anderer Angestellter verfügt. Haben Mitarbeiter keine Fähigkeiten bewertet oder verfügen sie ausschließlich über Kompetenzen, welcher kein weiterer Angestellter beherrscht, sind diese im Graphen mit keiner anderen Person verbunden. Somit kann ein Kaltstart bei der Empfehlungsbestimmung auftreten.
 
 Um diesem vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Über dieses Vorgehen sind stets sämtliche Mitarbeiter des Bereichs \acl{JES} über den Abteilungsleiter bzw. alle Angestellten der EXXETA AG über den Vorstand miteinander verbunden. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen eines Zielnutzers bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn dessen direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieser Ansatz ist im Falle der EXXETA AG als sinnvoll zu bewerten. Dort sind stets Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig sind. Auch die Teammanager sind fachliche Führungskräfte, deren Fähigkeiten weitgehend repräsentativ für ihre Mitarbeiter sind.
 
 Um eine weitere Erhöhung der algorithmischen Komplexität des Algorithmus von Katz zu vermeiden, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird auf \teamgewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit schwach in die Berechnung mit einzubeziehen, hohe individuelle Kompetenzbewertungen jedoch weiterhin stärker zu gewichten.
 
-Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Angestellten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in Form eines Graphen.
+Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} zeigt die Darstellung der Kompetenzen und die Teamzuordnungen der Beispielangestellten in Form eines Graphen.
 
 \begin{figure}[h]
 	\centering	
@@ -199,9 +201,9 @@ Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ände
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl1}
 \end{table}
 
-Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu erkennen, haben Max Muster, Jane und John Doe auch nach Berechnung des Katz-Algorithmus vergleichbare Bewertungen. Es kann interpretiert werden, dass sich die drei Beispielangestellten ähnlich gut mit MySQL auskennen, Jane Doe die Fähigkeit jedoch wenig besser beherrscht als ihre beiden Kollegen. Bei er unilateralen Empfehlungsbestimmung werden gemäß des Anforderungen-Fähigkeiten Fits ausschließlich Angestellte gesucht, welche die höchste Eignung für die Ansprüche des Projektmanagers aufweisen. Aus diesem Grund werden die Ergebnisse aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} als unilateraler Empfehlungswert gespeichert.
+Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu erkennen, haben Max Muster, Jane und John Doe auch nach Berechnung des Katz-Algorithmus vergleichbare Bewertungen. Es kann interpretiert werden, dass sich die drei Beispielangestellten ähnlich gut mit MySQL auskennen, Jane Doe die Fähigkeit jedoch wenig besser beherrscht als ihre beiden Kollegen. Die Ergebnisse der letzten Spalte werden als unilateraler Empfehlungswert betrachtet. Dieser wird zu einem späteren Zeitpunkt im Empfehlungsservice benötigt.
 
-Präferiert einer der drei Mitarbeiter jedoch die gesuchte Kompetenz, ist davon auszugehen, dass dessen Bewertung aufgrund seiner Motivation höher ist, als bei den anderen Angestellten innerhalb seines Niveaus. Aus diesem Grund bestimmt der Matrixservice in einem weiteren Rechenschritt für jede Kompetenz die höchste Bewertung innerhalb jedes der drei Kompetenzniveaus aus Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1}. Präferiert ein Mitarbeiter eine bestimmte Fähigkeit, addiert der Dienst anschließend die höchste Bewertung des Kompetenzniveaus des Mitarbeiters zu dessen Beurteilung. Durch dieses Vorgehen verbleiben die Angestellten bei ihrer ursprünglichen Bewertung, wenn sie die betrachtete Kompetenz nicht präferieren. Wünschen sich mehrere Mitarbeiter dagegen die Fähigkeit im Projekt anzuwenden, erhalten sie innerhalb des Kompetenzniveaus eine höhere Positionierung. Hierbei bleibt die ursprüngliche Reihenfolge der Angestellten gleich, sodass Projektmanager als ersten Vorschlag den fähigsten und zugleich motiviertesten Angestellten erhalten. Somit werden gemäß des ergänzenden \acp{PEFit} gleichzeitig die Präferenzen von Projektmanagern und Mitarbeitern betrachtet. Die Ergebnisse des beschriebenen Rechenschritts werden als bilateraler Empfehlungswert gespeichert. Die unilateralen und bilateralen Empfehlungswerte für die Beispielmitarbeiter sind in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl3} dargestellt.
+Präferiert einer der Mitarbeiter in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} eine Fähigkeit, ist davon auszugehen, dass dessen Bewertung aufgrund seiner Motivation höher ist, als bei den anderen Angestellten innerhalb seines Kompetenzniveaus. Aus diesem Grund bestimmt der Matrixservice in einem weiteren Rechenschritt für jede Fähigkeit die höchste Bewertung innerhalb jedes der drei Kompetenzniveaus aus Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1}. Favorisiert ein Mitarbeiter eine bestimmte Fähigkeit, addiert der Dienst die höchste Bewertung des Kompetenzniveaus des Mitarbeiters zu dessen Beurteilung. Durch dieses Vorgehen verbleiben die Angestellten bei ihrer ursprünglichen Bewertung, wenn sie die betrachtete Kompetenz nicht präferieren. Wünschen sich mehrere Mitarbeiter dagegen die Fähigkeit im Projekt anzuwenden, erhalten sie innerhalb des Kompetenzniveaus eine höhere Positionierung. Hierbei bleibt die ursprüngliche Reihenfolge der Angestellten gleich, sodass Projektmanager als ersten Vorschlag den fähigsten und zugleich motiviertesten Angestellten erhalten. Somit werden gemäß des ergänzenden \acp{PEFit} gleichzeitig die Präferenzen von Projektmanagern und Mitarbeitern betrachtet. Die Ergebnisse des beschriebenen Rechenschritts werden als bilateraler Empfehlungswert gespeichert. Die unilateralen und bilateralen Empfehlungswerte für die Beispielmitarbeiter sind in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl3} dargestellt.
 
 \begin{table}[h]
 	\centering
@@ -210,17 +212,17 @@ Präferiert einer der drei Mitarbeiter jedoch die gesuchte Kompetenz, ist davon 
 		\hline
 		\rowcolor{exxetagray}Erika M. & Keine K. & 0 & 0.42 & Ja   & 0.84\\
 		\hline
-		\rowcolor{itemcolor}Max M.    & Grundk.  & 1 & 1.32 & Nein & 1.32\\
-		\rowcolor{itemcolor}John D.   & Grundk.  & 2 & 0.92 & Ja   & 3.02\\
+		\rowcolor{itemcolor}Max M.    & Grundk.  & 1 & 1.32 & Ja   & 3.42\\
+		\rowcolor{itemcolor}John D.   & Grundk.  & 2 & 0.92 & Nein & 0.92\\
 		\rowcolor{itemcolor}Jane D.   & Grundk.  & 3 & 2.10 & Nein & 2.10
 	\end{tabular}
 	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz MySQL im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl3}
 \end{table}
 
-In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl3} ist zu erkennen, dass sich die Bewertungen der Fähigkeit MySQL auch nach Bestimmung des bilateralen Empfehlungswertes auf einem vergleichbaren Niveau befinden. So wurde beispielsweise die Beurteilung von Erika Muster erhöht, befindet sich aber dennoch unterhalb der geringsten Bewertung des nächst höheren Kompetenzbereichs.
+In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl3} ist zu erkennen, dass sich die uni- und bilateralen Empfehlungswerte von Erika bzw. Max unterscheiden. Erika Muster ist in der Tabelle die potentiell geeignetste Mitarbeiterin für die Fähigkeit MySQL ohne Kenntnisse in dieser Kompetenz. Daher verdoppelt sich ihre Bewertung bei der Bestimmung des bilateralen Empfehlungswertes. Jane Doe ist dagegen die potentiell fähigste Angestellte mit Grundkenntnissen in MySQL. Da Max Muster diese Kompetenz präferiert, wird bei Berechnung des bilateralen Empfehlungswertes sein Ergebnis des Katz-Algorithmus zu Jane Does Resultat addiert. Durch diesen Rechenschritt befinden sich die Bewertungen der Fähigkeit MySQL auch nach Bestimmung des bilateralen Empfehlungswertes auf einem vergleichbaren Niveau. Beispielsweise wurde die Beurteilung von Erika Muster erhöht. Dennoch ist diese geringer als die Bewertung von John Doe, welcher über die geringste Beurteilung des nächst höheren Kompetenzbereichs verfügt.
 
-Listing \ref{qc:methodik:versuchsaufbau:daten:qc2} zeigt beispielhaft einen Auszug der Rückgabe des Matrixservice, welcher sowohl uni- als auch bilaterale Empfehlungswerte für den Mitarbeiter John Doe enthält.
+Der Matrixservice gibt die uni- und bilateralen Empfehlungswerte in Form von JSON zurück. Listing \ref{qc:methodik:versuchsaufbau:daten:qc2} zeigt beispielhaft eine Ausgabe des Matrixservice, welche einen Auszug der Daten von John Doe enthält.
 
 %\begin{minipage}{\linewidth}
 \lstinputlisting[
@@ -231,13 +233,13 @@ label=qc:methodik:versuchsaufbau:daten:qc2
 ]{gfx/john-matrix.json}
 %\end{minipage}
 
-In Listing \ref{qc:methodik:versuchsaufbau:daten:qc2} ist zu erkennen, dass jede Fähigkeit vier Attribute besitzt. Die Werte von uni- bzw. bilateralLevel stellen die uni- bzw. bilateralen Empfehlungswerte da, deren Berechnung \ref{tbl:methodik:versuchsaufbau:unilateral:tbl3} erläutert wurde. Das Attribut preference gibt an, ob der Mitarbeiter die Kompetenz präferiert und originalLevel gibt die originale Kompetenzbewertung des Angestellten aus dem Intranet wieder, wobei die Skala von 0 bis sechs verwendet wird, welche den Kantengewichten im Graphen entsprechen.
+In Listing \ref{qc:methodik:versuchsaufbau:daten:qc2} ist zu erkennen, dass jede Fähigkeit vier Attribute besitzt. Die Werte von uni- bzw. bilateralLevel stehen für die uni- bzw. bilateralen Empfehlungswerte. Das Attribut preference zeigt an, ob der Mitarbeiter die Kompetenz präferiert. Der Wert von originalLevel gibt die originale Kompetenzbewertung des Angestellten aus dem Intranet wieder, welche den Kantengewichten im Graphen entsprechen.
 
-Da die Berechnung des Katz-Algorithmus eine hohe algorithmische Komplexität besitzt, speichert der Matrixservice die Ergebnisse seiner Berechnung zur effizienteren Vorschlagsbestimmung in einem Pufferspeicher zwischen. Somit muss der Dienst die Berechnung erst bei veränderter Datenlage im Unternehmen erneut ausführen. Dieses Vorgehen kombiniert die Vorteile von speicher- und modellbasierten Empfehlungsansätzen. Wie bei speicherbasierten Verfahren üblich, greift der Matrixservice somit stets auf die aktuellen Daten des Unternehmens zurück. Durch die Zwischenspeicherung der Ergebnisse ist es dennoch gleichzeitig möglich, bei der Empfehlungsberechnung eine bei modellbasierten Verfahren übliche Effizienz zu erzielen.
+Da die Berechnung des Katz-Algorithmus eine hohe algorithmische Komplexität aufweist, speichert der Matrixservice die Ergebnisse seiner Berechnung zur effizienteren Vorschlagsbestimmung in einem Pufferspeicher zwischen. Somit muss der Dienst die Berechnung erst bei veränderter Datenlage im Unternehmen erneut ausführen. Dieses Vorgehen kombiniert die Vorteile von speicher- und modellbasierten Empfehlungsansätzen: Wie bei speicherbasierten Verfahren üblich, greift der Matrixservice somit stets auf die aktuellen Daten des Unternehmens zurück. Durch die Zwischenspeicherung der Ergebnisse wird gleichzeitig eine bei modellbasierten Verfahren zu erwartende Effizienz bei der Empfehlungsgenerierung erzielt.
 
-Die Implementierung des Matrixservices erfolgte in der Programmiersprache Python. Eingesetzt werden zusätzlich das Framework Flask und das Paket Numpy, welches die Matrixberechnungen unterstützt. Als Pufferspeicher kommt der Schlüssel-Wert-Speicher Redis zum Einsatz.
+Die Implementierung des Matrixservices erfolgte in der Programmiersprache Python. Eingesetzt wurden dabei das Framework Flask und das Paket Numpy, welches die Matrixberechnungen unterstützt. Als Pufferspeicher kommt der Schlüssel-Wert-Speicher Redis zum Einsatz.
 
-Die finale Bestimmung der uni- und bilateralen Empfehlungen anhand der Ausgabe des Matrixservices erfolgt abschließend im Empfehlungsservice.
+Die finale Empfehlungsbestimmung anhand der Ausgabe des Matrixservices erfolgt abschließend im Empfehlungsservice.
 
 \subsection{Empfehlungsservice}
 \label{ch:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice}
@@ -245,8 +247,9 @@ Die finale Bestimmung der uni- und bilateralen Empfehlungen anhand der Ausgabe d
 
 
 
-
 \newpage
+Bei er unilateralen Empfehlungsbestimmung werden in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} gemäß des Anforderungen-Fähigkeiten Fits ausschließlich Angestellte gesucht, welche die höchste Eignung für die Ansprüche des Projektmanagers aufweisen. 
+
 Bei der Bestimmung von Vorschlägen wird angenommen, dass Projektmanager stets denjenigen Mitarbeiter für eine benötigte Kompetenz auswählen, welcher für das gesuchte Kompetenzniveau die höchste Bewertung aufweist. In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} würde folglich Jane Doe als geeignetste Mitarbeiterin für die Fähigkeit MySQL auf dem Niveau Grundkenntnisse bewertet werden.
 
 Wird anhand der Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} ein Mitarbeiter mit der Fähigkeit MySQL gesucht, kann folglich der Angestellte mit dem höchsten Wert im gesuchten Kompetenzbereich als geeignetster Kandidat betrachtet werden. Im vorliegenden Beispiel wäre somit Jane Doe die qualifizierteste Mitarbeiterin für die Suche nach einem Angestellten mit Grundkenntnissen im Umgang mit MySQL. Ihre Bewertung dient daher bei der Bestimmung des \acp{PEFit} für das gesuchte Kompetenzniveau in MySQL als Nullpunkt in Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2}.
