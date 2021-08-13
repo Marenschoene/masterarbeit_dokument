@@ -59,7 +59,7 @@ Die EXXETA AG erhebt keine Präferenzen ihrer Mitarbeiter bezüglich deren Kompe
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{gfx/Umfage_Faehigkeiten.png}
+	\includegraphics[width=1\textwidth]{gfx/Umfage_Faehigkeiten.png}
 	\caption{Auszug aus der Umfrage zur Erhebung der Mitarbeiter-Präferenzen}
 	\label{fig:methodik:versuchsaufbau:abb1}
 \end{figure}
@@ -75,7 +75,7 @@ Das im Rahmen dieser Master-Thesis implementierte Empfehlungssystem basiert auf 
 	\begin{tabular}{c|c}
 		Nutzer & Präferierte Fähigkeiten\\
 		\hline
-		Jane D.     & HDFS, Kotlin\\
+		Jane D.     & HDFS\\
 		John D.     & Python, HDFS\\
 		Erika M.    & MySQL, Python\\
 		Max M.      & HDFS, MySQL
@@ -247,7 +247,7 @@ Der Empfehlungsservice enthält eine Schnittstelle, über welche Projektmanager 
 %\begin{minipage}{\linewidth}
 \lstinputlisting[
 language=json,
-caption=Beispiel für eine Eingabe in den Empfehlungsservice (Auszug),
+caption=Beispiel für eine Eingabe in den Empfehlungsservice,
 captionpos=b,
 label=qc:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice:qc1
 ]{gfx/project-input.json}
@@ -266,24 +266,23 @@ Wird anhand der Daten aus Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tb
 
 Ist kein Mitarbeiter im gesuchten Kompetenzbereich vorhanden, führt der Empfehlungsservice eine Ausnahmebehandlung durch. Wird hierbei nach Grundkenntnissen in einer bestimmten Fähigkeit gesucht und kein passender Kandidat gefunden, wird der wenig qualifizierteste Angestellte auf fortgeschrittenem Niveau als Referenz genutzt. Wird erfolglos nach Mitarbeitern mit fortgeschrittenen Kenntnissen gesucht, wird der am Besten qualifizierte Kandidat mit Grundkenntnissen als Referenz verwendet. Sind ausschließlich Mitarbeiter ohne Kenntnisse vorhanden, wird die gesuchte Kompetenz übersprungen, da in diesem Fall kein Mitarbeiter im Graphen mit dieser Fähigkeit verbunden sein kann und somit alle Kantengewichte 0 sein müssen.
 
-\newpage
-Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis einer unilateralen Empfehlungsbestimmung für ein Beispielprojekt mit fortgeschrittenen Kenntnissen in Python und MySQL und Grundkenntnissen in HDFS. Verwendet wurden dabei die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
+Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} zeigt das Ergebnis der unilateralen Empfehlungsbestimmung für die Beispielmitarbeiter und das Projekt aus Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice:qc1} mit gesuchten fortgeschrittenen Kenntnissen in Python und MySQL und Grundkenntnissen in HDFS. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:unilateral} nachvollzogen werden.
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c}
 		Positionierung & Mitarbeiter & Abweichung\\
 		\hline
-		1 & Jane D.  & 0.30\\
-		2 & Max M.   & 1.21\\
-		3 & John D.  & 4.06\\
-		4 & Erika M. & 7.72
+		1 & Jane D.  & 0.1\\
+		2 & Max M.   & 1.6\\
+		3 & John D.  & 5.9\\
+		4 & Erika M. & 10.4
 	\end{tabular}
-	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für die Daten aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\caption{Ergebnisliste der unilateralen Empfehlungskomponente für ein Beispielprojekt}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl2}
 \end{table}
 
-Ähnlich zum unilateralen Algorithmus arbeitet auch die bilaterale Empfehlungskomponente. Diese bezieht neben dem Anforderungen-Fähigkeiten Fit auch die Präferenzen der Mitarbeiter bzw. die Bedürfnisse-Angebote Kongruenz in die Berechnung mit ein.
+Ähnlich zum unilateralen Algorithmus arbeitet auch die bilaterale Empfehlungskomponente. Diese bezieht neben dem Anforderungen-Fähigkeiten Fit auch die Präferenzen der Mitarbeiter bzw. die Bedürfnisse-Angebote Kongruenz zur Bestimmung eines vollständigen \acp{PEFit} in die Berechnung mit ein.
 
 \newpage
 - Edwards beachtet\\
