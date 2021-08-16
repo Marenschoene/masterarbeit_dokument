@@ -6,9 +6,9 @@
 \label{ch:methodik:art}
 Um die Forschungsfrage der vorliegenden Master-Thesis zu untersuchen, wird eine quantitative Forschungsarbeit in Form eines Experiments durchgeführt. In diesem Kontext wird ein Empfehlungssystem entwickelt, welches sowohl uni- als auch bilaterale Vorschläge zur Besetzung offener Projektpositionen generiert. Für beide Ansätze werden dieselben Projektbeschreibungen und Mitarbeiter als Eingabe verwendet. Die beiden Empfehlungsverfahren unterscheiden sich lediglich in der Art, in welcher sie die vorhandenen Angestellten für die eingegebenen Stellen sortieren.
 
-Zur Beantwortung der Forschungsfrage wird eine Fallstudie mit Projektmanagern und -mitarbeitern durchgeführt. Die Projektmanager erhalten die sortierten Mitarbeiter beider Systeme für vorausgewählte Projektpositionen in Form von Listen. Anschließend bewerten sie auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern für die jeweiligen Stellen erwarten. Dabei wird evaluiert, ob sie die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Ansatzes höher bewerten, als die der unilateralen Variante.
+Zur Beantwortung der Forschungsfrage wird eine Fallstudie mit Projektmanagern und -mitarbeitern durchgeführt. Die Mitarbeiter des Unternehmens erhalten Übersichten über die vorausgewählten Projektpositionen. Daraufhin bewerten sie auf einer vordefinierten Skala, wie zufrieden sie mit einer Tätigkeit auf den vorliegenden Projektpositionen wären. Dabei wird überprüft, ob das bilaterale Empfehlungssystem die Angestellten für die Projektpositionen höher positioniert, bei welchen diese eine hohe Zufriedenheit erwarten bzw. niedriger positioniert, wenn diese eine geringe Zufriedenheit prognostizieren.
 
-Die Mitarbeiter des Unternehmens erhalten Übersichten über die vorausgewählten Projektpositionen. Daraufhin bewerten sie auf einer vordefinierten Skala, wie zufrieden sie mit einer Tätigkeit auf den vorliegenden Projektpositionen wären. Dabei wird überprüft, ob das bilaterale Empfehlungssystem die Angestellten für die Projektpositionen höher positioniert, bei welchen diese eine hohe Zufriedenheit erwarten bzw. niedriger positioniert, wenn diese eine geringe Zufriedenheit prognostizieren.
+Die Projektmanager erhalten die sortierten Mitarbeiter beider Systeme für vorausgewählte Projektpositionen in Form von Listen. Hierbei können sie nicht erkennen, welche Vorschläge über den uni- und welche über den bilateralen Ansatz erzeugt wurden. Anschließend bewerten sie auf einer vordefinierten Skala, welche Arbeitsleistung sie von denen in der vorliegenden Reihenfolge dargestellten Mitarbeitern für die jeweiligen Stellen erwarten. Dabei wird evaluiert, ob sie die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Ansatzes höher bewerten, als die der unilateralen Variante.
 
 Im Rahmen der vorliegenden Master-Thesis wird ausschließlich der komplementäre \ac{PEFit} auf Facetten-Ebene betrachtet. Hierbei werden einzig die für offene Projektpositionen benötigten Kompetenzen zur Bestimmung der Kongruenz herangezogen. Weitere Faktoren wie Kundennamen oder Branchen werden nicht berücksichtigt. Im Sinne des ergänzenden \acp{PEFit} wird vorausgesetzt, dass eine grundlegende Übereinstimmung der Werte von Mitarbeitern und Unternehmen bzw. Projekttätigkeiten bereits vor Anstellung der Arbeitnehmer überprüft wurde.
 
@@ -16,7 +16,7 @@ Durchgeführt werden das Experiment und die Fallstudie mit Projektmanagern und M
 
 \section{Verwendete Daten des Unternehmens}
 \label{ch:methodik:versuchsaufbau}
-Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen in einem Intranet. Dort steht eine Liste mit \anzFaehigkeiten Fähigkeiten wie beispielsweise "Java", "DSGVO" und "Digitale Transformation" zur Verfügung. Diese können die Angestellten über die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellte Skala bewerten.
+Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen im Intranet des Unternehmens. Dort steht eine Liste mit \anzFaehigkeiten Fähigkeiten, wie beispielsweise "Java", "DSGVO" und "Digitale Transformation", zur Verfügung. Diese können die Angestellten über die in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} dargestellte Skala bewerten.
 
 \begin{figure}[h]
 	\centering
@@ -34,9 +34,9 @@ Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene P
 \begin{table}[h]
 	\centering
 	\begin{tabularx}{\textwidth}{c|X}
-		Kompetenzniveau & Bewertung im Intranet\\
+		\textbf{Kompetenzniveau} & \textbf{Bewertung im Intranet}\\
 		\hline
-		Keine Kenntnisse & -\\
+		Keine Kenntnisse & Nicht angegeben\\
 		\hline
 		& Ich habe Grundkenntnisse\\
 		Grundkenntnisse & Ich habe es schon in einem Projekt eingesetzt\\
@@ -51,7 +51,7 @@ Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene P
 	\label{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1}
 \end{table}
 
-Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} zu erkennen, befinden sich in der ersten Gruppe sämtliche Mitarbeiter, welche die gesuchte Kompetenz nicht im Intranet bewertet haben. In das Niveau Grundkenntnisse werden sämtliche Angestellten eingeteilt, welche die Fähigkeit auf der Skala aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} mit einer der unteren drei Bewertungen beurteilt haben. In der Gruppe Fortgeschritten befinden sich analog sämtliche Angestellte, welche die Kompetenz mit einer der oberen drei Stufen bewertet haben.
+Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} zu erkennen, befinden sich in der ersten Gruppe sämtliche Mitarbeiter, welche die gesuchte Kompetenz nicht im Intranet bewertet haben. In das Niveau Grundkenntnisse werden sämtliche Angestellte eingeteilt, welche die Fähigkeit auf der Skala aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} mit einer der unteren drei Bewertungen beurteilt haben. In der Gruppe Fortgeschritten befinden sich analog sämtliche Angestellte, welche die Kompetenz mit einer der oberen drei Stufen bewertet haben.
 
 Für die Suche nach geeigneten Mitarbeitern können Projektmanager für jede Fähigkeit eine der beiden Abstufungen "Grundkenntnisse" und "Fortgeschritten" angeben. Die Priorisierung der Kompetenzen über diese Abstufungen wird gemäß Kapitel \ref{ch:personEnvironmentFit:wichtigkeiten} als Ausdruck von Wichtigkeiten seitens der Projektmanager betrachtet.
 
@@ -84,7 +84,7 @@ Das im Rahmen dieser Master-Thesis implementierte Empfehlungssystem basiert auf 
 	\label{tbl:methodik:versuchsaufbau:systemarchitektur:tbl1}
 \end{table}
 
-Sämtliche Komponenten der Microservice-Architektur werden in Form von Docker-Containern ausgeliefert und über Docker-Compose orchestriert. Die Dienste kommunizieren untereinander über HTTP. Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt einen Überblick über die Systemarchitektur.
+Sämtliche Komponenten der Microservice-Architektur werden in Form von Docker-Containern ausgeliefert und über Docker Compose orchestriert. Die Dienste kommunizieren untereinander über HTTP. Abbildung \ref{fig:methodik:systemarchitekturn:abb1} zeigt einen Überblick über die Systemarchitektur.
 
 \begin{figure}[h]
 	\centering
@@ -125,7 +125,7 @@ Im Intranet der EXXETA AG ist zu beobachten, dass einige Mitarbeiter keine einzi
 
 Hinsichtlich der Beurteilungen ist außerdem zu erwarten, dass manche spezialisierte Mitarbeiter ausschließlich Kompetenzen bewerten könnten, über welche kein anderer Angestellter verfügt. Haben Mitarbeiter keine Fähigkeiten bewertet oder verfügen sie ausschließlich über Kompetenzen, welcher kein weiterer Angestellter beherrscht, sind diese im Graphen mit keiner anderen Person verbunden. Somit kann ein Kaltstart bei der Empfehlungsbestimmung auftreten.
 
-Um diesem vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Über dieses Vorgehen sind stets sämtliche Mitarbeiter des Bereichs \acl{JES} über den Abteilungsleiter bzw. alle Angestellten der EXXETA AG über den Vorstand miteinander verbunden. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen eines Zielnutzers bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn dessen direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieser Ansatz ist im Falle der EXXETA AG als sinnvoll zu bewerten. Dort sind stets Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig sind. Auch die Teammanager sind fachliche Führungskräfte, deren Fähigkeiten weitgehend repräsentativ für ihre Mitarbeiter sind.
+Um diesem vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Über dieses Vorgehen sind stets sämtliche Mitarbeiter des Bereichs \acl{JES} über den Abteilungsleiter bzw. alle Angestellten der EXXETA AG über den Vorstand miteinander verbunden. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen eines Zielnutzers bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn dessen direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieser Ansatz ist im Falle der EXXETA AG als sinnvoll zu bewerten. Dort sind stets Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig. Auch die Teammanager sind fachliche Führungskräfte, deren Fähigkeiten weitgehend repräsentativ für ihre Mitarbeiter sind.
 
 Um eine weitere Erhöhung der algorithmischen Komplexität des Algorithmus von Katz zu vermeiden, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird auf \teamgewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit schwach in die Berechnung mit einzubeziehen, hohe individuelle Kompetenzbewertungen jedoch weiterhin stärker zu gewichten.
 
@@ -181,7 +181,7 @@ Im Matrixservice wird der Wert von $\beta$ über folgende Gleichung \ref{frml:me
 	\beta = \frac{1/\lambda}{\nenner}
 	\label{frml:methodik:versuchsaufbau:grundlegend:formel1}
 \end{equation}
-Durch das in in Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} erläutert, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix $M$ des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielnutzer weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Fähigkeiten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten ein höheres Gewicht, welche direkt mit dem Zielnutzer in Verbindung stehen.
+Durch das in Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} dargestellte Vorgehen ist sichergestellt, dass $\beta$ auch bei sich ändernder Datenlage stets kleiner als $1/\lambda$ ist. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} erläutert, entspricht $\lambda$ dem größten Eigenwert der Adjazenzmatrix $M$ des Graphen. Aufgrund der Division durch \nenner ist $\beta$ stets so groß, dass von einem Zielnutzer weit entfernte Knoten noch in die Berechnung einbezogen werden, nahe Fähigkeiten jedoch stärker gewichtet werden. Auf diese Weise erhalten die Knoten ein höheres Gewicht, welche direkt mit dem Zielnutzer in Verbindung stehen.
 
 Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ändern sich bei Berechnung des Verfahrens von Katz die Fähigkeitsbewertungen. Allerdings befinden sich die Beurteilungen, welche ursprünglich einem gemeinsamen Kompetenzniveau entsprachen, auch nach Berechnung des Algorithmus auf einem vergleichbaren Niveau. Die Werte innerhalb eines Kompetenzbereichs sind lediglich feingranular unterschiedlich. Dieses Phänomen ist in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu beobachten. Dort sind die Bewertungen der Fähigkeit MySQL aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1} vor und nach der Berechnung des Katz-Algorithmus eingetragen. Gleiche Kompetenzniveaus sind in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} durch einheitliche Hintergrundfarben gekennzeichnet.
 
@@ -288,7 +288,7 @@ Die letzte Spalte in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} g
 
 Hinsichtlich der Linien aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} wird auch von den Mitarbeitern erwartet, dass diese Über- und Unterforderung im Projekt vermeiden möchten. Daher wird auch bei dieser Berechnung Kurve B über die quadrierte Differenzberechnung implementiert.
 
-Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl1} zeigt die Ergebnisse der bilateralen Empfehlungsbestimmung für das Projekt aus Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice:qc1}. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:bilateral} nachvollzogen werden.
+Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} zeigt die Ergebnisse der bilateralen Empfehlungsbestimmung für das Projekt aus Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice:qc1}. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:bilateral} nachvollzogen werden.
 
 \begin{table}[h]
 	\centering
