@@ -5,7 +5,6 @@
 \shorthandoff{"}
 \chapter{Empfehlungssysteme}
 \label{ch:empfehlungssysteme}
-% Zeitplan in Readme
 
 \section{Einführung}
 \label{ch:empfehlungssysteme:einfuehrung}
@@ -144,7 +143,7 @@ Die Katz-Zentralität kann über folgende Gleichung \ref{frml:empfehlungssysteme
 	(I - \beta * M)^{-1} - I
 	\label{frml:empfehlungssysteme:cf:speicherbasiert:formel4}
 \end{equation}
-In Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} steht $\beta$ für eine Zahl im Bereich von 0 bis eins \cite[S. 6]{guns:2014}, welche jedoch stets kleiner als $\frac{1}{\lambda}$ sein muss. $\lambda$ entspricht dabei dem größten Eigenwert der Matrix M \cite[S. 6]{zhan:2017}. Je größer der Wert von $\beta$ angesetzt wird, desto stärker werden weit entfernte Beziehungen in der Berechnung gewichtet \cite[S. 6]{guns:2014}.
+In Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} steht $\beta$ für eine Zahl im Bereich von \nullWert bis eins \cite[S. 6]{guns:2014}, welche jedoch stets kleiner als $\frac{1}{\lambda}$ sein muss. $\lambda$ entspricht dabei dem größten Eigenwert der Matrix M \cite[S. 6]{zhan:2017}. Je größer der Wert von $\beta$ angesetzt wird, desto stärker werden weit entfernte Beziehungen in der Berechnung gewichtet \cite[S. 6]{guns:2014}.
 
 Die Variable $I$ steht in Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} für die Einheitsmatrix. $M$ symbolisiert die Adjazenzmatrix des betrachteten Graphen \cite[S. 4]{libenNowell:2007}. Diese gibt an, wie viele Kanten von einem Startknoten (Zeile) zu jedem anderen Knoten (Spalte) führen \cite[S. 6]{guns:2014}.
 
