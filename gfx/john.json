@@ -5,22 +5,22 @@
 	"skills":[
 		{
 			"name":"Python",
-			"level":-1,
-			"preference":true
-		},
-		{
-			"name":"HDFS",
 			"level":0,
 			"preference":true
 		},
 		{
+			"name":"HDFS",
+			"level":1,
+			"preference":true
+		},
+		{
 			"name":"Java",
-			"level":2,
+			"level":3,
 			"preference":false
 		},
 		{
 			"name":"MySQL",
-			"level":1,
+			"level":2,
 			"preference":false
 		}
 	],
