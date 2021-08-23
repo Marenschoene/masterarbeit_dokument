@@ -1,0 +1,97 @@
+\section{Beispielrechnung der bilateralen Komponente}
+\label{ch:nebenrechnungen:bilateral}
+Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl1} zeigt das zu besetzende Beispiel-Projekt. In den Tabellen dieses Kapitels sind fehlende Kenntnisse grau, Grundkenntnisse blau und fortgeschrittene Kompetenzen rot markiert.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c}
+		Fähigkeit & Kompetenzniveau \\
+		\hline
+		Python  & \cellcolor{usercolor}Fortgeschritten\\
+		MySQL   & \cellcolor{usercolor}Fortgeschritten\\
+		HDFS    & \cellcolor{itemcolor}Grundkenntnisse
+	\end{tabular}
+	\caption{Zu besetzendes Beispiel-Projekt}
+	\label{tbl:nebenrechnungen:bilateral:tbl1}
+\end{table}
+
+Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl3} zeigt, welche der gesuchten Fähigkeiten die Mitarbeiter präferieren.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c}
+		Name & Python & MySQL & HDFS \\
+		\hline
+		Doe, Jane     & \cellcolor{usercolor}falsch & \cellcolor{usercolor}falsch & \cellcolor{itemcolor}wahr\\
+		Doe, John     & \cellcolor{itemcolor}wahr   & \cellcolor{itemcolor}falsch   & \cellcolor{itemcolor}wahr\\
+		Muster, Erika & \cellcolor{itemcolor}wahr   & \cellcolor{usercolor}wahr & \cellcolor{usercolor}falsch\\
+		Muster, Max   & \cellcolor{usercolor}falsch & \cellcolor{itemcolor}wahr   & \cellcolor{itemcolor}wahr
+	\end{tabular}
+	\caption{Präferierte Kompetenzen der Mitarbeiter}
+	\label{tbl:nebenrechnungen:bilateral:tbl3}
+\end{table}
+
+Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2} zeigt die relevanten bilateralen Ergebniswerte des Matrixservices. Für die weitere Berechnung verwendete Referenz-Werte sind hervorgehoben.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c}
+		& Python & MySQL & HDFS\\ 
+		\hline
+		Doe, Jane     & \cellcolor{usercolor}\textbf{2.92} & \cellcolor{itemcolor}2.10 & \cellcolor{exxetagray}0.83\\
+		Doe, John     & \cellcolor{exxetagray}1.59 & \cellcolor{itemcolor}0.92 & \cellcolor{itemcolor}\textbf{1.46}\\
+		Muster, Erika & \cellcolor{exxetagray}1.16 & \cellcolor{exxetagray}0.84 & \cellcolor{usercolor}1.73\\
+		Muster, Max   & \cellcolor{itemcolor}2.01 & \cellcolor{itemcolor}\textbf{3.42} & \cellcolor{exxetagray}0.73
+	\end{tabular}
+	\caption{Relevante Ergebnisse des Katz-Algorithmus für den Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\label{tbl:nebenrechnungen:bilateral:tbl2}
+\end{table}
+
+Berechnung der Abweichung für Jane Doe mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2}:
+\begin{gather}
+	\nonumber (2.92-2.92)^2 + (2.10-3.42)^2 + (0.83-1.46)^2\\
+	\nonumber = 0 + 1.7424 + 0.3969\\
+	\nonumber = 2.1393\\
+	\approx 2.1
+	\label{frml:nebenrechnungen:bilateral:jane}
+\end{gather}
+
+Berechnung der Abweichung für John Doe mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2}:
+\begin{gather}
+	\nonumber (1.59-2.92)^2 + (0.92-3.42)^2 + (1.46-1.46)^2\\
+	\nonumber = 1.7689 + 6.25 + 0\\
+	\nonumber = 8.0189\\
+	\approx 8.0
+	\label{frml:nebenrechnungen:bilateral:john}
+\end{gather}
+
+Berechnung der Abweichung für Erika Muster mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2}:
+\begin{gather}
+	\nonumber (1.16-2.92)^2 + (0.84-3.42)^2 + (1.73-1.46)^2\\
+	\nonumber = 3.0976 + 6.6564 + 0.0729\\
+	\nonumber = 9.8269\\
+	\approx 9.8
+	\label{frml:nebenrechnungen:bilateral:erika}
+\end{gather}
+
+Berechnung der Abweichung für Max Muster mit den Werten aus Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2}:
+\begin{gather}
+	\nonumber (2.01-2.92)^2 + (3.42-3.42)^2 + (0.73-1.46)^2\\
+	\nonumber = 0.8281 + 0 + 0.5329\\
+	\nonumber = 1.361\\
+	\approx 1.4
+	\label{frml:nebenrechnungen:bilateral:max}
+\end{gather}
+
+Ausgabe:
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c}
+		Positionierung & Mitarbeiter & Abweichung\\
+		\hline
+		1 & Max M.   & 1.4\\
+		2 & Jane D.  & 2.1\\
+		3 & John D.  & 8.0\\
+		4 & Erika M. & 9.8
+	\end{tabular}
+	\caption{Ergebnisliste der bilateralen Empfehlungskomponente für die Daten aus Tabelle \ref{tbl:nebenrechnungen:bilateral:tbl2}}
+	\label{tbl:nebenrechnungen:bilateral:ausgabe}
+\end{table}

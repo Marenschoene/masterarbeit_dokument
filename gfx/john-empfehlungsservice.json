@@ -1,0 +1,52 @@
+{
+    "unilateral": [
+        ...,
+        {
+            "name": "john.doe@exxeta.com",
+            "recommendationValue": 5.91968,
+            "skills": [
+                {
+                    "name": "HDFS",
+                    "originalLevel": 1,
+                    "preference": true
+                },
+                {
+                    "name": "MySQL",
+                    "originalLevel": 2,
+                    "preference": false
+                },
+                {
+                    "name": "Python",
+                    "originalLevel": 0,
+                    "preference": true
+                }
+            ]
+        },
+        ...
+    ],
+    "bilateral": [
+        ...,
+		{
+            "name": "john.doe@exxeta.com",
+            "recommendationValue": 8.016558,
+            "skills": [
+                {
+                    "name": "HDFS",
+                    "originalLevel": 1,
+                    "preference": true
+                },
+                {
+                    "name": "MySQL",
+                    "originalLevel": 2,
+                    "preference": false
+                },
+                {
+                    "name": "Python",
+                    "originalLevel": 0,
+                    "preference": true
+                }
+            ]
+        },
+        ...
+    ]
+}

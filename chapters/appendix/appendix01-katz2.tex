@@ -1,0 +1,109 @@
+\section{Bestimmung der Katz-Zentralität mit Pseudo-Mitarbeiter}
+\label{ch:nebenrechnungen:katzZentralitaetPseudoMitarbeiter}
+Darstellung von Graph \ref{fig:methodik:versuchsaufbau:unilateral:abb1} in Form einer Tabelle:
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
+		& \begin{sideways}Jane D.\end{sideways} & \begin{sideways}John D.\end{sideways} & \begin{sideways}Erika M.\end{sideways} & \begin{sideways}Max M.\end{sideways} & \begin{sideways}Projekt\end{sideways} & \begin{sideways}Java\end{sideways} & \begin{sideways}Python\end{sideways} & \begin{sideways}MySQL\end{sideways} & \begin{sideways}MongoDB\end{sideways} & \begin{sideways}HDFS\end{sideways} & \begin{sideways}Spark\end{sideways} \\
+		\hline
+		Jane D.  & 0 & \kantengewicht & \kantengewicht & \kantengewicht & 0 & 0 & 4 & 3 & 3 & 0 & 0\\
+		John D.  & \kantengewicht & 0 & \kantengewicht & \kantengewicht & 0 & 3 & 0 & 2 & 0 & 1 & 0\\
+		Erika M. & \kantengewicht & \kantengewicht & 0 & \kantengewicht & 0 & 0 & 0 & 0 & 0 & 5 & 3\\
+		Max M.   & \kantengewicht & \kantengewicht & \kantengewicht & 0 & 0 & 2 & 3 & 1 & 0 & 0 & 0\\
+		Projekt  & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 0 & 3 & 0 & 3\\
+		Java     & 0 & 3 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		Python   & 4 & 0 & 0 & 3 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+		MySQL    & 3 & 2 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		MongoDB  & 3 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0\\
+		HDFS     & 0 & 1 & 5 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		Spark    & 0 & 0 & 3 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0
+	\end{tabular}
+	\caption{Anzahl an Verbindungen im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\label{tbl:berechnungDerKatzZentralitaetPseudoMitarbeiter:tbl1}
+\end{table}
+
+Bestimmung der Katz-Zentralität für Graph \ref{fig:methodik:versuchsaufbau:unilateral:abb1} anhand der Formel \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} mit $\beta = (1/\lambda)/2 \approx 0.058$:
+
+\begin{equation}
+	M = \begin{bmatrix}
+		0 & \kantengewicht & \kantengewicht & \kantengewicht & 0 & 0 & 4 & 3 & 3 & 0 & 0\\
+		\kantengewicht & 0 & \kantengewicht & \kantengewicht & 0 & 3 & 0 & 2 & 0 & 1 & 0\\
+		\kantengewicht & \kantengewicht & 0 & \kantengewicht & 0 & 0 & 0 & 0 & 0 & 5 & 3\\
+		\kantengewicht & \kantengewicht & \kantengewicht & 0 & 0 & 2 & 3 & 1 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0 & 0 & 0 & 4 & 0 & 3 & 0 & 3\\
+		0 & 3 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		4 & 0 & 0 & 3 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+		3 & 2 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		3 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 1 & 5 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 0 & 3 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0
+	\end{bmatrix}
+	\label{frml:berechnungDerKatzZentralitaetPseudoMitarbeiter:formel1}
+\end{equation}
+\begin{equation}
+	\beta * M = \begin{bmatrix}
+		0.00 & 0.03 & 0.03 & 0.03 & 0.00 & 0.00 & 0.23 & 0.17 & 0.17 & 0.00 & 0.00\\
+		0.03 & 0.00 & 0.03 & 0.03 & 0.00 & 0.17 & 0.00 & 0.12 & 0.00 & 0.06 & 0.00\\
+		0.03 & 0.03 & 0.00 & 0.03 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.29 & 0.17\\
+		0.03 & 0.03 & 0.03 & 0.00 & 0.00 & 0.12 & 0.17 & 0.06 & 0.00 & 0.00 & 0.00\\
+		0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.23 & 0.00 & 0.17 & 0.00 & 0.17\\
+		0.00 & 0.17 & 0.00 & 0.12 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00\\
+		0.23 & 0.00 & 0.00 & 0.17 & 0.23 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00\\
+		0.17 & 0.12 & 0.00 & 0.06 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00\\
+		0.17 & 0.00 & 0.00 & 0.00 & 0.17 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00\\
+		0.00 & 0.06 & 0.29 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00\\
+		0.00 & 0.00 & 0.17 & 0.00 & 0.17 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00
+	\end{bmatrix}
+	\label{frml:katzZentralitaetPseudoMitarbeiter:formel2}
+\end{equation}
+\begin{gather}
+	\nonumber I - \beta * M = \\
+	\begin{bmatrix}
+		 1.00 & -0.03 & -0.03 & -0.03 & 0.00 & 0.00 & -0.23 & -0.17 & -0.17 & 0.00 & 0.00\\
+		 -0.03 & 1.00 & -0.03 & -0.03 & 0.00 & -0.17 & 0.00 & -0.12 & 0.00 & -0.06 & 0.00\\
+		 -0.03 & -0.03 & 1.00 & -0.03 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & -0.29 & -0.17\\
+		 -0.03 & -0.03 & -0.03 & 1.00 & 0.00 & -0.12 & -0.17 & -0.06 & 0.00 & 0.00 & 0.00\\
+		 0.00 & 0.00 & 0.00 & 0.00 & 1.00 & 0.00 & -0.23 & 0.00 & -0.17 & 0.00 & -0.17\\
+		 0.00 & -0.17 & 0.00 & -0.12 & 0.00 & 1.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00\\
+		 -0.23 & 0.00 & 0.00 & -0.17 & -0.23 & 0.00 & 1.00 & 0.00 & 0.00 & 0.00 & 0.00\\
+		 -0.17 & -0.12 & 0.00 & -0.06 & 0.00 & 0.00 & 0.00 & 1.00 & 0.00 & 0.00 & 0.00\\
+		 -0.17 & 0.00 & 0.00 & 0.00 & -0.17 & 0.00 & 0.00 & 0.00 & 1.00 & 0.00 & 0.00\\
+		 0.00 & -0.06 & -0.29 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 1.00 & 0.00\\
+		 0.00 & 0.00 & -0.17 & 0.00 & -0.17 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 1.00
+	\end{bmatrix}
+	\label{frml:katzZentralitaetPseudoMitarbeiter:formel3}
+\end{gather}
+\begin{gather}
+	\nonumber (I - \beta * M)^{-1} \approx\\
+	\begin{bmatrix}
+		1.16 & 0.07 & 0.05 & 0.11 & 0.12 & 0.02 & 0.31 & 0.22 & 0.22 & 0.02 & 0.03\\
+		0.07 & 1.06 & 0.06 & 0.07 & 0.01 & 0.19 & 0.03 & 0.14 & 0.01 & 0.08 & 0.01\\
+		0.05 & 0.06 & 1.14 & 0.04 & 0.05 & 0.02 & 0.03 & 0.02 & 0.02 & 0.33 & 0.21\\
+		0.11 & 0.07 & 0.04 & 1.07 & 0.06 & 0.14 & 0.22 & 0.09 & 0.03 & 0.02 & 0.02\\
+		0.12 & 0.01 & 0.05 & 0.06 & 1.14 & 0.01 & 0.30 & 0.03 & 0.22 & 0.01 & 0.21\\
+		0.02 & 0.19 & 0.02 & 0.14 & 0.01 & 1.05 & 0.03 & 0.03 & 0.01 & 0.02 & 0.00\\
+		0.31 & 0.03 & 0.03 & 0.22 & 0.30 & 0.03 & 1.18 & 0.07 & 0.11 & 0.01 & 0.06\\
+		0.22 & 0.14 & 0.02 & 0.09 & 0.03 & 0.03 & 0.07 & 1.06 & 0.04 & 0.01 & 0.01\\
+		0.22 & 0.01 & 0.02 & 0.03 & 0.22 & 0.01 & 0.11 & 0.04 & 1.08 & 0.01 & 0.04\\
+		0.02 & 0.08 & 0.33 & 0.02 & 0.01 & 0.02 & 0.01 & 0.01 & 0.01 & 1.10 & 0.06\\
+		0.03 & 0.01 & 0.21 & 0.02 & 0.21 & 0.00 & 0.06 & 0.01 & 0.04 & 0.06 & 1.07
+	\end{bmatrix}
+	\label{frml:katzZentralitaetPseudoMitarbeiter:formel4}
+\end{gather}
+\begin{gather}
+	\nonumber (I - \beta * M)^{-1} - I \approx\\
+	 \begin{bmatrix}
+		0.16 & 0.07 & 0.05 & 0.11 & 0.12 & 0.02 & 0.31 & 0.22 & 0.22 & 0.02 & 0.03\\
+		0.07 & 0.06 & 0.06 & 0.07 & 0.01 & 0.19 & 0.03 & 0.14 & 0.01 & 0.08 & 0.01\\
+		0.05 & 0.06 & 0.14 & 0.04 & 0.05 & 0.02 & 0.03 & 0.02 & 0.02 & 0.33 & 0.21\\
+		0.11 & 0.07 & 0.04 & 0.07 & 0.06 & 0.14 & 0.22 & 0.09 & 0.03 & 0.02 & 0.02\\
+		0.12 & 0.01 & 0.05 & 0.06 & 0.14 & 0.01 & 0.30 & 0.03 & 0.22 & 0.01 & 0.21\\
+		0.02 & 0.19 & 0.02 & 0.14 & 0.01 & 0.05 & 0.03 & 0.03 & 0.01 & 0.02 & 0.00\\
+		0.31 & 0.03 & 0.03 & 0.22 & 0.30 & 0.03 & 0.18 & 0.07 & 0.11 & 0.01 & 0.06\\
+		0.22 & 0.14 & 0.02 & 0.09 & 0.03 & 0.03 & 0.07 & 0.06 & 0.04 & 0.01 & 0.01\\
+		0.22 & 0.01 & 0.02 & 0.03 & 0.22 & 0.01 & 0.11 & 0.04 & 0.08 & 0.01 & 0.04\\
+		0.02 & 0.08 & 0.33 & 0.02 & 0.01 & 0.02 & 0.01 & 0.01 & 0.01 & 0.10 & 0.06\\
+		0.03 & 0.01 & 0.21 & 0.02 & 0.21 & 0.00 & 0.06 & 0.01 & 0.04 & 0.06 & 0.07
+	\end{bmatrix}
+	\label{frml:katzZentralitaetPseudoMitarbeiter:formel5}
+\end{gather}

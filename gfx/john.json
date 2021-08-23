@@ -1,0 +1,31 @@
+[...,
+{
+	"userName":"john.doe@exxeta.com",
+	"manager":null,
+	"skills":[
+		{
+			"name":"Python",
+			"level":-1,
+			"preference":true
+		},
+		{
+			"name":"HDFS",
+			"level":0,
+			"preference":true
+		},
+		{
+			"name":"Java",
+			"level":2,
+			"preference":false
+		},
+		{
+			"name":"MySQL",
+			"level":1,
+			"preference":false
+		}
+	],
+	"colleagues":[
+		"erika.muster@exxeta.com"
+	]
+},
+... ]

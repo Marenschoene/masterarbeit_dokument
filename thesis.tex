@@ -63,6 +63,8 @@
 \usepackage{rotating} % Rotate Table-Head
 \usepackage{color, colortbl} % Table-Color
 %\usepackage{pgfplots} % Function-Graph
+\setcounter{MaxMatrixCols}{11}
+\usepackage{pdfpages}
 
 %*************************************************************************
 % GO!GO!GO! MOVE IT!
@@ -78,7 +80,8 @@
 %*************************************************************************
 % Frontmatter
 %*************************************************************************
-\include{frontbackmatter/Titlepage}
+\include{frontbackmatter/Deckblatt}
+%\include{frontbackmatter/Titlepage}
 \include{frontbackmatter/Titleback}
 %\cleardoublepage\include{frontbackmatter/Dedication}
 %\cleardoublepage\include{frontbackmatter/Foreword}
@@ -91,7 +94,7 @@
 \cleardoublepage\include{frontbackmatter/Contents}
 \cleardoublepage\include{frontbackmatter/Figures}
 \cleardoublepage\include{frontbackmatter/Tables}
-%\cleardoublepage\include{frontbackmatter/Listings}
+\cleardoublepage\include{frontbackmatter/Listings}
 \cleardoublepage\include{frontbackmatter/Acronyms}
 %*************************************************************************
 % Mainmatter
@@ -107,7 +110,7 @@
 \include{chapters/empfehlungssysteme}
 \include{chapters/verwandteArbeiten}
 \include{chapters/methodik}
-\include{chapters/ergebnisse}
+%\include{chapters/ergebnisse}
 \include{chapters/diskussion}
 \include{chapters/fazit}
 %\include{chapters/examples/chapter01}
@@ -121,6 +124,9 @@
 \cleardoublepage
 \part{Appendix}\label{pt:appendix}
 \include{chapters/appendix/appendix01}
+%\include{chapters/appendix/appendix01-katz2}
+\include{chapters/appendix/appendix01-unilateral}
+\include{chapters/appendix/appendix01-bilateral}
 %\include{chapters/appendix/appendix02}
 %\include{chapters/appendix/appendix03}
 %\include{chapters/appendix/appendix05}

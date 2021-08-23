@@ -1,0 +1,14 @@
+[
+    {
+        "name":"Python",
+        "expert":true
+    },
+    {
+        "name":"MySQL",
+        "expert":true
+    },
+    {
+        "name":"HDFS",
+        "expert":false
+    }
+]

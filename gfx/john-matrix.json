@@ -1,0 +1,18 @@
+{...,
+	"john.doe@exxeta.com":{
+		...,
+		"MySQL":{
+			"bilateralLevel":0.9201573355787046,
+			"originalLevel":2,
+			"preference":false,
+			"unilateralLevel":0.9201573355787046
+		},
+		"Python":{
+			"bilateralLevel":1.5890358669363909,
+			"originalLevel":0,
+			"preference":true,
+			"unilateralLevel":0.7945179334681954
+		},
+		...
+	},
+... }
