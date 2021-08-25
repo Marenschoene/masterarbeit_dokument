@@ -12,7 +12,7 @@ Die Projektmanager erhalten die sortierten Mitarbeiter beider Empfehlungsansätz
 
 Im Rahmen der vorliegenden Master-Thesis wird ausschließlich der komplementäre \ac{PEFit} auf Facetten-Ebene betrachtet. Hierbei werden einzig die für offene Projektpositionen benötigten Kompetenzen zur Bestimmung der Kongruenz herangezogen. Weitere Faktoren wie Kundennamen oder Branchen werden nicht berücksichtigt. Im Sinne des ergänzenden \acp{PEFit} wird vorausgesetzt, dass eine grundlegende Übereinstimmung der Werte von Mitarbeitern und Unternehmen bzw. Projekttätigkeiten bereits vor Anstellung der Arbeitnehmer überprüft wurde.
 
-Durchgeführt werden das Experiment und die Fallstudie mit Projektmanagern und Mitarbeitern des Fachbereichs \ac{JES} der EXXETA AG mit Hauptsitz in Karlsruhe. Das Unternehmen ist spezialisiert auf IT-Beratungsleistungen und arbeitet vorrangig projektbasiert. Dementsprechend ist das Zuordnen passender Angestellter zu offenen Projektpositionen in diesem Betrieb eine häufig auftretende Aufgabe.
+Durchgeführt werden das Experiment und die Fallstudie mit Projektmanagern und Mitarbeitern des Fachbereichs \JES der EXXETA AG mit Hauptsitz in Karlsruhe. Das Unternehmen ist spezialisiert auf IT-Beratungsleistungen und arbeitet vorrangig projektbasiert. Dementsprechend ist das Zuordnen passender Angestellter zu offenen Projektpositionen in diesem Betrieb eine häufig auftretende Aufgabe.
 
 \section{Verwendete Daten des Unternehmens}
 \label{ch:methodik:versuchsaufbau}
@@ -51,7 +51,7 @@ Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene P
 \end{table}
 
 %Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} zu erkennen, befinden sich in der ersten Gruppe sämtliche Mitarbeiter, welche die gesuchte Kompetenz nicht im Intranet bewertet haben. In das Niveau Grundkenntnisse werden sämtliche Angestellte eingeteilt, welche die Fähigkeit auf der Skala aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} mit einer der unteren drei Bewertungen beurteilt haben. In der Gruppe Fortgeschritten befinden sich analog sämtliche Angestellte, welche die Kompetenz mit einer der oberen drei Stufen bewertet haben.
-Die EXXETA AG erhebt keine Präferenzen ihrer Mitarbeiter bezüglich deren Kompetenzen. Um die Wünsche der Angestellten ebenfalls in die Empfehlungsprozess einzubeziehen, wird im Rahmen dieser Master-Thesis eine Umfrage durchgeführt. Die 45 Mitarbeiter des Bereichs \acl{JES} erhalten zu diesem Zweck einen Fragebogen mit den \anzFaehigkeiten im Intranet hinterlegten Fähigkeiten. Dabei werden sie gebeten, für sämtliche Kompetenzen über einen boolschen Wert auszudrücken, ob sie diese gerne in Projekten anwenden möchten. Sie können dabei sowohl bereits beherrschte Fähigkeiten auswählen, als auch Kompetenzen, welche diese zukünftig erst erlernen bzw. erstmals einsetzen möchten. Ein Auszug aus dem Fragebogen ist in Abbildung \ref{fig:methodik:versuchsaufbau:abb1} dargestellt.
+Die EXXETA AG erhebt keine Präferenzen ihrer Mitarbeiter bezüglich deren Kompetenzen. Um die Wünsche der Angestellten ebenfalls in die Empfehlungsprozess einzubeziehen, wird im Rahmen dieser Master-Thesis eine Umfrage durchgeführt. Die 45 Mitarbeiter des Bereichs \JES erhalten zu diesem Zweck einen Fragebogen mit den \anzFaehigkeiten im Intranet hinterlegten Fähigkeiten. Dabei werden sie gebeten, für sämtliche Kompetenzen über einen boolschen Wert auszudrücken, ob sie diese gerne in Projekten anwenden möchten. Sie können dabei sowohl bereits beherrschte Fähigkeiten auswählen, als auch Kompetenzen, welche diese zukünftig erst erlernen bzw. erstmals einsetzen möchten. Ein Auszug aus dem Fragebogen ist in Abbildung \ref{fig:methodik:versuchsaufbau:abb1} dargestellt.
 
 \begin{figure}[h]
 	\centering
@@ -120,7 +120,7 @@ Im Intranet der EXXETA AG ist zu beobachten, dass einige Mitarbeiter keine einzi
 
 Hinsichtlich der Kompetenzbewertungen ist außerdem zu erwarten, dass manche spezialisierte Mitarbeiter ausschließlich Kompetenzen bewerten, über welche kein anderer Angestellter verfügt. Haben Mitarbeiter keine Fähigkeiten bewertet oder verfügen sie ausschließlich über Kompetenzen, welche kein weiterer Angestellter beherrscht, sind diese im Graphen mit keiner anderen Person verbunden. Somit kann ein Kaltstart bei der Empfehlungsbestimmung auftreten.
 
-Um diesem vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Über dieses Vorgehen sind stets sämtliche Mitarbeiter des Bereichs \acl{JES} über den Abteilungsleiter bzw. alle Angestellten der EXXETA AG über den Vorstand miteinander verbunden. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen eines Zielnutzers bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn dessen direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieser Ansatz ist im Falle der EXXETA AG als sinnvoll zu bewerten. Dort sind in der Regel Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig. Auch die Teammanager sind fachliche Führungskräfte, deren Fähigkeiten meist weitgehend repräsentativ für ihre Mitarbeiter sind.
+Um diesem vorzubeugen, werden zusätzlich zu den Fähigkeiten der Mitarbeiter auch deren Teamzuordnungen in Form eines hybriden Ansatzes beachtet. Über dieses Vorgehen sind stets sämtliche Mitarbeiter des Bereichs \JES über den Abteilungsleiter bzw. alle Angestellten der EXXETA AG über den Vorstand miteinander verbunden. Dieses Vorgehen hat zusätzlich den Vorteil, dass die Kompetenzen eines Zielnutzers bei Berechnung des Algorithmus feingranular besser bewertet werden, wenn dessen direkte Kollegen ähnliche Fähigkeiten beherrschen. Dieser Ansatz ist im Falle der EXXETA AG als sinnvoll zu bewerten. Dort sind in der Regel Mitarbeiter mit vergleichbarem fachlichem Hintergrund in einem Team tätig. Auch die Teammanager sind fachliche Führungskräfte, deren Fähigkeiten meist weitgehend repräsentativ für ihre Mitarbeiter sind.
 
 Um eine weitere Erhöhung der algorithmischen Komplexität des Algorithmus von Katz zu vermeiden, werden die Teams nicht als zusätzliche Knoten in den Graphen eingefügt. Die Beziehungen werden stattdessen über direkte Kanten zwischen Kollegen dargestellt. Das Kantengewicht zwischen zwei Teammitgliedern bzw. einem Angestellten zu seinem Manager wird auf \teamgewichtString festgelegt. Dieser Wert wird verwendet, um die Teamzugehörigkeit schwach in die Berechnung mit einzubeziehen, hohe individuelle Kompetenzbewertungen jedoch weiterhin stärker zu gewichten.
 
@@ -313,11 +313,11 @@ label=qc:methodik:versuchsaufbau:daten:qc3
 
 In Listing \ref{qc:methodik:versuchsaufbau:daten:qc3} ist zu erkennen, dass zu jedem Mitarbeiter die berechnete Abweichung unter der Bezeichnung recommendationValue zurückgegeben wird. Außerdem kann für jeden Angestellten entnommen werden, ob diese die jeweiligen gesuchten Fähigkeiten präferieren und welche Bewertung diese im Intranet für die Kompetenzen abgegeben haben.
 
-Die Ausgaben des Empfehlungsservices dienen im Rahmen der vorliegenden Master-Thesis als Grundlage für eine Fallstudie, welche zur Beantwortung der Forschungsfrage mit Projektmanagern und Mitarbeitern des Fachbereichs \acl{JES} der EXXETA AG durchgeführt wird.
+Die Ausgaben des Empfehlungsservices dienen im Rahmen der vorliegenden Master-Thesis als Grundlage für eine Fallstudie, welche zur Beantwortung der Forschungsfrage mit Projektmanagern und Mitarbeitern des Fachbereichs \JES der EXXETA AG durchgeführt wird.
 
 \section{Geplante Fallstudie}
 \label{ch:methodik:evaluation}
-Vor Durchführung der Fallstudie definiert ein Projektmanager des Fachbereichs \acl{JES} fünf Projektpositionen. Dieser betrachtet die Stellen als repräsentativ für häufige Kundenanfrage an die Abteilung. Abbildung \ref{fig:methodik:evaluation:abb2} zeigt die vordefinierten Projektpositionen.
+Vor Durchführung der Fallstudie definiert ein Projektmanager des Fachbereichs \JES fünf Projektpositionen. Dieser betrachtet die Stellen als repräsentativ für häufige Kundenanfrage an die Abteilung. Abbildung \ref{fig:methodik:evaluation:abb2} zeigt die vordefinierten Projektpositionen.
 
 \begin{figure}[h]
 	\centering
@@ -326,7 +326,7 @@ Vor Durchführung der Fallstudie definiert ein Projektmanager des Fachbereichs \
 	\label{fig:methodik:evaluation:abb2}
 \end{figure}
 
-Die in Abbildung \ref{fig:methodik:evaluation:abb2} dargestellten Projektpositionen dienen als Grundlage für eine Befragung der Mitarbeiter und der Projektmanager des Bereichs \acl{JES}.
+Die in Abbildung \ref{fig:methodik:evaluation:abb2} dargestellten Projektpositionen dienen als Grundlage für eine Befragung der Mitarbeiter und der Projektmanager des Bereichs \JES.
 
 \section{Befragung der Projektmitarbeiter}
 \label{ch:methodik:evaluation:mitarbeiter}
@@ -368,16 +368,7 @@ Wie in Abbildung \ref{fig:methodik:evaluation:manager:abb1} dargestellt, können
 
 Im Anschluss an die Umfrage wird evaluiert, wie die Projektmanager die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Ansatzes im Vergleich zur unilateralen Variante bewerten.
 
-Zusätzlich wird über die in Abbildung \ref{fig:methodik:evaluation:manager:abb2} dargestellte Frage erhoben, welche Kriterien für die Projektmanager zur Beurteilung der Listen besonders relevant sind.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1\textwidth]{gfx/umfrage-projektmanager-kriterien.png}
-	\caption{Frage zu den beachteten Kriterien bei der Beurteilung der Listen im Fragebogen der Projektmanager}
-	\label{fig:methodik:evaluation:manager:abb2}
-\end{figure}
-
-Zuletzt wird auch in der Umfrage unter den Projektmanagern validiert, ob diese eine Unterforderung ihrer Angestellten bei der Besetzung offener Projektpositionen vermeiden möchten. Die entsprechende Frage ist in Abbildung \ref{fig:methodik:evaluation:manager:abb3} dargestellt.
+Zusätzlich wird auch in der Umfrage unter den Projektmanagern validiert, ob diese eine Unterforderung ihrer Angestellten bei der Besetzung offener Projektpositionen vermeiden möchten. Die entsprechende Frage ist in Abbildung \ref{fig:methodik:evaluation:manager:abb3} dargestellt.
 
 \begin{figure}[h]
 	\centering
