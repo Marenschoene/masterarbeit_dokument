@@ -165,7 +165,7 @@ Die Daten des Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:
 	(I - \beta * M)^{-1} - I
 	\label{frml:methodik:versuchsaufbau:systemarchitektur:matrixservice:formel1}
 \end{equation}
-Im Matrixservice wird der Wert von $\beta$ über folgende Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} bestimmt.
+Im Matrixservice wird der Wert von $\beta$ über Gleichung \ref{frml:methodik:versuchsaufbau:grundlegend:formel1} bestimmt.
 \begin{equation}
 	\beta = \frac{1/\lambda}{\nenner}
 	\label{frml:methodik:versuchsaufbau:grundlegend:formel1}
@@ -204,10 +204,10 @@ Präferiert einer der Mitarbeiter in Tabelle \ref{tbl:methodik:versuchsaufbau:un
 		\rowcolor{itemcolor}John D.   & Grundk.  & 2 & 0.92 & Nein & 0.92\\
 		\rowcolor{itemcolor}Jane D.   & Grundk.  & 3 & 2.10 & Nein & 2.10
 	\end{tabular}
-	\caption{Ergebnisse des Katz-Algorithmus für die Kompetenz MySQL im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
+	\caption{Uni- und bilaterale Ergebnisse des Katz-Algorithmus für die Kompetenz MySQL im Graphen aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb1}}
 	\label{tbl:methodik:versuchsaufbau:unilateral:tbl3}
 \end{table}
-
+\newpage
 In Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl3} ist zu erkennen, dass sich die bilateralen Empfehlungswerte von Erika bzw. Max Muster von ihren unilateralen Empfehlungswerten unterscheiden. Ursächlich ist, dass beide Mitarbeiter die Fähigkeit MySQL präferieren. Da Erika Muster in der Tabelle als geeignetste Mitarbeiterin auf ihrem Kompetenzniveau für die Fähigkeit MySQL betrachtet wird, verdoppelt sich ihre Beurteilung bei der Bestimmung des bilateralen Empfehlungswertes. Jane Doe ist dagegen die potentiell fähigste Angestellte mit Grundkenntnissen in MySQL. Da Max Muster diese Kompetenz präferiert, wird bei Berechnung des bilateralen Empfehlungswertes sein Ergebnis des Katz-Algorithmus zu Jane Does Resultat addiert. Durch diesen Rechenschritt befinden sich sämtliche Bewertungen der Fähigkeit MySQL auch nach Bestimmung des bilateralen Empfehlungswertes auf einem vergleichbaren Niveau. Lediglich die Reihenfolge der Mitarbeiter wurde innerhalb der Kompetenzstufen verändert.%Beispielsweise wurde die Beurteilung von Erika Muster erhöht. Dennoch ist diese geringer als die Bewertung von John Doe, welcher über die geringste Beurteilung des nächst höheren Kompetenzbereichs verfügt.
 
 Der Matrixservice gibt die uni- und bilateralen Empfehlungswerte in Form von JSON zurück. Listing \ref{qc:methodik:versuchsaufbau:daten:qc2} zeigt beispielhaft eine Ausgabe des Matrixservice, welche einen Auszug der Daten von John Doe enthält.
@@ -292,23 +292,23 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} zeigt die Ergebnisse de
 	\caption{Ergebnisliste der bilateralen Empfehlungsbestimmung für ein Beispielprojekt}
 	\label{tbl:methodik:versuchsaufbau:bilateral:tbl2}
 \end{table}
-
+\newpage
 In Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} ist zu erkennen, dass Max Muster aufgrund seiner Präferenzen besser positioniert ist, als zuvor in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2}. Außerdem hat sich der Abstand von Erika Muster auf John Doe verringert hat.
 
 Der Empfehlungsservice wurde wie der Intranetservice in der Programmiersprache Kotlin implementiert. Ebenfalls kamen das Framework Spring Boot und der GraalVM Native Image-Compiler zum Einsatz. Ein Auszug aus der vollständigen Ausgabe des Empfehlungsservice für die Projektanfrage aus Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice:qc1} ist in Listing \ref{qc:methodik:versuchsaufbau:daten:qc3} dargestellt.
 
-%\begin{minipage}{\linewidth}
+In Listing \ref{qc:methodik:versuchsaufbau:daten:qc3} ist zu erkennen, dass zu jedem Mitarbeiter die berechnete Abweichung unter der Bezeichnung recommendationValue zurückgegeben wird. Außerdem kann für jeden Angestellten entnommen werden, ob sie die gesuchten Fähigkeiten präferieren und welche Bewertung sie im Intranet für die Kompetenzen abgegeben haben.
+
+Die Ausgaben des Empfehlungsservice dienen im Rahmen der vorliegenden Master-Thesis als Grundlage für eine Fallstudie, welche zur Beantwortung der Forschungsfrage mit Projektmanagern und Mitarbeitern des Fachbereichs \JES der EXXETA AG durchgeführt wird.
+
+\begin{minipage}{\linewidth}
 \lstinputlisting[
 language=json,
 caption=Beispiel für die Rückgabe des Empfehlungsservices (Auszug),
 captionpos=b,
 label=qc:methodik:versuchsaufbau:daten:qc3
 ]{gfx/john-empfehlungsservice.json}
-%\end{minipage}
-
-In Listing \ref{qc:methodik:versuchsaufbau:daten:qc3} ist zu erkennen, dass zu jedem Mitarbeiter die berechnete Abweichung unter der Bezeichnung recommendationValue zurückgegeben wird. Außerdem kann für jeden Angestellten entnommen werden, ob sie die gesuchten Fähigkeiten präferieren und welche Bewertung sie im Intranet für die Kompetenzen abgegeben haben.
-
-Die Ausgaben des Empfehlungsservice dienen im Rahmen der vorliegenden Master-Thesis als Grundlage für eine Fallstudie, welche zur Beantwortung der Forschungsfrage mit Projektmanagern und Mitarbeitern des Fachbereichs \JES der EXXETA AG durchgeführt wird.
+\end{minipage}
 
 \section{Aufbau der Fallstudie}
 \label{ch:methodik:evaluation}
@@ -349,15 +349,7 @@ Die Frage aus Abbildung \ref{fig:methodik:evaluation:abb3} dient der Überprüfu
 
 \section{Befragung der Projektmanager}
 \label{ch:methodik:evaluation:manager}
-Neben der Befragung der Angestellten wird auch eine Umfrage unter Projektmanagern durchgeführt. Diese erhalten die fünf qualifiziertesten Mitarbeiter jedes Empfehlungsansatzes für die vorausgewählten Projektpositionen in Form von Listen. Anschließend bewerten sie auf einer vordefinierten Skala, von welchen Angestellten sie eine höhere Arbeitsleistung für die jeweiligen Stellen erwarten. Abbildung \ref{fig:methodik:evaluation:manager:abb1} zeigt einen Auszug aus der Befragung.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{gfx/projekt-c-liste-pseudonym.png}
-	\caption[Frage zur Bewertung der unterschiedlichen Listen]{Frage zur Bewertung der unterschiedlichen Listen\\
-	(Klarnamen wurden aus Datenschutzgründen nachträglich pseudonymisiert)}
-	\label{fig:methodik:evaluation:manager:abb1}
-\end{figure}
+Neben der Befragung der Angestellten wird auch eine Umfrage unter Projektmanagern durchgeführt. Diese erhalten die fünf qualifiziertesten Mitarbeiter jedes Empfehlungsansatzes für die vorausgewählten Projektpositionen in Form von Listen. Anschließend bewerten sie auf einer vordefinierten Skala, von welchen Angestellten sie eine höhere Arbeitsleistung für die jeweiligen Stellen erwarten. Abbildung \ref{fig:methodik:evaluation:manager:abb1} zeigt auf der folgenden Seite einen Auszug aus der Befragung.
 
 Wie in Abbildung \ref{fig:methodik:evaluation:manager:abb1} dargestellt, können die Projektmanager nicht erkennen, welche Liste durch den unilateralen bzw. den bilateralen Empfehlungsansatz erzeugt wurde.
 
@@ -370,5 +362,13 @@ Zusätzlich wird auch in der Umfrage unter den Projektmanagern validiert, wie di
 	\includegraphics[width=1\textwidth]{gfx/umfrage-projektmanager-unterforderung.png}
 	\caption{Frage zur Unterforderung der Mitarbeiter im Fragebogen der Projektmanager}
 	\label{fig:methodik:evaluation:manager:abb3}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{gfx/projekt-c-liste-pseudonym.png}
+\caption[Frage zur Bewertung der unterschiedlichen Listen]{Frage zur Bewertung der unterschiedlichen Listen\\
+	(Klarnamen wurden aus Datenschutzgründen nachträglich pseudonymisiert)}
+\label{fig:methodik:evaluation:manager:abb1}
 \end{figure}
 \shorthandon{"}
