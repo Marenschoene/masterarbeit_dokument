@@ -21,8 +21,6 @@ latex-build:
   stage: test
   script:
     - pdflatex thesis.tex
-    - biber thesis
-    - pdflatex thesis.tex
   artifacts:
     paths:
       - thesis.pdf
