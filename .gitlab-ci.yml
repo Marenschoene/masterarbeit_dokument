@@ -21,7 +21,7 @@ latex-build:
   stage: test
   script:
     - apt-get -qq update && apt-get install -y --no-install-recommends make apt-utils ghostscript texlive texlive-bibtex-extra texlive-fonts-extra texlive-lang-english texlive-lang-german texlive-latex-extra texlive-math-extra texlive-publishers texlive-science chktex
-    - make --directory /thesis-template/ publish
+    - make --directory . publish
   artifacts:
     paths:
       - thesis.pdf
