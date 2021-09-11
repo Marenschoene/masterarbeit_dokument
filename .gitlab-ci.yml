@@ -22,6 +22,7 @@ latex-build:
   script:
     - pdflatex thesis.tex
     - pdflatex thesis.tex
+    - pdflatex thesis.tex
   artifacts:
     paths:
       - thesis.pdf
