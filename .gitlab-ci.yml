@@ -17,10 +17,11 @@ docker-build:
       - .devcontainer/Dockerfile
 
 latex-build:
-  image: $CI_REGISTRY_IMAGE
+  image: ubuntu:16.04
   stage: test
   script:
-    - pdflatex thesis.tex
+    - apt-get -qq update && apt-get install -y --no-install-recommends make apt-utils ghostscript texlive texlive-bibtex-extra texlive-fonts-extra texlive-lang-english texlive-lang-german texlive-latex-extra texlive-math-extra texlive-publishers texlive-science chktex
+    - make --directory /thesis-template/ publish
   artifacts:
     paths:
       - thesis.pdf
