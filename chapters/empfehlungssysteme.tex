@@ -199,8 +199,10 @@ Unabhängig von der konkreten Art der Implementierung ist ein großer Nachteil s
 \label{ch:empfehlungssysteme:cf:modellbasiert}
 Modellbasierte Verfahren verwenden Ansätze aus dem Bereich des Data Minings zur Generierung von Vorschlägen. Hierbei berechnen Wissenschaftler statistische Modelle, bevor sie ihr Empfehlungssystem den Nutzern zur Verfügung stellen \cite[S. 2]{cui:2020}. Dieses Vorgehen hat den Vorteil, dass in der Produktivumgebung keine Berechnungen auf allen Daten ausgeführt werden müssen. Somit ist die Vorschlagsbestimmung insbesondere bei großen Datenmengen effizienter als bei speicherbasierten Verfahren \cite[S. 8]{yang:2016}.
 
-Wie in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} dargestellt, ist es bei modellbasierten Verfahren üblich, den vorhandenen Datensatz in Trainings- (rot) und Testdaten (blau) zu untergliedern \cite[S. 71f.]{recommenderSystems:2016}. Die Einteilung in der Tabelle erfolgte zufällig.
-\newpage
+Bei modellbasierten Verfahren ist es üblich, den vorhandenen Datensatz in Trainings- und Testdaten zu untergliedern \cite[S. 71f.]{recommenderSystems:2016}. Die Trainingsdaten werden genutzt, um statistische Modelle zur Vorhersage von Bewertungen zu entwickeln \cite[S. 71f.]{recommenderSystems:2016}. Die Testdaten dienen zur anschließenden Evaluation und Bewertung hinsichtlich der Genauigkeit des erstellten Modells. Hierbei ist es beispielsweise möglich, bekannte Einträge von Testdaten in der Matrix temporär zu entfernen, diese anschließend durch das trainierte Modell vorherzusagen und daraufhin tatsächliche und vorhergesagte Werte zu vergleichen \cite[S. 3ff.]{kang:2016}.
+
+Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} zeigt die beispielhafte Untergliederung eines Datensatzes in Trainings- (rot) und Testdaten (blau). Die Einteilung erfolgte dabei zufällig.
+
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c|c|c}
@@ -214,8 +216,6 @@ Wie in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} dargestellt, i
 	\caption{Beispielhafte Unterteilung einer Matrix in Trainings- und Testdaten}
 	\label{tbl:empfehlungssysteme:cf:modellbasiert:tbl1}
 \end{table}
-
-Die Trainingsdaten werden genutzt, um statistische Modelle zur Vorhersage von Bewertungen zu entwickeln \cite[S. 71f.]{recommenderSystems:2016}. Die Testdaten dienen zur anschließenden Evaluation und Bewertung hinsichtlich der Genauigkeit des erstellten Modells. Hierbei ist es beispielsweise möglich, bekannte Einträge von Testdaten in der Matrix temporär zu entfernen, diese anschließend durch das trainierte Modell vorherzusagen und daraufhin tatsächliche und vorhergesagte Werte zu vergleichen \cite[S. 3ff.]{kang:2016}.
 
 Wie an den Spalten in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} zu erkennen ist, existieren in der Praxis häufig sehr viele Merkmale bzw. Dimensionen, welche zur Entwicklung von Modellen relevant sein können. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sind Matrizen in der Praxis zusätzlich aufgrund des Sparsity Problems meist sehr schwach besetzt. \textcite[S. 1]{boratto:2014} stellten fest, dass in solchen Situationen, in welchen viele Dimensionen und gleichzeitig wenige Daten vorliegen, keine statistisch aussagekräftigen Modelle erstellt werden können. \textcite[S. 94, Z. 7]{bellman:1961} prägte für diesen Sachverhalt den Ausdruck "Fluch der Dimensionalität"\footnote{"Curse of Dimensionality" - \textcite[S. 94, Z. 7]{bellman:1961}}. Um in solchen Situationen dennoch Empfehlungen generieren zu können, stellten verschiedene Autoren in der Literatur Verfahren zur Dimensionsreduzierung vor. Verbreitet ist beispielsweise die Hauptkomponentenanalyse, welche im englischsprachigen Raum als \ac{PCA} bezeichnet wird \cite[S. 1ff.]{vaswani:2018}.
 
