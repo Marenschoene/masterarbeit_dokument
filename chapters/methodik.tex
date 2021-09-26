@@ -27,7 +27,7 @@ Die Mitarbeiter der EXXETA AG pflegen ihre Kompetenzen im Intranet des Unternehm
 
 Aufgrund der klaren Beschreibungen der einzelnen Stufen in Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} wird der in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} angesprochene Bias bei der Selbsteinschätzung weitgehend ausgeschlossen. Außerdem ist es in der vorliegenden Problemstellung gut möglich, dass einzelne Mitarbeiter ihre Kompetenzen bewusst besser oder schlechter bewerteten als andere Kollegen, da sie beispielsweise über eine längere Berufserfahrung verfügen. Aus diesen Gründen wird bei der Empfehlungsbestimmung auf eine Mittelwert-Zentrierung verzichtet.
 
-Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene Projektpositionen nachgefragten Fähigkeiten mitsamt der benötigten Kenntnisniveaus festlegen. Die relevanten Kompetenzen bestimmen die Verantwortlichen in der Regel anhand eingehender Projektanfragen, welche Kunden in unstrukturierter Form beispielsweise per Telefon oder E-Mail einreichen. Derartige Anfragen werden täglich in großer Zahl bearbeitet. Daher wird es für den praktischen Einsatz als sehr umständlich bewertet, wenn Verantwortliche für jede Projektanfrage sämtliche Fähigkeiten auf einer sechsstufigen Skala bewerten müssen. Aus diesem Grund wurden die Kompetenzniveaus aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} bei der Spezifikation offener Projektpositionen auf die in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellten Kompetenzniveaus vereinfacht. Bei der Definition der zur Evaluation benötigten Stellenprofile konnte für jede Fähigkeit eine der beiden Abstufungen "Grundkenntnisse" und "Fortgeschritten" angeben werden. Die Priorisierung der Kompetenzen über diese Abstufungen wird gemäß Kapitel \ref{ch:personEnvironmentFit:wichtigkeiten} als Ausdruck von Wichtigkeiten seitens der Projektmanager betrachtet.
+Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene Projektpositionen nachgefragten Fähigkeiten mitsamt der benötigten Kenntnisniveaus festlegen. Die relevanten Kompetenzen bestimmen die Verantwortlichen in der Regel anhand eingehender Projektanfragen, welche Kunden in unstrukturierter Form, beispielsweise per Telefon oder E-Mail, einreichen. Derartige Anfragen werden täglich in großer Zahl bearbeitet. Daher wird es für den praktischen Einsatz als sehr umständlich bewertet, wenn Verantwortliche für jede Projektanfrage sämtliche Fähigkeiten auf einer sechsstufigen Skala bewerten müssen. Aus diesem Grund wurden die Kompetenzniveaus aus Abbildung \ref{fig:methodik:versuchsaufbau:daten:abb1} bei der Spezifikation offener Projektpositionen auf die in Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1} dargestellten Kompetenzniveaus vereinfacht. Bei der Definition der zur Evaluation benötigten Stellenprofile konnte für jede Fähigkeit eine der beiden Abstufungen "Grundkenntnisse" und "Fortgeschritten" angeben werden. Die Priorisierung der Kompetenzen über diese Abstufungen wird gemäß Kapitel \ref{ch:personEnvironmentFit:wichtigkeiten} als Ausdruck von Wichtigkeiten seitens der Projektmanager betrachtet.
 
 \begin{table}[h]
 	\centering
@@ -49,7 +49,7 @@ Damit Projektmanager Vorschläge erhalten können, müssen sie die für offene P
 	\label{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1}
 \end{table}
 
-Die EXXETA AG erhob zum Zeitpunkt der Durchführung des Experiments keine Präferenzen ihrer Mitarbeiter bezüglich deren Kompetenzen. Um die Wünsche der Angestellten ebenfalls in die Empfehlungsprozess einzubeziehen, wurde im Rahmen dieser Master-Thesis eine Umfrage durchgeführt. Die 45 Mitarbeiter des Bereichs \JES erhielten zu diesem Zweck einen Fragebogen mit den \anzFaehigkeiten im Intranet hinterlegten Fähigkeiten und wurden gebeten, für sämtliche Kompetenzen über einen booleschen Wert auszudrücken, ob sie diese gerne in Projekten anwenden möchten. Sie konnten dabei sowohl bereits beherrschte Fähigkeiten auswählen als auch Kompetenzen, welche diese zukünftig erst erlernen bzw. erstmals einsetzen möchten. Ein Auszug aus dem Fragebogen ist in Abbildung \ref{fig:methodik:versuchsaufbau:abb1} dargestellt.
+Die EXXETA AG erhob zum Zeitpunkt der Durchführung des Experiments keine Präferenzen ihrer Mitarbeiter bezüglich deren Kompetenzen. Um die Wünsche der Angestellten ebenfalls in die Empfehlungsprozess einzubeziehen, wurde im Rahmen dieser Master-Thesis eine Umfrage durchgeführt. Die Mitarbeiter des Bereichs \JES erhielten zu diesem Zweck einen Fragebogen mit den \anzFaehigkeiten im Intranet hinterlegten Fähigkeiten. Sie wurden gebeten, für sämtliche Kompetenzen über einen booleschen Wert auszudrücken, ob sie diese gerne in Projekten anwenden möchten. Die Angestellten konnten dabei sowohl bereits beherrschte Fähigkeiten auswählen als auch Kompetenzen, welche diese zukünftig erst erlernen bzw. erstmals einsetzen möchten. Ein Auszug aus dem Fragebogen ist in Abbildung \ref{fig:methodik:versuchsaufbau:abb1} dargestellt.
 
 \begin{figure}[h]
 	\centering
@@ -191,7 +191,7 @@ Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, ände
 \newpage
 Wie in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} zu erkennen, haben Max Muster, Jane und John Doe auch nach Berechnung des Katz-Algorithmus vergleichbare Bewertungen. Es kann interpretiert werden, dass sich die drei Beispielangestellten ähnlich gut mit MySQL auskennen, Jane Doe die Fähigkeit jedoch wenig besser beherrscht als ihre beiden Kollegen. Die Ergebnisse der letzten Spalte von Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl1} werden als unilateraler Empfehlungswert betrachtet. Diesen benötigt der Empfehlungsservice zu einem späteren Zeitpunkt zur Bestimmung von Vorschlägen.
 
-Es wird davon ausgegangen, dass die Präferenz eines Mitarbeiters für eine Fähigkeit seine Motivation erhöht und dessen Kompetenzbewertung daher gegenüber den anderen Angestellten innerhalb seines Kompetenzniveaus zunimmt. Aus diesem Grund bestimmt der Matrixservice in einem weiteren Rechenschritt für jede Fähigkeit die höchste Bewertung innerhalb jedes der drei Kompetenzniveaus aus Tabelle \ref{tbl:methodik:versuchsaufbau:systemarchitektur:matrixservice:tbl1}. Favorisiert ein Mitarbeiter eine bestimmte Fähigkeit, addiert der Dienst die höchste Bewertung des Kompetenzniveaus des Angestellten zu dessen Beurteilung. Durch dieses Vorgehen verbleiben die Mitarbeiter bei ihrer ursprünglichen Bewertung, wenn sie die betrachtete Kompetenz nicht präferieren. Wünschen sich mehrere Angestellte die Fähigkeit im Projekt anzuwenden, erhalten sie innerhalb des Kompetenzniveaus eine höhere Positionierung. Hierbei bleibt die ursprüngliche Reihenfolge der Mitarbeiter gleich, sodass Projektmanager als ersten Vorschlag den fähigsten und zugleich motiviertesten Angestellten erhalten. Somit werden gemäß des ergänzenden \acp{PEFit} gleichzeitig die Präferenzen von Projektmanagern und Mitarbeitern beachtet. Der Matrixservice gibt die Ergebnisse des beschriebenen Rechenschritts als bilateralen Empfehlungswert zurück. Die uni- und bilateralen Empfehlungswerte für die Beispielmitarbeiter sind in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl3} dargestellt.
+Bei der Bestimmung des bilateralen Empfehlungswertes wird davon ausgegangen, dass die Präferenz eines Mitarbeiters für eine Fähigkeit seine Motivation erhöht und dessen Kompetenzbewertung daher gegenüber den anderen Angestellten innerhalb seines Kompetenzniveaus zunimmt. Aus diesem Grund bestimmt der Matrixservice in einem weiteren Rechenschritt für jede Fähigkeit die höchste Bewertung innerhalb jedes der drei Kompetenzniveaus. Favorisiert ein Mitarbeiter eine bestimmte Fähigkeit, addiert der Dienst die höchste Bewertung des Kompetenzniveaus des Angestellten zu dessen Beurteilung. Durch dieses Vorgehen verbleiben die Mitarbeiter bei ihrer ursprünglichen Bewertung, wenn sie die betrachtete Kompetenz nicht präferieren. Wünschen sich mehrere Angestellte die Fähigkeit im Projekt anzuwenden, erhalten sie innerhalb des Kompetenzniveaus eine höhere Positionierung. Hierbei bleibt die ursprüngliche Reihenfolge der Mitarbeiter gleich, sodass Projektmanager als ersten Vorschlag den fähigsten und zugleich motiviertesten Angestellten erhalten. Somit werden gemäß des ergänzenden \acp{PEFit} gleichzeitig die Präferenzen von Projektmanagern und Mitarbeitern beachtet. Der Matrixservice gibt die Ergebnisse des beschriebenen Rechenschritts als bilateralen Empfehlungswert zurück. Die berechneten Empfehlungswerte für die Beispielmitarbeiter sind in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl3} dargestellt.
 
 \begin{table}[h]
 	\centering
@@ -221,9 +221,9 @@ label=qc:methodik:versuchsaufbau:daten:qc2
 ]{gfx/john-matrix.json}
 %\end{minipage}
 
-In Listing \ref{qc:methodik:versuchsaufbau:daten:qc2} ist zu erkennen, dass jede Fähigkeit vier Attribute besitzt. Die Werte von uni- und bilateralLevel stehen für die uni- und bilateralen Empfehlungswerte. Das Attribut preference zeigt an, ob ein Mitarbeiter eine Kompetenz präferiert. Der Wert von originalLevel gibt die originale Kompetenzbewertung des Angestellten aus dem Intranet wieder, welche auch dem Kantengewicht im Graphen entspricht.
+In Listing \ref{qc:methodik:versuchsaufbau:daten:qc2} ist zu erkennen, dass jede Fähigkeit vier Attribute besitzt. Die Werte von $unilateralLevel$ und $bilateralLevel$ stehen für die uni- und bilateralen Empfehlungswerte. Das Attribut $preference$ zeigt an, ob der Mitarbeiter die Kompetenz präferiert. Der Wert von $originalLevel$ gibt die originale Fähigkeitsbewertung des Angestellten aus dem Intranet wieder, welche auch dem Kantengewicht im Graphen entspricht.
 
-Da die Berechnung des Verfahrens von Katz eine hohe algorithmische Komplexität aufweist, speichert der Matrixservice die Ergebnisse seiner Berechnung zur effizienteren Vorschlagsbestimmung in einem Pufferspeicher zwischen. Dieses Vorgehen kombiniert die Vorteile von speicher- und modellbasierten Empfehlungsansätzen. Wie bei speicherbasierten Verfahren üblich, kann der Matrixservice stets auf die aktuellen Daten des Unternehmens zurückgreifen. Durch die Zwischenspeicherung der Ergebnisse wird dabei eine bei modellbasierten Verfahren zu erwartende Effizienz bei der Empfehlungsgenerierung erzielt.
+Da die Berechnung des Verfahrens von Katz eine hohe algorithmische Komplexität aufweist, speichert der Matrixservice die Ergebnisse seiner Berechnung zur effizienteren Vorschlagsbestimmung in einem Pufferspeicher zwischen. Dieses Vorgehen kombiniert die Vorteile von speicher- und modellbasierten Empfehlungsansätzen. Wie bei speicherbasierten Verfahren üblich, kann der Matrixservice stets auf die aktuellen Daten des Unternehmens zugreifen. Durch die Zwischenspeicherung der Ergebnisse wird dabei eine bei modellbasierten Verfahren zu erwartende Effizienz bei der Empfehlungsgenerierung erzielt.
 
 Die Implementierung des Matrixservices erfolgte in der Programmiersprache Python. Eingesetzt wurden dabei das Framework Flask und das Paket Numpy, welches die Matrixberechnungen unterstützt. Als Pufferspeicher kommt die Schlüssel-Wert-Datenbank Redis zum Einsatz.
 
@@ -231,7 +231,7 @@ Die finale Empfehlungsbestimmung anhand der Ausgabe des Matrixservices erfolgt a
 
 \subsection{Empfehlungsservice}
 \label{ch:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice}
-Der Empfehlungsservice stellt eine Schnittstelle zur Verfügung, über welche Projektmanager die für offene Projektpositionen benötigten Fähigkeiten eingeben können. Wie in Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice:qc1} dargestellt, müssen sie dabei die Namen der Kompetenzen angeben und die gesuchten Fähigkeitsniveaus über das boolesche Attribut expert spezifizieren.
+Der Empfehlungsservice stellt eine Schnittstelle zur Verfügung, über welche Projektmanager die für offene Projektpositionen benötigten Fähigkeiten eingeben können. Wie in Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice:qc1} dargestellt, müssen sie dabei die Namen der Kompetenzen angeben und die gesuchten Fähigkeitsniveaus über das boolesche Attribut $expert$ spezifizieren.
 
 %\begin{minipage}{\linewidth}
 \lstinputlisting[
@@ -247,7 +247,7 @@ Bei der unilateralen Vorschlagsgenerierung bestimmt der Empfehlungsservice gemä
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.75\textwidth]{gfx/ueberschuss_supply_motive.png}
-	\caption[Auswirkungen eines P-E Misfits]{Auswirkungen eines P-E Misfits\\(Eigene Darstellung in Anlehnung an \cite[S. 23]{edwards:2008})}
+	\caption[Mögliche Auswirkungen eines P-E Misfits auf die Belastung des Mitarbeiters]{Mögliche Auswirkungen eines P-E Misfits auf die Belastung des Mitarbeiters (Eigene Darstellung in Anlehnung an \cite[S. 23]{edwards:2008})}
 	\label{fig:methodik:versuchsaufbau:unilateral:abb2}
 \end{figure}
 \newpage
@@ -275,7 +275,7 @@ Die letzte Spalte in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2} g
 
 Ähnlich zum bisher erläuterten Vorgehen berechnet der Empfehlungsservice auch die bilateralen Resultate. Dabei bezieht der Dienst neben dem Anforderungen-Fähigkeiten Fit auch die Präferenzen der Mitarbeiter bzw. die Bedürfnisse-Angebote Kongruenz zur Bestimmung eines vollständigen \acp{PEFit} in die Berechnung mit ein. Hierbei werden aus der Rückgabe des Matrixservice aus Listing \ref{qc:methodik:versuchsaufbau:daten:qc2} anstelle der unilateralen die bilaterale Empfehlungswerte verwendet. Wie in Kapitel \ref{ch:personEnvironmentFit:regressionsgleichungen} gefordert, werden durch dieses Vorgehen die Präferenzen von Projektmanagern und Angestellten getrennt voneinander in die Berechnung einbezogen.
 
-Hinsichtlich der Kurven aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} wird auch von den Mitarbeitern erwartet, dass diese Über- und Unterforderung bei der Projektarbeit vermeiden möchten. Daher wird der \ac{PEFit} auch bei dieser Berechnung anhand von Linie B über die quadrierte Differenzberechnung ermittelt.
+Hinsichtlich der Kurven aus Abbildung \ref{fig:methodik:versuchsaufbau:unilateral:abb2} wird auch von den Mitarbeitern erwartet, dass diese Über- und Unterforderung bei der Projektarbeit vermeiden möchten. Daher wird der \ac{PEFit} auch bei dieser Berechnung anhand von Kurve B über die quadrierte Differenzberechnung ermittelt.
 
 Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} zeigt die Ergebnisse der bilateralen Empfehlungsbestimmung für die Projektposition aus Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice:qc1}. Die vollständige Berechnung kann in Anhang \ref{ch:nebenrechnungen:bilateral} nachvollzogen werden.
 
@@ -295,7 +295,7 @@ Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} zeigt die Ergebnisse de
 
 In Tabelle \ref{tbl:methodik:versuchsaufbau:bilateral:tbl2} ist zu erkennen, dass Max Muster aufgrund seiner Präferenzen besser positioniert ist als zuvor in Tabelle \ref{tbl:methodik:versuchsaufbau:unilateral:tbl2}. Außerdem hat sich der Abstand von Erika Muster auf John Doe verringert.
 
-Wie der Intranetservice wurde auch der Empfehlungsservice in der Programmiersprache Kotlin implementiert. Ebenfalls kamen das Framework Spring Boot und der GraalVM Native Image-Compiler zum Einsatz. Ein Auszug aus der Rückgabe des Empfehlungsservice für die Projektanfrage aus Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice:qc1} ist in Listing \ref{qc:methodik:versuchsaufbau:daten:qc3} dargestellt. Darin ist zu erkennen, dass für jeden Mitarbeiter die berechnete Abweichung unter der Bezeichnung recommendationValue angegeben wird. Außerdem ist für jeden Angestellten bestimmbar, ob dieser die gesuchten Fähigkeiten präferiert und wie er diese im Intranet bewertet.
+Wie der Intranetservice wurde auch der Empfehlungsservice in der Programmiersprache Kotlin implementiert. Ebenfalls kamen das Framework Spring Boot und der GraalVM Native Image-Compiler zum Einsatz. Ein Auszug aus der Rückgabe des Empfehlungsservice für die Projektanfrage aus Listing \ref{qc:methodik:versuchsaufbau:systemarchitektur:empfehlungsservice:qc1} ist auf der folgenden Seite in Listing \ref{qc:methodik:versuchsaufbau:daten:qc3} dargestellt. Darin ist zu erkennen, dass für jeden Mitarbeiter die berechnete Abweichung unter der Bezeichnung $recommendationValue$ angegeben wird. Außerdem ist für jeden Angestellten bestimmbar, ob dieser die gesuchten Fähigkeiten präferiert und wie er diese im Intranet bewertet hat.
 
 Die Ausgaben des Empfehlungsservice dienten im Rahmen dieser Master-Thesis als Grundlage für eine Fallstudie, welche zur Beantwortung der Forschungsfrage mit Projektmanagern und Mitarbeitern des Fachbereichs \JES der EXXETA AG durchgeführt wurde.
 
@@ -321,7 +321,7 @@ Vor Durchführung der Fallstudie definierte ein Projektmanager des Fachbereichs 
 
 Die in Abbildung \ref{fig:methodik:evaluation:abb2} dargestellten Projektpositionen dienten als Grundlage für eine Befragung der Mitarbeiter und der Projektmanager des Bereichs \JES.
 
-\section{Befragung der Projektmitarbeiter}
+\section{Befragung der Mitarbeiter}
 \label{ch:methodik:evaluation:mitarbeiter}
 Wie anhand von Abbildung \ref{fig:methodik:versuchsaufbau:abb1} beschrieben, wurden die Mitarbeiter der EXXETA AG in einer Umfrage gebeten, ihre präferierten Kompetenzen auszuwählen. In dieser Befragung erhielten sie zusätzlich die vordefinierten Projektpositionen aus Abbildung \ref{fig:methodik:evaluation:abb2}. Hierbei sollten sie ihre Zufriedenheit mit einer Tätigkeit auf den dargestellten Projektpositionen auf einer vierstufigen Skala bewerten. Diese wurde gewählt, um neutrale Beurteilungen zu vermeiden. Abbildung \ref{fig:methodik:evaluation:abb1} zeigt einen Auszug aus der Umfrage, welchem auch die Aufgabenstellung zu entnehmen ist.
 
@@ -332,7 +332,7 @@ Wie anhand von Abbildung \ref{fig:methodik:versuchsaufbau:abb1} beschrieben, wur
 	\label{fig:methodik:evaluation:abb1}
 \end{figure}
 
-Nach Abschluss der Umfrage wurde überprüft, ob das bilaterale Empfehlungssystem die Angestellten für die Projektpositionen höher positionierte, bei welchen diese eine hohe Zufriedenheit erwarten bzw. niedriger einordnete, wenn diese eine geringe Akzeptanz prognostizieren.
+Nach Abschluss der Umfrage wurde überprüft, ob das bilaterale Empfehlungssystem die Angestellten für die Projektpositionen höher positioniert, bei welchen diese eine hohe Zufriedenheit erwarten bzw. niedriger einordnet, wenn diese eine geringe Akzeptanz prognostizieren.
 
 Zusätzlich wurde überprüft, wie die Angestellten einer möglichen Unterforderung bei der Projekttätigkeit gegenüber stehen. Die entsprechende Frage ist in Abbildung \ref{fig:methodik:evaluation:abb3} dargestellt.
 
@@ -349,7 +349,7 @@ Die Frage aus Abbildung \ref{fig:methodik:evaluation:abb3} dient der Überprüfu
 \label{ch:methodik:evaluation:manager}
 Neben der Befragung der Angestellten wurde eine Umfrage unter Projektmanagern durchgeführt. Diese erhielten die fünf qualifiziertesten Mitarbeiter jedes Empfehlungsansatzes für die vorausgewählten Projektpositionen in Form von Listen. Anschließend bewerteten sie auf einer vordefinierten Skala, von welchen Angestellten sie eine höhere Arbeitsleistung für die jeweiligen Stellen erwarten. Für die Projektverantwortlichen war nicht erkennbar,  welche Liste durch den unilateralen bzw. den bilateralen Empfehlungsansatz erzeugt wurde. Abbildung \ref{fig:methodik:evaluation:manager:abb1} zeigt auf der folgenden Seite einen Auszug aus der Befragung.
 
-Im Anschluss an die Umfrage wurde evaluiert, wie die Projektmanager die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Ansatzes im Vergleich zur unilateralen Variante bewerteten.
+Im Anschluss an die Umfrage wurde evaluiert, wie die Projektmanager die erwartete Leistung der vorgeschlagenen Angestellten des bilateralen Ansatzes im Vergleich zur unilateralen Variante bewerten.
 
 Zusätzlich wurde auch in der Umfrage unter den Projektmanagern geprüft, wie diese mit möglicher Unterforderung ihrer Angestellten bei der Besetzung offener Projektpositionen umgehen. Die entsprechende Frage ist in Abbildung \ref{fig:methodik:evaluation:manager:abb3} dargestellt.
 
