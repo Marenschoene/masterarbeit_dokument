@@ -1,0 +1,83 @@
+\shorthandoff{"}
+\chapter{Notizen}
+\label{ch:notizen}
+
+\section{Relevanz und Motivation}
+\label{ch:notizen:relevanzMotivation}
+Warum ist das Thema relevant?
+\begin{itemize}
+    \item Personen und Jobs die nicht zusammenpassen bedeuten für Unternehmen Aufwand (Kosten, Zeit, Qualitätseinbuße, Unzufriedenheit).
+    \item Nicht nur im Recruiting relevant, sondern auch innerhalb von Organisationen (http://www.timothy-judge.com/Cable%20&%20Judge%20OBHDP%201996.pdf). Dort steckt viel Potenzial.
+    \item Daher: Berücksichtigen der Interessen von Mitarbeitern bei der Zuweisung dieser zu Jobpositionen (d.h. weg vom alleinigen skill matching zum job matching).
+    \item Dadurch soll die Performance der Mitarbeiter im Job, sowie deren Mitarbeiterzufriedenheit gesteigert werden.
+\end{itemize}
+
+\section{Wie funktioniert die Empfehlung von Personen für Jobs?}
+\label{ch:notizen:maEmpfehlung}
+Wie funktionieren Empfehlungen allgemein? (d.h. automatisierte Auswahl von Personen für Jobs)
+\begin{itemize}
+    \item Erklärung Nutzer, Element, Nutzer-Element-Kombination.
+    \item Dann Erklärung, wie Empfehlungen allgemein bestimmt werden (2 Teilschritte).
+    \item Allgemein erfolgt die Empfehlung von Nutzern bzw. Elementen in Empfehlungssystemen in zwei Teilschritten:
+    \begin{enumerate}
+        \item Vorhersage unbekannter Nutzer-Element-Kombinationen
+        \item Ranking und Ausgabe der Top-K-Nutzer
+    \end{enumerate}
+\end{itemize}
+% 1. schritt geht davon aus, dass Daten zu Attributen unvollständig sind und daher vorhergesagt werden müssen
+% 2. Schritt ist dann die Bestimmung der passenden Mitarbeiter und der Ausgabe der Empfehlung (damit wird sich in der Arbeit befasst)
+
+% Erklärung, dass für die Lösung der Forschungsfrage der zweite Schritt relevant ist
+Übergang: Wie funktioniert die Empfehlung von Mitarbeitern allgemein?
+\begin{itemize}
+    \item Es sollen Personen empfohlen werden, die am besten auf einen Job / eine Stelle passen.
+    \item Am besten passen = kompatibilität zwischen Person und Job. % (file:///C:/Users/masc6/Downloads/1887_3147276-A%20Comprehensive%20Assessment%20of%20the%20Person-Environment%20Fit%20Dimensions%20and%20Their%20Relationships%20With%20Work-Related%20Outcomes.pdf, S. 568)
+    \item Die Kompatibilität zwischen Individuum und Job ist in der Literatur als Person Environmt Fit bekannt. % (file:///C:/Users/masc6/Downloads/1887_3147276-A%20Comprehensive%20Assessment%20of%20the%20Person-Environment%20Fit%20Dimensions%20and%20Their%20Relationships%20With%20Work-Related%20Outcomes.pdf)
+    \item Erklärung Person-Environment-Fit als Maß für die Ermittlung der Passung von Person und Umgebung. Erklärung, was unter Person, Umgebung und P-E-Fit verstanden wird.
+    \item Person-Environment-Fit besagt, dass ein Übereinstimmen zwischen Person und Umgebung positive effekte erzielt (Zufriedenheit, Leistung), während ein Misfit negative Effekte verursachen kann. % (file:///C:/Users/masc6/Downloads/1887_3147276-A%20Comprehensive%20Assessment%20of%20the%20Person-Environment%20Fit%20Dimensions%20and%20Their%20Relationships%20With%20Work-Related%20Outcomes.pdf)
+    \item Vier Komponenten des PE-Fit: PJ-Fit, PO-Fit, PG-Fit, PS-Fit. % (file:///C:/Users/masc6/Downloads/1887_3147276-A%20Comprehensive%20Assessment%20of%20the%20Person-Environment%20Fit%20Dimensions%20and%20Their%20Relationships%20With%20Work-Related%20Outcomes.pdf)
+    \item Berufen auf PE-Fit als Funktion von Person-Organization-Fit, Need-Supply-Fit und Demand-Ability-Fit % (S. 3, https://link.springer.com/content/pdf/10.1007/s12144-022-03461-9.pdf)
+    \item -> hier noch entscheiden, ob an den 4 dimensionen oder den 3 orientiert wird
+\end{itemize}
+
+Ablauf Berechnung PE-Fit:
+\begin{enumerate}
+    \item Bestimmen, welche Karakteristika (Kriterien?) für die Empfehlung von Mitarbeitern herangezogen werden sollen (skills, job-attribute, ogranizational-attribute).
+Nach Russell ist die Performance von Personen in Jobpositionen grundsätzlich von drei Komponenten abhängig:
+\begin{itemize}
+    \item dem Skillmatch (Anforderungs-Fähigkeiten-Fits)
+    \item dem Jobmatch (Person-Job-Fit) und
+    \item dem Organizational-Match (Person-Organization-Fit) \cite{russell:book}.
+\end{itemize}
+Demnach orientieren sich die Attribute von Personen und Jobs für die Empfehlung in der Praxis meist an einer der Komponenten beziehungsweise einer Kombination dieser.
+ \item Bestimmen des Fits (Match) -> wie wird diese Übereinstimmung berechnet?
+Wie bestimme ich den Fit? Direkt oder Indirekte Berechnung des Fits. % (https://onlinelibrary.wiley.com/doi/epdf/10.1111/j.1744-6570.1996.tb01790.x?saml_referrer)
+\begin{itemize}
+    \item direkt: PE-Fit ergibt sich aus dem direkten Bestimmen der Kompatibilität zwischen Person und Umgebung
+    \item indirekt: PE-Fit ergibt sich indirekt aus dem Vergleich zwischen den zwei unabhängige voneinander bewerteten Variablen Person und Umgebung
+\end{itemize}
+Weiter: Subjective and objective indirect PE-Fit.
+\begin{itemize}
+    \item subjecktiv: Person und Umgebung werden unabhängig voneinander durch die Zielperson bestimmt
+    \item objektiv: Person und Umgebung werden unabhängig voneinander bestimmt, unabhängig von der Wahrnehmung einer Person
+\end{itemize} % (S. 291, French JRP Jr, Rogers W, Cobb S. (1974). Adjustment as person–environment fit. In CoelhoDAHGV, Adams JE (Ed.),Coping and adaptation)
+Problem der Commensurability (dimensionen bei Erhebung von Person und Environment -> person und umgebung getrennt voneinander oder auf einer Skala?) % http://psychology.iresearchnet.com/industrial-organizational-psychology/recruitment/person-environment-fit/
+
+\item Ausgabe der Person(en) mit der größten Übereinstimmung
+\end{enumerate}
+
+Wie erhebe ich Präferenzen? % siehe: atomistic, molecular, molar (https://psycnet.apa.org/fulltext/2006-08435-006.pdf?auth_token=7270682a9555be377243d8180634ce7719154c9e), file:///C:/Users/masc6/Downloads/1887_3147276-A%20Comprehensive%20Assessment%20of%20the%20Person-Environment%20Fit%20Dimensions%20and%20Their%20Relationships%20With%20Work-Related%20Outcomes.pdf
+
+Überprüfen des Outcomes:
+Wie erhebe ich Zufriedenheit? % Bsp: S. 289 outcome, S. 300 (http://www.timothy-judge.com/Cable%20&%20Judge%20OBHDP%201996.pdf), file:///C:/Users/masc6/Downloads/1887_3147276-A%20Comprehensive%20Assessment%20of%20the%20Person-Environment%20Fit%20Dimensions%20and%20Their%20Relationships%20With%20Work-Related%20Outcomes.pdf, S. 572 file:///C:/Users/masc6/Downloads/1887_3147276-A%20Comprehensive%20Assessment%20of%20the%20Person-Environment%20Fit%20Dimensions%20and%20Their%20Relationships%20With%20Work-Related%20Outcomes.pdf, S. 6 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7437360/pdf/fpsyg-11-01740.pdf
+
+Zukünftig:
+Um Empfehlung weiter zu optimieren genügt es nicht die Anforderungs-Fähigkeiten-Fit um die Präferenzen der Personen zu ergänzen, sondern auch Dinge wie Persönlichkeit, Organizational-Fit, Person-Group-Fit, etc.
+Hier: MA wurden bereits von Exxeta rekrutiert. Es kann davon ausgegangen werden, dass der Organizational-Fit in dem Rahmen bereits abgeklärt wurde.
+
+\newpage
+
+\section{Fragen}
+\label{ch:notizen:fragen}
+
+\shorthandon{"}
