@@ -2,32 +2,182 @@
 \chapter{Notizen}
 \label{ch:notizen}
 
-\section{Relevanz und Motivation}
+\section{Gliederung}
+\label{ch:notizen:gliederung}
+
+\begin{enumerate}
+    \item Einführung
+%    \item Empfehlung von Personen (Zuordnung Person-Umgebung): Verweisen auf Thesis Johannes und nur Unterteilung PE-Fit in Skill-Match, Job-Match und Organizational-Match erklären ?
+    \item Empfehlungssysteme
+    \begin{itemize}
+        \item Allgemeine Problemstellung
+        \item Vorgehen (Prediction und Ranking)
+        \item Präferenzen in Empfehlungssystemen (nicht personalisiert vs. personalisierte Systeme) -> Präferenzen in unserem Anwendungsfall: Attribute der Mitarbeiter
+        \item Erweiterungen von Empfehlungssystemen: Fokus auf Multicriteria-Rating in Empfehlungssystemen -> Einbeziehen mehrerer Kriterien für die Empfehlungsbestimmung % Überleitung zu RRS: Wie funktioniert die Berücksichtigung wechselseitiger Präferenzen? d.h. dass nicht nur Präferenzen der Nutzer, sondern in unserem Fall der Elemente mit aufgenommen werden können?
+    \end{itemize}
+    \item Reciprocal Recommenders: Sowohl Präferenzen der Nutzer, als auch Präferenzen der Elemente, die empfohlen werden, werden in Empfehlung miteinbezogen % S.9: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommender%20Systems%20for%20Online%20Dating.pdf
+    \item Verwandte Arbeiten (Arbeiten über die Verwendung von Präferenzen auf Element-Seite für Ermittlung von Empfehlungen)
+    \item Methodik (Ansatz und Umsetzung)
+    \item Evaluation
+    \item Diskussion
+    \item Fazit
+\end{enumerate}
+
+\newpage
+
+\section{Einführung: Relevanz und Motivation}
 \label{ch:notizen:relevanzMotivation}
 Warum ist das Thema relevant?
 \begin{itemize}
+    \item Einstieg: Unternehmen arbeiten zunehmend projektbasiert. Zuordnung von Personen zu Jobpositionen ist folglich Aufgabe in vielen Unternehmen.
     \item Personen und Jobs die nicht zusammenpassen bedeuten für Unternehmen Aufwand (Kosten, Zeit, Qualitätseinbuße, Unzufriedenheit).
     \item Nicht nur im Recruiting relevant, sondern auch innerhalb von Organisationen % (http://www.timothy-judge.com/Cable%20&%20Judge%20OBHDP%201996.pdf). Dort steckt viel Potenzial.)
     \item Daher: Berücksichtigen diverser Attribute von Personen und Umgebung bei der Auswahl von Personen für Berufe/Jobpositionen (d.h. weg vom alleinigen skill matching zum job matching).
     \item Dadurch soll die Performance der Mitarbeiter im Job, sowie deren Mitarbeiterzufriedenheit gesteigert werden.
+    \item Empfehlungssysteme, um bei der Entscheidung der Wahl von Personen zu Jobpositionen zu unterstützen (Decision Support) % S.77, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/E-Commerce.pdf
 \end{itemize}
 
-\section{Wie funktioniert die Empfehlung von Personen für Jobs?}
-\label{ch:notizen:maEmpfehlung}
-Wie funktionieren Empfehlungen allgemein?
+\section{Empfehlungssysteme}
+\textbf{Einführung: Begrifferklärungen, Warum Empfehlungssysteme?}\\
+Warum Empfehlungssysteme? Zur Verfügung stellen einer sortierten teilmenge an elementen, in Abhängigkeit der angenommenen Relevanz für Nutzer. % S. 76, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/E-Commerce.pdf
+Relevanz ist gegeben durch explizites bzw. implizites Feedback eines Nutzers bzw. einer Gruppe an Nutzern. % S. 76, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/E-Commerce.pdf
+Bestandteile eines Recommender Systems erklären: user model, community, item model, recommender algorithm und interaction style, Erklärung Nutzer, Element, Nutzer-Element-Kombination.\\ % S. 8:1 (file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Modeling%20User%20Preferences%20in%20Recommender%20Systems.pdf)
+
+\textbf{Allgemeine Problemstellung: Was für ein problem versuchen RS zu lösen?}\\
+Klasse der Problematik (Mathematik): \textbf{Stable-Marriage-Problem} -> Problem, eine stabile Paarung zwischen zwei gleich großen Mengen von Elementen zu finden -> stabil: es existiert kein Match, bei dem sowohl A als auch B individuell bessergestellt wäre als mit dem Element mit dem sie gerade gematcht sind.% (Quelle: Wikipedia)
+In unserem Anwendungsfall muss nicht ein hartes match gefunden werden, sondern stattdessen mögliche Matches für einen Nutzer (hier: Projekt) zu ermitteln. Ursache: interaktivität von online match-making-systeme % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/DiazMetzlerAmer-Yahia%20-%20Relevance%20and%20Ranking%20in%20Online%20Dating%20Systems%20(2010)%20-%200.pdf
+
+Auswahl der Elemente, sodass der Nutzen für den Nutzer maximal ist.
+Formal ausgedrückt soll in einem Empfehlungssystem einem Nutzer $c$ eine Menge an Elementen $s'$ $\in$ $S$ empfohlen werden, für die gilt:
+\begin{equation} % S. 49, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
+    \forall c\in C,  s'_c = arg\max_{s \in S} R(c,s)
+\end{equation}
+wobei $C$ die Menge aller Nutzer und $S$ die Menge aller möglichen Elemente angibt.
+
+Der Nutzen kann über die Nutzenfunktion $R(c,s)$ bestimmt werden und gibt als Ergebnis den (angenommenen) Wert einer Nutzer-Element-Kombination zurück.
+% Hier noch hinzufügen, dass in RS das Ergebnis der funktion u sowohl unmittelbar aus expliziten oder implizitem feedback bestehen kann, als auch einer vorhersage
+Die Nutzenfunktion $R$ ist definiert als % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf , S. 847, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+\begin{equation}
+    R: Nutzer \times Element \rightarrow R_{0}
+\end{equation}
+wobei $R_{0}$ die Menge aller Werte darstellt, die ein Rating annehmen kann (z.B. ganze Zahlen von  1 bis 5). % S. 847, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
+
+\textbf{Vorgehen: Wie funktionieren Empfehlungen allgemein?}
 \begin{itemize}
-    \item Erklärung Nutzer, Element, Nutzer-Element-Kombination.
     \item Dann Erklärung, wie Empfehlungen allgemein bestimmt werden (2 Teilschritte).
     \item Allgemein erfolgt die Empfehlung von Nutzern bzw. Elementen in Empfehlungssystemen in zwei Teilschritten: % Erklärung S. 405 unten: https://link.springer.com/content/pdf/10.1007/s11577-021-00753-z.pdf
     \begin{enumerate}
-        \item Vorhersage unbekannter Nutzer-Element-Kombinationen
-        \item Ranking und Ausgabe der Top-K-Nutzer
+        \item Vorhersage unbekannter Nutzer-Element-Kombinationen (Rating - Prediction - Phase) % Phasen siehe S. 854, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+        \item Ranking und Ausgabe der Top-K-Nutzer (Recommendation - Generation - Phase) % Ranking als Key-Functionality von match-making systems -> S. 66: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/DiazMetzlerAmer-Yahia%20-%20Relevance%20and%20Ranking%20in%20Online%20Dating%20Systems%20(2010)%20-%200.pdf
     \end{enumerate}
 \end{itemize}
 % 1. schritt geht davon aus, dass Daten zu Attributen unvollständig sind und daher vorhergesagt werden müssen
 % 2. Schritt ist dann die Bestimmung der passenden Mitarbeiter und der Ausgabe der Empfehlung (damit wird sich in der Arbeit befasst)
 
+\textbf{Präferenzen in Empfehlungssystemen: Wie werden Präferenzen von Nutzern in Empfehlungen miteinbezogen?}\\
+Erklären, was mit Präferenzen in Empfehlungssystemen im allgemeinen Sinn gemeint ist -> Präferenzen des Nutzers (Purchase history, ...) % S. 852, user preferences als purchase history: file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+Unterscheidung von RS in personalisierte und nicht-personalisierte Empfehlungssysteme % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Die%20Ordnung%20von%20Empfehlungen.pdf
+\begin{itemize}
+    \item nicht-personalisierte / schwach-personalisierte Empfehlungssysteme (Popularitätsmetriken, z.B. "Top 10 Songs in Deutschland", "Am häufigsten gekauft")
+    \item personalisierte Empfehlungssysteme ("Songs für dich", "Das könnte dich auch interessieren")-> hier werden Präferenzen im eigentlichen Sinn miteinbezogen
+\end{itemize}
+
+Im Regelfall werden Präferenzen von Nutzern in personalisierten Empfehlungssystemen dafür verwendet, Beziehungen zwischen Nutzern und Elementen vorherzusagen.
+Im vorliegenden Anwendungsfall stellen Projekte die Nutzer dar und Mitarbeiter die Elemente, die auf Projekte zugeordnet werden können.
+Bei den angegebenen Präferenzen handelt es sich um ein Attribut des Mitarbeiters, und zwar in Form einer Bewertung der Fähigkeiten im System durch die Mitarbeiter.
+
+Der Unterschied liegt also darin, dass im vorliegenden Anwendungsfall die Elemente Präferenzen besitzen, nicht, wie in klassischen Empfehlungssystemen die Nutzer. % S. 852, user preferences als purchase history: file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+Noch ein Unterschied: Nutzer, d.h. in unserem Fall Projekte, haben keine vergangenen Nutzer-Element-Kombinationen, sondern nur einmalig, daher wird nicht basierend auf vergangenem auf zukünftiges geschlossen, sondern lediglich auf Basis des aktuellen Stands eine Empfehlung ermittelt.
+
+Das bedeutet, damit die Präferenzen berücksichtigt werden können, muss ermittelt werden, wie Präferenzen von Elementen in die Bestimmung von Empfehlungen miteinbezogen werden können.
+
+Frage: Sollen die Präferenzen der Mitarbeiter (Like, Dislike) als separate Attribute betrachtet werden? -> das würde dann in die Richtung der verschiedenen Ausprägungen des PE-Fit gehen (in diesem Fall Anforderungen-Fähigkeiten-Fit und Angebot-Bedürfnisse-Fit). Das Ergebnis der Fits würde dann kombiniert werden und gemeinsam den PE-Fit ergeben. Der PE-Fit würde sich dann also aus einer Kombination der einzelnen Fits ergeben. Würde man den PE-Fit zukünftig noch genauer ermitteln wollen, liesen sich in dieser Darstellung recht verständlich neue Attribute hinzufügen (z.B. Kapazität).
+Oder sollen die Präferenzen unmittelbar den Wert einer Fähigkeit beeinflussen (d.h. wie in Johannes Thesis bedeutet 1 Like zb addition eines wertes und ein dislike Abzug o.Ä.)?
+
+\textbf{Erweiterterungen von Empfehlungssystemen}\\
+mejrere Erweiterungen, u.A.: Multicriteria Rating. % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Toward_the_next_generation_of_recommender_systems_a_survey_of_the_state-of-the-art_and_possible_extensions.pdf
+
+Für uns interessant: Multicriteria-Rating.
+
 % Erklärung, dass für die Lösung der Forschungsfrage der zweite Schritt relevant ist
+\textbf{Gesucht:} Wert des Matches (= Rating) zwischen Nutzer und Element (Projekt und Mitarbeiter)\\
+Die Frage ist also: wie kann das Rating berechnet werden, wenn die Präferenzen von Elementen einbezogen werden sollen?\\
+
+\textbf{Multicriteria-Rating:}\\
+In den meisten RS bestimmt die Nutzenfunktion dem Wert eines Elements für einen Nutzer über das Rating eines einzelnen Kriterums (bspw. über explizites Feedback in Form von Nutzerbewertungen, Filmbewertung).\\ % file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf , S. 852: file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+Frage: Wie Gesamtrating ermitteln, wenn mehrere Kriterien berücksichtigt werden sollen? Wie sind Präferenzen zu gewichten?\\
+Besonders bei komplexen Sachverhalten kann es vorkommen, dass der tatsächliche Wert eines Elements für einen Nutzer von mehreren Aspekten beeinflusst wird.\\ % file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+In solchen Fällen kann durch die Verwendung multikriterieller Ratings die Genauigkeit der ermittelten Empfehlung im Vergleich zu unikriteriellen Ratings verbessert werden.\\ % S. 49, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf , S.848, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+Eigentliches Purpose von Multicriteria-RS sind es, Ratings differenzierter zu betrachten, d.h. in Abhängigkeit verschiedener Aspekte und nicht als Gesamtbewertung, um so gezielter Vorhersagen für fehlende nutzer-Element-Kombinationen zu treffen. % S. 852, Beisüiel Alice und Wanted: file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+In unserem Anwendungsfall "missbrauchen" wir quasi die Idee des Multicriteria-Ratings für die Vorhersage, um den tatsächlichen Wert des Ratings basierend auf sowohl fähigkeiten als auch Präferenzen (und zukünftig ggf. zusätzlichen Kriterien) neu zu ermitteln.
+
+Was bedeutet multikriteriell?
+\begin{itemize}
+    \item multikriteriell ist sehr allgemein, in der Literatur zu RS werden darunter verschiedene Ideen verstanden: % file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+    \begin{itemize}
+        \item multi-attribute content search, filtering and preference modeling,
+        \item multi-objective recommendation strategies,
+        \item multi-criteria rating-based preference elictation
+    \end{itemize}
+\end{itemize}
+
+Multi-Criteria Ratings: Elemente können anhand verschiedener Aspekte und Dimensionen bewertet werden. % S. 100, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/E-Commerce.pdf
+Hier bewegen wir uns im Bereich der multikriteriellen Ratings, d.h. Bewertungen von Lösungen, die von mehreren Kriterien beeinflusst werden. bzw mehrere Ziele erfüllen sollen.
+Wie bei unikriteriellem Rating: Ermitteln eines Ratings, auf deren Basis Lösungen vergleichbar gemacht werden, mit dem Unterschied, dass für die Ermittlung des Ratings mehr Informationen über Nutzer und Elemente herangezogen werden. % S. 49, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
+Formal ausgedrückt: % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
+\begin{equation}
+    R: Nutzer \times Element \rightarrow R_{0} \times R_{1} \times ... \times R_{k}
+\end{equation}
+wobei $R_{0}$ die Menge aller Werte darstellt, die das übergreifende Rating annehmen kann.
+$R_{i}$ stellt für jedes Kriterium $i$ ($i = 1, .., k$) die Menge aller Werte dar, die eine Nutzer-Element-Kombination erreichen kann. % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
+\footnote{RS können auch auf das Ermitteln eines allgemeinen Ratings $R_{0}$ verzichten und lediglich die Ratings der individuellen Kriterien verwenden.}
+
+Multicriteria-Rating Informationen werden unterschiedliche Bedeutung an den unterschiedlichen Arbeitsscritten in Empfehlungssystemen. % S. 854, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+In Abhängigkeit davon, an welcher Stelle die multikriteriellen Informationen Anwendung finden, werden unterschiedlcihe Ansätze verwendet.
+\begin{itemize}
+    \item Während der Rating-Prediciton-Phase: Vorhersage fehlender Nutzer-Element-Kombinationen basierend auf multikriterieller Information.
+    \item Während der Recommendation-Generation-Phase: Bestimmen des Rankings in Abhängigkeit multikriterieller Information.
+\end{itemize}
+
+Wir befinden uns in der Recommendation-Generation-Phase, da wir davon ausgehen, dass die fehlenden Nutzer - Element - Kombinationen bereits vorhergesagt wurden.
+% HIER WEITERMACHEN: S. 868, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+
+Interesse an der Thematik besteht. % S.745, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Toward_the_next_generation_of_recommender_systems_a_survey_of_the_state-of-the-art_and_possible_extensions.pdf
+Thema hochinteressant, da es auch über den Scope der vorliegenden Arbeit hinausgeht (bsp. Einbeziehen von Auslastungsdaten, Teaminformationen, ...).\\
+
+Grundlegendes Problem: Optimieren mehrerer (gegensätzlicher) Ziele unter Berücksichtigung zwei oder mehrerer Kriterien.\\ % S. v, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/M.Ehrgott%20-%20Multicriteria%20Optimization.%202nd%20edition[7258104].PDF
+In unserem Fall: Optimieren von Arbeitsleistung und Mitarbeiterzufriedenheit. -> Multiobjective-Criteria-Optimization -> max(Arbeitsleistung, Mitarbeiterzufriedenheit)\\
+In unserem Fall: Ziel: Optimieren des PE-Fit unter Berücksichtigung von sowohl Fähigkeiten als auch Präferenzen
+Dieser Bereich wird Multicriteria decision making / multicriteria decision aiding (Multikriterielle Entscheidungsfindung /- unterstützung) genannt, deren Ziel es ist, Verantwortliche darin zu unterstützen unter einer Menge an Möglichkeiten eine Lösung zu wählen. Unterschied zwischen MCDM und MCDA diskutiert, unklar ob in Thesis der Unterschied relevant ist. % siehe: Footnote https://link.springer.com/chapter/10.1007/978-1-4757-5184-0_8, gesamtes Paper von Roy https://reader.elsevier.com/reader/sd/pii/037722179090196I?token=EA3B2A9E7F6AB46DA0A02458960B935EAAB11B8F52B7A754267A2AE33BC9C5B9FC7F22F604A1826A881B9CF4175CA85B&originRegion=eu-west-1&originCreation=20221020130318, S. v file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/M.Ehrgott%20-%20Multicriteria%20Optimization.%202nd%20edition[7258104].PDF
+MADM: % https://repository.upenn.edu/cgi/viewcontent.cgi?article=1121&context=cis_reports#:~:text=Multiple%20Attribute%20Decision%20Making%20(MADM,found%20in%20virtually%20any%20topic.
+
+Wichtige Frage, die es zu klären gilt: Haben die projekte / Anfragenden des Systems auch Präferenzen oder lediglich das Attribut Fähigkeiten? Wenn ja, wie kann es dann umgesetzt werden, dass die Präferenzen der Anfragenden, nämlich, die Fähigkeiten möglichst zu erfüllen, stärker gewichtet werden als die Präferenzen der Nutzer, bzw. wie identifiziert man anwendungsfallübergreifend ein optimales Gewicht?
+Oder kann das Gewicht auch individuell gestaltet werden? bspw. ein dislike deutlich stärker gewichten als ein Like?
+
+% Re-Rating: siehe file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Modeling%20User%20Preferences%20in%20Recommender%20Systems.pdf
+% Wichtig: Rating nicht zu aufwändig gestalten, da dieses jedes Mal neu berechnet werden muss, wenn eine Projektanfrage ankommt. Es können zwar die Beziehungen zwischen Mitarbeitern und Fähigkeiten als gegeben angenommen werden, aber die Berechnung des Matches zwischen jedem Mitarbeiter und der Projektanfrage muss dennoch jedes mal erneut erfolgen.
+% Integration von Dislike-Option -> aktuell nur unary rating (nur positives Rating)
+% Main Goal RS in DS: incerase the quality of decisions made, S.77, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/E-Commerce.pdf
+% satisfaction and utility as measure for evaluation of RS: S. 84, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/E-Commerce.pdf
+
+\section{Reciprocal RS}
+
+
+\section{Mögliche Ansätze}
+\begin{itemize}
+    \item Multicriteria-Rating % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Toward_the_next_generation_of_recommender_systems_a_survey_of_the_state-of-the-art_and_possible_extensions.pdf
+    \item Multicriteria-Rating: Aggregating traditional similarities from individual criteria und calculating similarity using multidimensional distance metrics % S. 52, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
+    \item Multicriteria-Rating: Aggregation-function-based-approach % S. 52, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
+    \item Nutzer- und Elementprofile vergleichen % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Incorporating%20Profit%20Margins%20into%20Recommender%20Systems.pdf
+    \item Weitere Domäne, die vielleicht andere Ansätze verwendet: Game Development (Matchen von Spieler A und Spieler B, sodass Spielerfahrung möglichst optimal) % https://www.youtube.com/watch?v=-pglxege-gU
+    \item Ggf. Kapitel 3.4.5 der Quelle hier ansehen für Modell im Graph und Berechnung unter Berücksichtigung der wechselseitigen Präferenzen % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20people-to-people%20matching%20system%20using%20graph.pdf
+\end{itemize}
+
+\newpage
+
+\section{Wie funktioniert die Empfehlung von Personen für Jobs? (Vorerst ausgeklammert)}
+\label{ch:notizen:maEmpfehlung}
+
 Übergang: Wie funktioniert die Empfehlung von Mitarbeitern allgemein? (d.h. Zuweisung von Personen für Jobs/Jobpositionen)
 \begin{itemize}
     \item Es sollen Personen empfohlen werden, die am besten auf einen Job / eine Stelle passen.
@@ -40,7 +190,7 @@ Wie funktionieren Empfehlungen allgemein?
     \item -> hier noch entscheiden, ob an den 4 dimensionen oder den 3 orientiert wird
 \end{itemize}
 
-Ablauf Berechnung PE-Fit:
+Ablauf Berechnung PE-Fit: % Schritte auch in Anlehung an (hier etwas anders): S. 735 file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Toward_the_next_generation_of_recommender_systems_a_survey_of_the_state-of-the-art_and_possible_extensions.pdf
 \begin{enumerate}
     \item Bestimmen, welche Kriterien für die Empfehlung von Mitarbeitern herangezogen werden sollen (skills, job-attribute, ogranizational-attribute).
 Nach Russell ist die Performance von Personen in Jobpositionen grundsätzlich von drei Komponenten abhängig:
@@ -70,29 +220,66 @@ Annahme: indirekte Berechnung für diesen Anwendungsfall am sinnvollsten, da Umg
 
 Welche Möglichkeiten der indirekten Berechnung gibt es?
 \begin{itemize}
-    \item Ähnlichkeitsmaß
-    \item Differenzmaß
-    \item ...
+    \item Ähnlichkeitsmaß % beispiel S. 68: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/DiazMetzlerAmer-Yahia%20-%20Relevance%20and%20Ranking%20in%20Online%20Dating%20Systems%20(2010)%20-%200.pdf
+    \item Differenzmaß % beispiel S. 68: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/DiazMetzlerAmer-Yahia%20-%20Relevance%20and%20Ranking%20in%20Online%20Dating%20Systems%20(2010)%20-%200.pdf
+    \item Keyword matching? % https://link.springer.com/content/pdf/10.1023/A:1022850703159.pdf
 \end{itemize}
 
 Frage: wie können die verschiendenen Ausprägungen des Fits in der Berechnung vereint werden? Wie können diese gewichtet werden? simple linear combination, non-linear combination % (file:///C:/Users/masc6/Downloads/SekiguchiHuberOBHDP.pdf)
 
 ------------------
 
-Wie werden Präferenzen von Nutzern in Empfehlungen miteinbezogen?
+% Wo stehe ich jetzt? Überlegen, wie die Bewertung in die Erstellung der Empfehlung integriert werden kann. Woran kann man sich dafür orientieren? Was sind ähnliche fälle? Wie gewichten? Welche Daten brauche ich?
 
-Vorab: Unterscheidung personalisierte und nicht-personalisierte Empfehlungssysteme % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Die%20Ordnung%20von%20Empfehlungen.pdf
+\textbf{Vorher Thesis Johannes:}\\
+Problem des System: Vorhersage fehlender Nutzer-Element-Kombinationen, wobei Nutzer die Mitarbeiter mitsamt ihrer Fähigkeiten und Präferenzen darstellten und Elemente die möglichen Fähigkeiten. Integration der Präferenzen in die Ermittlung der Empfehlungen.\\
+\textbf{Jetzt:}\\
+Problem des Systems: Vorhersage fehlender Nutzer-Element-Kombinationen, wobei Nutzer die Projekte mitsamt ihrer Anforderungen und Angebote darstellen und Elemente die Mitarbeiter mitsamt ihrer Fähigkeiten und Bedürfnissen. Integration der Präferenzen in die Ermittlung der Empfehlungen.\\
+\textbf{Unterschied Jetzt zu regulären Recommender Systems:}\\
+Vorhersage basiert weder auf vergleichbaren Projekten, noch auf vergleichbaren Elementen, sondern auf dem Abgleich zwischen dem Nutzerprofil (Angebot und Anforderung des Projekts) und dem Elementprofil (Fähigkeiten und Bedürfnisse des Mitarbeiters). % Vgl. S. 11: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Incorporating%20Profit%20Margins%20into%20Recommender%20Systems.pdf 
+
+\textbf{traditionelle systeme:} item-to-people-recommendation (bezieht nur Präferenzen der people mit ein).Betrachten lediglich die Präferenzen der Empfänger von Empfehlungen \\ % Siehe S.1 file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Providing%20Explanations%20for%20Recommendations%20in%20Reciprocal.pdf, Siehe S. 2199: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/CCR%20-%20A%20Content-Collaborative%20Reciprocal%20Recommender%20for%20Online%20Dating.pdf
+\textbf{people-to-people-recommendation:} bezieht Präferenzen von usern sowohl auf der einen, als auch auf der anderen Seite ein. Gibt es z.B. bei recruitment services, bei denen jobsuchende arbeitgeber vorgeschlagen bekommen und arbeitgeber jobsuchende vorgeschlagen bekommen, basierend auf job ads und resumes.\\ % S.9, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommender%20Systems%20for%20Online%20Dating.pdf
+\textbf{was es noch nicht gibt:} people-to-item-recommedation (hier: mitarbeiter für projekte); auch: noch unklar, in welchem Maß die Interessen beider seiten optimal eingebracht werden, da diese häufig gleich stark gewichtet werden\\ % siehe S. 131: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Optimally%20Balancing%20Receiver%20and%20Recommended%20Users%20Importance%20in%20RRS.pdf 
+people-to-item ist ähnlich wie people-to-people. Eine Jobposition sucht einen Mitarbeiter, der seine Anforderungen erfüllt ("Präferenzen" des Projekts) und Mitarbeiter wollen bedürfnisse möglichst erfüllt (Präferenzen der Mitarbeiter), was sich darstellen lässt als zufriedenheit der Mitarbeiter mit der Jobposition
+
+------------------
+
+\textbf{Verwandte Arbeiten:}
 \begin{itemize}
-    \item nicht-personalisierte / schwach-personalisierte Empfehlungssysteme -> eigentlich bewegen wir uns hier, wenn wir die besten Mitarbeiter für ein Projekt ermitteln wollen (Popularitätsmetriken, z.B. "Top 10 Songs in Deutschland", "Am häufigsten gekauft")
-    \item personalisierte Empfehlungssysteme ("Songs für dich", "Das könnte dich auch interessieren")-> hier werden Präferenzen im eigentlichen Sinn miteinbezogen
+    \item MEET: reciprocal recommender system im Bereich Online- Dating- Plattformen % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/MEET%20-%20A%20Generalized%20Framework.pdf
+    \begin{itemize}
+        \item Fokus auf ähnlichen Sachverhalt mit Berücksichtigung der Präferenzen von sowohl der anfragenden als auch der angefragten Seite
+        \item Maßgebliche Unterschiede: beidseitige Präferenzen vs. unser Anwendungsfall nur "Präferenzen" auf Elementseite; people-to-people-recommendation
+    \end{itemize}
+    \item Relevance and Ranking in Online Dating Systems % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/DiazMetzlerAmer-Yahia%20-%20Relevance%20and%20Ranking%20in%20Online%20Dating%20Systems%20(2010)%20-%200.pdf
+    \begin{itemize}
+        \item Fokus des papers auf Ranking der möglichen Matches
+        \item Detaillierte Beschreibung der Berechnung des matches
+        \item Wichtigkeit der einzelnen Attribute kann angegeben werden (ordinales Maß: "must match", "nice to match", "any match") -> ähnlich wie in unserem Anwendungsfall der weight eines Matches
+        \item Bestimmen des Rankings durch Machine-Learning-Modell basierend auf hist. Daten
+    \end{itemize}
 \end{itemize}
 
-Im Regelfall werden Präferenzen in Empfehlungssystemen dafür verwendet vorherzusagen, welche anderen Elemente im System einen Nutzer oder eine Gruppe an Nutzern interessieren könnten.
-Im vorliegenden Anwendungsfall handelt es sich bei den angegebenen Präferenzen jedoch eigentlich eher um Bewertungen, und zwar Bewertungen der Fähigkeiten im System durch die Nutzer (Mitarbeiter).
-Der Unterschied zu personalisierten Empfehlungssystemen im klassischen Sinn liegt also darin, dass in dem vorliegenden Anwendungsfall nichts "vorhergesagt" wird, sondern sich lediglich für einen Weg, die Bewertung von Fähigkeiten in die Ermittlung des PE-Fits miteinzubeziehen, entschieden werden muss.
+------------------
 
-Frage: Sollen die Präferenzen der Mitarbeiter (Like, Dislike) als separate Attribute betrachtet werden? -> das würde dann in die Richtung der verschiedenen Ausprägungen des PE-Fit gehen (in diesem Fall Anforderungen-Fähigkeiten-Fit und Angebot-Bedürfnisse-Fit). Das Ergebnis der Fits würde dann kombiniert werden und gemeinsam den PE-Fit ergeben. Der PE-Fit würde sich dann also aus einer Kombination der einzelnen Fits ergeben. Würde man den PE-Fit zukünftig noch genauer ermitteln wollen, liesen sich in dieser Darstellung recht verständlich neue Attribute hinzufügen (z.B. Kapazität).
-Oder sollen die Präferenzen unmittelbar den Wert einer Fähigkeit beeinflussen (d.h. wie in Johannes Thesis bedeutet 1 Like zb addition eines wertes und ein dislike Abzug o.Ä.)?
+Mögliche Beschreibung Anwendungsfall: % (in Anlehnung an: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Incorporating%20Profit%20Margins%20into%20Recommender%20Systems.pdf)
+Contentbasierte Empfehlung basierend auf Match zwischen Nutzerprofil (Projekt) und Elementprofil (Person).\\
+Definition Content-based Systeme: Empfehlungen basierend auf dem direkten Vergleich zwischen User-profile und neuen Elementen -> User profile-item matching technique ist notwendig dafür (siehe user profile-item matching techniques) % https://link.springer.com/content/pdf/10.1023/A:1022850703159.pdf
+
+Also ähnlich wie Contentbasiertes Empfehlungssystem, mit dem Unterschied, dass die Elementattribute potenzieller Personen (Elemente) nicht mit den Attributen vergangener empfohlener Personen verglichen werden, sondern mit den Attributen des Projektes (Nutzers).\\
+Nutzerprofil: Gewichteter "bag of words", in diesem Fall alle angeforderten Fähigkeiten, die für ein Projekt notwendig sind.\\
+Elementprofil: Fähigkeiten, die eine Person besitzt.\\
+Match = Gegenüberstellen von  Nutzer- und Elementprofil (in Anlehnung an) % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Incorporating%20Profit%20Margins%20into%20Recommender%20Systems.pdf)
+
+------------------
+
+\newpage
+
+\section{Fragen}
+\label{ch:notizen:fragen}
+
+Was genau ist das für ein System? People-to-People RS (Manager bekommt Mitarbeiter vorgeschlagen)
 
 ------------------
 
@@ -103,13 +290,16 @@ Wie erhebe ich Präferenzen? % siehe: atomistic, molecular, molar (https://psycn
 Überprüfen des Outcomes:
 Wie erhebe ich Zufriedenheit? % Bsp: S. 289 outcome, S. 300 (http://www.timothy-judge.com/Cable%20&%20Judge%20OBHDP%201996.pdf), file:///C:/Users/masc6/Downloads/1887_3147276-A%20Comprehensive%20Assessment%20of%20the%20Person-Environment%20Fit%20Dimensions%20and%20Their%20Relationships%20With%20Work-Related%20Outcomes.pdf, S. 572 file:///C:/Users/masc6/Downloads/1887_3147276-A%20Comprehensive%20Assessment%20of%20the%20Person-Environment%20Fit%20Dimensions%20and%20Their%20Relationships%20With%20Work-Related%20Outcomes.pdf, S. 6 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7437360/pdf/fpsyg-11-01740.pdf
 
+------------------
+
 Zukünftig:
 Um Empfehlung weiter zu optimieren genügt es nicht die Anforderungs-Fähigkeiten-Fit um die Präferenzen der Personen zu ergänzen, sondern auch Dinge wie Persönlichkeit, Organizational-Fit, Person-Group-Fit, etc.
 Hier: MA wurden bereits von Exxeta rekrutiert. Es kann davon ausgegangen werden, dass der Organizational-Fit in dem Rahmen bereits abgeklärt wurde.
+Aufnehmen von Kapazität, da limitierender Faktor von Mitarbeitern (Kontext entspricht der Idee von Online-Dating-Plattformen, bei denen Nutzer auch nur mit einer Teilmenge an anderen Nutzern gleichzeitig interagieren können). % Siehe: S. 36f file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/MEET%20-%20A%20Generalized%20Framework.pdf
+Vermeiden von "popular users", d.h. es werden häufig diesselben Mitarbeiter empfohlen, die dann aber mit hoher Wahrscheinlichkeit keien Kapazität aufweisen. Berechnung der Popularität am beispiel siehe hier. % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Reciprocal%20Recommendation%20for%20Job%20Matching%20with%20Bidirectional%20Feedback.pdf
+Hinzufügen von Dislikes siehe S. 18 % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommender%20Systems%20for%20Online%20Dating.pdf
 
-\newpage
+% Alternativer Einstieg: "Entscheidungen, unabhängig davon, ob sie von einem Individuum oder einer Gruppe getroffen werden, sind üblicherweise auf verrschiedene, konkurrierende Ziele ausgerichtet. Heutzutage umfassen viele Entscheidungsunterstützende Systeme Methoden, um mit konkurrierenden Zielen umzugehen." S. v, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/M.Ehrgott%20-%20Multicriteria%20Optimization.%202nd%20edition[7258104].PDF
 
-\section{Fragen}
-\label{ch:notizen:fragen}
 
 \shorthandon{"}
