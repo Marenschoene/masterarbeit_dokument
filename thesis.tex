@@ -64,7 +64,9 @@
 \usepackage{color, colortbl} % Table-Color
 %\usepackage{pgfplots} % Function-Graph
 \setcounter{MaxMatrixCols}{11}
+\interfootnotelinepenalty=10000
 \usepackage{pdfpages}
+\usepackage{float}
 
 %*************************************************************************
 % GO!GO!GO! MOVE IT!
@@ -105,18 +107,15 @@
 % Alwas use \cleardoublepage before \part{...}.
 \cleardoublepage
 \part{Thesis}\label{pt:thesis}
-\include{chapters/notizen}
-%\include{chapters/einleitung}
-%\include{chapters/personEnvironmentFit}
-%\include{chapters/empfehlungssysteme}
-%\include{chapters/verwandteArbeiten}
-%\include{chapters/methodik}
-%\include{chapters/ergebnisse}
-%\include{chapters/diskussion}
-%\include{chapters/fazit}
-%\include{chapters/examples/chapter01}
-%\include{chapters/examples/chapter02}
-%\include{chapters/examples/chapter03}
+\include{chapters/einleitung}
+\include{chapters/empfehlungssysteme}
+\include{chapters/erweiterungen}
+\include{chapters/verwandte_arbeiten}
+\include{chapters/methodik}
+\include{chapters/ergebnisse}
+\include{chapters/diskussion}
+\include{chapters/fazit}
+%\include{chapters/notizen}
 %*************************************************************************
 % Backmatter
 %*************************************************************************

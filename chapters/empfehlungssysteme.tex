@@ -7,249 +7,294 @@
 \label{ch:empfehlungssysteme}
 
 \section{Einführung}
-\label{ch:empfehlungssysteme:einfuehrung}
-\textcite[S. 1ff.]{malinowski:2006} zu Folge sollte das Konzept des \acp{PEFit} auch bei der automatisierten Personalauswahl bzw. Stellensuche Berücksichtigung finden. Bei solchen Problemstellungen eingesetzte Computeranwendungen werden als Empfehlungssysteme bezeichnet. Sie verfolgen das Ziel, für eine Menge von Elementen vorherzusagen, wie gut diese für ein Anliegen eines Nutzers geeignet sind und sie in der entsprechenden Reihenfolge zu sortieren \cite[S. 3]{recommenderSystems:2016}. Dabei kann für den Anwender vollständig die Notwendigkeit einer manuellen Suche entfallen \cite[S. 1]{comibingCareer:2013}. 
+\label{ch:empfehlungssysteme:einführung}
+Im einfachsten Sinne können Empfehlungssysteme (engl.: \ac{RS}) als Techniken und Werkzeuge verstanden werden, die Nutzern eines Systems aus einer Menge an Elementen potenziell nützliche Elemente vorschlagen \cite[S. 10]{ricci:book}.
+% Wie sage ich im einfachsten sinn, wenn es nicht genau so im zitat steht?
+Etwas feingranularer definiert \textcite[S. 1]{klahold:book} Empfehlungssysteme als Systeme, die einem Nutzer oder einer Gruppe an Nutzern in einem gegebenen Kontext aus einer Menge möglicher Entitäten eine Teilmenge "nützlicher" Elemente empfehlen.
+Aus der Definition von \textcite[S. 1]{klahold:book} lassen sich die grundlegenden Komponenten, die für das Erstellen von Empfehlungen in Empfehlungssystemen von Bedeutung sind, deutlich abgrenzen.
+% Andere Wortwahl als "sehr deutlich hervorgehen", will sowas sagen wie, es ist sehr klar zu erkennen, welche komponenten beteiligt sind.
+Für ein fundiertes Verständnis sind die einzelnen Komponenten und deren Zusammenspiel in Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} vereinfacht dargestellt.
 
-Im englischsprachigen Raum ist der Begriff des Empfehlungssystems auch unter Bezeichnungen wie Recommender System \cite[S. 1]{lu:2015}, Recommender Engine \cite[S. 1]{panigrahi:2016} und Recommendation System \cite[S. 1]{ebesu:2018} verbreitet. Er wurde erstmals im Jahr 1997 von \textcite[S. 1]{resnick:1997} geprägt \cite[S. 1]{malinowski:2006}. Dass der Begriff gerade zu diesem Zeitpunkt entstand, ist auf die zur damaligen Zeit stark wachsende Internetnutzung und die damit verbundenen einfachen Möglichkeiten zur Sammlung und Auswertung großer Mengen an Nutzerdaten zurückzuführen \cite[S. xvii]{recommenderSystems:2016}. Heutzutage sind insbesondere große IT-Konzerne wie Amazon, Facebook, Google und Netflix bekannt für den Einsatz von Empfehlungssystemen \cite[S. 1]{zarzour:2018}. Diese Unternehmen nutzen Recommender Engines, um ihren Kunden personalisierte Vorschläge zu den Inhalten ihrer Plattformen anzuzeigen \cite[S. 2]{jeckmans:2013}.
-%Häufig entfällt dabei für den Anwender vollständig die Notwendigkeit einer manuellen Suche \cite[S. 1]{comibingCareer:2013}.
-%Der Einsatz von Empfehlungssystemen wird in der Literatur kritisch diskutiert. Beispielsweise beobachteten \textcite[S. 17f.]{alfano:2020}, dass das Empfehlungssystem der Videostreaming-Plattform YouTube dazu tendiert, neuen Anwendern zur Verlängerung ihrer Nutzungszeit verschwörungstheoretische Inhalte auszuspielen. Eine Untersuchung von Forschern des sozialen Netzwerks Facebook kam zu dem Ergebnis, dass deren Recommender Engine Nutzern verstärkt Inhalte präsentiert, welche konform mit deren Ideologien sind \cite[S. 2]{bakshy:2015}. \textcite[S. 17, Z. 25]{pariser:2012} prägte für diese Art der Personalisierung den Begriff der "Filterblase"\footnote{"Filter Bubble" - \textcite[S. 17, Z. 25]{pariser:2012}}.
-%Empfehlungssysteme haben aber auch einen bedeutenden Anteil am wirtschaftlichen Erfolg großer Internetplattformen. So führten beispielsweise \textcite[S. 6f.]{sharma:2015} in einer Studie aus den Jahren 2013 und 2014 etwa 30 Prozent der Seitenaufrufe beim Online-Händler Amazon unmittelbar auf den Einsatz von Empfehlungssystemen zurück. \textcite[S. 5]{gomezuribe:2016} stellten bei einer Analyse der Streaming-Plattform Netflix fest, dass ca. 80 Prozent der Nutzungszeit auf Videos entfiel, welche Nutzern ohne vorherige Suche von einer Recommender Engine angezeigt wurden.
-
-Um Vorschläge generieren zu können, suchen Empfehlungssysteme relevante Inhalte basierend auf den Präferenzen ihrer Anwender aus \cite[S. 1]{das:2017}. Zu diesem Zweck müssen benötigte Nutzerdaten zunächst erhoben und in einer maschinell auswertbaren Struktur gespeichert werden.
-
-\section{Zugrundeliegende Datenstruktur}
-\label{ch:empfehlungssysteme:arbeitsweise}
-Empfehlungssysteme können die Präferenzen ihrer Nutzer sowohl über explizite als auch implizite Rückmeldungen erfassen. Explizites Feedback erhalten Plattformen beispielsweise über vergebene Produktbewertungen oder "Gefällt mir"-Angaben in sozialen Netzwerken. Um implizite Rückmeldungen auszuwerten, werden häufig Verhaltensweisen der Nutzer aufgezeichnet. Hierbei kann es sich beispielsweise um Suchverläufe oder die Wiedergabedauer von Videos handeln. \cite[S. 3]{pu:2012}
-
-Das gesammelte Feedback überführen Analysten in die Struktur von Matrizen \cite[S. 11f.]{recommenderSystems:2016}. Explizit erfasste Bewertungen der Fähigkeiten von Mitarbeitern können in einer Matrix wie in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} dargestellt werden.
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c}
-	 & \textbf{Java} & \textbf{Python} & \textbf{MySQL} & \textbf{MongoDB} & \textbf{HDFS} & \textbf{Spark}\\ 
-	\hline
-	\textbf{Doe, Jane}     & ? & 4 & 3 & 3 & ? & ?\\
-	\textbf{Doe, John}     & 3 & ? & 2 & ? & 1 & ?\\
-	\textbf{Muster, Erika} & ? & ? & ? & ? & 5 & 3\\
-	\textbf{Muster, Max}   & 2 & 3 & 1 & ? & ? & ?
-	\end{tabular}
-	\caption{Beispiel für die Matrixdarstellung von Fähigkeiten}
-	\label{tbl:empfehlungssysteme:arbeitsweise:tbl1}
-\end{table}
-
-In Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} sind in der ersten Spalte die Mitarbeiter eines Unternehmens gespeichert. Diese werden als Nutzer bezeichnet. In den Kopfzeilen der folgenden Spalten sind verschiedene Fähigkeiten eingetragen. Diese werden Elemente genannt. Die übrigen Felder zeigen die Bewertungen der Fähigkeiten jedes Nutzers \cite[S. 11f.]{recommenderSystems:2016}\cite[S. 1f.]{strub:2016}. Im Beispiel aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} wurden die expliziten Beurteilungen auf einer Skala von eins bis fünf vergeben. Diese bewerteten Matrix-Einträge werden  als beobachtet oder spezifiziert bezeichnet. Unbewertete Elemente sind mit einem Fragezeichen gekennzeichnet und werden unbeobachtet oder fehlend genannt \cite[S. 8]{recommenderSystems:2016}.
-
-Zahlreiche Wissenschaftler in der Literatur sind sich einig, dass ein einfacher Abgleich zwischen gesuchten und vorhandenen Fähigkeiten in Matrizen eine unzureichende Lösung bei der Besetzung von Stellen bzw. Projektpositionen darstellt \cite[S. 1f.]{enhancingERecruitment:2012}\cite[S. 1]{faerber:2003}\cite[S. 2]{prospect:2010} und der Komplexität der Aufgabe nicht gerecht wird \cite[S. 1]{malinowski:2008}. So kritisierten beispielsweise \textcite[S. 1f.]{mitre:2014}, dass bei einem solchen Ansatz Synonyme und verwandte Fähigkeiten nicht in die Suche einbezogen werden. Um diesem Problem zu begegnen, existieren in der Literatur unterschiedliche Ansätze, Recommender Engines zu implementieren. Ein verbreitetes Verfahren ist das kollaborative Filtern.
-
-\section{Kollaboratives Filtern}
-\label{ch:empfehlungssysteme:cf}
-Ein Ziel von Verfahren im Bereich des kollaborativen Filterns ist das Vorhersagen unbewerteter Einträge in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}. Unbeobachtete Werte eines Zielnutzers werden dabei über Ähnlichkeitsberechnungen aus vergebenen Beurteilungen anderer Anwender geschlussfolgert. \cite[S. 1]{su:2009}
-
-\textcite[S. 3]{breese:1998} unterschieden zwischen speicher- und modellbasierten Algorithmen. Speicherbasierte Verfahren übertragen sämtliche Nutzer und deren Bewertungen vollständig in den Hauptspeicher des Rechners, um auf Basis aller aktuell verfügbaren Informationen Empfehlungen zu bestimmen. Modellbasierte Verfahren nutzen dagegen Algorithmen aus dem Bereich des Data Minings, um vor dem Einsatz in der Produktivumgebung statistische Vorhersagemodelle zu entwickeln \cite[S. 9]{recommenderSystems:2016}\cite[S. 3]{breese:1998}\cite[S. 11]{schafer:2007}. Im Folgenden werden unterschiedliche Ansätze vorgestellt, speicher- und modellbasierte Verfahren zu implementieren.
-
-\subsection{Speicherbasierte Verfahren}
-\label{ch:empfehlungssysteme:cf:speicherbasiert}
-Speicherbasierte Verfahren werden auch als nachbarschaftsbasierte Algorithmen bezeichnet \cite[S. 29]{recommenderSystems:2016}. Soll beispielsweise die fehlende Java-Bewertung von Jane Doe in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} vorhergesagt werden, erfolgt dies über paarweise Ähnlichkeitsberechnungen \cite[S. 2f.]{bharti:2019}. Verwenden Algorithmen dabei die Ähnlichkeiten zwischen Mitarbeitern bzw. Tabellenzeilen zur Vorhersage, werden diese als nutzerorientiert bezeichnet. Greifen Verfahren dagegen auf die Gleichartigkeit von Fähigkeiten bzw. Tabellenspalten zurück, werden sie elementorientiert genannt \cite[S. 1f.]{duong:2018}. Laut \textcite[S. 42]{recommenderSystems:2016} liefern elementorientierte Verfahren häufig präzisere, nutzerorientierte Methoden dafür diversere Ergebnisse. Daher schlussfolgerte der Autor, dass die Vorschläge der elementorientierten Ansätze für den Nutzer relevanter erscheinen. Jedoch bemängelte er das hohe Risiko bei diesen Verfahren, dass dem Anwender aufgrund der starken Ähnlichkeit der Elemente entweder alle Vorschläge zusagen oder kein einziger.
-
-Bei der Implementierung nachbarschaftsbasierter Verfahren kommen häufig \ac{KNN}-Algorithmen zum Einsatz \cite[S. 1f.]{nayak:2018}. Um diese zur Vorhersage der Java-Bewertung von Jane Doe anzuwenden, wird bei elementorientierten Verfahren die Ähnlichkeit zwischen Java und jeder anderen Fähigkeit bestimmt, welche Jane Doe beherrscht. Anschließend wird die durchschnittliche Bewertung der $k$-ähnlichsten Fähigkeiten berechnet und als Java-Beurteilung für Jane Doe eingesetzt \cite[S. 2]{hao:2013}. Welcher Wert für $k$ verwendet werden sollte, kann pauschal nicht beantwortet werden. Beispielsweise ist es möglich, Verfahren aus dem Bereich des maschinellen Lernens zu nutzen, um abhängig von den vorhandenen Daten einen geeigneten Wert für $k$ zu ermitteln \cite[S. 2f.]{jiang:2007}.
-
-Bei nutzerorientierten Algorithmen wird die Gleichartigkeit von Jane Doe und allen anderen Mitarbeitern berechnet. Daraufhin wird die durchschnittliche Java-Beurteilung der $k$-ähnlichsten Mitarbeiter bestimmt und als Java-Bewertung für Jane Doe vorhergesagt. \cite[S. 2f.]{hao:2013}
-
-Zur Ähnlichkeitsberechnung können unterschiedliche Algorithmen wie die Jaccard-Ähnlichkeit \cite[S. 2]{bharti:2019}, die Kosinus-Ähnlichkeit \cite[S. 3]{bharti:2019}\cite[S. 2]{duong:2018} oder die euklidische Distanz \cite[S. 3]{cheng:2013} verwendet werden. Beispielhaft ist in der folgenden Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel1} die Formel zur Berechnung der Kosinus-Ähnlichkeit zwischen zwei Vektoren A und B dargestellt \cite[S. 151]{recommenderSystems:2016}\cite[S. 3]{bharti:2019}.
-\begin{equation}
-cos(A,B) = \frac{(\vec{A} * \vec{B})}{|\vec{A}| * |\vec{B}|} = \frac{\sum_{i=1}^n A_i * B_i}{\sqrt{\sum_{i=1}^n (A_i)^2} * \sqrt{\sum_{i=1}^n (B_i)^2}}
-\label{fig:empfehlungssysteme:cf:speicherbasiert:formel1}
-\end{equation}
-Anstelle der Vektoren A und B können in Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel1} paarweise die Spalten/Fähigkeiten bzw. Zeilen/Mitarbeiter aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} eingesetzt werden \cite[S. 36ff.]{recommenderSystems:2016}.
-
-Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel2} zeigt die nutzerbasierte Ähnlichkeitsberechnung zwischen Jane Doe und Max Muster anhand der Daten aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1}. Dort ist zu erkennen, dass ausschließlich Tabellenspalten in die Berechnung einbezogen werden, welche beide Mitarbeiter bewertet haben \cite[S. 2f.]{hao:2013}.
-\begin{equation}
-	cos(Jane Doe,Max Muster) = \frac{(4*3 + 3*1)}{\sqrt{4^2 + 3^2} * \sqrt{3^2 + 1^2}} \approx \frac{15}{15,811} \approx 0,95
-	\label{fig:empfehlungssysteme:cf:speicherbasiert:formel2}
-\end{equation}
-Wie in der folgenden Gleichung \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel3} dargestellt, kann analog die elementbasierte Ähnlichkeit für Java und MySQL aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mittels Kosinus-Distanz berechnet werden.
-\begin{equation}
-	cos(Java, MySQL) = \frac{(3*2 + 2*1)}{\sqrt{3^2 + 2^2} * \sqrt{2^2 + 1^2}} \approx \frac{8}{8,063} \approx 0,99
-	\label{fig:empfehlungssysteme:cf:speicherbasiert:formel3}
-\end{equation}
-In den Gleichungen \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel2} und \ref{fig:empfehlungssysteme:cf:speicherbasiert:formel3} ist zu erkennen, dass im vorliegenden Beispiel eine Ähnlichkeit zwischen Jane Doe und Max Muster von 95 Prozent und eine Gleichartigkeit von 99 Prozent zwischen Java und MySQL besteht.%Um über nutzerbasiertes kollaboratives Filtern die Java-Bewertung von Jane Doe vorherzusagen, müsste zusätzlich die Ähnlichkeit zwischen Jane Doe und allen anderen Nutzern in der Datenbank bestimmt werden. Anschließend könnte das Empfehlungssystem die k ähnlichsten Nutzer zu Jane Doe auswählen und deren durchschnittliche Java-Bewertung als Fähigkeitseinschätzung bei Jane Doe einsetzen. 
-
-\textcite[S. 34ff.]{recommenderSystems:2016} kritisierte an solchen Ähnlichkeitsberechnungen, dass möglicher Bias die Ergebnisse verzerren kann. So könnten einzelne Mitarbeiter ihre Fähigkeiten grundsätzlich schlechter oder besser einschätzen als andere Angestellte. Aus diesem Grund empfahl der Autor, vor den Ähnlichkeitsberechnungen zunächst eine Mittelwert-Zentrierung durchzuführen. Hierbei wird in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} die durchschnittliche Bewertung jedes Nutzers bestimmt und von dessen vorhandenen Beurteilungen abgezogen. Dabei entstehende negative Bewertungen müssen anschließend aus der Tabelle entfernt werden \cite[S. 34ff.]{recommenderSystems:2016}. Dieses Vorgehen ist in der Literatur auch unter der Bezeichnung Pearson Korrelation bekannt \cite[S. 35]{recommenderSystems:2016}\cite[S. 3]{bharti:2019}.
-
-Es gilt zu beachten, dass die bisher vorgestellten Algorithmen im Bereich des speicherbasierten kollaborativen Filterns anfällig für das Sparsity Problem sind \cite[S. 3f.]{grvcar:2006}. Dieses Phänomen bezeichnet das Vorliegen von meist sehr wenigen Beurteilungen für einen Großteil der Elemente \cite[S. 8]{recommenderSystems:2016}. So stellten beispielsweise \textcite[S. 1ff.]{mitre:2014} bei der Implementierung ihres Projekt-Empfehlungssystems fest, dass über die Hälfte der ca. 17.000 vergebenen Fähigkeiten von nur je einem Mitarbeiter angegeben wurden. Beinahe jeder fünfte Angestellte beurteilte den Autoren zu Folge dagegen die meist bewertete Kompetenz.
-Für diese Häufigkeitsverteilung prägte \textcite[S. 11, Z. 32]{anderson:2007} den Begriff des "langen (Ratten-)Schwanzes"\footnote{"Long Tail" - \textcite[S. 11, Z. 32]{anderson:2007}}. Erkennbar wird dieser, wenn Bewertungen, wie in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb1} dargestellt, in Form eines Diagramms aggregiert werden.
-\newpage
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1\textwidth]{gfx/long-tail.png}
-	\caption[Darstellung des langen (Ratten-)Schwanzes]{Darstellung des langen (Ratten-)Schwanzes\\
-		(Eigene Darstellung in Anlehnung an \cite[S. 33]{recommenderSystems:2016})}
-	\label{fig:empfehlungssysteme:cf:speicherbasiert:abb1}
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.8\textwidth]{gfx/komponenten-empfehlungssystem.png}
+	\caption[Komponenten eines Empfehlungssystems]{Komponenten eines Empfehlungssystems\\
+	(Eigene Darstellung in Anlehnung an \cite[S. 2]{klahold:book})}
+	\label{fig:empfehlungssysteme:einführung:abb1}
 \end{figure}
 
-Die in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb1} dargestellte Häufigkeitsverteilung von abgegebenen Bewertungen spiegelt \textcite[S. 1ff.]{anderson:2007} zu Folge einen allgemeinen Trend wider, welchen er im Zusammenhang mit der Digitalisierung beobachtete. Der Autor stellte fest, dass sich Menschen aufgrund der heute verfügbaren breiten Angebote wesentlich diverser orientieren, als es vor einigen Jahrzehnten der Fall war.
+Wie aus Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} hervorgeht, stehen sich in  Empfehlungssystemen grundsätzlich zwei Akteure gegenüber.
+% Frage: kann man Elemente als "Akteur" bezeichnen oder anderes Wort dafür?
+Auf der einen Seite stehen Empfänger von Empfehlungen, welche in Empfehlungssystemen meist als Nutzer bezeichnet werden \cite[S. 8]{ricci:book}.
+Dem gegenüber stehen Entitäten, die Nutzern empfohlen werden können.
+Entitäten werden in Empfehlungssystemen als Elemente bezeichnet und bilden den Inhalt von Empfehlungen.
+Dabei kann es sich bei Elementen sowohl um Gegenstände wie CDs, Bücher und Klamotten handeln, als auch beispielsweise Personen, Orte oder Prozesse.
+% Unter dem Kontext einer Empfehlung versteht \textcite[S. 1]{klahold:book} das Zusammenspiel aus der Situation, in der eine Empfehlung gegeben wird, dem Profil eines Nutzers sowie der Menge möglicher Entitäten zum Zeitpunkt einer Empfehlung.
+Unter dem Kontext einer Empfehlung verstehen \textcite[S. 191]{ricci:book} zusätzliche Parameter wie Uhrzeit, Ort oder die Gegenwart anderer Personen zum Zeitpunkt einer Empfehlung.\footnote{\textcite[S. 1]{klahold:book} versteht unter dem Kontext das Zusammenspiel aus der Situation, in der eine Empfehlung gegeben wird, dem Profil eines Nutzers sowie der Menge möglicher Entitäten zum Zeitpunkt einer Empfehlung. Es wird angenommen, dass der Kontext nach dem Verständnis von \textcite{ricci:book} gleichzusetzen ist mit der Situation nach dem Verstängnis von \textcite{klahold:book} und die Berücksichtigung von Nutzerprofil und Elementen nach dem Verständnis von \textcite{ricci:book} implizit stattfindet.}
 
-Das Sparsity Problem ist auch in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} zu beobachten. Dort haben \mbox{MongoDB} und Spark jeweils nur eine Bewertung. Für diese Fähigkeiten ist es über Ähnlichkeitsberechnungen im Bereich des speicherbasierten kollaborativen Filterns somit nicht möglich, für alle Angestellten robuste Vorhersagen zu ermitteln.
+Darüber hinaus können Nutzer in Empfehlungssystemen mit Elementen in Beziehung gesetzt werden.
+Beispielsweise kann eine Beziehung zwischen einem Nutzer und einem Element unterstellt werden, wenn ein Nutzer in der Vergangenheit ein Element gekauft oder bewertet hat.
+Solche Beziehungen zwischen Elementen und Nutzern in Empfehlungssystemen werden als Nutzer- Element- Interaktion oder Transaktion bezeichnet \cite[S. 8]{recommenderSystems:2016}\cite[S. 9]{ricci:book}.
 
-Um diesem Problem zu begegnen, kann die bisher verwendete Matrixdarstellung in die Form eines bipartiten Graphen überführt werden \cite[S. 2ff.]{huang:2004}. Diese Datenstruktur zeichnet sich durch die Verwendung zweier unterschiedlicher Arten von Knoten zur separaten Speicherung von Nutzern und Elementen aus. Bewertungen werden bei dieser Darstellungsform über gewichtete Kanten im Graphen dargestellt \cite[S. 1f.]{cao:2021}\cite[S. 2]{huang:2004}.
+Neben Transaktionen können Nutzer bzw. Elemente in Empfehlungssystemen zusätzliche Attribute besitzen.
+Bekannte Beispiele für Attribute eines Nutzers sind das Geschlecht oder Alter eines Nutzers, während Attribute eines Produktes beispielsweise die Produktkategorie oder der Preis sein können.
+% Unterschied Kombination und Interaktion? Kombibnation ist nicht zwangsläufig das vorhandensein einer Interaktion
 
-Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} zeigt die Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Datenstruktur eines bipartiten Graphen. In der Darstellung sind die Knoten der Mitarbeiter rot und die Knoten der Fähigkeiten blau markiert.
+% Einigung: Nützlichkeit bezieht sich nicht auf die Güte einer Empfehlung, sondern auf den Nutzen einer Kombination. Güte beschreibt Wert einer Empfehlung.
+Der Begriff der "Nützlichkeit" wird in der Literatur vermehrt verwendet, um den Wert eines Elements für einen Nutzer zu beschreiben \cite[S. 10f]{ricci:book}\cite[S. 1]{klahold:book}\cite[S. 735]{adomavicius:inproceedings}.\footnote{Unter der Nützlichkeit kann in dem Kontext von Empfehlungssystemen auch die Güte einer Empfehlung verstanden werden \cite[S. 37ff]{klahold:book}.}
+Dabei kann der Nutzen sowohl unmittelbar über Angaben eines Nutzers erschlossen, als auch über eine Nutzenfunktion des Empfehlungssystems berechnet werden \cite[S. 735]{adomavicius:inproceedings}.
+Da die Ermittlung des Nutzen durchaus komplex sein kann, wird der Aspekt der "Nützlichkeit" in Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} ausführlich aufgegriffen.
 
-\begin{figure}[h]
-	\centering	
-	\begin{tikzpicture}[node distance={31mm}, thick, main/.style = {draw, circle}] 
-		\node[main, fill=itemcolor] (MongoDB) {$MongoDB$}; 
-		\node[main, fill=itemcolor] (Python) [below right of=MongoDB] {$Python$}; 
-		\node[main, fill=itemcolor] (MySQL) [above right of=Python] {$MySQL$}; 
-		\node[main, fill=itemcolor] (Java) [below right of=MySQL] {$Java$}; 
-		\node[main, fill=itemcolor] (HDFS) [above right of=Java] {$HDFS$}; 
-		\node[main, fill=itemcolor] (Spark) [below right of=HDFS] {$Spark$};
-		
-		\node[main, fill=usercolor] (Jane) [above right of=MongoDB] {$Jane D.$}; 
-		\node[main, fill=usercolor] (John) [above left of=HDFS] {$John D.$}; 
-		\node[main, fill=usercolor] (Max) [below of=MySQL] {$Max M.$};
-		\node[main, fill=usercolor] (Erika) [above right of=HDFS] {$Erika M.$}; 
-		
-		\draw (Jane) -- node[midway, right] {4} (Python);
-		\draw (Jane) -- node[midway, above] {3} (MySQL);
-		\draw (Jane) -- node[midway, above] {3} (MongoDB);
+\section{Problemstellung}
+\label{ch:empfehlungssysteme:problemstellung}
+% Im vorangegangenen Kapitel wurden grundlegende Komponenten von Empfehlungssystemen und deren Zusammenspiel erläutert.
+Das grundlegende Problem, welches Empfehlungssysteme zu lösen versuchen, besteht darin, aus einer Menge an Elementen das Element bzw. die Elemente zu ermitteln, von denen angenommen werden kann, dass diese für die Empfänger einer Empfehlung von Relevanz sind \cite[S. 734f]{adomavicius:inproceedings}\cite[S. 76]{jannach:inproceedings}.
+Relevanz bedeutet in dem Kontext von Empfehlungssystemen, dass die Empfehlung an einen Nutzer bzw. eine Gruppe an Nutzern einen maximalen Nutzen bietet \cite[S. 49]{adomavicius:inproceedings:2}\cite[S. 219]{lakiotaki:inproceedings}.
+Formal ausgedrückt besteht das Problem darin, einem Nutzer $c$ eine Menge an Elementen $s^{'}$ $\in$ $S$ zur Verfügung zu stellen, für die gilt:
+\begin{equation}\label{eq1}
+    \forall c\in C,  s'_c = arg\max_{s \in S} u(c,s)
+\end{equation}
+Hierbei gibt $C$ die Menge aller Nutzer eines Systems und $u(c,s)$ den Nutzen einer Kombination an Element s und Nutzer c (im Folgenden Nutzer- Element- Kombination genannt) an \cite[S. 734f]{adomavicius:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}.
+Der Kontext $K$ wird in \textcite[S. 1]{klahold:book} explizit für die Ermittlung des Nutzen einer Nutzer- Element- Kombination angeführt.
+Grundsätzlich stellen kontextbasierte Empfehlungssysteme, das heißt Syteme, die den Kontext von Empfehlungen für die Ermittlung des Nutzen berücksichtigen, eine Erweiterung traditioneller Empfehlungssyteme dar \cite[S. 744ff]{adomavicius:inproceedings}.
+In der Literatur wird der Nutzen einer Nutzer- Element- Kombination traditionell ohne Berücksichtigung des Kontextes betrachtet, weshalb der Kontext von Empfehlungen in dieser Arbeit vernachlässigt wird \cite[S. 734f]{adomavicius:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}\cite[S. 3]{jawaheer:article}.
+In Anlehnung an \textcite[S. 3]{jawaheer:article} wird der interessierte Leser für eine detaillierte Übersicht zu kontextbasierten Empfehlungsssystemen auf \textcite[S. 191ff]{ricci:book} verwiesen.
+% In den Formulierungen der Gleichung in \cite[S. 734f]{adomavicius:inproceedings} und \cite[S. 219]{lakiotaki:inproceedings} wird jedoch nicht explizit auf den Kontext als Bedingung zur Erfüllung von Gleichung \ref{eq1} hingewiesen.
+% Es wird angenommen, dass der Kontext für die Ermittlung der Güte einer Empfehlung implizit berücksichtigt wird und daher auf eine explizite Nennung verzichtet wurde. In Anlehnung an \cite[S. 734f]{adomavicius:inproceedings} und \cite[S. 219]{lakiotaki:inproceedings} wurde daher auf die explizite Unterscheidung im weiteren Verlauf verzichtet.
 
-		\draw (John) -- node[midway, right] {1} (HDFS);		
-		\draw (John) -- node[midway, right] {3} (Java);
-		\draw (John) -- node[midway, above] {2} (MySQL);
-		
-		%\path (Erika) edge[bend right=10] node[midway, right] {5} (HDFS); 
-		\draw (Erika) -- node[midway, above] {5} (HDFS);
-		\draw (Erika) -- node[midway, right] {3} (Spark);
-		
-		\draw (Max) -- node[midway, above] {2} (Java);
-		\draw (Max) -- node[midway, above] {3} (Python);
-		\draw (Max) -- node[midway, right] {1} (MySQL);
-	\end{tikzpicture}
+Da es sich bei dem Problem des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Menge an Elementen um ein Maximierungs- Problem handelt, kann das Problem der Kategorie der Optimierungsprobleme, wie in \textcite[S. 1]{book:kallrath} definiert, zugeordnet werden.
 
-	\caption{Darstellung der Fähigkeitsmatrix aus Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} in der Datenstruktur eines bipartiten Graphen}
-	\label{fig:empfehlungssysteme:cf:speicherbasiert:abb2}
+\section{Nutzenfunktion} % Unterschied Nutzen und Güte?
+\label{ch:empfehlungssysteme:nutzenfunktion}
+% Frage: ist mit der Güte die Güte einer Empfehlung gemeint (gefällt einem nutzer die Empfehlung ja/nein), oder ist damit die Güte im Sinne von die Qualität von Empfehlungssystemen gemeint?
+% Der erfolgreiche Einsatz von Empfehlungssystemen wird maßgeblich von der Qualität der ausgesprochenen Empfehlungen bestimmt.
+In Kapitel \ref{ch:empfehlungssysteme:einführung} wurde bereits darauf hingewiesen, dass die Ermittlung der "Nützlichkeit" in Empfehlungssystemen durchaus komplex sein kann.
+
+Wie aus Gleichung \ref{eq1} hervorgeht, wird für den Nutzen einer Nutzer- Element- Kombination in Empfehlungssystemen allgemein eine Funktion $u(c,s)$ angenommen.
+Diese Funktion wird Nutzenfunktion (engl.: utility function) genannt und ist traditionell definiert als \cite[S. 195]{ricci:book}\cite[S. 3]{jawaheer:article}:
+\begin{equation}\label{eq2}
+    u: Nutzer \times Element \rightarrow R
+\end{equation}
+Über die Nutzenfunktion kann für jede Kombination an Nutzer $c \in C$ und Element $s \in S$ eines Empfehlungssystems dessen Nutzen $u(c,s)$ bestimmt werden.
+Für alle Kombinationen von $C$ und $S$ eines Empfehlungssystems können die zugehörigen Nutzenwerte in einer $C \times S$ - Matrix abgebildet werden.
+Diese Matrix wird auch als Rating-Matrix $R$ bezeichnet \cite[S. 11]{recommenderSystems:2016}\cite[S. 91]{ekstrand:article}.
+% Hierbei stellt die Matrix $R$ für jede Nutzer- Element- Kombination deren Nutzen dar \cite[S. 874]{ricci:book}\cite[S. 49]{adomavicius:inproceedings:2}.
+% Was genau ist jetzt R0? Matrix oder Wertebereich (Skala)?
+% In Systemen, in denen der Wert einer Transaktion beispielsweise über eine explizite, binäre Bewertung (z.B. "Gut", "Schlecht") eines Nutzers für ein Element bestimmt wird, würde $R_{0}$ genau die zwei Ausprägungen umfassen, die eine Bewertung annehmen kann (hier: "Gut" und "Schlecht").
+
+Grundsätzlich kann die Nutzenfunktion in Empfehlungssystemen jede beliebige Funktion darstellen \cite[S. 735]{adomavicius:inproceedings}.
+Angenommen das Ziel eines Empfehlungssystems besteht darin, den Gesamtumsatz eines Unternehmens zu maximieren, so kann der Nutzen einer Nutzer- Element- Kombination über eine Profit-Funktion ermittelt werden.
+Solche Systeme, in denen der Nutzen von Nutzer- Element- Kombinationen über eine eigenständige Nutzenfunktion ermittelt wird, zählen zu den nutzenbasierten Empfehlungssystemen und sind nicht Inhalt dieser Arbeit.
+
+In den meisten Empfehlungssystemen wird für den Nutzen einer Nutzer- Element- Kombination $u(c,s)$ unmittelbar die Bewertung (engl.: Rating) $r_{cs}$ eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:book}\cite[S. 11]{recommenderSystems:2016}.
+Daher ist die Nutzenfunktion in der Literatur auch als Rating-Funktion bekannt \cite[S. 49]{adomavicius:inproceedings:2}.
+% Für den weiteren Verlauf der Arbeit werden daher die Begrifffe Nutzen und Bewertung bzw. Rating synonym verwendet.
+% Es wird davon ausgegangen, dass die gängige Verwendung des Ratings als Maß des Nutzen eines Elements für einen Nutzer daher kommt, dass Empfehlungssysteme traditionell in dem Kontext item-to-people-recommendation eingesetzt wurden.
+% In solchen systemen ist es meistens das ziel, die elemente zu empfehlen, die den nutzer am meisten ansprechen. -> Folglich Nutzen einer Nutzer-Element-Kombination bedeutet Nutzen eines Elements für einen Nutzer. (kann aber ja auch bedeuten nutzen eines elements für einen nutzer im sinne von profitmaximierung)
+% Unter der Annahme ist damit erklärbar, dass mit einer gewissen Konfidenz davon ausgegangen werden kann, dass die Bewertung eines Nutzers für ein Element auch dessen gefühlten Nutzen des ELements für ihn abbildet.
+
+Bewertungen von Elementen in Empfehlungssystemen können sowohl explizit als auch implizit erfolgen.
+Unter expliziter Bewertung kann in Empfehlungssystemen die ausdrückliche Bewertung eines Elements durch einen Nutzer verstanden werden.
+Ein Beispiel stellt die aktive Bewertung eines Produktes durch einen Nutzer in einem Online-Shop in Form einer Produktrezension (z.B. "Gefällt-mir"-Angabe) dar.
+Im Vergleich dazu werden unter impliziten Bewertungen in Empfehlungssystemen passiv erzeugte Verhaltensdaten, wie der Suchverlauf oder die Kaufhistorie eines Nutzers, verstanden, die indirekt mögliche Präferenzen eines Nutzers vermuten lassen \cite[S. 149]{jadidinejad:inproceedings}\cite[S. 403]{unternährer:article}.
+% IDEE: hier einfügen Rating Scales? Ordinal, numeric, etc.
+
+Tabelle \ref{tab1} stellt beispielhaft den Ausschnitt einer Rating-Matrix $R$ dar, welche explizite Bewertungen von Mitarbeitern zu ihren Fähigkeiten abbildet \cite[S. 735]{adomavicius:inproceedings}\cite[S. 16]{link:booklet}.
+Hierbei stellen Mitarbeiter die Nutzer und Fähigkeiten die Elemente des Systems dar.
+Der Nutzen einer Kombination $u(c,s)$ wird unmittelbar über die Bewertung $r_{cs}$ eines Mitarbeiters $c$ für eine Fähigkeit $s$ bestimmt.
+% Eine Bewertung kann jeden Wert in $R_{0}=\{1;2;3;4;5\}$ annehmen.
+
+\begin{table}[htbp]
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c}
+    {} & {\textbf{Java}} & {\textbf{Python}} & {\textbf{MySQL}} & {\textbf{MongoDB}} & {\textbf{HDFS}} & {\textbf{Spark}}\\
+    \hline
+    \textbf{D., Jane} & ? & 4 & 3 & 3 & ? & ?\\
+    \hline
+    \textbf{D., John} & 3 & ? & 2 & ? & 1 & ?\\
+    \hline
+    \textbf{M., Erika} & ? & ? & ? & 3 & 5 & 3\\
+    \hline
+    \textbf{M., Max} & 2 & 3 & 1 & ? & ? & ?\\
+    \end{tabular}
+    \end{center}
+	\caption{Beispielhafte Darstellung einer Rating-Matrix (in Anlehnung an \cite{link:booklet})}
+	\label{tab1}
+\end{table}
+
+Der Rating-Matrix $R$ können alle angegebenen Bewertungen von Mitarbeitern zu ihren Fähigkeiten entnommen werden.
+So wird beispielsweise ersichtlich, dass Jane D. im Verhältnis zu den anderen Mitarbeitern ihre Fähigkeiten in Python am höchsten bewertet hat.
+Darüber hinaus geht aus Tabelle \ref{tab1} hervor, dass einige Nutzer- Element- Kombinationen $r_{cs}$ anstelle einer Bewertung ein Fragezeichen beinhalten.
+Das Fragezeichen kennzeichnet die Kombinationen des Empfehlungssystems, für deren Transaktion kein Wert bekannt ist.
+Das kann beispielsweise bei Nutzern der Fall sein, die noch keine Elemente bewertet haben, oder bei Elementen, die neu einem System hinzugefügt wurden und noch keine Interaktion mit Nutzern des Systems aufweisen.
+Wie im nachfolgenden Kapitel deutlich werden wird, stellt die Vorhersage von Nutzer- Element- Kombinationen für fehlende Transaktionen eine der Kernaufgaben von Empfehlungssystemen dar.
+% Zu den Herausforderungen von Empfehlungssystemen zählt das Ermitteln der angenommenen Werte $R(c_{i},s_{j})$ für Nutzer bzw. Elemente, für die keine Bewertungen vorliegen.
+% Nach \textcite[S. 37]{klahold:book} besteht eine der Herausforderungen in der Ermittlung des tatsächlichen Nutzen einer Empfehlung darin, dass für eine objektive Beurteilung die genaue Nutzenfunktion einer Empfehlung an einen Nutzer bekannt sein muss.
+% In der Praxis gestaltet sich die Bestimmung einer akkuraten Nutzenfunktion zur Ermittlung der Güte einer Empfehlung für die Nutzer eines Systems jedoch zumeist schwierig.
+% Hier ergänzen nach gespräch mit Andreas. Quellen dazu: Klahod S. 37ff und hier: https://api-depositonce.tu-berlin.de/server/api/core/bitstreams/b490302e-8b6a-4300-946f-b5763c2b47d7/content
+% The design of effective utility functions often requires domain-specific knowledge, or learning data from past user interactions. % aggarwal, S. 178
+
+\section{Erstellen von Empfehlungen}
+\label{ch:empfehlungssysteme:empfehlungserstellung}
+Das Erstellen von Empfehlungen ist eine nicht-triviale Aufgabe, die bereits seit Jahrzehnten Inhalt zahlreicher Veröffentlichungen und Konferenzen ist.
+Grundsätzlich kann das Erstellen von Empfehlungen in Empfehlungssystemen in zwei Phasen unterteilt werden \cite[S. 405]{unternährer:article}\cite[S. 854]{ricci:book}:
+\begin{enumerate}
+	\item Vorhersage-Phase
+	\item Ranking-Phase
+\end{enumerate}
+
+In der Vorhersage-Phase wird der Nutzen von Nutzer- Element- Kombinationen vorhergesagt, für die keine Transaktionen vorliegen.
+Für die Ranking-Phase werden die (angenommenen) Nutzer- Element- Kombinationen aus Phase 1 herangezogen, in Abhängigkeit ihrer Nützlichkeit sortiert und das Element bzw. die Elemente mit dem größten Nutzen empfohlen.
+Nachfolgend werden die einzelnen Phasen im Detail erläutert.
+
+\subsection{Vorhersage}
+\label{ch:empfehlungssysteme:empfehlungserstellung:prediction}
+% Ratings normalerweise nur vorhanden bei nutzern, die diese produkte in der vergangenheit bewertet haben, S. 735, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Toward_the_next_generation_of_recommender_systems_a_survey_of_the_state-of-the-art_and_possible_extensions.pdf
+Wie aus Gleichung \ref{eq1} hervorgeht, ist das Vorhandensein eines Wertes für eine Nutzer- Element- Interaktion Voraussetzung, um die Nützlichkeit der Kombination im Vergleich zu anderen Nutzer- Element- Kombinationen zu bewerten.
+Eine gängige Eigenschaft von Umgebungen, in denen Empfehlungssysteme ihren Einsatz finden, ist, dass die zugrundeliegenden Daten unvollständig sind \cite[S. 735]{adomavicius:inproceedings}.
+Das bedeutet, dass nicht für jede Kombination an Nutzer und Element ein Wert für $r_{cs}$ vorliegt (wie in Tabelle \ref{tab1} durch Fragezeichen gekennzeichnet).
+So ist es beispielsweise anhand der Daten aus Tabelle \ref{tab1} nicht möglich zu Beurteilen, welche der beiden Mitarbeiter Jane D. und Erika M. die Fähigkeit Java besser beherrscht.
+% Würde beispielsweise für Erika M. aus Tabelle \ref{tab1} versucht zu Bestimmen, ob ihre Fähigkeiten in Java oder Python höher sind, könnte anhand von Gleichung \ref{eq1} aufgrund der fehlenden Nutzer-Element-Interaktion keine Aussage getroffen werden.
+
+Aufgabe eines Empfehlungssystems ist es daher die fehlenden Nutzer- Element- Kombinationen der Rating-Matrix $R$ vorherzusagen.
+Für die Vorhersage einer Nutzer- Element- Kombination $\hat{r}_{c,s}$ der Matrix $R$ kann allgemein folgende Formel angenommen werden (in Anlehnung an \cite[S. 743]{adomavicius:inproceedings}):\footnote{Voraussetzung der Gültigkeit der Formel \ref{eq3} ist die Annahme, dass gilt $r_{cs} = u(c,s)$. Das bedeutet, dass für den Nutzen einer Nutzer- Element- Kombination unmittelbar der Wert der Bewertung $r_{cs}$ eines Nutzers $c$ für das Element $s$ angenommen werden kann (Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}).}
+\begin{equation}\label{eq3}
+\hat{r}_{cs} =
+    \begin{cases}
+        r_{cs} & \textnormal{wenn } r_{cs} \neq \textnormal{ ?} \\
+        u(c,s) & \textnormal{wenn }r_{cs} = \textnormal{ ?} \\
+    \end{cases}
+\end{equation}
+Demnach kann der Wert einer Bewertung $\hat{r}_{c,s}$ vorhergesagt werden, entweder unmittelbar über vorhandene Nutzer- Element- Interaktionen $r_{cs}$, oder unter Anwendung der Nutzenfunktion $u(c,s)$ bei fehlenden Nutzer- Element- Kombinationen.
+% Unterschied ist, dass hier rij sich von u unterscheidet und bei uns einfach erstmal R als ein wert angenommen wird
+% Wichtig hier klar zu definieren, dass die Nützlichkeit oft so definiert ist, dass sie entweder explizit gegeben ist, oder über u berechnet wird für fehlende werte von r
+% bei uns wird dann quasi u für alle werte berechnet, da wir ja nicht explizit einen wert annehmen, sondern Ro sich aus r1 und r2 usw zusammensetzt
+
+In der Praxis existieren verschiedene Techniken, um fehlende Nutzer-Elemet-Kombinationen vorherzusagen.
+Empfehlungssysteme können anhand der eingesetzten Technik für die Vorhersage in verschiedene Kategorien unterteilt werden \cite[S. 8 ff]{recommenderSystems:2016}.
+Zu den bekanntesten Kategorien von Empfehlungssystemen zählen:
+\begin{itemize}%Sind die mathematischen Bezeichnungen hier verwirrend oder sinnvoll?
+	\item \textit{Systeme des Kollaborativen Filterns:} Vorhersage fehlender Nutzer- Element- Kombinationen $r_{cs}$ eines Zielnutzers $c$ anhand vorhandener Nutzer- Element- Interaktionen $r_{c's}$ anderer Nutzer $c' \in C \backslash \{c\}$ des Systems, die dem Zielnutzer $c$ ähnlich sind.
+	\item \textit{Inhaltsbasierte Systeme:} Vorhersage fehlender Nutzer- Element- Kombinationen $r_{cs}$ eines Zielnutzers $c$ anhand vorhandener Nutzer- Element- Interaktionen $r_{cs'}$ des Zielnutzers zu Elementen $s' \in S \backslash \{s\}$, die dem Zielelement $s$ ähnlich sind.
+	\item \textit{Wissensbasierte Systeme:} Vorhersage fehlender Nutzer- Element- Kombinationen eines Zielnutzers anhand der aktiven Angabe von Präferenzen durch den Zielnutzer.
+	\item \textit{Hybride Systeme:} Kombination verschiedener Techniken für die Vorhersage fehlender Nutzer- Element- Kombinationen.
+\end{itemize}
+
+Der Fokus dieser Arbeit liegt auf der zweiten Phase des Empfehlungserstellungs-Prozesses, weshalb auf eine Erläuterung der Techniken nachfolgend verzichtet wird.
+Für eine detaillierte Übersicht der bekanntesten Werkzeuge wird der interessierte Leser auf \textcite[S. 8ff]{recommenderSystems:2016} verwiesen.
+
+\subsection{Ranking}
+\label{ch:empfehlungssysteme:empfehlungserstellung:recommendation}
+Die zweite Phase umfasst die eigentliche Erstellung der Empfehlungen, die an einen Nutzer zurückgegeben werden.
+Das Ziel der zweiten Phase ist es, einem Nutzer $c$ in Abhängigkeit der gegebenen Rating-Matrix $R$ eine Empfehlung an Elementen $s'$ mit dem größtmöglichen Nutzen zu generieren \cite[S. 6]{ekstrand:article}.
+
+In Abhängigkeit des Anwendungsfalls kann eine Empfehlung verschiedene Formen annehmen.
+So kann eine Empfehlung eine Gruppe an Elementen darstellen.
+Ein Beispiel stellen Empfehlungen auf Webseiten von Klamottenlabeln dar, die verschiedene Kleidungsstücke gemeinsam als vollständige Outfits empfehlen.
+In den meisten Fällen geben Empfehlungssysteme eine sortierte Liste der nützlichsten Elemente zurück (Top-K-Elemente), in der für jedes Element der angenommene Wert für einen Nutzer angegeben ist \cite[S. 6]{ricci:book}\cite[S. 3]{recommenderSystems:2016}.
+Dabei wird die Nützlichkeit einer Kombination, wie in Kapitel \ref{ch:empfehlungssysteme:empfehlungserstellung:prediction} erläutert, zumeist anhand eines Ratings durch einen Nutzer bestimmt, oder über eine Nutzenfunktion in Phase 1 vorhergesagt.
+Diese Ratings erfolgen in gängigen Empfehlungssystemen zumeist anhand eines Kriteriums, beispielsweise in Form eines übergreifenden Ratings für ein Element.
+
+In der Praxis kann es vorkommen, dass von einem vorhergesagten Wert einer Nutzer- Element- Kombination nicht unmittelbar auf den tatsächlichen Rang einer Kombination im Ranking geschlossen werden kann, beispielsweise da noch andere Kriterien den Nutzen (und somit den Rang) einer Kombination beeinflussen \cite[S. 405]{unternährer:article}.
+Wie in Kapitel \ref{ch:erweiterungen} deutlich werden wird, ist die Bestimmung des Nutzen eines Elements für einen Nutzer anhand eines einzelnen Kriteriums (e.g. dem Rating) nicht immer ausreichend, um dessen Nutzen zuverlässig zu bestimmen \cite[S. 847]{ricci:book}.
+% ------- Hier (oder oben?) kurze Zusammenfassung der Begrifflichkeiten (siehe aggarwal, S. xviii, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/Aggarwal2016_Book_RecommenderSystems.pdf)
+
+Abbildung \ref{fig:empfehlungssysteme:recommendation:abb1} illustriert den Prozess der Empfehlungserstellung am Beispiel eines Ausschnitts der Mitarbeiter-Fähigkeiten Matrix aus Tabelle \ref{tab1}.
+Das Beispiel stellt den Empfehlungerstellungsprozess für die Mitarbeiterin Erika M. dar.
+Dabei soll mithilfe des Empfehlungssystems die Fähigkeit vorschlagen werden, von der angenommen werden kann, dass Erika M. in dieser Fähigkeit die meisten Kenntnisse im Vergleich zu den anderen Fähigkeiten aufweist (e.g. $argmax(\hat{r}_{\textnormal{Erika M., s}})$).
+% am die dieser am Gesucht: Element des Mitarbeiters, für das er/sie die höchsten Fähigkeiten aufweist, bspw. weil vorgeschalgen wird in dem Bereich eine Schulung zu geben, oder MA gesucht wird, der experte in einem bestimmten gebiet ist
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.9\textwidth]{gfx/phasen-empfehlungserstellung.png}
+	\caption[Phasen der Empfehlungserstellung]{Phasen der Empfehlungserstellung\\}
+	\label{fig:empfehlungssysteme:recommendation:abb1}
 \end{figure}
 
-\textcite[S. 8]{huang:2004} bemerkten mit Blick auf bipartite Graphen, dass bei klassischen nachbarschaftsbasierten Algorithmen nur Empfehlungen für Entitäten bestimmt werden können, welche von einem Zielknoten über drei Kanten zu erreichen sind. Somit können in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} über solche Verfahren beispielsweise keine Bewertungsvorhersagen für Jane Doe und Spark oder Erika Muster und MongoDB bestimmt werden.
+Empfehlungen dieser Art können beispielsweise sinnvoll sein, wenn Mitarbeitern Fähigkeiten vorgeschlagen werden sollen, die sie verhältnismäßig schnell erwerben können.
+% Empfehlungen dieser Art können beispielsweise sinnvoll sein, wenn Mitarbeitern Fähigkeiten vorgeschlagen werden sollen, die viele Ähnlichkeiten zu bereits existierenden Fähigkeiten eines Mitarbeiters aufweisen.
+% Dies kann sinnvoll sein, wenn Mitarbeiter möglichst schnell eine Fähigkeit erlernen sollen.
+% Wenn angenommen wird, dass Mitarbeiter, die bereits Fähigkeiten besitzen, welche Ähnlichkeiten zu der gefragten Fähigkeit aufweisen, schneller die gefragte Fähigkeit erlernen als Mitarbeiter, die diese Fähigkeiten nicht oder weniger gut beherrschen.
+So kann es sinnvoll sein der Mitarbeiterin Erika M. die Fähigkeit MySQL für eine Schulung vorzuschlagen, da aufgrund ihrer Vorkenntnisse in MongoDB angenommen werden kann, dass sie sich MySQL im Verhältnis zu anderen unbekannten Fähigkeiten (z.B. Python) schnell aneignen kann.
 
-Um auch in solchen Fällen Empfehlungen zu generieren, ist der Einsatz graphenbasierter Algorithmen empfehlenswert. Diese können über transitive Verbindungen auch weiter entfernte Knoten in die Berechnung mit einbeziehen. \cite[S. 60f.]{recommenderSystems:2016}
+\section{Präferenzen in Empfehlungssystemen}
+\label{ch:empfehlungssysteme:präferenzen}
+Im Zusammenhang mit Empfehlungssystemen fällt häufig der Begriff der Präferenzen (engl.: preferences) \cite[S. 2]{ricci:book}\cite[S. 11f]{recommenderSystems:2016}.
+% Brauch man hier überhaupt ein zitat, wenn ich die Annahme selber aufstelle?
+In diesem Kapitel werden Präferenzen allgemein erläutert und in dem Kontext von Empfehlungssystemen inhaltlich abgegrenzt.
 
-Ein in der Literatur angewendeter Graphenalgorithmus ist beispielsweise die Katz-Zentralität \cite[S. 4ff.]{guns:2014}\cite[S. 1ff.]{zhan:2017}. Diese basiert auf einem im Jahr 1953 vorgestellten mathematischen Verfahren von \textcite[S. 1ff.]{katz:1953}, welches dieser zur Bestimmung von Anführern in sozialen Gruppen entwickelte. Heute nutzen graphenbasierte Empfehlungssysteme diesen Algorithmus beispielsweise zur Verbindungsvorhersage. Diese Problemstellung ist unter anderem im Bereich der sozialen Netzwerke verbreitet und verfolgt das Ziel, aus vorhandenen Kanten im Graphen bisher unbekannte Verbindungen vorherzusagen \cite[S. 326ff.]{recommenderSystems:2016}\cite[S. 1ff.]{libenNowell:2007}.
+Nach dem Verständnis der Bundeszentrale für politische Bildung können Präferenzen grundsätzlich als Vorlieben und Verhaltensweisen von Personen verstanden werden, "[...], die bewirken, dass Güter unterscheidbar werden."\cite{pollert:book}
+Ein einfaches Beispiel der Präferenzen von Personen stellt die Vorliebe von Schülern für bestimmte Fächer in der Schule dar.
+Hierbei sind Schüler die Personen, die Präferenzen besitzen und Güter die verschiedenen Fächer, die Schüler besuchen müssen.
+Basierend auf verschiedenen Gründen können Schüler bestimmte Fächer präferieren.
+Das heißt, dass sie einige Fächer gegenüber Anderen bevorzugen können.
 
-Der Katz-Algorithmus basiert auf folgender Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} \cite[S. 62f.]{recommenderSystems:2016}\cite[S. 4]{libenNowell:2007}.
-\begin{equation}
-	(I - \beta * M)^{-1} - I
-	\label{frml:empfehlungssysteme:cf:speicherbasiert:formel4}
-\end{equation}
-In Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} steht $\beta$ für eine Zahl im Bereich von \nullWert bis eins \cite[S. 6]{guns:2014}. Diese muss jedoch stets kleiner als $1/\lambda$ sein, wobei $\lambda$ dem größten Eigenwert von $M$ entspricht \cite[S. 6]{zhan:2017}. Die Variable $I$ steht für die Einheitsmatrix und $M$ für die Adjazenzmatrix des betrachteten Graphen \cite[S. 4]{libenNowell:2007}\cite[S. 2]{zhang:2015}. $M$ gibt an, welche Anzahl an Kanten von einem Startknoten zu allen anderen Knoten führen \cite[S. 6]{guns:2014}. Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2} zeigt die Adjazenzmatrix des Graphen aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2}.
-%Je größer der Wert von $\beta$ angesetzt wird, desto stärker werden weit entfernte Beziehungen in der Berechnung gewichtet \cite[S. 6]{guns:2014}.
+Wenn Präferenzen in dem Kontext von Empfehlungssystemen aufkommen, wird sich in der Regel auf die Vorlieben und Verhaltensweisen der Nutzer des Systems bezogen.
+Beispielsweise kann unter der Präferenz eines Nutzers in einem Online-Shop die Bevorzugung eines Produktes gegenüber eines Anderen Verstanden werden.
 
-\begin{table}[h]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
-		& \begin{sideways}\textbf{Jane D.}\end{sideways} & \begin{sideways}\textbf{John D.}\end{sideways} & \begin{sideways}\textbf{Erika M.}\end{sideways} & \begin{sideways}\textbf{Max M.}\end{sideways} & \begin{sideways}\textbf{Java}\end{sideways} & \begin{sideways}\textbf{Python}\end{sideways} & \begin{sideways}\textbf{MySQL}\end{sideways} & \begin{sideways}\textbf{MongoDB}\end{sideways} & \begin{sideways}\textbf{HDFS}\end{sideways} & \begin{sideways}\textbf{Spark}\end{sideways} \\
-		\hline
-		\textbf{Jane D.}  & 0 & 0 & 0 & 0 & 0 & 4 & 3 & 3 & 0 & 0\\
-		\textbf{John D.}  & 0 & 0 & 0 & 0 & 3 & 0 & 2 & 0 & 1 & 0\\
-		\textbf{Erika M.} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 5 & 3\\
-		\textbf{Max M.}   & 0 & 0 & 0 & 0 & 2 & 3 & 1 & 0 & 0 & 0\\
-		\textbf{Java}     & 0 & 3 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0\\
-		\textbf{Python}   & 4 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0\\
-		\textbf{MySQL}    & 3 & 2 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
-		\textbf{MongoDB}  & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-		\textbf{HDFS}     & 0 & 1 & 5 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-		\textbf{Spark}    & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 0
-	\end{tabular}
-	\caption{Anzahl an Verbindungen im Graphen aus Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2}}
-	\label{tbl:empfehlungssysteme:arbeitsweise:tbl2}
-\end{table}
+Ein Verständnis der Präferenzen von Nutzern eines Systems kann für die erfolgreiche Ermittlung von Empfehlungen von großer Bedeutung sein. % \cite[S. 1]{jawaheer:article}
+Für die Ermittlung der Präferenzen von Nutzer in Empfehlungssystemen werden maßgeblich explizite und implizite Bewertungen herangezogen \cite[S. 1]{jawaheer:article}.\footnote{Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}.}
+Die Ermittlung der Präferenzen ist jedoch keinesfalls trivial.
+Dies hängt unter anderem damit zusammen, dass einer expliziten Bewertung (z.B. einer Gefällt-mir-Angabe in Facebook) durch einen Nutzer aus der Sicht eines Nutzers ein unterschiedlicher Wert zukommen kann als aus Sicht des Systems.
+Darüber hinaus kann auch die Bewertungsskala eines Elements Einfluss auf die Genauigkeit von Präferenzen haben.
+So kann eine fehlende Gefällt-mir-Angabe für ein Element durch einen Nutzer in Facebook nicht zwangsläufig als Abneigung für das Element verstanden werden \cite[S. 11]{recommenderSystems:2016}.
 
-Für Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2} ergeben sich durch Anwendung des Katz-Algorithmus mit $\beta = 0.125$ die in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl3} dargestellten Werte. Die vollständige Berechnung kann in Appendix \ref{ch:nebenrechnungen:katzZentralitaet} nachvollzogen werden.
+Anhand von Präferenzen ist es möglich Empfehlungen für Nutzer eines Empfehlungssystems zu personalisieren.
+In Abhängigkeit des Grads der Personalisierung können Empfehlungen personalisierten bzw. nicht-personalisierten Empfehlungen zugeordnet werden (in Anlehnung an \cite[S. 400]{unternährer:article}).
 
-\begin{table}[h]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
-		& \begin{sideways}\textbf{Jane D.}\end{sideways} & \begin{sideways}\textbf{John D.}\end{sideways} & \begin{sideways}\textbf{Erika M.}\end{sideways} & \begin{sideways}\textbf{Max M.}\end{sideways} & \begin{sideways}\textbf{Java}\end{sideways} & \begin{sideways}\textbf{Python}\end{sideways} & \begin{sideways}\textbf{MySQL}\end{sideways} & \begin{sideways}\textbf{MongoDB}\end{sideways} & \begin{sideways}\textbf{HDFS}\end{sideways} & \begin{sideways}\textbf{Spark}\end{sideways} \\ 
-		\hline
-		\textbf{Jane D.}  & 1.66 & 0.47 & 0.08 & 0.87 & 0.39 & 1.66 & 1.22 & 1.00 & 0.11 & 0.03\\
-		\textbf{John D.}  & 0.47 & 0.42 & 0.24 & 0.37 & 0.62 & 0.37 & 0.58 & 0.18 & 0.33 & 0.09\\
-		\textbf{Erika M.} & 0.08 & 0.24 & 1.17 & 0.06 & 0.10 & 0.06 & 0.10 & 0.03 & 1.39 & 0.81\\
-		\textbf{Max M.}   & 0.87 & 0.37 & 0.06 & 0.60 & 0.54 & 1.04 & 0.62 & 0.33 & 0.08 & 0.02\\
-		\textbf{Java}     & 0.39 & 0.62 & 0.10 & 0.54 & 0.37 & 0.40 & 0.37 & 0.15 & 0.14 & 0.04\\
-		\textbf{Python}   & 1.66 & 0.37 & 0.06 & 1.04 & 0.40 & 1.22 & 0.84 & 0.62 & 0.09 & 0.02\\
-		\textbf{MySQL}    & 1.22 & 0.58 & 0.10 & 0.62 & 0.37 & 0.84 & 0.68 & 0.46 & 0.13 & 0.04\\
-		\textbf{MongoDB}  & 1.00 & 0.18 & 0.03 & 0.33 & 0.15 & 0.62 & 0.46 & 0.37 & 0.04 & 0.01\\
-		\textbf{HDFS}     & 0.11 & 0.33 & 1.39 & 0.08 & 0.14 & 0.09 & 0.13 & 0.04 & 0.91 & 0.52\\
-		\textbf{Spark}    & 0.03 & 0.09 & 0.81 & 0.02 & 0.04 & 0.02 & 0.04 & 0.01 & 0.52 & 0.31
-	\end{tabular}
-	\caption{Ergebnisse des Katz-Algorithmus mit $\beta = 0.125$ für Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl2}}
-	\label{tbl:empfehlungssysteme:arbeitsweise:tbl3}
-\end{table}
+\subsection{Personalisierte und Nicht-Personalisierte Empfehlungen}
+Unter nicht-personalisierten Empfehlungen versteht \textcite[S. 400]{unternährer:article} Empfehlungen, die allen Nutzern die gleichen Elemente anzeigen.
+Das bedeutet, alle Nutzer eines Empfehlungssystems bekommen, unabhängig von deren Präferenzen oder Nutzerprofil, dieselben Elemente vorgeschlagen (z.B. "Top 10 Lieder aller Zeiten").
 
-In Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl3} ist zu erkennen, dass durch Berechnung des Algorithmus von Katz Verbindungen für sämtliche Knoten vorhergesagt werden konnten. Das Sparsity Problem wurde somit behoben.
+Für die Ermittlung nicht-personalisierter Empfehlungen können Popularitätsmetriken herangezogen werden.
+Dies folgt der Annahme, dass Popularität einen guten Prädiktor der Präferenzen aller Nutzer eines Systems darstellt \cite[S. 406]{unternährer:article}.
+Popularitätsmetriken stellen sortierte Listen dar, über die Elemente in ordinale Relationen gesetzt werden können (e.g. Element A ist "besser" als Element B, da es einen höheren Rang aufweist) \cite[S. 404ff]{unternährer:article}.
+Die Listen werden basierend auf "aggregierten Präferenzen" aller Nutzer eines Systems generiert.
+Hierfür muss im Vorfeld bestimmt werden, welcher Indikator für die Bestimmung der Popularität in einem System geeignet ist (z.B. die Anzahl an Klicks oder Gefällt-mir-Angaben) \cite[S. 406]{unternährer:article}.
 
-Bei Betrachtung der Werte in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl3} ist festzustellen, dass das Verfahren von Katz nicht dazu geeignet ist, fehlende Mitarbeiter-Bewertungen vorherzusagen. Die Anwendung des Verfahrens führt jedoch zu einer feingranularen Anpassung der Ausgangsbewertungen auf einem veränderten Skalenniveau. So beurteilte beispielsweise Jane Doe die Kompetenzen MongoDB und MySQL in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} ursprünglich mit gleichen Bewertungen. Nach Berechnung des Katz-Algorithmus ist MySQL in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl3} feingranular besser bewertet als MongoDB. Dieses Phänomen ist darauf zurückzuführen, dass MySQL von mehreren Kollegen Jane Does ebenfalls bewertet wurde. Somit ist es naheliegend, dass sie diese Kompetenz besser beherrscht als MongoDB.
+Nicht-personalisierte Empfehlungen müssen nicht allein auf absoluter Popularität beruhen.
+Nach \textcite[S. 405]{unternährer:article} ermöglichen zeitlich, räumliche und soziale Popularität, absolute Popularität zu begrenzen.
+So können Nachrichten-Plattformen beispielsweise gezielt die populärsten Artikel des Tages (zeitliche Popularität) auf ihrer Startseite anzeigen, anstelle der populärsten Artikel aller Zeiten (absolute Popularität).
+Unter der Annahme, dass die Relevanz der Beiträge mit deren Aktualität zusammenhängt, kann durch Verwendung von zeitlicher Popularität für die Ermittlung von Empfehlungen die Relevanz von Beiträgen auf der Startseite erhöht werden \cite[S. 405]{unternährer:article}.
+% Fragwürdig, ob das nicht auch schon eine art der personalisierung ist? Es ist anzunehmen, dass nicht-personalisiert einfach bedeutet, dass nicht die präfeenzen eines nutzers speziell verwendet werden, um gezielt empfehlungen zu schalten, sondern eben allgemein
 
-Nah verwandt mit dem Verfahren von Katz ist der PageRank-Algorithmus \cite[S. 1]{was:2018}. Dieser nutzt Kanten zur Darstellung von Verlinkungen im Internet. Auf dieser Grundlage bestimmte Google in seiner Anfangszeit die Priorisierung von Webseiten in deren Suchergebnissen \cite[S. 3ff.]{page:1999}.
+Der maßgebende Unterschied zu personalisierten Empfehlungen besteht darin, dass das Erstellen von nicht-personalisierten Empfehlungen für einen Nutzer nicht auf dessen individuellen Präferenzen beruht.
+Empfehlungen können somit völlig unabhängig davon erstellt werden, ob ein Nutzer eines Empfehlungssystems bereits eine Interaktion mit einem System aufweist oder nicht.
+Dies ermöglicht Systemen auch Empfehlungen für Nutzer zu erstelllen, für die beispielsweise keine Präferenzen bekannt sind.\footnote{Das Problem ist in der Literatur als das Kaltstart-Problem bekannt \cite[S. 407]{unternährer:article}.}
+Ausschlaggebend ist lediglich, dass Informationen vorliegen, die es ermöglichen die Popularität von Elementen zu ermitteln.
+So kann beispielsweise kein populärster Artikel des Tages einer Nachrichten-Plattform basierend auf der Popularität ermittelt werden, wenn überhaupt keine Interaktionen mit Artikeln des Systems vorliegen.
 
-Unabhängig von der konkreten Art der Implementierung ist ein großer Nachteil speicherbasierter Verfahren, dass bei jeder Empfehlungsberechnung sämtliche Nutzer, Elemente und Bewertungen in den Hauptspeicher geladen werden müssen \cite[S. 8]{yang:2016}. Zudem besitzt laut \textcite[S. 3]{landherr:2010} alleine die Invertierung der Matrix bei Berechnung des Algorithmus von Katz mit Gleichung \ref{frml:empfehlungssysteme:cf:speicherbasiert:formel4} eine Komplexität von $O(n^3)$. Somit können speicherbasierte Methoden zu sehr hohen Laufzeiten führen. Aus diesem Grund ist die Verwendung speicherbasierter Ansätze bei großen Datensätzen als ungeeignet zu bewertet. Abhilfe bei steigender Datenmenge bieten modellbasierte Verfahren \cite[S. 8]{yang:2016}.
-% \cite[S. 2]{zhang:2010}
+Im Gegensatz zu nicht-personalisierten Empfehlungen stellen personalisierte Empfehlungen Vorschläge dar, die basierend auf individuellen Präferenzen von Nutzern erstellt werden (bspw. über explizites oder implizites Feedback).
+Der Grad der Personalisierung ermöglicht eine weitere Unterteilung der personalisierten Empfehlungen in schwach-personalisierte Empfehlungen und stark-personalisierte Empfehlungen.
+Unter schwacher Pesonalisierung versteht \textcite[S. 407]{unternährer:article} stereotypisierende Empfehlungen, die Nutzer, basierend auf deren Attributen (z.B. Wohnort, Alter, Geschlecht), bestimmten Kategorien zuordnen.
+Prinzipiell ähneln schwach-personalisierte Empfehlungen den nicht-personalisierten Empfehlungen, da sie auch basierend auf Popularitätsmetriken erstellt werden.
+Der Unterschied besteht darin, dass die Popularität von Elementen innerhalb einer Kategorie ermittelt wird.
+Die Empfehlungen der populärsten Elemente für einen Nutzer erfolgen dann in Abhängigkeit der kategorialen Zugehörigkeit des Nutzers \cite[S. 407ff]{unternährer:article}.
 
-\subsection{Modellbasierte Verfahren}
-\label{ch:empfehlungssysteme:cf:modellbasiert}
-Modellbasierte Verfahren verwenden Ansätze aus dem Bereich des Data Minings zur Generierung von Vorschlägen. Hierbei berechnen Wissenschaftler statistische Modelle, bevor sie ihr Empfehlungssystem den Nutzern zur Verfügung stellen \cite[S. 71ff.]{recommenderSystems:2016}\cite[S. 2]{cui:2020}\cite[S. 8]{yang:2016}. Dieses Vorgehen hat den Vorteil, dass in der Produktivumgebung keine Berechnungen auf allen Daten ausgeführt werden müssen. Somit ist die Vorschlagsbestimmung insbesondere bei großen Datenmengen effizienter als bei speicherbasierten Verfahren \cite[S. 8]{yang:2016}.
+Stark-personalisierte Empfehlungen verzichten auf pauschale und kategoriale Vorentscheidungen und beziehen sich für das Ermitteln von Empfehlungen auf paarweise Relationen (sog. "Good Matches") zwischen Nutzern untereinander bzw. zwischen Nutzern und deren Elementen \cite[S. 415]{unternährer:article}.
+Solche Sachverhalte sind vorwiegend in Systemen des Kollaborativen Filterns und Inhaltsbasierten Empfehlungssystemen anzutreffen.
+Hierbei werden nicht einzelne Nutzer oder Elemente bewertet, etwa wie viele Fünf-Sterne-Rezensionen ein Produkt erhalten hat. 
+Stattdessen wird der "Fit" einer Kombination an Nutzer und Element bewertet.
+Das bedeutet, es wird eine Relation zwischen einem  Nutzer und einem Element erstellt, die dann mit anderen Relationen verglichen werden kann.
+Beispielsweise kann eine Fünf-Sterne-Bewertung eines Produktes durch einen Nutzer als starker "Fit" des Produktes mit dem Nutzer gesehen werden.
+Diese Beziehung zwischen Nutzer und Produkt kann dann mit anderen Beziehungen verglichen werden, um daraus Präferenzen von Nutzern abzuleiten \cite[S. 417]{unternährer:article}.
+% Popularitätsmetriken bewerten, wie gut ein element ist und ob es besser oder schlechter als ein anderes ist, während personalisierte empfehlungen beziehungen zwischen nutzern und elementen bewerten
 
-Bei modellbasierten Methoden ist es üblich, den vorhandenen Datensatz in Trainings- und Testdaten zu untergliedern. Die Trainingsdaten werden genutzt, um statistische Modelle zur Vorhersage von Bewertungen zu entwickeln \cite[S. 71f.]{recommenderSystems:2016}. Die Testdaten dienen zur anschließenden Evaluation und Bewertung hinsichtlich der Genauigkeit des erstellten Modells. Hierbei ist es beispielsweise möglich, bekannte Einträge von Testdaten in der Matrix temporär zu entfernen, diese anschließend durch das trainierte Modell vorherzusagen und daraufhin tatsächliche und vorhergesagte Werte zu vergleichen \cite[S. 3ff.]{kang:2016}.
+\subsection{Zugrundeliegende Datenstruktur}
+Abhängig von der Art der Empfehlung, liegen in Empfehlungssystemen unterschiedliche Datenstrukturen vor.
+% Frage ist, wie Präferenzen denn dargestellt werden, im sinne der Datenstruktur. Also wenn wir von der Matrix oben ausgehen
+% Bei popularität: nur bewertung von element ist ausschlaggeben, ggf. noch kategorie, aber sonst reicht bewertung, um ordinale Relation zu erstellen -> d.h. über alle nutzer verteilt die durchschnittlich höchste bewertung -> es existieren nicht wirklich individuelle präferenzen, eher ableitung aus aggregierten präferenzen
+% Bei paarweiser Relation: Bewertung einer Beziehung, d.h. betrachten von beziehungen zwischen Nutzern und Elementen, bzw. sogar zwischen Nutzer und Nutzern -> präferenz bedeutet hier die ordinale ordnung von elementen für einen Nutzer (hier habe ich leider keine referenz zu literatur, lediglich eine annahme, muss also weiterschauen)
+% das ist der wichtige unterschied zu uns, da wir präferenzen als ein attribut des mitarbeiters bzw als ein attribut des nutzers verstehen, und nicht als interpretation einer relation
 
-Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} zeigt eine beispielhafte Untergliederung eines Datensatzes in Trainings- (rot) und Testdaten (blau). Die Einteilung erfolgte zufällig.
+% HIER WEITERMACHEN
 
-\begin{table}[h]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c}
-		& \textbf{Java} & \textbf{Python} & \textbf{MySQL} & \textbf{MongoDB} & \textbf{HDFS} & \textbf{Spark}\\ 
-		\hline
-		\textbf{Doe, Jane} & ? & \cellcolor{itemcolor}4 & \cellcolor{itemcolor}3 & \cellcolor{usercolor}3 & ? & ?\\
-		\textbf{Doe, John} & \cellcolor{usercolor}3 & ? & \cellcolor{usercolor}2 & ? & \cellcolor{usercolor}1 & ?\\
-		\textbf{Muster, Erika} & ? & ? & ? & ? & \cellcolor{itemcolor}5 & \cellcolor{usercolor}3\\
-		\textbf{Muster, Max} & \cellcolor{itemcolor}2 & \cellcolor{usercolor}3 & \cellcolor{itemcolor}1 & ? & ? & ?\\
-	\end{tabular}
-	\caption[Beispielhafte Unterteilung einer Matrix in Trainings- und Testdaten]{Beispielhafte Unterteilung einer Matrix in Trainings- und Testdaten\\
-	(Eigene Darstellung in Anlehnung an \cite[S. 72]{recommenderSystems:2016})}
-	\label{tbl:empfehlungssysteme:cf:modellbasiert:tbl1}
-\end{table}
+\section{Wechselseitige Empfehlungssysteme}
+\label{ch:empfehlungssysteme:rrs}
 
-Wie an den Spalten in Tabelle \ref{tbl:empfehlungssysteme:cf:modellbasiert:tbl1} zu erkennen ist, existieren in der Praxis häufig sehr viele Merkmale bzw. Dimensionen, welche zur Entwicklung von Modellen relevant sein können. Wie in Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} beschrieben, sind Matrizen in der Praxis zusätzlich aufgrund des Sparsity Problems meist sehr schwach besetzt. \textcite[S. 1]{boratto:2014} stellten fest, dass in solchen Situationen, in welchen viele Dimensionen und gleichzeitig wenige Daten vorliegen, keine statistisch aussagekräftigen Modelle erstellt werden können. \textcite[S. 94, Z. 7]{bellman:1961} prägte für diesen Sachverhalt den Ausdruck "Fluch der Dimensionalität"\footnote{"Curse of Dimensionality" - \textcite[S. 94, Z. 7]{bellman:1961}} \cite[S. 1]{boratto:2014}. Um in solchen Situationen dennoch Empfehlungen zu generieren, können Verfahren zur Dimensionsreduzierung zur Anwendung kommen \cite[S. 47]{recommenderSystems:2016}. Verbreitet ist beispielsweise die Hauptkomponentenanalyse, welche im englischsprachigen Raum als \ac{PCA} bezeichnet wird \cite[S. 1]{vaswani:2018}.
+\subsection{People-to-People-Empfehlung}
+\label{ch:empfehlungssysteme:rrs:people_to_people}
 
-\textcite[S. 1f.]{pennock:2000} kritisierten an modellbasierten Verfahren, dass diese stets den Zustand der Daten zum Zeitpunkt des Trainings des Modells abbilden. Werden beispielsweise Fähigkeiten in der Datenbank hinzugefügt bzw. entfernt oder Bewertungen signifikant verändert, muss gegebenenfalls das statistische Modell neu trainiert werden, um diese Anpassungen zu erfassen. Speicherbasierte Verfahren können den Autoren zu Folge solche Änderungen dagegen unmittelbar berücksichtigen.
+\subsection{Problemstellung}
 
-Ein Problem, welches weder speicher- noch modellbasierte Verfahren im Bereich des kollaborativen Filterns zuverlässig lösen können, ist der sogenannte Kaltstart. Dieser tritt auf, wenn neue Nutzer oder Fähigkeiten in die Datenbank hinzugefügt werden, welchen noch keine Bewertung zugeordnet ist \cite[S. 5]{huang:2004}. In solchen Fällen ist die gesamte Zeile bzw. Spalte in Tabelle \ref{tbl:empfehlungssysteme:arbeitsweise:tbl1} mit fehlenden Einträgen gekennzeichnet. Im entsprechenden Graphen in Abbildung \ref{fig:empfehlungssysteme:cf:speicherbasiert:abb2} existiert somit keine Kante von der betrachteten Entität zu anderen Knoten. Daher ist es weder über speicherbasierte Ähnlichkeitsberechnungen, noch graphenbasierte Algorithmen oder statistische Modelle möglich, zuverlässige Vorhersagen mittels kollaborativem Filtern zu bestimmen. Eine Lösung für die Problematik des Kaltstarts können Verfahren im Bereich des inhaltsbasierten Filterns bieten \cite[S. 15]{recommenderSystems:2016}.
-
-\section{Inhaltsbasiertes Filtern}
-\label{ch:empfehlungssysteme:inhaltsbasiertesFiltern}
-Verfahren des inhaltsbasierten Filterns nutzen im Unterschied zum kollaborativen Filtern keine Bewertungen anderer Anwender zur Bestimmung von Vorhersagen. Algorithmen in diesem Bereich fokussieren Beschreibungen von Nutzern und Elementen. \cite[S. 139f.]{recommenderSystems:2016}
-
-Soll analog zum Beispiel aus Kapitel \ref{ch:empfehlungssysteme:cf:speicherbasiert} die Java-Bewertung von Jane Doe vorhergesagt werden, würden beim inhaltsbasierten Filtern somit keine Ähnlichkeitsberechnungen zwischen Java und jeder anderen Fähigkeit bzw. Jane Doe und allen anderen Mitarbeitern durchgeführt werden. Stattdessen könnten beispielsweise Satzbausteine im Lebenslauf von Jane Doe mit Wörtern in Stellenausschreibungen für Java-Entwickler verglichen werden. Auf einem solchen Vorgehen aufbauende Anwendungen zur Stellensuche bzw. \mbox{-besetzung} implementierten \textcite[S. 4ff.]{guo:2016} und \textcite[S. 3ff.]{prospect:2010}.
-
-Auch ist es möglich, graphenbasierte Verfahren im Bereich des inhaltsbasierten Filterns  einzusetzen. Diese bieten die Möglichkeit, vorhandene Daten über Ontologien miteinander zu verbinden. Hierbei kann auf einfache Weise zusätzliches Domänenwissen in den Vorschlagsprozess einbezogen werden. Empfehlungssysteme, welche ein solches Vorgehen verfolgen, werden als wissensbasiert bezeichnet. \cite[S. 167ff.]{recommenderSystems:2016}
-
-\section{Wissensbasierte Empfehlungssysteme}
-\label{ch:empfehlungssysteme:wissensbasierteAnsaetze}
-Beim Erstellen wissensbasierter Empfehlungssysteme können Unternehmen auf bereits vorhandene Ontologien zurückgreifen. Beispielsweise stellt die Europäische Kommission mit der \ac{ESCO}-Ontologie explizit zum Zweck der Stellenbesetzung eine mehrsprachige Wissensdatenbank mit vordefinierten Kompetenzen, Fähigkeiten und Qualifikationen bereit \cite[S. 1ff.]{leVrang:2014}. Ein vergleichbares Angebot existiert mit dem \ac{ONet} auch von der Regierung der Vereinigten Staaten von Amerika \cite[S. 2]{aCombinedRepresentation:2018}.
-
-In solchen Wissensdatenbanken können Unternehmen zu Stellen passende Mitarbeiter über semantische Suchen abfragen. Hierbei kann das System über hinterlegte Regeln sowohl Synonyme als auch Beziehungen berücksichtigen \cite[S. 2]{balachander:2018}\cite[S. 2f.]{singto:2013}. Jedoch werden Mitarbeiter in den Ergebnissen nur ausgegeben, wenn sie die Suchanfrage exakt erfüllen. Aus diesem Grund stellten \textcite[S. 3]{bianchini:2008} bei semantischen Suchen eine hohe Genauigkeit der Resultate fest, bemängelten jedoch die Flexibilität der Verfahren.
-
-Auch ist es möglich, innerhalb der Ontologien über Graphenalgorithmen die Übereinstimmungen zwischen Fähigkeiten zu berechnen \cite[S. 1ff.]{balachander:2018}. Bei solchen, auf Ähnlichkeitsberechnungen basierenden Verfahren beobachteten \textcite[S. 4]{bianchini:2008} eine hohe Flexibilität, kritisierten jedoch die mangelnde Genauigkeit.
-
-Um solche Nachteile einzelner Empfehlungsansätze auszugleichen, ist es möglich, mehrere Vorschlagsverfahren innerhalb eines Systems zu kombinieren. Derartige Anwendungen werden als hybride Empfehlungssysteme bezeichnet. \cite[S. 200]{recommenderSystems:2016}
-
-\section{Hybride Empfehlungssysteme}
-\label{ch:empfehlungssysteme:hybrideEmpfehlungssysteme}
-Durch die Verknüpfung mehrerer Empfehlungsansätze ist es mittels hybrider Systeme möglich, die Vorteile unterschiedlicher Ansätze miteinander zu verbinden. Auf diese Weise kann die Qualität der Ergebnisse weiter verbessert werden. \cite[S. 199ff.]{recommenderSystems:2016}\cite[S. 8]{malinowski:2008}
-
-Beispielsweise implementierten \textcite[S. 1ff.]{combiningCbAndCFCostSensitiveApproach:2017} ein hybrides Empfehlungssystem zur Stellensuche und kombinierten dabei kollaboratives und inhaltsbasiertes Filtern über modellbasierte Methoden. \textcite[S. 1ff.]{mohamed:2018} entwickelten ein hybrides Empfehlungssystem zur Personalauswahl basierend auf einer Ontologie.
-%Beispielsweise implementierten \textcite[S. 1ff.]{combiningCbAndCFCostSensitiveApproach:2017} ein hybrides Empfehlungssystem zur Stellensuche und kombinierten dabei kollaboratives und inhaltsbasiertes Filtern über modellbasierte Methoden. Hierbei stellten sie fest, dass ihr hybrides Vorgehen zu einer höheren Präzision als der rein inhaltsbasierte Ansatz führte. \textcite[S. 1ff.]{mohamed:2018} entwickelten ein hybrides Empfehlungssystem zur Personalauswahl basierend auf einer Ontologie. Bei der Evaluation ihrer Anwendungen kamen sie zum Ergebnis, dass die Resultate ihrer Anwendung vergleichbar mit der manuellen Auswahl von Personalsachbearbeitern waren. Daraus schlossen sie, dass ihr hybrides Empfehlungssystem im Vergleich zu professionellen Mitarbeitern ähnlich gute Vorschläge in deutlich geringerer Zeit erzielen konnte.%Auch \textcite[S. 16]{hybridImmunizing:2017} zeigten, dass deren hybrides Stellen-Empfehlungssystem eine hohe Genauigkeit erzielt.
-%Trotz solcher Ergebnisse sollte laut \textcite[S. 1ff.]{malinowski:2006} mit bilateralen Empfehlungssystemen eine andere Gattung Recommender Engines zur Besetzung von Stellen implementiert werden. Solche Anwendungen basieren auf denen in Kapitel \ref{ch:personEnvironmentFit} vorgestellten Erkenntnissen zum \ac{PEFit} und betrachten daher gleichzeitig die Anforderungen von Personalverantwortlichen und Mitarbeitern.
-
-Laut \textcite[S. 1ff.]{malinowski:2006} sollte mit bilateralen Empfehlungssystemen eine andere Gattung Recommender Engines zur Besetzung von Stellen implementiert werden. Solche Anwendungen basieren auf denen in Kapitel \ref{ch:personEnvironmentFit} vorgestellten Erkenntnissen zum \ac{PEFit} und betrachten daher gleichzeitig die Anforderungen von Personalverantwortlichen und Mitarbeitern \cite[S. 1ff.]{malinowski:2006}.
 \shorthandon{"}
