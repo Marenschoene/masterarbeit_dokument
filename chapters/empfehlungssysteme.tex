@@ -52,9 +52,9 @@ Das grundlegende Problem, welches Empfehlungssysteme zu lösen versuchen, besteh
 Relevanz bedeutet in dem Kontext von Empfehlungssystemen, dass die Empfehlung an einen Nutzer bzw. eine Gruppe an Nutzern einen maximalen Nutzen bietet \cite[S. 49]{adomavicius:inproceedings:2}\cite[S. 219]{lakiotaki:inproceedings}.
 Formal ausgedrückt besteht das Problem darin, einem Nutzer $c$ eine Menge an Elementen $s^{'}$ $\in$ $S$ zur Verfügung zu stellen, für die gilt:
 \begin{equation}\label{eq1}
-    \forall c\in C,  s'_c = arg\max_{s \in S} u(c,s)
+    \forall c\in C,  s'_c = arg\max_{s \in S} R(c,s)
 \end{equation}
-Hierbei gibt $C$ die Menge aller Nutzer eines Systems und $u(c,s)$ den Nutzen einer Kombination an Element s und Nutzer c (im Folgenden Nutzer- Element- Kombination genannt) an \cite[S. 734f]{adomavicius:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}.
+Hierbei gibt $C$ die Menge aller Nutzer eines Systems und $R(c,s)$ den Nutzen einer Kombination $(c,s)$ an Element $s$ und Nutzer $c$ (im Folgenden Nutzer- Element- Kombination genannt \cite[S. 3]{recommenderSystems:2016}) an \cite[S. 734f]{adomavicius:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}.
 Der Kontext $K$ wird in \textcite[S. 1]{klahold:book} explizit für die Ermittlung des Nutzen einer Nutzer- Element- Kombination angeführt.
 Grundsätzlich stellen kontextbasierte Empfehlungssysteme, das heißt Syteme, die den Kontext von Empfehlungen für die Ermittlung des Nutzen berücksichtigen, eine Erweiterung traditioneller Empfehlungssyteme dar \cite[S. 744ff]{adomavicius:inproceedings}.
 In der Literatur wird der Nutzen einer Nutzer- Element- Kombination traditionell ohne Berücksichtigung des Kontextes betrachtet, weshalb der Kontext von Empfehlungen in dieser Arbeit vernachlässigt wird \cite[S. 734f]{adomavicius:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}\cite[S. 3]{jawaheer:article}.
@@ -70,25 +70,23 @@ Da es sich bei dem Problem des Ermittelns einer nutzenmaximierenden Teilmenge au
 % Der erfolgreiche Einsatz von Empfehlungssystemen wird maßgeblich von der Qualität der ausgesprochenen Empfehlungen bestimmt.
 In Kapitel \ref{ch:empfehlungssysteme:einführung} wurde bereits darauf hingewiesen, dass die Ermittlung der "Nützlichkeit" in Empfehlungssystemen durchaus komplex sein kann.
 
-Wie aus Gleichung \ref{eq1} hervorgeht, wird für den Nutzen einer Nutzer- Element- Kombination in Empfehlungssystemen allgemein eine Funktion $u(c,s)$ angenommen.
+Wie aus Gleichung \ref{eq1} hervorgeht, wird für den Nutzen einer Nutzer- Element- Kombination in Empfehlungssystemen allgemein eine Funktion $R(c,s)$ angenommen.
 Diese Funktion wird Nutzenfunktion (engl.: utility function) genannt und ist traditionell definiert als \cite[S. 195]{ricci:book}\cite[S. 3]{jawaheer:article}:
-\begin{equation}\label{eq2}
-    u: Nutzer \times Element \rightarrow R
+\begin{equation}\label{eq2}% Dabei handelt es sich um eine lineare Abbildung, bei der über die Funktion u jeder Kombination aus der nxm matrix, genau ein Wert aus R, also der Rating matrix, zugeordnet werden kann
+    R: Nutzer \times Element \rightarrow R_{0}
 \end{equation}
-Über die Nutzenfunktion kann für jede Kombination an Nutzer $c \in C$ und Element $s \in S$ eines Empfehlungssystems dessen Nutzen $u(c,s)$ bestimmt werden.
-Für alle Kombinationen von $C$ und $S$ eines Empfehlungssystems können die zugehörigen Nutzenwerte in einer $C \times S$ - Matrix abgebildet werden.
-Diese Matrix wird auch als Rating-Matrix $R$ bezeichnet \cite[S. 11]{recommenderSystems:2016}\cite[S. 91]{ekstrand:article}.
-% Hierbei stellt die Matrix $R$ für jede Nutzer- Element- Kombination deren Nutzen dar \cite[S. 874]{ricci:book}\cite[S. 49]{adomavicius:inproceedings:2}.
-% Was genau ist jetzt R0? Matrix oder Wertebereich (Skala)?
+Die Nutzenfunktion ordnet jeder Kombination $(c,s)$ an Nutzer $c \in C$ und Element $s \in S$ eines Empfehlungssystems einen Nutzen $R(c,s) \in R_{0}$ zu.
+$R_{0}$ umfasst alle Werte, die der Nutzen von Kombinationen annehmen kann \cite[S. 49f]{adomavicius:inproceedings:2}.
 % In Systemen, in denen der Wert einer Transaktion beispielsweise über eine explizite, binäre Bewertung (z.B. "Gut", "Schlecht") eines Nutzers für ein Element bestimmt wird, würde $R_{0}$ genau die zwei Ausprägungen umfassen, die eine Bewertung annehmen kann (hier: "Gut" und "Schlecht").
 
 Grundsätzlich kann die Nutzenfunktion in Empfehlungssystemen jede beliebige Funktion darstellen \cite[S. 735]{adomavicius:inproceedings}.
 Angenommen das Ziel eines Empfehlungssystems besteht darin, den Gesamtumsatz eines Unternehmens zu maximieren, so kann der Nutzen einer Nutzer- Element- Kombination über eine Profit-Funktion ermittelt werden.
-Solche Systeme, in denen der Nutzen von Nutzer- Element- Kombinationen über eine eigenständige Nutzenfunktion ermittelt wird, zählen zu den nutzenbasierten Empfehlungssystemen und sind nicht Inhalt dieser Arbeit.
-
-In den meisten Empfehlungssystemen wird für den Nutzen einer Nutzer- Element- Kombination $u(c,s)$ unmittelbar die Bewertung (engl.: Rating) $r_{cs}$ eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:book}\cite[S. 11]{recommenderSystems:2016}.
-Daher ist die Nutzenfunktion in der Literatur auch als Rating-Funktion bekannt \cite[S. 49]{adomavicius:inproceedings:2}.
-% Für den weiteren Verlauf der Arbeit werden daher die Begrifffe Nutzen und Bewertung bzw. Rating synonym verwendet.
+% Solche Systeme, in denen der Nutzen von Nutzer- Element- Kombinationen über eine eigenständige Nutzenfunktion ermittelt wird, zählen zu den nutzenbasierten Empfehlungssystemen und sind nicht Inhalt dieser Arbeit.
+In den meisten Empfehlungssystemen wird für den Nutzen $R(c,s)$ einer Nutzer- Element- Kombination $(c,s)$ unmittelbar die Bewertung (engl.: Rating) $r_{cs}$ eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:book}\cite[S. 11]{recommenderSystems:2016}.
+Daher ist die Nutzenfunktion in der Literatur auch als Rating-Funktion oder Rating-Matrix bekannt \cite[S. 49]{adomavicius:inproceedings:2}\cite[S. 91]{ekstrand:article}\cite[S. 11]{recommenderSystems:2016}.
+Aus Gründen der Einfachheit wird für den weiteren Verlauf der Arbeit vorerst unmittelbar der Wert der Bewertung $r_{cs}$ für den Nutzen $R(c,s)$ einer Nutzer- Element- Kombination angenommen (d.h. $R(c,s) = r_{cs}$).
+% HIER ERWÄHNEN DASS ERSTMAL AUCH RATING GENOMMEN WIRD!
+% Diese Abbildung einer Funktion als Matrix folgt der mathematischen Definition von Matrizen als lineare Funktion.
 % Es wird davon ausgegangen, dass die gängige Verwendung des Ratings als Maß des Nutzen eines Elements für einen Nutzer daher kommt, dass Empfehlungssysteme traditionell in dem Kontext item-to-people-recommendation eingesetzt wurden.
 % In solchen systemen ist es meistens das ziel, die elemente zu empfehlen, die den nutzer am meisten ansprechen. -> Folglich Nutzen einer Nutzer-Element-Kombination bedeutet Nutzen eines Elements für einen Nutzer. (kann aber ja auch bedeuten nutzen eines elements für einen nutzer im sinne von profitmaximierung)
 % Unter der Annahme ist damit erklärbar, dass mit einer gewissen Konfidenz davon ausgegangen werden kann, dass die Bewertung eines Nutzers für ein Element auch dessen gefühlten Nutzen des ELements für ihn abbildet.
@@ -101,8 +99,8 @@ Im Vergleich dazu werden unter impliziten Bewertungen in Empfehlungssystemen pas
 
 Tabelle \ref{tab1} stellt beispielhaft den Ausschnitt einer Rating-Matrix $R$ dar, welche explizite Bewertungen von Mitarbeitern zu ihren Fähigkeiten abbildet \cite[S. 735]{adomavicius:inproceedings}\cite[S. 16]{link:booklet}.
 Hierbei stellen Mitarbeiter die Nutzer und Fähigkeiten die Elemente des Systems dar.
-Der Nutzen einer Kombination $u(c,s)$ wird unmittelbar über die Bewertung $r_{cs}$ eines Mitarbeiters $c$ für eine Fähigkeit $s$ bestimmt.
-% Eine Bewertung kann jeden Wert in $R_{0}=\{1;2;3;4;5\}$ annehmen.
+Der Nutzen $R(c,s)$ einer Kombination wird unmittelbar über die Bewertung $r_{cs}$ eines Mitarbeiters $c$ für eine Fähigkeit $s$ bestimmt.
+Eine Bewertung kann jeden Wert in $R_{0}=\{1;2;3;4;5\}$ annehmen.
 
 \begin{table}[htbp]
     \begin{center}
@@ -118,16 +116,17 @@ Der Nutzen einer Kombination $u(c,s)$ wird unmittelbar über die Bewertung $r_{c
     \textbf{M., Max} & 2 & 3 & 1 & ? & ? & ?\\
     \end{tabular}
     \end{center}
-	\caption{Beispielhafte Darstellung einer Rating-Matrix (in Anlehnung an \cite{link:booklet})}
+    \caption[Beispielhafte Darstellung einer Rating-Matrix ]{Beispielhafte Darstellung einer Rating-Matrix \\
+	(in Anlehnung an \cite{link:booklet})}
 	\label{tab1}
 \end{table}
 
 Der Rating-Matrix $R$ können alle angegebenen Bewertungen von Mitarbeitern zu ihren Fähigkeiten entnommen werden.
 So wird beispielsweise ersichtlich, dass Jane D. im Verhältnis zu den anderen Mitarbeitern ihre Fähigkeiten in Python am höchsten bewertet hat.
-Darüber hinaus geht aus Tabelle \ref{tab1} hervor, dass einige Nutzer- Element- Kombinationen $r_{cs}$ anstelle einer Bewertung ein Fragezeichen beinhalten.
+Darüber hinaus geht aus Tabelle \ref{tab1} hervor, dass einige Nutzer- Element- Kombinationen $(c,s)$ anstelle einer Bewertung $r_{cs}$ ein Fragezeichen beinhalten.
 Das Fragezeichen kennzeichnet die Kombinationen des Empfehlungssystems, für deren Transaktion kein Wert bekannt ist.
 Das kann beispielsweise bei Nutzern der Fall sein, die noch keine Elemente bewertet haben, oder bei Elementen, die neu einem System hinzugefügt wurden und noch keine Interaktion mit Nutzern des Systems aufweisen.
-Wie im nachfolgenden Kapitel deutlich werden wird, stellt die Vorhersage von Nutzer- Element- Kombinationen für fehlende Transaktionen eine der Kernaufgaben von Empfehlungssystemen dar.
+Wie im nachfolgenden Kapitel deutlich werden wird, stellt die Vorhersage fehlender Nutzer-Element-Interaktionen eine der Kernaufgaben von Empfehlungssystemen dar.
 % Zu den Herausforderungen von Empfehlungssystemen zählt das Ermitteln der angenommenen Werte $R(c_{i},s_{j})$ für Nutzer bzw. Elemente, für die keine Bewertungen vorliegen.
 % Nach \textcite[S. 37]{klahold:book} besteht eine der Herausforderungen in der Ermittlung des tatsächlichen Nutzen einer Empfehlung darin, dass für eine objektive Beurteilung die genaue Nutzenfunktion einer Empfehlung an einen Nutzer bekannt sein muss.
 % In der Praxis gestaltet sich die Bestimmung einer akkuraten Nutzenfunktion zur Ermittlung der Güte einer Empfehlung für die Nutzer eines Systems jedoch zumeist schwierig.
@@ -143,8 +142,8 @@ Grundsätzlich kann das Erstellen von Empfehlungen in Empfehlungssystemen in zwe
 	\item Ranking-Phase
 \end{enumerate}
 
-In der Vorhersage-Phase wird der Nutzen von Nutzer- Element- Kombinationen vorhergesagt, für die keine Transaktionen vorliegen.
-Für die Ranking-Phase werden die (angenommenen) Nutzer- Element- Kombinationen aus Phase 1 herangezogen, in Abhängigkeit ihrer Nützlichkeit sortiert und das Element bzw. die Elemente mit dem größten Nutzen empfohlen.
+In der Vorhersage-Phase werden für alle Nutzer-Element-Kombinationen, für die keine Transaktionen vorliegen, deren Nutzer-Element-Interaktion vorhergesagt.
+Für die Ranking-Phase werden die (angenommenen) Nutzer-Element-Interaktionen aus Phase 1 herangezogen, in Abhängigkeit ihrer Nützlichkeit sortiert und das Element bzw. die Elemente mit dem größten Nutzen empfohlen.
 Nachfolgend werden die einzelnen Phasen im Detail erläutert.
 
 \subsection{Vorhersage}
@@ -156,16 +155,16 @@ Das bedeutet, dass nicht für jede Kombination an Nutzer und Element ein Wert f�
 So ist es beispielsweise anhand der Daten aus Tabelle \ref{tab1} nicht möglich zu Beurteilen, welche der beiden Mitarbeiter Jane D. und Erika M. die Fähigkeit Java besser beherrscht.
 % Würde beispielsweise für Erika M. aus Tabelle \ref{tab1} versucht zu Bestimmen, ob ihre Fähigkeiten in Java oder Python höher sind, könnte anhand von Gleichung \ref{eq1} aufgrund der fehlenden Nutzer-Element-Interaktion keine Aussage getroffen werden.
 
-Aufgabe eines Empfehlungssystems ist es daher die fehlenden Nutzer- Element- Kombinationen der Rating-Matrix $R$ vorherzusagen.
-Für die Vorhersage einer Nutzer- Element- Kombination $\hat{r}_{c,s}$ der Matrix $R$ kann allgemein folgende Formel angenommen werden (in Anlehnung an \cite[S. 743]{adomavicius:inproceedings}):\footnote{Voraussetzung der Gültigkeit der Formel \ref{eq3} ist die Annahme, dass gilt $r_{cs} = u(c,s)$. Das bedeutet, dass für den Nutzen einer Nutzer- Element- Kombination unmittelbar der Wert der Bewertung $r_{cs}$ eines Nutzers $c$ für das Element $s$ angenommen werden kann (Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}).}
+Aufgabe eines Empfehlungssystems ist es daher die fehlenden Werte für Nutzer- Element- Kombinationen der Rating-Matrix $R$ vorherzusagen.
+Für die Vorhersage einer Nutzer- Element- Kombination $\hat{r}_{c,s}$ der Matrix $R$ kann allgemein folgende Formel angenommen werden (in Anlehnung an \cite[S. 743]{adomavicius:inproceedings}):\footnote{Voraussetzung der Gültigkeit der Formel \ref{eq3} ist die Annahme, dass gilt $r_{cs} = R(c,s)$. Das bedeutet, dass für den Nutzen einer Nutzer- Element- Kombination unmittelbar der Wert der Bewertung $r_{cs}$ eines Nutzers $c$ für das Element $s$ angenommen werden kann (Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}).}
 \begin{equation}\label{eq3}
 \hat{r}_{cs} =
     \begin{cases}
         r_{cs} & \textnormal{wenn } r_{cs} \neq \textnormal{ ?} \\
-        u(c,s) & \textnormal{wenn }r_{cs} = \textnormal{ ?} \\
+        R(c,s) & \textnormal{wenn }r_{cs} = \textnormal{ ?} \\
     \end{cases}
 \end{equation}
-Demnach kann der Wert einer Bewertung $\hat{r}_{c,s}$ vorhergesagt werden, entweder unmittelbar über vorhandene Nutzer- Element- Interaktionen $r_{cs}$, oder unter Anwendung der Nutzenfunktion $u(c,s)$ bei fehlenden Nutzer- Element- Kombinationen.
+Demnach kann der Wert einer Bewertung $\hat{r}_{c,s}$ vorhergesagt werden, entweder unmittelbar über vorhandene Nutzer- Element- Interaktionen $r_{cs}$, oder unter Anwendung der Nutzenfunktion $R(c,s)$ bei fehlenden Nutzer- Element- Kombinationen.
 % Unterschied ist, dass hier rij sich von u unterscheidet und bei uns einfach erstmal R als ein wert angenommen wird
 % Wichtig hier klar zu definieren, dass die Nützlichkeit oft so definiert ist, dass sie entweder explizit gegeben ist, oder über u berechnet wird für fehlende werte von r
 % bei uns wird dann quasi u für alle werte berechnet, da wir ja nicht explizit einen wert annehmen, sondern Ro sich aus r1 und r2 usw zusammensetzt
@@ -174,9 +173,9 @@ In der Praxis existieren verschiedene Techniken, um fehlende Nutzer-Elemet-Kombi
 Empfehlungssysteme können anhand der eingesetzten Technik für die Vorhersage in verschiedene Kategorien unterteilt werden \cite[S. 8 ff]{recommenderSystems:2016}.
 Zu den bekanntesten Kategorien von Empfehlungssystemen zählen:
 \begin{itemize}%Sind die mathematischen Bezeichnungen hier verwirrend oder sinnvoll?
-	\item \textit{Systeme des Kollaborativen Filterns:} Vorhersage fehlender Nutzer- Element- Kombinationen $r_{cs}$ eines Zielnutzers $c$ anhand vorhandener Nutzer- Element- Interaktionen $r_{c's}$ anderer Nutzer $c' \in C \backslash \{c\}$ des Systems, die dem Zielnutzer $c$ ähnlich sind.
-	\item \textit{Inhaltsbasierte Systeme:} Vorhersage fehlender Nutzer- Element- Kombinationen $r_{cs}$ eines Zielnutzers $c$ anhand vorhandener Nutzer- Element- Interaktionen $r_{cs'}$ des Zielnutzers zu Elementen $s' \in S \backslash \{s\}$, die dem Zielelement $s$ ähnlich sind.
-	\item \textit{Wissensbasierte Systeme:} Vorhersage fehlender Nutzer- Element- Kombinationen eines Zielnutzers anhand der aktiven Angabe von Präferenzen durch den Zielnutzer.
+	\item \textit{Systeme des Kollaborativen Filterns:} Vorhersage fehlender Nutzer- Element- Interaktionen $r_{cs}$ eines Zielnutzers $c$ anhand vorhandener Nutzer- Element- Interaktionen $r_{c's}$ anderer Nutzer $c' \in C \backslash \{c\}$ des Systems, die dem Zielnutzer $c$ ähnlich sind.
+	\item \textit{Inhaltsbasierte Systeme:} Vorhersage fehlender Nutzer- Element- Interaktionen $r_{cs}$ eines Zielnutzers $c$ anhand vorhandener Nutzer- Element- Interaktionen $r_{cs'}$ des Zielnutzers zu Elementen $s' \in S \backslash \{s\}$, die dem Zielelement $s$ ähnlich sind.
+	\item \textit{Wissensbasierte Systeme:} Vorhersage fehlender Nutzer- Element- Interaktionen eines Zielnutzers anhand der aktiven Angabe von Präferenzen durch den Zielnutzer.
 	\item \textit{Hybride Systeme:} Kombination verschiedener Techniken für die Vorhersage fehlender Nutzer- Element- Kombinationen.
 \end{itemize}
 
@@ -218,7 +217,7 @@ Empfehlungen dieser Art können beispielsweise sinnvoll sein, wenn Mitarbeitern 
 So kann es sinnvoll sein der Mitarbeiterin Erika M. die Fähigkeit MySQL für eine Schulung vorzuschlagen, da aufgrund ihrer Vorkenntnisse in MongoDB angenommen werden kann, dass sie sich MySQL im Verhältnis zu anderen unbekannten Fähigkeiten (z.B. Python) schnell aneignen kann.
 
 \section{Präferenzen in Empfehlungssystemen}
-\label{ch:empfehlungssysteme:präferenzen}
+\label{ch:empfehlungssysteme:preferences}
 Im Zusammenhang mit Empfehlungssystemen fällt häufig der Begriff der Präferenzen (engl.: preferences) \cite[S. 2]{ricci:book}\cite[S. 11f]{recommenderSystems:2016}.
 % Brauch man hier überhaupt ein zitat, wenn ich die Annahme selber aufstelle?
 In diesem Kapitel werden Präferenzen allgemein erläutert und in dem Kontext von Empfehlungssystemen inhaltlich abgegrenzt.
@@ -233,8 +232,8 @@ Wenn Präferenzen in dem Kontext von Empfehlungssystemen aufkommen, wird sich in
 Beispielsweise kann unter der Präferenz eines Nutzers in einem Online-Shop die Bevorzugung eines Produktes gegenüber eines Anderen Verstanden werden.
 
 Ein Verständnis der Präferenzen von Nutzern eines Systems kann für die erfolgreiche Ermittlung von Empfehlungen von großer Bedeutung sein. % \cite[S. 1]{jawaheer:article}
-Für die Ermittlung der Präferenzen von Nutzer in Empfehlungssystemen werden maßgeblich explizite und implizite Bewertungen herangezogen \cite[S. 1]{jawaheer:article}.\footnote{Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}.}
-Die Ermittlung der Präferenzen ist jedoch keinesfalls trivial.
+In der Literatur wird unter Präferenzen eines Nutzers zumeist dessen explizite und / oder implizite Bewertung von Elementen verstanden \cite[S. 37]{berkovsky:2:article}\cite[S. 743]{adomavicius:inproceedings}\cite[S. 11]{recommenderSystems:2016}\cite[S. 129]{ekstrand:article}.\footnote{Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}.}
+Die Präferenzen von Nutzern sind jedoch keinesfalls trivial.
 Dies hängt unter anderem damit zusammen, dass einer expliziten Bewertung (z.B. einer Gefällt-mir-Angabe in Facebook) durch einen Nutzer aus der Sicht eines Nutzers ein unterschiedlicher Wert zukommen kann als aus Sicht des Systems.
 Darüber hinaus kann auch die Bewertungsskala eines Elements Einfluss auf die Genauigkeit von Präferenzen haben.
 So kann eine fehlende Gefällt-mir-Angabe für ein Element durch einen Nutzer in Facebook nicht zwangsläufig als Abneigung für das Element verstanden werden \cite[S. 11]{recommenderSystems:2016}.
@@ -264,7 +263,7 @@ Dies ermöglicht Systemen auch Empfehlungen für Nutzer zu erstelllen, für die 
 Ausschlaggebend ist lediglich, dass Informationen vorliegen, die es ermöglichen die Popularität von Elementen zu ermitteln.
 So kann beispielsweise kein populärster Artikel des Tages einer Nachrichten-Plattform basierend auf der Popularität ermittelt werden, wenn überhaupt keine Interaktionen mit Artikeln des Systems vorliegen.
 
-Im Gegensatz zu nicht-personalisierten Empfehlungen stellen personalisierte Empfehlungen Vorschläge dar, die basierend auf individuellen Präferenzen von Nutzern erstellt werden (bspw. über explizites oder implizites Feedback).
+Im Gegensatz zu nicht-personalisierten Empfehlungen stellen personalisierte Empfehlungen Vorschläge dar, die basierend auf individuellen Präferenzen von Nutzern erstellt werden (bspw. über explizite oder implizite Bewertungen).
 Der Grad der Personalisierung ermöglicht eine weitere Unterteilung der personalisierten Empfehlungen in schwach-personalisierte Empfehlungen und stark-personalisierte Empfehlungen.
 Unter schwacher Pesonalisierung versteht \textcite[S. 407]{unternährer:article} stereotypisierende Empfehlungen, die Nutzer, basierend auf deren Attributen (z.B. Wohnort, Alter, Geschlecht), bestimmten Kategorien zuordnen.
 Prinzipiell ähneln schwach-personalisierte Empfehlungen den nicht-personalisierten Empfehlungen, da sie auch basierend auf Popularitätsmetriken erstellt werden.
@@ -280,14 +279,101 @@ Beispielsweise kann eine Fünf-Sterne-Bewertung eines Produktes durch einen Nutz
 Diese Beziehung zwischen Nutzer und Produkt kann dann mit anderen Beziehungen verglichen werden, um daraus Präferenzen von Nutzern abzuleiten \cite[S. 417]{unternährer:article}.
 % Popularitätsmetriken bewerten, wie gut ein element ist und ob es besser oder schlechter als ein anderes ist, während personalisierte empfehlungen beziehungen zwischen nutzern und elementen bewerten
 
-\subsection{Zugrundeliegende Datenstruktur}
-Abhängig von der Art der Empfehlung, liegen in Empfehlungssystemen unterschiedliche Datenstrukturen vor.
+Eine Voraussetzung für das Erstellen personalisierter Empfehlungen ist die Abbildung der Präferenzen der Nutzer eines Systems \cite[S. 36]{berkovsky:2:article}.
+
+\subsection{Zugrundeliegende Datenstruktur}% Frage ist, wie Präferenzen in RS aussehen
+Präferenzen von Nutzern werden in Empfehlungssystemen über sogenannte Nutzermodelle dargestellt \cite[S. 9]{ricci:book}\cite[S. 2]{jawaheer:article}\cite[S. 246]{berkovsky:article}.
+Nach \textcite[S. 249f]{berkovsky:article} speichern Nutzermodelle die Präferenzen traditionell in einer zweidimensionalen Matrix $R'_{gen}$:
+\begin{equation}\label{eq4}
+    R'_{gen}: Nutzer_{Attribut} \times Element_{Attribut} \rightarrow rating
+\end{equation}
+Hierbei kennzeichnet die Dimension $Nutzer_{Attribut}$ Attribute der Nutzer (z.B. ID, Name, Geschlecht) und die Dimension $Element_{Attribut}$ Attribute der Elemente (z.B. ID, Produktkategorie, Genre).
+Das $rating$ stellt die Bewertungen der Nutzer für Element dar \cite[S. 250]{berkovsky:article}.
+
+In Abhängigkeit der eingesetzten Technik innerhalb eines Empfehlungssystems (Vgl. Kapitel \ref{ch:empfehlungssysteme:empfehlungserstellung:prediction}) muss die Matrix $R'_{gen}$ Nutzermodelle mit unterschiedlichen Daten abbilden können. % Zitat? \cite[S. 248]{berkovsky:article}
+Hierfür sind in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1} drei Beispiele unterschiedlicher Nutzermodelle grafisch dargestellt.
+
+In Systemen des kollaborativen Filterns werden Präferenzen von Nutzern für Elemente in der Rating-Matrix $R$ gespeichert \cite[S. 246ff]{berkovsky:article}.
+Nutzer und Elemente werden dabei jeweils über ein eindeutiges Attribut (z.B. ID, Name) beschrieben.
+Daraus ergibt sich nach \textcite[S. 250]{berkovsky:article} für die Abbildung der Nutzermodelle in Matrix $R_{CF}$ folgende Form:
+\begin{equation}\label{eq5}
+    R_{CF}: Nutzer_{ID} \times Element_{ID} \rightarrow rating
+\end{equation}
+Die Dimensionen $Nutzer_{ID}$ und $Element_{ID}$ stellen die eindeutig beschreibenden Attribute der Nutzer und Elemente dar.
+Anhand des Beispiels aus Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} ist in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1} ein Beispiel einer Nutzer$_{ID}$$\times$Element$_{ID}$-Matrix abgebildet.\footnote{Für eine bessere Übersicht wurde das Beispiel auf die drei Fähigkeiten Java, Python und MySQL reduziert und die Bewertungen lediglich für einen Beispiel-Mitarbeiter (hier: John D.) angegeben.}
+Mitarbeiter und Fähigkeiten werden jeweils eindeutig über deren Namen gekennzeichnet (d.h. Attribut ID = Name).
+% Der Sachverhalt wird nachfolgend anhand des Beispiels aus Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} erläutert.
+% Hierfür sind in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1} die Nutzermodelle einiger Mitarbeiter des Beispiels in einer Matrix dargestellt.\footnote{Für eine bessere Übersicht wurden das Beispiel auf die drei Fähigkeiten Java, Python und MySQL reduziert und die Bewertungen lediglich für einen Beispiel-Mitarbeiter (hier: John D.) angegeben.}
+
+\begin{figure}[H]
+    \centering
+    \subfloat[Nutzer$_{ID}\times$Element$_{ID}$ - Matrix]{\includegraphics[height=1.5in]{gfx/abbildung-präferenzen-A.png}\label{fig:empfehlungssysteme:preferences:abb1:1}}\\
+    \subfloat[Nutzer$_{ID}\times$Element$_{Attribut}$ - Matrix]{\includegraphics[height=1.48in]{gfx/abbildung-präferenzen-B.png}\label{fig:empfehlungssysteme:preferences:abb1:2}}\\
+    \subfloat[Nutzer$_{Attribut}\times$Element$_{Attribut}\times$Kontext$_{Attribut}$ - Matrix]{\includegraphics[height=1.7in]{gfx/abbildung-präferenzen-C.png}\label{fig:empfehlungssysteme:preferences:abb1:3}}
+  \caption{Abbildung von Präferenzen} \label{fig:empfehlungssysteme:preferences:abb1}
+\end{figure}
+% Werden Nutzermodelle in Systemen folglich über eine Nutzer$\times$Element-Matrix abgebildet, können die Präferenzen eines Nutzers unmittelbar aus der Rating-Matrix abgelesen werden.
+
+Ein Nutzermodell $UM_{c}$ entspricht nun genau einer Sammlung aller Bewertungen eines Nutzers $c$ dieser Matrix.
+Nach \textcite[S. 41]{berkovsky:2:article} kann diese Sammlung beispielsweise als Liste paarweiser Einträge dargestellt werden:
+\begin{equation}\label{eq6}
+    UM_{c} = \{s_{1}:r_{1},\textnormal{ }s_{2}:r_{2},\textnormal{ }...,\textnormal{ }s_{k}:r_{k}\}
+\end{equation}
+Dabei stellt jedes Paar $s_{j}:r_{j}$ die Bewertung $r_{j}$ eines Elements $s_{j}$ durch den Nutzer $c$ dar \cite[S. 41]{berkovsky:2:article}.
+Daraus ergibt sich beispielsweise für den Nutzer John D. das Nutzermodell $UM_{John\textnormal{ }D.} = \{Java: 3, Python:\textnormal{ }, MySQL: 2\}$ (Vgl. Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1}).
+
+Ein Vergleich der Matrix $R_{CF}$ aus Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1} mit der Rating-Matrix aus Tabelle \ref{tab1} zeigt, dass Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1} lediglich einen vereinfachten Ausschnitt der Rating-Matrix darstellt.
+In Systemen des kollaborativen Filterns sind die Nutzer$_{ID}$$\times$Element$_{ID}$-Matrix zur Abbildung der Nutzermodelle und die Rating-Matrix folglich identisch.
+
+In inhaltsbasierten Empfehlungssystemen stellen nicht die Bewertungen der Nutzer für Elemente als Ganzes deren Präferenzen dar, sondern die Bedeutung einzelner Elementattribute für einen Nutzer.
+Nutzermodelle müssen folglich nicht die Bewertungen von Nutzern für Elemente, sondern die Wichtigkeit einzelner Elementattribute für einen Nutzer darstellen \cite[S. 42]{berkovsky:2:article}.
+Nach \textcite[S. 42]{berkovsky:2:article} entspricht ein Nutzermodell demnach einer Sammlung der Wichtigkeiten (meist in Form von Gewichten) einzelner Elementattribute für einen Nutzer.
+Ein solches Nutzermodell lässt sich ebenfalls als eine Liste paarweiser Einträge abbilden:
+\begin{equation}\label{eq7}
+    UM_{c} = \{a_{1}:w_{a(1)}, a_{2}:w_{a(2)}, ..., a_{k}:w_{a(k)}\}
+\end{equation}
+Jedes Paar $a_{j}:w_{a(j)}$ stellt das Gewicht $w$ eines Elementattributs $a$ für den Nutzer $c$ dar \cite[S. 42]{berkovsky:2:article}.
+Für die Darstellung der Nutzermodelle eines inhaltsbasierten Systems ergibt sich nach \textcite[S. 251]{berkovsky:article} folgende Matrix:
+\begin{equation}\label{eq8}
+    R_{CB}: Nutzer_{ID} \times Element_{Attribut} \rightarrow rating
+\end{equation}
+Hierbei umfasst Element$_{Attribut}$ das Attribut, durch das die Elemente eines Systems beschrieben werden können \cite[S. 251]{berkovsky:article}.
+
+Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:2} illustriert eine solche Nutzer$_{ID}$$\times$Element$_{Attribut}$-Matrix anhand des Beispiels aus Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}.
+Als Elementattribut wurde für dieses Beispiel die Typisierung einer Programmiersprache mit den Ausprägungen "Statisch" und "Dynamisch" gewählt.
+Ein Nutzermodell enthält für alle Ausprägungen des Attributs Gewichte $w$, die den Wert eines Elementattributs für einen Nutzer abbilden \cite[S. 251]{berkovsky:article}.
+Daraus ergibt sich beispielsweise für den Nutzer John D. das Nutzermodell $UM_{John\textnormal{ }D.} = \{Statisch:\textnormal{ }, Dynamisch: 1.0\}$ (Vgl. Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:2}).
+
+Um die Gewichte einer Nutzer$_{ID}$$\times$Element$_{Attribut}$-Matrix zu ermitteln existieren in der Literatur verschiedene Verfahren \cite[S. 42]{berkovsky:2:article}.
+Grundsätzlich wird die Nutzer$_{ID}$$\times$Element$_{Attribut}$-Matrix auf Basis der Rating-Matrix generiert.
+Bei den Gewichten in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:2} handelt es sich lediglich um ein willkürliches Beispiel, da der Fokus dieses Kapitels auf der Darstellung der Präferenzen und nicht auf den Verfahren für die Ermittlung der Attributgewichte liegt.
+% Wie gewichtung hier beschreiben, ohne ins detail zu gehen?
+
+Neben der traditionellen Darstellung der Präferenzen von Nutzern in einem zweidimensionalen Raum, können Präferenzen auch in dreidimensionaler Form abgebildet werden.
+Diese Darstellung beruht auf der Annahme, dass Präferenzen von Nutzern für Elemente zusätzlich durch kontextuelle Information (z.B. Zeit, Ort, Gesellschaft) beeinflusst werden \cite[S. 195]{ricci:book}.
+Eine zweidimensionale Darstellung der Präferenzen wie in Gleichung \ref{eq4} vernachlässigt demnach eine entscheidende Dimension: den Kontext von Präferenzen \cite[S. 253]{berkovsky:article}.
+Für die Darstellung der Nutzermodelle wird daher in kontextbasierten Empfehlungssystemen von einer Matrix $R_{CA}$ ausgegangen \cite[S. 254]{berkovsky:article}:
+\begin{equation}\label{eq9}
+    R_{CA}: Nutzer_{Attribut} \times Element_{Attribut} \times Kontext{Attribut} \rightarrow rating
+\end{equation}
+Matrix $R_{CA}$ erweitert die zweidimensionale Darstellung aus Gleichung \ref{eq4} um die Dimension $Kontext{Attribut}$, welche den Kontext einer Bewertung angibt \cite[S. 254]{berkovsky:article}.\footnote{\textcite[S. 249ff]{berkovsky:article} merken an, dass es sich bei den Dimensionen $Nutzer_{Attribut}$ und $Element_{Attribut}$ auch um Sammlungen von Attributen handeln kann. Dies ist der Fall, wenn Nutzer oder Elemente für das Abbilden von Präferenzen über mehrere Attribute beschrieben werden. Angenommen die Präferenzen von Nutzern können über $n$ Attribute des Nutzers und $m$ Attribute der Elemente ($n \cup m > 1$) beschrieben werden, so ergibt sich für $R'_{gen}$ eine multidimenisonale $n+m$-Matrix. Dies gilt analog für die Dimension $Context_{Attribut}$ \cite[S. 254f]{berkovsky:article}.}
+% MIT AUFNEHMEN JA/ NEIN?
+% In Anlehnung an \textcite[S. 250ff]{berkovsky:article} und \textcite[S. 198]{ricci:book} kann für die Abbildung der zugehörigen Nutzermodelle Liste an Tripeln angenommen werden:
+% \begin{equation}\label{eq10}
+%     UM_{c} = \{(s_{1},q_{1}):r_{1},\textnormal{ }(s_{2},q_{2}),\textnormal{ }...,\textnormal{ }(s_{k},q_{k})\}
+% \end{equation}
+% Jeder Eintrag $(s_{k},q_{k}):r_{k}$ in $UM_{c}$ stellt die Bewertung eines Nutzers $c$ für ein Element
+
+Eine dreidimensionale Darstellung von Nutzermodellen ist beispielhaft in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:3} dargestellt.
+Die abgebildete Nutzer$_{ID}$$\times$Element$_{Attribut}$$\times$-Kontext$_{Attribut}$-Matrix stellt eine Erweiterung der Matrix in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1} um die kontextuelle Information "Zeit" dar.
+Ein Nutzermodell repräsentiert hier die Bewertung einer Fähigkeiten durch einen Mitarbeitern in Abhängigkeit eines Teams ab.
+% Hier was anderes als Teamzugehörigkeit finden! das macht in dem kontext keinen sinn
+% HIER WEITERMACHEN!
+
 % Frage ist, wie Präferenzen denn dargestellt werden, im sinne der Datenstruktur. Also wenn wir von der Matrix oben ausgehen
 % Bei popularität: nur bewertung von element ist ausschlaggeben, ggf. noch kategorie, aber sonst reicht bewertung, um ordinale Relation zu erstellen -> d.h. über alle nutzer verteilt die durchschnittlich höchste bewertung -> es existieren nicht wirklich individuelle präferenzen, eher ableitung aus aggregierten präferenzen
 % Bei paarweiser Relation: Bewertung einer Beziehung, d.h. betrachten von beziehungen zwischen Nutzern und Elementen, bzw. sogar zwischen Nutzer und Nutzern -> präferenz bedeutet hier die ordinale ordnung von elementen für einen Nutzer (hier habe ich leider keine referenz zu literatur, lediglich eine annahme, muss also weiterschauen)
 % das ist der wichtige unterschied zu uns, da wir präferenzen als ein attribut des mitarbeiters bzw als ein attribut des nutzers verstehen, und nicht als interpretation einer relation
-
-% HIER WEITERMACHEN
 
 \section{Wechselseitige Empfehlungssysteme}
 \label{ch:empfehlungssysteme:rrs}
