@@ -8,7 +8,7 @@
 
 \section{Einführung}
 \label{ch:empfehlungssysteme:einführung}
-Im einfachsten Sinne können Empfehlungssysteme (engl.: \ac{RS}) als Techniken und Werkzeuge verstanden werden, die Nutzern eines Systems aus einer Menge an Elementen potenziell nützliche Elemente vorschlagen \cite[S. 10]{ricci:book}.
+Im einfachsten Sinne können Empfehlungssysteme (engl.: \ac{RS}) als Techniken und Werkzeuge verstanden werden, die Nutzern eines Systems aus einer Menge an Elementen potenziell nützliche Elemente vorschlagen \cite[S. 10]{ricci:inbook}.
 % Wie sage ich im einfachsten sinn, wenn es nicht genau so im zitat steht?
 Etwas feingranularer definiert \textcite[S. 1]{klahold:book} Empfehlungssysteme als Systeme, die einem Nutzer oder einer Gruppe an Nutzern in einem gegebenen Kontext aus einer Menge möglicher Entitäten eine Teilmenge "nützlicher" Elemente empfehlen.
 Aus der Definition von \textcite[S. 1]{klahold:book} lassen sich die grundlegenden Komponenten, die für das Erstellen von Empfehlungen in Empfehlungssystemen von Bedeutung sind, deutlich abgrenzen.
@@ -25,23 +25,23 @@ Für ein fundiertes Verständnis sind die einzelnen Komponenten und deren Zusamm
 
 Wie aus Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} hervorgeht, stehen sich in  Empfehlungssystemen grundsätzlich zwei Akteure gegenüber.
 % Frage: kann man Elemente als "Akteur" bezeichnen oder anderes Wort dafür?
-Auf der einen Seite stehen Empfänger von Empfehlungen, welche in Empfehlungssystemen meist als Nutzer bezeichnet werden \cite[S. 8]{ricci:book}.
+Auf der einen Seite stehen Empfänger von Empfehlungen, welche in Empfehlungssystemen meist als Nutzer bezeichnet werden \cite[S. 8]{ricci:inbook}.
 Dem gegenüber stehen Entitäten, die Nutzern empfohlen werden können.
 Entitäten werden in Empfehlungssystemen als Elemente bezeichnet und bilden den Inhalt von Empfehlungen.
 Dabei kann es sich bei Elementen sowohl um Gegenstände wie CDs, Bücher und Klamotten handeln, als auch beispielsweise Personen, Orte oder Prozesse.
 % Unter dem Kontext einer Empfehlung versteht \textcite[S. 1]{klahold:book} das Zusammenspiel aus der Situation, in der eine Empfehlung gegeben wird, dem Profil eines Nutzers sowie der Menge möglicher Entitäten zum Zeitpunkt einer Empfehlung.
-Unter dem Kontext einer Empfehlung verstehen \textcite[S. 191]{ricci:book} zusätzliche Parameter wie Uhrzeit, Ort oder die Gegenwart anderer Personen zum Zeitpunkt einer Empfehlung.\footnote{\textcite[S. 1]{klahold:book} versteht unter dem Kontext das Zusammenspiel aus der Situation, in der eine Empfehlung gegeben wird, dem Profil eines Nutzers sowie der Menge möglicher Entitäten zum Zeitpunkt einer Empfehlung. Es wird angenommen, dass der Kontext nach dem Verständnis von \textcite{ricci:book} gleichzusetzen ist mit der Situation nach dem Verstängnis von \textcite{klahold:book} und die Berücksichtigung von Nutzerprofil und Elementen nach dem Verständnis von \textcite{ricci:book} implizit stattfindet.}
+Unter dem Kontext einer Empfehlung verstehen \textcite[S. 191]{adomavicius:3:inbook} zusätzliche Parameter wie Uhrzeit, Ort oder die Gegenwart anderer Personen zum Zeitpunkt einer Empfehlung.\footnote{\textcite[S. 1]{klahold:book} versteht unter dem Kontext das Zusammenspiel aus der Situation, in der eine Empfehlung gegeben wird, dem Profil eines Nutzers sowie der Menge möglicher Entitäten zum Zeitpunkt einer Empfehlung. Es wird angenommen, dass der Kontext nach dem Verständnis von \textcite{ricci:book} gleichzusetzen ist mit der Situation nach dem Verstängnis von \textcite{klahold:book} und die Berücksichtigung von Nutzerprofil und Elementen nach dem Verständnis von \textcite{ricci:book} implizit stattfindet.}
 
 Darüber hinaus können Nutzer in Empfehlungssystemen mit Elementen in Beziehung gesetzt werden.
 Beispielsweise kann eine Beziehung zwischen einem Nutzer und einem Element unterstellt werden, wenn ein Nutzer in der Vergangenheit ein Element gekauft oder bewertet hat.
-Solche Beziehungen zwischen Elementen und Nutzern in Empfehlungssystemen werden als Nutzer- Element- Interaktion oder Transaktion bezeichnet \cite[S. 8]{recommenderSystems:2016}\cite[S. 9]{ricci:book}.
+Solche Beziehungen zwischen Elementen und Nutzern in Empfehlungssystemen werden als Nutzer- Element- Interaktion oder Transaktion bezeichnet \cite[S. 8]{recommenderSystems:2016}\cite[S. 9]{ricci:inbook}.
 
 Neben Transaktionen können Nutzer bzw. Elemente in Empfehlungssystemen zusätzliche Attribute besitzen.
 Bekannte Beispiele für Attribute eines Nutzers sind das Geschlecht oder Alter eines Nutzers, während Attribute eines Produktes beispielsweise die Produktkategorie oder der Preis sein können.
 % Unterschied Kombination und Interaktion? Kombibnation ist nicht zwangsläufig das vorhandensein einer Interaktion
 
 % Einigung: Nützlichkeit bezieht sich nicht auf die Güte einer Empfehlung, sondern auf den Nutzen einer Kombination. Güte beschreibt Wert einer Empfehlung.
-Der Begriff der "Nützlichkeit" wird in der Literatur vermehrt verwendet, um den Wert eines Elements für einen Nutzer zu beschreiben \cite[S. 10f]{ricci:book}\cite[S. 1]{klahold:book}\cite[S. 735]{adomavicius:inproceedings}.\footnote{Unter der Nützlichkeit kann in dem Kontext von Empfehlungssystemen auch die Güte einer Empfehlung verstanden werden \cite[S. 37ff]{klahold:book}.}
+Der Begriff der "Nützlichkeit" wird in der Literatur vermehrt verwendet, um den Wert eines Elements für einen Nutzer zu beschreiben \cite[S. 10f]{ricci:inbook}\cite[S. 1]{klahold:book}\cite[S. 735]{adomavicius:inproceedings}.\footnote{Unter der Nützlichkeit kann in dem Kontext von Empfehlungssystemen auch die Güte einer Empfehlung verstanden werden \cite[S. 37ff]{klahold:book}.}
 Dabei kann der Nutzen sowohl unmittelbar über Angaben eines Nutzers erschlossen, als auch über eine Nutzenfunktion des Empfehlungssystems berechnet werden \cite[S. 735]{adomavicius:inproceedings}.
 Da die Ermittlung des Nutzen durchaus komplex sein kann, wird der Aspekt der "Nützlichkeit" in Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} ausführlich aufgegriffen.
 
@@ -58,7 +58,7 @@ Hierbei gibt $C$ die Menge aller Nutzer eines Systems und $R(c,s)$ den Nutzen ei
 Der Kontext $K$ wird in \textcite[S. 1]{klahold:book} explizit für die Ermittlung des Nutzen einer Nutzer- Element- Kombination angeführt.
 Grundsätzlich stellen kontextbasierte Empfehlungssysteme, das heißt Syteme, die den Kontext von Empfehlungen für die Ermittlung des Nutzen berücksichtigen, eine Erweiterung traditioneller Empfehlungssyteme dar \cite[S. 744ff]{adomavicius:inproceedings}.
 In der Literatur wird der Nutzen einer Nutzer- Element- Kombination traditionell ohne Berücksichtigung des Kontextes betrachtet, weshalb der Kontext von Empfehlungen in dieser Arbeit vernachlässigt wird \cite[S. 734f]{adomavicius:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}\cite[S. 3]{jawaheer:article}.
-In Anlehnung an \textcite[S. 3]{jawaheer:article} wird der interessierte Leser für eine detaillierte Übersicht zu kontextbasierten Empfehlungsssystemen auf \textcite[S. 191ff]{ricci:book} verwiesen.
+In Anlehnung an \textcite[S. 3]{jawaheer:article} wird der interessierte Leser für eine detaillierte Übersicht zu kontextbasierten Empfehlungssystemen auf \textcite[S. 191ff]{adomavicius:3:inbook} verwiesen.
 % In den Formulierungen der Gleichung in \cite[S. 734f]{adomavicius:inproceedings} und \cite[S. 219]{lakiotaki:inproceedings} wird jedoch nicht explizit auf den Kontext als Bedingung zur Erfüllung von Gleichung \ref{eq1} hingewiesen.
 % Es wird angenommen, dass der Kontext für die Ermittlung der Güte einer Empfehlung implizit berücksichtigt wird und daher auf eine explizite Nennung verzichtet wurde. In Anlehnung an \cite[S. 734f]{adomavicius:inproceedings} und \cite[S. 219]{lakiotaki:inproceedings} wurde daher auf die explizite Unterscheidung im weiteren Verlauf verzichtet.
 
@@ -71,7 +71,7 @@ Da es sich bei dem Problem des Ermittelns einer nutzenmaximierenden Teilmenge au
 In Kapitel \ref{ch:empfehlungssysteme:einführung} wurde bereits darauf hingewiesen, dass die Ermittlung der "Nützlichkeit" in Empfehlungssystemen durchaus komplex sein kann.
 
 Wie aus Gleichung \ref{eq1} hervorgeht, wird für den Nutzen einer Nutzer- Element- Kombination in Empfehlungssystemen allgemein eine Funktion $R(c,s)$ angenommen.
-Diese Funktion wird Nutzenfunktion (engl.: utility function) genannt und ist traditionell definiert als \cite[S. 195]{ricci:book}\cite[S. 3]{jawaheer:article}:
+Diese Funktion wird Nutzenfunktion (engl.: utility function) genannt und ist traditionell definiert als \cite[S. 195]{adomavicius:3:inbook}\cite[S. 3]{jawaheer:article}:
 \begin{equation}\label{eq2}% Dabei handelt es sich um eine lineare Abbildung, bei der über die Funktion u jeder Kombination aus der nxm matrix, genau ein Wert aus R, also der Rating matrix, zugeordnet werden kann
     R: Nutzer \times Element \rightarrow R_{0}
 \end{equation}
@@ -82,7 +82,7 @@ $R_{0}$ umfasst alle Werte, die der Nutzen von Kombinationen annehmen kann \cite
 Grundsätzlich kann die Nutzenfunktion in Empfehlungssystemen jede beliebige Funktion darstellen \cite[S. 735]{adomavicius:inproceedings}.
 Angenommen das Ziel eines Empfehlungssystems besteht darin, den Gesamtumsatz eines Unternehmens zu maximieren, so kann der Nutzen einer Nutzer- Element- Kombination über eine Profit-Funktion ermittelt werden.
 % Solche Systeme, in denen der Nutzen von Nutzer- Element- Kombinationen über eine eigenständige Nutzenfunktion ermittelt wird, zählen zu den nutzenbasierten Empfehlungssystemen und sind nicht Inhalt dieser Arbeit.
-In den meisten Empfehlungssystemen wird für den Nutzen $R(c,s)$ einer Nutzer- Element- Kombination $(c,s)$ unmittelbar die Bewertung (engl.: Rating) $r_{cs}$ eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:book}\cite[S. 11]{recommenderSystems:2016}.
+In den meisten Empfehlungssystemen wird für den Nutzen $R(c,s)$ einer Nutzer- Element- Kombination $(c,s)$ unmittelbar die Bewertung (engl.: Rating) $r_{cs}$ eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:inbook}\cite[S. 11]{recommenderSystems:2016}.
 Daher ist die Nutzenfunktion in der Literatur auch als Rating-Funktion oder Rating-Matrix bekannt \cite[S. 49]{adomavicius:inproceedings:2}\cite[S. 91]{ekstrand:article}\cite[S. 11]{recommenderSystems:2016}.
 Aus Gründen der Einfachheit wird für den weiteren Verlauf der Arbeit vorerst unmittelbar der Wert der Bewertung $r_{cs}$ für den Nutzen $R(c,s)$ einer Nutzer- Element- Kombination angenommen (d.h. $R(c,s) = r_{cs}$).
 % HIER ERWÄHNEN DASS ERSTMAL AUCH RATING GENOMMEN WIRD!
@@ -117,7 +117,7 @@ Eine Bewertung kann jeden Wert in $R_{0}=\{1;2;3;4;5\}$ annehmen.
     \end{tabular}
     \end{center}
     \caption[Beispielhafte Darstellung einer Rating-Matrix ]{Beispielhafte Darstellung einer Rating-Matrix \\
-	(in Anlehnung an \cite{link:booklet})}
+	(Eigene Darstellung in Anlehnung an \cite[S. 16]{link:booklet})}
 	\label{tab1}
 \end{table}
 
@@ -136,7 +136,7 @@ Wie im nachfolgenden Kapitel deutlich werden wird, stellt die Vorhersage fehlend
 \section{Erstellen von Empfehlungen}
 \label{ch:empfehlungssysteme:empfehlungserstellung}
 Das Erstellen von Empfehlungen ist eine nicht-triviale Aufgabe, die bereits seit Jahrzehnten Inhalt zahlreicher Veröffentlichungen und Konferenzen ist.
-Grundsätzlich kann das Erstellen von Empfehlungen in Empfehlungssystemen in zwei Phasen unterteilt werden \cite[S. 405]{unternährer:article}\cite[S. 854]{ricci:book}:
+Grundsätzlich kann das Erstellen von Empfehlungen in Empfehlungssystemen in zwei Phasen unterteilt werden \cite[S. 405]{unternährer:article}\cite[S. 854]{adomavicius:4:inbook}:
 \begin{enumerate}
 	\item Vorhersage-Phase
 	\item Ranking-Phase
@@ -190,12 +190,12 @@ Das Ziel der zweiten Phase ist es, einem Nutzer $c$ in Abhängigkeit der gegeben
 In Abhängigkeit des Anwendungsfalls kann eine Empfehlung verschiedene Formen annehmen.
 So kann eine Empfehlung eine Gruppe an Elementen darstellen.
 Ein Beispiel stellen Empfehlungen auf Webseiten von Klamottenlabeln dar, die verschiedene Kleidungsstücke gemeinsam als vollständige Outfits empfehlen.
-In den meisten Fällen geben Empfehlungssysteme eine sortierte Liste der nützlichsten Elemente zurück (Top-K-Elemente), in der für jedes Element der angenommene Wert für einen Nutzer angegeben ist \cite[S. 6]{ricci:book}\cite[S. 3]{recommenderSystems:2016}.
+In den meisten Fällen geben Empfehlungssysteme eine sortierte Liste der nützlichsten Elemente zurück (Top-K-Elemente), in der für jedes Element der angenommene Wert für einen Nutzer angegeben ist \cite[S. 6]{ricci:inbook}\cite[S. 3]{recommenderSystems:2016}.
 Dabei wird die Nützlichkeit einer Kombination, wie in Kapitel \ref{ch:empfehlungssysteme:empfehlungserstellung:prediction} erläutert, zumeist anhand eines Ratings durch einen Nutzer bestimmt, oder über eine Nutzenfunktion in Phase 1 vorhergesagt.
 Diese Ratings erfolgen in gängigen Empfehlungssystemen zumeist anhand eines Kriteriums, beispielsweise in Form eines übergreifenden Ratings für ein Element.
 
 In der Praxis kann es vorkommen, dass von einem vorhergesagten Wert einer Nutzer- Element- Kombination nicht unmittelbar auf den tatsächlichen Rang einer Kombination im Ranking geschlossen werden kann, beispielsweise da noch andere Kriterien den Nutzen (und somit den Rang) einer Kombination beeinflussen \cite[S. 405]{unternährer:article}.
-Wie in Kapitel \ref{ch:erweiterungen} deutlich werden wird, ist die Bestimmung des Nutzen eines Elements für einen Nutzer anhand eines einzelnen Kriteriums (e.g. dem Rating) nicht immer ausreichend, um dessen Nutzen zuverlässig zu bestimmen \cite[S. 847]{ricci:book}.
+Wie in Kapitel \ref{ch:erweiterungen} deutlich werden wird, ist die Bestimmung des Nutzen eines Elements für einen Nutzer anhand eines einzelnen Kriteriums (e.g. dem Rating) nicht immer ausreichend, um dessen Nutzen zuverlässig zu bestimmen \cite[S. 847]{adomavicius:4:inbook}.
 % ------- Hier (oder oben?) kurze Zusammenfassung der Begrifflichkeiten (siehe aggarwal, S. xviii, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/Aggarwal2016_Book_RecommenderSystems.pdf)
 
 Abbildung \ref{fig:empfehlungssysteme:recommendation:abb1} illustriert den Prozess der Empfehlungserstellung am Beispiel eines Ausschnitts der Mitarbeiter-Fähigkeiten Matrix aus Tabelle \ref{tab1}.
@@ -218,7 +218,7 @@ So kann es sinnvoll sein der Mitarbeiterin Erika M. die Fähigkeit MySQL für ei
 
 \section{Präferenzen in Empfehlungssystemen}
 \label{ch:empfehlungssysteme:preferences}
-Im Zusammenhang mit Empfehlungssystemen fällt häufig der Begriff der Präferenzen (engl.: preferences) \cite[S. 2]{ricci:book}\cite[S. 11f]{recommenderSystems:2016}.
+Im Zusammenhang mit Empfehlungssystemen fällt häufig der Begriff der Präferenzen (engl.: preferences) \cite[S. 2]{ricci:inbook}\cite[S. 11f]{recommenderSystems:2016}.
 % Brauch man hier überhaupt ein zitat, wenn ich die Annahme selber aufstelle?
 In diesem Kapitel werden Präferenzen allgemein erläutert und in dem Kontext von Empfehlungssystemen inhaltlich abgegrenzt.
 
@@ -281,17 +281,17 @@ Diese Beziehung zwischen Nutzer und Produkt kann dann mit anderen Beziehungen ve
 
 Eine Voraussetzung für das Erstellen personalisierter Empfehlungen ist die Abbildung der Präferenzen der Nutzer eines Systems \cite[S. 36]{berkovsky:2:article}.
 
-\subsection{Zugrundeliegende Datenstruktur}% Frage ist, wie Präferenzen in RS aussehen
-Präferenzen von Nutzern werden in Empfehlungssystemen über sogenannte Nutzermodelle dargestellt \cite[S. 9]{ricci:book}\cite[S. 2]{jawaheer:article}\cite[S. 246]{berkovsky:article}.
+\subsection{Zugrundeliegende Datenstruktur}% Frage ist, wie Präferenzen in RS aussehen, erwähnen
+Präferenzen von Nutzern werden in Empfehlungssystemen über sogenannte Nutzermodelle dargestellt \cite[S. 9]{ricci:inbook}\cite[S. 2]{jawaheer:article}\cite[S. 246]{berkovsky:article}.
 Nach \textcite[S. 249f]{berkovsky:article} speichern Nutzermodelle die Präferenzen traditionell in einer zweidimensionalen Matrix $R'_{gen}$:
 \begin{equation}\label{eq4}
     R'_{gen}: Nutzer_{Attribut} \times Element_{Attribut} \rightarrow rating
 \end{equation}
 Hierbei kennzeichnet die Dimension $Nutzer_{Attribut}$ Attribute der Nutzer (z.B. ID, Name, Geschlecht) und die Dimension $Element_{Attribut}$ Attribute der Elemente (z.B. ID, Produktkategorie, Genre).
-Das $rating$ stellt die Bewertungen der Nutzer für Element dar \cite[S. 250]{berkovsky:article}.
+Das $rating$ stellt die Bewertungen der Nutzer für Elemente dar \cite[S. 250]{berkovsky:article}.
 
 In Abhängigkeit der eingesetzten Technik innerhalb eines Empfehlungssystems (Vgl. Kapitel \ref{ch:empfehlungssysteme:empfehlungserstellung:prediction}) muss die Matrix $R'_{gen}$ Nutzermodelle mit unterschiedlichen Daten abbilden können. % Zitat? \cite[S. 248]{berkovsky:article}
-Hierfür sind in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1} drei Beispiele unterschiedlicher Nutzermodelle grafisch dargestellt.
+Hierfür sind in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1} drei Beispiele unterschiedlicher Nutzermodelle grafisch dargestellt, welche nachfolgend erläutert werden.
 
 In Systemen des kollaborativen Filterns werden Präferenzen von Nutzern für Elemente in der Rating-Matrix $R$ gespeichert \cite[S. 246ff]{berkovsky:article}.
 Nutzer und Elemente werden dabei jeweils über ein eindeutiges Attribut (z.B. ID, Name) beschrieben.
@@ -309,7 +309,7 @@ Mitarbeiter und Fähigkeiten werden jeweils eindeutig über deren Namen gekennze
     \centering
     \subfloat[Nutzer$_{ID}\times$Element$_{ID}$ - Matrix]{\includegraphics[height=1.5in]{gfx/abbildung-präferenzen-A.png}\label{fig:empfehlungssysteme:preferences:abb1:1}}\\
     \subfloat[Nutzer$_{ID}\times$Element$_{Attribut}$ - Matrix]{\includegraphics[height=1.48in]{gfx/abbildung-präferenzen-B.png}\label{fig:empfehlungssysteme:preferences:abb1:2}}\\
-    \subfloat[Nutzer$_{Attribut}\times$Element$_{Attribut}\times$Kontext$_{Attribut}$ - Matrix]{\includegraphics[height=1.7in]{gfx/abbildung-präferenzen-C.png}\label{fig:empfehlungssysteme:preferences:abb1:3}}
+    \subfloat[Nutzer$_{Attribut}\times$Element$_{Attribut}\times$Kontext$_{Attribut}$ - Matrix]{\includegraphics[height=1.85in]{gfx/abbildung-präferenzen-C.png}\label{fig:empfehlungssysteme:preferences:abb1:3}}
   \caption{Abbildung von Präferenzen} \label{fig:empfehlungssysteme:preferences:abb1}
 \end{figure}
 % Werden Nutzermodelle in Systemen folglich über eine Nutzer$\times$Element-Matrix abgebildet, können die Präferenzen eines Nutzers unmittelbar aus der Rating-Matrix abgelesen werden.
@@ -344,43 +344,138 @@ Als Elementattribut wurde für dieses Beispiel die Typisierung einer Programmier
 Ein Nutzermodell enthält für alle Ausprägungen des Attributs Gewichte $w$, die den Wert eines Elementattributs für einen Nutzer abbilden \cite[S. 251]{berkovsky:article}.
 Daraus ergibt sich beispielsweise für den Nutzer John D. das Nutzermodell $UM_{John\textnormal{ }D.} = \{Statisch:\textnormal{ }, Dynamisch: 1.0\}$ (Vgl. Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:2}).
 
-Um die Gewichte einer Nutzer$_{ID}$$\times$Element$_{Attribut}$-Matrix zu ermitteln existieren in der Literatur verschiedene Verfahren \cite[S. 42]{berkovsky:2:article}.
+Um die Gewichte einer Nutzer$_{ID}$$\times$Element$_{Attribut}$-Matrix zu ermitteln, existieren in der Literatur verschiedene Verfahren \cite[S. 42]{berkovsky:2:article}.
 Grundsätzlich wird die Nutzer$_{ID}$$\times$Element$_{Attribut}$-Matrix auf Basis der Rating-Matrix generiert.
 Bei den Gewichten in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:2} handelt es sich lediglich um ein willkürliches Beispiel, da der Fokus dieses Kapitels auf der Darstellung der Präferenzen und nicht auf den Verfahren für die Ermittlung der Attributgewichte liegt.
 % Wie gewichtung hier beschreiben, ohne ins detail zu gehen?
 
 Neben der traditionellen Darstellung der Präferenzen von Nutzern in einem zweidimensionalen Raum, können Präferenzen auch in dreidimensionaler Form abgebildet werden.
-Diese Darstellung beruht auf der Annahme, dass Präferenzen von Nutzern für Elemente zusätzlich durch kontextuelle Information (z.B. Zeit, Ort, Gesellschaft) beeinflusst werden \cite[S. 195]{ricci:book}.
+Diese Darstellung beruht auf der Annahme, dass Präferenzen von Nutzern für Elemente zusätzlich durch kontextuelle Information (z.B. Zeit, Ort, Gesellschaft) beeinflusst werden \cite[S. 195]{adomavicius:3:inbook}.
 Eine zweidimensionale Darstellung der Präferenzen wie in Gleichung \ref{eq4} vernachlässigt demnach eine entscheidende Dimension: den Kontext von Präferenzen \cite[S. 253]{berkovsky:article}.
 Für die Darstellung der Nutzermodelle wird daher in kontextbasierten Empfehlungssystemen von einer Matrix $R_{CA}$ ausgegangen \cite[S. 254]{berkovsky:article}:
 \begin{equation}\label{eq9}
-    R_{CA}: Nutzer_{Attribut} \times Element_{Attribut} \times Kontext{Attribut} \rightarrow rating
+    R_{CA}: Nutzer_{Attribut} \times Element_{Attribut} \times Kontext_{Attribut} \rightarrow rating
 \end{equation}
-Matrix $R_{CA}$ erweitert die zweidimensionale Darstellung aus Gleichung \ref{eq4} um die Dimension $Kontext{Attribut}$, welche den Kontext einer Bewertung angibt \cite[S. 254]{berkovsky:article}.\footnote{\textcite[S. 249ff]{berkovsky:article} merken an, dass es sich bei den Dimensionen $Nutzer_{Attribut}$ und $Element_{Attribut}$ auch um Sammlungen von Attributen handeln kann. Dies ist der Fall, wenn Nutzer oder Elemente für das Abbilden von Präferenzen über mehrere Attribute beschrieben werden. Angenommen die Präferenzen von Nutzern können über $n$ Attribute des Nutzers und $m$ Attribute der Elemente ($n \cup m > 1$) beschrieben werden, so ergibt sich für $R'_{gen}$ eine multidimenisonale $n+m$-Matrix. Dies gilt analog für die Dimension $Context_{Attribut}$ \cite[S. 254f]{berkovsky:article}.}
+Matrix $R_{CA}$ erweitert die zweidimensionale Darstellung aus Gleichung \ref{eq4} um die Dimension $Kontext_{Attribut}$, welche den Kontext einer Bewertung angibt \cite[S. 254]{berkovsky:article}.\footnote{\textcite[S. 249ff]{berkovsky:article} merken an, dass es sich bei den Dimensionen $Nutzer_{Attribut}$ und $Element_{Attribut}$ auch um Sammlungen von Attributen handeln kann. Dies ist der Fall, wenn Nutzer oder Elemente für das Abbilden von Präferenzen über mehrere Attribute beschrieben werden. Angenommen die Präferenzen von Nutzern können über $n$ Attribute des Nutzers und $m$ Attribute der Elemente ($n \cup m > 1$) beschrieben werden, so ergibt sich für $R'_{gen}$ eine multidimenisonale $n+m$-Matrix. Dies gilt analog für die Dimension $Context_{Attribut}$ \cite[S. 254f]{berkovsky:article}.}
 % MIT AUFNEHMEN JA/ NEIN?
-% In Anlehnung an \textcite[S. 250ff]{berkovsky:article} und \textcite[S. 198]{ricci:book} kann für die Abbildung der zugehörigen Nutzermodelle Liste an Tripeln angenommen werden:
+% In Anlehnung an \textcite[S. 250ff]{berkovsky:article} und \textcite[S. 198]{adomavicius:3:inbook} kann für die Abbildung der zugehörigen Nutzermodelle Liste an Tripeln angenommen werden:
 % \begin{equation}\label{eq10}
 %     UM_{c} = \{(s_{1},q_{1}):r_{1},\textnormal{ }(s_{2},q_{2}),\textnormal{ }...,\textnormal{ }(s_{k},q_{k})\}
 % \end{equation}
 % Jeder Eintrag $(s_{k},q_{k}):r_{k}$ in $UM_{c}$ stellt die Bewertung eines Nutzers $c$ für ein Element
 
 Eine dreidimensionale Darstellung von Nutzermodellen ist beispielhaft in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:3} dargestellt.
-Die abgebildete Nutzer$_{ID}$$\times$Element$_{Attribut}$$\times$-Kontext$_{Attribut}$-Matrix stellt eine Erweiterung der Matrix in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1} um die kontextuelle Information "Zeit" dar.
-Ein Nutzermodell repräsentiert hier die Bewertung einer Fähigkeiten durch einen Mitarbeitern in Abhängigkeit eines Teams ab.
-% Hier was anderes als Teamzugehörigkeit finden! das macht in dem kontext keinen sinn
-% HIER WEITERMACHEN!
+Die abgebildete Nutzer$_{ID}$$\times$Element$_{ID}$$\times$-Kontext$_{ID}$-Matrix stellt eine Erweiterung der Matrix aus Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1} um die kontextuelle Information "Teamzugehörigkeit" dar.
+Dem liegt die Annahme zugrunde, dass die Einschätzung der eigenen Fähigkeiten eines Mitarbeiters von den Teamkollegen abhängt, mit denen ein Mitarbeiter zusammenarbeitet.
+Folglich kann ein Mitarbeiter für eine Fähigkeit mehrere Bewertungen aufweisen.
 
-% Frage ist, wie Präferenzen denn dargestellt werden, im sinne der Datenstruktur. Also wenn wir von der Matrix oben ausgehen
+Ein Eintrag $R_{CA}(c_{i},s_{j},q_{t}) = r_{ijt}$ der Matrix stellt die Bewertung $r_{ijt}$ einer Fähigkeit $s_{j}$ durch einen Mitarbeiter $c_{i}$ innerhalb eines Teams $q_{t}$ dar \cite[S. 198]{adomavicius:3:inbook}.
+Ein Nutzermodell repräsentiert eine Sammlung aller Bewertungen von Fähigkeiten durch einen Mitarbeiter in Abhängigkeit der Teamzugehörigkeit.
+Das Nutzermodell $UM$ des Mitarbeiters John D. ist in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:3} beispielhaft dargestellt.
+% Die angegebenen Bewertungen sind willkürlich gewählt.
+% Hier was anderes als Teamzugehörigkeit finden! das macht in dem kontext keinen sinn
+
 % Bei popularität: nur bewertung von element ist ausschlaggeben, ggf. noch kategorie, aber sonst reicht bewertung, um ordinale Relation zu erstellen -> d.h. über alle nutzer verteilt die durchschnittlich höchste bewertung -> es existieren nicht wirklich individuelle präferenzen, eher ableitung aus aggregierten präferenzen
 % Bei paarweiser Relation: Bewertung einer Beziehung, d.h. betrachten von beziehungen zwischen Nutzern und Elementen, bzw. sogar zwischen Nutzer und Nutzern -> präferenz bedeutet hier die ordinale ordnung von elementen für einen Nutzer (hier habe ich leider keine referenz zu literatur, lediglich eine annahme, muss also weiterschauen)
 % das ist der wichtige unterschied zu uns, da wir präferenzen als ein attribut des mitarbeiters bzw als ein attribut des nutzers verstehen, und nicht als interpretation einer relation
-
 \section{Wechselseitige Empfehlungssysteme}
 \label{ch:empfehlungssysteme:rrs}
+% Problem: ist reciprocal recommender nur, wenn das empfehlende element auch selber entscheidet, wen es annimmt?
+Nach \textcite[S. 2429]{palomares:inproceedings} werden Empfehlungssysteme größtenteils in Online-Diensten eingesetzt, um Nutzern basierend auf ihren (expliziten oder impliziten) Präferenzen potenziell interessante Elemente vorzuschlagen.
+Zu klassischen Inhalten von Empfehlungen zählt \textcite[S. 2429]{palomares:inproceedings} unter anderem Musik, Filme, Konsumgüter, Hotels und Restaurants. 
+Empfehlungssysteme, in denen die Inhalte von Empfehlungen gleichzeitig die Nutzer eines Systems bilden (bspw. in Online-Dating-Plattformen oder Recruiting-Systemen), werden in der Literatur als wechselseitige Empfehlungssysteme (engl.: \ac{RRS}) bezeichnet \cite[S. 207]{pizzato:2010}\cite[S. 2199]{akehurst:inproceedings}.
+Nachfolgend soll das Konzept der RRS und dessen zugrundeliegende Problemstellung erläutert werden.
 
-\subsection{People-to-People-Empfehlung}
+%Im vorangegangenen Kapitel wurde der Begriff der Präferenzen als Vorlieben und Verhaltensweisen von Nutzern in Empfehlungssystemen definiert.
+
+\subsection{People-to-People-Empfehlung}% oder umbenennen in Allgemeines Konzept
 \label{ch:empfehlungssysteme:rrs:people_to_people}
+Ein grundlegender Unterschied zwischen klassischen Empfehlungssystemen und RRS liegt in der Art der Empfehlung.
+Diese können in \ac{I2P} und \ac{P2P}-Empfehlungen unterschieden werden \cite[S. 62f]{kim:inproceedings}.
+
+In der Literatur wird unter traditioneller I2P-Empfehlung die Empfehlung klassischer Inhalte (z.B. Bücher, Filme, Restaurants) verstanden \cite[S. 2199]{akehurst:inproceedings}\cite[S. 2429]{palomares:inproceedings}.
+In I2P-Empfehlungen ist der Erfolg einer Empfehlung durch die Akzeptanz des Empfehlungsempfängers (Nutzer) gekennzeichnet \cite[S. 131]{kleinerman:2:inproceedings}\cite[S. 546]{koprinska:inbook}.
+Für personalisierte I2P-Empfehlungen verwenden Empfehlungssysteme Wissen über die Präferenzen der Nutzer, um ihnen potenziell interessante Elemente zu empfehlen \cite[S. 403]{terveen:article}.
+
+% Ein grundlegendes Problem, welches dieser Art der Empfehlung löst, ist das Problem der Informationsüberlastung \cite[S. 403]{terveen:article}.
+% Indem Empfehlungssysteme Nutzern aus einem Überangebot an (unbekannten) Elementen potenziell nützliche Elemente vorschlagen, können sie Nutzer bei der Entscheidungsfindung unterstützen.
+
+Im Vergleich zu traditionellen Empfehlungssystemen basieren RRS auf P2P-Empfehlungen.
+Unter P2P-Empfehlung (auch: social matching \cite[S. 208]{pizzato:2010}) wird die Empfehlung von Personen an Nutzer eines Empfehlungssystems verstanden.
+Im Gegensatz zu I2P-Empfehlungen, handelt es sich bei den empfohlenen Elementen nicht um leblose Objekte, sondern um Menschen, die anderen Menschen empfohlen werden \cite[S. 2]{kazienko:inbook}.
+Das bedeutet, dass die empfohlenen Elemente Präferenzen besitzen und auch positiv oder negativ reagieren können \cite[S. 2]{kazienko:inbook}.
+Dies ist ein besonderer Aspekt, den es zu beachten gilt, da dadurch die Qualität der Empfehlungen beeinflusst werden kann \cite[S. 208]{pizzato:2010}\cite[S. 2199]{akehurst:inproceedings}.
+
+
+\subsection{Abgrenzung traditioneller Empfehlungssysteme}
+\label{ch:empfehlungssysteme:rrs:traditional_vs_rrs}
+Ein Großteil der P2P-Empfehlungen beruhen auf dem Aspekt der Reziprozität (engl.: reciprocity (dt.: Gegenseitigkeit)) \cite[S. 545]{koprinska:inbook}.
+Das bedeutet, dass für eine erfolgreiche Empfehlung sowohl die Präferenzen des Empfängers einer Empfehlung, als auch die Präferenzen der empfohlenen Person berücksichtigt werden \cite[S. 447]{pizzato:2013}\cite[S. 22]{kleinerman:inproceedings}.
+Der Erfolg einer Empfehlung hängt folglich von bilateralen Präferenzen ab, nicht wie in traditionellen Systemen lediglich von den Präferenzen der Nutzer \cite[S. 1468]{yildirim:article}.
+So reicht es beispielsweise in einem Recruiting-System nicht aus, lediglich die Präferenzen eines Akteurs (bspw. dem Recruiter) zu berücksichtigen.
+Damit dem Recruiter auch Personen vorgeschlagen werden, die ein potenzielles Angebot annehmen würden, müssen die Präferenzen der Stellensuchenden ebenfalls in Betracht gezogen werden.
+Andernfalls besteht die Gefahr, dass einem Recruiter Stellensuchende vorgeschlagen werden, die aufgrund ihrer Präferenzen ein Angebot des Recruiters ablehnen.
+
+Nicht jede P2P-Empfehlung ist unmittelbar reziprok.
+Empfehlungen können auch P2P-Empfehlungen sein und lediglich die Präferenzen des Nutzers berücksichtigen \cite[S. 2429]{palomares:inproceedings}.
+Ein Beispiel stellen P2P-Empfehlungen des sozialen Netzwerks Twitter dar \cite[S. 2429]{palomares:inproceedings}.
+Der Vorschlag einer anderen Person zu folgen beruht dabei lediglich auf den Präferenzen des Empfängers des Vorschlags.
+
+Neben dem Aspekt der Reziprozität besitzen RRS zusätzliche Eigenschaften, welche diese im Vergleich zu traditionellen Empfehlungssystemen inhärent komplex machen\cite[S. 2429]{palomares:inproceedings}\cite[S. 35]{li:inproceedings}\cite[S. 207]{pizzato:2010}.
+Die wichtigsten Unterschiede zwischen RRS und traditionellen RS sind in Tabelle \ref{tab2} zusammengefasst \cite[S. 546]{koprinska:inbook}.
+
+\begin{table}[htbp]
+    \begin{center}
+        \begin{tabular}{p{0.2\textwidth}|p{0.35\textwidth}|p{0.35\textwidth}}
+             & {\textbf{Traditionelle RS}} & {\textbf{Reciprocal RS}} \\
+            \hline
+            Reziprozität & Erfolg einer Empfehlung ist durch den Empfänger bestimmt. &  Erfolg einer Empfehlung ist sowohl durch den Empfänger als auch der empfohlenen Person bestimmt. \\
+            \hline
+            Passivität & Es wird akzeptiert, dass einige Elemente nicht Teil irgendwelcher Empfehlungen sind. &  Auch reaktive Nutzer müssen Teil von Empfehlungen sein. \\
+            \hline
+            Rolle der Nutzerprofile & Kein Anreiz für Nutzer zum Pflegen des Nutzerprofils. &  Das Pflegen von Nutzerprofilen wird erwartet. \\
+            \hline
+            Endlichkeit & Ein Element kann allen Nutzern vorgeschlagen werden. & Beliebte Personen sollten nicht allen Nutzern vorgeschlagen werden. \\
+    \end{tabular}
+    \end{center}
+    \caption[Grundlegende Unterschiede von RS und RRS]{Grundlegende Unterschiede von RS und RRS \\
+	(Eigene Darstellung in Anlehnung an \cite[S. 546]{koprinska:inbook} und \cite[S. 35f]{li:inproceedings})}
+	\label{tab2}
+\end{table}
+
+In RRS ist es von Bedeutung die Passivität von Personen zu berücksichtigen \cite[S. 35]{li:inproceedings}.
+Dazu gehört hauptsächlich, reaktive Personen in Empfehlungen einzubeziehen, die nicht aktiv den Kontakt zu anderen Personen suchen \cite[S. 459]{pizzato:2013}.
+Im Vergleich dazu können traditionelle Empfehlungssysteme durchaus über inaktive Elemente verfügen, das heißt Elemente, die in keinen Empfehlungen vorkommen \cite[S. 208]{pizzato:2010}.
+
+Nutzer traditioneller Empfehlungssysteme haben in der Regel wenig Anreiz ihre Nutzerprofile zu pflegen \cite[S. 546]{koprinska:inbook}.
+Explizite Angaben sind daher meist rar.
+Währenddessen verwenden Nutzer traditioneller Systeme diese meist über einen längeren Zeitraum, weshalb der Anteil impliziter Präferenzen verhältnismäßig groß ist \cite[S. 208]{pizzato:2010}.
+In RRS ist das Pflegen eines Nutzerprofils mit Präferenzen und persönlichen Daten meist fester Bestandteil.
+Daher sind Nutzer in RRS eher gewillt Angaben zu machen \cite[S. 208]{pizzato:2010}.
+Es gilt jedoch zu beachten, dass die angegebenen Präferenzen nicht zwangsläufig der Realität entsprechen \cite[S. 457]{pizzato:2013}.
+Dies kann unter anderem daran liegen, dass Nutzer diese selbst falsch einschätzen \cite[S. 457]{pizzato:2013}.
+
+In wechselseitigen Empfehlungssystemen sind Empfehlungen für Nutzer endlich.
+Das bedeutet, dass ein Element nicht unbegrenzt Nutzern eines Systems vorgeschlagen werden kann.
+Beispielsweise kann ein Nutzer einer Online-Dating-Plattform nicht zeitgleich fünfzig verschiedene Personen daten \cite[S. 35]{li:inproceedings}.
+Im Vergleich dazu sind Elemente in traditionellen Empfehlungssystemen für Empfehlungen an unterschiedliche Nutzer nicht begrenzt \cite[S. 1468]{yildirim:article}.
+Das bedeutet, ein Element kann zeitgleich jedem Nutzer eines Systems vorgeschlagen werden.
+Diese Eigenschaft wird als Endlichkeit bezeichnet \cite[S. 35]{li:inproceedings}.
+% Weiterer unterschied: RRS unterstützen keine n-to-n connections % S. 423, https://link.springer.com/content/pdf/10.1007/978-1-0716-2197-4.pdf
 
 \subsection{Problemstellung}
+Nach \textcite[S. 35]{li:inproceedings} stellt das Zufriedenstellen der Bedürfnisse beider Akteure, das heißt von sowohl Empfänger einer Empfehlung als auch empfohlener Person, die größte Herausforderung wechselseitiger RS dar.
+Dieser Zusammenhang ist nachfolgend in Abbildung \ref{fig:empfehlungssysteme:rrs:abb1} dargestellt.
+Ein roter Pfeil von einer Person zu einer anderen stellt hierbei die Präferenz einer Person für eine andere dar.
+% Hier erklären, dass das bedeutet, dass eine person den präferenzen entpsricht (bspw. aufgrund von angaben im nutzerprofil)
+major challenge: how to satisfy the needs of both users in a rec % S. 35, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/MEET%20-%20A%20Generalized%20Framework.pdf
+stable marriage problem % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/MEET%20-%20A%20Generalized%20Framework.pdf
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=1.0\textwidth]{gfx/traditional-vs-rrs.png}
+	\caption[Traditionelle vs. wechselseitige Empfehlungssysteme]{Traditionelle vs. wechselseitige Empfehlungssysteme\\}
+	\label{fig:empfehlungssysteme:rrs:abb1}
+\end{figure}
 
 \shorthandon{"}
