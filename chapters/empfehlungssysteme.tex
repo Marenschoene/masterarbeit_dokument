@@ -8,69 +8,81 @@
 
 \section{Einführung}
 \label{ch:empfehlungssysteme:einführung}
-Im einfachsten Sinne können Empfehlungssysteme (engl.: \ac{RS}) als Techniken und Werkzeuge verstanden werden, die Nutzern eines Systems aus einer Menge an Elementen potenziell nützliche Elemente vorschlagen \cite[S. 10]{ricci:inbook}.
-% Wie sage ich im einfachsten sinn, wenn es nicht genau so im zitat steht?
-Etwas feingranularer definiert \textcite[S. 1]{klahold:book} Empfehlungssysteme als Systeme, die einem Nutzer oder einer Gruppe an Nutzern in einem gegebenen Kontext aus einer Menge möglicher Entitäten eine Teilmenge "nützlicher" Elemente empfehlen.
-Aus der Definition von \textcite[S. 1]{klahold:book} lassen sich die grundlegenden Komponenten, die für das Erstellen von Empfehlungen in Empfehlungssystemen von Bedeutung sind, deutlich abgrenzen.
-% Andere Wortwahl als "sehr deutlich hervorgehen", will sowas sagen wie, es ist sehr klar zu erkennen, welche komponenten beteiligt sind.
-Für ein fundiertes Verständnis sind die einzelnen Komponenten und deren Zusammenspiel in Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} vereinfacht dargestellt.
+Nach \textcite[S. 4]{ricci:inbook} können Empfehlungssysteme (engl.: \ac{RS}) allgemein als Techniken und Werkzeuge verstanden werden, die einem Nutzer oder einer Gruppe an Nutzern eines Systems, aus einer Menge möglicher Entitäten, potenziell nützliche Elemente vorschlagen.
+% Allgemein können Empfehlungssysteme (engl.: \ac{RS}) als Techniken und Werkzeuge verstanden werden, die einem Nutzer oder einer Gruppe an Nutzern eines Systems, aus einer Menge möglicher Entitäten, potenziell nützliche Elemente vorschlagen \cite[S. 4]{ricci:inbook}\cite[S. 1]{klahold:book}.
+% Im einfachsten Sinne können Empfehlungssysteme (engl.: \ac{RS}) als Techniken und Werkzeuge verstanden werden, die Nutzern eines Systems aus einer Menge an Elementen potenziell nützliche Elemente vorschlagen \cite[S. 10]{ricci:inbook}.
+% Etwas feingranularer definiert \textcite[S. 1]{klahold:book} Empfehlungssysteme als Systeme, die einem Nutzer oder einer Gruppe an Nutzern in einem gegebenen Kontext aus einer Menge möglicher Entitäten eine Teilmenge "nützlicher" Elemente empfehlen.
+Aus der Definition von \textcite[S. 4]{ricci:inbook} lassen sich grundlegende Komponenten, die für das Erstellen von Empfehlungen in Empfehlungssystemen von Bedeutung sind, abgrenzen.
+Für ein fundiertes Verständnis sind die einzelnen Komponenten und deren Zusammenspiel in Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} dargestellt.
 
 \begin{figure}[H]
     \centering
 	\includegraphics[width=0.8\textwidth]{gfx/komponenten-empfehlungssystem.png}
-	\caption[Komponenten eines Empfehlungssystems]{Komponenten eines Empfehlungssystems\\
+	\caption[Übersicht Empfehlungssystem]{Übersicht Empfehlungssystem\\
 	(Eigene Darstellung in Anlehnung an \cite[S. 2]{klahold:book})}
 	\label{fig:empfehlungssysteme:einführung:abb1}
 \end{figure}
 
-Wie aus Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} hervorgeht, stehen sich in  Empfehlungssystemen grundsätzlich zwei Akteure gegenüber.
-% Frage: kann man Elemente als "Akteur" bezeichnen oder anderes Wort dafür?
-Auf der einen Seite stehen Empfänger von Empfehlungen, welche in Empfehlungssystemen meist als Nutzer bezeichnet werden \cite[S. 8]{ricci:inbook}.
-Dem gegenüber stehen Entitäten, die Nutzern empfohlen werden können.
-Entitäten werden in Empfehlungssystemen als Elemente bezeichnet und bilden den Inhalt von Empfehlungen.
-Dabei kann es sich bei Elementen sowohl um Gegenstände wie CDs, Bücher und Klamotten handeln, als auch beispielsweise Personen, Orte oder Prozesse.
+% Klärungsbedarf: Nutzer bewusst immer als nutzer bezeichenn, damit klar sit was gemeint ist, das ist sehr häufig in der literatur so
+% Hier fragen, ob bildbeschreibung sinn macht. ich will allgemeine übersicht abbilden, nutzer und elemente können ja auch lediglich inputs darstellen und nicht komponenten DES empfehlungssystems
+Wie aus Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} hervorgeht, stehen sich bei Empfehlungssystemen grundsätzlich zwei Komponenten gegenüber.
+Auf der einen Seite stehen Empfänger von Vorschlägen, welche in Empfehlungssystemen als Nutzer bezeichnet werden \cite[S. 8]{ricci:inbook}.
+Dem entgegen stehen Entitäten, die den Anwendern eines Systems empfohlen werden können.
+Entitäten werden in Empfehlungssystemen als Elemente bezeichnet und bilden den Inhalt von Vorschlägen.
+Dabei kann es sich bei Elementen sowohl um Gegenstände wie CDs, Bücher und Hotels handeln, als auch beispielsweise Personen, Orte oder Prozesse \cite[S. 4]{klahold:book}.
 % Unter dem Kontext einer Empfehlung versteht \textcite[S. 1]{klahold:book} das Zusammenspiel aus der Situation, in der eine Empfehlung gegeben wird, dem Profil eines Nutzers sowie der Menge möglicher Entitäten zum Zeitpunkt einer Empfehlung.
-Unter dem Kontext einer Empfehlung verstehen \textcite[S. 191]{adomavicius:3:inbook} zusätzliche Parameter wie Uhrzeit, Ort oder die Gegenwart anderer Personen zum Zeitpunkt einer Empfehlung.\footnote{\textcite[S. 1]{klahold:book} versteht unter dem Kontext das Zusammenspiel aus der Situation, in der eine Empfehlung gegeben wird, dem Profil eines Nutzers sowie der Menge möglicher Entitäten zum Zeitpunkt einer Empfehlung. Es wird angenommen, dass der Kontext nach dem Verständnis von \textcite{ricci:book} gleichzusetzen ist mit der Situation nach dem Verstängnis von \textcite{klahold:book} und die Berücksichtigung von Nutzerprofil und Elementen nach dem Verständnis von \textcite{ricci:book} implizit stattfindet.}
+% Unter dem Kontext einer Empfehlung verstehen \textcite[S. 191]{adomavicius:3:inbook} zusätzliche Parameter wie Uhrzeit, Ort oder die Gegenwart anderer Personen zum Zeitpunkt einer Empfehlung.\footnote{\textcite[S. 1]{klahold:book} versteht unter dem Kontext das Zusammenspiel aus der Situation, in der eine Empfehlung gegeben wird, dem Profil eines Nutzers sowie der Menge möglicher Entitäten zum Zeitpunkt einer Empfehlung. Es wird angenommen, dass der Kontext nach dem Verständnis von \textcite{ricci:book} gleichzusetzen ist mit der Situation nach dem Verstängnis von \textcite{klahold:book} und die Berücksichtigung von Nutzerprofil und Elementen nach dem Verständnis von \textcite{ricci:book} implizit stattfindet.}
 
-Darüber hinaus können Nutzer in Empfehlungssystemen mit Elementen in Beziehung gesetzt werden.
-Beispielsweise kann eine Beziehung zwischen einem Nutzer und einem Element unterstellt werden, wenn ein Nutzer in der Vergangenheit ein Element gekauft oder bewertet hat.
-Solche Beziehungen zwischen Elementen und Nutzern in Empfehlungssystemen werden als Nutzer- Element- Interaktion oder Transaktion bezeichnet \cite[S. 8]{recommenderSystems:2016}\cite[S. 9]{ricci:inbook}.
+% Hier Johannes fragen, ob das verständlicher ist
+Nutzer und Elemente können in Empfehlungssystemen miteinander in Beziehung stehen.
+Grundlage dieser Beziehungen bilden dokumentierte Interaktionen zwischen Nutzern und Empfehlungssystem, wie der Kauf oder die Bewertung eines Produktes durch einen Anwender \cite[S. 8ff.]{ricci:inbook}.
+Dokumentierte Interaktionen werden in Empfehlungssystemen als Nutzer-Element-Interaktion oder Transaktion bezeichnet \cite[S. 8]{recommenderSystems:2016}\cite[S. 9]{ricci:inbook}.
 
-Neben Transaktionen können Nutzer bzw. Elemente in Empfehlungssystemen zusätzliche Attribute besitzen.
-Bekannte Beispiele für Attribute eines Nutzers sind das Geschlecht oder Alter eines Nutzers, während Attribute eines Produktes beispielsweise die Produktkategorie oder der Preis sein können.
+Die bekannteste Form der Nutzer-Element-Interaktion stellen Bewertungen dar.
+Bewertungen von Elementen in Empfehlungssystemen können sowohl explizit als auch implizit erfolgen.
+Unter expliziter Bewertung wird in Empfehlungssystemen die ausdrückliche Bewertung eines Elements durch einen Nutzer verstanden \cite[S. 9]{ricci:inbook}.
+Ein Beispiel stellt die aktive Bewertung eines Produktes durch einen Nutzer in einem Online-Shop in Form einer Produktrezension (z.B. "Gefällt-mir"-Angabe) dar.
+Im Vergleich dazu werden unter impliziten Bewertungen passiv erzeugte Verhaltensdaten, wie der Suchverlauf oder die Kaufhistorie eines Nutzers, verstanden, die indirekt mögliche Präferenzen eines Nutzers vermuten lassen \cite[S. 149]{jadidinejad:inproceedings}\cite[S. 403]{unternährer:article}.
+
+Neben Transaktionen können Nutzer bzw. Elemente in Empfehlungssystemen zusätzliche Attribute besitzen \cite[S. 8]{recommenderSystems:2016}.
+Beispiele für Attribute eines Nutzers sind das Geschlecht oder Alter eines Anwenders, während Attribute eines Produktes beispielsweise die Produktkategorie oder beschreibende Schlagwörter.
 % Unterschied Kombination und Interaktion? Kombibnation ist nicht zwangsläufig das vorhandensein einer Interaktion
-
-% Einigung: Nützlichkeit bezieht sich nicht auf die Güte einer Empfehlung, sondern auf den Nutzen einer Kombination. Güte beschreibt Wert einer Empfehlung.
-Der Begriff der "Nützlichkeit" wird in der Literatur vermehrt verwendet, um den Wert eines Elements für einen Nutzer zu beschreiben \cite[S. 10f.]{ricci:inbook}\cite[S. 1]{klahold:book}\cite[S. 735]{adomavicius:inproceedings}.\footnote{Unter der Nützlichkeit kann in dem Kontext von Empfehlungssystemen auch die Güte einer Empfehlung verstanden werden \cite[S. 37ff.]{klahold:book}.}
-Dabei kann der Nutzen sowohl unmittelbar über Angaben eines Nutzers erschlossen, als auch über eine Nutzenfunktion des Empfehlungssystems berechnet werden \cite[S. 735]{adomavicius:inproceedings}.
-Da die Ermittlung des Nutzen durchaus komplex sein kann, wird der Aspekt der "Nützlichkeit" in Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} ausführlich aufgegriffen.
 
 \section{Problemstellung}
 \label{ch:empfehlungssysteme:problemstellung}
 % Im vorangegangenen Kapitel wurden grundlegende Komponenten von Empfehlungssystemen und deren Zusammenspiel erläutert.
-Das grundlegende Problem, welches Empfehlungssysteme zu lösen versuchen, besteht darin, aus einer Menge an Elementen das Element bzw. die Elemente zu ermitteln, von denen angenommen werden kann, dass diese für die Empfänger einer Empfehlung von Relevanz sind \cite[S. 734f.]{adomavicius:inproceedings}\cite[S. 76]{jannach:inproceedings}.
-Relevanz bedeutet in dem Kontext von Empfehlungssystemen, dass die Empfehlung an einen Nutzer bzw. eine Gruppe an Nutzern einen maximalen Nutzen bietet \cite[S. 49]{adomavicius:inproceedings:2}\cite[S. 219]{lakiotaki:inproceedings}.
+% Das grundlegende Problem in Empfehlungssystemen besteht in der Auswahl der Elemente aus einer Menge an Entitäten, von denen angenommen werden kann, dass diese für die Empfänger einer Empfehlung von Relevanz sind \cite[S. 734f.]{adomavicius:inproceedings}\cite[S. 76]{jannach:inproceedings}.
+Das grundlegende Problem in Empfehlungssystemen besteht in der Auswahl der Elemente, von denen angenommen werden kann, dass diese für die Empfänger einer Empfehlung von Relevanz sind \cite[S. 734f.]{adomavicius:inproceedings}\cite[S. 76]{jannach:inproceedings}.
+Relevanz bedeutet in dem Kontext von Empfehlungssystemen, dass ein Element für einen Nutzer bzw. eine Gruppe an Nutzern einen maximalen Nutzen bietet \cite[S. 49f.]{adomavicius:inproceedings:2}\cite[S. 219]{lakiotaki:inproceedings}.
 Formal ausgedrückt besteht das Problem darin, einem Nutzer $c$ eine Menge an Elementen $s^{'}$ $\in$ $S$ zur Verfügung zu stellen, für die gilt:
 \begin{equation}\label{eq1}
     \forall c\in C,  s'_c = arg\max_{s \in S} R(c,s)
 \end{equation}
-Hierbei gibt $C$ die Menge aller Nutzer eines Systems und $R(c,s)$ den Nutzen einer Kombination $(c,s)$ an Element $s$ und Nutzer $c$ (im Folgenden Nutzer- Element- Kombination genannt \cite[S. 3]{recommenderSystems:2016}) an \cite[S. 734f.]{adomavicius:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}.
-Der Kontext $K$ wird in \textcite[S. 1]{klahold:book} explizit für die Ermittlung des Nutzen einer Nutzer- Element- Kombination angeführt.
-Grundsätzlich stellen kontextbasierte Empfehlungssysteme, das heißt Syteme, die den Kontext von Empfehlungen für die Ermittlung des Nutzen berücksichtigen, eine Erweiterung traditioneller Empfehlungssyteme dar \cite[S. 744ff.]{adomavicius:inproceedings}.
-In der Literatur wird der Nutzen einer Nutzer- Element- Kombination traditionell ohne Berücksichtigung des Kontextes betrachtet, weshalb der Kontext von Empfehlungen in dieser Arbeit vernachlässigt wird \cite[S. 734f.]{adomavicius:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}\cite[S. 3]{jawaheer:article}.
-In Anlehnung an \textcite[S. 3]{jawaheer:article} wird der interessierte Leser für eine detaillierte Übersicht zu kontextbasierten Empfehlungssystemen auf \textcite[S. 191ff]{adomavicius:3:inbook} verwiesen.
+Hierbei gibt $C$ die Menge aller Nutzer eines Systems und $R(c,s)$ den Nutzen einer Kombination $(c,s)$ an Element $s$ und Nutzer $c$ (im Folgenden \ac{N-E-K} genannt \cite[S. 3]{recommenderSystems:2016}) an \cite[S. 734f.]{adomavicius:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}.
+
+% Der Kontext $K$ wird in \textcite[S. 1]{klahold:book} explizit für die Ermittlung des Nutzen einer Nutzer- Element- Kombination angeführt.
+% Unter dem Kontext einer Empfehlung verstehen \textcite[S. 191]{adomavicius:3:inbook} zusätzliche Parameter wie Uhrzeit, Ort oder die Gegenwart anderer Personen zum Zeitpunkt einer Empfehlung.
+% Grundsätzlich stellen kontextbasierte Empfehlungssysteme, das heißt Syteme, die den Kontext von Empfehlungen für die Ermittlung des Nutzen berücksichtigen, eine Erweiterung traditioneller Empfehlungssyteme dar \cite[S. 744ff.]{adomavicius:inproceedings}.
+% In der Literatur wird der Nutzen einer Nutzer- Element- Kombination traditionell ohne Berücksichtigung des Kontextes betrachtet, weshalb der Kontext von Empfehlungen in dieser Arbeit vernachlässigt wird \cite[S. 734f.]{adomavicius:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}\cite[S. 3]{jawaheer:article}.
+% In Anlehnung an \textcite[S. 3]{jawaheer:article} wird der interessierte Leser für eine detaillierte Übersicht zu kontextbasierten Empfehlungssystemen auf \textcite[S. 191ff]{adomavicius:3:inbook} verwiesen.
 % In den Formulierungen der Gleichung in \cite[S. 734f]{adomavicius:inproceedings} und \cite[S. 219]{lakiotaki:inproceedings} wird jedoch nicht explizit auf den Kontext als Bedingung zur Erfüllung von Gleichung \ref{eq1} hingewiesen.
 % Es wird angenommen, dass der Kontext für die Ermittlung der Güte einer Empfehlung implizit berücksichtigt wird und daher auf eine explizite Nennung verzichtet wurde. In Anlehnung an \cite[S. 734f]{adomavicius:inproceedings} und \cite[S. 219]{lakiotaki:inproceedings} wurde daher auf die explizite Unterscheidung im weiteren Verlauf verzichtet.
 
-Da es sich bei dem Problem des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Menge an Elementen um ein Maximierungs- Problem handelt, kann das Problem der Kategorie der Optimierungsprobleme, wie in \textcite[S. 1]{book:kallrath} definiert, zugeordnet werden.
+Bei dem beschriebenen Problem in Gleichung \ref{eq1} handelt es sich um ein Maximierungsproblem.
+Nach \textcite[S. 1]{book:kallrath} können Maximierungsprobleme der Kategorie der Optimierungsprobleme zugeordnet werden.
+Die Problematik des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Menge an Elementen gehört demnach zu der Kategorie der Optimierungsprobleme.
+% Da es sich bei dem Problem des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Menge an Elementen um ein Maximierungsproblem handelt, kann das Problem der Kategorie der Optimierungsprobleme, wie in \textcite[S. 1]{book:kallrath} definiert, zugeordnet werden.
+
+% Einigung: Nützlichkeit bezieht sich nicht auf die Güte einer Empfehlung, sondern auf den Nutzen einer Kombination. Güte beschreibt Wert einer Empfehlung.
+Der Begriff der "Nützlichkeit" wird in der Literatur vermehrt verwendet, um den Wert eines Elements für einen Nutzer zu beschreiben \cite[S. 10f.]{ricci:inbook}\cite[S. 1]{klahold:book}\cite[S. 735]{adomavicius:inproceedings}.\footnote{Unter der Nützlichkeit kann in dem Kontext von Empfehlungssystemen auch die Güte einer Empfehlung verstanden werden \cite[S. 37ff.]{klahold:book}.}
+Dabei kann der Nutzen sowohl unmittelbar über Angaben eines Anwenders erschlossen, als auch über eine Nutzenfunktion des Empfehlungssystems berechnet werden \cite[S. 735]{adomavicius:inproceedings}.
+Da die Ermittlung des Nutzens durchaus komplex sein kann, wird der Aspekt der "Nützlichkeit" nachfolgend ausführlich aufgegriffen.
 
 \section{Nutzenfunktion} % Unterschied Nutzen und Güte?
 \label{ch:empfehlungssysteme:nutzenfunktion}
 % Frage: ist mit der Güte die Güte einer Empfehlung gemeint (gefällt einem nutzer die Empfehlung ja/nein), oder ist damit die Güte im Sinne von die Qualität von Empfehlungssystemen gemeint?
 % Der erfolgreiche Einsatz von Empfehlungssystemen wird maßgeblich von der Qualität der ausgesprochenen Empfehlungen bestimmt.
-In Kapitel \ref{ch:empfehlungssysteme:einführung} wurde bereits darauf hingewiesen, dass die Ermittlung der "Nützlichkeit" in Empfehlungssystemen durchaus komplex sein kann.
-
-Wie aus Gleichung \ref{eq1} hervorgeht, wird für den Nutzen einer Nutzer- Element- Kombination in Empfehlungssystemen allgemein eine Funktion $R(c,s)$ angenommen.
+Wie aus Gleichung \ref{eq1} hervorgeht, wird für den Nutzen einer \ac{N-E-K} in Empfehlungssystemen allgemein eine Funktion $R$ angenommen.
 Diese Funktion wird Nutzenfunktion (engl.: utility function) genannt und ist traditionell definiert als \cite[S. 195]{adomavicius:3:inbook}\cite[S. 3]{jawaheer:article}:
 \begin{equation}\label{eq2}% Dabei handelt es sich um eine lineare Abbildung, bei der über die Funktion u jeder Kombination aus der nxm matrix, genau ein Wert aus R, also der Rating matrix, zugeordnet werden kann
     R: Nutzer \times Element \rightarrow R_{0}
@@ -80,26 +92,25 @@ $R_{0}$ umfasst alle Werte, die der Nutzen von Kombinationen annehmen kann \cite
 % In Systemen, in denen der Wert einer Transaktion beispielsweise über eine explizite, binäre Bewertung (z.B. "Gut", "Schlecht") eines Nutzers für ein Element bestimmt wird, würde $R_{0}$ genau die zwei Ausprägungen umfassen, die eine Bewertung annehmen kann (hier: "Gut" und "Schlecht").
 
 Grundsätzlich kann die Nutzenfunktion in Empfehlungssystemen jede beliebige Funktion darstellen \cite[S. 735]{adomavicius:inproceedings}.
-Angenommen das Ziel eines Empfehlungssystems besteht darin, den Gesamtumsatz eines Unternehmens zu maximieren, so kann der Nutzen einer Nutzer- Element- Kombination über eine Profit-Funktion ermittelt werden.
+Besteht das Ziel eines Empfehlungssystems bespielsweise darin, den Gesamtumsatz eines Unternehmens zu maximieren, so kann der Nutzen einer \ac{N-E-K} über eine Profit-Funktion ermittelt werden \cite[S. 735]{adomavicius:inproceedings}.
 % Solche Systeme, in denen der Nutzen von Nutzer- Element- Kombinationen über eine eigenständige Nutzenfunktion ermittelt wird, zählen zu den nutzenbasierten Empfehlungssystemen und sind nicht Inhalt dieser Arbeit.
-In den meisten Empfehlungssystemen wird für den Nutzen $R(c,s)$ einer Nutzer- Element- Kombination $(c,s)$ unmittelbar die Bewertung (engl.: Rating) $r_{cs}$ eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:inbook}\cite[S. 11]{recommenderSystems:2016}.
+In den meisten Empfehlungssystemen wird für den Nutzen $R(c,s)$ unmittelbar die Bewertung (engl.: Rating) $r_{cs}$ eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:inbook}\cite[S. 11]{recommenderSystems:2016}.
 Daher ist die Nutzenfunktion in der Literatur auch als Rating-Funktion oder Rating-Matrix bekannt \cite[S. 49]{adomavicius:inproceedings:2}\cite[S. 91]{ekstrand:article}\cite[S. 11]{recommenderSystems:2016}.
-Aus Gründen der Einfachheit wird für den weiteren Verlauf der Arbeit vorerst unmittelbar der Wert der Bewertung $r_{cs}$ für den Nutzen $R(c,s)$ einer Nutzer- Element- Kombination angenommen (d.h. $R(c,s) = r_{cs}$).
-% HIER ERWÄHNEN DASS ERSTMAL AUCH RATING GENOMMEN WIRD!
+Aus Gründen der Einfachheit wird für den weiteren Verlauf der Arbeit ebenfalls der Wert einer Bewertung $r_{cs}$ für den Nutzen $R(c,s)$ einer \ac{N-E-K} $(c,s)$ angenommen (d.h. $R(c,s) = r_{cs}$).
 % Diese Abbildung einer Funktion als Matrix folgt der mathematischen Definition von Matrizen als lineare Funktion.
 % Es wird davon ausgegangen, dass die gängige Verwendung des Ratings als Maß des Nutzen eines Elements für einen Nutzer daher kommt, dass Empfehlungssysteme traditionell in dem Kontext item-to-people-recommendation eingesetzt wurden.
 % In solchen systemen ist es meistens das ziel, die elemente zu empfehlen, die den nutzer am meisten ansprechen. -> Folglich Nutzen einer Nutzer-Element-Kombination bedeutet Nutzen eines Elements für einen Nutzer. (kann aber ja auch bedeuten nutzen eines elements für einen nutzer im sinne von profitmaximierung)
 % Unter der Annahme ist damit erklärbar, dass mit einer gewissen Konfidenz davon ausgegangen werden kann, dass die Bewertung eines Nutzers für ein Element auch dessen gefühlten Nutzen des ELements für ihn abbildet.
 
-Bewertungen von Elementen in Empfehlungssystemen können sowohl explizit als auch implizit erfolgen.
-Unter expliziter Bewertung kann in Empfehlungssystemen die ausdrückliche Bewertung eines Elements durch einen Nutzer verstanden werden.
-Ein Beispiel stellt die aktive Bewertung eines Produktes durch einen Nutzer in einem Online-Shop in Form einer Produktrezension (z.B. "Gefällt-mir"-Angabe) dar.
-Im Vergleich dazu werden unter impliziten Bewertungen in Empfehlungssystemen passiv erzeugte Verhaltensdaten, wie der Suchverlauf oder die Kaufhistorie eines Nutzers, verstanden, die indirekt mögliche Präferenzen eines Nutzers vermuten lassen \cite[S. 149]{jadidinejad:inproceedings}\cite[S. 403]{unternährer:article}.
+%Bewertungen von Elementen in Empfehlungssystemen können sowohl explizit als auch implizit erfolgen.
+%Unter expliziter Bewertung kann in Empfehlungssystemen die ausdrückliche Bewertung eines Elements durch einen Nutzer verstanden werden.
+%Ein Beispiel stellt die aktive Bewertung eines Produktes durch einen Nutzer in einem Online-Shop in Form einer Produktrezension (z.B. "Gefällt-mir"-Angabe) dar.
+%Im Vergleich dazu werden unter impliziten Bewertungen in Empfehlungssystemen passiv erzeugte Verhaltensdaten, wie der Suchverlauf oder die Kaufhistorie eines Nutzers, verstanden, die indirekt mögliche Präferenzen eines Nutzers vermuten lassen \cite[S. 149]{jadidinejad:inproceedings}\cite[S. 403]{unternährer:article}.
 % IDEE: hier einfügen Rating Scales? Ordinal, numeric, etc.
 
 Tabelle \ref{tab1} stellt beispielhaft den Ausschnitt einer Rating-Matrix $R$ dar, welche explizite Bewertungen von Mitarbeitern zu ihren Fähigkeiten abbildet \cite[S. 735]{adomavicius:inproceedings}\cite[S. 16]{link:booklet}.
 Hierbei stellen Mitarbeiter die Nutzer und Fähigkeiten die Elemente des Systems dar.
-Der Nutzen $R(c,s)$ einer Kombination wird unmittelbar über die Bewertung $r_{cs}$ eines Mitarbeiters $c$ für eine Fähigkeit $s$ bestimmt.
+Der Nutzen einer Kombination $R(c,s)$ wird unmittelbar über die Bewertung $r_{cs}$ eines Mitarbeiters $c$ für eine Fähigkeit $s$ bestimmt.
 Eine Bewertung kann jeden Wert in $R_{0}=\{1;2;3;4;5\}$ annehmen.
 
 \begin{table}[htbp]
@@ -123,15 +134,12 @@ Eine Bewertung kann jeden Wert in $R_{0}=\{1;2;3;4;5\}$ annehmen.
 
 Der Rating-Matrix $R$ können alle angegebenen Bewertungen von Mitarbeitern zu ihren Fähigkeiten entnommen werden.
 So wird beispielsweise ersichtlich, dass Jane D. im Verhältnis zu den anderen Mitarbeitern ihre Fähigkeiten in Python am höchsten bewertet hat.
-Darüber hinaus geht aus Tabelle \ref{tab1} hervor, dass einige Nutzer- Element- Kombinationen $(c,s)$ anstelle einer Bewertung $r_{cs}$ ein Fragezeichen beinhalten.
-Das Fragezeichen kennzeichnet die Kombinationen des Empfehlungssystems, für deren Transaktion kein Wert bekannt ist.
-Das kann beispielsweise bei Nutzern der Fall sein, die noch keine Elemente bewertet haben, oder bei Elementen, die neu einem System hinzugefügt wurden und noch keine Interaktion mit Nutzern des Systems aufweisen.
+Darüber hinaus geht aus Tabelle \ref{tab1} hervor, dass einige Kombinationen an Nutzer und Element anstelle einer Bewertung $r_{cs}$ ein Fragezeichen beinhalten.
+Dieses kennzeichnet die Kombinationen des Empfehlungssystems, für die keine Bewertungen vorhanden sind.
+Das kann beispielsweise bei Nutzern der Fall sein, die noch keine Elemente bewertet haben, oder bei Elementen, die neu zu einer Anwendung hinzugefügt wurden und noch keine Interaktion mit Nutzern des Systems aufweisen.
 Wie im nachfolgenden Kapitel deutlich werden wird, stellt die Vorhersage fehlender Nutzer-Element-Interaktionen eine der Kernaufgaben von Empfehlungssystemen dar.
-% Zu den Herausforderungen von Empfehlungssystemen zählt das Ermitteln der angenommenen Werte $R(c_{i},s_{j})$ für Nutzer bzw. Elemente, für die keine Bewertungen vorliegen.
 % Nach \textcite[S. 37]{klahold:book} besteht eine der Herausforderungen in der Ermittlung des tatsächlichen Nutzen einer Empfehlung darin, dass für eine objektive Beurteilung die genaue Nutzenfunktion einer Empfehlung an einen Nutzer bekannt sein muss.
-% In der Praxis gestaltet sich die Bestimmung einer akkuraten Nutzenfunktion zur Ermittlung der Güte einer Empfehlung für die Nutzer eines Systems jedoch zumeist schwierig.
 % Hier ergänzen nach gespräch mit Andreas. Quellen dazu: Klahod S. 37ff und hier: https://api-depositonce.tu-berlin.de/server/api/core/bitstreams/b490302e-8b6a-4300-946f-b5763c2b47d7/content
-% The design of effective utility functions often requires domain-specific knowledge, or learning data from past user interactions. % aggarwal, S. 178
 
 \section{Erstellen von Empfehlungen}
 \label{ch:empfehlungssysteme:empfehlungserstellung}
@@ -142,21 +150,22 @@ Grundsätzlich kann das Erstellen von Empfehlungen in Empfehlungssystemen in zwe
 	\item Ranking-Phase
 \end{enumerate}
 
-In der Vorhersage-Phase werden für alle Nutzer-Element-Kombinationen, für die keine Transaktionen vorliegen, deren Nutzer-Element-Interaktion vorhergesagt.
-Für die Ranking-Phase werden die (angenommenen) Nutzer-Element-Interaktionen aus Phase 1 herangezogen, in Abhängigkeit ihrer Nützlichkeit sortiert und das Element bzw. die Elemente mit dem größten Nutzen empfohlen.
+In der Vorhersage-Phase werden für alle \ac{N-E-K}-en, für die keine Transaktionen vorliegen, deren Nutzer-Element-Interaktion vorhergesagt \cite[S. 3]{recommenderSystems:2016}.
+Für die Ranking-Phase werden die (angenommenen) Nutzer-Element-Interakti\-onen aus Phase 1 herangezogen, in Abhängigkeit ihrer Nützlichkeit sortiert und das Element bzw. die Elemente mit dem größten Nutzen empfohlen \cite[S. 854]{adomavicius:4:inbook}.
 Nachfolgend werden die einzelnen Phasen im Detail erläutert.
 
 \subsection{Vorhersage}
 \label{ch:empfehlungssysteme:empfehlungserstellung:prediction}
 % Ratings normalerweise nur vorhanden bei nutzern, die diese produkte in der vergangenheit bewertet haben, S. 735, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Toward_the_next_generation_of_recommender_systems_a_survey_of_the_state-of-the-art_and_possible_extensions.pdf
-Wie aus Gleichung \ref{eq1} hervorgeht, ist das Vorhandensein eines Wertes für eine Nutzer- Element- Interaktion Voraussetzung, um die Nützlichkeit der Kombination im Vergleich zu anderen Nutzer- Element- Kombinationen zu bewerten.
+Wie aus Gleichung \ref{eq1} hervorgeht, ist das Vorhandensein einer Nutzer-Ele\-ment-Interaktion Voraussetzung, um die Nützlichkeit einer Kombination im Vergleich zu anderen \ac{N-E-K}-en zu bewerten.
 Eine gängige Eigenschaft von Umgebungen, in denen Empfehlungssysteme ihren Einsatz finden, ist, dass die zugrundeliegenden Daten unvollständig sind \cite[S. 735]{adomavicius:inproceedings}.
 Das bedeutet, dass nicht für jede Kombination an Nutzer und Element ein Wert für $r_{cs}$ vorliegt (wie in Tabelle \ref{tab1} durch Fragezeichen gekennzeichnet).
 So ist es beispielsweise anhand der Daten aus Tabelle \ref{tab1} nicht möglich zu Beurteilen, welche der beiden Mitarbeiter Jane D. und Erika M. die Fähigkeit Java besser beherrscht.
 % Würde beispielsweise für Erika M. aus Tabelle \ref{tab1} versucht zu Bestimmen, ob ihre Fähigkeiten in Java oder Python höher sind, könnte anhand von Gleichung \ref{eq1} aufgrund der fehlenden Nutzer-Element-Interaktion keine Aussage getroffen werden.
 
-Aufgabe eines Empfehlungssystems ist es daher die fehlenden Werte für Nutzer- Element- Kombinationen der Rating-Matrix $R$ vorherzusagen.
-Für die Vorhersage einer Nutzer- Element- Kombination $\hat{r}_{c,s}$ der Matrix $R$ kann allgemein folgende Formel angenommen werden (in Anlehnung an \cite[S. 743]{adomavicius:inproceedings}):\footnote{Voraussetzung der Gültigkeit der Formel \ref{eq3} ist die Annahme, dass gilt $r_{cs} = R(c,s)$. Das bedeutet, dass für den Nutzen einer Nutzer- Element- Kombination unmittelbar der Wert der Bewertung $r_{cs}$ eines Nutzers $c$ für das Element $s$ angenommen werden kann (Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}).}
+Aufgabe eines Empfehlungssystems ist es daher, die fehlenden Bewertungen für \ac{N-E-K}-en der Rating-Matrix $R$ vorherzusagen.
+Sei $\hat{r}_{cs}$ der angenommene Wert einer Nutzer-Element-Interaktion, so wird $\hat{r}_{cs}$ in Empfehlungssystemen allgemein wie folgt vorhergesagt (in Anlehnung an \cite[S. 743]{adomavicius:inproceedings}):\footnote{Voraussetzung der Gültigkeit der Formel \ref{eq3} ist die Annahme, dass gilt $r_{cs} = R(c,s)$. Das bedeutet, dass für den Nutzen einer \ac{N-E-K} unmittelbar der Wert der Bewertung $r_{cs}$ eines Nutzers $c$ für das Element $s$ angenommen werden kann (Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}).}
+% Für die Vorhersage einer Nutzer- Element- Kombination $\hat{r}_{cs}$ der Matrix R kann allgemein folgende Formel angenommen werden (in Anlehnung an \cite[S. 743]{adomavicius:inproceedings}):\footnote{Voraussetzung der Gültigkeit der Formel \ref{eq3} ist die Annahme, dass gilt $r_{cs} = R(c,s)$. Das bedeutet, dass für den Nutzen einer \ac{N-E-K} unmittelbar der Wert der Bewertung $r_{cs}$ eines Nutzers $c$ für das Element $s$ angenommen werden kann (Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}).}
 \begin{equation}\label{eq3}
 \hat{r}_{cs} =
     \begin{cases}
@@ -164,28 +173,31 @@ Für die Vorhersage einer Nutzer- Element- Kombination $\hat{r}_{c,s}$ der Matri
         R(c,s) & \textnormal{wenn }r_{cs} = \textnormal{ ?} \\
     \end{cases}
 \end{equation}
-Demnach kann der Wert einer Bewertung $\hat{r}_{c,s}$ vorhergesagt werden, entweder unmittelbar über vorhandene Nutzer- Element- Interaktionen $r_{cs}$, oder unter Anwendung der Nutzenfunktion $R(c,s)$ bei fehlenden Nutzer- Element- Kombinationen.
+Das heißt, grundsätzlich wird $\hat{r}_{cs}$ entweder unmittelbar über vorhandene Nutzer-Element-Interaktionen $r_{cs}$, oder bei fehlenden Transaktionen für $(c,s)$ unter Anwendung der Nutzenfunktion $R$ vorhergesagt werden.
+%Demnach wird eine Bewertung $\hat{r}_{cs}$ entweder unmittelbar über vorhandene Nutzer-Element-Interaktionen $r_{cs}$, oder bei fehlenden Transaktionen für $(c,s)$ unter Anwendung der Nutzenfunktion $R$ vorhergesagt werden.
 % Unterschied ist, dass hier rij sich von u unterscheidet und bei uns einfach erstmal R als ein wert angenommen wird
 % Wichtig hier klar zu definieren, dass die Nützlichkeit oft so definiert ist, dass sie entweder explizit gegeben ist, oder über u berechnet wird für fehlende werte von r
 % bei uns wird dann quasi u für alle werte berechnet, da wir ja nicht explizit einen wert annehmen, sondern Ro sich aus r1 und r2 usw zusammensetzt
 
-In der Praxis existieren verschiedene Techniken, um fehlende Nutzer-Elemet-Kombinationen vorherzusagen.
+In der Praxis existieren verschiedene Techniken, um fehlende Nutzer-Ele\-ment-Interaktionen vorherzusagen.
 Empfehlungssysteme können anhand der eingesetzten Technik für die Vorhersage in verschiedene Kategorien unterteilt werden \cite[S. 8 ff.]{recommenderSystems:2016}.
 Zu den bekanntesten Kategorien von Empfehlungssystemen zählen:
 \begin{itemize}%Sind die mathematischen Bezeichnungen hier verwirrend oder sinnvoll?
-	\item \textit{Systeme des Kollaborativen Filterns:} Vorhersage fehlender Nutzer- Element- Interaktionen $r_{cs}$ eines Zielnutzers $c$ anhand vorhandener Nutzer- Element- Interaktionen $r_{c's}$ anderer Nutzer $c' \in C \backslash \{c\}$ des Systems, die dem Zielnutzer $c$ ähnlich sind.
-	\item \textit{Inhaltsbasierte Systeme:} Vorhersage fehlender Nutzer- Element- Interaktionen $r_{cs}$ eines Zielnutzers $c$ anhand vorhandener Nutzer- Element- Interaktionen $r_{cs'}$ des Zielnutzers zu Elementen $s' \in S \backslash \{s\}$, die dem Zielelement $s$ ähnlich sind.
-	\item \textit{Wissensbasierte Systeme:} Vorhersage fehlender Nutzer- Element- Interaktionen eines Zielnutzers anhand der aktiven Angabe von Präferenzen durch den Zielnutzer.
-	\item \textit{Hybride Systeme:} Kombination verschiedener Techniken für die Vorhersage fehlender Nutzer- Element- Kombinationen.
+	\item \textit{Systeme des Kollaborativen Filterns:} Vorhersage fehlender Nutzer-Element-Interaktionen $r_{cs}$ eines Zielnutzers $c$ anhand vorhandener Nutzer-Ele\-ment-Interaktionen $r_{c's}$ anderer Nutzer $c' \in C \backslash \{c\}$ des Systems, die dem Zielnutzer $c$ ähnlich sind.
+	\item \textit{Inhaltsbasierte Systeme:} Vorhersage fehlender Nutzer-Element-Interakti\-onen $r_{cs}$ eines Zielnutzers $c$ anhand vorhandener Nutzer-Element-Inter\-aktionen $r_{cs'}$ des Zielnutzers zu Elementen $s' \in S \backslash \{s\}$, die dem Zielelement $s$ ähnlich sind.
+	\item \textit{Wissensbasierte Systeme:} Vorhersage fehlender Nutzer-Element-Interakti\-onen eines Zielnutzers anhand der aktiven Angabe von Präferenzen durch den Zielnutzer.
+	\item \textit{Hybride Systeme:} Kombination verschiedener Techniken für die Vorhersage fehlender Nutzer-Element-Interaktionen.
 \end{itemize}
 
-Der Fokus dieser Arbeit liegt auf der zweiten Phase des Empfehlungserstellungs-Prozesses, weshalb auf eine Erläuterung der Techniken nachfolgend verzichtet wird.
-Für eine detaillierte Übersicht der bekanntesten Werkzeuge wird der interessierte Leser auf \textcite[S. 8ff.]{recommenderSystems:2016} verwiesen.
+Der Fokus dieser Arbeit liegt auf der zweiten Phase des Empfehlungserstel\-lungs-Prozesses, weshalb auf eine eingehende Erläuterung der Techniken nachfolgend verzichtet wird.
+Für eine detaillierte Übersicht der bekanntesten Werkzeuge wird auf \textcite[S. 8ff.]{recommenderSystems:2016} verwiesen.
 
 \subsection{Ranking}
 \label{ch:empfehlungssysteme:empfehlungserstellung:recommendation}
 Die zweite Phase umfasst die eigentliche Erstellung der Empfehlungen, die an einen Nutzer zurückgegeben werden.
-Das Ziel der zweiten Phase ist es, einem Nutzer $c$ in Abhängigkeit der gegebenen Rating-Matrix $R$ eine Empfehlung an Elementen $s'$ mit dem größtmöglichen Nutzen zu generieren \cite[S. 6]{ekstrand:article}.
+Ziel ist es, einem Nutzer $c$ in Abhängigkeit der vollständigen Rating-Matrix $R$ eine Empfehlung an Elementen $s'$ mit dem größtmöglichen Nutzen zu generieren \cite[S. 87]{ekstrand:article}.
+% Wichtig zu unterscheiden, dass die Empfehlungen nicht zwangsäufig die präferenzen des nutzers empfehlen müssen, da diese auch von anderen kriterien abhängen könnne, siehe quelle unten
+% HIER WEITERMACHEN mit S. 87, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Collaborative%20Filtering%20Recommender%20Systems.pdf
 
 In Abhängigkeit des Anwendungsfalls kann eine Empfehlung verschiedene Formen annehmen.
 So kann eine Empfehlung eine Gruppe an Elementen darstellen.
@@ -194,7 +206,7 @@ In den meisten Fällen geben Empfehlungssysteme eine sortierte Liste der nützli
 Dabei wird die Nützlichkeit einer Kombination, wie in Kapitel \ref{ch:empfehlungssysteme:empfehlungserstellung:prediction} erläutert, zumeist anhand eines Ratings durch einen Nutzer bestimmt, oder über eine Nutzenfunktion in Phase 1 vorhergesagt.
 Diese Ratings erfolgen in gängigen Empfehlungssystemen zumeist anhand eines Kriteriums, beispielsweise in Form eines übergreifenden Ratings für ein Element.
 
-In der Praxis kann es vorkommen, dass von einem vorhergesagten Wert einer Nutzer- Element- Kombination nicht unmittelbar auf den tatsächlichen Rang einer Kombination im Ranking geschlossen werden kann, beispielsweise da noch andere Kriterien den Nutzen (und somit den Rang) einer Kombination beeinflussen \cite[S. 405]{unternährer:article}.
+In der Praxis kann es vorkommen, dass von einem vorhergesagten Wert einer \ac{N-E-K} nicht unmittelbar auf den tatsächlichen Rang einer Kombination im Ranking geschlossen werden kann, beispielsweise da noch andere Kriterien den Nutzen (und somit den Rang) einer Kombination beeinflussen \cite[S. 405]{unternährer:article}.
 Wie in Kapitel \ref{ch:erweiterungen} deutlich werden wird, ist die Bestimmung des Nutzen eines Elements für einen Nutzer anhand eines einzelnen Kriteriums (e.g. dem Rating) nicht immer ausreichend, um dessen Nutzen zuverlässig zu bestimmen \cite[S. 847]{adomavicius:4:inbook}.
 % ------- Hier (oder oben?) kurze Zusammenfassung der Begrifflichkeiten (siehe aggarwal, S. xviii, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/Aggarwal2016_Book_RecommenderSystems.pdf)
 
@@ -489,15 +501,30 @@ Das Problem besteht folglich darin, aus einer Menge an Personen eine passende Pe
 \end{figure}
 
 Nach \textcite[S. 36]{li:inproceedings} kann diese Problemstellung der reziproken Empfehlung mathematisch als das "Stable Marriage"-Problem modelliert werden.
-Das "Stable-Marriage"-Problem beschreibt das Problem eine optimale Paarung (engl.: Match) zweier Elemente anhand ihrer Präferenzen zu Bestimmen, sodass keines der Elemente durch Paarung mit einem anderen Partner besser gestellt wäre \cite[S. 36]{li:inproceedings}\cite[S. 67]{diaz:inproceedings}.
-Formal kann das Problem formuliert werden als:
-\begin{equation}\label{eq10}
-    s'_c = arg\max_{s \in S} F_{s}^{d} \textnormal{ satisfies } F_{c}^{p} \cap F_{c}^{d} \textnormal{ satisfies } F_{s}^{p}
-\end{equation}
+Das "Stable-Marriage"-Problem beschreibt das Problem der Bestimmung einer optimalen Paarung (engl.: Match) zweier Mengen an Elementen anhand ihrer Präferenzen, sodass kein Element durch Paarung mit einem anderen Partner besser gestellt wäre \cite[S. 36]{li:inproceedings}\cite[S. 67]{diaz:inproceedings}.
 
-Für reziproke Empfehlungen wird meist kein "hartes" Match zwischen Nutzer und Element gesucht, sondern eine sortierte Liste an potenziellen Partnern für einen Nutzer \cite[S. 67]{diaz:inproceedings}.
-% HIER WEITERMACHEN
-% erwähnen, dass es liste ist, also nicht nur argmax sodass ein s' gefunden wird, sondern liste an s'
+Um in dem Szenario einer reziproken Empfehlung zu ermitteln, ob ein Paar optimal ist, müssen nach \textcite[S. 36]{li:inproceedings} für jeden Nutzer $c \in C$ eine Selbstbeschreibung $F_{c}^{d}$ und Präferenzen $F_{c}^{p}$ bekannt sein.
+Analog müssen für jede Person (Element) $s \in S$ des Systems eine Selbstbeschreibung $F_{s}^{d}$ und Präferenzen $F_{s}^{p}$ bekannt sein.
+Eine optimale Paarung definieren \textcite[S. 36]{li:inproceedings} wie folgt: 
+
+\begin{definition}[Optimale Paarung]\label{def:1}
+    Sei ein Nutzer $c \in C$ und eine Person (Element) $s \in S$ gegeben, dann ist das Paar $(c,s)$ optimal, wenn $F_{c}^{d}$ maximal $F_{s}^{p}$ und $F_{s}^{d}$ maximal $F_{c}^{p}$ erfüllt.
+\end{definition}
+
+Für reziproke Empfehlungen wird meist kein hartes Match zwischen Nutzer und Element gesucht, sondern eine sortierte Liste an potenziellen Partnern für einen Nutzer \cite[S. 67]{diaz:inproceedings}.
+Das heißt, das Ziel der Empfehlungserstellung an einen Nutzer $c$ besteht darin dem Nutzer eine Liste $L_{s} \subset S$ an Personen $s$ zu empfehlen, sodass die Präferenzen $F_{s}^{p}$ und $F_{c}^{p}$ erfüllt sind \cite[S. 36]{li:inproceedings}.
+
+Nach \textcite[S. 36]{li:inproceedings} ist das Bestimmen einer optimalen Paarung in RRS erschwert, da neben der Reziprozität auch Eigenschaften wie die Verfügbarkeit von Elementen (Endlichkeit) berücksichtigt werden müssen.
+So kann es sein, dass eine Person anhand ihrer Präferenzen optimal zu einem Nutzer passt, die empfohlene Person aber in einem gegebenen Zeitraum nicht verfügbar ist.
+Um dies bei der Bestimmung von Paaren zu berücksichtigen, unterscheiden \textcite[S. 37]{li:inproceedings} daher zusätzlich zwischen optimalem und erfolgreichem Match von Nutzern und Elementen.
+Eine erfolgreiche Paarung definieren \textcite[S. 37]{li:inproceedings} wie folgt:
+
+\begin{definition}[Erfolgreiche Paarung]\label{def:2}
+    Sei ein Nutzer $c \in C$ und eine Person (Element) $s \in S$ gegeben, dann ist ein Paar $(c,s)$ erfolgreich, wenn $F_{c}^{d}$ suboptimal $F_{s}^{p}$ und $F_{s}^{d}$ suboptimal $F_{c}^{p}$ erfüllt, unter Berücksichtigung der Verfügbarkeit von $c$ und $s$.
+\end{definition}
+
+Demnach kann eine Paarung auch dann erfolgreich sein, wenn Beschreibungen von Nutzern bzw. Elementen die Präferenzen des Partners nur teilweise erfüllen \cite[S. 37]{li:inproceedings}.
+Dafür wird die Verfügbarkeit von Personen berücksichtigt.
 % nochmal hier schauen, eher genau so formulieren, wie es dort steht: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/MEET%20-%20A%20Generalized%20Framework.pdf
 
 \shorthandon{"}
