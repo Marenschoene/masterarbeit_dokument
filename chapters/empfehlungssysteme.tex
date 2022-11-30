@@ -209,7 +209,7 @@ Für eine detaillierte Übersicht der bekanntesten Werkzeuge wird auf \textcite[
 \subsection{Ranking}
 \label{ch:empfehlungssysteme:empfehlungserstellung:recommendation}
 Die zweite Phase umfasst die eigentliche Erstellung der Empfehlungen, die an einen Nutzer zurückgegeben werden.
-Ziel ist es, in Abhängigkeit der vollständigen Rating-Matrix $R$ eine Empfehlung an einen Nutzer $c$ zu generieren, die das bzw. die Elemente $s'$ mit dem größtmöglichen Nutzen enthält \cite[S. 87]{ekstrand:article}\cite[S. 898]{adomavicius:article}.
+Ziel ist es, in Abhängigkeit der vollständigen Rating-Matrix $R$ eine Empfehlung für einen Nutzer $c$ zu generieren, die das bzw. die Elemente $s'$ mit dem größtmöglichen Nutzen enthält \cite[S. 87]{ekstrand:article}\cite[S. 898]{adomavicius:article}.
 % Wichtig zu unterscheiden, dass die Empfehlungen nicht zwangsäufig die präferenzen des nutzers empfehlen müssen, da diese auch von anderen kriterien abhängen könnne, siehe quelle unten
 % HIER WEITERMACHEN mit S. 87, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Collaborative%20Filtering%20Recommender%20Systems.pdf
 
@@ -219,27 +219,38 @@ Eine Empfehlung kann auch eine Kombination unterschiedlicher Elemente darstellen
 Ein Beispiel stellen Empfehlungen in Online-Shops dar, die einem Kunden zu einem ausgewählten T-Shirt eine passende Hose und Schuhe vorschlagen.
 Die unterschiedlichen Kleidungsstücke (Elemente) bilden gesammelt ein vollständiges Outfit, welches einem Kunden als Ganzes empfohlen werden kann.
 
-In den meisten Fällen geben Empfehlungssysteme eine sortierte Liste der nützlichsten Elemente zurück (Top-K-Elemente), in der für jedes Element der angenommene Wert für einen Nutzer angegeben ist \cite[S. 6]{ricci:inbook}\cite[S. 3]{recommenderSystems:2016}\cite[S. 141]{ekstrand:article}.
-Der Rang eines Elements in der sortierten Liste ergibt sich anhand des Sortier-Kriteriums Nutzen.
+In den meisten Fällen geben Empfehlungssysteme eine sortierte Liste der nützlichsten Elemente zurück (umgangssprachlich: Top-$K$-Elemente), in der für jedes Element der angenommene Wert für einen Nutzer angegeben ist \cite[S. 6]{ricci:inbook}\cite[S. 3]{recommenderSystems:2016}\cite[S. 141]{ekstrand:article}.
+Dabei gibt der Parameter $K$ die Anzahl an Elementen in der Liste an.
 % Dabei wird die Nützlichkeit einer \ac{N-E-K}, wie in Kapitel \ref{ch:empfehlungssysteme:empfehlungserstellung:prediction} erläutert, zumeist anhand der Bewertung eines Elements durch einen Nutzer bestimmt.
 % Für \ac{N-E-K}, für die keine Bewertungen bekannt ist, wird der Nutzen einer Kombination unter Anwendung der Nutzenfunktion $R$ in Phase 1 vorhergesagt.
+
+Nach \textcite[S. 900]{adomavicius:article} wird der Rang eines Elements in einer sortierten Liste anhand eines Sortier-Kriteriums ermittelt.
+Demnach steht ein Element $s_{x}$ grundsätzlich im Ranking vor einem Element $s_{y}$, wenn $rank(s_{x})<rank(s_{y})$, wobei $rank: S \rightarrow \mathbb{R}$ eine Funktion des Sortier-Kriteri\-ums darstellt \cite[S. 900]{adomavicius:article}.
+Über die Funktion wird jedem Element $s \in S$ ein Rang zugeordnet.
+In der Literatur werden Elemente für Empfehlungen grundsätzlich anhand ihrer Nützlichkeit für einen Nutzer sortiert \cite[S. 735]{adomavicius:inproceedings}\cite[S. 10f.]{ricci:inbook}.
+Der Nutzen stellt daher das Sortier-Kriterium in Empfehlungssystemen dar.
+% Der Nutzen kann daher als das Sortier-Kriterium in Empfehlungssystemen verstanden werden.
+
 Wie in Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} bereits erläutert, wird für den Nutzen in Empfehlungssystemen zumeist unmittelbar das Rating eines Nutzers für ein Element angenommen.
-In den meisten Empfehlungssystemen wird demnach der Rang eines Elements über das Sortier-Kriterium Rating ermittelt (bspw. der Gesamtbewertung eines Elements durch einen Nutzer).
-Formal ausgedrückt steht ein Element $s_{x}$ höher in der sortierten Liste als ein Element $s_{y}$, wenn $rank(s_{x})<rank(s_{y})$, wobei $rank: S \rightarrow \mathbb{R}$.
-Über die Funktion $rank$ wird jedem Element $s \in S$ basierend auf dem Ranking-Kriterium ein Rang zugeordnet.
-Für das Ranking existieren verschiedene Verfahren.
-Ein bekanntes Verfahren stellt die Standard-Ranking-Methode dar, wobei der Rang eines Elements über das Inverse der (angenommenen) Gesamtbewertung eines Nutzers $c$ für das Element $s$ bestimmt werden kann.
+In den meisten Empfehlungssystemen wird demnach der Rang eines Elements über das Sortier-Kriterium Rating ermittelt (bspw. der Gesamtbewertung eines Elements durch einen Nutzer) \cite[S. 900]{adomavicius:article}.
+
+% Es existieren verschiedene Verfahren, um den Rang eines Elements genau zu ermitteln.
+% Ein bekanntes Verfahren stellt die Standard-Ranking-Methode dar, wobei der Rang eines Elements über das Inverse der (angenommenen) Gesamtbewertung eines Nutzers $c$ für das Element $s$ wie folgt bestimmt werden kann:
+% \begin{equation}
+%     rank_{Standard}(i) = \hat{R}(c,s)^{-1}
+% \end{equation}
 
 % In Empfehlungssystemen gibt der Nutzen $R(c,s)$ größtenteils einen Wert für eine \ac{N-E-K} zurück (z.B. eine Gesamtbewertung eines Nutzers $c$ für ein Element $s$).
 % So wurde der Nutzen einer Fähigkeit in Tabelle \ref{tab1} über die Angabe eines einzigen Zahlenwertes gekennzeichnet.
 % Elemente in Empfehlungssystemen können auch anhand mehrerer Kriterien bewertet werden.
 % So kann ein Kinoaufenthalt (Element) beispielsweise anhand der Kriterien Inhalt und Schauspieler bewertet werden. 
 
-In der Praxis kann es vorkommen, dass von einem (vorhergesagten) Wert einer \ac{N-E-K} nicht unmittelbar auf den tatsächlichen Rang einer Kombination im Ranking geschlossen werden kann.
-Dies ist beispielsweise der Fall, wenn zusätzliche Kriterien den Nutzen (und somit den Rang) einer Kombination beeinflussen (bspw. die Diversität von Empfehlungen für einen Nutzer)\cite[S. 405]{unternährer:article}.
+In der Praxis kann es vorkommen, dass von dem Rating nicht unmittelbar auf den tatsächlichen Nutzen einer Kombination für einen Nutzer geschlossen werden kann \cite[S. 896ff.]{adomavicius:article}.
+Dies ist beispielsweise der Fall, wenn zusätzliche Kriterien den Nutzen (und somit den Rang) einer Kombination beeinflussen (bspw. die Diversität von Empfehlungen für einen Nutzer) \cite[S. 405]{unternährer:article}.
 Wie in Kapitel \ref{ch:erweiterungen} deutlich werden wird, ist die Bestimmung des Nutzen eines Elements für einen Nutzer anhand eines einzelnen Kriteriums (e.g. dem Rating) nicht immer ausreichend, um dessen Nutzen zuverlässig zu bestimmen \cite[S. 847]{adomavicius:4:inbook}.
 % ------- Hier (oder oben?) kurze Zusammenfassung der Begrifflichkeiten (siehe aggarwal, S. xviii, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/Aggarwal2016_Book_RecommenderSystems.pdf)
 
+% Weglassen?
 Abbildung \ref{fig:empfehlungssysteme:recommendation:abb1} illustriert den Prozess der Empfehlungserstellung am Beispiel eines Ausschnitts der Mitarbeiter-Fähigkeiten Matrix aus Tabelle \ref{tab1}.
 Das Beispiel stellt den Empfehlungerstellungsprozess für die Mitarbeiterin Erika M. dar.
 Dabei soll mithilfe des Empfehlungssystems die Fähigkeit vorschlagen werden, von der angenommen werden kann, dass Erika M. in dieser Fähigkeit die meisten Kenntnisse im Vergleich zu den anderen Fähigkeiten aufweist (e.g. $argmax(\hat{r}_{\textnormal{Erika M., s}})$).
@@ -256,57 +267,57 @@ Empfehlungen dieser Art können beispielsweise sinnvoll sein, wenn Mitarbeitern 
 % Empfehlungen dieser Art können beispielsweise sinnvoll sein, wenn Mitarbeitern Fähigkeiten vorgeschlagen werden sollen, die viele Ähnlichkeiten zu bereits existierenden Fähigkeiten eines Mitarbeiters aufweisen.
 % Dies kann sinnvoll sein, wenn Mitarbeiter möglichst schnell eine Fähigkeit erlernen sollen.
 % Wenn angenommen wird, dass Mitarbeiter, die bereits Fähigkeiten besitzen, welche Ähnlichkeiten zu der gefragten Fähigkeit aufweisen, schneller die gefragte Fähigkeit erlernen als Mitarbeiter, die diese Fähigkeiten nicht oder weniger gut beherrschen.
-So kann es sinnvoll sein der Mitarbeiterin Erika M. die Fähigkeit MySQL für eine Schulung vorzuschlagen, da aufgrund ihrer Vorkenntnisse in MongoDB angenommen werden kann, dass sie sich MySQL im Verhältnis zu anderen unbekannten Fähigkeiten (z.B. Python) schnell aneignen kann.
+So kann es sinnvoll sein, der Mitarbeiterin Erika M. die Fähigkeit MySQL für eine Schulung vorzuschlagen, da aufgrund ihrer Vorkenntnisse in MongoDB angenommen werden kann, dass sie sich MySQL im Verhältnis zu anderen unbekannten Fähigkeiten (z.B. Python) schnell aneignen kann.
 
 \section{Präferenzen in Empfehlungssystemen}
 \label{ch:empfehlungssysteme:preferences}
-Im Zusammenhang mit Empfehlungssystemen fällt häufig der Begriff der Präferenzen (engl.: preferences) \cite[S. 2]{ricci:inbook}\cite[S. 11f.]{recommenderSystems:2016}.
+Im Zusammenhang mit Empfehlungssystemen fällt häufig der Begriff der Präferenzen (engl.: preferences) \cite[S. 2]{ricci:inbook}\cite[S. 11f.]{recommenderSystems:2016}\cite[S. 87]{ekstrand:article}.
 % Brauch man hier überhaupt ein zitat, wenn ich die Annahme selber aufstelle?
 In diesem Kapitel werden Präferenzen allgemein erläutert und in dem Kontext von Empfehlungssystemen inhaltlich abgegrenzt.
 
 Nach dem Verständnis der Bundeszentrale für politische Bildung können Präferenzen grundsätzlich als Vorlieben und Verhaltensweisen von Personen verstanden werden, "[...], die bewirken, dass Güter unterscheidbar werden."\cite{pollert:book}
-Ein einfaches Beispiel der Präferenzen von Personen stellt die Vorliebe von Schülern für bestimmte Fächer in der Schule dar.
-Hierbei sind Schüler die Personen, die Präferenzen besitzen und Güter die verschiedenen Fächer, die Schüler besuchen müssen.
-Basierend auf verschiedenen Gründen können Schüler bestimmte Fächer präferieren.
-Das heißt, dass sie einige Fächer gegenüber Anderen bevorzugen können.
-
+% Ein einfaches Beispiel der Präferenzen von Personen stellt die Vorliebe von Schülern für bestimmte Fächer in der Schule dar.
+% Hierbei sind Schüler die Personen, die Präferenzen besitzen und Güter die verschiedenen Fächer, die Schüler besuchen müssen.
+% Basierend auf verschiedenen Gründen können Schüler bestimmte Fächer präferieren.
+% Das heißt, dass sie einige Fächer gegenüber Anderen bevorzugen können.
 Wenn Präferenzen in dem Kontext von Empfehlungssystemen aufkommen, wird sich in der Regel auf die Vorlieben und Verhaltensweisen der Nutzer des Systems bezogen.
 Beispielsweise kann unter der Präferenz eines Nutzers in einem Online-Shop die Bevorzugung eines Produktes gegenüber eines Anderen Verstanden werden.
 
 Ein Verständnis der Präferenzen von Nutzern eines Systems kann für die erfolgreiche Ermittlung von Empfehlungen von großer Bedeutung sein. % \cite[S. 1]{jawaheer:article}
-In der Literatur wird unter Präferenzen eines Nutzers zumeist dessen explizite und / oder implizite Bewertung von Elementen verstanden \cite[S. 37]{berkovsky:2:article}\cite[S. 743]{adomavicius:inproceedings}\cite[S. 11]{recommenderSystems:2016}\cite[S. 129]{ekstrand:article}.\footnote{Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}.}
+In der Literatur wird unter Präferenzen eines Nutzers zumeist dessen explizite und / oder implizite Bewertung von Elementen verstanden \cite[S. 37]{berkovsky:2:article}\cite[S. 743]{adomavicius:inproceedings}\cite[S. 11]{recommenderSystems:2016}\cite[S. 129]{ekstrand:article}\cite[S. 899]{adomavicius:article}.\footnote{Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}.}
+Die Präferenz eines Nutzers $c$ für ein Element $s$ kann daher als das (angenommene) Rating $R(c,s)$ verstanden werden.
 Die Präferenzen von Nutzern sind jedoch keinesfalls trivial.
 Dies hängt unter anderem damit zusammen, dass einer expliziten Bewertung (z.B. einer Gefällt-mir-Angabe in Facebook) durch einen Nutzer aus der Sicht eines Nutzers ein unterschiedlicher Wert zukommen kann als aus Sicht des Systems.
 Darüber hinaus kann auch die Bewertungsskala eines Elements Einfluss auf die Genauigkeit von Präferenzen haben.
 So kann eine fehlende Gefällt-mir-Angabe für ein Element durch einen Nutzer in Facebook nicht zwangsläufig als Abneigung für das Element verstanden werden \cite[S. 11]{recommenderSystems:2016}.
 
-Anhand von Präferenzen ist es möglich Empfehlungen für Nutzer eines Empfehlungssystems zu personalisieren.
-In Abhängigkeit des Grads der Personalisierung können Empfehlungen personalisierten bzw. nicht-personalisierten Empfehlungen zugeordnet werden (in Anlehnung an \cite[S. 400]{unternährer:article}).
+Anhand von Präferenzen ist es möglich, Empfehlungen für Nutzer eines Empfehlungssystems zu personalisieren.
+In Abhängigkeit des Grads der Personalisierung können Empfehlungen personalisierten bzw. nicht-personali\-sierten Empfehlungen zugeordnet werden (in Anlehnung an \cite[S. 400]{unternährer:article}).
 
 \subsection{Personalisierte und Nicht-Personalisierte Empfehlungen}
-Unter nicht-personalisierten Empfehlungen versteht \textcite[S. 400]{unternährer:article} Empfehlungen, die allen Nutzern die gleichen Elemente anzeigen.
+Unter nicht-personalisierten Empfehlungen versteht \textcite[S. 400]{unternährer:article} Empfehlungen, die für alle Nutzer eines Systems gleich sind.
 Das bedeutet, alle Nutzer eines Empfehlungssystems bekommen, unabhängig von deren Präferenzen oder Nutzerprofil, dieselben Elemente vorgeschlagen (z.B. "Top 10 Lieder aller Zeiten").
 
 Für die Ermittlung nicht-personalisierter Empfehlungen können Popularitätsmetriken herangezogen werden.
 Dies folgt der Annahme, dass Popularität einen guten Prädiktor der Präferenzen aller Nutzer eines Systems darstellt \cite[S. 406]{unternährer:article}.
-Popularitätsmetriken stellen sortierte Listen dar, über die Elemente in ordinale Relationen gesetzt werden können (e.g. Element A ist "besser" als Element B, da es einen höheren Rang aufweist) \cite[S. 404ff.]{unternährer:article}.
-Die Listen werden basierend auf "aggregierten Präferenzen" aller Nutzer eines Systems generiert.
+Popularitätsmetriken stellen sortierte Listen dar, über die Elemente in ordinale Relationen gesetzt werden können (z.B. Element A ist höher sortiert als Element B, da es einen höheren Rang aufweist) \cite[S. 404ff.]{unternährer:article}.
+Die Listen werden basierend auf den "aggregierten Präferenzen" aller Nutzer eines Systems generiert \cite[S. 404]{unternährer:article}.
 Hierfür muss im Vorfeld bestimmt werden, welcher Indikator für die Bestimmung der Popularität in einem System geeignet ist (z.B. die Anzahl an Klicks oder Gefällt-mir-Angaben) \cite[S. 406]{unternährer:article}.
 
 Nicht-personalisierte Empfehlungen müssen nicht allein auf absoluter Popularität beruhen.
-Nach \textcite[S. 405]{unternährer:article} ermöglichen zeitlich, räumliche und soziale Popularität, absolute Popularität zu begrenzen.
+Nach \textcite[S. 405]{unternährer:article} ermöglichen zeitliche, räumliche und soziale Popularität, absolute Popularität zu begrenzen.
 So können Nachrichten-Plattformen beispielsweise gezielt die populärsten Artikel des Tages (zeitliche Popularität) auf ihrer Startseite anzeigen, anstelle der populärsten Artikel aller Zeiten (absolute Popularität).
 Unter der Annahme, dass die Relevanz der Beiträge mit deren Aktualität zusammenhängt, kann durch Verwendung von zeitlicher Popularität für die Ermittlung von Empfehlungen die Relevanz von Beiträgen auf der Startseite erhöht werden \cite[S. 405]{unternährer:article}.
 % Fragwürdig, ob das nicht auch schon eine art der personalisierung ist? Es ist anzunehmen, dass nicht-personalisiert einfach bedeutet, dass nicht die präfeenzen eines nutzers speziell verwendet werden, um gezielt empfehlungen zu schalten, sondern eben allgemein
 
 Der maßgebende Unterschied zu personalisierten Empfehlungen besteht darin, dass das Erstellen von nicht-personalisierten Empfehlungen für einen Nutzer nicht auf dessen individuellen Präferenzen beruht.
 Empfehlungen können somit völlig unabhängig davon erstellt werden, ob ein Nutzer eines Empfehlungssystems bereits eine Interaktion mit einem System aufweist oder nicht.
-Dies ermöglicht Systemen auch Empfehlungen für Nutzer zu erstelllen, für die beispielsweise keine Präferenzen bekannt sind.\footnote{Das Problem ist in der Literatur als das Kaltstart-Problem bekannt \cite[S. 407]{unternährer:article}.}
+Dies ermöglicht Systemen auch Empfehlungen für Nutzer zu erstelllen, für die keine Präferenzen bekannt sind.\footnote{Das Problem ist in der Literatur als das Kaltstart-Problem bekannt \cite[S. 407]{unternährer:article}.}
 Ausschlaggebend ist lediglich, dass Informationen vorliegen, die es ermöglichen die Popularität von Elementen zu ermitteln.
 So kann beispielsweise kein populärster Artikel des Tages einer Nachrichten-Plattform basierend auf der Popularität ermittelt werden, wenn überhaupt keine Interaktionen mit Artikeln des Systems vorliegen.
 
 Im Gegensatz zu nicht-personalisierten Empfehlungen stellen personalisierte Empfehlungen Vorschläge dar, die basierend auf individuellen Präferenzen von Nutzern erstellt werden (bspw. über explizite oder implizite Bewertungen).
-Der Grad der Personalisierung ermöglicht eine weitere Unterteilung der personalisierten Empfehlungen in schwach-personalisierte Empfehlungen und stark-personalisierte Empfehlungen.
+Der Grad der Personalisierung ermöglicht eine weitere Unterteilung der personalisierten Empfehlungen in schwach- und stark-personalisierte Empfehlungen.
 Unter schwacher Pesonalisierung versteht \textcite[S. 407]{unternährer:article} stereotypisierende Empfehlungen, die Nutzer, basierend auf deren Attributen (z.B. Wohnort, Alter, Geschlecht), bestimmten Kategorien zuordnen.
 Prinzipiell ähneln schwach-personalisierte Empfehlungen den nicht-personalisierten Empfehlungen, da sie auch basierend auf Popularitätsmetriken erstellt werden.
 Der Unterschied besteht darin, dass die Popularität von Elementen innerhalb einer Kategorie ermittelt wird.
@@ -413,8 +424,8 @@ Dem liegt die Annahme zugrunde, dass die Einschätzung der eigenen Fähigkeiten 
 Folglich kann ein Mitarbeiter für eine Fähigkeit mehrere Bewertungen aufweisen.
 
 Ein Eintrag $R_{CA}(c_{i},s_{j},q_{t}) = r_{ijt}$ der Matrix stellt die Bewertung $r_{ijt}$ einer Fähigkeit $s_{j}$ durch einen Mitarbeiter $c_{i}$ innerhalb eines Teams $q_{t}$ dar \cite[S. 198]{adomavicius:3:inbook}.
-Ein Nutzermodell repräsentiert eine Sammlung aller Bewertungen von Fähigkeiten durch einen Mitarbeiter in Abhängigkeit der Teamzugehörigkeit.
-Das Nutzermodell $UM$ des Mitarbeiters John D. ist in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:3} beispielhaft dargestellt.
+Folglich repräsentiert ein Nutzermodell eine Sammlung aller Bewertungen von Fähigkeiten durch einen Mitarbeiter in Abhängigkeit der Teamzugehörigkeit.
+Ein Beispiel eines Nutzermodells $UM$ unter Berücksichtigung des Kontextes ist anhand des Mitarbeiters John D. in Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:3} dargestellt.
 % Die angegebenen Bewertungen sind willkürlich gewählt.
 % Hier was anderes als Teamzugehörigkeit finden! das macht in dem kontext keinen sinn
 
@@ -431,68 +442,73 @@ Zu klassischen Inhalten von Empfehlungen zählt \textcite[S. 2429]{palomares:inp
 Empfehlungssysteme, in denen Personen die Inhalte von Empfehlungen bilden und diese Empfehlungen reziprok sind, werden in der Literatur als wechselseitige Empfehlungssysteme (engl.: \ac{RRS}) bezeichnet \cite[S. 35]{li:inproceedings}\cite[S. 2199]{akehurst:inproceedings}\cite[S. 207]{pizzato:2010}.
 Reziprok bedeutet, dass für eine erfolgreiche Empfehlung sowohl die Präferenzen des Empfängers einer Empfehlung, als auch die Präferenzen der empfohlenen Person berücksichtigt werden \cite[S. 447]{pizzato:2013}\cite[S. 22]{kleinerman:inproceedings}.
 Bekannte Domänen für den Einsatz wechselseitiger Empfehlungssysteme sind Online-Dating und (semi-)automatisiertes Recruiting.
-Nachfolgend wird das Konzept der RRS und dessen zugrundeliegende Problemstellung erläutert.
+Nachfolgend wird das Konzept der \ac{RRS} und dessen zugrundeliegende Problemstellung erläutert.
 
 \subsection{People-to-People-Empfehlung}% oder umbenennen in Allgemeines Konzept
 \label{ch:empfehlungssysteme:rrs:people_to_people}
-Ein grundlegender Unterschied zwischen klassischen Empfehlungssystemen und RRS liegt in der Art der Empfehlung.
+Ein grundlegender Unterschied zwischen klassischen Empfehlungssystemen und \ac{RRS} liegt in der Art der Empfehlung.
 Diese können in \ac{I2P}- und \ac{P2P}-Empfehlungen unterschieden werden \cite[S. 62f.]{kim:inproceedings}.
 
-In der Literatur wird unter traditioneller I2P-Empfehlung die Empfehlung klassischer Inhalte (z.B. Bücher, Filme, Hotels) verstanden \cite[S. 2199]{akehurst:inproceedings}\cite[S. 2429]{palomares:inproceedings}.
-In I2P-Empfehlungen ist der Erfolg einer Empfehlung durch die Akzeptanz des Empfehlungsempfängers (d.h. des Nutzers) gekennzeichnet \cite[S. 131]{kleinerman:2:inproceedings}\cite[S. 546]{koprinska:inbook}.
-Für personalisierte I2P-Empfehlungen verwenden Empfehlungssysteme Wissen über die Präferenzen der Nutzer, um ihnen potenziell interessante Elemente zu empfehlen \cite[S. 403]{terveen:article}.
+In der Literatur wird unter traditioneller \ac{I2P}-Empfehlung die Empfehlung klassischer Inhalte (z.B. Bücher, Filme, Hotels) verstanden \cite[S. 2199]{akehurst:inproceedings}\cite[S. 2429]{palomares:inproceedings}.
+In \ac{I2P}-Empfehlungen ist der Erfolg einer Empfehlung durch die Akzeptanz des Empfehlungsempfängers (d.h. des Nutzers) gekennzeichnet \cite[S. 131]{kleinerman:2:inproceedings}\cite[S. 546]{koprinska:inbook}.
+Für personalisierte \ac{I2P}-Empfehlungen verwenden Empfehlungssysteme Wissen über die Präferenzen der Nutzer, um ihnen potenziell interessante Elemente zu empfehlen \cite[S. 403]{terveen:article}.
 
 % Ein grundlegendes Problem, welches dieser Art der Empfehlung löst, ist das Problem der Informationsüberlastung \cite[S. 403]{terveen:article}.
 % Indem Empfehlungssysteme Nutzern aus einem Überangebot an (unbekannten) Elementen potenziell nützliche Elemente vorschlagen, können sie Nutzer bei der Entscheidungsfindung unterstützen.
 
-Im Vergleich zu traditionellen Empfehlungssystemen basieren RRS auf P2P-Empfehlungen.
-Unter P2P-Empfehlung (auch: social matching \cite[S. 208]{pizzato:2010}) wird die Empfehlung von Personen an Nutzer eines Empfehlungssystems verstanden.
-Im Gegensatz zu I2P-Empfehlungen, handelt es sich bei den empfohlenen Elementen nicht um leblose Objekte, sondern um Menschen, die anderen Menschen empfohlen werden \cite[S. 2]{kazienko:inbook}.
-Das bedeutet, dass die empfohlenen Elemente Präferenzen besitzen und auch positiv oder negativ reagieren können \cite[S. 2]{kazienko:inbook}.
+Im Vergleich zu traditionellen Empfehlungssystemen basieren \ac{RRS} auf \ac{P2P}-Empfehlungen \cite[S. 207]{pizzato:2010}.
+Unter \ac{P2P}-Empfehlung (auch: social matching \cite[S. 208]{pizzato:2010}) wird die Empfehlung von Personen an Nutzer eines Empfehlungssystems verstanden.
+Im Gegensatz zu \ac{I2P}-Empfehlungen, handelt es sich bei den empfohlenen Elementen nicht um leblose Objekte, sondern um Menschen, die anderen Menschen empfohlen werden \cite[S. 2]{kazienko:inbook}.
+Das bedeutet, dass auch die empfohlenen Elemente Präferenzen besitzen und auch positiv oder negativ reagieren können \cite[S. 2]{kazienko:inbook}.
 Dies ist ein besonderer Aspekt, den es zu beachten gilt, da dadurch die Qualität der Empfehlungen beeinflusst werden kann \cite[S. 208]{pizzato:2010}\cite[S. 2199]{akehurst:inproceedings}.
+
+Ein Großteil der \ac{P2P}-Empfehlungen beruhen auf dem Aspekt der Reziprozität (engl.: reciprocity) \cite[S. 545]{koprinska:inbook}.
+Jedoch ist nicht jede \ac{P2P}-Empfehlung unmittelbar reziprok.
+Empfehlungen können auch \ac{P2P}-Empfehlungen sein und lediglich die Präferenzen des Nutzers berücksichtigen \cite[S. 2429]{palomares:inproceedings}.
+Ein Beispiel stellen \ac{P2P}-Empfehlungen des sozialen Netzwerks Twitter dar \cite[S. 2429]{palomares:inproceedings}.
+Der Vorschlag einer anderen Person zu folgen beruht dabei lediglich auf den Präferenzen des Empfängers des Vorschlags.
 
 \subsection{Abgrenzung traditioneller Empfehlungssysteme}
 \label{ch:empfehlungssysteme:rrs:traditional_vs_rrs}
-Bei Empfehlungen in RRS handelt es sich um reziproke P2P-Empfehlungen \cite[S. 207]{pizzato:2010}.
-Das heißt, der Erfolg einer Empfehlung in RRS hängt von der Berücksichtigung der bilateralen Präferenzen ab, nicht, wie in traditionellen Systemen, lediglich von den Präferenzen der Nutzer \cite[S. 1468]{yildirim:article}.
+Bei Empfehlungen in \ac{RRS} handelt es sich um reziproke \ac{P2P}-Empfehlungen \cite[S. 207]{pizzato:2010}.
+Das heißt, der Erfolg einer Empfehlung in \ac{RRS} hängt von der Berücksichtigung der bilateralen Präferenzen ab, nicht, wie in traditionellen Systemen, lediglich von den Präferenzen der Nutzer \cite[S. 1468]{yildirim:article}.
 So reicht es beispielsweise in einem Recruiting-System nicht aus, lediglich die Präferenzen eines Akteurs (bspw. dem Recruiter) zu berücksichtigen.
 Damit dem Recruiter auch Personen vorgeschlagen werden, die ein potenzielles Angebot annehmen würden, müssen die Präferenzen der Stellensuchenden ebenfalls in Betracht gezogen werden.
 Andernfalls besteht die Gefahr, dass einem Recruiter Stellensuchende vorgeschlagen werden, die aufgrund ihrer Präferenzen ein Angebot des Recruiters ablehnen.
 
-Ein Großteil der P2P-Empfehlungen beruhen auf dem Aspekt der Reziprozität (engl.: reciprocity) \cite[S. 545]{koprinska:inbook}.
-Jedoch ist nicht jede P2P-Empfehlung unmittelbar reziprok.
-Empfehlungen können auch P2P-Empfehlungen sein und lediglich die Präferenzen des Nutzers berücksichtigen \cite[S. 2429]{palomares:inproceedings}.
-Ein Beispiel stellen P2P-Empfehlungen des sozialen Netzwerks Twitter dar \cite[S. 2429]{palomares:inproceedings}.
-Der Vorschlag einer anderen Person zu folgen beruht dabei lediglich auf den Präferenzen des Empfängers des Vorschlags.
+Neben dem Aspekt der Reziprozität besitzen \ac{RRS} zusätzliche Eigenschaften, welche diese im Vergleich zu traditionellen Empfehlungssystemen inhärent komplex machen\cite[S. 2429]{palomares:inproceedings}\cite[S. 35]{li:inproceedings}\cite[S. 207]{pizzato:2010}.
+Die wichtigsten Unterschiede zwischen \ac{RRS} und traditionellen \ac{RS} sind in Tabelle \ref{tab2} zusammengefasst \cite[S. 546]{koprinska:inbook}.
 
-Neben dem Aspekt der Reziprozität besitzen RRS zusätzliche Eigenschaften, welche diese im Vergleich zu traditionellen Empfehlungssystemen inhärent komplex machen\cite[S. 2429]{palomares:inproceedings}\cite[S. 35]{li:inproceedings}\cite[S. 207]{pizzato:2010}.
-Die wichtigsten Unterschiede zwischen RRS und traditionellen RS sind in Tabelle \ref{tab2} zusammengefasst \cite[S. 546]{koprinska:inbook}.
-
-In RRS ist es von Bedeutung die Passivität von Personen zu berücksichtigen \cite[S. 35]{li:inproceedings}.
-Dazu gehört hauptsächlich, reaktive Personen in Empfehlungen einzubeziehen, die nicht aktiv den Kontakt zu anderen Personen suchen \cite[S. 459]{pizzato:2013}.
+Im Vergleich zu traditionellen Empfehlungssystemen ist die Berücksichtigung der Passivität von Nutzern in einigen \ac{RRS} von großer Bedeutung \cite[S. 35]{li:inproceedings}.
+Dies betrifft \ac{RRS}, in denen Nutzer eines Systems sowohl Empfänger von Empfehlungen, als auch empfohlene Elemente desselbigen Systems darstellen (z.B. im Online-Dating).
+Zu der Berücksichtigung der Passivität zählt hauptsächlich, reaktive Nutzer in Empfehlungen einzubeziehen, die nicht aktiv den Kontakt zu anderen Nutzern suchen \cite[S. 459]{pizzato:2013}.
+Reaktive Nutzer tendieren dazu auf den Kontakt von anderen Nutzern zu warten und nicht selbstständig Kontakte zu suchen \cite[S. 455]{pizzato:2013}.
+In \ac{RRS} stellen sie daher hauptsächlich empfohlene Elemente dar, anstatt die Empfänger von Empfehlungen.
+Werden reaktive Elemente nicht in Empfehlungen eines Systems inkludiert, besteht die Gefahr, dass diese nie mit anderen Nutzern Kontakte eingehen und langfristig das System verlassen \cite[S. 35]{li:inproceedings}.
 Im Vergleich dazu können traditionelle Empfehlungssysteme durchaus über inaktive Elemente verfügen, das heißt Elemente, die in keinen Empfehlungen vorkommen \cite[S. 208]{pizzato:2010}.
 
 Nutzer traditioneller Empfehlungssysteme haben in der Regel wenig Anreiz ihre Nutzerprofile zu pflegen \cite[S. 546]{koprinska:inbook}.
 Explizite Angaben sind daher meist rar.
 Währenddessen verwenden Nutzer traditioneller Systeme diese meist über einen längeren Zeitraum, weshalb der Anteil impliziter Präferenzen verhältnismäßig groß ist \cite[S. 208]{pizzato:2010}.
-In RRS ist das Pflegen eines Nutzerprofils mit Präferenzen und persönlichen Daten meist fester Bestandteil.
-Daher sind Nutzer in RRS eher gewillt Angaben zu machen \cite[S. 208]{pizzato:2010}.
+In \ac{RRS} ist das Pflegen eines Nutzerprofils mit Präferenzen und persönlichen Daten meist fester Bestandteil.
+% Nutzern ist bekannt, dass die Nutzerprofile Einfluss auf die generierten Empfehlungen des Systems haben .
+Daher sind Nutzer in \ac{RRS} eher gewillt Angaben zu machen \cite[S. 208]{pizzato:2010}.
 Es gilt jedoch zu beachten, dass die angegebenen Präferenzen nicht zwangsläufig der Realität entsprechen \cite[S. 457]{pizzato:2013}.
 Dies kann unter anderem daran liegen, dass Nutzer diese selbst falsch einschätzen \cite[S. 457]{pizzato:2013}.
 
 In wechselseitigen Empfehlungssystemen sind Empfehlungen für Nutzer endlich.
 Das bedeutet, dass ein Element nicht unbegrenzt Nutzern eines Systems vorgeschlagen werden kann.
-Beispielsweise kann ein Nutzer einer Online-Dating-Plattform nicht zeitgleich fünfzig verschiedene Personen daten \cite[S. 35]{li:inproceedings}.
+So ist es unwahrscheinlich, dass ein Nutzer einer Online-Dating-Plattform zeitgleich fünfzig verschiedene Personen kennenlernt \cite[S. 35]{li:inproceedings}.
 Im Vergleich dazu sind Elemente in traditionellen Empfehlungssystemen für Empfehlungen an unterschiedliche Nutzer nicht begrenzt \cite[S. 1468]{yildirim:article}.
 Das bedeutet, ein Element kann zeitgleich jedem Nutzer eines Systems vorgeschlagen werden.
 Diese Eigenschaft wird als Endlichkeit bezeichnet \cite[S. 35]{li:inproceedings}.
-% Weiterer unterschied: RRS unterstützen keine n-to-n connections % S. 423, https://link.springer.com/content/pdf/10.1007/978-1-0716-2197-4.pdf
+% Weiterer unterschied: \ac{RRS} unterstützen keine n-to-n connections % S. 423, https://link.springer.com/content/pdf/10.1007/978-1-0716-2197-4.pdf
 
 \begin{table}[htbp]
     \begin{center}
         \begin{tabular}{|p{0.2\textwidth}||p{0.35\textwidth}|p{0.35\textwidth}|}
             \hline
-             & {\textbf{Traditionelle RS}} & {\textbf{Reciprocal RS}} \\
+             & {\textbf{Traditionelle \ac{RS}}} & {\textbf{Wechselseitige \ac{RS}}} \\
             \hline
             \hline
             Reziprozität & Erfolg einer Empfehlung ist durch den Empfänger bestimmt. &  Erfolg einer Empfehlung ist sowohl durch den Empfänger als auch der empfohlenen Person bestimmt. \\
@@ -505,22 +521,22 @@ Diese Eigenschaft wird als Endlichkeit bezeichnet \cite[S. 35]{li:inproceedings}
             \hline
     \end{tabular}
     \end{center}
-    \caption[Grundlegende Unterschiede von RS und RRS]{Grundlegende Unterschiede von RS und RRS \\
+    \caption[Grundlegende Unterschiede von \ac{RS} und \ac{RRS}]{Grundlegende Unterschiede von \ac{RS} und \ac{RRS} \\
 	(Eigene Darstellung in Anlehnung an \cite[S. 546]{koprinska:inbook} und \cite[S. 35f.]{li:inproceedings})}
 	\label{tab2}
 \end{table}
 
 \subsection{Problemstellung}
-Nach \textcite[S. 35]{li:inproceedings} stellt das Zufriedenstellen der Bedürfnisse beider Akteure, das heißt von sowohl Empfänger einer Empfehlung als auch empfohlener Person, die größte Herausforderung wechselseitiger RS dar.
-Das Problem ist nachfolgend in Abbildung \ref{fig:empfehlungssysteme:rrs:abb1} veranschaulicht.\footnote{Es gilt zu beachten, dass in RRS die Elemente von Empfehlungen (empfohlene Personen) gleichzeitig auch Nutzer desselbigen Systems darstellen können.}
+Nach \textcite[S. 35]{li:inproceedings} stellt das Zufriedenstellen der Bedürfnisse beider Akteure, das heißt von sowohl Empfänger einer Empfehlung als auch empfohlener Person, die größte Herausforderung wechselseitiger \ac{RS} dar.
+Das Problem ist nachfolgend in Abbildung \ref{fig:empfehlungssysteme:rrs:abb1} veranschaulicht.\footnote{Es gilt zu beachten, dass in \ac{RRS} die Elemente von Empfehlungen (empfohlene Personen) gleichzeitig auch Nutzer desselbigen Systems darstellen können.}
 Hierfür wurde die vereinfachte Darstellung des Empfehlungssystems aus Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} aufgegriffen.
 
-Auf der linken Seite der Abbildung sind die Komponenten eines traditionellen Empfehlungssystems dargestellt.
+Auf der linken Seite ist ein traditionelles Empfehlungssystem dargestellt.
 Elemente, die die Bedürfnisse des Nutzers $X$ erfüllen, sind durch einen empfangenden roten Pfeil gekennzeichnet.
 Fehlende Verbindungen zwischen Elementen und dem Nutzer $X$ bedeuten, dass ein Element die Bedürfnisse des Nutzers $X$ nicht erfüllt.
 Soll dem Nutzer $X$ das Element empfohlen werden, welches seine Bedürfnisse am stärksten erfüllt, würde nach Abbildung \ref{fig:empfehlungssysteme:rrs:abb1} eindeutig Element $C$ ausgewählt werden.
 
-Auf der rechten Seite von Abbildung \ref{fig:empfehlungssysteme:rrs:abb1} sind die Komponenten eines wechselseitigen Empfehlungssystems vereinfacht dargestellt.
+Auf der rechten Seite von Abbildung \ref{fig:empfehlungssysteme:rrs:abb1} ist ein wechselseitiges Empfehlungssystem vereinfacht dargestellt.
 Zusätzlich zu den präferierten Elementen des Nutzers $X$ sind in der Darstellung auch die Präferenzen der empfohlenen Personen abgebildet.
 Daraus wird ersichtlich, dass Person $C$ die Bedürfnisse des Nutzers $X$ erfüllt, aber eine Empfehlung von Person $C$ für Nutzer $X$ nicht die Bedürfnisse von Person $C$ erfüllen würde.
 Eine Empfehlung von Person $A$ würde die Bedürfnisse von Person $A$ erfüllen, dann jedoch die Bedürfnisse des Nutzers $X$ unerfüllt lassen.
@@ -547,7 +563,7 @@ Eine optimale Paarung definieren \textcite[S. 36]{li:inproceedings} wie folgt:
 Für reziproke Empfehlungen wird meist kein hartes Match zwischen Nutzer und Element gesucht, sondern eine sortierte Liste an potenziellen Partnern für einen Nutzer \cite[S. 67]{diaz:inproceedings}.
 Das heißt, das Ziel der Empfehlungserstellung an einen Nutzer $c$ besteht darin dem Nutzer eine Liste $L_{s} \subset S$ an Personen $s$ zu empfehlen, sodass die Präferenzen $F_{s}^{p}$ und $F_{c}^{p}$ erfüllt sind \cite[S. 36]{li:inproceedings}.
 
-Nach \textcite[S. 36]{li:inproceedings} ist das Bestimmen einer optimalen Paarung in RRS erschwert, da neben der Reziprozität auch Eigenschaften wie die Verfügbarkeit von Elementen (Endlichkeit) berücksichtigt werden müssen.
+Nach \textcite[S. 36]{li:inproceedings} ist das Bestimmen einer optimalen Paarung in \ac{RRS} erschwert, da neben der Reziprozität auch Eigenschaften wie die Verfügbarkeit von Elementen (Endlichkeit) berücksichtigt werden müssen.
 So kann es sein, dass eine Person anhand ihrer Präferenzen optimal zu einem Nutzer passt, die empfohlene Person aber in einem gegebenen Zeitraum nicht verfügbar ist.
 Um dies bei der Bestimmung von Paaren zu berücksichtigen, unterscheiden \textcite[S. 37]{li:inproceedings} daher zusätzlich zwischen optimalem und erfolgreichem Match von Nutzern und Elementen.
 Eine erfolgreiche Paarung definieren \textcite[S. 37]{li:inproceedings} wie folgt:
@@ -557,7 +573,9 @@ Eine erfolgreiche Paarung definieren \textcite[S. 37]{li:inproceedings} wie folg
 \end{definition}
 
 Demnach kann eine Paarung auch dann erfolgreich sein, wenn Beschreibungen von Nutzern bzw. Elementen die Präferenzen des Partners nur teilweise erfüllen \cite[S. 37]{li:inproceedings}.
-Dafür wird die Verfügbarkeit von Personen berücksichtigt.
+Dafür können andere Aspekte, wie die Verfügbarkeit von Personen, in einer erfolgreichen Paarung berücksichtigt werden.
 % nochmal hier schauen, eher genau so formulieren, wie es dort steht: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/MEET%20-%20A%20Generalized%20Framework.pdf
+
+% Relevanz?
 
 \shorthandon{"}
