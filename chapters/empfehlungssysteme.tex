@@ -8,12 +8,15 @@
 
 \section{Einführung}
 \label{ch:empfehlungssysteme:einführung}
-Nach \textcite[S. 4]{ricci:inbook} können Empfehlungssysteme (engl.: \ac{RS}) allgemein als Techniken und Werkzeuge verstanden werden, die einem Nutzer oder einer Gruppe an Nutzern eines Systems, aus einer Menge möglicher Entitäten, potenziell nützliche Elemente vorschlagen.
+Ganz grundsätzlich können Empfehlungssysteme (engl.: \ac{RS}) als Techniken und Werkzeuge \cite[S. 4]{ricci:inbook}\cite[S. 1]{yadav:inproceedings} verstanden werden, die einem Nutzer oder einer Gruppe an Nutzern eines Systems, aus einer Menge möglicher Entitäten, potenziell nützliche Elemente vorschlagen.
+% Nach \textcite[S. 4]{ricci:inbook} können Empfehlungssysteme (engl.: \ac{RS}) allgemein als Techniken und Werkzeuge verstanden werden, die einem Nutzer oder einer Gruppe an Nutzern eines Systems, aus einer Menge möglicher Entitäten, potenziell nützliche Elemente vorschlagen.
 % Allgemein können Empfehlungssysteme (engl.: \ac{RS}) als Techniken und Werkzeuge verstanden werden, die einem Nutzer oder einer Gruppe an Nutzern eines Systems, aus einer Menge möglicher Entitäten, potenziell nützliche Elemente vorschlagen \cite[S. 4]{ricci:inbook}\cite[S. 1]{klahold:book}.
 % Im einfachsten Sinne können Empfehlungssysteme (engl.: \ac{RS}) als Techniken und Werkzeuge verstanden werden, die Nutzern eines Systems aus einer Menge an Elementen potenziell nützliche Elemente vorschlagen \cite[S. 10]{ricci:inbook}.
 % Etwas feingranularer definiert \textcite[S. 1]{klahold:book} Empfehlungssysteme als Systeme, die einem Nutzer oder einer Gruppe an Nutzern in einem gegebenen Kontext aus einer Menge möglicher Entitäten eine Teilmenge "nützlicher" Elemente empfehlen.
-Aus der Definition von \textcite[S. 4]{ricci:inbook} lassen sich grundlegende Komponenten, die für das Erstellen von Empfehlungen in Empfehlungssystemen von Bedeutung sind, abgrenzen.
-Für ein fundiertes Verständnis sind die einzelnen Komponenten und deren Zusammenspiel in Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} dargestellt.
+% Aus der Definition von \textcite[S. 4]{ricci:inbook} lassen sich grundlegende Komponenten, die für das Erstellen von Empfehlungen in Empfehlungssystemen von Bedeutung sind, abgrenzen.
+Aus diesem Verständnis lassen sich grundlegende Komponenten, die für das Erstellen von Empfehlungen in Empfehlungssystemen von Bedeutung sind, abgrenzen.
+Deren Zusammenspiel ist in Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} dargestellt.
+% Für ein fundiertes Verständnis sind die einzelnen Komponenten und deren Zusammenspiel in Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} dargestellt.
 
 \begin{figure}[H]
     \centering
@@ -23,8 +26,6 @@ Für ein fundiertes Verständnis sind die einzelnen Komponenten und deren Zusamm
 	\label{fig:empfehlungssysteme:einführung:abb1}
 \end{figure}
 
-% Klärungsbedarf: Nutzer bewusst immer als nutzer bezeichenn, damit klar sit was gemeint ist, das ist sehr häufig in der literatur so
-% Hier fragen, ob bildbeschreibung sinn macht. ich will allgemeine übersicht abbilden, nutzer und elemente können ja auch lediglich inputs darstellen und nicht komponenten DES empfehlungssystems
 Wie aus Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} hervorgeht, stehen sich bei Empfehlungssystemen grundsätzlich zwei Komponenten gegenüber.
 Auf der einen Seite stehen Empfänger von Vorschlägen, welche in Empfehlungssystemen als Nutzer bezeichnet werden \cite[S. 8]{ricci:inbook}.
 Dem entgegen stehen Entitäten, die den Anwendern eines Systems empfohlen werden können.
@@ -33,7 +34,6 @@ Dabei kann es sich bei Elementen sowohl um Gegenstände wie CDs, Bücher und Hot
 % Unter dem Kontext einer Empfehlung versteht \textcite[S. 1]{klahold:book} das Zusammenspiel aus der Situation, in der eine Empfehlung gegeben wird, dem Profil eines Nutzers sowie der Menge möglicher Entitäten zum Zeitpunkt einer Empfehlung.
 % Unter dem Kontext einer Empfehlung verstehen \textcite[S. 191]{adomavicius:3:inbook} zusätzliche Parameter wie Uhrzeit, Ort oder die Gegenwart anderer Personen zum Zeitpunkt einer Empfehlung.\footnote{\textcite[S. 1]{klahold:book} versteht unter dem Kontext das Zusammenspiel aus der Situation, in der eine Empfehlung gegeben wird, dem Profil eines Nutzers sowie der Menge möglicher Entitäten zum Zeitpunkt einer Empfehlung. Es wird angenommen, dass der Kontext nach dem Verständnis von \textcite{ricci:book} gleichzusetzen ist mit der Situation nach dem Verstängnis von \textcite{klahold:book} und die Berücksichtigung von Nutzerprofil und Elementen nach dem Verständnis von \textcite{ricci:book} implizit stattfindet.}
 
-% Hier Johannes fragen, ob das verständlicher ist
 Nutzer und Elemente können in Empfehlungssystemen miteinander in Beziehung stehen.
 Grundlage dieser Beziehungen bilden dokumentierte Interaktionen zwischen Nutzern und Empfehlungssystem, wie der Kauf oder die Bewertung eines Produktes durch einen Anwender \cite[S. 8ff.]{ricci:inbook}.
 Dokumentierte Interaktionen werden in Empfehlungssystemen als Nutzer-Element-Interaktion oder Transaktion bezeichnet \cite[S. 8]{recommenderSystems:2016}\cite[S. 9]{ricci:inbook}.
@@ -44,23 +44,38 @@ Unter expliziter Bewertung wird in Empfehlungssystemen die ausdrückliche Bewert
 Ein Beispiel stellt die aktive Bewertung eines Produktes durch einen Nutzer in einem Online-Shop in Form einer Produktrezension (z.B. "Gefällt-mir"-Angabe) dar.
 Im Vergleich dazu werden unter impliziten Bewertungen passiv erzeugte Verhaltensdaten, wie der Suchverlauf oder die Kaufhistorie eines Nutzers, verstanden, die indirekt mögliche Präferenzen eines Nutzers vermuten lassen \cite[S. 149]{jadidinejad:inproceedings}\cite[S. 403]{unternährer:article}.
 
-Neben Transaktionen können Nutzer bzw. Elemente in Empfehlungssystemen zusätzliche Attribute besitzen \cite[S. 8]{recommenderSystems:2016}.
-Beispiele für Attribute eines Nutzers sind das Geschlecht oder Alter eines Anwenders, während Attribute eines Produktes beispielsweise die Produktkategorie oder beschreibende Schlagwörter darstellen.
+Neben Transaktionen können Nutzer bzw. Elemente in Empfehlungssystemen zusätzliche Attribute besitzen \cite[S. 8]{recommenderSystems:2016}\cite[S. 735]{adomavicius:inproceedings}.
+Beispiele für Attribute eines Nutzers sind das Geschlecht oder Alter eines Anwenders, während Attribute eines Elements beispielsweise die Produktkategorie oder beschreibende Schlagwörter darstellen.
 % Unterschied Kombination und Interaktion? Kombination ist nicht zwangsläufig das vorhandensein einer Interaktion
 
 \section{Problemstellung}
 \label{ch:empfehlungssysteme:problemstellung}
 % Im vorangegangenen Kapitel wurden grundlegende Komponenten von Empfehlungssystemen und deren Zusammenspiel erläutert.
 % Das grundlegende Problem in Empfehlungssystemen besteht in der Auswahl der Elemente aus einer Menge an Entitäten, von denen angenommen werden kann, dass diese für die Empfänger einer Empfehlung von Relevanz sind \cite[S. 734f.]{adomavicius:inproceedings}\cite[S. 76]{jannach:inproceedings}.
-Das grundlegende Problem in Empfehlungssystemen besteht in der Auswahl der Elemente, von denen angenommen werden kann, dass diese für die Empfänger einer Empfehlung von Relevanz sind \cite[S. 734f.]{adomavicius:inproceedings}\cite[S. 76]{jannach:inproceedings}.
-Relevanz bedeutet in dem Kontext von Empfehlungssystemen, dass ein Element für einen Nutzer bzw. eine Gruppe an Nutzern einen maximalen Nutzen bietet \cite[S. 49f.]{adomavicius:inproceedings:2}\cite[S. 219]{lakiotaki:inproceedings}.
-Formal ausgedrückt besteht das Problem darin, einem Nutzer $c \in C$ eine Menge an Elementen $s^{'}$ $\in$ $S$ zur Verfügung zu stellen, für die gilt:
+% Das grundlegende Problem in Empfehlungssystemen besteht in der Auswahl der Elemente, von denen angenommen werden kann, dass diese für die Empfänger einer Empfehlung von Relevanz sind \cite[S. 734f.]{adomavicius:inproceedings}\cite[S. 76]{jannach:inproceedings}.
+% Relevanz bedeutet in dem Kontext von Empfehlungssystemen, dass ein Element für einen Nutzer bzw. eine Gruppe an Nutzern einen maximalen Nutzen bietet \cite[S. 49f.]{adomavicius:inproceedings:2}\cite[S. 219]{lakiotaki:inproceedings}.
+% Formal ausgedrückt besteht das Problem darin, einem Nutzer $c \in C$ eine Menge an Elementen $s^{'}$ $\in$ $S$ zur Verfügung zu stellen, für die gilt:
+\textcite[S. 735]{adomavicius:inproceedings} formulieren die grundlegende Problemstellung in Empfehlungssystemen wie folgt:
 \begin{equation}\label{eq1}
-    s'_c = arg\max_{s \in S} R(c,s)
+    \forall c \in C, s'_c = arg\max_{s \in S} u(c,s)
 \end{equation}
 Hierbei bezeichnet $C$ die Menge aller Nutzer und $S$ die Menge aller Elemente eines Systems.
-$R(c,s)$ gibt den Nutzen einer Kombination $(c,s)$ von Element $s$ und Nutzer $c$ (im Folgenden \ac{N-E-K} genannt \cite[S. 3]{recommenderSystems:2016}) an \cite[S. 734f.]{adomavicius:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}.
+Nach \textcite[S. 735]{adomavicius:inproceedings} gibt $u(c,s)$ den Nutzen eines Elements $s$ für einen Nutzer $c$ an \cite[S. 734f.]{adomavicius:inproceedings}.
 
+% Wird das Problem aus Gleichung \ref{eq1} auf einem höheren Abstraktionslevel betrachtet, besteht das grundsätzliche Problem in Empfehlungssystemen in der Auswahl von Elementen $s' \in S$ für einen Nutzer $c \in C$ mit maximalem Nutzen $u(c,s)$.
+Wird das Problem aus Gleichung \ref{eq1} weiter abstrahiert, kann die Problemstellung in Empfehlungssystemen als Auswahl der Elementen $s' \in S$ für einen Nutzer $c \in C$ mit maximalem Nutzen $u(c,s)$ verstanden werden.
+% Das Problem in Gleichung \ref{eq1} kann abstrahiert werden als das grundsätzliche Problem der Auswahl von Elementen $s' \in S$ für einen Nutzer $c \in C$ mit maximalem Nutzen $u(c,s)$. % verallgemeinert werden?
+Dabei ist erstmal offen, was im Einzelfall unter dem Nutzen $u(c,s)$ einer Kombination $(c,s)$ an Nutzer $c$ und Element $s$ (im Folgenden \ac{N-E-K} genannt \cite[S. 3]{recommenderSystems:2016}) verstanden wird.
+Diese Verallgemeinerung ermöglicht eine Formulierung des Problems, die für alle Empfehlungssysteme zutreffend ist.
+
+In der Literatur ist der Nutzen $u(c,s)$ einer \ac{N-E-K} nicht eindeutig definiert.
+Nach \textcite[S. 1]{jannach:article} betrachtet ein Großteil der Forschungsarbeiten Empfehlungssysteme aus Sicht der Empfehlungsempfänger.
+Das allgemeine Problem in solchen Systemen besteht darin, den Nutzen eines Nutzers zu maximieren, indem Elemente empfohlen werden, die für einen Nutzer potenziell von Relevanz sind \cite[S. 1]{jannach:article}.
+Unter dem Nutzen einer \ac{N-E-K} wird in der Literatur folglich überwiegend der Wert eines Elements für einen Nutzer verstanden \cite[S. 10f.]{ricci:inbook}\cite[S. 1]{klahold:book}\cite[S. 735]{adomavicius:inproceedings}.
+
+Empfehlungssysteme können auch aus Sicht des Dienstleisters (z.B. Online-Händler \cite[S. 1]{jannach:article}\cite[S. 1]{das:article}) eines Systems betrachtet werden.
+In dem Fall bewirkt eine Empfehlung der relevantesten Elemente für einen Nutzer nicht zwangsläufig einen maximalen Nutzen (z.B. Profitmaximierung) für den Dienstleister \cite[S. 1]{jannach:article}.
+Der Nutzen kann demnach auch als Wert einer \ac{N-E-K} für den Dienstleister eines Empfehlungssystems verstandenn werden.
 % Der Kontext $K$ wird in \textcite[S. 1]{klahold:book} explizit für die Ermittlung des Nutzen einer Nutzer- Element- Kombination angeführt.
 % Unter dem Kontext einer Empfehlung verstehen \textcite[S. 191]{adomavicius:3:inbook} zusätzliche Parameter wie Uhrzeit, Ort oder die Gegenwart anderer Personen zum Zeitpunkt einer Empfehlung.
 % Grundsätzlich stellen kontextbasierte Empfehlungssysteme, das heißt Syteme, die den Kontext von Empfehlungen für die Ermittlung des Nutzen berücksichtigen, eine Erweiterung traditioneller Empfehlungssyteme dar \cite[S. 744ff.]{adomavicius:inproceedings}.
@@ -69,40 +84,47 @@ $R(c,s)$ gibt den Nutzen einer Kombination $(c,s)$ von Element $s$ und Nutzer $c
 % In den Formulierungen der Gleichung in \cite[S. 734f]{adomavicius:inproceedings} und \cite[S. 219]{lakiotaki:inproceedings} wird jedoch nicht explizit auf den Kontext als Bedingung zur Erfüllung von Gleichung \ref{eq1} hingewiesen.
 % Es wird angenommen, dass der Kontext für die Ermittlung der Güte einer Empfehlung implizit berücksichtigt wird und daher auf eine explizite Nennung verzichtet wurde. In Anlehnung an \cite[S. 734f]{adomavicius:inproceedings} und \cite[S. 219]{lakiotaki:inproceedings} wurde daher auf die explizite Unterscheidung im weiteren Verlauf verzichtet.
 
+% Einigung: Nützlichkeit bezieht sich nicht auf die Güte einer Empfehlung, sondern auf den Nutzen einer Kombination. Güte beschreibt Wert einer Empfehlung.
+% Der Begriff der "Nützlichkeit" wird in der Literatur überwiegend verwendet, um den Wert eines Elements für einen Nutzer zu beschreiben \cite[S. 10f.]{ricci:inbook}\cite[S. 1]{klahold:book}\cite[S. 735]{adomavicius:inproceedings}.\footnote{Unter der Nützlichkeit kann in dem Kontext von Empfehlungssystemen auch die Güte einer Empfehlung verstanden werden \cite[S. 37ff.]{klahold:book}.}
+Der Nutzen kann sowohl unmittelbar über Angaben eines Nutzers erschlossen, als auch über eine Nutzenfunktion des Empfehlungssystems berechnet werden \cite[S. 735]{adomavicius:inproceedings}.
+Da die Ermittlung des Nutzens durchaus komplex sein kann, wird die Nutzenfunktion in Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} ausführlich erläutert.
+
 Bei dem beschriebenen Problem in Gleichung \ref{eq1} handelt es sich um ein Maximierungsproblem.
 Nach \textcite[S. 1]{book:kallrath} können Maximierungsprobleme der Kategorie der Optimierungsprobleme zugeordnet werden.
 Die Problematik des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Menge von Elementen gehört demnach zu der Kategorie der Optimierungsprobleme.
 % Da es sich bei dem Problem des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Menge an Elementen um ein Maximierungsproblem handelt, kann das Problem der Kategorie der Optimierungsprobleme, wie in \textcite[S. 1]{book:kallrath} definiert, zugeordnet werden.
 
-% Einigung: Nützlichkeit bezieht sich nicht auf die Güte einer Empfehlung, sondern auf den Nutzen einer Kombination. Güte beschreibt Wert einer Empfehlung.
-Der Begriff der "Nützlichkeit" wird in der Literatur überwiegend verwendet, um den Wert eines Elements für einen Nutzer zu beschreiben \cite[S. 10f.]{ricci:inbook}\cite[S. 1]{klahold:book}\cite[S. 735]{adomavicius:inproceedings}.\footnote{Unter der Nützlichkeit kann in dem Kontext von Empfehlungssystemen auch die Güte einer Empfehlung verstanden werden \cite[S. 37ff.]{klahold:book}.}
-Dabei kann der Nutzen sowohl unmittelbar über Angaben eines Anwenders erschlossen, als auch über eine Nutzenfunktion des Empfehlungssystems berechnet werden \cite[S. 735]{adomavicius:inproceedings}.
-Da die Ermittlung des Nutzens durchaus komplex sein kann, wird der Aspekt der "Nützlichkeit" nachfolgend ausführlich aufgegriffen.
-
 \section{Nutzenfunktion} % Unterschied Nutzen und Güte?
 \label{ch:empfehlungssysteme:nutzenfunktion}
 % Frage: ist mit der Güte die Güte einer Empfehlung gemeint (gefällt einem nutzer die Empfehlung ja/nein), oder ist damit die Güte im Sinne von die Qualität von Empfehlungssystemen gemeint?
 % Der erfolgreiche Einsatz von Empfehlungssystemen wird maßgeblich von der Qualität der ausgesprochenen Empfehlungen bestimmt.
-Wie aus Gleichung \ref{eq1} hervorgeht, wird für den Nutzen einer \ac{N-E-K} in Empfehlungssystemen allgemein eine Funktion $R$ angenommen.
-Diese Funktion wird Nutzenfunktion (engl.: utility function) genannt und ist traditionell definiert als \cite[S. 195]{adomavicius:3:inbook}\cite[S. 3]{jawaheer:article}:
+Wie aus Gleichung \ref{eq1} hervorgeht, wird für den Nutzen einer \ac{N-E-K} in Empfehlungssystemen allgemein eine Funktion $u$ angenommen.
+Diese Funktion wird Nutzenfunktion (engl.: utility function) genannt und ist traditionell definiert als \cite[S. 195]{adomavicius:3:inbook}\cite[S. 3]{jawaheer:article}\cite[S. 1156]{gupta:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}:
 \begin{equation}\label{eq2}% Dabei handelt es sich um eine lineare Abbildung, bei der über die Funktion u jeder Kombination aus der nxm matrix, genau ein Wert aus R, also der Rating matrix, zugeordnet werden kann
-    R: Nutzer \times Element \rightarrow R_{0}
+    u: Nutzer \times Element \rightarrow R_{0}
 \end{equation}
-Die Nutzenfunktion ordnet jeder Kombination $(c_{i},s_{j})$ von Nutzer $c_{i}$ und Element $s_{j}$ eines Empfehlungssystems einen Nutzen $R(c_{i},s_{j}) \in R_{0}$ zu.
-$R_{0}$ umfasst alle Werte, die der Nutzen von Kombinationen annehmen kann \cite[S. 49f]{adomavicius:inproceedings:2}.
+Über die Nutzenfunktion $u(c_{i},s_{j})$ kann jeder Kombination $(c_{i},s_{j})$ von Nutzer $c_{i}$ und Element $s_{j}$ eines Empfehlungssystems ein Nutzen $u_{c_{i},s_{j}} \in R_{0}$ zugeordnet werden.
+$R_{0}$ stellt in der Regel eine geordnete Menge dar, die alle Werte umfasst, die der Nutzen einer Kombination annehmen kann (z.B. $R_{0} = [1,5]$) \cite[S. 49]{adomavicius:inproceedings:2}.
 
-Die Nutzenfunktion $R$ kann auch als Matrix $R[.,.]$ abgebildet werden \cite[S. 1]{dekhtyar:misc}.
-Jeder Eintrag $r_{c_{i}s_{j}}$ der Matrix stellt den Nutzen $R(c_{i},s_{j})$ eines Elements $s_{j}$ für einen Nutzer $c_{i}$ dar (d.h. $r_{c_{i}s_{j}} = R(c_{i},s_{j})$) \cite[S. 1]{dekhtyar:misc}.
+Die Nutzenfunktion $u$ kann auch als Matrix $u[.,.]$ abgebildet werden \cite[S. 1]{dekhtyar:misc}.
+Jeder Eintrag $u_{c_{i}s_{j}}$ der Matrix stellt den Nutzen $u(c_{i},s_{j})$ einer \ac{N-E-K} aus Element $s_{j}$ und Nutzer $c_{i}$ dar (d.h. $u(c_{i},s_{j}) = u_{c_{i}s_{j}}$) \cite[S. 1]{dekhtyar:misc}.
 % In Systemen, in denen der Wert einer Transaktion beispielsweise über eine explizite, binäre Bewertung (z.B. "Gut", "Schlecht") eines Nutzers für ein Element bestimmt wird, würde $R_{0}$ genau die zwei Ausprägungen umfassen, die eine Bewertung annehmen kann (hier: "Gut" und "Schlecht").
 
 Grundsätzlich kann die Nutzenfunktion in Empfehlungssystemen jede beliebige Funktion darstellen \cite[S. 735]{adomavicius:inproceedings}.
-Besteht das Ziel eines Empfehlungssystems bespielsweise darin, den Gesamtumsatz eines Unternehmens zu maximieren, so kann der Nutzen einer \ac{N-E-K} über eine Profit-Funktion ermittelt werden \cite[S. 735]{adomavicius:inproceedings}\cite[S. 11]{recommenderSystems:2016}\cite[S. 1]{jannach:article}.
+Besteht das Ziel eines Empfehlungssystems bespielsweise darin, den Gesamtumsatz eines Unternehmens zu maximieren, so kann der Nutzen einer \ac{N-E-K} über eine Profit-Funktion ermittelt werden \cite[S. 735]{adomavicius:inproceedings}\cite[S. 11]{recommenderSystems:2016}\cite[S. 1]{jannach:article}\cite[S. 896]{adomavicius:article}.
 % $R(c,s)$ würde dann den Nutzen einer Kombination von Nutzer und Element aus Sicht des Unternehmens, welches den Empfehlungsservice einsetzt, darstellen \cite[S. 1]{jannach:article}.
 % Solche Systeme, in denen der Nutzen von Nutzer- Element- Kombinationen über eine eigenständige Nutzenfunktion ermittelt wird, zählen zu den nutzenbasierten Empfehlungssystemen und sind nicht Inhalt dieser Arbeit.
-In den meisten Empfehlungssystemen wird für den Nutzen $R(c,s)$ unmittelbar die Bewertung (engl.: Rating) eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:inbook}\cite[S. 11]{recommenderSystems:2016}.
-Daher ist die Nutzenfunktion in der Literatur auch als Rating-Funktion oder Rating-Matrix bekannt \cite[S. 49]{adomavicius:inproceedings:2}\cite[S. 91]{ekstrand:article}\cite[S. 11]{recommenderSystems:2016}.
-Aus Gründen der Einfachheit wird für den weiteren Verlauf der Arbeit ebenfalls der Wert einer Bewertung für den Nutzen $R(c,s)$ einer \ac{N-E-K} $(c,s)$ angenommen.
-% Die Begrifflichkeiten Nutzenfunktion, Ratingfunktion, Ratingmatrix und Ratingfunktion werden daher nachfolgend synonym verwendet.
+In den meisten Empfehlungssystemen wird für den Nutzen $u(c,s)$ einer Kombination unmittelbar die Bewertung (engl.: Rating) eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:inbook}\cite[S. 11]{recommenderSystems:2016}\cite[S. 1]{dekhtyar:misc}.
+Bewertungen von Nutzern für Elemente werden in Empfehlungssystemen grundsätzlich in einer $Nutzer \times Element$-Matrix abgebildet, welche als Rating-Matrix $R$ bezeichnet wird \cite[S. 87]{ekstrand:article}.
+Nach \textcite[S. 48f.]{adomavicius:inproceedings:2} können Bewertungen in Empfehlungssystemen über eine Rating-Funktion $R(c,s)$ bestimmt werden, welche definiert ist wie folgt:
+\begin{equation}
+    R: Nutzer \times Element \rightarrow Rating
+\end{equation}
+Über die Rating-Funktion $R(c_{i},s_{j})$ kann jeder \ac{N-E-K} $(c_{i},s_{j})$ von Nutzer $c_{i}$ und Element $s_{j}$ eine Bewertung $r_{c_{i},s_{j}} \in Rating$ zugeordnet werden \cite[S. 42]{ning:inbook}.
+$Rating$ stellt eine Sammlung aller Werte dar, die eine Bewertung annehmen kann (z.B. $Rating = [1,5]$) \cite[S. 41]{ning:inbook}.
+Da Nutzen und Rating in der Literatur häufig synonym verwendet werden \cite[S. 11]{recommenderSystems:2016}, wird die Nutzenfunktion auch als Rating-Funktion \cite[S. 49]{adomavicius:inproceedings:2} oder Rating-Matrix \cite[S. 87]{ekstrand:article} bezeichnet.
+Aus Gründen der Einfachheit wird für den weiteren Verlauf der Arbeit ebenfalls der Wert einer Bewertung $r_{cs}$ für den Nutzen $u_{cs}$ einer \ac{N-E-K} $(c,s)$ angenommen (d.h. $r_{cs} = u_{cs}$).
+Wenn nicht ausdrücklich angeführt, werden die Begrifflichkeiten Nutzenfunktion, Rating-Funktion und Rating-Matrix daher nachfolgend synonym verwendet.
 
 % Diese Abbildung einer Funktion als Matrix folgt der mathematischen Definition von Matrizen als lineare Funktion.
 % Es wird davon ausgegangen, dass die gängige Verwendung des Ratings als Maß des Nutzen eines Elements für einen Nutzer daher kommt, dass Empfehlungssysteme traditionell in dem Kontext item-to-people-recommendation eingesetzt wurden.
@@ -219,18 +241,17 @@ Eine Empfehlung kann auch eine Kombination unterschiedlicher Elemente darstellen
 Ein Beispiel stellen Empfehlungen in Online-Shops dar, die einem Kunden zu einem ausgewählten T-Shirt eine passende Hose und Schuhe vorschlagen.
 Die unterschiedlichen Kleidungsstücke (Elemente) bilden gesammelt ein vollständiges Outfit, welches einem Kunden als Ganzes empfohlen werden kann.
 
-In den meisten Fällen geben Empfehlungssysteme eine sortierte Liste der nützlichsten Elemente zurück (umgangssprachlich: Top-$K$-Elemente), in der für jedes Element der angenommene Wert für einen Nutzer angegeben ist \cite[S. 6]{ricci:inbook}\cite[S. 3]{recommenderSystems:2016}\cite[S. 141]{ekstrand:article}.
-Dabei gibt der Parameter $K$ die Anzahl an Elementen in der Liste an.
+In den meisten Fällen geben Empfehlungssysteme eine sortierte Liste der nützlichsten Elemente zurück (umgangssprachlich: Top-$K$-Elemente) \cite[S. 3]{recommenderSystems:2016}\cite[S. 141]{ekstrand:article}, in der für jedes Element der angenommene Wert für einen Nutzer angegeben ist \cite[S. 6]{ricci:inbook}.
+Der Parameter $K$ gibt die Anzahl an Elementen in der Liste an.
 % Dabei wird die Nützlichkeit einer \ac{N-E-K}, wie in Kapitel \ref{ch:empfehlungssysteme:empfehlungserstellung:prediction} erläutert, zumeist anhand der Bewertung eines Elements durch einen Nutzer bestimmt.
 % Für \ac{N-E-K}, für die keine Bewertungen bekannt ist, wird der Nutzen einer Kombination unter Anwendung der Nutzenfunktion $R$ in Phase 1 vorhergesagt.
 
 Nach \textcite[S. 900]{adomavicius:article} wird der Rang eines Elements in einer sortierten Liste anhand eines Sortier-Kriteriums ermittelt.
 Demnach steht ein Element $s_{x}$ grundsätzlich im Ranking vor einem Element $s_{y}$, wenn $rank(s_{x})<rank(s_{y})$, wobei $rank: S \rightarrow \mathbb{R}$ eine Funktion des Sortier-Kriteri\-ums darstellt \cite[S. 900]{adomavicius:article}.
 Über die Funktion wird jedem Element $s \in S$ ein Rang zugeordnet.
-In der Literatur werden Elemente für Empfehlungen grundsätzlich anhand ihrer Nützlichkeit für einen Nutzer sortiert \cite[S. 735]{adomavicius:inproceedings}\cite[S. 10f.]{ricci:inbook}.
-Der Nutzen stellt daher das Sortier-Kriterium in Empfehlungssystemen dar.
+In der Literatur werden Elemente für Empfehlungen grundsätzlich anhand ihres Nutzen für einen Nutzer sortiert \cite[S. 735]{adomavicius:inproceedings}\cite[S. 10f.]{ricci:inbook}.
+% Der Nutzen stellt daher das Sortier-Kriterium in Empfehlungssystemen dar.
 % Der Nutzen kann daher als das Sortier-Kriterium in Empfehlungssystemen verstanden werden.
-
 Wie in Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} bereits erläutert, wird für den Nutzen in Empfehlungssystemen zumeist unmittelbar das Rating eines Nutzers für ein Element angenommen.
 In den meisten Empfehlungssystemen wird demnach der Rang eines Elements über das Sortier-Kriterium Rating ermittelt (bspw. der Gesamtbewertung eines Elements durch einen Nutzer) \cite[S. 900]{adomavicius:article}.
 
@@ -245,8 +266,10 @@ In den meisten Empfehlungssystemen wird demnach der Rang eines Elements über da
 % Elemente in Empfehlungssystemen können auch anhand mehrerer Kriterien bewertet werden.
 % So kann ein Kinoaufenthalt (Element) beispielsweise anhand der Kriterien Inhalt und Schauspieler bewertet werden. 
 
-In der Praxis kann es vorkommen, dass von dem Rating nicht unmittelbar auf den tatsächlichen Nutzen einer Kombination für einen Nutzer geschlossen werden kann \cite[S. 896ff.]{adomavicius:article}.
+% HIER stehen geblieben
+In der Praxis kann es vorkommen, dass (angenommene) Ratings allein nicht ausreichen, um auf den tatsächlichen Nutzen einer Kombination für einen Nutzer zu schließen \cite[S. 896ff.]{adomavicius:article}.
 Dies ist beispielsweise der Fall, wenn zusätzliche Kriterien den Nutzen (und somit den Rang) einer Kombination beeinflussen (bspw. die Diversität von Empfehlungen für einen Nutzer) \cite[S. 405]{unternährer:article}.
+Hier beispiel nennen travel! % file:///C:/Users/masc6/Downloads/p1097-mcnee.pdf
 Wie in Kapitel \ref{ch:erweiterungen} deutlich werden wird, ist die Bestimmung des Nutzen eines Elements für einen Nutzer anhand eines einzelnen Kriteriums (e.g. dem Rating) nicht immer ausreichend, um dessen Nutzen zuverlässig zu bestimmen \cite[S. 847]{adomavicius:4:inbook}.
 % ------- Hier (oder oben?) kurze Zusammenfassung der Begrifflichkeiten (siehe aggarwal, S. xviii, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/Aggarwal2016_Book_RecommenderSystems.pdf)
 
@@ -271,7 +294,7 @@ So kann es sinnvoll sein, der Mitarbeiterin Erika M. die Fähigkeit MySQL für e
 
 \section{Präferenzen in Empfehlungssystemen}
 \label{ch:empfehlungssysteme:preferences}
-Im Zusammenhang mit Empfehlungssystemen fällt häufig der Begriff der Präferenzen (engl.: preferences) \cite[S. 2]{ricci:inbook}\cite[S. 11f.]{recommenderSystems:2016}\cite[S. 87]{ekstrand:article}.
+Im Zusammenhang mit Empfehlungssystemen fällt häufig der Begriff der Präferenzen (engl.: preferences) \cite[S. 2]{ricci:inbook}\cite[S. 11f.]{recommenderSystems:2016}\cite[S. 87]{ekstrand:article}\cite[S. 2429]{palomares:inproceedings}.
 % Brauch man hier überhaupt ein zitat, wenn ich die Annahme selber aufstelle?
 In diesem Kapitel werden Präferenzen allgemein erläutert und in dem Kontext von Empfehlungssystemen inhaltlich abgegrenzt.
 
@@ -308,6 +331,7 @@ Nicht-personalisierte Empfehlungen müssen nicht allein auf absoluter Popularit�
 Nach \textcite[S. 405]{unternährer:article} ermöglichen zeitliche, räumliche und soziale Popularität, absolute Popularität zu begrenzen.
 So können Nachrichten-Plattformen beispielsweise gezielt die populärsten Artikel des Tages (zeitliche Popularität) auf ihrer Startseite anzeigen, anstelle der populärsten Artikel aller Zeiten (absolute Popularität).
 Unter der Annahme, dass die Relevanz der Beiträge mit deren Aktualität zusammenhängt, kann durch Verwendung von zeitlicher Popularität für die Ermittlung von Empfehlungen die Relevanz von Beiträgen auf der Startseite erhöht werden \cite[S. 405]{unternährer:article}.
+% In der Literatur werden nicht-personalisierte Empfehlungen größtenteils vernachlässigt \cite[S. 2]{ricci:inbook}.
 % Fragwürdig, ob das nicht auch schon eine art der personalisierung ist? Es ist anzunehmen, dass nicht-personalisiert einfach bedeutet, dass nicht die präfeenzen eines nutzers speziell verwendet werden, um gezielt empfehlungen zu schalten, sondern eben allgemein
 
 Der maßgebende Unterschied zu personalisierten Empfehlungen besteht darin, dass das Erstellen von nicht-personalisierten Empfehlungen für einen Nutzer nicht auf dessen individuellen Präferenzen beruht.
