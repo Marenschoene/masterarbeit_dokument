@@ -548,7 +548,7 @@ Diese Eigenschaft wird als Endlichkeit bezeichnet \cite[S. 35]{li:inproceedings}
             \hline
     \end{tabular}
     \end{center}
-    \caption[Grundlegende Unterschiede von \ac{RS} und \ac{RRS}]{Grundlegende Unterschiede von \ac{RS} und \ac{RRS} \\
+    \caption[Grundlegende Unterschiede von RS und RRS]{Grundlegende Unterschiede von RS und RRS \\
 	(Eigene Darstellung in Anlehnung an \cite[S. 546]{koprinska:inbook} und \cite[S. 35f.]{li:inproceedings})}
 	\label{tab2}
 \end{table}
@@ -588,12 +588,19 @@ Eine optimale Paarung definieren \textcite[S. 36]{li:inproceedings} wie folgt:
 \end{definition}
 
 Für reziproke Empfehlungen wird meist kein hartes Match zwischen Nutzer und Element gesucht, sondern eine sortierte Liste an potenziellen Partnern für einen Nutzer \cite[S. 67]{diaz:inproceedings}.
-Das heißt, das Ziel der Empfehlungserstellung an einen Nutzer $c$ besteht darin dem Nutzer eine Liste $L_{s} \subset S$ an Personen $s$ zu empfehlen, sodass die Präferenzen $F_{s}^{p}$ und $F_{c}^{p}$ erfüllt sind \cite[S. 36]{li:inproceedings}.
+Das heißt, das Ziel der Empfehlungserstellung an einen Nutzer $c$ besteht darin, dem Nutzer eine Liste $L_{s} \subset S$ an Personen $s$ zu empfehlen, sodass die Präferenzen $F_{s}^{p}$ und $F_{c}^{p}$ erfüllt sind \cite[S. 36]{li:inproceedings}.
 
-Das grundlegende Konzept der Ermittlung einer Optimalen Paarung in \ac{RRS} ist in ... dargestellt.
-Nach ... werden im ersten Schritt die Präferenzen der Nutzer füreinander unabhängig voneinander vorhergesagt (d.h. die Erfüllung von $F_{s}^{p}$ und $F_{c}^{p}$).
-Die ermittelten Präferenzwerte werden dann über eine Aggregation zu einer Angabe zusammengeführt, welche den angenommenen Wert der bilateralen Paarung angibt.
-% HIER WEITERMACHEN MIT DEM BILD file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Reciprocal%20Recommendation%20-%20Matching%20Users%20with%20the%20Right%20Users.pdf
+Das grundlegende Konzept für die Ermittlung des Wertes einer Paarung ist in Abbildung \ref{fig:empfehlungssysteme:rrs:abb2} dargestellt.
+Nach \textcite[S. 2429]{palomares:inproceedings} werden basierend auf Daten zu Nutzern und Elementen die Präferenzen der Personen füreinander vorhergesagt (d.h. die Erfüllung von $F_{s}^{p}$ und $F_{c}^{p}$).
+Die unabhängig voneinander ermittelten Präferenzwerte werden dann mittels Aggregation zu einer Angabe zusammengeführt, welche den angenommenen Wert der bilateralen Paarung angibt.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=1.0\textwidth]{gfx/concept-rrs.png}
+	\caption[Grundlegendes Konzept wechselseitiger Empfehlungen]{Grundlegendes Konzept wechselseitiger Empfehlungen\\
+    (Eigene Darstellung in Anlehnung an \cite[S. 2429]{palomares:inproceedings})}
+	\label{fig:empfehlungssysteme:rrs:abb2}
+\end{figure}
 
 Nach \textcite[S. 36]{li:inproceedings} ist das Bestimmen einer optimalen Paarung in \ac{RRS} erschwert, da neben der Reziprozität auch Eigenschaften wie die Verfügbarkeit von Elementen (Endlichkeit) berücksichtigt werden müssen.
 So kann es sein, dass eine Person anhand ihrer Präferenzen optimal zu einem Nutzer passt, die empfohlene Person aber in einem gegebenen Zeitraum nicht verfügbar ist.
