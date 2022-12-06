@@ -3,7 +3,7 @@
 \definecolor{usercolor}{RGB}{255,204,179}
 
 \shorthandoff{"}
-\chapter{Multikriterielle Optimierung}
+\chapter{Multi-kriterielle Optimierung}
 \label{ch:erweiterungen}
 % Hier Überleitung finden zu Multikriterieller Optimierung in RS (Anknüpfen über Nutzen, der sich aus mehreren Aspekten zusammensetzt (hier: Nutzen setzt sich zusammen aus Präferenzen Manager und Präferenzen Mitarbeiter)).
 % Grundsätzlich basiert das Rating eines Elements auf einem Kriterium.
@@ -16,23 +16,68 @@ Für die Ermittlung des Nutzen einer \ac{N-E-K} in wechselseitigen Empfehlungssy
 \section{Einführung}
 \label{ch:erweiterungen:einführung}
 In den meisten Empfehlungssystemen erfolgt die Ermittlung des Nutzen einer \ac{N-E-K} anhand eines Kriteriums (z.B. der Gesamtbewertung eines Elements, Vgl. Kapitel \ref{ch:empfehlungssysteme:empfehlungserstellung:recommendation}) \cite[S. 847]{adomavicius:4:inbook}\cite[S. 745]{adomavicius:inproceedings}\cite[S. 49]{adomavicius:inproceedings:2}\cite[S. 424]{manouselis:article}\cite[S. 65]{lakiotaki:article}.
-In der Praxis
+Nach \textcite[S. 847f.]{adomavicius:4:inbook} ist diese Annahme in der Literaur zuletzt in Teilen als unzureichend bezeichnet worden.
+Es wird davon ausgegangen, dass der Nutzen eines Elements für einen Nutzer durchaus von mehreren Kriterien abhängen kann \cite[S. 847f.]{adomavicius:4:inbook}.
+
+In der Praxis existiert auch außerhalb des Bereichs der Recommender Systems eine Vielzahl an Problemstellungen, für die unter der Berücksichtigung von oftmals konkurrierenden Kriterien eine optimale Lösung gefunden werden muss.
+Ansätze für die Lösung solcher multikriteriellen Probleme werden allgemein unter dem Begriff der multikriteriellen Optimierung (engl.: multicriteria optimization) zusammengefasst \cite[S. v]{ehrgott:book}\cite[S. 867]{adomavicius:4:inbook}.
+
 % klären unterschied multi attribute and multi criteria?
 % definition multikriteriell
 % hinführen auf multikriterielle problemstellung
 
-\section{Problemstellung}
+% Im Kontext von Empfehlungssystemen wurde das multikriterielle Rating im Bezug auf die Recommendation-Generation-Phase bereits in einigen Veröffentlichungen behandelt. % Bsp: S. 2455, file:///C:/Users/masc6/Downloads/3297280.3297522.pdf , S. 4, file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf , S. 847, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf , S.49, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
 
 \section{Bedeutung in Empfehlungssystemen}
-Multikriteriell kann in Empfehlungssystemen untersch. Bedeutung haben. Bekannte bereiche multirkiterieller Anwendungsfelder in RS \cite[S. 849]{adomavicius:4:inbook}:
+\textcite[S. 849]{adomavicius:4:inbook} gehen davon aus, dass aufgrund der Generalität des Begriffs "multi-kriteriell", der multi-kriterielle Charakter \cite[S. 10]{adomavicius:5:inbook} der meisten Empfehlungssysteme auf unterschiedliche Grundideen verweisen kann.
+Größtenteils können diese einer der folgenden Kategorien zugeordnet werden \cite[S. 10]{adomavicius:5:inbook}\cite[S. 849]{adomavicius:4:inbook}:
 \begin{itemize}
-    \item Multi-Attribute
-    \item Multi-Objective
-    \item Multi-Criteria
+    \item Multi-attribut-basierte Inhaltssuche, Filtern und Präferenzmodellierung
+    \item Multi-objektive Empfehlungsstrategien
+    \item Multi-kriterielle Bewertungen in der Präferenzerhebungen
 \end{itemize}
 
+Multi-attribut-basierte Inhaltssuche und multi-attribut-basiertes Filtern bezeichnen Systeme, die einem Nutzer ermöglichen seine Präferenzen unter Anwendung von Such- bzw. Filterprozessen anzugeben \cite[S. 10]{adomavicius:5:inbook}.
+Diese zusätzlichen Präferenzen können in solchen Systemen verwendet werden, um die Menge an potenziell nützlichen Elementen für einen Nutzer weiter einzugrenzen \cite[S. 11]{adomavicius:5:inbook}.
+Unter multi-attribut-basierter Präferenzmodellierung wird die Darstellung von Präferenzen anhand verschiedener Attribute eines Elements verstanden (z.b. in inhaltsbasierten \ac{RS}) \cite[S. 10]{adomavicius:5:inbook}.
+Nach \textcite[S. 850]{adomavicius:4:inbook} wird diese Art der multi-kriteriellen Empfehlung bereits durch existierende Typen von Empfehlungssystemen unterstützt.
+Ein Beispiel stellen Conversational \ac{RS} dar, die Präferenzen eines Nutzers neben Bewertuen über aktuelle Konversationen mit einem Nutzer (z.B. in Form eines Chatbots) erschließen \cite[S. 1]{yueming:article}.
+
+% Hier eher beispiel zeigen wie das gemeint ist, dass mehrere Kriterien eine Bewertung beeinflussen, anhand der Recommendation phase (gegeben zwei multikriterielle Bewertungen, wie ermittle ich overall rating, dann habe ich gute überleitung für später)
+
+Ein Beispiel multikriterieller Probleme in Empfehlungssystemen stellen multi-kriterielle Bewertungen dar.
+Multi-kriterielle Bewertungen bezeichnen Ratings eines Elements anhand verschiedener Aspekte.
+Tabelle \ref{tab3} bildet beispielhaft multi-kriterielle Bewertungen von Mitarbeitern eines Unternehmens für Fähigkeiten ab.
+Hierbei setzt sich eine Gesamtbewertung aus dem Kenntnisstand eines Mitarbeiters und dessen Präferenzen für eine Fähigkeit zusammen.
+
+\begin{table}[htbp]
+    \begin{center}
+    \begin{tabular}{|c||c|c|c|}
+    \hline
+    {} & {\textbf{Java}} & {\textbf{Python}} & {\textbf{MySQL}}\\
+    \hline
+    \hline
+    \textbf{Jane D.} & $3_{2,1}$ & $4_{3,1}$ & $1_{0,1}$ \\
+    \hline
+    \textbf{John D.} & $3_{1,2}$ & $4_{1,3}$ & ? \\
+    \hline
+    \textbf{Max M.} & $4_{1,3}$ & $3_{1,2}$ & $5_{5,0}$ \\
+    \hline
+    \end{tabular}
+    \end{center}
+    \caption[Multi-kriterielle Rating-Matrix ]{Multi-kriterielle Rating-Matrix \\}
+	\label{tab3}
+\end{table}
+
+Eine alleinige Betrachtung der Gesamtbewertungen von Mitarbeitern lässt vermuten, dass der Mitarbeiter John D. am meisten Ähnlichkeit mit der Mitarbeiterin Jane D. aufweist.
+Basierend auf den multikriteriellen Bewertungen scheint der Mitarbeiter Max M. jedoch mehr Ähnlichkeit mit John D. aufzuweisen als die Mitarbeiterin Jane D.
+Die Vorhersage fehlender Bewertungen wie $\hat{r}_{John D., MySQL}$ in Abhängigkeit der Ähnlichkeit zu anderen Mitarbeitern würde im vorliegenden Beispiel
+
+\section{Problemstellung}
+
 \section{Lösungsansätze}
-Wenn im bereich multi-criteria ratings, dann unterscheiden zwischen vorhandenes overall rating ode rnicht vorhandenes overall rating
+% Wenn im bereich multi-criteria ratings, dann unterscheiden zwischen vorhandenes overall rating ode rnicht vorhandenes overall rating
+% wenn bei overall rating können ansätze aus der allgemeinen multikriteriellen optimierung auf RS übertragen werden
 
 \subsection{Pareto-Optimierung}
 
