@@ -118,7 +118,7 @@ Besteht das Ziel eines Empfehlungssystems bespielsweise darin, den Gesamtumsatz 
 In den meisten Empfehlungssystemen wird für den Nutzen $u(c,s)$ einer Kombination unmittelbar die Bewertung (engl.: Rating) eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:inbook}\cite[S. 11]{recommenderSystems:2016}\cite[S. 1]{dekhtyar:misc}.
 Bewertungen von Nutzern für Elemente werden in Empfehlungssystemen grundsätzlich in einer $Nutzer \times Element$-Matrix abgebildet, welche als Rating-Matrix $R$ bezeichnet wird \cite[S. 87]{ekstrand:article}.
 Nach \textcite[S. 48f.]{adomavicius:inproceedings:2} können Bewertungen in Empfehlungssystemen über eine Rating-Funktion $R(c,s)$ bestimmt werden, welche definiert ist wie folgt:
-\begin{equation}
+\begin{equation}\label{eq10}
     R: Nutzer \times Element \rightarrow Rating
 \end{equation}
 Über die Rating-Funktion $R(c_{i},s_{j})$ kann jeder \ac{N-E-K} $(c_{i},s_{j})$ von Nutzer $c_{i}$ und Element $s_{j}$ eine Bewertung $r_{c_{i},s_{j}} \in Rating$ zugeordnet werden \cite[S. 42]{ning:inbook}.
@@ -268,12 +268,18 @@ Dieses Rating ist in traditionellen Empfehlungssystemen häufig über eine Gesam
 % Elemente in Empfehlungssystemen können auch anhand mehrerer Kriterien bewertet werden.
 % So kann ein Kinoaufenthalt (Element) beispielsweise anhand der Kriterien Inhalt und Schauspieler bewertet werden. 
 
+% Hier geht es also quasi um den Nutzen eines Elements im Kontext einer Liste
 % was ist jetzt hier der Unterschied zu kriterien die zu R hinzukommen? multicriteria hat verschiedene hintergründe, einer ist, dass Nutzen sich aus mehreren Kriterien ergibt (zb accuracy und prediction)
-In der Praxis kann es vorkommen, dass (angenommene) Ratings allein nicht ausreichen, um auf den tatsächlichen Nutzen einer Kombination für einen Nutzer zu schließen \cite[S. 896ff.]{adomavicius:article}.
-So können zusätzliche Kriterien den Nutzen (und somit den Rang) einer Kombination beeinflussen \cite[S. 405f.]{unternährer:article}.
-Eine Empfehlung von Elementen, die für einen Nutzer eher überraschend sind, kann für den Nutzer von größerem Interesse sein als Elemente, von denen klar ist, dass diese dem Nutzer gefallen \cite[S. 43]{herlocker:article}.
-Der Aspekt des Empfehlens zufällig interessanter Elemente, die ein Nutzer andernfalls nicht entdeckt hätte, wird in der Literatur als Serendipity (dt.: Glücklicher Zufall) bezeichnet \cite[S. 43]{herlocker:article}\cite[S. 3]{recommenderSystems:2016}\cite[S. 1099]{mcnee:inproceedings}.
-Das Operationalisieren des Nutzen anhand eines einzelnen Kriteriums (z.B. Rating) ist folglich nicht immer ausreichend, um den Nutzen eines Elements für einen Nutzer zuverlässig zu bestimmen \cite[S. 847]{adomavicius:4:inbook}.
+In der Praxis kann es vorkommen, dass eine Empfehlung der Top-$K$-Elemente mit den höchsten (angenommenen) Bewertungen, nicht zwangsläufig den größten Nutzen für einen Nutzer bietet \cite[S. 896ff.]{adomavicius:article}.
+So kann eine Empfehlung mit $K$ Elementen, von denen einige Elemente für einen Nutzer eher überraschend sind, für den Nutzer von größerem Interesse sein als Elemente, von denen klar ist, dass diese dem Nutzer gefallen \cite[S. 43]{herlocker:article}.\footnote{Der Aspekt des Empfehlens zufällig interessanter Elemente, die ein Nutzer andernfalls nicht entdeckt hätte, wird in der Literatur als Serendipity (dt.: Glücklicher Zufall) bezeichnet \cite[S. 43]{herlocker:article}\cite[S. 3]{recommenderSystems:2016}\cite[S. 1099]{mcnee:inproceedings}.}
+Der Nutzen eines Elements als Bestandteil einer sortierten Liste kann folglich von mehreren Kriterien abhängen.
+In solchen Empfehlungssystemen kann der Rang eines Elements anhand mehrerer Sortier-Kriterien bestimmt werden \cite[S. 405f.]{unternährer:article}.
+% Der Nutzen eines Elements als Bestandteil einer Liste (d.h. der Rang des Elements) kann sich folglich von dem Nutzen einer \ac{N-E-K} unterscheiden.
+% Die Frage ist also: wird mir nur ein Element empfohlen, oder eine Liste? Wird davon asugegangen, dass ein Nutzer auf eine gesamte Liste schaut oder sich nur für das gelbe vom Ei interessiert?
+% Der Nutzen einer sortierten Liste ergibt sich folglich nicht zwangsläufig unmittelbar aus dem Nutzen der einzelnen \ac{N-E-K}.
+% Dies hängt auch damit zusammen, dass ein Nutzer Elemente dann nicht getrennt voneinander, sondern als gesamte Empfehlung betrachtet.
+% Hier den satz nach unten schieben zu MCRS und stattdessen kurz zusammenfassen, dass das Rankin einfach beeinflusst werden kann, wenn konkurrierende Ziele verfolgt werden (eben zb Accuracy und Serendipity, dann reranking).
+% Das Operationalisieren des Nutzen anhand eines einzelnen Kriteriums (z.B. Rating) ist folglich nicht immer ausreichend, um den Nutzen eines Elements für einen Nutzer zuverlässig zu bestimmen \cite[S. 847]{adomavicius:4:inbook}.
 % ------- Hier (oder oben?) kurze Zusammenfassung der Begrifflichkeiten (siehe aggarwal, S. xviii, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/Aggarwal2016_Book_RecommenderSystems.pdf)
 
 % Weglassen?

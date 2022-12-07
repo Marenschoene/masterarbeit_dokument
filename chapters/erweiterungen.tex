@@ -10,25 +10,39 @@
 Im vorangegangenen Kapitel wurde erläutert, dass für reziproke Empfehlungen sowohl die Präferenzen der Nutzer als auch die Präferenzen der Elemente berücksichtigt werden müssen.
 % Irgendwo noch einbringen, dass Paarung quasi den Nutzen angibt, also gutes paar = guter Nutzen
 Nach \textcite[S. 36]{li:inproceedings} ist eine optimale Paarung von Nutzer und Element demnach abhängig von zwei Attributen: der Bedürfniserfüllung des Empfehlungsempfängers und der Bedürfniserfüllung der empfohlenen Person.
-Eine alleinige Betrachtung der Relevanz eines Elements für einen Nutzer reicht in \ac{RRS} folglich nicht aus.
+Eine alleinige Betrachtung der Relevanz eines Elements für einen Nutzer (d.h. des Ratings) reicht in \ac{RRS} folglich nicht aus.
 Für die Ermittlung des Nutzen einer \ac{N-E-K} in wechselseitigen Empfehlungssystemen müssen demnach mehrere Kriterien berücksichtigt werden.
+% Die Kernfrage ist also: wie kann das Rating berechnet werden, wenn die Präferenzen von Elementen einbezogen werden sollen?
+% Auch: Wie Gesamtrating ermitteln, wenn mehrere Kriterien berücksichtigt werden sollen? Wie sind Präferenzen zu gewichten? % S. 5, file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf
 
 \section{Einführung}
 \label{ch:erweiterungen:einführung}
 In den meisten Empfehlungssystemen erfolgt die Ermittlung des Nutzen einer \ac{N-E-K} anhand eines Kriteriums (z.B. der Gesamtbewertung eines Elements, Vgl. Kapitel \ref{ch:empfehlungssysteme:empfehlungserstellung:recommendation}) \cite[S. 847]{adomavicius:4:inbook}\cite[S. 745]{adomavicius:inproceedings}\cite[S. 49]{adomavicius:inproceedings:2}\cite[S. 424]{manouselis:article}\cite[S. 65]{lakiotaki:article}.
 Nach \textcite[S. 847f.]{adomavicius:4:inbook} ist diese Annahme in der Literaur zuletzt in Teilen als unzureichend bezeichnet worden.
-Es wird davon ausgegangen, dass der Nutzen eines Elements für einen Nutzer durchaus von mehreren Kriterien abhängen kann \cite[S. 847f.]{adomavicius:4:inbook}.
+Es wird davon ausgegangen, dass der Nutzen eines Elements für einen Nutzer durchaus von mehreren Kriterien abhängen kann \cite[S. 847f.]{adomavicius:4:inbook}\cite[S. 424]{manouselis:article}.
 
-In der Praxis existiert auch außerhalb des Bereichs der Recommender Systems eine Vielzahl an Problemstellungen, für die unter der Berücksichtigung von oftmals konkurrierenden Kriterien eine optimale Lösung gefunden werden muss.
+In der Praxis existiert auch außerhalb des Bereichs der Empfehlungssysteme eine Vielzahl an Problemstellungen, für die unter der Berücksichtigung von oftmals konkurrierenden Kriterien eine optimale Lösung gefunden werden muss.
+So zählt nach \textcite[S. ix]{statnikov:book} die Mehrheit aller Probleme der Ingenieurswissenschaft zu multikriteriellen Problemen.
+Auch in anderen Bereichen wie dem Gesundheitswesen \cite[S. 195]{nemeth:article} oder der Marktforschung \cite[S. 50]{adomavicius:inproceedings:2} treten multikriterielle Probleme auf.
 Ansätze für die Lösung solcher multikriteriellen Probleme werden allgemein unter dem Begriff der multikriteriellen Optimierung (engl.: multicriteria optimization) zusammengefasst \cite[S. v]{ehrgott:book}\cite[S. 867]{adomavicius:4:inbook}.
+Zu bekannten Methoden zählen das Finden Pareto-Optimaler Lösungen \cite[S. 50]{adomavicius:inproceedings:2} und das Anwenden von Linearkombinationen zur Reduktion multikriterieller auf unikriterielle Probleme \cite[S. 745]{adomavicius:inproceedings}.
 
-% klären unterschied multi attribute and multi criteria?
-% definition multikriteriell
-% hinführen auf multikriterielle problemstellung
+In der Entscheidungstheorie wird die Entscheidungsfindung in Organisationen ebenfalls als ein multikriterielles Problem behandelt, wobei verschiedene Aspekte wie Personal, Finanzen und Umwelt berücksichtigt werden müssen \cite[S. 50]{adomavicius:inproceedings:2}.
+Ansätze, um Verantwortliche in dem Treffen von Entscheidungen anhand von (konkurrierenden) Kriterien zu unterstützen, werden gemäß \textcite[S. 50]{adomavicius:inproceedings:2} unter dem Begriff der multi-kriteriellen Entscheidungsunterstützung (engl.: \ac{MCDA}) zusammengefasst.
+Outranking-Methoden zählen zu den bekanntesten Ansätzen in \ac{MCDA} \cite[S. 50]{adomavicius:inproceedings:2}.
+Diese Ansätze ermöglichen es, Alternativen anhand unterschiedlicher Kriterien durch paarweise Vergleiche in Präferenz-Relation zu setzen \cite[S. 249]{bouyssou:inbook}.
 
-% Im Kontext von Empfehlungssystemen wurde das multikriterielle Rating im Bezug auf die Recommendation-Generation-Phase bereits in einigen Veröffentlichungen behandelt. % Bsp: S. 2455, file:///C:/Users/masc6/Downloads/3297280.3297522.pdf , S. 4, file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf , S. 847, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf , S.49, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
+Eine entscheidende Rolle in \ac{MCDA} spielt die Gewichtung der einzelnen Kriterien \cite[S. 206]{hdioud:inproceedings}\cite[S. 195]{nemeth:article}.
+% Kriterien-Gewichte können entweder manuell festgelegt, oder unter dem Einsatz einer Gewicht\-ungs-Methode bestimmt werden \cite[S. 1]{vinogradova:article}.
+% Das manuelle Festlegen von Gewichten umfasst Methoden, in denen Gewichte über Angaben von Stakeholdern zur Wichtigkeit der jeweiligen Kriterien bestimmt werden \cite[S. 196]{nemeth:article}.
+
+% Wichtig ist hier eigentlich, dass die methoden noch nicht personalisiert sind, also immer nutzerübergreifend (was für uns ja eigentlich gut ist), siehe: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf S. 50
 
 \section{Bedeutung in Empfehlungssystemen}
+Aus Sicht der Entscheidungstheorie \cite[S. 77]{jannach:inproceedings} können Empfehlungssysteme als entscheidungsunterstüztende Systeme verstanden werden \cite[S. 398f.]{huang:article}.
+Demnach unterstützen Empfehlungssysteme die Nutzer eines Systems darin, aus einer Menge an Alternativen basierend auf mehreren Kriterien nützliche Elemente zu finden \cite[S. 398f.]{huang:article}.
+
+Im Kontext von Empfehlungssystemen wurde der Einsatz von \ac{MCDA}-Metho\-den bereits in einigen Veröffentlichungen behandelt (siehe \cite{hdioud:inproceedings}\cite{zheng:inproceedings}\cite{adomavicius:4:inbook}\cite{adomavicius:inproceedings:2}).
 \textcite[S. 849]{adomavicius:4:inbook} gehen davon aus, dass aufgrund der Generalität des Begriffs "multi-kriteriell", der multi-kriterielle Charakter \cite[S. 10]{adomavicius:5:inbook} der meisten Empfehlungssysteme auf unterschiedliche Grundideen verweisen kann.
 Größtenteils können diese einer der folgenden Kategorien zugeordnet werden \cite[S. 10]{adomavicius:5:inbook}\cite[S. 849]{adomavicius:4:inbook}:
 \begin{itemize}
@@ -37,16 +51,41 @@ Größtenteils können diese einer der folgenden Kategorien zugeordnet werden \c
     \item Multi-kriterielle Bewertungen in der Präferenzerhebungen
 \end{itemize}
 
-Multi-attribut-basierte Inhaltssuche und multi-attribut-basiertes Filtern bezeichnen Systeme, die einem Nutzer ermöglichen seine Präferenzen unter Anwendung von Such- bzw. Filterprozessen anzugeben \cite[S. 10]{adomavicius:5:inbook}.
+Multi-attribut-basierte Inhaltssuche und multi-attribut-basiertes Filtern bezeichnen Systeme, die einem Nutzer ermöglichen seine Präferenzen unter Anwendung von Such- bzw. Filterprozessen spezifizieren \cite[S. 10]{adomavicius:5:inbook}\cite[S. 851]{adomavicius:4:inbook}.
 Diese zusätzlichen Präferenzen können in solchen Systemen verwendet werden, um die Menge an potenziell nützlichen Elementen für einen Nutzer weiter einzugrenzen \cite[S. 11]{adomavicius:5:inbook}.
-Unter multi-attribut-basierter Präferenzmodellierung wird die Darstellung von Präferenzen anhand verschiedener Attribute eines Elements verstanden (z.b. in inhaltsbasierten \ac{RS}) \cite[S. 10]{adomavicius:5:inbook}.
-Nach \textcite[S. 850]{adomavicius:4:inbook} wird diese Art der multi-kriteriellen Empfehlung bereits durch existierende Typen von Empfehlungssystemen unterstützt.
-Ein Beispiel stellen Conversational \ac{RS} dar, die Präferenzen eines Nutzers neben Bewertuen über aktuelle Konversationen mit einem Nutzer (z.B. in Form eines Chatbots) erschließen \cite[S. 1]{yueming:article}.
+Unter multi-attribut-basierter Präferenzmodellierung wird die Darstellung von Präferenzen anhand verschiedener Attribute eines Elements verstanden (z.b. in klassischen inhaltsbasierten \ac{RS} \cite[S. 205]{hdioud:inproceedings}) \cite[S. 10]{adomavicius:5:inbook}.
+Nach \textcite[S. 850]{adomavicius:4:inbook} werden diese Arten der multi-kriteriellen Empfehlung bereits durch existierende Typen von Empfehlungssystemen unterstützt (z.B. wissenbasierten, inhaltsbasierten und hybriden \ac{RS}).
+% In hybriden Empfehlungssystemen können beispielsweise Bewertungen unterschiedlicher Algorithmen über eine Linearkombination zu einem Wert kombiniert werden \cite[S. 339]{burke:article}.
+Ein Beispiel stellen Conversational \ac{RS} dar, die Präferenzen eines Nutzers neben Bewertungen über aktuelle Konversationen mit einem Nutzer (z.B. in Form eines Chatbots) erschließen \cite[S. 1]{yueming:article}.
+% Hier beispiel einfügen? S. 4, https://iopscience.iop.org/article/10.1088/1742-6596/930/1/012050/pdf
 
-% Hier eher beispiel zeigen wie das gemeint ist, dass mehrere Kriterien eine Bewertung beeinflussen, anhand der Recommendation phase (gegeben zwei multikriterielle Bewertungen, wie ermittle ich overall rating, dann habe ich gute überleitung für später)
+Als multi-objektive Empfehlungsstrategien werden Implementierungen von Empfehlungssystemen verstanden, die für die Empfehlung von Elementen für einen Nutzer mehrere Ziele (engl.: Objectives) berücksichtigen \cite[S. 850]{adomavicius:4:inbook}.
+Gemäß \textcite[S. 1097]{mcnee:inproceedings} verfolgen Empfehlungssysteme in der Literatur häufig ein Ziel, nämlich die Genauigkeit (engl.: Accuracy) der empfohlenen Elemente an einen Nutzer zu erhöhen.
+Unter der Genauigkeit von Empfehlungen wird die Übereinstimmung einer vorhergesagten Bewertung durch das System mit der tatsächlichen Bewertung eines Nutzers verstanden \cite[S. 1098]{mcnee:inproceedings}.
+In der Literatur wird davon ausgegangen, dass die Genauigkeit von Empfehlungen nicht immer ein alleiniger Indikator des tatsächlichen Nutzen von Empfehlungen ist \cite[S. 1097]{mcnee:inproceedings}\cite[S. 850]{adomavicius:4:inbook}\cite[S. 896]{adomavicius:article}.
+Neben der Genauigkeit von Empfehlungen versuchen moderne Empfehlungssysteme daher oftmals die eingesetzten Algorithmen hinsichtlich weiterer Ziele (z.B. Diversität von Elementen \cite[S. 896]{adomavicius:article}, Serendipity \cite[S. 1099]{mcnee:inproceedings}) zu optimieren \cite[S. 850]{adomavicius:4:inbook}.
+Multi-kriteriell bedeutet in solchen Systemen folglich die Empfehlungen für Nutzer unter Berücksichtigung mehrerer Ziele zu generieren \cite[S. 850]{adomavicius:4:inbook}.
+% Beispiel?
 
-Ein Beispiel multikriterieller Probleme in Empfehlungssystemen stellen multi-kriterielle Bewertungen dar.
-Multi-kriterielle Bewertungen bezeichnen Ratings eines Elements anhand verschiedener Aspekte.
+Wird in der Literatur von multi-kriteriellen Empfehlungssystemen (engl.: \ac{MCRS}) gesprochen, wird sich zumeist auf multi-kriterielle Bewertungen in der Präferenzerhebung bezogen \cite[S. 745]{adomavicius:inproceedings}\cite[S. 207]{hdioud:inproceedings}\cite[S. 1156]{gupta:inproceedings}.
+Während traditionelle Empfehlungssysteme Elemente anhand eines einzigen Kriteriums (z.b. Gesamtbewertung) bewerten, werden Elemente in \ac{MCRS} anhand mehrerer Kriterien bewertet.
+Im Vergleich zu multi-attribut-basierten Grundideen werden für multi-kriterielle Bewertungen keine allgemeinen Präferenzen oder Gewichte für bestimmte Attribute durch einen Nutzer angegeben \cite[S. 851]{adomavicius:4:inbook}.
+Stattdessen bewerten Nutzer einzelne Elemente (implizit)\footnote{Nicht in allen Systemen geben die Nutzer multi-kriterielle Bewertungen an. Es kann auch vorkommen, dass Bewertungen für einzelne Kriterien über ein allgemeines Rating vorhergesagt werden.} anhand verschiedener Kriterien.
+% Multikriterielle Probleme können in Empfehlungssystemen folglich in unterschiedlichen Kontexten bestehen.
+% Aufgrund eines anhaltenden Trends im Bereich der multi-kriteriellen Bewertungen, beziehen sich die meisten Veröffentlichungen zu multikriteriellen Empfehlungssystemen in der Literatur auf.
+% Nachfolgend werden multi-kriterielle Empfehlungssysteme im Detail betrachtet und Lösungsansätze vorgestellt.
+
+Bewertungen eines Nutzers für ein Element in multikriteriellen Empfehlungssystemen werden wie in traditionellen Systemen über eine Rating-Funktion $R$ abgebildet.
+Werden Elemente zusätzlich zu einer Gesamtbewertung $R_{0}$ anhand weiterer Kriterien $i=1,...,k$ bewertet, ergibt sich für die Rating-Funktion $R$ aus Gleichung \ref{eq10} \cite[S. 853]{adomavicius:4:inbook}:\footnote{Da aus Gründen der Einfachheit in Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} für den Nutzen einer \ac{N-E-K} die Bewertung eines Nutzers für ein Element angenommen wurde, sind die Mengen $R_{0}$ und $Rating$ (Vgl. Gleichung \ref{eq2} und \ref{eq10}) identisch (d.h. $R_{0}=Rating$).}
+\begin{equation}\label{eq11}
+    R: Nutzer \times Element \rightarrow R_{0} \times R_{1} \times ... \times R_{k}
+\end{equation}
+
+Bilden \ac{MCRS} lediglich die Bewertungen der einzelnen Kriterien ab, ergibt sich für die Rating-Funktion folgende Form \cite[S. 853]{adomavicius:4:inbook}:
+\begin{equation}\label{eq12}
+    R: Nutzer \times Element \times R_{1} \times ... \times R_{k}
+\end{equation}
+
 Tabelle \ref{tab3} bildet beispielhaft multi-kriterielle Bewertungen von Mitarbeitern eines Unternehmens für Fähigkeiten ab.
 Hierbei setzt sich eine Gesamtbewertung aus dem Kenntnisstand eines Mitarbeiters und dessen Präferenzen für eine Fähigkeit zusammen.
 
@@ -57,21 +96,25 @@ Hierbei setzt sich eine Gesamtbewertung aus dem Kenntnisstand eines Mitarbeiters
     {} & {\textbf{Java}} & {\textbf{Python}} & {\textbf{MySQL}}\\
     \hline
     \hline
-    \textbf{Jane D.} & $3_{2,1}$ & $4_{3,1}$ & $1_{0,1}$ \\
+    \textbf{Jane D.} & $2_{0,2}$ & $4_{3,1}$ & $2_{0,2}$ \\
     \hline
-    \textbf{John D.} & $3_{1,2}$ & $4_{1,3}$ & ? \\
+    \textbf{John D.} & $2_{1,1}$ & $4_{1,3}$ & ? \\
     \hline
-    \textbf{Max M.} & $4_{1,3}$ & $3_{1,2}$ & $5_{5,0}$ \\
+    \textbf{Max M.} & $3_{2,1}$ & $3_{1,2}$ & $3_{2,1}$ \\
     \hline
     \end{tabular}
     \end{center}
-    \caption[Multi-kriterielle Rating-Matrix ]{Multi-kriterielle Rating-Matrix \\}
+    \caption[Multi-kriterielle Rating-Matrix ]{Multi-kriterielle Rating-Matrix \\
+    (Eigene Darstellung in Anlehnung an \cite[S. 51]{adomavicius:inproceedings:2})}
 	\label{tab3}
 \end{table}
 
 Eine alleinige Betrachtung der Gesamtbewertungen von Mitarbeitern lässt vermuten, dass der Mitarbeiter John D. am meisten Ähnlichkeit mit der Mitarbeiterin Jane D. aufweist.
 Basierend auf den multikriteriellen Bewertungen scheint der Mitarbeiter Max M. jedoch mehr Ähnlichkeit mit John D. aufzuweisen als die Mitarbeiterin Jane D.
-Die Vorhersage fehlender Bewertungen wie $\hat{r}_{John D., MySQL}$ in Abhängigkeit der Ähnlichkeit zu anderen Mitarbeitern würde im vorliegenden Beispiel
+Es wird deutlich, dass durch die Abbildung des Nutzen eines Mitarbeiters über ein einziges Kriterium, Unterschiede bzw. Gemeinsamkeiten zwischen Nutzern unentdeckt bleiben können \cite[S. 854]{adomavicius:4:inbook}.
+Die zusätzliche Information über die Präferenzen der Mitarbeiter können folglich für die Vorhersage fehlender Transaktionen genutzt werden (z.B. Vorhersage von $\hat{r}_{John D., MySQL}$ anhand der Ähnlichkeit zu Max M.) \cite[S. 848]{adomavicius:4:inbook}.
+
+% HIER WEITERMACHEN
 
 \section{Problemstellung}
 
