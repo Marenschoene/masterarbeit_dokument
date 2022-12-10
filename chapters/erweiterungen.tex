@@ -5,7 +5,7 @@
 \shorthandoff{"}
 \chapter{Multi-kriterielle Optimierung}
 \label{ch:erweiterungen}
-% Hier Überleitung finden zu Multikriterieller Optimierung in RS (Anknüpfen über Nutzen, der sich aus mehreren Aspekten zusammensetzt (hier: Nutzen setzt sich zusammen aus Präferenzen Manager und Präferenzen Mitarbeiter)).
+% Hier Überleitung finden zu Multi-kriterieller Optimierung in RS (Anknüpfen über Nutzen, der sich aus mehreren Aspekten zusammensetzt (hier: Nutzen setzt sich zusammen aus Präferenzen Manager und Präferenzen Mitarbeiter)).
 % Grundsätzlich basiert das Rating eines Elements auf einem Kriterium.
 Im vorangegangenen Kapitel wurde erläutert, dass für reziproke Empfehlungen sowohl die Präferenzen der Nutzer als auch die Präferenzen der Elemente berücksichtigt werden müssen.
 % Irgendwo noch einbringen, dass Paarung quasi den Nutzen angibt, also gutes paar = guter Nutzen
@@ -22,12 +22,12 @@ Nach \textcite[S. 847f.]{adomavicius:4:inbook} ist diese Annahme in der Literaur
 Es wird davon ausgegangen, dass der Nutzen eines Elements für einen Nutzer durchaus von mehreren Kriterien abhängen kann \cite[S. 847f.]{adomavicius:4:inbook}\cite[S. 424]{manouselis:article}.
 
 In der Praxis existiert auch außerhalb des Bereichs der Empfehlungssysteme eine Vielzahl an Problemstellungen, für die unter der Berücksichtigung von oftmals konkurrierenden Kriterien eine optimale Lösung gefunden werden muss.
-So zählt nach \textcite[S. ix]{statnikov:book} die Mehrheit aller Probleme der Ingenieurswissenschaft zu multikriteriellen Problemen.
-Auch in anderen Bereichen wie dem Gesundheitswesen \cite[S. 195]{nemeth:article} oder der Marktforschung \cite[S. 50]{adomavicius:inproceedings:2} treten multikriterielle Probleme auf.
-Ansätze für die Lösung solcher multikriteriellen Probleme werden allgemein unter dem Begriff der multikriteriellen Optimierung (engl.: multicriteria optimization) zusammengefasst \cite[S. v]{ehrgott:book}\cite[S. 867]{adomavicius:4:inbook}.
-Zu bekannten Methoden zählen das Finden Pareto-Optimaler Lösungen \cite[S. 50]{adomavicius:inproceedings:2} und das Anwenden von Linearkombinationen zur Reduktion multikriterieller auf unikriterielle Probleme \cite[S. 745]{adomavicius:inproceedings}.
+So zählt nach \textcite[S. ix]{statnikov:book} die Mehrheit aller Probleme der Ingenieurswissenschaft zu multi-kriteriellen Problemen.
+Auch in anderen Bereichen wie dem Gesundheitswesen \cite[S. 195]{nemeth:article} oder der Marktforschung \cite[S. 50]{adomavicius:inproceedings:2} treten multi-kriterielle Probleme auf.
+Ansätze für die Lösung solcher multi-kriteriellen Probleme werden allgemein unter dem Begriff der multi-kriteriellen Optimierung (engl.: multicriteria optimization) zusammengefasst \cite[S. v]{ehrgott:book}\cite[S. 867]{adomavicius:4:inbook}.
+Zu bekannten Methoden zählen das Finden Pareto-Optimaler Lösungen \cite[S. 50]{adomavicius:inproceedings:2} und das Anwenden von Linearkombinationen zur Reduktion multi-kriterieller auf unikriterielle Probleme \cite[S. 745]{adomavicius:inproceedings}.
 
-In der Entscheidungstheorie wird die Entscheidungsfindung in Organisationen ebenfalls als ein multikriterielles Problem behandelt, wobei verschiedene Aspekte wie Personal, Finanzen und Umwelt berücksichtigt werden müssen \cite[S. 50]{adomavicius:inproceedings:2}.
+In der Entscheidungstheorie wird die Entscheidungsfindung in Organisationen ebenfalls als ein multi-kriterielles Problem behandelt, wobei verschiedene Aspekte wie Personal, Finanzen und Umwelt berücksichtigt werden müssen \cite[S. 50]{adomavicius:inproceedings:2}.
 Ansätze, um Verantwortliche in dem Treffen von Entscheidungen anhand von (konkurrierenden) Kriterien zu unterstützen, werden gemäß \textcite[S. 50]{adomavicius:inproceedings:2} unter dem Begriff der multi-kriteriellen Entscheidungsunterstützung (engl.: \ac{MCDA}) zusammengefasst.
 Outranking-Methoden zählen zu den bekanntesten Ansätzen in \ac{MCDA} \cite[S. 50]{adomavicius:inproceedings:2}.
 Diese Ansätze ermöglichen es, Alternativen anhand unterschiedlicher Kriterien durch paarweise Vergleiche in Präferenz-Relation zu setzen \cite[S. 249]{bouyssou:inbook}.
@@ -68,22 +68,26 @@ Multi-kriteriell bedeutet in solchen Systemen folglich die Empfehlungen für Nut
 % Beispiel?
 
 Wird in der Literatur von multi-kriteriellen Empfehlungssystemen (engl.: \ac{MCRS}) gesprochen, wird sich zumeist auf multi-kriterielle Bewertungen in der Präferenzerhebung bezogen \cite[S. 745]{adomavicius:inproceedings}\cite[S. 207]{hdioud:inproceedings}\cite[S. 1156]{gupta:inproceedings}.
-Während traditionelle Empfehlungssysteme Elemente anhand eines einzigen Kriteriums (z.b. Gesamtbewertung) bewerten, werden Elemente in \ac{MCRS} anhand mehrerer Kriterien bewertet.
+Während traditionelle Empfehlungssysteme Elemente anhand eines einzigen Kriteriums (z.b. der Gesamtbewertung) bewerten, werden Elemente in \ac{MCRS} (implizit)\footnote{Nicht in allen Systemen geben die Nutzer multi-kriterielle Bewertungen an. Es kann auch vorkommen, dass Bewertungen für einzelne Kriterien über ein allgemeines Rating vorhergesagt werden.} anhand mehrerer Kriterien evaluiert.
+Diese multi-kriteriellen Bewertungen werden häufig in Empfehlungssystemen des kollaborativen Filterns genutzt, um komplexe Präferenzen von Nutzern abzubilden \cite[S. 850]{adomavicius:4:inbook}.
+Es wird davon ausgegangen, dass diese zusätzliche Information \cite[S. 49]{adomavicius:inproceedings:2} über die Präferenzen der Nutzer die Qualität der Empfehlungen verbessern kann \cite[S. 2]{adomavicius:5:inbook}.
 Im Vergleich zu multi-attribut-basierten Grundideen werden für multi-kriterielle Bewertungen keine allgemeinen Präferenzen oder Gewichte für bestimmte Attribute durch einen Nutzer angegeben \cite[S. 851]{adomavicius:4:inbook}.
-Stattdessen bewerten Nutzer einzelne Elemente (implizit)\footnote{Nicht in allen Systemen geben die Nutzer multi-kriterielle Bewertungen an. Es kann auch vorkommen, dass Bewertungen für einzelne Kriterien über ein allgemeines Rating vorhergesagt werden.} anhand verschiedener Kriterien.
-% Multikriterielle Probleme können in Empfehlungssystemen folglich in unterschiedlichen Kontexten bestehen.
-% Aufgrund eines anhaltenden Trends im Bereich der multi-kriteriellen Bewertungen, beziehen sich die meisten Veröffentlichungen zu multikriteriellen Empfehlungssystemen in der Literatur auf.
-% Nachfolgend werden multi-kriterielle Empfehlungssysteme im Detail betrachtet und Lösungsansätze vorgestellt.
 
-Bewertungen eines Nutzers für ein Element in multikriteriellen Empfehlungssystemen werden wie in traditionellen Systemen über eine Rating-Funktion $R$ abgebildet.
-Werden Elemente zusätzlich zu einer Gesamtbewertung $R_{0}$ anhand weiterer Kriterien $i=1,...,k$ bewertet, ergibt sich für die Rating-Funktion $R$ aus Gleichung \ref{eq10} \cite[S. 853]{adomavicius:4:inbook}:\footnote{Da aus Gründen der Einfachheit in Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} für den Nutzen einer \ac{N-E-K} die Bewertung eines Nutzers für ein Element angenommen wurde, sind die Mengen $R_{0}$ und $Rating$ (Vgl. Gleichung \ref{eq2} und \ref{eq10}) identisch (d.h. $R_{0}=Rating$).}
+% Multi-kriterielle Probleme können in Empfehlungssystemen folglich in unterschiedlichen Kontexten bestehen.
+% Aufgrund eines anhaltenden Trends im Bereich der multi-kriteriellen Bewertungen, beziehen sich die meisten Veröffentlichungen zu multi-kriteriellen Empfehlungssystemen in der Literatur auf multi-kriterielle Ratings.
+% Daher werden Ansätze zur Lösung multi-kriterieller Optimierungsprobleme in Empfehlungssystemen Nachfolgend werden multi-kriterielle Empfehlungssysteme im Detail betrachtet und Lösungsansätze vorgestellt.
+
+Multi-kriterielle Bewertungen in \ac{MCRS} werden wie unikriterielle Bewertungen in traditionellen Systemen über eine Rating-Funktion $R$ abgebildet.
+Werden Elemente zusätzlich zu einer Gesamtbewertung anhand weiterer Kriterien bewertet, ergibt sich für die Rating-Funktion $R$ aus Gleichung \ref{eq10} \cite[S. 853]{adomavicius:4:inbook}:
 \begin{equation}\label{eq11}
     R: Nutzer \times Element \rightarrow R_{0} \times R_{1} \times ... \times R_{k}
 \end{equation}
+Hierbei stellt $R_{0}$ die Menge aller möglichen Gesamtbewertungen dar.\footnote{Da aus Gründen der Einfachheit in Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} für den Nutzen einer \ac{N-E-K} die Bewertung eines Nutzers für ein Element angenommen wurde, entspricht $R_{0}$ dem $Rating$ (Vgl. Gleichung \ref{eq2} und \ref{eq10}).}
+$R_{i}$ bildet die Menge aller möglichen Bewertungen jedes einzelnen Kriteriums $i$ ($i=1,...,k$) ab \cite[S. 49]{adomavicius:inproceedings:2}.
 
-Bilden \ac{MCRS} lediglich die Bewertungen der einzelnen Kriterien ab, ergibt sich für die Rating-Funktion folgende Form \cite[S. 853]{adomavicius:4:inbook}:
+Bilden \ac{MCRS} lediglich die Bewertungen der einzelnen Kriterien ab, ergibt sich für die Rating-Funktion $R$ folgende Form \cite[S. 853]{adomavicius:4:inbook}:
 \begin{equation}\label{eq12}
-    R: Nutzer \times Element \times R_{1} \times ... \times R_{k}
+    R: Nutzer \times Element \rightarrow R_{1} \times ... \times R_{k}
 \end{equation}
 
 Tabelle \ref{tab3} bildet beispielhaft multi-kriterielle Bewertungen von Mitarbeitern eines Unternehmens für Fähigkeiten ab.
@@ -110,17 +114,86 @@ Hierbei setzt sich eine Gesamtbewertung aus dem Kenntnisstand eines Mitarbeiters
 \end{table}
 
 Eine alleinige Betrachtung der Gesamtbewertungen von Mitarbeitern lässt vermuten, dass der Mitarbeiter John D. am meisten Ähnlichkeit mit der Mitarbeiterin Jane D. aufweist.
-Basierend auf den multikriteriellen Bewertungen scheint der Mitarbeiter Max M. jedoch mehr Ähnlichkeit mit John D. aufzuweisen als die Mitarbeiterin Jane D.
+Basierend auf den multi-kriteriellen Bewertungen scheint der Mitarbeiter Max M. jedoch mehr Ähnlichkeit mit John D. aufzuweisen als die Mitarbeiterin Jane D.
 Es wird deutlich, dass durch die Abbildung des Nutzen eines Mitarbeiters über ein einziges Kriterium, Unterschiede bzw. Gemeinsamkeiten zwischen Nutzern unentdeckt bleiben können \cite[S. 854]{adomavicius:4:inbook}.
-Die zusätzliche Information über die Präferenzen der Mitarbeiter können folglich für die Vorhersage fehlender Transaktionen genutzt werden (z.B. Vorhersage von $\hat{r}_{John D., MySQL}$ anhand der Ähnlichkeit zu Max M.) \cite[S. 848]{adomavicius:4:inbook}.
+Durch die multi-kriteriellen Bewertungen können zusätzliche Information über die Präferenzen der Mitarbeiter des Systems abgebildet werden.
+Diese können wiederum für die Vorhersage fehlender Transaktionen genutzt werden (z.B. Vorhersage von $\hat{r}_{John D., MySQL}$ anhand der Ähnlichkeit zu Max M.) \cite[S. 848]{adomavicius:4:inbook}.
 
-% HIER WEITERMACHEN
+Multi-kriterielle Optimierungsprobleme können in Empfehlungssystemen folglich in unterschiedlichen Kontexten bestehen.
+Aufgrund eines anhaltenden Trends im Bereich der multi-kriteriellen Bewertungen \cite[S. 851]{adomavicius:4:inbook}, beziehen sich die meisten Veröffentlichungen zu Lösungsansätzen multi-kriterieller Optimierungsprobleme in der Literatur auf multi-kriterielle Ratings.
+Auch wenn der Kontext der multi-kriteriellen Probleme sich unterscheiden kann, können viele Lösungsansätze in allen Bereichen eingesetzt werden.
+Daher werden nachfolgend Lösungsansätze zu multi-kriteriellen Optimierungsproblemen anhand multi-kriterieller Bewertungen angeführt.
 
-\section{Problemstellung}
+% \section{Problemstellung}
 
 \section{Lösungsansätze}
+Lösungsansätze im Bereich multi-kriterieller Bewertungen können in unterschiedlichen Phasen im Empfehlungserstellungsprozess eingesetzt werden \cite[S. 854]{adomavicius:4:inbook}.
+In Abhängigkeit der zwei Phasen des Prozesses werden die Techniken einer von zwei Kategorien zugeordnet: Einsatz multi-kriterieller Bewertungen in der Vorhersage oder Einsatz multi-kriterieller Bewertungen im Ranking.
+
+Während der Vorhersage-Phase können multi-kriterielle Bewertungen eingesetzt werden, um Gesamtbewertungen bzw. Bewertungen individueller Kriterien vorherzusagen \cite[S. 854]{adomavicius:4:inbook}.
+Größtenteils werden multi-kriterielle Bewertungen für die Vorhersage in Systemen des kollaborativen Filterns verwendet.
+Allgemein werden Techniken für die Vorhersage in Systemen des kollaborativen Filterns in modellbasierte und speicherbasierte Techniken unterschieden.
+Modellbasierte Techniken verwenden Methoden der Statistik und des Maschinellen Lernens, um basierend auf historischen Daten Modelle zu entwickeln, über die fehlende Transaktionen vorhergesagt werden können.
+Im Gegensatz dazu ermitteln speicherbasierte Systeme Vorhersagen "on the fly" \cite[S. 855]{adomavicius:4:inbook} basierend auf aktuell vorliegenden Daten.
+Für die Vorhersage werden heuristische Methoden verwendet \cite[S. 855]{adomavicius:4:inbook}.
+% Wie komme ich hier darum herum so ins detail der techniken von nachbarschaftsbasierten algorithmen zu gehen?
+Abhängig davon, welche Technik für die Vorhersage angewandt wird, unterscheiden sich Ansätze für die Berücksichtigung multi-kriterieller Bewertungen während der Vorhersage-Phase.
+
+\subsection{Speicherbasierte Ansätze}
+In speicherbasierten Systemen erfolgt die Vorhersage fehlender Bewertungen eines Zielnutzers basierend auf vorherigen Bewertungen der Nutzer eines Systems \cite[S.738]{adomavicius:inproceedings}.
+Nach \textcite[S.738]{adomavicius:inproceedings} erfolgt eine Vorhersage durch Aggregation der Bewertungen eines Zielelements durch Nutzer, die Ähnlichkeit zu dem Zielnutzer aufweisen.
+
+Für die Ermittlung der Ähnlichkeit $sim(c,c')$ zweier Nutzer $c$ und $c'$, können verschiedene Ähnlichkeitsmaße herangezogen werden.
+Zu den bekanntesten paarweisen Ähnlichkeitsmaßen zählen der Pearson-Korrelationskoeffizient und die Kosinus-Ähnlichkeit \cite[S. 856]{adomavicius:4:inbook}\cite[S. 738]{adomavicius:inproceedings}.
+Angenommen $S(c,c')$ stellt die Menge aller Elemente aus $S$ dar, die beide Nutzer bewertet haben (d.h. $S(c,c')=\{s \in S | r_{cs} \neq ? \cap r_{c's} \neq ?\}$ \cite[S. 738]{adomavicius:inproceedings}), so werden die Ähnlichkeitsmaße wie folgt ermittelt \cite[S. 856]{adomavicius:4:inbook}:
+\begin{itemize}
+    \item Pearson-Korrelationskoeffizient:
+    \begin{equation}\label{eq13}
+        sim(c,c') = \frac{\underset{{s \in S(c,c')}}{\sum}(r_{cs}-\overline{r(c)})(r_{c's}-\overline{r(c')})}{\sqrt{\underset{{s \in S(c,c')}}{\sum}(r_{cs}-\overline{r(c)})^{2}}\sqrt{\underset{{s \in S(c,c')}}{\sum}(r_{cs}-\overline{r(c')})^{2}}}
+    \end{equation}
+    \item Kosinus-Ähnlichkeit:
+    \begin{equation}\label{eq14}
+        sim(c,c') = \frac{\underset{{s \in S(c,c')}}{\sum}r_{cs}r_{c's}}{\sqrt{\underset{{s \in S(c,c')}}{\sum}r_{cs}^{2}}\sqrt{\underset{{s \in S(c,c')}}{\sum}r_{cs}^{2}}}
+    \end{equation}
+\end{itemize}
+Der Parameter $\overline{r(c)}$ repräsentiert die durchschnittliche Bewertung eines Nutzers $c$.
+
+Gemäß \textcite[S. 856f.]{adomavicius:4:inbook} können Ähnlichkeitsmaße wie der Pearson-Korrelationskoeffizient oder die Kosinus-Ähnlichkeit lediglich Bewertungen anhand eines einzelnen Kriteriums verarbeiten.
+Daher können multi-kriterielle Bewertungen nicht unmittelbar auf die Gleichungen angewandt werden.
+In \ac{MCRS} besteht eine Bewertung $r_{cs}$ neben einer Gesamtbewertung $r_{cs}^{0}$ zusätzlich aus $k$ multi-kriteriellen Bewertungen $r_{cs}^{1}, ..., r_{cs}^{k}$, d.h. $r_{cs}=(r_{cs}^{0},r_{cs}^{1}, ..., r_{cs}^{k})$ \cite[S. 426]{recommenderSystems:2016}\cite[S. 857]{adomavicius:4:inbook}.
+Anstelle eines einzigen Ratings besitzt eine \ac{N-E-K} in \ac{MCRS} demnach $k+1$ Bewertungen \cite[S. 857]{adomavicius:4:inbook}.\footnote{\textcite[S. 857]{adomavicius:4:inbook} merken an, dass Empfehlungssysteme nicht zwangsläufig über eine Gesamtbewertung verfügen müssen. Für \ac{MCRS}, die keine Gesamtbewertungen beinhalten, können für die Berechnung der Ähnlichkeit dieselben Maße angewandt werden, wie für Systeme die Gesamtbewertungen verwenden, mit dem einzigen Unterschied, dass der Index $i$ nicht die Gesamtbewertung einschließt (d.h. $i \in \{1,k\}$ anstelle von $i \in \{0,k\}$).}
+
+Eine Möglichkeit für die Berücksichtigung multi-kriterieller Bewertungen in der Ähnlichkeitsberechnung stellt die Aggregation von Ähnlichkeiten auf Ebene der einzelnen Kriterien dar.
+Stellt $sim^{i}(c,c')$ die Ähnlichkeit zweier Nutzer $c$ und $c'$ für jedes Kriterium $i \in \{0,k\}$ dar, so kann deren Ähnlichkeit nach \textcite[S. 427]{recommenderSystems:2016} allgemein wie folgt ermittelt werden:
+\begin{enumerate}
+    \item Berechnung der Ähnlichkeit $sim^{i}(c,c')$ für jedes Kriterium $i \in \{0,k\}$ anhand eines paarweisen Ähnlichkeitsmaßes (z.B. Pearson-Korrelations\-koeffizient, Kosinus-Ähnlichkeit).
+    \item Berechnung der aggregierten Ähnlichkeit $sim^{aggr}(c,c')$ anhand einer Aggregations-Funktion über alle Ähnlichkeiten der einzlenen Kriterien:
+    \begin{equation}
+        sim^{aggr}(c,c') = F(sim^{0}(c,c'), sim^{1}(c,c'), ..., sim^{k}(c,c'))
+    \end{equation}
+\end{enumerate}
+
+Nach \textcite[S. 427]{recommenderSystems:2016}, \textcite[S. 857]{adomavicius:4:inbook} und \textcite[S. 738]{adomavicius:inproceedings} zählen  zu den bekanntesten Aggregations-Funktionen:
+\begin{itemize}
+    \item die durchschnittliche Ähnlichkeit,
+    \item die pessimistische Ähnlichkeit, sowie
+    \item die gewichtete Ähnlichkeit
+\end{itemize}
+% Hier weitermachen! siehe Aggarwal
+
+% Dann zweite möglichkeit mit distanzmaß
+
+% Dann weiter mit ermittlung der Bewertung basierend auf der Ähnlichkeit
+\begin{equation}
+    \hat{r}_{cs}=\underset{c' \in \hat{C}}{\textnormal{aggr}}\textnormal{ }r_{c's}
+\end{equation}
+Die Menge $\hat{C}$ stellt eine Teilmenge der Nutzer $C$ eines Systems dar und umfasst die $N$ Nutzer, die dem Zielnutzer ähnlich sind.
+Die Aggregation der Bewertungen kann anhand verschiedener Aggregations-Funktionen erfolgen.
+
+\subsection{Modellbasierte Ansätze}
+
 % Wenn im bereich multi-criteria ratings, dann unterscheiden zwischen vorhandenes overall rating ode rnicht vorhandenes overall rating
-% wenn bei overall rating können ansätze aus der allgemeinen multikriteriellen optimierung auf RS übertragen werden
+% wenn bei overall rating können ansätze aus der allgemeinen multi-kriteriellen optimierung auf RS übertragen werden
 
 \subsection{Pareto-Optimierung}
 
