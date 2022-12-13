@@ -60,7 +60,7 @@ Beispiele für Attribute eines Nutzers sind das Geschlecht oder Alter eines Anwe
     \forall c \in C, s'_c = arg\max_{s \in S} u(c,s)
 \end{equation}
 Hierbei bezeichnet $C$ die Menge aller Nutzer und $S$ die Menge aller Elemente eines Systems.
-Nach \textcite[S. 735]{adomavicius:inproceedings} gibt $u(c,s)$ den Nutzen eines Elements $s$ für einen Nutzer $c$ an \cite[S. 734f.]{adomavicius:inproceedings}.
+Nach \textcite[S. 735]{adomavicius:inproceedings} gibt $u(c,s)$ den Nutzen eines Elements $s$ für einen Nutzer $c$ an.
 
 % Wird das Problem aus Gleichung \ref{eq1} auf einem höheren Abstraktionslevel betrachtet, besteht das grundsätzliche Problem in Empfehlungssystemen in der Auswahl von Elementen $s' \in S$ für einen Nutzer $c \in C$ mit maximalem Nutzen $u(c,s)$.
 Wird das Problem aus Gleichung \ref{eq1} weiter abstrahiert, kann die Problemstellung in Empfehlungssystemen als Auswahl der Elemente $s' \in S$ für einen Nutzer $c \in C$ mit maximalem Nutzen $u(c,s)$ verstanden werden.
@@ -71,9 +71,9 @@ Diese Verallgemeinerung ermöglicht eine Formulierung des Problems, die für all
 In der Literatur ist der Nutzen $u(c,s)$ einer \ac{N-E-K} nicht eindeutig definiert.
 Nach \textcite[S. 1]{jannach:article} betrachtet ein Großteil der Forschungsarbeiten Empfehlungssysteme aus Sicht der Empfehlungsempfänger.
 Das allgemeine Problem in solchen Systemen besteht darin, den Nutzen eines Nutzers zu maximieren, indem Elemente empfohlen werden, die für einen Nutzer potenziell von Relevanz sind \cite[S. 1]{jannach:article}.
-Unter dem Nutzen einer \ac{N-E-K} wird in der Literatur folglich überwiegend der Wert eines Elements für einen Nutzer verstanden \cite[S. 10f.]{ricci:inbook}\cite[S. 1]{klahold:book}\cite[S. 735]{adomavicius:inproceedings}.
+Unter dem Nutzen einer \ac{N-E-K} wird in der Literatur folglich überwiegend der Wert eines Elements für einen Nutzer verstanden \cite[S. 10f.]{ricci:inbook}\cite[S. 1]{klahold:book}\cite[S. 735]{adomavicius:inproceedings}\cite[S. 3880]{nilashi:article}.
 
-Empfehlungssysteme können auch aus Sicht des Dienstleisters (z.B. Online-Händler \cite[S. 1]{jannach:article}\cite[S. 1]{das:article}) eines Systems betrachtet werden.
+Empfehlungssysteme können auch aus Sicht des Dienstleisters (z.B. Online-Händler \cite[S. 1]{jannach:article}\cite[S. 231]{sahoo:article}) eines Systems betrachtet werden \cite[S. 2]{jannach:2:inproceedings}.
 In dem Fall bewirkt eine Empfehlung der relevantesten Elemente für einen Nutzer nicht zwangsläufig einen maximalen Nutzen für den Dienstleister \cite[S. 1]{jannach:article}.
 Sind beispielsweise zwei Produkte in einem Online-Shop interessant für einen Kunden, so kann es aus Sicht des Shop-Betreibers nützlicher sein, dem Kunden das Prodkut zu empfehlen, welches seinen Umsatz steigert.
 Aus Sicht eines Dienstleisters kann Nutzen in Empfehlungssystemen demnach auch als Wert einer \ac{N-E-K} für den Dienstleister verstanden werden.
@@ -100,7 +100,7 @@ Die Problematik des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Men
 % Frage: ist mit der Güte die Güte einer Empfehlung gemeint (gefällt einem nutzer die Empfehlung ja/nein), oder ist damit die Güte im Sinne von die Qualität von Empfehlungssystemen gemeint?
 % Der erfolgreiche Einsatz von Empfehlungssystemen wird maßgeblich von der Qualität der ausgesprochenen Empfehlungen bestimmt.
 Wie aus Gleichung \ref{eq1} hervorgeht, wird für den Nutzen einer \ac{N-E-K} in Empfehlungssystemen allgemein eine Funktion $u$ angenommen.
-Diese Funktion wird Nutzenfunktion (engl.: utility function) genannt und ist traditionell definiert als \cite[S. 195]{adomavicius:3:inbook}\cite[S. 3]{jawaheer:article}\cite[S. 1156]{gupta:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}:
+Diese Funktion wird Nutzenfunktion (engl.: utility function) genannt und ist traditionell definiert als \cite[S. 195]{adomavicius:3:inbook}\cite[S. 3]{jawaheer:article}\cite[S. 1156]{gupta:inproceedings}\cite[S. 219]{lakiotaki:inproceedings}\cite[S. 3880]{nilashi:article}:
 \begin{equation}\label{eq2}% Dabei handelt es sich um eine lineare Abbildung, bei der über die Funktion u jeder Kombination aus der nxm matrix, genau ein Wert aus R, also der Rating matrix, zugeordnet werden kann
     u: Nutzer \times Element \rightarrow R_{0}
 \end{equation}
@@ -115,7 +115,7 @@ Grundsätzlich kann die Nutzenfunktion in Empfehlungssystemen jede beliebige Fun
 Besteht das Ziel eines Empfehlungssystems bespielsweise darin, den Gesamtumsatz eines Unternehmens zu maximieren, so kann der Nutzen einer \ac{N-E-K} über eine Profit-Funktion ermittelt werden \cite[S. 735]{adomavicius:inproceedings}\cite[S. 11]{recommenderSystems:2016}\cite[S. 1]{jannach:article}\cite[S. 896]{adomavicius:article}.
 % $R(c,s)$ würde dann den Nutzen einer Kombination von Nutzer und Element aus Sicht des Unternehmens, welches den Empfehlungsservice einsetzt, darstellen \cite[S. 1]{jannach:article}.
 % Solche Systeme, in denen der Nutzen von Nutzer- Element- Kombinationen über eine eigenständige Nutzenfunktion ermittelt wird, zählen zu den nutzenbasierten Empfehlungssystemen und sind nicht Inhalt dieser Arbeit.
-In den meisten Empfehlungssystemen wird für den Nutzen $u(c,s)$ einer Kombination unmittelbar die Bewertung (engl.: Rating) eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:inbook}\cite[S. 11]{recommenderSystems:2016}\cite[S. 1]{dekhtyar:misc}.
+In den meisten Empfehlungssystemen wird für den Nutzen $u(c,s)$ einer Kombination unmittelbar die Bewertung (engl.: Rating) eines Element $s$ durch einen Nutzer $c$ angenommen \cite[S. 735]{adomavicius:inproceedings}\cite[S. 9]{ricci:inbook}\cite[S. 11]{recommenderSystems:2016}\cite[S. 1]{dekhtyar:misc}\cite[S. 3880]{nilashi:article}.
 Bewertungen von Nutzern für Elemente werden in Empfehlungssystemen grundsätzlich in einer $Nutzer \times Element$-Matrix abgebildet, welche als Rating-Matrix $R$ bezeichnet wird \cite[S. 87]{ekstrand:article}.
 Nach \textcite[S. 48f.]{adomavicius:inproceedings:2} können Bewertungen in Empfehlungssystemen über eine Rating-Funktion $R(c,s)$ bestimmt werden, welche definiert ist wie folgt:
 \begin{equation}\label{eq10}
