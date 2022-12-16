@@ -153,7 +153,7 @@ Angenommen $S(c,c')$ stellt die Menge aller Elemente aus $S$ dar, die beide Nutz
 \begin{itemize}
     \item Pearson-Korrelationskoeffizient:
     \begin{equation}\label{eq13}
-        sim(c,c') = \frac{\sum\limits_{s \in S(c,c')}(r_{cs}-\overline{r(c)})(r_{c's}-\overline{r(c')})}{\sqrt{\sum\limits_{s \in S(c,c')}(r_{cs}-\overline{r(c)})^{2}}\sqrt{\sum\limits_{s \in S(c,c')}(r_{cs}-\overline{r(c')})^{2}}}
+        sim(c,c') = \frac{\sum\limits_{s \in S(c,c')}(r_{cs}-\overline{r(c)})(r_{c's}-\overline{r(c')})}{\sqrt{\sum\limits_{s \in S(c,c')}(r_{cs}-\overline{r(c)})^{2}}\sqrt{\sum\limits_{s \in S(c,c')}(r_{c's}-\overline{r(c')})^{2}}}
     \end{equation}
     \item Kosinus-Ähnlichkeit:
     \begin{equation}\label{eq14}
@@ -163,7 +163,7 @@ Angenommen $S(c,c')$ stellt die Menge aller Elemente aus $S$ dar, die beide Nutz
 Der Parameter $\overline{r(c)}$ repräsentiert die durchschnittliche Bewertung eines Nutzers $c$.
 
 Gemäß \textcite[S. 856f.]{adomavicius:4:inbook} können Ähnlichkeitsmaße wie der Pearson-Korrelationskoeffizient oder die Kosinus-Ähnlichkeit lediglich Bewertungen anhand eines einzelnen Kriteriums verarbeiten.
-In \ac{MCRS} besteht eine Bewertung $r_{cs}$ jedoch neben einer Gesamtbewertung $r_{cs}^{0}$ zusätzlich aus $k$ multi-kriteriellen Bewertungen $r_{cs}^{1}, ..., r_{cs}^{k}$, d.h. $r_{cs}=(r_{cs}^{0},r_{cs}^{1}, ..., r_{cs}^{k})$ \cite[S. 426]{recommenderSystems:2016}\cite[S. 857]{adomavicius:4:inbook}.
+In \ac{MCRS} besteht eine Bewertung $r$ jedoch neben einer Gesamtbewertung $r^{0}$ zusätzlich aus $k$ multi-kriteriellen Bewertungen $r^{1}, ..., r^{k}$, d.h. $r=(r^{0},r^{1}, ..., r^{k})$ \cite[S. 426]{recommenderSystems:2016}\cite[S. 857]{adomavicius:4:inbook}.
 Anstelle eines einzigen Ratings besitzt eine \ac{N-E-K} in \ac{MCRS} demnach $k+1$ Bewertungen \cite[S. 857]{adomavicius:4:inbook}.\footnote{Für \ac{MCRS}, die keine Gesamtbewertungen beinhalten, können für die Berechnung der Ähnlichkeit dieselben Maße angewandt werden, wie für Systeme die Gesamtbewertungen verwenden, mit dem einzigen Unterschied, dass der Index $i$ nicht die Gesamtbewertung einschließt (d.h. $i \in \{1,k\}$ anstelle von $i \in \{0,k\}$) \cite[S. 857]{adomavicius:4:inbook}.}
 Daher können multi-kriterielle Bewertungen nicht unmittelbar auf die Gleichungen angewandt werden.
 In Anlehnung an \textcite[S. 49]{adomavicius:inproceedings:2}, \textcite[S. 860]{adomavicius:4:inbook} und \textcite[S. 427]{recommenderSystems:2016} wird die Vorstellung der Lösungsansätze auf nutzerbasiertes kollaboratives Filtern begrenzt.\footnote{Für ein simples Vorgehen zur Umstellung der Berechnungen auf elementbasiertes kollaboratives Filtern wird auf \textcite[S. 49]{adomavicius:inproceedings:2} verwiesen.}
@@ -207,11 +207,11 @@ Zu bekannten Distanzmaßen zählen \cite[S. 857f.]{adomavicius:4:inbook}:
 \begin{itemize}
     \item die Manhattan-Distanz:
     \begin{equation}\label{eq18}
-        elementDist^{aggr}(c,c',s)= \sum\limits_{i=0}^{k}|r_{cs}^{i}-r_{cs}^{i}|
+        elementDist^{aggr}(c,c',s)= \sum\limits_{i=0}^{k}|r_{cs}^{i}-r_{c's}^{i}|
     \end{equation}
     \item sowie die Euklidische Distanz:
     \begin{equation}\label{eq19}
-        elementDist^{aggr}(c,c',s)= \sqrt{\sum\limits_{i=0}^{k}(|r_{cs}^{i}-r_{cs}^{i}|)^{2}}
+        elementDist^{aggr}(c,c',s)= \sqrt{\sum\limits_{i=0}^{k}(|r_{cs}^{i}-r_{c's}^{i}|)^{2}}
     \end{equation}
 \end{itemize}
 
@@ -229,7 +229,8 @@ Speicherbasierte Ansätze beeinflussen lediglich die Ähnlichkeitsberechnung in 
 Das bedeutet, fehlende Bewertungen können nach Ermittlung der Ähnlichkeit wie gewohnt mittels Aggregation (z.B. gewichtete Summe \cite[S. 859]{adomavicius:4:inbook}) bestimmt werden \cite[S. 52]{adomavicius:inproceedings:2}\cite[S. 428]{recommenderSystems:2016}.
 
 \subsection{Modellbasierte Ansätze}
-Im Vergleich zu speicherbasierten Algorithmen des kollaborativen Filterns, werden fehlende Bewertungen in traditionellen modellbasierten Systemen über Vorhersage-Modelle bestimmt \cite[S. 861]{recommenderSystems:2016}.%welche im Vorfeld entwickelt werden (bspw. anhand von Machine-Learing-Methoden) \cite[S. 71]{recommenderSystems:2016}.
+Im Vergleich zu speicherbasierten Algorithmen des kollaborativen Filterns, werden fehlende Bewertungen in traditionellen modellbasierten Systemen über Vorhersage-Modelle bestimmt \cite[S. 861]{recommenderSystems:2016}.
+Basierend auf vergangenen Bewertungen der Nutzer eines Systems \cite[S. 358]{jin:article}, werden diese Vorhersage-Modelle im Vorfeld entwickelt (bspw. anhand von statistischen Modellen) \cite[S. 71]{recommenderSystems:2016}.
 In der Literatur existieren bereits einige Ansätze für die Integration multi-kriterieller Bewertungen in modellbasierte Systeme \cite[S. 861]{adomavicius:4:inbook}.
 
 Nach \textcite[S. 861]{adomavicius:4:inbook} besteht ein Nachteil speicherbasierter Ansätze darin, dass sich deren Einsatz auf Systeme des kollaborativen Filterns beschränkt.
@@ -237,20 +238,20 @@ Ein alternativer Ansatz, der in Kombination mit jeglicher Art an Empfehlungssyst
 Dem Ansatz liegt die Idee zugrunde, dass Gesamtbewertungen von Elementen eine Kombination (Aggregation) ihrer zugehörigen multi-kriteriellen Bewertungen darstellen \cite[S. 861]{adomavicius:4:inbook}.
 Gemäß \textcite[S. 52]{adomavicius:inproceedings:2} wird eine Gesamtbewertung $r^{0}$ durch eine Aggregationfunktion $f$ ihrer multikriteriellen Bewertungen $r^{1}, ..., r^{k}$ repräsentiert:
 \begin{equation}\label{eq22}
-    r_{cs}^{0} = f(r^{1}, ..., r^{k})
+    r^{0} = f(r^{1}, ..., r^{k})
 \end{equation}
 Das bedeutet, der Aggregation-Function-Ansatz unterstellt eine bestimmte Beziehung zwischen der Gesamtbewertung eines Elements durch einen Nutzer und dessen multi-kriterieller Bewertungen \cite[S. 52]{adomavicius:inproceedings:2}.
 So kann es sein, dass die Präferenz von Mitarbeitern für Fähigkeiten eine stärkere Priorität besitzt, d.h. das die meisten Mitarbeiter Fähigkeiten tatsächlich hoch bewerten, wenn sie diese gleichzeitig präferieren (Vgl. Tabelle \ref{tab3}).
 Nach dieser Annahme müsste eine hoch vorhergesagte Präferenz eines Mitarbeiters für eine Fähigkeit ebenfalls in einer hoch vorhergesagten Gesamtbewertung resultieren \cite[S. 52]{adomavicius:inproceedings:2}.
 
-Die Vorhersage von Gesamtbewertungen nach dem Aggregation-Function-Ansatz erfolgt anhand von drei Schritten, welche nachfolgend in Abbildung \ref{fig:optimierung:loesungen:fig1} grafisch abgebildet sind.
+Die Vorhersage von Gesamtbewertungen nach dem Aggregation-Function-Ansatz erfolgt anhand von drei Schritten, welche nachfolgend in Abbildung \ref{fig:optimierung:loesungen:abb1} grafisch abgebildet sind.
 
 \begin{figure}[H]
     \centering
 	\includegraphics[width=1.0\textwidth]{gfx/a-f-ansatz.png}
 	\caption[Aggregation-Function-Ansatz]{Aggregation-Function-Ansatz\\
     (Eigene Darstellung in Anlehnung an \cite[S. 862]{adomavicius:4:inbook})}
-	\label{fig:optimierung:loesungen:fig1}
+	\label{fig:optimierung:loesungen:abb1}
 \end{figure}
 
 Im ersten Schritt wird die $k$-dimensionale Rating-Matrix in $k$ unikriterielle Rating-Matrizen der traditionellen Form (Nutzer$\times$Element-Matrix) aufgeteilt \cite[S. 53]{adomavicius:inproceedings:2}.
@@ -262,7 +263,7 @@ Nach \textcite[S. 53]{adomavicius:inproceedings:2} existieren hierfür maßgebli
     \item \textit{Domänenwissen:} Aufstellen der Funktion basierend auf Erfahrungen und Domänenwissen. Ein simpler Ansatz stellt der Durchschnitt aller angenommenen Bewertungen der einzelnen Kriterien als Aggregations-Funktion dar.
     \item \textit{Statistische Methoden:} Aufstellen der Funktion anhand statistischer Verfahren (z.B. lineare und nicht-lineare Regressionsanalysen) \cite[S. 53]{adomavicius:inproceedings:2}. So kann die Vorhersage einer Gesamtbewertung in der linearen Regression als eine Linearkombination der (angenommenen) multi-kriteriellen Bewertungen repräsentiert werden \cite[S. 429]{recommenderSystems:2016}:
     \begin{equation}\label{eq23}
-        \hat{r}_{cs}^{0} = \sum\limits_{i=1}^{k}w^{i} r_{cs}^{i}
+        \hat{r}^{0} = \sum\limits_{i=1}^{k}w^{i} r^{i}
     \end{equation}
     Die Gewichte $w^{1}, ..., w^{k}$ der Kriterien können anhand verschiedener Techniken der linearen Regression bestimmt werden \cite[S. 429]{recommenderSystems:2016}.
     \item \textit{Techniken des Maschinellen Lernens:} Aufstellen der Funktion über Modelle des Maschinellen Lernens (z.B. neuronale Netze) \cite[S. 53]{adomavicius:inproceedings:2}.
@@ -278,11 +279,32 @@ Neben dem Aggregation-Function-Ansatz nennen \textcite[S. 861]{adomavicius:4:inb
 Vereinfacht gesehen handelt es sich dabei um Methoden, die mit Wahrscheinlichkeiten für Bewertungen arbeiten.
 \textcite[S. 861]{adomavicius:4:inbook} nennen als Beispiel die Veröffentlichung von \textcite[S. 231]{sahoo:article}.
 In der Veröffentlichung wird eine Anpassung des \ac{FMM} von \textcite[S. 704ff.]{si:inproceedings} um multi-krierielle Bewertungen vorgestellt.
+\textcite[S. 358]{jin:article} beschreiben das \ac{FMM} als eine grafische Darstellung eines probabilistischen Modells, in dem Nutzer und Elemente (mehreren)\footnote{Das \ac{FMM} unterscheidet sich von herkömmlichen grafischen Modellen unter anderem darin, dass Nutzer bzw. Elemente mehreren Clustern zugeordnet werden können \cite[S. 3]{si:inproceedings}\cite[S. 366]{jin:article}.} Clustern (Klassen) zugeordnet werden können.
+Das \ac{FMM} folgt der Annahme, dass eine Bewertung r, welche ein Element s von einem Nutzer c erhält, von einer latenten Variable $Z_{c}$ und einer latenten Variable $Z_{s}$ abhängt \cite[S. 235]{sahoo:article}.
+$Z_{c}$ kennzeichnet Cluster von Nutzern und ${Z_{s}}$ kennzeichnet Cluster von Elementen \cite[S. 862]{adomavicius:4:inbook}.
+Die Wahrscheinlichkeit der Bewertung $r$ eines Nutzers $c$ für ein Element $s$ ergibt sich nach \textcite[S. 862]{adomavicius:4:inbook} aus der Summe aller Wahrscheinlichkeiten der Kombinationen der Variablen $Z_{c}$ und $Z_{s}$:
+\begin{equation}\label{eq24}
+    P(c,s,r) = \sum\limits_{Z_{c}, Z_{s}}=P(Z_{c})P(Z_{s})P(c|Z_{c})P(s|Z_{s})P(r|Z_{c},Z_{s})
+\end{equation}
+Das grundlegende Modell ist in Abbildung \ref{fig:optimierung:loesungen:abb2:1} dargestellt, wobei die latenten Variablen grau hinterlegt sind.
+% Mixture Models sind grafische Darstellungen probabilistischer Modelle, in denen Nutzer bzw. Elemente in Empfehlungssystemen in Clustern zusammengefasst werden und in Verbindung mit Bewertungen gesetzt werden können.
+% Dadurch kann die Ähnlichkeit von Nutzern anhand deren Bewertung eines Element-Clusters erfolgenbasieren und nicht auf Ratings eines einzelnen Elements.
+% Mixture Models wurden ursprünglich entwickelt, um das Sparsity-Problem zu umgehen.
+
+\begin{figure}[H]
+    \centering
+    \subfloat[Flexible Mixture Model]{\includegraphics[height=0.9in]{gfx/f-m-m.png}\label{fig:optimierung:loesungen:abb2:1}}\\
+    \subfloat[Flexible Mixture Model mit multi-kriteriellen Bewertungen und Dependency-Struktur]{\includegraphics[height=2.20in]{gfx/f-m-m-2.png}\label{fig:optimierung:loesungen:abb2:2}}\\
+  \caption[Probabilistischer Modellierungs-Ansatz]{Probabilistischer Modellierungs-Ansatz\\
+	(Eigene Darstellung in Anlehnung an \cite[S. 836]{adomavicius:4:inbook})}\label{fig:optimierung:loesungen:abb2}
+\end{figure}
+
 % HIER WEITERMACHEN mit den beiden Veröffentlichungen
 % Wenn im bereich multi-criteria ratings, dann unterscheiden zwischen vorhandenes overall rating ode rnicht vorhandenes overall rating
 % wenn bei overall rating können ansätze aus der allgemeinen multi-kriteriellen optimierung auf RS übertragen werden
 
 \subsection{Pareto-Optimierung}
+% Skyline querie siehe Lee and Teng 2007: . Incorporating multi-criteria ratings in recommendation systems.
 
 \subsection{Aggregation}
 
