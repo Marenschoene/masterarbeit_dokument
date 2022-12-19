@@ -203,7 +203,7 @@ Die Werte der Gewichte können gemäß \textcite[S. 428]{recommenderSystems:2016
 Neben der Ähnlichkeitsberechnung mit anschließender Aggregation kann die Ähnlichkeit zweier Nutzer unter Berücksichtigung multi-kriterieller Bewertungen auch über multidimensionale Distanzmaße ermittelt werden \cite[S. 857]{adomavicius:4:inbook}.
 Für diesen speicherbasierten Ansatz wird im ersten Schritt die Ähnlichkeit zweier Nutzer $c$ und $c'$ basierend auf einem Element $s$ über ein herkömmliches Distanzmaß ermittelt.
 % Hier Maße mit reinnehmen oder nicht?
-Zu bekannten Distanzmaßen zählen \cite[S. 857f.]{adomavicius:4:inbook}:
+Zu bekannten Distanzmaßen zählen \textcite[S. 857f.]{adomavicius:4:inbook}:
 \begin{itemize}
     \item die Manhattan-Distanz:
     \begin{equation}\label{eq18}
@@ -215,7 +215,17 @@ Zu bekannten Distanzmaßen zählen \cite[S. 857f.]{adomavicius:4:inbook}:
     \end{equation}
 \end{itemize}
 
-Die Gesamtdistanz zweier Nutzer $c$ und $c'$ wird dann als Durchschnitt über alle Elemente in $S(c,c')$ ermittelt, d.h. für alle Elemente, die beide Nutzer bewertet haben \cite[S. 858]{adomavicius:4:inbook}:
+Nach \textcite[S. 240]{sahoo:article} berücksichtigen diese Distanzmaße nicht mögliche Abhängigkeiten (Korrelationen) zwischen den einzelnen Kriterien (inkl. Gesamtbewertung).
+Abhängigkeit bedeutet, dass nicht jedes Bewertungskriterium gänzlich neue Information über die Präferenzen eines Nutzers liefert, sondern ein Kriterium stärkeren Einfluss auf die Ausprägung der Bewertungen der anderen Kriterien haben kann \cite[S. 235]{sahoo:article}.
+Ein multidimensionales Distanzmaß, welches Abhängigkeiten zwischen Kriterien berücksichtigt ist die Mahalanobis-Distanz.
+Dieses Maß ermittelt die Distanz zwischen zwei Vektoren $\vec{c}$ und $\vec{c'}$ unter Einbezug der Kovarianz-Matrix $V$:
+\begin{equation}\label{eq25}
+    elementDist^{aggr}(\vec{c},\vec{c'}) = \sqrt{(\vec{c}-\vec{c'})^{T}V^{-1}(\vec{c}-\vec{c'})}
+\end{equation}
+Hierbei stellt ein Vektor die muti-kriteriellen Bewertungen eines Elements $s$ durch einen Nutzer dar.
+Die Kovarianz-Matrix ermitteln \textcite[S. 240]{sahoo:article} basierend auf historsichen Daten zu Bewertungen der Nutzer.
+
+Die Gesamtdistanz zweier Nutzer $c$ und $c'$ wird, unabhängig von der Wahl des Distanzmaßes, als Durchschnitt über alle Elemente in $S(c,c')$ ermittelt, d.h. für alle Elemente, die beide Nutzer bewertet haben \cite[S. 858]{adomavicius:4:inbook}:
 \begin{equation}\label{eq20}
     dist^{aggr}(c,c')= \frac{\sum\limits_{s \in S(c,c')}elementDist^{aggr}(c,c',s)}{|S(c,c')|}
 \end{equation}
@@ -275,13 +285,13 @@ Dies kann in Domänen sinnvoll sein, in denen sich die Gewichte einzelner Kriter
 
 Im letzten Schritt erfolgt die Vorhersage der Gesamtbewertungen basierend auf den (angenommenen) multi-kriteriellen Bewertungen und der erstellten Aggregation-Function $f$ \cite[S. 861]{adomavicius:4:inbook}.
 
-Neben dem Aggregation-Function-Ansatz nennen \textcite[S. 861]{adomavicius:4:inbook} probabilistische Modellierungs-Ansätze für die Verwendung multi-kriterieller Bewertungen in Empfehlungssystemen.
+Neben dem Aggregation-Function-Ansatz nennen \textcite[S. 861]{adomavicius:4:inbook} probabilistische Modellierungs-Ansätze für die Integration multi-kriterieller Bewertungen in Empfehlungssystemen.
 Vereinfacht gesehen handelt es sich dabei um Methoden, die mit Wahrscheinlichkeiten für Bewertungen arbeiten.
 \textcite[S. 861]{adomavicius:4:inbook} nennen als Beispiel die Veröffentlichung von \textcite[S. 231]{sahoo:article}.
 In der Veröffentlichung wird eine Anpassung des \ac{FMM} von \textcite[S. 704ff.]{si:inproceedings} um multi-krierielle Bewertungen vorgestellt.
 \textcite[S. 358]{jin:article} beschreiben das \ac{FMM} als eine grafische Darstellung eines probabilistischen Modells, in dem Nutzer und Elemente (mehreren)\footnote{Das \ac{FMM} unterscheidet sich von herkömmlichen grafischen Modellen unter anderem darin, dass Nutzer bzw. Elemente mehreren Clustern zugeordnet werden können \cite[S. 3]{si:inproceedings}\cite[S. 366]{jin:article}.} Clustern (Klassen) zugeordnet werden können.
 Das \ac{FMM} folgt der Annahme, dass eine Bewertung r, welche ein Element s von einem Nutzer c erhält, von einer latenten Variable $Z_{c}$ und einer latenten Variable $Z_{s}$ abhängt \cite[S. 235]{sahoo:article}.
-$Z_{c}$ kennzeichnet Cluster von Nutzern und ${Z_{s}}$ kennzeichnet Cluster von Elementen \cite[S. 862]{adomavicius:4:inbook}.
+$Z_{c}$ kennzeichnet die Klasse(n), denen ein Nutzer $c$ und ${Z_{s}}$ die Klasse(n), denen ein Element $s$ zugeordnet werden kann \cite[S. 862]{adomavicius:4:inbook}\cite[S. 3]{si:inproceedings}.
 Die Wahrscheinlichkeit der Bewertung $r$ eines Nutzers $c$ für ein Element $s$ ergibt sich nach \textcite[S. 862]{adomavicius:4:inbook} aus der Summe aller Wahrscheinlichkeiten der Kombinationen der Variablen $Z_{c}$ und $Z_{s}$:
 \begin{equation}\label{eq24}
     P(c,s,r) = \sum\limits_{Z_{c}, Z_{s}}=P(Z_{c})P(Z_{s})P(c|Z_{c})P(s|Z_{s})P(r|Z_{c},Z_{s})
@@ -290,6 +300,7 @@ Das grundlegende Modell ist in Abbildung \ref{fig:optimierung:loesungen:abb2:1} 
 % Mixture Models sind grafische Darstellungen probabilistischer Modelle, in denen Nutzer bzw. Elemente in Empfehlungssystemen in Clustern zusammengefasst werden und in Verbindung mit Bewertungen gesetzt werden können.
 % Dadurch kann die Ähnlichkeit von Nutzern anhand deren Bewertung eines Element-Clusters erfolgenbasieren und nicht auf Ratings eines einzelnen Elements.
 % Mixture Models wurden ursprünglich entwickelt, um das Sparsity-Problem zu umgehen.
+% Vereinfacht gesagt ist eine Bewertung r abhängig von einer Nutzerklasse und einer Elementklasse und nicht genau von einem Nutzer und einem Element.
 
 \begin{figure}[H]
     \centering
@@ -299,7 +310,18 @@ Das grundlegende Modell ist in Abbildung \ref{fig:optimierung:loesungen:abb2:1} 
 	(Eigene Darstellung in Anlehnung an \cite[S. 836]{adomavicius:4:inbook})}\label{fig:optimierung:loesungen:abb2}
 \end{figure}
 
-% HIER WEITERMACHEN mit den beiden Veröffentlichungen
+\textcite[S. 235]{sahoo:article} erweitern das \ac{FMM} um multi-kriterielle Bewertungen.
+Weiter unterstellen \textcite[S. 236f.]{sahoo:article} eine strukturelle Abhängigkeit zwischen den Bewertungen der einzelnen Kriterien (inkl. Gesamtbewertung).
+Nach \textcite[S. 236f.]{sahoo:article} besteht die stärkste Abhängigkeit (durchschnittliche Korrelation) zwischen der Gesamtbewertung eines Elements und den Bewertungen der einzelnen Kriterien.
+% Das bedeutet, dass nicht jedes Bewertungskriterium gänzlich neue Information über die Präferenzen eines Nutzers liefert, sondern, dass die Gesamtbewertung einen starken Einfluss auf die Ausprägung der Bewertungen der einzelnen Kriterien hat \cite[S. 235]{sahoo:article}.
+Die Abhängigkeiten (engl.: Dependency Structure) zwischen den Kriterien bilden \textcite[S. 235]{sahoo:article} in Anlehnung an Dependence Trees von \textcite[S. 463]{chow:article} als Baum ab.
+Die Integration multi-kriterieller Bewertungen in das ursprüngliche \ac{FMM} in Form einer der Dependency Structure ist in Abbildung \ref{fig:optimierung:loesungen:abb2:2} grafisch dargestellt.
+
+Die Vorhersage fehlender Bewertungen anhand des Ansatzes erfolgt in zwei Schritten. 
+Im ersten Schritt werden die Parameter ($Z_{c}$ und $Z_{s}$ \cite[S. 4]{si:inproceedings}) des \ac{FMM} mithilfe des Expectation Maximization Algorithmus von \textcite[S. 1ff.]{dempster:article} bestimmt \cite[S. 863]{adomavicius:4:inbook}.
+Unter Anwendung der Parameter wird darauffolgend der Wert einer fehlenden Bewertung als die Bewertung mit der höchsten Wahrscheinlichkeit vorhergesagt \cite[S. 863]{adomavicius:4:inbook}. 
+% HIER WEITERMACHEN mit Erklärung der Vorgehensweise zur Bestimmung fehlender Bewertungen
+
 % Wenn im bereich multi-criteria ratings, dann unterscheiden zwischen vorhandenes overall rating ode rnicht vorhandenes overall rating
 % wenn bei overall rating können ansätze aus der allgemeinen multi-kriteriellen optimierung auf RS übertragen werden
 
