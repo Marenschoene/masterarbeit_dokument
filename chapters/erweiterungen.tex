@@ -216,7 +216,7 @@ Zu bekannten Distanzmaßen zählen \textcite[S. 857f.]{adomavicius:4:inbook}:
 \end{itemize}
 
 Nach \textcite[S. 240]{sahoo:article} berücksichtigen diese Distanzmaße nicht mögliche Abhängigkeiten (Korrelationen) zwischen den einzelnen Kriterien (inkl. Gesamtbewertung).
-Abhängigkeit bedeutet, dass nicht jedes Bewertungskriterium gänzlich neue Information über die Präferenzen eines Nutzers liefert, sondern ein Kriterium stärkeren Einfluss auf die Ausprägung der Bewertungen der anderen Kriterien haben kann \cite[S. 235]{sahoo:article}.
+Abhängigkeiten können bedeuten, dass nicht jedes Bewertungskriterium gänzlich neue Information über die Präferenzen eines Nutzers liefert, sondern ein Kriterium beispielsweise stärkeren Einfluss auf die Ausprägung der Bewertungen der anderen Kriterien haben kann \cite[S. 235]{sahoo:article}.\footnote{In der Psychometrie ist dieser Effekt als der Halo-Effekt bekannt \cite[S. 3]{sahoo:2:article}.}
 Ein multidimensionales Distanzmaß, welches Abhängigkeiten zwischen Kriterien berücksichtigt ist die Mahalanobis-Distanz.
 Dieses Maß ermittelt die Distanz zwischen zwei Vektoren $\vec{c}$ und $\vec{c'}$ unter Einbezug der Kovarianz-Matrix $V$:
 \begin{equation}\label{eq25}
@@ -256,7 +256,7 @@ Nach dieser Annahme müsste eine hoch vorhergesagte Präferenz eines Mitarbeiter
 
 Die Vorhersage von Gesamtbewertungen nach dem Aggregation-Function-Ansatz erfolgt anhand von drei Schritten, welche nachfolgend in Abbildung \ref{fig:optimierung:loesungen:abb1} grafisch abgebildet sind.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
 	\includegraphics[width=1.0\textwidth]{gfx/a-f-ansatz.png}
 	\caption[Aggregation-Function-Ansatz]{Aggregation-Function-Ansatz\\
@@ -289,12 +289,14 @@ Neben dem Aggregation-Function-Ansatz nennen \textcite[S. 861]{adomavicius:4:inb
 Vereinfacht gesehen handelt es sich dabei um Methoden, die mit Wahrscheinlichkeiten für Bewertungen arbeiten.
 \textcite[S. 861]{adomavicius:4:inbook} nennen als Beispiel die Veröffentlichung von \textcite[S. 231]{sahoo:article}.
 In der Veröffentlichung wird eine Anpassung des \ac{FMM} von \textcite[S. 704ff.]{si:inproceedings} um multi-krierielle Bewertungen vorgestellt.
+
 \textcite[S. 358]{jin:article} beschreiben das \ac{FMM} als eine grafische Darstellung eines probabilistischen Modells, in dem Nutzer und Elemente (mehreren)\footnote{Das \ac{FMM} unterscheidet sich von herkömmlichen grafischen Modellen unter anderem darin, dass Nutzer bzw. Elemente mehreren Clustern zugeordnet werden können \cite[S. 3]{si:inproceedings}\cite[S. 366]{jin:article}.} Clustern (Klassen) zugeordnet werden können.
 Das \ac{FMM} folgt der Annahme, dass eine Bewertung r, welche ein Element s von einem Nutzer c erhält, von einer latenten Variable $Z_{c}$ und einer latenten Variable $Z_{s}$ abhängt \cite[S. 235]{sahoo:article}.
-$Z_{c}$ kennzeichnet die Klasse(n), denen ein Nutzer $c$ und ${Z_{s}}$ die Klasse(n), denen ein Element $s$ zugeordnet werden kann \cite[S. 862]{adomavicius:4:inbook}\cite[S. 3]{si:inproceedings}.
-Die Wahrscheinlichkeit der Bewertung $r$ eines Nutzers $c$ für ein Element $s$ ergibt sich nach \textcite[S. 862]{adomavicius:4:inbook} aus der Summe aller Wahrscheinlichkeiten der Kombinationen der Variablen $Z_{c}$ und $Z_{s}$:
+$Z_{c}$ kennzeichnet hierbei die Klasse(n), denen ein Nutzer $c$ und ${Z_{s}}$ die Klasse(n), denen ein Element $s$ zugeordnet werden kann \cite[S. 862]{adomavicius:4:inbook}\cite[S. 3]{si:inproceedings}.
+Die Idee des \ac{FMM} besteht darin, dass die Variablen Bewertung, Nutzer und Element unter der Bedingung der latenten Variablen $Z_{c}$ und $Z_{s}$ unabhängig voneinander sind \cite[S. 4]{sahoo:2:article}\cite[S. 235]{sahoo:article}.
+Die Wahrscheinlichkeit der Bewertung $r$ eines Nutzers $c$ für ein Element $s$ ergibt sich demnach aus der Summe aller Wahrscheinlichkeiten der Kombinationen der Variablen $Z_{c}$ und $Z_{s}$ \cite[S. 862]{adomavicius:4:inbook}:
 \begin{equation}\label{eq24}
-    P(c,s,r) = \sum\limits_{Z_{c}, Z_{s}}=P(Z_{c})P(Z_{s})P(c|Z_{c})P(s|Z_{s})P(r|Z_{c},Z_{s})
+    P(c,s,r) = \sum\limits_{Z_{c}, Z_{s}}P(Z_{c})P(Z_{s})P(c|Z_{c})P(s|Z_{s})P(r|Z_{c},Z_{s})
 \end{equation}
 Das grundlegende Modell ist in Abbildung \ref{fig:optimierung:loesungen:abb2:1} dargestellt, wobei die latenten Variablen grau hinterlegt sind.
 % Mixture Models sind grafische Darstellungen probabilistischer Modelle, in denen Nutzer bzw. Elemente in Empfehlungssystemen in Clustern zusammengefasst werden und in Verbindung mit Bewertungen gesetzt werden können.
@@ -302,7 +304,7 @@ Das grundlegende Modell ist in Abbildung \ref{fig:optimierung:loesungen:abb2:1} 
 % Mixture Models wurden ursprünglich entwickelt, um das Sparsity-Problem zu umgehen.
 % Vereinfacht gesagt ist eine Bewertung r abhängig von einer Nutzerklasse und einer Elementklasse und nicht genau von einem Nutzer und einem Element.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \subfloat[Flexible Mixture Model]{\includegraphics[height=0.9in]{gfx/f-m-m.png}\label{fig:optimierung:loesungen:abb2:1}}\\
     \subfloat[Flexible Mixture Model mit multi-kriteriellen Bewertungen und Dependency-Struktur]{\includegraphics[height=2.20in]{gfx/f-m-m-2.png}\label{fig:optimierung:loesungen:abb2:2}}\\
@@ -311,16 +313,30 @@ Das grundlegende Modell ist in Abbildung \ref{fig:optimierung:loesungen:abb2:1} 
 \end{figure}
 
 \textcite[S. 235]{sahoo:article} erweitern das \ac{FMM} um multi-kriterielle Bewertungen.
-Weiter unterstellen \textcite[S. 236f.]{sahoo:article} eine strukturelle Abhängigkeit zwischen den Bewertungen der einzelnen Kriterien (inkl. Gesamtbewertung).
+Hierbei unterstellen \textcite[S. 236f.]{sahoo:article} zusätzlich eine strukturelle Abhängigkeit zwischen den Bewertungen der einzelnen Kriterien (inkl. Gesamtbewertung).
 Nach \textcite[S. 236f.]{sahoo:article} besteht die stärkste Abhängigkeit (durchschnittliche Korrelation) zwischen der Gesamtbewertung eines Elements und den Bewertungen der einzelnen Kriterien.
 % Das bedeutet, dass nicht jedes Bewertungskriterium gänzlich neue Information über die Präferenzen eines Nutzers liefert, sondern, dass die Gesamtbewertung einen starken Einfluss auf die Ausprägung der Bewertungen der einzelnen Kriterien hat \cite[S. 235]{sahoo:article}.
-Die Abhängigkeiten (engl.: Dependency Structure) zwischen den Kriterien bilden \textcite[S. 235]{sahoo:article} in Anlehnung an Dependence Trees von \textcite[S. 463]{chow:article} als Baum ab.
-Die Integration multi-kriterieller Bewertungen in das ursprüngliche \ac{FMM} in Form einer der Dependency Structure ist in Abbildung \ref{fig:optimierung:loesungen:abb2:2} grafisch dargestellt.
+Die Gesamtbewertung eines Elements hat folglich den größten Einfluss auf die Bewertung der einzelnen Kriterien des Elements.
+Daraus schließen \textcite[S. 236f.]{sahoo:article}, dass alle Kriterien, unter der Bedingung der Gesamtbewertung, unabhängig voneinander sind.
+Die Abhängigkeiten (engl.: Dependencies) zwischen den Kriterien bilden \textcite[S. 235]{sahoo:article} in Anlehnung an Dependence Trees von \textcite[S. 463]{chow:article} in einer Baumstruktur ab.
+Die Integration multi-kriterieller Bewertungen in das ursprüngliche \ac{FMM} in Form einer Dependency Structure ist in Abbildung \ref{fig:optimierung:loesungen:abb2:2} grafisch dargestellt.
 
-Die Vorhersage fehlender Bewertungen anhand des Ansatzes erfolgt in zwei Schritten. 
+Die Wahrscheinlichkeit der Bewertung eines Nutzers für ein Element ergibt sich demnach aus der Summe aller Wahrscheinlichkeiten der Kombinationen der Variablen $Z_{c}$ und $Z_{s}$, unter Einbezug der Abhängigkeiten einzelner Kriterien von der Gesamtbewertung.
+Für die Wahrscheinlichkeit einer Bewertung $\vec{r}$ (Vektor der Gesamtbewertung zzgl. Bewertungen der einzelnen Kriterien) eines Element $s$ durch einen Nutzer $c$ ergibt sich daher \cite[S. 244]{sahoo:article}:
+\begin{equation}\label{eq26}
+    P(c,s,\vec{r}) = \sum\limits_{Z_{c}, Z_{s}}P(Z_{c})P(Z_{s})P(c|Z_{c})P(s|Z_{s})\prod\limits_{i=0}^{k} P(r^{i}|Z_{c},Z_{s}, Pa_{r^{i}})
+\end{equation}
+Hierbei kennzeichnet $Pa_{r^{i}}$ den Knoten, von dem eine Variable $r^{i}$ abhängt, d.h. nach \textcite[S. 236]{sahoo:article} die Gesamtbewertung.
+% Ein Vergleich der beiden Gleichungen \ref{eq24} und \ref{eq26} zeigt, dass sich lediglich die Wahrscheinlichkeit einer Bewertung in Abhängigkeit der latenten Variablen geändert hat.
+% Anstelle der Wahrscheinlichkeit $P(r|Z_{c},Z_{s})$ steht das Produkt der Wahrscheinlichkeiten der Bewertung der einzelnen Kriteriums eines Elements einer Klasse durch einen Nutzer einer Klasse, unter Berücksichtigung der Gesamtbewertung ($P(r^{i}|Z_{c},Z_{s}, Pa_{r^{i}})$).
+
+Die Vorhersage fehlender Bewertungen anhand des modifizierten \ac{FMM} erfolgt in zwei Schritten. 
 Im ersten Schritt werden die Parameter ($Z_{c}$ und $Z_{s}$ \cite[S. 4]{si:inproceedings}) des \ac{FMM} mithilfe des Expectation Maximization Algorithmus von \textcite[S. 1ff.]{dempster:article} bestimmt \cite[S. 863]{adomavicius:4:inbook}.
 Unter Anwendung der Parameter wird darauffolgend der Wert einer fehlenden Bewertung als die Bewertung mit der höchsten Wahrscheinlichkeit vorhergesagt \cite[S. 863]{adomavicius:4:inbook}. 
-% HIER WEITERMACHEN mit Erklärung der Vorgehensweise zur Bestimmung fehlender Bewertungen
+
+Einen weiteren probabilistischen Ansatz zur Integration multi-kriterieller Bewertungen in die Vorhersage führen \textcite[S. 97ff.]{zhang:article} an.
+Im Detail stellen die Autoren zwei multi-kriterielle Herangehensweisen vor, welche die probabilistic latent semantic analysis erweitern
+% HIER WEITERMACHEN, einlesen was PLSA ist: https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=25353bc78453da76e43e199a925ab54457e18ca5
 
 % Wenn im bereich multi-criteria ratings, dann unterscheiden zwischen vorhandenes overall rating ode rnicht vorhandenes overall rating
 % wenn bei overall rating können ansätze aus der allgemeinen multi-kriteriellen optimierung auf RS übertragen werden
