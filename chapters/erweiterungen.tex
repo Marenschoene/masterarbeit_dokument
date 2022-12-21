@@ -242,6 +242,7 @@ Das bedeutet, fehlende Bewertungen können nach Ermittlung der Ähnlichkeit wie 
 Im Vergleich zu speicherbasierten Algorithmen des kollaborativen Filterns, werden fehlende Bewertungen in traditionellen modellbasierten Systemen über Vorhersage-Modelle bestimmt \cite[S. 861]{recommenderSystems:2016}.
 Basierend auf vergangenen Bewertungen der Nutzer eines Systems \cite[S. 358]{jin:article}, werden diese Vorhersage-Modelle im Vorfeld entwickelt (bspw. anhand von statistischen Modellen) \cite[S. 71]{recommenderSystems:2016}.
 In der Literatur existieren bereits einige Ansätze für die Integration multi-kriterieller Bewertungen in modellbasierte Systeme \cite[S. 861]{adomavicius:4:inbook}.
+Eine umfassende Übersicht grundlegender Ansätze stellen \textcite[S. 861]{adomavicius:4:inbook} vor.
 
 Nach \textcite[S. 861]{adomavicius:4:inbook} besteht ein Nachteil speicherbasierter Ansätze darin, dass sich deren Einsatz auf Systeme des kollaborativen Filterns beschränkt.
 Ein alternativer Ansatz, der in Kombination mit jeglicher Art an Empfehlungssystem verwendet werden kann, stellt der Aggregation-Function-Ansatz von \textcite[S. 52ff.]{adomavicius:inproceedings:2} dar \cite[S. 861]{adomavicius:4:inbook}.
@@ -334,9 +335,23 @@ Die Vorhersage fehlender Bewertungen anhand des modifizierten \ac{FMM} erfolgt i
 Im ersten Schritt werden die Parameter ($Z_{c}$ und $Z_{s}$ \cite[S. 4]{si:inproceedings}) des \ac{FMM} mithilfe des Expectation Maximization Algorithmus von \textcite[S. 1ff.]{dempster:article} bestimmt \cite[S. 863]{adomavicius:4:inbook}.
 Unter Anwendung der Parameter wird darauffolgend der Wert einer fehlenden Bewertung als die Bewertung mit der höchsten Wahrscheinlichkeit vorhergesagt \cite[S. 863]{adomavicius:4:inbook}. 
 
-Einen weiteren probabilistischen Ansatz zur Integration multi-kriterieller Bewertungen in die Vorhersage führen \textcite[S. 97ff.]{zhang:article} an.
-Im Detail stellen die Autoren zwei multi-kriterielle Herangehensweisen vor, welche die probabilistic latent semantic analysis erweitern
-% HIER WEITERMACHEN, einlesen was PLSA ist: https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=25353bc78453da76e43e199a925ab54457e18ca5
+% Einen weiteren probabilistischen Ansatz zur Integration multi-kriterieller Bewertungen in die Vorhersage führen \textcite[S. 97ff.]{zhang:article} an.
+% Im Detail stellen die Autoren zwei multi-kriterielle Herangehensweisen vor, welche auf der \ac{PLSA} aufbauen \cite[S. 864]{adomavicius:4:inbook}.
+% Die \ac{PLSA} \cite[S. 89ff.]{hofmann:article} ist ein statistisches Konzept, das ebenfalls ein Vorhandensein latenter Variablen unterstellt.
+% Im Vergleich zum \ac{FMM} existiert in der \ac{PLSA} nur ein Set $Z$ an latenten Variablen \cite[S. 2]{si:inproceedings}.
+% Jede Kombination von Nutzer und Element kann einer Klasse $z \in Z=\{z_{1},...,z_{l}\}$ zugeordnet werden \cite[S. 51]{hofmann:inproceedings}.
+% Daraus resultiert nach \textcite[S. 94]{hofmann:article}, dass Nutzer und Elemente, unter der Bedingung $Z$, unabhängig voneinander sind.
+% Die Wahrscheinlichkeit einer Kombination aus Nutzer und Element lässt sich daher in Abhängigkeit von $Z$ wie folgt bestimmen \cite[S. 51]{hofmann:inproceedings}:
+% \begin{equation}\label{eq27}
+%     P(c,s) = \sum\limits_{z \in Z}P(z)P(c|z)P(s|z)
+% \end{equation}
+% das mit aufnehmen ja/nein? wie ansätze erklären, die darauf basieren?
+% HIER WEITERMACHEN, checken wie ich Zugriff auf das Paper bekomme: https://dl.acm.org/doi/10.5555/1574514.1574517
+
+Als \ac{MSVD} Ansatz bezeichnen \textcite[S. 864]{adomavicius:4:inbook} einen weiteren modellbasierten Ansatz für die Integration multi-kriterieller Bewertungen in Empfehlungssysteme.
+In Anlehnung an die Darstellung dreidimensionaler Daten in multidimensionalen Systemen\footnote{Vgl. Kapitel \ref{ch:empfehlungssysteme:preferences:data}}, werden die multi-kriteriellen Bewertungen bei diesem Ansatz in einem $Nutzer \times Element \times Kriterien$-Tensor abgebildet \cite[S. 1235]{li:2:inproceedings}.
+% Grundlage bildet SVD: diese besagt ...
+% Multilineare svd bedeutet ... siehe letzten beiden Paper: 
 
 % Wenn im bereich multi-criteria ratings, dann unterscheiden zwischen vorhandenes overall rating ode rnicht vorhandenes overall rating
 % wenn bei overall rating können ansätze aus der allgemeinen multi-kriteriellen optimierung auf RS übertragen werden
