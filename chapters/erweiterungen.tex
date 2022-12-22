@@ -244,23 +244,24 @@ Basierend auf vergangenen Bewertungen der Nutzer eines Systems \cite[S. 358]{jin
 In der Literatur existieren bereits einige Ansätze für die Integration multi-kriterieller Bewertungen in modellbasierte Systeme \cite[S. 861]{adomavicius:4:inbook}.
 Eine umfassende Übersicht grundlegender Ansätze stellen \textcite[S. 861]{adomavicius:4:inbook} vor.
 
+\textbf{Aggregation-Function Ansatz}
 Nach \textcite[S. 861]{adomavicius:4:inbook} besteht ein Nachteil speicherbasierter Ansätze darin, dass sich deren Einsatz auf Systeme des kollaborativen Filterns beschränkt.
-Ein alternativer Ansatz, der in Kombination mit jeglicher Art an Empfehlungssystem verwendet werden kann, stellt der Aggregation-Function-Ansatz von \textcite[S. 52ff.]{adomavicius:inproceedings:2} dar \cite[S. 861]{adomavicius:4:inbook}.
+Ein alternativer Ansatz, der in Kombination mit jeglicher Art an Empfehlungssystem verwendet werden kann, stellt der Aggregation-Function Ansatz von \textcite[S. 52ff.]{adomavicius:inproceedings:2} dar \cite[S. 861]{adomavicius:4:inbook}.
 Dem Ansatz liegt die Idee zugrunde, dass Gesamtbewertungen von Elementen eine Kombination (Aggregation) ihrer zugehörigen multi-kriteriellen Bewertungen darstellen \cite[S. 861]{adomavicius:4:inbook}.
 Gemäß \textcite[S. 52]{adomavicius:inproceedings:2} wird eine Gesamtbewertung $r^{0}$ durch eine Aggregationfunktion $f$ ihrer multikriteriellen Bewertungen $r^{1}, ..., r^{k}$ repräsentiert:
 \begin{equation}\label{eq22}
     r^{0} = f(r^{1}, ..., r^{k})
 \end{equation}
-Das bedeutet, der Aggregation-Function-Ansatz unterstellt eine bestimmte Beziehung zwischen der Gesamtbewertung eines Elements durch einen Nutzer und dessen multi-kriterieller Bewertungen \cite[S. 52]{adomavicius:inproceedings:2}.
+Das bedeutet, der Aggregation-Function Ansatz unterstellt eine bestimmte Beziehung zwischen der Gesamtbewertung eines Elements durch einen Nutzer und dessen multi-kriterieller Bewertungen \cite[S. 52]{adomavicius:inproceedings:2}.
 So kann es sein, dass die Präferenz von Mitarbeitern für Fähigkeiten eine stärkere Priorität besitzt, d.h. das die meisten Mitarbeiter Fähigkeiten tatsächlich hoch bewerten, wenn sie diese gleichzeitig präferieren (Vgl. Tabelle \ref{tab3}).
 Nach dieser Annahme müsste eine hoch vorhergesagte Präferenz eines Mitarbeiters für eine Fähigkeit ebenfalls in einer hoch vorhergesagten Gesamtbewertung resultieren \cite[S. 52]{adomavicius:inproceedings:2}.
 
-Die Vorhersage von Gesamtbewertungen nach dem Aggregation-Function-Ansatz erfolgt anhand von drei Schritten, welche nachfolgend in Abbildung \ref{fig:optimierung:loesungen:abb1} grafisch abgebildet sind.
+Die Vorhersage von Gesamtbewertungen nach dem Aggregation-Function Ansatz erfolgt anhand von drei Schritten, welche nachfolgend in Abbildung \ref{fig:optimierung:loesungen:abb1} grafisch abgebildet sind.
 
 \begin{figure}
     \centering
 	\includegraphics[width=1.0\textwidth]{gfx/a-f-ansatz.png}
-	\caption[Aggregation-Function-Ansatz]{Aggregation-Function-Ansatz\\
+	\caption[Aggregation-Function Ansatz]{Aggregation-Function Ansatz\\
     (Eigene Darstellung in Anlehnung an \cite[S. 862]{adomavicius:4:inbook})}
 	\label{fig:optimierung:loesungen:abb1}
 \end{figure}
@@ -286,19 +287,21 @@ Dies kann in Domänen sinnvoll sein, in denen sich die Gewichte einzelner Kriter
 
 Im letzten Schritt erfolgt die Vorhersage der Gesamtbewertungen basierend auf den (angenommenen) multi-kriteriellen Bewertungen und der erstellten Aggregation-Function $f$ \cite[S. 861]{adomavicius:4:inbook}.
 
-Neben dem Aggregation-Function-Ansatz nennen \textcite[S. 861]{adomavicius:4:inbook} probabilistische Modellierungs-Ansätze für die Integration multi-kriterieller Bewertungen in Empfehlungssystemen.
-Vereinfacht gesehen handelt es sich dabei um Methoden, die mit Wahrscheinlichkeiten für Bewertungen arbeiten.
+\textbf{Probabilistic Modeling Ansatz}
+Neben dem Aggregation-Function Ansatz nennen \textcite[S. 861]{adomavicius:4:inbook} probabilistische Modellierungs-Ansätze (engl.: Probabilistic Modeling Approach) für die Integration multi-kriterieller Bewertungen in Empfehlungssystemen.
+Vereinfacht gesehen handelt es sich dabei um Methoden, die mit Wahrscheinlichkeitsverteilungen für die Vorhersage von Bewertungen arbeiten.
 \textcite[S. 861]{adomavicius:4:inbook} nennen als Beispiel die Veröffentlichung von \textcite[S. 231]{sahoo:article}.
 In der Veröffentlichung wird eine Anpassung des \ac{FMM} von \textcite[S. 704ff.]{si:inproceedings} um multi-krierielle Bewertungen vorgestellt.
 
-\textcite[S. 358]{jin:article} beschreiben das \ac{FMM} als eine grafische Darstellung eines probabilistischen Modells, in dem Nutzer und Elemente (mehreren)\footnote{Das \ac{FMM} unterscheidet sich von herkömmlichen grafischen Modellen unter anderem darin, dass Nutzer bzw. Elemente mehreren Clustern zugeordnet werden können \cite[S. 3]{si:inproceedings}\cite[S. 366]{jin:article}.} Clustern (Klassen) zugeordnet werden können.
+\textcite[S. 358]{jin:article} beschreiben das \ac{FMM} als eine grafische Darstellung eines probabilistischen Modells, in dem Nutzer und Elemente (mehreren)\footnote{Das \ac{FMM} unterscheidet sich von herkömmlichen grafischen Modellen unter anderem darin, dass Nutzer bzw. Elemente mehreren Clustern zugeordnet werden können \cite[S. 3]{si:inproceedings}\cite[S. 366]{jin:article}.} Clustern (übergeordneten Klassen) zugeordnet werden können.
+Die Idee hinter probabilistischen Clustering-Methoden besteht darin, zugrundeliegende Strukturen aus einer Menge an Daten zu ermitteln \cite[S. 197]{truyen:inproceedings}, die für die Vorhersage verwendet werden können.
 Das \ac{FMM} folgt der Annahme, dass eine Bewertung r, welche ein Element s von einem Nutzer c erhält, von einer latenten Variable $Z_{c}$ und einer latenten Variable $Z_{s}$ abhängt \cite[S. 235]{sahoo:article}.
 $Z_{c}$ kennzeichnet hierbei die Klasse(n), denen ein Nutzer $c$ und ${Z_{s}}$ die Klasse(n), denen ein Element $s$ zugeordnet werden kann \cite[S. 862]{adomavicius:4:inbook}\cite[S. 3]{si:inproceedings}.
 Die Idee des \ac{FMM} besteht darin, dass die Variablen Bewertung, Nutzer und Element unter der Bedingung der latenten Variablen $Z_{c}$ und $Z_{s}$ unabhängig voneinander sind \cite[S. 4]{sahoo:2:article}\cite[S. 235]{sahoo:article}.
-Die Wahrscheinlichkeit der Bewertung $r$ eines Nutzers $c$ für ein Element $s$ ergibt sich demnach aus der Summe aller Wahrscheinlichkeiten der Kombinationen der Variablen $Z_{c}$ und $Z_{s}$ \cite[S. 862]{adomavicius:4:inbook}:
-\begin{equation}\label{eq24}
-    P(c,s,r) = \sum\limits_{Z_{c}, Z_{s}}P(Z_{c})P(Z_{s})P(c|Z_{c})P(s|Z_{s})P(r|Z_{c},Z_{s})
-\end{equation}
+% Die Wahrscheinlichkeit der Bewertung $r$ eines Nutzers $c$ für ein Element $s$ ergibt sich demnach aus der Summe aller Wahrscheinlichkeiten der Kombinationen der Variablen $Z_{c}$ und $Z_{s}$ \cite[S. 862]{adomavicius:4:inbook}:
+% \begin{equation}\label{eq24}
+%     P(c,s,r) = \sum\limits_{Z_{c}, Z_{s}}P(Z_{c})P(Z_{s})P(c|Z_{c})P(s|Z_{s})P(r|Z_{c},Z_{s})
+% \end{equation}
 Das grundlegende Modell ist in Abbildung \ref{fig:optimierung:loesungen:abb2:1} dargestellt, wobei die latenten Variablen grau hinterlegt sind.
 % Mixture Models sind grafische Darstellungen probabilistischer Modelle, in denen Nutzer bzw. Elemente in Empfehlungssystemen in Clustern zusammengefasst werden und in Verbindung mit Bewertungen gesetzt werden können.
 % Dadurch kann die Ähnlichkeit von Nutzern anhand deren Bewertung eines Element-Clusters erfolgenbasieren und nicht auf Ratings eines einzelnen Elements.
@@ -323,11 +326,11 @@ Die Abhängigkeiten (engl.: Dependencies) zwischen den Kriterien bilden \textcit
 Die Integration multi-kriterieller Bewertungen in das ursprüngliche \ac{FMM} in Form einer Dependency Structure ist in Abbildung \ref{fig:optimierung:loesungen:abb2:2} grafisch dargestellt.
 
 Die Wahrscheinlichkeit der Bewertung eines Nutzers für ein Element ergibt sich demnach aus der Summe aller Wahrscheinlichkeiten der Kombinationen der Variablen $Z_{c}$ und $Z_{s}$, unter Einbezug der Abhängigkeiten einzelner Kriterien von der Gesamtbewertung.
-Für die Wahrscheinlichkeit einer Bewertung $\vec{r}$ (Vektor der Gesamtbewertung zzgl. Bewertungen der einzelnen Kriterien) eines Element $s$ durch einen Nutzer $c$ ergibt sich daher \cite[S. 244]{sahoo:article}:
-\begin{equation}\label{eq26}
-    P(c,s,\vec{r}) = \sum\limits_{Z_{c}, Z_{s}}P(Z_{c})P(Z_{s})P(c|Z_{c})P(s|Z_{s})\prod\limits_{i=0}^{k} P(r^{i}|Z_{c},Z_{s}, Pa_{r^{i}})
-\end{equation}
-Hierbei kennzeichnet $Pa_{r^{i}}$ den Knoten, von dem eine Variable $r^{i}$ abhängt, d.h. nach \textcite[S. 236]{sahoo:article} die Gesamtbewertung.
+% Für die Wahrscheinlichkeit einer Bewertung $\vec{r}$ (Vektor der Gesamtbewertung zzgl. Bewertungen der einzelnen Kriterien) eines Element $s$ durch einen Nutzer $c$ ergibt sich daher \cite[S. 244]{sahoo:article}:
+% \begin{equation}\label{eq26}
+%     P(c,s,\vec{r}) = \sum\limits_{Z_{c}, Z_{s}}P(Z_{c})P(Z_{s})P(c|Z_{c})P(s|Z_{s})\prod\limits_{i=0}^{k} P(r^{i}|Z_{c},Z_{s}, Pa_{r^{i}})
+% \end{equation}
+% Hierbei kennzeichnet $Pa_{r^{i}}$ den Knoten, von dem eine Variable $r^{i}$ abhängt, d.h. nach \textcite[S. 236]{sahoo:article} die Gesamtbewertung.
 % Ein Vergleich der beiden Gleichungen \ref{eq24} und \ref{eq26} zeigt, dass sich lediglich die Wahrscheinlichkeit einer Bewertung in Abhängigkeit der latenten Variablen geändert hat.
 % Anstelle der Wahrscheinlichkeit $P(r|Z_{c},Z_{s})$ steht das Produkt der Wahrscheinlichkeiten der Bewertung der einzelnen Kriteriums eines Elements einer Klasse durch einen Nutzer einer Klasse, unter Berücksichtigung der Gesamtbewertung ($P(r^{i}|Z_{c},Z_{s}, Pa_{r^{i}})$).
 
@@ -339,19 +342,46 @@ Unter Anwendung der Parameter wird darauffolgend der Wert einer fehlenden Bewert
 % Im Detail stellen die Autoren zwei multi-kriterielle Herangehensweisen vor, welche auf der \ac{PLSA} aufbauen \cite[S. 864]{adomavicius:4:inbook}.
 % Die \ac{PLSA} \cite[S. 89ff.]{hofmann:article} ist ein statistisches Konzept, das ebenfalls ein Vorhandensein latenter Variablen unterstellt.
 % Im Vergleich zum \ac{FMM} existiert in der \ac{PLSA} nur ein Set $Z$ an latenten Variablen \cite[S. 2]{si:inproceedings}.
-% Jede Kombination von Nutzer und Element kann einer Klasse $z \in Z=\{z_{1},...,z_{l}\}$ zugeordnet werden \cite[S. 51]{hofmann:inproceedings}.
+% Jede Kombination von Nutzer und Element kann einer Klasse $z \in Z=\{z_{1},...,z_{q}\}$ zugeordnet werden \cite[S. 51]{hofmann:inproceedings}.
+% Das bedeutet, Nutzer und Elemente werden einem Cluster $z$ zugeordnet.
 % Daraus resultiert nach \textcite[S. 94]{hofmann:article}, dass Nutzer und Elemente, unter der Bedingung $Z$, unabhängig voneinander sind.
 % Die Wahrscheinlichkeit einer Kombination aus Nutzer und Element lässt sich daher in Abhängigkeit von $Z$ wie folgt bestimmen \cite[S. 51]{hofmann:inproceedings}:
 % \begin{equation}\label{eq27}
 %     P(c,s) = \sum\limits_{z \in Z}P(z)P(c|z)P(s|z)
 % \end{equation}
-% das mit aufnehmen ja/nein? wie ansätze erklären, die darauf basieren?
+
 % HIER WEITERMACHEN, checken wie ich Zugriff auf das Paper bekomme: https://dl.acm.org/doi/10.5555/1574514.1574517
 
+\textbf{Multilinear Singular Value Decomposition Ansatz}
 Als \ac{MSVD} Ansatz bezeichnen \textcite[S. 864]{adomavicius:4:inbook} einen weiteren modellbasierten Ansatz für die Integration multi-kriterieller Bewertungen in Empfehlungssysteme.
-In Anlehnung an die Darstellung dreidimensionaler Daten in multidimensionalen Systemen\footnote{Vgl. Kapitel \ref{ch:empfehlungssysteme:preferences:data}}, werden die multi-kriteriellen Bewertungen bei diesem Ansatz in einem $Nutzer \times Element \times Kriterien$-Tensor abgebildet \cite[S. 1235]{li:2:inproceedings}.
-% Grundlage bildet SVD: diese besagt ...
+Dieser Ansatz stellt eine Realisation der Matrix Factorization in \ac{MCRS} dar \cite[S. 864]{adomavicius:4:inbook}.\footnote{"[...] realization of the Matrix Factorization approach in multi-criteria rating settings." - \cite[S. 864]{adomavicius:4:inbook}}
+Nach \textcite[S. 94]{recommenderSystems:2016} ist Matrix Factorization die Repräsentation einer $m \times n$-Matrix $R$ als Produkt einer $m \times u$-Matrix $U$ und einer $n \times v$-Matrix $V$ \cite[S. 94]{recommenderSystems:2016}.
+Die Matrix $U$ des Produkts bildet $k$ latente Vektoren ab, welche die Affinität von Nutzern für $k$ Kategorien (Faktoren) von Elementen beinhalten.
+Entsprechend stellt Matrix $V$ $k$ latenten Vektoren der Elemente dar, welche die Affinität von Elementen für diese Kategorien abbilden \cite[S. 94]{recommenderSystems:2016}.
+
+\ac{SVD} ist eine bekannte \cite[S. 83]{koren:inbook} Matrix Factorization Technik.
+Gemäß \textcite[S. 864]{adomavicius:4:inbook} wird \ac{SVD} maßgeblich für das Auffinden von Faktor-Räumen geringerer Dimensionalität angewandt.
+Bewertungen in Empfehlungssystemen können mithilfe der vollständigen latenten Vektoren ermittelt werden.
+Stellt ein Vektor $p_{c}$ die Affinität eines Nutzers für $k$ Faktoren der Elemente eines Systems dar und $p_{s}$ die Affinität eines Elements für diese Kategorien $k$, so kann eine Bewertung wie folgt ermittelt werden \cite[S. 865]{adomavicius:4:inbook}:
+\begin{equation}\label{eq29}
+    \hat{r}_{cs} = p_{c}^{T}p_{s}
+\end{equation}
+Für eine ausführlichere Beschreibung der \ac{SVD} wird auf \textcite[S. 234ff.]{amatriain:inbook} verwiesen.
+
+% Hier WEITERMACHEN!
+In Anlehnung an die Darstellung dreidimensionaler Daten in multidimensionalen Systemen\footnote{Vgl. Kapitel \ref{ch:empfehlungssysteme:preferences:data}}, werden multi-kriteriellen Bewertungen in dem \ac{MSVD} Ansatz in einem $Nutzer \times Element \times Kriterien$-Tensor abgebildet \cite[S. 1235]{li:2:inproceedings}.
+% Hier Erklären, wie von SVD zu MSVD kommt (bild zeigen?)
 % Multilineare svd bedeutet ... siehe letzten beiden Paper: 
+
+% Die Matrix Factorization ist am Beispiel der \ac{SVD} in Abbildung \ref{fig:optimierung:loesungen:abb3} grafisch dargestellt.
+
+% \begin{figure}[H]
+%     \centering
+% 	\includegraphics[width=1.0\textwidth]{gfx/svd.png}
+% 	\caption[Singular Value Decomposition]{Singular Value Decomposition\\
+%     (Eigene Darstellung in Anlehnung an \cite[S. 1260]{lathauwer:article})}
+% 	\label{fig:optimierung:loesungen:abb3}
+% \end{figure}
 
 % Wenn im bereich multi-criteria ratings, dann unterscheiden zwischen vorhandenes overall rating ode rnicht vorhandenes overall rating
 % wenn bei overall rating können ansätze aus der allgemeinen multi-kriteriellen optimierung auf RS übertragen werden
