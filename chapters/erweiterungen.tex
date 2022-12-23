@@ -162,6 +162,7 @@ Angenommen $S(c,c')$ stellt die Menge aller Elemente aus $S$ dar, die beide Nutz
 \end{itemize}
 Der Parameter $\overline{r(c)}$ repräsentiert die durchschnittliche Bewertung eines Nutzers $c$.
 
+Die Idee der Integration multi-kriterieller Bewertungen in die Ähnlichkeitsberechnung besteht darin, komplexe Präferenzen der Nutzer anhand verschiedener Kriterien für die Ermittlung der Ähnlichkeit zwischen Nutzern bzw. Elementen zu nutzen \cite[S. 676]{jannach:2:article}. 
 Gemäß \textcite[S. 856f.]{adomavicius:4:inbook} können Ähnlichkeitsmaße wie der Pearson-Korrelationskoeffizient oder die Kosinus-Ähnlichkeit lediglich Bewertungen anhand eines einzelnen Kriteriums verarbeiten.
 In \ac{MCRS} besteht eine Bewertung $r$ jedoch neben einer Gesamtbewertung $r^{0}$ zusätzlich aus $k$ multi-kriteriellen Bewertungen $r^{1}, ..., r^{k}$, d.h. $r=(r^{0},r^{1}, ..., r^{k})$ \cite[S. 426]{recommenderSystems:2016}\cite[S. 857]{adomavicius:4:inbook}.
 Anstelle eines einzigen Ratings besitzt eine \ac{N-E-K} in \ac{MCRS} demnach $k+1$ Bewertungen \cite[S. 857]{adomavicius:4:inbook}.\footnote{Für \ac{MCRS}, die keine Gesamtbewertungen beinhalten, können für die Berechnung der Ähnlichkeit dieselben Maße angewandt werden, wie für Systeme die Gesamtbewertungen verwenden, mit dem einzigen Unterschied, dass der Index $i$ nicht die Gesamtbewertung einschließt (d.h. $i \in \{1,k\}$ anstelle von $i \in \{0,k\}$) \cite[S. 857]{adomavicius:4:inbook}.}
@@ -288,7 +289,7 @@ Dies kann in Domänen sinnvoll sein, in denen sich die Gewichte einzelner Kriter
 Im letzten Schritt erfolgt die Vorhersage der Gesamtbewertungen basierend auf den (angenommenen) multi-kriteriellen Bewertungen und der erstellten Aggregation-Function $f$ \cite[S. 861]{adomavicius:4:inbook}.
 
 \textbf{Probabilistic Modeling Ansatz}
-Neben dem Aggregation-Function Ansatz nennen \textcite[S. 861]{adomavicius:4:inbook} probabilistische Modellierungs-Ansätze (engl.: Probabilistic Modeling Approach) für die Integration multi-kriterieller Bewertungen in Empfehlungssystemen.
+Neben dem Aggregation-Function Ansatz nennen \textcite[S. 861]{adomavicius:4:inbook} probabilistische Modellierungs-Ansätze (engl.: Probabilistic Modeling Approach) für die Integration multi-kriterieller Bewertungen in Empfehlungssysteme.
 Vereinfacht gesehen handelt es sich dabei um Methoden, die mit Wahrscheinlichkeitsverteilungen für die Vorhersage von Bewertungen arbeiten.
 \textcite[S. 861]{adomavicius:4:inbook} nennen als Beispiel die Veröffentlichung von \textcite[S. 231]{sahoo:article}.
 In der Veröffentlichung wird eine Anpassung des \ac{FMM} von \textcite[S. 704ff.]{si:inproceedings} um multi-krierielle Bewertungen vorgestellt.
@@ -297,7 +298,7 @@ In der Veröffentlichung wird eine Anpassung des \ac{FMM} von \textcite[S. 704ff
 Die Idee hinter probabilistischen Clustering-Methoden besteht darin, zugrundeliegende Strukturen aus einer Menge an Daten zu ermitteln \cite[S. 197]{truyen:inproceedings}, die für die Vorhersage verwendet werden können.
 Das \ac{FMM} folgt der Annahme, dass eine Bewertung r, welche ein Element s von einem Nutzer c erhält, von einer latenten Variable $Z_{c}$ und einer latenten Variable $Z_{s}$ abhängt \cite[S. 235]{sahoo:article}.
 $Z_{c}$ kennzeichnet hierbei die Klasse(n), denen ein Nutzer $c$ und ${Z_{s}}$ die Klasse(n), denen ein Element $s$ zugeordnet werden kann \cite[S. 862]{adomavicius:4:inbook}\cite[S. 3]{si:inproceedings}.
-Die Idee des \ac{FMM} besteht darin, dass die Variablen Bewertung, Nutzer und Element unter der Bedingung der latenten Variablen $Z_{c}$ und $Z_{s}$ unabhängig voneinander sind \cite[S. 4]{sahoo:2:article}\cite[S. 235]{sahoo:article}.
+% Die Idee des \ac{FMM} besteht darin, dass die Variablen Bewertung, Nutzer und Element unter der Bedingung der latenten Variablen $Z_{c}$ und $Z_{s}$ unabhängig voneinander sind \cite[S. 4]{sahoo:2:article}\cite[S. 235]{sahoo:article}.
 % Die Wahrscheinlichkeit der Bewertung $r$ eines Nutzers $c$ für ein Element $s$ ergibt sich demnach aus der Summe aller Wahrscheinlichkeiten der Kombinationen der Variablen $Z_{c}$ und $Z_{s}$ \cite[S. 862]{adomavicius:4:inbook}:
 % \begin{equation}\label{eq24}
 %     P(c,s,r) = \sum\limits_{Z_{c}, Z_{s}}P(Z_{c})P(Z_{s})P(c|Z_{c})P(s|Z_{s})P(r|Z_{c},Z_{s})
@@ -319,7 +320,6 @@ Das grundlegende Modell ist in Abbildung \ref{fig:optimierung:loesungen:abb2:1} 
 \textcite[S. 235]{sahoo:article} erweitern das \ac{FMM} um multi-kriterielle Bewertungen.
 Hierbei unterstellen \textcite[S. 236f.]{sahoo:article} zusätzlich eine strukturelle Abhängigkeit zwischen den Bewertungen der einzelnen Kriterien (inkl. Gesamtbewertung).
 Nach \textcite[S. 236f.]{sahoo:article} besteht die stärkste Abhängigkeit (durchschnittliche Korrelation) zwischen der Gesamtbewertung eines Elements und den Bewertungen der einzelnen Kriterien.
-% Das bedeutet, dass nicht jedes Bewertungskriterium gänzlich neue Information über die Präferenzen eines Nutzers liefert, sondern, dass die Gesamtbewertung einen starken Einfluss auf die Ausprägung der Bewertungen der einzelnen Kriterien hat \cite[S. 235]{sahoo:article}.
 Die Gesamtbewertung eines Elements hat folglich den größten Einfluss auf die Bewertung der einzelnen Kriterien des Elements.
 Daraus schließen \textcite[S. 236f.]{sahoo:article}, dass alle Kriterien, unter der Bedingung der Gesamtbewertung, unabhängig voneinander sind.
 Die Abhängigkeiten (engl.: Dependencies) zwischen den Kriterien bilden \textcite[S. 235]{sahoo:article} in Anlehnung an Dependence Trees von \textcite[S. 463]{chow:article} in einer Baumstruktur ab.
@@ -334,14 +334,13 @@ Die Wahrscheinlichkeit der Bewertung eines Nutzers für ein Element ergibt sich 
 % Ein Vergleich der beiden Gleichungen \ref{eq24} und \ref{eq26} zeigt, dass sich lediglich die Wahrscheinlichkeit einer Bewertung in Abhängigkeit der latenten Variablen geändert hat.
 % Anstelle der Wahrscheinlichkeit $P(r|Z_{c},Z_{s})$ steht das Produkt der Wahrscheinlichkeiten der Bewertung der einzelnen Kriteriums eines Elements einer Klasse durch einen Nutzer einer Klasse, unter Berücksichtigung der Gesamtbewertung ($P(r^{i}|Z_{c},Z_{s}, Pa_{r^{i}})$).
 
-Die Vorhersage fehlender Bewertungen anhand des modifizierten \ac{FMM} erfolgt in zwei Schritten. 
-Im ersten Schritt werden die Parameter ($Z_{c}$ und $Z_{s}$ \cite[S. 4]{si:inproceedings}) des \ac{FMM} mithilfe des Expectation Maximization Algorithmus von \textcite[S. 1ff.]{dempster:article} bestimmt \cite[S. 863]{adomavicius:4:inbook}.
-Unter Anwendung der Parameter wird darauffolgend der Wert einer fehlenden Bewertung als die Bewertung mit der höchsten Wahrscheinlichkeit vorhergesagt \cite[S. 863]{adomavicius:4:inbook}. 
+Die Parameter ($Z_{c}$ und $Z_{s}$ \cite[S. 4]{si:inproceedings}) des \ac{FMM} können mithilfe des Expectation Maximization Algorithmus von \textcite[S. 1ff.]{dempster:article} bestimmt \cite[S. 863]{adomavicius:4:inbook}.
+Unter Anwendung der Parameter kann eine fehlende Bewertung als die Bewertung mit der höchsten Wahrscheinlichkeit vorhergesagt \cite[S. 863]{adomavicius:4:inbook}. 
 
 % Einen weiteren probabilistischen Ansatz zur Integration multi-kriterieller Bewertungen in die Vorhersage führen \textcite[S. 97ff.]{zhang:article} an.
-% Im Detail stellen die Autoren zwei multi-kriterielle Herangehensweisen vor, welche auf der \ac{PLSA} aufbauen \cite[S. 864]{adomavicius:4:inbook}.
-% Die \ac{PLSA} \cite[S. 89ff.]{hofmann:article} ist ein statistisches Konzept, das ebenfalls ein Vorhandensein latenter Variablen unterstellt.
-% Im Vergleich zum \ac{FMM} existiert in der \ac{PLSA} nur ein Set $Z$ an latenten Variablen \cite[S. 2]{si:inproceedings}.
+% Im Detail stellen die Autoren zwei multi-kriterielle Herangehensweisen vor, welche auf der Probabilistic Latent Semantic Analysis aufbauen \cite[S. 864]{adomavicius:4:inbook}.
+% Die Probabilistic Latent Semantic Analysis \cite[S. 89ff.]{hofmann:article} ist ein statistisches Konzept, das ebenfalls ein Vorhandensein latenter Variablen unterstellt.
+% Im Vergleich zum \ac{FMM} existiert in der Probabilistic Latent Semantic Analysis nur ein Set $Z$ an latenten Variablen \cite[S. 2]{si:inproceedings}.
 % Jede Kombination von Nutzer und Element kann einer Klasse $z \in Z=\{z_{1},...,z_{q}\}$ zugeordnet werden \cite[S. 51]{hofmann:inproceedings}.
 % Das bedeutet, Nutzer und Elemente werden einem Cluster $z$ zugeordnet.
 % Daraus resultiert nach \textcite[S. 94]{hofmann:article}, dass Nutzer und Elemente, unter der Bedingung $Z$, unabhängig voneinander sind.
@@ -350,38 +349,43 @@ Unter Anwendung der Parameter wird darauffolgend der Wert einer fehlenden Bewert
 %     P(c,s) = \sum\limits_{z \in Z}P(z)P(c|z)P(s|z)
 % \end{equation}
 
-% HIER WEITERMACHEN, checken wie ich Zugriff auf das Paper bekomme: https://dl.acm.org/doi/10.5555/1574514.1574517
+% Checken wie ich Zugriff auf das Paper bekomme: https://dl.acm.org/doi/10.5555/1574514.1574517
 
-\textbf{Multilinear Singular Value Decomposition Ansatz}
+\textbf{Multi-linear Singular Value Decomposition Ansatz}
 Als \ac{MSVD} Ansatz bezeichnen \textcite[S. 864]{adomavicius:4:inbook} einen weiteren modellbasierten Ansatz für die Integration multi-kriterieller Bewertungen in Empfehlungssysteme.
 Dieser Ansatz stellt eine Realisation der Matrix Factorization in \ac{MCRS} dar \cite[S. 864]{adomavicius:4:inbook}.\footnote{"[...] realization of the Matrix Factorization approach in multi-criteria rating settings." - \cite[S. 864]{adomavicius:4:inbook}}
-Nach \textcite[S. 94]{recommenderSystems:2016} ist Matrix Factorization die Repräsentation einer $m \times n$-Matrix $R$ als Produkt einer $m \times u$-Matrix $U$ und einer $n \times v$-Matrix $V$ \cite[S. 94]{recommenderSystems:2016}.
+Nach \textcite[S. 94]{recommenderSystems:2016} ist Matrix Factorization die Repräsentation einer $m \times n$-Matrix $R$ als Produkt einer $m \times k$-Matrix $U$ und einer $n \times k$-Matrix $V$ \cite[S. 94]{recommenderSystems:2016}.
 Die Matrix $U$ des Produkts bildet $k$ latente Vektoren ab, welche die Affinität von Nutzern für $k$ Kategorien (Faktoren) von Elementen beinhalten.
 Entsprechend stellt Matrix $V$ $k$ latenten Vektoren der Elemente dar, welche die Affinität von Elementen für diese Kategorien abbilden \cite[S. 94]{recommenderSystems:2016}.
 
 \ac{SVD} ist eine bekannte \cite[S. 83]{koren:inbook} Matrix Factorization Technik.
-Gemäß \textcite[S. 864]{adomavicius:4:inbook} wird \ac{SVD} maßgeblich für das Auffinden von Faktor-Räumen geringerer Dimensionalität angewandt.
-Bewertungen in Empfehlungssystemen können mithilfe der vollständigen latenten Vektoren ermittelt werden.
+Gemäß \textcite[S. 864]{adomavicius:4:inbook} wird \ac{SVD} maßgeblich für das Auffinden von Faktor-Räumen geringerer Dimensionalität (bspw. $k < n$) angewandt.
+Anhand der vollständigen latenten Vektoren können Bewertungen in Empfehlungssystemen ermittelt werden.
 Stellt ein Vektor $p_{c}$ die Affinität eines Nutzers für $k$ Faktoren der Elemente eines Systems dar und $p_{s}$ die Affinität eines Elements für diese Kategorien $k$, so kann eine Bewertung wie folgt ermittelt werden \cite[S. 865]{adomavicius:4:inbook}:
 \begin{equation}\label{eq29}
     \hat{r}_{cs} = p_{c}^{T}p_{s}
 \end{equation}
 Für eine ausführlichere Beschreibung der \ac{SVD} wird auf \textcite[S. 234ff.]{amatriain:inbook} verwiesen.
 
-% Hier WEITERMACHEN!
-In Anlehnung an die Darstellung dreidimensionaler Daten in multidimensionalen Systemen\footnote{Vgl. Kapitel \ref{ch:empfehlungssysteme:preferences:data}}, werden multi-kriteriellen Bewertungen in dem \ac{MSVD} Ansatz in einem $Nutzer \times Element \times Kriterien$-Tensor abgebildet \cite[S. 1235]{li:2:inproceedings}.
-% Hier Erklären, wie von SVD zu MSVD kommt (bild zeigen?)
-% Multilineare svd bedeutet ... siehe letzten beiden Paper: 
+Die grundsätzlich anhand zweidimensionaler Matrizen ($Nutzer \times Element$) durchgeführte \ac{SVD}, kann für multidimensionale Matrizen erweitert werden \cite[S. 865]{adomavicius:4:inbook}.
+Diese Technik wird als \ac{MSVD} bezeichnet \cite[S. 865]{adomavicius:4:inbook}.
+Für den \ac{MSVD} Ansatz werden multi-kriterielle Bewertungen, in Anlehnung an die Darstellung dreidimensionaler Daten in multidimensionalen Systemen\footnote{Vgl. Kapitel \ref{ch:empfehlungssysteme:preferences:data}}, in einem $Nutzer \times Element \times Kriterien$-Tensor abgebildet \cite[S. 1235]{li:2:inproceedings}.
+Als Beispiel nennen \textcite[S. 865]{adomavicius:4:inbook} die Veröffentlichung von \textcite[S. 1235ff.]{li:2:inproceedings}.
+Die Autoren wenden die truncated \ac{MSVD} an, um die Dimensionalität des $Nutzer \times Element \times Kriterien$-Tensors zu reduzieren \cite[S. 865]{adomavicius:4:inbook}.\footnote{Eine detaillierte Vorgehensweise für die Dimensionsreduktion kann \textcite[S. 6f]{ruble:article} entnommen werden.}
+Basierend auf dem näherungsweisen Tensor, wenden \textcite[S. 1236]{li:2:inproceedings} Techniken des kollaborativen Filterns an, um Empfehlungen zu ermitteln.
 
-% Die Matrix Factorization ist am Beispiel der \ac{SVD} in Abbildung \ref{fig:optimierung:loesungen:abb3} grafisch dargestellt.
+\textbf{Support Vector Regression Ansatz}
+Unter dem Aggregation Function Ansatz wurden bereits einige Methoden für die Bestimmung von Aggregations-Funktionen vorgestellt (z.B. Lineare Regression).
+Ansätze, die für die Bestimmung einer Aggregations-Funktion die \ac{SVR} \cite[S. 155ff.]{drucker:inproceedings} anwenden, bezeichnen \textcite[S. 865]{adomavicius:4:inbook} gesondert als \ac{SVR} Ansatz.
 
-% \begin{figure}[H]
-%     \centering
-% 	\includegraphics[width=1.0\textwidth]{gfx/svd.png}
-% 	\caption[Singular Value Decomposition]{Singular Value Decomposition\\
-%     (Eigene Darstellung in Anlehnung an \cite[S. 1260]{lathauwer:article})}
-% 	\label{fig:optimierung:loesungen:abb3}
-% \end{figure}
+Wie bei herkömmlichen Regressionsmodellen wird mittels \ac{SVR} eine Funktion $f$ ermittelt, die den Zusammenhang zwischen einer Input-Variable $x$ und deren abhängigen Output-Variable $y$ modelliert.
+Herkömmlichen Regressionsmodelle wie die lineare Regression ermitteln Regressionsgleichungen beispielsweise, indem sie versuchen den (quadrierten) Abstand zwischen vorhergesagtem und tatsächlichem Wert für $y$ zu minimieren.
+Im Gegensatz dazu ermittelt \ac{SVR} eine Funktion $f$ unter Anwendung des $\epsilon$-insensitive Ansatzes von \textcite[S. 181]{vapnik:book} \cite[S. 67]{awad:inbook}.
+Dieser führt einen $\epsilon$-insensitiven, symmetrischen Bereich mit minimalem Radius um $f$ ein, sodass Punkte mit einem Fehler $< \epsilon$ nicht das Erstellen der Regressionsgleichung beeinflussen \cite[S. 67]{awad:inbook}.
+Abbildung ... stellt eine vereinfachte Abbildung eines linearen Modells mittels \ac{SVR} dar.
+% Hier bild einfügen, das diesen Bereich zeigt
+% nur kurz zeigen, was support vektoren sind, die die gleichung beeinflussen : \cite[S. 67f.]{awad:inbook}, adnn erklären dass gerne für multi-kriteriell verwendet wird
+% Erklärung SVR simpel, dann direkt einsteigen in wie das mit multi-kriterien geht
 
 % Wenn im bereich multi-criteria ratings, dann unterscheiden zwischen vorhandenes overall rating ode rnicht vorhandenes overall rating
 % wenn bei overall rating können ansätze aus der allgemeinen multi-kriteriellen optimierung auf RS übertragen werden
