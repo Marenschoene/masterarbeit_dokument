@@ -379,16 +379,50 @@ Unter dem Aggregation Function Ansatz wurden bereits einige Methoden für die Be
 Ansätze, die für die Bestimmung einer Aggregations-Funktion die \ac{SVR} \cite[S. 155ff.]{drucker:inproceedings} anwenden, bezeichnen \textcite[S. 865]{adomavicius:4:inbook} gesondert als \ac{SVR} Ansatz.
 
 Wie bei herkömmlichen Regressionsmodellen wird mittels \ac{SVR} eine Funktion $f$ ermittelt, die den Zusammenhang zwischen einer Input-Variable $x$ und deren abhängigen Output-Variable $y$ modelliert.
-Herkömmlichen Regressionsmodelle wie die lineare Regression ermitteln Regressionsgleichungen beispielsweise, indem sie versuchen den (quadrierten) Abstand zwischen vorhergesagtem und tatsächlichem Wert für $y$ zu minimieren.
+Herkömmliche Regressionsmodelle wie die Lineare Regression ermitteln Regressionsgleichungen beispielsweise, indem sie versuchen den quadrierten Abstand zwischen vorhergesagtem und tatsächlichem Wert für $y$ zu minimieren.
 Im Gegensatz dazu ermittelt \ac{SVR} eine Funktion $f$ unter Anwendung des $\epsilon$-insensitive Ansatzes von \textcite[S. 181]{vapnik:book} \cite[S. 67]{awad:inbook}.
-Dieser führt einen $\epsilon$-insensitiven, symmetrischen Bereich mit minimalem Radius um $f$ ein, sodass Punkte mit einem Fehler $< \epsilon$ nicht das Erstellen der Regressionsgleichung beeinflussen \cite[S. 67]{awad:inbook}.
-Abbildung ... stellt eine vereinfachte Abbildung eines linearen Modells mittels \ac{SVR} dar.
-% Hier bild einfügen, das diesen Bereich zeigt
-% nur kurz zeigen, was support vektoren sind, die die gleichung beeinflussen : \cite[S. 67f.]{awad:inbook}, adnn erklären dass gerne für multi-kriteriell verwendet wird
-% Erklärung SVR simpel, dann direkt einsteigen in wie das mit multi-kriterien geht
+Dieser führt einen $\epsilon$-insensitiven, symmetrischen Bereich mit minimalem Radius um $f$ ein, sodass Fehler $< \epsilon$ nicht das Erstellen der Regressionsgleichung beeinflussen \cite[S. 67]{awad:inbook}.
+Für ein besseres Verständnis ist in Abbildung \ref{fig:optimierung:loesungen:abb3} ein Beispiel einer linearen \ac{SVR} dargestellt.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=1.0\textwidth]{gfx/svr.png}
+	\caption[Lineare Support Vector Regression]{Lineare Support Vector Regression \cite[S. 68]{awad:inbook}}
+	\label{fig:optimierung:loesungen:abb3}
+\end{figure}
+
+Der Bereich um $f$ wird durch die Stützvektoren (engl.: Support Vectors) bestimmt, welche die äußersten Punkte einer Datenmenge darstellen.
+Ein Parameter $\xi$ legt fest, wie viele Datenpunkte außerhalb des Bereichs toleriert werden \cite[S. 70]{awad:inbook}.
+
+Gemäß \textcite[S. 675]{jannach:2:article} kann über die \ac{SVR} eine Aggregations-Funktion erlernt werden, die den Zusammenhang zwischen einer Gesamtbewertung und einzelnen Kriterien beschreibt. 
+
+Nach \textcite[S. 866]{adomavicius:4:inbook} stellen die Ansätze erste Anhaltspunkte für die Integration multi-kriterieller Bewertungen in die Vorhersage dar.
+Nachfolgend werden in Anlehnung an \textcite[S. 867]{adomavicius:4:inbook} Ansätze vorgestellt, die nach der Vorhersage ansetzen, das heißt, wenn Bewertungen für \ac{N-E-K} vollständig vorliegen.
+
+% Hier noch neue Gliederung der Ansätze?
+
+Für das Ranking von Elementen anhand multipler Kriterien wird unterschieden, ob Gesamtbewertungen vorliegen, oder das Ranking über die multi-kriteriellen Bewertungen bestimmt wird \cite[S. 867]{adomavicius:4:inbook}.
+Liegt eine Gesamtbewertung vor, erfolgt das Ranking typischerweise analog zu traditionellen Systemen, die auf unikriteriellen Bewertungen basieren.
+Das bedeutet, nach der Vorhersage wird die (angenommene) Gesamtbewertung einer \ac{N-E-K} als Sortier-Kriterium für das Ranking von Elementen herangezogen \cite[S. 867]{adomavicius:4:inbook}.
+
+Ohne Gesamtbewertung wird das Ranking von Elementen komplexer \cite[S. 867]{adomavicius:4:inbook}.
+Dem liegt zugrunde, dass die Ordnung der einzelnen Kriterien nicht unmittelbar ersichtlich \cite[S. 867]{adomavicius:4:inbook} oder ohne Weiteres über Aggregations-Funktionen erlernbar ist.
+Basierend auf Verfahren der multi-kriteriellen Optimierung aus dem Bereich Operations Research \cite[S. 745]{adomavicius:inproceedings}, stellen \textcite[S. 867]{adomavicius:4:inbook} verschiedene Methoden für das Ranking von Elementen anhand multipler Kriterien vor.
+Hierzu zählen
+\begin{itemize}
+    \item Verfahren für das Finden Pareto-optimaler Lösungen (bspw. Skyline Queries \cite[S. 273ff.]{lee:inproceedings}),
+    \item Aggregation mittels Linear-Kombination und Domänenwissen über Ordnung von Elementen (BSP!), sowie
+    \item Verwendung multi-kriterieller Bewertungen als Filterkriterien für Empfehlungen (BSP!).
+\end{itemize}
+
+Für das Experiment dieser Arbeit wird von einer Gesamtbewertung für \ac{N-E-K} ausgegangen.
+Daher wird auf die ausführliche Betrachtung multi-kriterieller Bewertungen für das Ranking von Elementen nachfolgend verzichtet.
+Für eine detaillierte Übersicht der einzelnen Ansätze wird auf \textcite[S. 745]{adomavicius:inproceedings} und \textcite[S. 868ff.]{adomavicius:4:inbook} verwiesen.
+% HIER WEITERMACHEN: Beispiele für dei Punkte noch hinzufügen (Vgl. 1. Punkt)
+
+% Brauche ich das überhaupt?
 
 % Wenn im bereich multi-criteria ratings, dann unterscheiden zwischen vorhandenes overall rating ode rnicht vorhandenes overall rating
-% wenn bei overall rating können ansätze aus der allgemeinen multi-kriteriellen optimierung auf RS übertragen werden
 
 \subsection{Pareto-Optimierung}
 % Skyline querie siehe Lee and Teng 2007: . Incorporating multi-criteria ratings in recommendation systems.
