@@ -5,7 +5,9 @@
 \shorthandoff{"}
 \chapter{Verwandte Arbeiten}
 \label{ch:verwandte_arbeiten}
-
+In der Literatur existieren bereits einige Arbeiten, die sich mit der Berücksichtigung wechselseitiger Präferenzen in der Empfehlungserstellung beschäftigen.
+Auch der Bereich der multi-kriteriellen Empfehlungssysteme wurde in der Literatur in diversen Veröffentlichungen behandelt.
+Nachfolgend werden verwandte Arbeiten zu reziproken Empfehlungssystemen sowie zu multi-kriteriellen Empfehlungssystemen mit Bezug auf die vorliegende Domäne angeführt.
 
 \section{Reziproke Systeme}
 
@@ -32,6 +34,36 @@ hier bsp anführen für arbeiten die sich mit mk systemen beschäftigen in den 3
 \subsection{Multi-objektive Systeme}
 % multi-objective example: S. 237, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Adaptive%20multi%20attribute%20diversity%20for%20recommender%20systems.pdf
 
+Als multi-objektiv bezeichnen \textcite[S. 12]{rodriguez:inproceedings} ihren Ansatz zur Integration "äußerer Merkmale"\footnote{"extraneous features" - \textcite[S. 12]{rodriguez:inproceedings}} in ein semantisches Modell im Bereich des Online-Recruitments. 
+Dieser ist in Abbildung \ref{fig:relatedwork:abb1} dargestellt.
+
+\begin{figure}
+    \centering
+	\includegraphics[width=0.9\textwidth]{gfx/talentMatch.png}
+	\caption[Ansatz für die Integration äußerer Merkmale in semantische Modelle]{Ansatz für die Integration äußerer Merkmale in semantische Modelle\\
+    (Eigene Darstellung in Anlehnung an \cite[S. 12]{rodriguez:inproceedings})}
+	\label{fig:relatedwork:abb1}
+\end{figure}
+
+Im Detail stellen die Autoren eine Erweiterung des bestehenden \textit{TalentMatch}-Systems des sozialen Netzwerks LinkedIn vor, welche neben des semantischen Matches \cite[S. 2]{jannach:2:inproceedings} zwischen einer Person und einem Job (Objective 1) zusätzlich die Offenheit einer Person für Jobangebote (Objective 2) in die Empfehlungserstellung (Ranking) miteinbezieht.
+Dabei gehen die Autoren davon aus, dass die beiden Ziele möglicherweise miteinander konkurrieren, d.h. dass eine Person, die am besten auf eine Jobbeschreibung zutrifft, möglicherweise nicht offen für eine neue Stelle ist.
+\textcite[S. 12]{rodriguez:inproceedings} untersuchen in ihrer Arbeit, ob die Berücksichtigung der Neigung von Personen für offene Jobpositionen den Nutzen der Nutzer des Systems dennoch positiv beeinflusst.
+Den Nutzen operationalisieren die Autoren als das Engagement zwischen Jobsuchenden und Anbietern von Jobpositionen \cite[S. 14]{rodriguez:inproceedings}, welche diese über Menge aktiver und passiver Nutzer in dem System messen.
+Die Integration der Berücksichtigung in das semantische Modell führen \textcite[S. 15]{rodriguez:inproceedings} systematisch über ein Re-Ranking durch.
+Dies realisieren \textcite[S. 13]{rodriguez:inproceedings} über folgende Verlust-Funktion $L$:
+\begin{equation}\label{eq30}
+    L(\alpha ,\beta) = -g(f(Y, X, [\alpha , \beta])) + \Delta (\pi (Y), \pi (f(Y,X,[\alpha ,\beta])))
+\end{equation}
+Nach \textcite[S. 13]{rodriguez:inproceedings} gibt $g$ die durchschnittliche Anzahl aktiver und passiver Nutzer in dem erweiterten System $f(Y, X, [\alpha , \beta])$ und $\Delta$ die Abweichung des Rankings $\pi (f(Y,X,[\alpha ,\beta]))$ des erweiterten Systems im Vergleich zu dem Ranking $\pi (Y)$ des ursprünglichen semantischen Modells an.
+Die Anpassung eines semantischen Matches $y$ realisieren \textcite[S. 15]{rodriguez:inproceedings} durch einen sogenannten "Boost", wobei dieser für aktive ($\alpha$) und passive ($\beta$) Nutzer unterschieden werden kann:
+\begin{equation}\label{eq31}
+    f(y,x,[\alpha ,\beta]) = y \times (\alpha^{1\{{x == \textnormal{active}\}}}) \times (\beta^{1\{{x == \textnormal{active}\}}})
+\end{equation}
+Hierbei ist $1\{x == \textnormal{active}\}$ gleich $1$, wenn die Bedingung innerhalb der geschweiften Klammer wahr ist und $0$ andernfalls.
+\textcite[S. ]{rodriguez:inproceedings}
+% HIER WEITERMACHEN und ergebnisse anführen!
+% Bis dato könnte dieser Ansatz unserer Idee am nächsten kommen
+
 \subsection{Multi-kriterielle Bewertungen in Empfehlungssystemen}
 % Erfinder des aggregation Funktion approaches: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
 % Arbeit von Jannach wie hier beschrieben mit SVM: S. 102, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/E-Commerce.pdf
@@ -43,5 +75,6 @@ hier bsp anführen für arbeiten die sich mit mk systemen beschäftigen in den 3
 % Wenn viele features: liwei et al (zsfsg. siehe hier: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Multi-criteria%20Recommender%20System%20Incorporating%20Intensity%20of%20Preferences.pdf )
 
 % was gibt es also nicht? -> Reziprozität als gewichtetes Kriterium (Präferenz der empfohlenen Person zählt nicht genauso viel wie Präferenz des Nutzers, kann daher als gewichtetes Kriterium einer Aggregation Function betrachtet werden, welche über historische daten erlernt werden kann)
-% Neue anwendungsbereiche von multi-kriteriellen EMpfehlungen in domänen wie online dating: zitat von 
-\shorthandon{"}
+% Neue anwendungsbereiche von multi-kriteriellen EMpfehlungen in domänen wie online dating: zitat von S. 553, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Towards%20the%20Next%20Generation%20of%20Multi-Criteria%20Recommender.pdf
+
+ von 
