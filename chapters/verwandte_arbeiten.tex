@@ -9,13 +9,22 @@ In der Literatur existieren bereits einige Arbeiten, die sich mit der Berücksic
 Auch der Bereich der multi-kriteriellen Empfehlungssysteme wurde in der Literatur in diversen Veröffentlichungen behandelt.
 Nachfolgend werden verwandte Arbeiten zu reziproken Empfehlungssystemen sowie zu multi-kriteriellen Empfehlungssystemen mit Bezug auf die vorliegende Domäne angeführt.
 
-\section{Reziproke Systeme}
+GLIEDERUNG DIESES KAPITELS ANPASSEN -> Zusammenspiel aus multi-criteria und reciprocal recommender
 
-\subsection{Systeme mit identischer Gewichtung der Präferenzen}
+\section{Reziproke Systeme}
+Gemäß \textcite[S. 1467]{yildirim:article} hat die wechselseitige Empfehlung in der Literatur bis heute aufgrund fehlender öffentlicher Datensätze mit Angaben zu Präferenzen der Nutzer eines Netzwerks wenig Aufmerksamkeit erhalten. 
+
+Die erste Veröffentlichung in der Literatur zu wechselseitigen Empfehlungssystemen stammt von \textcite[S. 1ff.]{pizzato:inproceedings}, welche ein wechselseitiges Empfehlungssystem für Online-Dating-Plattformen vorstellen \cite[S. 1469]{yildirim:article}.
+Die Autoren beschreiben eine reziproke Empfehlung als eine Linearkombination aus dem Wert der Präferenz eines Nutzers für ein Element ($P1$) und dem Wert der Präferenz eines Elements für einen Nutzer ($P2$):
+\begin{equation}\label{eq32}
+    PRR(c,s) = w_{1}P1(c,s) + w_{2}P2(c,s)
+\end{equation}
+Über die Gewichte $w_{1}$ und $w_{2}$ können den Präferenzen von Nutzern bzw. Elementen unterschiedliche Wichtigkeit zugeteilt werden.
+% erste referenz zu reciprocal recommendation by pizzato kurz anfüren (siehe S. 1469, file:///C:/Users/masc6/Downloads/1-s2.0-S2215098621000744-main.pdf)
+% Darstellung der gewichtung der Präferenzen als linearkombination
 % d.h. wie sehr zwei personen übereinstimmen, beides gleich gewichtet
 % Dual perspektive graph representation hier: S. 104, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/recsys%202022%20modeling%20two%20way%20selection%20preference%20for%20person%20job%20fit.pdf
 
-\subsection{Systeme mit unterschiedlicher Gewichtung der Präferenzen}
 % präferenz eines nutzers höher gewichtet als präferenz der empfohlenen Elemente
 % feature optionen können 3 unterschiedliche stadi annehmen. -> classification (label mit match und kein match) S. 68, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/DiazMetzlerAmer-Yahia%20-%20Relevance%20and%20Ranking%20in%20Online%20Dating%20Systems%20(2010)%20-%200.pdf
 % Johannes Thesis
@@ -34,10 +43,13 @@ hier bsp anführen für arbeiten die sich mit mk systemen beschäftigen in den 3
 \subsection{Multi-objektive Systeme}
 % multi-objective example: S. 237, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Adaptive%20multi%20attribute%20diversity%20for%20recommender%20systems.pdf
 
+% Bsp im Bereich Reciprocal recommendation: file:///C:/Users/masc6/Downloads/1-s2.0-S2215098621000744-main.pdf
+% HIER WEITERMACHEN
+
 Als multi-objektiv bezeichnen \textcite[S. 12]{rodriguez:inproceedings} ihren Ansatz zur Integration "äußerer Merkmale"\footnote{"extraneous features" - \textcite[S. 12]{rodriguez:inproceedings}} in ein semantisches Modell im Bereich des Online-Recruitments. 
 Dieser ist in Abbildung \ref{fig:relatedwork:abb1} dargestellt.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
 	\includegraphics[width=0.9\textwidth]{gfx/talentMatch.png}
 	\caption[Ansatz für die Integration äußerer Merkmale in semantische Modelle]{Ansatz für die Integration äußerer Merkmale in semantische Modelle\\
@@ -45,24 +57,30 @@ Dieser ist in Abbildung \ref{fig:relatedwork:abb1} dargestellt.
 	\label{fig:relatedwork:abb1}
 \end{figure}
 
-Im Detail stellen die Autoren eine Erweiterung des bestehenden \textit{TalentMatch}-Systems des sozialen Netzwerks LinkedIn vor, welche neben des semantischen Matches \cite[S. 2]{jannach:2:inproceedings} zwischen einer Person und einem Job (Objective 1) zusätzlich die Offenheit einer Person für Jobangebote (Objective 2) in die Empfehlungserstellung (Ranking) miteinbezieht.
+Im Detail stellen die Autoren eine Erweiterung des bestehenden \textit{TalentMatch}-Systems des sozialen Netzwerks LinkedIn vor, welche neben des semantischen Matches \cite[S. 2]{jannach:2:inproceedings} zwischen einer Person und einem Job (Objective 1) zusätzlich die Offenheit einer Person für einen Jobwechsel (Objective 2) in die Empfehlungserstellung (Ranking) miteinbezieht.
 Dabei gehen die Autoren davon aus, dass die beiden Ziele möglicherweise miteinander konkurrieren, d.h. dass eine Person, die am besten auf eine Jobbeschreibung zutrifft, möglicherweise nicht offen für eine neue Stelle ist.
 \textcite[S. 12]{rodriguez:inproceedings} untersuchen in ihrer Arbeit, ob die Berücksichtigung der Neigung von Personen für offene Jobpositionen den Nutzen der Nutzer des Systems dennoch positiv beeinflusst.
-Den Nutzen operationalisieren die Autoren als das Engagement zwischen Jobsuchenden und Anbietern von Jobpositionen \cite[S. 14]{rodriguez:inproceedings}, welche diese über Menge aktiver und passiver Nutzer in dem System messen.
+Den Nutzen operationalisieren die Autoren als das Engagement zwischen Jobsuchenden und Anbietern von Jobpositionen \cite[S. 14]{rodriguez:inproceedings}, welche diese über Menge aktiver, passiver und inaktiver Nutzer in dem System messen.
 Die Integration der Berücksichtigung in das semantische Modell führen \textcite[S. 15]{rodriguez:inproceedings} systematisch über ein Re-Ranking durch.
-Dies realisieren \textcite[S. 13]{rodriguez:inproceedings} über folgende Verlust-Funktion $L$:
+Dies realisieren die Autoren über folgende Verlust-Funktion $L$ \cite[S. 13]{rodriguez:inproceedings}:
 \begin{equation}\label{eq30}
-    L(\alpha ,\beta) = -g(f(Y, X, [\alpha , \beta])) + \Delta (\pi (Y), \pi (f(Y,X,[\alpha ,\beta])))
+    L(\alpha ,\beta) = -g(f(Y, X, [\alpha , \beta])) + \lambda \Delta (\pi (Y), \pi (f(Y,X,[\alpha ,\beta])))
 \end{equation}
-Nach \textcite[S. 13]{rodriguez:inproceedings} gibt $g$ die durchschnittliche Anzahl aktiver und passiver Nutzer in dem erweiterten System $f(Y, X, [\alpha , \beta])$ und $\Delta$ die Abweichung des Rankings $\pi (f(Y,X,[\alpha ,\beta]))$ des erweiterten Systems im Vergleich zu dem Ranking $\pi (Y)$ des ursprünglichen semantischen Modells an.
-Die Anpassung eines semantischen Matches $y$ realisieren \textcite[S. 15]{rodriguez:inproceedings} durch einen sogenannten "Boost", wobei dieser für aktive ($\alpha$) und passive ($\beta$) Nutzer unterschieden werden kann:
+Nach \textcite[S. 15]{rodriguez:inproceedings} gibt Funktion $g$ die durchschnittliche Anzahl aktiver und passiver Nutzer in dem erweiterten System $f(Y, X, [\alpha , \beta])$ aus und $\Delta$ die Abweichung des Rankings $\pi (f(Y,X,[\alpha ,\beta]))$ des erweiterten Systems von dem Ranking $\pi (Y)$ des ursprünglichen semantischen Modells.
+$\lambda$ stellt einen positiven Trade-Off-Parameter dar \cite[S. 13]{rodriguez:inproceedings}.
+% \textcite[S. 13]{rodriguez:inproceedings} merken an, dass die Verlust-Funktion auch als Maximierungsproblem der Funktion $g$ dargestellt werden kann, welches $\Delta$ durch das Aufstellen einer Bedingung $c$ (d.h. $\Delta (\pi (Y), \pi (f(Y,X,[\alpha ,\beta]))) \leq c$) begrenzen kann.
+Die Anpassung eines semantischen Matches $y$ realisieren \textcite[S. 15]{rodriguez:inproceedings} durch einen sogenannten "Boost", wobei zwischen einem Boost für aktive ($\alpha$) und passive ($\beta$) Nutzer unterschieden wird:
 \begin{equation}\label{eq31}
     f(y,x,[\alpha ,\beta]) = y \times (\alpha^{1\{{x == \textnormal{active}\}}}) \times (\beta^{1\{{x == \textnormal{active}\}}})
 \end{equation}
 Hierbei ist $1\{x == \textnormal{active}\}$ gleich $1$, wenn die Bedingung innerhalb der geschweiften Klammer wahr ist und $0$ andernfalls.
-\textcite[S. ]{rodriguez:inproceedings}
-% HIER WEITERMACHEN und ergebnisse anführen!
-% Bis dato könnte dieser Ansatz unserer Idee am nächsten kommen
+Das Optimieren der Parameter $\alpha$ und $\beta$ führen \textcite[S. 15]{rodriguez:inproceedings} über eine Rastersuche durch.
+
+\textcite[S. 15f.]{rodriguez:inproceedings} prüften ihren Ansatz anhand von 760 offenen Jobangeboten, von denen jedes zwischen 6 und 9000 mal in Empfehlungen auftauchte.
+Dabei stellten die Autoren fest, dass eine signifikante Verbesserung des Nutzens mit einer akzeptablen und vorhersebaren Verschlechterung der semantischen Matches erreicht werden konnte \cite[S. 11]{rodriguez:inproceedings}.
+% Dabei stellten die Autoren fest, dass bis zu einem gewissen Wert für Delta ein linearer Zusammenhang zwischen dem Zugewinn an durchschnittlich aktiven und passiven Nutzern und der Aufgabe von Übereinstimmung der Rankings besteht \cite[S. 16]{rodriguez:inproceedings}.
+% Für bestimmte Kombinationen von $\alpha$ und $\beta$ konnte die Anzahl aktiver und passiver Nutzer in dem Top-K-Ranking durch Anwendung des erweiterten Modells verdoppelt werden, ohne massive Einbußen in den semantischen Matches einzufahren.
+Kritisch betrachten \textcite[S. 16]{rodriguez:inproceedings} an ihrem Ansatz, dass für die Wirksamkeit eines Modells im praktischen Einsatz überprüft werden muss, ob die durchschnittliche Anzahl aktiver und passiver Nutzer tatsächlich repräsentativ für das Engagement von Nutzern in einem System ist.
 
 \subsection{Multi-kriterielle Bewertungen in Empfehlungssystemen}
 % Erfinder des aggregation Funktion approaches: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
@@ -77,4 +95,4 @@ Hierbei ist $1\{x == \textnormal{active}\}$ gleich $1$, wenn die Bedingung inner
 % was gibt es also nicht? -> Reziprozität als gewichtetes Kriterium (Präferenz der empfohlenen Person zählt nicht genauso viel wie Präferenz des Nutzers, kann daher als gewichtetes Kriterium einer Aggregation Function betrachtet werden, welche über historische daten erlernt werden kann)
 % Neue anwendungsbereiche von multi-kriteriellen EMpfehlungen in domänen wie online dating: zitat von S. 553, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Towards%20the%20Next%20Generation%20of%20Multi-Criteria%20Recommender.pdf
 
- von 
+ \shorthandon{"}
