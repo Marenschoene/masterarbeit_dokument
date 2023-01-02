@@ -5,31 +5,45 @@
 \shorthandoff{"}
 \chapter{Verwandte Arbeiten}
 \label{ch:verwandte_arbeiten}
-In der Literatur existieren bereits einige Arbeiten, die sich mit der Berücksichtigung wechselseitiger Präferenzen in der Empfehlungserstellung beschäftigen.
-Auch der Bereich der multi-kriteriellen Empfehlungssysteme wurde in der Literatur in diversen Veröffentlichungen behandelt.
-Nachfolgend werden verwandte Arbeiten zu reziproken Empfehlungssystemen sowie zu multi-kriteriellen Empfehlungssystemen mit Bezug auf die vorliegende Domäne angeführt.
+In der Literatur existieren bereits diverse Veröffentlichungen, die sich mit der Berücksichtigung wechselseitiger Präferenzen für die automatische Zuweisung von Personen für Jobpositionen beschäftigen.
+Während einige Veröffentlichungen Reziprozität als multi-kriterielles Problem betrachten, ordnen andere Arbeiten die reziproke Empfehlungserstellung nicht den multi-kriteriellen Empfehlungssystemen zu.
+Dadurch haben sich im Verlauf der Jahre unterschiedliche Ansätze für die Integration bilateraler Präferenzen in Empfehlungssysteme entwickelt.
+Nachfolgend werden verwandte Arbeiten zu reziproken Empfehlungssystemen mit Bezug auf die vorliegende Domäne angeführt.
 
-GLIEDERUNG DIESES KAPITELS ANPASSEN -> Zusammenspiel aus multi-criteria und reciprocal recommender
-
-\section{Reziproke Systeme}
-Gemäß \textcite[S. 1467]{yildirim:article} hat die wechselseitige Empfehlung in der Literatur bis heute aufgrund fehlender öffentlicher Datensätze mit Angaben zu Präferenzen der Nutzer eines Netzwerks wenig Aufmerksamkeit erhalten. 
+\section{Nicht als multi-kriteriell bezeichnete wechselseitige Systeme}
+% Gemäß \textcite[S. 1467]{yildirim:article} hat die wechselseitige Empfehlung in der Literatur bis heute wenig Aufmerksamkeit erhalten.
+% Dies begründen \textcite[S. 1467]{yildirim:article} durch eine begrenzte Verfügbarkeit öffenlticher Datensätze mit Angaben zu Präferenzen der Nutzer eines Netzwerks.
 
 Die erste Veröffentlichung in der Literatur zu wechselseitigen Empfehlungssystemen stammt von \textcite[S. 1ff.]{pizzato:inproceedings}, welche ein wechselseitiges Empfehlungssystem für Online-Dating-Plattformen vorstellen \cite[S. 1469]{yildirim:article}.
-Die Autoren beschreiben eine reziproke Empfehlung als eine Linearkombination aus dem Wert der Präferenz eines Nutzers für ein Element ($P1$) und dem Wert der Präferenz eines Elements für einen Nutzer ($P2$):
+Nach \textcite[S. 5]{pizzato:inproceedings} ergibt sich der Wert einer \ac{N-E-K} grundsätzlich aus einer Kombination der Präferenz eines Nutzers für ein Element und der Präferenz eines Elements für einen Nutzer.
+Die Autoren weisen darauf hin, dass für die Kombination der beiden Komponenten verschiedene Methoden verwendet werden können.
+In ihrer Veröffentlichung modellieren \textcite[S. 6]{pizzato:inproceedings} eine reziproke Empfehlung als gewichtete Summe aus dem Wert der Präferenz eines Nutzers für ein Element ($P1$) und dem Wert der Präferenz eines Elements für einen Nutzer ($P2$) \cite[S. 6]{pizzato:inproceedings}:
 \begin{equation}\label{eq32}
     PRR(c,s) = w_{1}P1(c,s) + w_{2}P2(c,s)
 \end{equation}
-Über die Gewichte $w_{1}$ und $w_{2}$ können den Präferenzen von Nutzern bzw. Elementen unterschiedliche Wichtigkeit zugeteilt werden.
-% erste referenz zu reciprocal recommendation by pizzato kurz anfüren (siehe S. 1469, file:///C:/Users/masc6/Downloads/1-s2.0-S2215098621000744-main.pdf)
-% Darstellung der gewichtung der Präferenzen als linearkombination
-% d.h. wie sehr zwei personen übereinstimmen, beides gleich gewichtet
+Über die Gewichte $w_{1}$ und $w_{2}$ können die Präferenzen von Nutzern bzw. Elementen unterschiedlich gewichtet werden \cite[S. 6]{pizzato:inproceedings}.
+Für alternative Kombinationsmöglichkeiten der bilateralen Präferenzen verweisen \textcite[S. 5]{pizzato:inproceedings} auf \textcite[S. 339ff.]{burke:article}, der in seiner Veröffentlichung zu hybriden Empfehlungssystemen allgemeine Methoden für die Kombination von Ergebnissen unterschiedlicher Systeme vorstellt.
+Auch wenn die Umsetzung der reziproken Empfehlung bereits als multi-kriterieller Ansatz modelliert wurde (Vgl. Gleichung \ref{eq32}), bezeichnen \textcite[S. 1ff.]{pizzato:inproceedings} die wechselseitige Empfehlungserstellung nicht ausdrücklich als multi-kriterielles Problem. 
+
+% RECON zuerst, MEET als weiterentwicklung, welche zusätzlich sparsity, limitedness und passiveness berücksichtigt
+
+Im Vergleich zu verwandten Domänen (z.B. Online-Dating) hat die automatischen Bestimmung von Personen für Jobpositionen in der Literatur bislang wenig Aufmerksamkeit erhalten \cite[S. 1469]{yildirim:article}.
+
+\textcite[S. 1ff.]{malinowski:2006} stellen in ihrer Arbeit die Notwendigkeit der Berücksichtigung bilateraler Präferenzen für die Zuordnung von Personen zu Jobpositionen fest.
+Die Autoren führen den Begriff des \ac{P-E-Fit} ein, welcher aus der Verhaltenstheorie \cite[S. 3]{malinowski:2006} stammt und eine optimale Zuordnung einer Person zu seiner Umgebung beschreibt.
+Dabei halten die Autoren fest, dass eine optimale Zuordnung von Person zu Umgebung (d.h. \ac{P-E-Fit}) von vier Komponenten abhängt: dem Person-Job-Fit, dem Person-Oganisation-Fit, dem Person-Vocation-Fit und dem Person-Group-Fit \cite[S. 3]{malinowski:2006}.
+In ihrer Arbeit fokussieren sich \textcite[S. 4]{malinowski:2006} auf die optimale Zuordnung von Person zu Job (Person-Job-Fit) und stellen fest, dass für die reziproke Empfehlungerstellung die Bedürfnisse der Recruiter und die Bedürfnisse der Bewerber zu einem Wert aggregiert werden müssen \cite[S. 5]{malinowski:2006}.
+Die Bestimmung einer optimalen Zuordnung als Kombination aus den Bedürfnissen der Recruiter und den Bedürfnissen der Bewerber definieren die Autoren als Problem des Findens einer Pareto-optimalen Lösung \cite[S. 5]{malinowski:2006}.
+% HIER KRITIK NENNEN VON RECON!
+
 % Dual perspektive graph representation hier: S. 104, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/recsys%202022%20modeling%20two%20way%20selection%20preference%20for%20person%20job%20fit.pdf
 
-% präferenz eines nutzers höher gewichtet als präferenz der empfohlenen Elemente
 % feature optionen können 3 unterschiedliche stadi annehmen. -> classification (label mit match und kein match) S. 68, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/DiazMetzlerAmer-Yahia%20-%20Relevance%20and%20Ranking%20in%20Online%20Dating%20Systems%20(2010)%20-%200.pdf
 % Johannes Thesis
+% file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Optimally%20Balancing%20Receiver%20and%20Recommended%20Users%20Importance%20in%20RRS.pdf
+% Einsatz von MAUT, siehe file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Analysis%20and%20Classification%20of%20Multi-Criteria.pdf
 
-\section{Multi-kriterielle Systeme}
+\section{Als multi-kriteriell bezeichnete wechselseitige Systeme}
 hier bsp anführen für arbeiten die sich mit mk systemen beschäftigen in den 3 bereichen
 % Hier erwähnen, dass nicht alle systeme auch als mk-systeme bezeichnet sind, die solche Ansätze anwenden (bspw. hybride systeme)
 % Hier erwähnen, dass Fokus auf aggregation mehrerer Kriterien und deren gewichtung liegt -> hiernach suchen
@@ -91,6 +105,9 @@ Kritisch betrachten \textcite[S. 16]{rodriguez:inproceedings} an ihrem Ansatz, d
 % Liu et al.: Cluster von Nutzern, welche wichtigkeit einzelner Attribute angeben, zusammenfassung siehe hier S. 4, file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf
 % CCSD method, siehe: file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf
 % Wenn viele features: liwei et al (zsfsg. siehe hier: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Multi-criteria%20Recommender%20System%20Incorporating%20Intensity%20of%20Preferences.pdf )
+
+Darüber hinaus existieren einige Ansätze verwandter Domänen, die ebenfalls für die automatisierte Zuordnung von Personen für Jobpositionen relevant sind.
+% Hier ggf. verwandte arbeiten in anderen domänen anführen. (z.B. Online Dating, Education)
 
 % was gibt es also nicht? -> Reziprozität als gewichtetes Kriterium (Präferenz der empfohlenen Person zählt nicht genauso viel wie Präferenz des Nutzers, kann daher als gewichtetes Kriterium einer Aggregation Function betrachtet werden, welche über historische daten erlernt werden kann)
 % Neue anwendungsbereiche von multi-kriteriellen EMpfehlungen in domänen wie online dating: zitat von S. 553, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Towards%20the%20Next%20Generation%20of%20Multi-Criteria%20Recommender.pdf
