@@ -25,20 +25,47 @@ In ihrer Veröffentlichung modellieren \textcite[S. 6]{pizzato:inproceedings} ei
 Für alternative Kombinationsmöglichkeiten der bilateralen Präferenzen verweisen \textcite[S. 5]{pizzato:inproceedings} auf \textcite[S. 339ff.]{burke:article}, der in seiner Veröffentlichung zu hybriden Empfehlungssystemen allgemeine Methoden für die Kombination von Ergebnissen unterschiedlicher Systeme vorstellt.
 Auch wenn die Umsetzung der reziproken Empfehlung bereits als multi-kriterieller Ansatz modelliert wurde (Vgl. Gleichung \ref{eq32}), bezeichnen \textcite[S. 1ff.]{pizzato:inproceedings} die wechselseitige Empfehlungserstellung nicht ausdrücklich als multi-kriterielles Problem. 
 
-% RECON zuerst, MEET als weiterentwicklung, welche zusätzlich sparsity, limitedness und passiveness berücksichtigt
+Eine Umsetzung des Konzepts wechselseitiger Empfehlungssysteme stellen \textcite[S. 207ff.]{pizzato:2010} in einer weiterführenden Arbeit vor.
+Die Autoren entwickeln einen inhaltsbasierten Algorithmus für eine Online-Dating-Website, welche die bilateralen Präferenzen zweier Nutzer $x$ und $y$ über das harmonische Mittel aggregiert.
+\begin{equation}\label{eq33}
+    PRR(x,y) = \frac{2}{(\frac{1}{Comp.(P_{x,y})}+\frac{1}{Comp.(P_{y,x})})}
+\end{equation}
+Als Indikator für die Präferenzen $P_{x}$ eines Nutzers $x$ stützen sich die Autoren auf Attribute der Nutzer, die eine Nachricht des Nutzers $x$ erhalten haben.
+So gehen \textcite[S. 210]{pizzato:2010} davon aus, dass ein Nutzer $x$ eine bestimmte Altersgruppe bevorzugt, wenn er im Vergleich zu anderen Altersgruppen maßgeblich Nutzern einer Altersklasse Nachrichten gesendet hat.
+Die Präferenz eines Nutzers $x$ für einen Nutzer $y$ bestimmen \textcite[S. 210]{pizzato:2010} über einen Komnpatibilitäs-Wert $Comp.(P_{x,y})$, der sich aus der Präferenz des Nutzers $x$ für die Attribute des Nutzers $y$ ergibt.
+
+Kritisch ist anzumerken, dass die Präferenzen der Nutzer in der Ermittlung des reziproken Wertes nicht unterschiedlich stark gewichtet werden können.
+Demzufolge ist der Wert eines Nutzers $x$ für einen Nutzer $y$ symmetrisch zu dem Wert eines Nutzers $y$ für einen Nutzer $x$ \cite[S. 211]{pizzato:2010}.
+Weiter ist eine Voraussetzung für die Bestimmung des Wertes bilateraler Präferenzen anhand des harmonischen Mittels, dass die jeweiligen Kompatibilitätswerte nicht null sein dürfen, da das harmonische Mittel für solche Werte nicht definiert ist.
+Dies muss beim Aufsetzen des Algorithmus berücksichtigt werden.
+% Vorstellung ergebnisse des Algorithmus?
+
+\textcite[S. 40]{li:inproceedings} bemängeln an dem Ansatz von \textcite[S. 207ff.]{pizzato:2010}, dass wesentliche Charakteristika wechselseitiger Empfehlungssysteme außer Acht gelassen werden.
+Sie merken an, dass Aspekte wie Passivität und die Endlichkeit von Nutzern nicht in die Empfehlungserstellung miteinbezogen werden.
+Zusätzlich zu der Berücksichtigung weiterer Aspekte wechselseitier Empfehlungssysteme, wird der Wert der Reziprozität in dem allgemeinen Framework für \ac{RRS} von \textcite[S. 38]{li:inproceedings} als Produkt der Präferenzwerte zweier Nutzer $x$ und $y$ bestimmt.
+Den Autoren zufolge soll dadurch eine unilaterale Präferenz im Vergleich zu herkömmlichen Aggregationsmethoden (z.B. Linearkombination) verhindert werden.
+Dies betrifft beispielsweise Fälle in denen lediglich eine Person den Präferenzen der anderen Person entspricht, zum Beispiel in Fällen in denen ein Bewerber eine Jobposition bevorzugt, dieser aber nicht für die ausgeschriebenen Stelle geeignet ist \cite[S. 38]{li:inproceedings}.
+
+\textcite[S. 66ff.]{diaz:inproceedings} formulieren das Finden optimaler Paare in Online-Dating-Plattformen als Informationsbeschaffungsproblem\footnote{"Information retrieval problem" - \textcite[S. 67]{diaz:inproceedings}} \cite[S. 550]{koprinska:inbook}.
+\textcite[S. 550]{koprinska:inbook} beschreiben die Veröffentlichung der Autoren als einen Ansatz für das Ranking von Nutzern in Abhängigkeit eines idealen Partnerprofils, welches explizit von einem Zielnutzer angegeben wird.
+Für ihren Klassifikations-Ansatz verwenden \textcite[S. 66ff.]{diaz:inproceedings} historische Daten, mithilfe derer Paare von Nutzern als "relevant" bzw. "nicht-relevant" gekennzeichnet werden (sog. \textit{two-sided-relevance} \cite[S. 288]{li:article}).
+Als relevant definieren die Autoren Paare, die positive Interaktionen untereinander aufweisen (z.B. der Austausch von Kontaktinformation).
+Unter Verwendung eines Gradient Boosted Decision Trees (Machine-Learning Technik) ermitteln \textcite[S. 69]{diaz:inproceedings} für relevante Matches eines Nutzers den Wert ihrer angenommenen Relevanz.
+% feature optionen können 3 unterschiedliche stadi annehmen. -> classification (label mit match und kein match) S. 68, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/DiazMetzlerAmer-Yahia%20-%20Relevance%20and%20Ranking%20in%20Online%20Dating%20Systems%20(2010)%20-%200.pdf
 
 Im Vergleich zu verwandten Domänen (z.B. Online-Dating) hat die automatischen Bestimmung von Personen für Jobpositionen in der Literatur bislang wenig Aufmerksamkeit erhalten \cite[S. 1469]{yildirim:article}.
 
 \textcite[S. 1ff.]{malinowski:2006} stellen in ihrer Arbeit die Notwendigkeit der Berücksichtigung bilateraler Präferenzen für die Zuordnung von Personen zu Jobpositionen fest.
-Die Autoren führen den Begriff des \ac{P-E-Fit} ein, welcher aus der Verhaltenstheorie \cite[S. 3]{malinowski:2006} stammt und eine optimale Zuordnung einer Person zu seiner Umgebung beschreibt.
+Die Autoren führen den Begriff des \ac{P-E-Fit} ein, welcher aus der Verhaltenstheorie \cite[S. 3]{malinowski:2006} stammt und eine optimale Zuordnung einer Person zu ihrer Umgebung beschreibt.
 Dabei halten die Autoren fest, dass eine optimale Zuordnung von Person zu Umgebung (d.h. \ac{P-E-Fit}) von vier Komponenten abhängt: dem Person-Job-Fit, dem Person-Oganisation-Fit, dem Person-Vocation-Fit und dem Person-Group-Fit \cite[S. 3]{malinowski:2006}.
-In ihrer Arbeit fokussieren sich \textcite[S. 4]{malinowski:2006} auf die optimale Zuordnung von Person zu Job (Person-Job-Fit) und stellen fest, dass für die reziproke Empfehlungerstellung die Bedürfnisse der Recruiter und die Bedürfnisse der Bewerber zu einem Wert aggregiert werden müssen \cite[S. 5]{malinowski:2006}.
-Die Bestimmung einer optimalen Zuordnung als Kombination aus den Bedürfnissen der Recruiter und den Bedürfnissen der Bewerber definieren die Autoren als Problem des Findens einer Pareto-optimalen Lösung \cite[S. 5]{malinowski:2006}.
+In ihrer Arbeit fokussieren sich \textcite[S. 4]{malinowski:2006} auf die optimale Zuordnung von Person zu Job (Person-Job-Fit).
+Sie stellen fest, dass für die reziproke Empfehlungerstellung die Bedürfnisse der Recruiter und die Bedürfnisse der Bewerber zu einem Indikator \cite[S. 922]{siting:2012} aggregiert werden müssen \cite[S. 5]{malinowski:2006}.
+Die Bestimmung einer optimalen Zuordnung als Kombination aus den Bedürfnissen der Recruiter und den Bedürfnissen der Bewerber definieren die Autoren als Problem des Findens einer pareto-optimalen Lösung \cite[S. 5]{malinowski:2006}.
+Jedoch führten \textcite[S. 1ff.]{malinowski:2006} keine Implementierung und Evaluierung einer solchen Kombination durch \cite[S. 549]{koprinska:inbook}.
 % HIER KRITIK NENNEN VON RECON!
 
 % Dual perspektive graph representation hier: S. 104, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/recsys%202022%20modeling%20two%20way%20selection%20preference%20for%20person%20job%20fit.pdf
 
-% feature optionen können 3 unterschiedliche stadi annehmen. -> classification (label mit match und kein match) S. 68, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/DiazMetzlerAmer-Yahia%20-%20Relevance%20and%20Ranking%20in%20Online%20Dating%20Systems%20(2010)%20-%200.pdf
 % Johannes Thesis
 % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Optimally%20Balancing%20Receiver%20and%20Recommended%20Users%20Importance%20in%20RRS.pdf
 % Einsatz von MAUT, siehe file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Analysis%20and%20Classification%20of%20Multi-Criteria.pdf
@@ -111,5 +138,8 @@ Darüber hinaus existieren einige Ansätze verwandter Domänen, die ebenfalls f�
 
 % was gibt es also nicht? -> Reziprozität als gewichtetes Kriterium (Präferenz der empfohlenen Person zählt nicht genauso viel wie Präferenz des Nutzers, kann daher als gewichtetes Kriterium einer Aggregation Function betrachtet werden, welche über historische daten erlernt werden kann)
 % Neue anwendungsbereiche von multi-kriteriellen EMpfehlungen in domänen wie online dating: zitat von S. 553, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Towards%20the%20Next%20Generation%20of%20Multi-Criteria%20Recommender.pdf
+
+% Zusätzlich: Darstellung negativer Präferenzen, siehe S. 288: https://link.springer.com/content/pdf/10.1007/978-3-642-22362-4.pdf?pdf=button
+% -> RECON mit negativen Präferenzen
 
  \shorthandon{"}
