@@ -34,6 +34,8 @@ Als Indikator für die Präferenzen $P_{x}$ eines Nutzers $x$ stützen sich die 
 So gehen \textcite[S. 210]{pizzato:2010} davon aus, dass ein Nutzer $x$ eine bestimmte Altersgruppe bevorzugt, wenn er im Vergleich zu anderen Altersgruppen maßgeblich Nutzern einer Altersklasse Nachrichten gesendet hat.
 Die Präferenz eines Nutzers $x$ für einen Nutzer $y$ bestimmen \textcite[S. 210]{pizzato:2010} über einen Komnpatibilitäs-Wert $Comp.(P_{x,y})$, der sich aus der Präferenz des Nutzers $x$ für die Attribute des Nutzers $y$ ergibt.
 
+% Negative Präferenzen? s.u.
+
 Kritisch ist anzumerken, dass die Präferenzen der Nutzer in der Ermittlung des reziproken Wertes nicht unterschiedlich stark gewichtet werden können.
 Demzufolge ist der Wert eines Nutzers $x$ für einen Nutzer $y$ symmetrisch zu dem Wert eines Nutzers $y$ für einen Nutzer $x$ \cite[S. 211]{pizzato:2010}.
 Weiter ist eine Voraussetzung für die Bestimmung des Wertes bilateraler Präferenzen anhand des harmonischen Mittels, dass die jeweiligen Kompatibilitätswerte nicht null sein dürfen, da das harmonische Mittel für solche Werte nicht definiert ist.
@@ -47,13 +49,29 @@ Den Autoren zufolge soll dadurch eine unilaterale Präferenz im Vergleich zu her
 Dies betrifft beispielsweise Fälle in denen lediglich eine Person den Präferenzen der anderen Person entspricht, zum Beispiel in Fällen in denen ein Bewerber eine Jobposition bevorzugt, dieser aber nicht für die ausgeschriebenen Stelle geeignet ist \cite[S. 38]{li:inproceedings}.
 
 \textcite[S. 66ff.]{diaz:inproceedings} formulieren das Finden optimaler Paare in Online-Dating-Plattformen als Informationsbeschaffungsproblem\footnote{"Information retrieval problem" - \textcite[S. 67]{diaz:inproceedings}} \cite[S. 550]{koprinska:inbook}.
-\textcite[S. 550]{koprinska:inbook} beschreiben die Veröffentlichung der Autoren als einen Ansatz für das Ranking von Nutzern in Abhängigkeit eines idealen Partnerprofils, welches explizit von einem Zielnutzer angegeben wird.
-Für ihren Klassifikations-Ansatz verwenden \textcite[S. 66ff.]{diaz:inproceedings} historische Daten, mithilfe derer Paare von Nutzern als "relevant" bzw. "nicht-relevant" gekennzeichnet werden (sog. \textit{two-sided-relevance} \cite[S. 288]{li:article}).
-Als relevant definieren die Autoren Paare, die positive Interaktionen untereinander aufweisen (z.B. der Austausch von Kontaktinformation).
-Unter Verwendung eines Gradient Boosted Decision Trees (Machine-Learning Technik) ermitteln \textcite[S. 69]{diaz:inproceedings} für relevante Matches eines Nutzers den Wert ihrer angenommenen Relevanz.
-% feature optionen können 3 unterschiedliche stadi annehmen. -> classification (label mit match und kein match) S. 68, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/DiazMetzlerAmer-Yahia%20-%20Relevance%20and%20Ranking%20in%20Online%20Dating%20Systems%20(2010)%20-%200.pdf
+\textcite[S. 550]{koprinska:inbook} beschreiben die Veröffentlichung der Autoren als einen Ansatz für das Ranking von Nutzern in Abhängighkeit ihrer Übereinstimmung mit dem idealen Partnerprofil eines Nutzers (d.h. Ausprägungen strukturierter und unstrukturierter Profilattribute \cite[S. 288]{li:article}\cite[S. 272]{pizzato:2:inproceedings}).
+Die Autoren verwenden historische Daten, mithilfe derer Paare von Nutzern als "relevant" bzw. "nicht-relevant" gekennzeichnet werden.
+Als relevant bezeichnen die Autoren Paare, in denen Nutzer Kontaktinformation ausgetauscht haben \cite[S. 66ff.]{diaz:inproceedings}.
+Unter Verwendung eines Gradient Boosted Decision Trees (Machine-Learning Technik) und den gekennzeichneten historischen Daten ermitteln \textcite[S. 69]{diaz:inproceedings} die angenommene Relevanz potenzieller Kandidaten für einen Nutzer \cite[S. 550]{koprinska:inbook}.
+Die Ermittlung des Verlusts in dem Machine-Learning Modell von \textcite[S. 69]{diaz:inproceedings} erfolgt durch Anwendung der mittleren quadratischen Abweichung (engl.: \ac{MSE}).
+Den Aspekt der Reziprozität bezeichnen \textcite[S. 66]{diaz:inproceedings} als two-sided relevance (dt.: zweiseitige Relevanz) \cite[S. 550]{koprinska:inbook}.
 
-Im Vergleich zu verwandten Domänen (z.B. Online-Dating) hat die automatischen Bestimmung von Personen für Jobpositionen in der Literatur bislang wenig Aufmerksamkeit erhalten \cite[S. 1469]{yildirim:article}.
+\textcite[S. 247ff.]{kim:2:inproceedings} entwickelten eine Methode für die bilaterale Empfehlungserstellung in sozialen Netzwerken.
+Dabei beziehen sich die Autoren auf Netzwerke, in denen Nutzer auf Nachrichten anderer Nutzer positiv bzw. negativ reagieren können \cite[S. 548]{koprinska:inbook} .
+Der Ansatz von \textcite[S. 247ff.]{kim:2:inproceedings} berücksichtigt für die Empfehlungserstellung sowohl die Interessen des Senders einer Nachricht, als auch die Interessen des Empfängers einer Nachricht.
+Ähnlich zu dem Ansatz von \textcite[S. 207ff.]{pizzato:2010} erfolgt die Aggregation durch Verwendung des gewichteten harmonischen Mittels \cite[S. 251]{kim:2:inproceedings}.
+Dies ermöglicht eine unterschiedliche Gewichtung des Interesses $I$ von Sender $x$ an Empfänger $y$ bzw. von Empfänger $y$ an Sender $x$ über die Parameter $w_{x}$ und $w_{y}$ \cite[S. 251]{kim:2:inproceedings}:
+\begin{equation}\label{eq34}
+    H(x,y) = \frac{2}{(\frac{w_{x}}{I_{x,y}}+\frac{w_{y}}{I_{y,x}})}
+\end{equation}
+Anküpfende Experimente von \textcite[S. 259]{kim:2:inproceedings} zeigen nur eine geringe Schwangung des Anteils positiver Interaktionen von Empfängern am Gesamtaufkommen der Interaktionen in Abhängigkeit der gewählten Gewichte für die Interessen.
+Die Autoren gehen davon aus, dass die geringe Schwankung maßgeblich aufgrund des retrospektiven Charakters der historischen Daten besteht \cite[S. 259]{kim:2:inproceedings}.
+Die Veröffentlichung von \textcite[S. 259]{kim:2:inproceedings} kann folglich keine Aussage darüber treffen, wie Nutzer auf Empfehlungen reagieren, die anhand unterschiedlicher Gewichte ermittelt wurden.
+% Dies ist durch die Art der Ermittlung des Interesses eines Empfängers zu erklären, welches durch das Verhältnis von positiven Rückmeldungen eines Empfängers zu allen Interaktionen eines Senders bemessen wird.
+% Da die Anzahl an Rückmeldungen bereits in der Vergangenheit ermittelt wurde, hat eine höhere Gewichtung dieser keinen Einfluss auf vergangene Interaktionen, lediglich auf die Ermittlung des harmonischen Mittels.
+
+Im Vergleich zu verwandten Domänen hat die automatischen Bestimmung von Personen für Jobpositionen in der Literatur bislang wenig Aufmerksamkeit erhalten \cite[S. 1469]{yildirim:article}.
+% HIER WEITERMACHEN!
 
 \textcite[S. 1ff.]{malinowski:2006} stellen in ihrer Arbeit die Notwendigkeit der Berücksichtigung bilateraler Präferenzen für die Zuordnung von Personen zu Jobpositionen fest.
 Die Autoren führen den Begriff des \ac{P-E-Fit} ein, welcher aus der Verhaltenstheorie \cite[S. 3]{malinowski:2006} stammt und eine optimale Zuordnung einer Person zu ihrer Umgebung beschreibt.
@@ -71,6 +89,8 @@ Jedoch führten \textcite[S. 1ff.]{malinowski:2006} keine Implementierung und Ev
 % Einsatz von MAUT, siehe file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Analysis%20and%20Classification%20of%20Multi-Criteria.pdf
 
 \section{Als multi-kriteriell bezeichnete wechselseitige Systeme}
+Obwohl der Bereich des \ac{MCDA} in der Literatur bereits intensiv behandelt wurde, merken \textcite[S. 248]{kim:2:inproceedings} an, dass die Thematik in dem Kontext von Empfehlungssytemen bislang wenig Aufmerksamkeit erhalten hat.
+
 hier bsp anführen für arbeiten die sich mit mk systemen beschäftigen in den 3 bereichen
 % Hier erwähnen, dass nicht alle systeme auch als mk-systeme bezeichnet sind, die solche Ansätze anwenden (bspw. hybride systeme)
 % Hier erwähnen, dass Fokus auf aggregation mehrerer Kriterien und deren gewichtung liegt -> hiernach suchen
