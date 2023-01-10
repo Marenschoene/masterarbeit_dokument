@@ -62,6 +62,11 @@ Beispiele für Attribute eines Nutzers sind das Geschlecht oder Alter eines Anwe
 Hierbei bezeichnet $C$ die Menge aller Nutzer und $S$ die Menge aller Elemente eines Systems.
 Nach \textcite[S. 735]{adomavicius:inproceedings} gibt $u(c,s)$ den Nutzen eines Elements $s$ für einen Nutzer $c$ an.
 
+Bei dem beschriebenen Problem in Gleichung \ref{eq1} handelt es sich um ein Maximierungsproblem.
+Nach \textcite[S. 1]{book:kallrath} können Maximierungsprobleme der Kategorie der Optimierungsprobleme zugeordnet werden.
+Die Problematik des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Menge von Elementen gehört demnach zu der Kategorie der Optimierungsprobleme.
+% Da es sich bei dem Problem des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Menge an Elementen um ein Maximierungsproblem handelt, kann das Problem der Kategorie der Optimierungsprobleme, wie in \textcite[S. 1]{book:kallrath} definiert, zugeordnet werden.
+
 % Wird das Problem aus Gleichung \ref{eq1} auf einem höheren Abstraktionslevel betrachtet, besteht das grundsätzliche Problem in Empfehlungssystemen in der Auswahl von Elementen $s' \in S$ für einen Nutzer $c \in C$ mit maximalem Nutzen $u(c,s)$.
 Wird das Problem aus Gleichung \ref{eq1} weiter abstrahiert, kann die Problemstellung in Empfehlungssystemen als Auswahl der Elemente $s' \in S$ für einen Nutzer $c \in C$ mit maximalem Nutzen $u(c,s)$ verstanden werden.
 % Das Problem in Gleichung \ref{eq1} kann abstrahiert werden als das grundsätzliche Problem der Auswahl von Elementen $s' \in S$ für einen Nutzer $c \in C$ mit maximalem Nutzen $u(c,s)$. % verallgemeinert werden?
@@ -89,11 +94,6 @@ Aus Sicht eines Dienstleisters kann Nutzen in Empfehlungssystemen demnach auch a
 % Der Begriff der "Nützlichkeit" wird in der Literatur überwiegend verwendet, um den Wert eines Elements für einen Nutzer zu beschreiben \cite[S. 10f.]{ricci:inbook}\cite[S. 1]{klahold:book}\cite[S. 735]{adomavicius:inproceedings}.\footnote{Unter der Nützlichkeit kann in dem Kontext von Empfehlungssystemen auch die Güte einer Empfehlung verstanden werden \cite[S. 37ff.]{klahold:book}.}
 Der Nutzen kann sowohl unmittelbar über Angaben eines Nutzers erschlossen, als auch über eine Nutzenfunktion des Empfehlungssystems berechnet werden \cite[S. 735]{adomavicius:inproceedings}.
 Da die Ermittlung des Nutzens durchaus komplex sein kann, wird die Nutzenfunktion in Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion} ausführlich erläutert.
-
-Bei dem beschriebenen Problem in Gleichung \ref{eq1} handelt es sich um ein Maximierungsproblem.
-Nach \textcite[S. 1]{book:kallrath} können Maximierungsprobleme der Kategorie der Optimierungsprobleme zugeordnet werden.
-Die Problematik des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Menge von Elementen gehört demnach zu der Kategorie der Optimierungsprobleme.
-% Da es sich bei dem Problem des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Menge an Elementen um ein Maximierungsproblem handelt, kann das Problem der Kategorie der Optimierungsprobleme, wie in \textcite[S. 1]{book:kallrath} definiert, zugeordnet werden.
 
 \section{Nutzenfunktion}
 \label{ch:empfehlungssysteme:nutzenfunktion}

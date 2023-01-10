@@ -57,7 +57,7 @@ Die Ermittlung des Verlusts in dem Machine-Learning Modell von \textcite[S. 69]{
 Den Aspekt der Reziprozität bezeichnen \textcite[S. 66]{diaz:inproceedings} als two-sided relevance (dt.: zweiseitige Relevanz) \cite[S. 550]{koprinska:inbook}.
 
 \textcite[S. 247ff.]{kim:2:inproceedings} entwickelten eine Methode für die bilaterale Empfehlungserstellung in sozialen Netzwerken.
-Dabei beziehen sich die Autoren auf Netzwerke, in denen Nutzer auf Nachrichten anderer Nutzer positiv bzw. negativ reagieren können \cite[S. 548]{koprinska:inbook} .
+In ihrer Arbeit beziehen sich die Autoren auf Netzwerke, in denen Nutzer auf Nachrichten anderer Nutzer positiv bzw. negativ reagieren können \cite[S. 548]{koprinska:inbook} .
 Der Ansatz von \textcite[S. 247ff.]{kim:2:inproceedings} berücksichtigt für die Empfehlungserstellung sowohl die Interessen des Senders einer Nachricht, als auch die Interessen des Empfängers einer Nachricht.
 Ähnlich zu dem Ansatz von \textcite[S. 207ff.]{pizzato:2010} erfolgt die Aggregation durch Verwendung des gewichteten harmonischen Mittels \cite[S. 251]{kim:2:inproceedings}.
 Dies ermöglicht eine unterschiedliche Gewichtung des Interesses $I$ von Sender $x$ an Empfänger $y$ bzw. von Empfänger $y$ an Sender $x$ über die Parameter $w_{x}$ und $w_{y}$ \cite[S. 251]{kim:2:inproceedings}:
@@ -70,22 +70,46 @@ Die Veröffentlichung von \textcite[S. 259]{kim:2:inproceedings} kann folglich k
 % Dies ist durch die Art der Ermittlung des Interesses eines Empfängers zu erklären, welches durch das Verhältnis von positiven Rückmeldungen eines Empfängers zu allen Interaktionen eines Senders bemessen wird.
 % Da die Anzahl an Rückmeldungen bereits in der Vergangenheit ermittelt wurde, hat eine höhere Gewichtung dieser keinen Einfluss auf vergangene Interaktionen, lediglich auf die Ermittlung des harmonischen Mittels.
 
-Im Vergleich zu verwandten Domänen hat die automatischen Bestimmung von Personen für Jobpositionen in der Literatur bislang wenig Aufmerksamkeit erhalten \cite[S. 1469]{yildirim:article}.
-% HIER WEITERMACHEN!
+Im Vergleich zu verwandten Domänen hat die automatische Zuordnung von Personen zu Jobpositionen in der Literatur bislang wenig Aufmerksamkeit erhalten \cite[S. 1469]{yildirim:article}.
 
 \textcite[S. 1ff.]{malinowski:2006} stellen in ihrer Arbeit die Notwendigkeit der Berücksichtigung bilateraler Präferenzen für die Zuordnung von Personen zu Jobpositionen fest.
-Die Autoren führen den Begriff des \ac{P-E-Fit} ein, welcher aus der Verhaltenstheorie \cite[S. 3]{malinowski:2006} stammt und eine optimale Zuordnung einer Person zu ihrer Umgebung beschreibt.
-Dabei halten die Autoren fest, dass eine optimale Zuordnung von Person zu Umgebung (d.h. \ac{P-E-Fit}) von vier Komponenten abhängt: dem Person-Job-Fit, dem Person-Oganisation-Fit, dem Person-Vocation-Fit und dem Person-Group-Fit \cite[S. 3]{malinowski:2006}.
+Die Autoren führen den Begriff des \ac{P-E-Fit} ein, welcher häufig in der Berufs- und Organisationspsychologie Anwendung findet \cite[S. 2]{link:booklet} und eine optimale Zuordnung einer Person zu ihrer Umgebung beschreibt.
+Gemäß \textcite[S. 1ff.]{malinowski:2006} hängt eine optimale Zuordnung von Person zu Arbeitsumgebung (d.h. \ac{P-E-Fit}) von vier Komponenten ab: dem Person-Job-Fit, dem Person-Oganisation-Fit, dem Per\-son-Vocation-Fit und dem Person-Group-Fit \cite[S. 3]{malinowski:2006}.
+Diese Zuordnung kann signifikante Auswirkungen (z.B. Zufriedenheit, Leistung, Stress) haben \cite[S. 83]{su:2015}.
 In ihrer Arbeit fokussieren sich \textcite[S. 4]{malinowski:2006} auf die optimale Zuordnung von Person zu Job (Person-Job-Fit).
 Sie stellen fest, dass für die reziproke Empfehlungerstellung die Bedürfnisse der Recruiter und die Bedürfnisse der Bewerber zu einem Indikator \cite[S. 922]{siting:2012} aggregiert werden müssen \cite[S. 5]{malinowski:2006}.
 Die Bestimmung einer optimalen Zuordnung als Kombination aus den Bedürfnissen der Recruiter und den Bedürfnissen der Bewerber definieren die Autoren als Problem des Findens einer pareto-optimalen Lösung \cite[S. 5]{malinowski:2006}.
-Jedoch führten \textcite[S. 1ff.]{malinowski:2006} keine Implementierung und Evaluierung einer solchen Kombination durch \cite[S. 549]{koprinska:inbook}.
+Jedoch führten \textcite[S. 1ff.]{malinowski:2006} keine Implementierung und Evaluation einer solchen Kombination durch \cite[S. 549]{koprinska:inbook}.
 % HIER KRITIK NENNEN VON RECON!
 
+Eine erste Implementierung und Evaluation eines bilateralen Ansatzes für die Zuordnung von Personen zu Jobpositionen stellt \textcite[S. 1ff.]{link:booklet} vor.
+In seiner Arbeit führt \textcite[S. 2]{link:booklet} an, dass bislang keine Publikation belegt, dass eine Zuordnung von Mitarbeitern zu Projektpositionen durch ein wechselseitiges Empfehlungssystem die Theorie des \ac{P-E-Fit} und die damit verbundenen Auswirkungen erzielen kann.
+Daher entwickelte \textcite[S. 1ff.]{link:booklet} ein Empfehlungssystem, das Mitarbeiter sowohl ausschließlich anhand der Präferenzen von Projektmanagern (unilateral) als auch unter Einbezug der Präferenzen der Mitarbeiter (bilateral) sortiert.
+In seiner Arbeit evaluiert der Autor, ob der bilaterale Ansatz die Zufriedenheit der Mitarbeiter sowie die erwartete Arbeitsleistung dieser seitens der Projektmanager im Vergleich zu dem unilateralen Ansatz steigert.
+Für die Abbildung der Präferenz eines Mitarbeiters für eine Projektposition verwendet das System boolesche Werte \cite[S. 69]{link:booklet}.
+Die Berücksichtigung der Präferenzen der Mitarbeiter erfolgt, indem das System für einen Mitarbeiter, der eine Projektposition präferiert, die höchste Bewertung dieser Fähigkeit innerhalb des Kompetenzniveaus des Angestellten zu dessen Beurteilung addiert \cite[S. 44]{link:booklet}.
+\textcite[S. 44]{link:booklet} begründet diese Aggregation der Präferenzen damit, dass die ursprüngliche Reihenfolge der Mitarbeiter bestehen bleibt und Projektmanager zugleich den fähigsten und motiviertesten Angestellten vorgeschlagen bekommen.
+
+Kritisch ist anzumerken, dass diese Methode keine durchgängige Gewichtung der Präferenzen von Mitarbeitern vorsieht.
+Dies führt zwangsläufig dazu, dass alle Mitarbeiter innerhalb einer Kompetenzstufe einer Fähigkeit, die diese Fähigkeit präferieren, höher eingestuft werden als der fähigste Mitarbeiter dieser Kompetenzstufe, der keine Präferenz angegeben hat.
+Da der Einfluss der Präferenz eines Mitarbeiters auf das jeweilige Kompetenzniveau begrenzt ist, verhindert \textcite[S. 1ff.]{link:booklet}, dass Mitarbeiter mit geringen Kenntnissen in einer Fähigkeit durch Präferenz höher gelistet werden als Mitarbeiter mit Expertenwissen.
+Dies macht es jedoch zugleich unmöglich, dass Mitarbeiter mit Kenntnissen am oberen Rand eines Kompetenzniveaus einer Fähigkeit, die diese Fähigkeit präferieren, höher gelistet werden, als Mitarbeiter mit Kenntnissen am unteren Rand der angrenzenden Kompetenzstufe, die diese Fähigkeit nicht präferieren.
+
+Des weiteren bemängelt \textcite[S. 69]{link:booklet}, dass aus einer fehlenden Angabe zu der Präferenz eines Mitarbeiters für eine Projektposition nicht hervorgeht, ob dieser einer Fähigkeit neutral gegenübersteht, oder diese nicht bei zukünftigen Projektarbeiten anwenden möchte.
+
+Zuletzt veröffentlichten \textcite[S. 102ff.]{yang:inproceedings} einen Ansatz für die Bestimmung des Person-Job-Fit unter Berücksichtigung wechselseitiger Präferenzen.
+Die Autoren stellen ein System vor, in dem Interaktionen zwischen Kandidaten und Jobausschreibungen als dual-perspective Graph modelliert sind.
+In dem Graph wird jeder Kandidat und jede Jobausschreibung jeweils durch einen aktiven (z.B. Kandidat bewirbt sich für Job) und einen passiven Knoten (Kandidat wird von Recruiter angeworben) in dem Netzwerk repräsentiert.
+Dadurch ermöglichen die Autoren eine Modellierung der verschiedenen Perspektiven von Kandidat und Recruiter in der Zuordnung von Person zu Arbeitsumgebung bereits für die Vorhersage fehlender \ac{N-E-K}. % ??????? d.h. knackpunkt ist hier, dass eine separater vorhersage möglich ist und nicht erst wenn der match schon aggregiert ist?
+% HIER WEITERMACHEN !!!
+Ein Matching zwischen Job und Kandidat ergibt sich nach \textcite[S. 106]{yang:inproceedings} aus dem Durchschnitt der Präferenz $r_{i\rightarrow k}$ des Kandidats $c_{i}$ für die Auswahl von Job $j_{k}$ und der Präferenz $s_{k\rightarrow i}$ des Recruiters (d.h. Jobs) $j_{k}$ für die Auswahl von Kandidats $c_{i}$:
+\begin{equation}\label{eq35}
+    \hat{y} = \frac{1}{2} r_{i\rightarrow k} +\frac{1}{2} s_{k\rightarrow i}
+\end{equation}
+Folglich werden die Präferenzen beider Parteien nach dem Ansatz von \textcite[S. 102ff.]{yang:inproceedings} gleichermaßen berücksichtigt.
+Kritisch ist zu bewerten, dass diese Berücksichtigung ....
 % Dual perspektive graph representation hier: S. 104, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/recsys%202022%20modeling%20two%20way%20selection%20preference%20for%20person%20job%20fit.pdf
 
-% Johannes Thesis
-% file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Optimally%20Balancing%20Receiver%20and%20Recommended%20Users%20Importance%20in%20RRS.pdf
 % Einsatz von MAUT, siehe file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Analysis%20and%20Classification%20of%20Multi-Criteria.pdf
 
 \section{Als multi-kriteriell bezeichnete wechselseitige Systeme}
