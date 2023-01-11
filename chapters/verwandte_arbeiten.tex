@@ -8,7 +8,7 @@
 In der Literatur existieren bereits diverse Veröffentlichungen, die sich mit der Berücksichtigung wechselseitiger Präferenzen für die automatische Zuweisung von Personen für Jobpositionen beschäftigen.
 Während einige Veröffentlichungen Reziprozität als multi-kriterielles Problem betrachten, ordnen andere Arbeiten die reziproke Empfehlungserstellung nicht den multi-kriteriellen Empfehlungssystemen zu.
 Dadurch haben sich im Verlauf der Jahre unterschiedliche Ansätze für die Integration bilateraler Präferenzen in Empfehlungssysteme entwickelt.
-Nachfolgend werden verwandte Arbeiten zu reziproken Empfehlungssystemen mit Bezug auf die vorliegende Domäne angeführt.
+% Nachfolgend werden verwandte Arbeiten zu reziproken Empfehlungssystemen mit Bezug auf die vorliegende Domäne angeführt.
 
 \section{Nicht als multi-kriteriell bezeichnete wechselseitige Systeme}
 % Gemäß \textcite[S. 1467]{yildirim:article} hat die wechselseitige Empfehlung in der Literatur bis heute wenig Aufmerksamkeit erhalten.
@@ -37,7 +37,7 @@ Die Präferenz eines Nutzers $x$ für einen Nutzer $y$ bestimmen \textcite[S. 21
 % Negative Präferenzen? s.u.
 
 Kritisch ist anzumerken, dass die Präferenzen der Nutzer in der Ermittlung des reziproken Wertes nicht unterschiedlich stark gewichtet werden können.
-Demzufolge ist der Wert eines Nutzers $x$ für einen Nutzer $y$ symmetrisch zu dem Wert eines Nutzers $y$ für einen Nutzer $x$ \cite[S. 211]{pizzato:2010}.
+Demzufolge ist der reziproke Wert eines Nutzers $x$ für einen Nutzer $y$ symmetrisch zu dem Wert eines Nutzers $y$ für einen Nutzer $x$ \cite[S. 211]{pizzato:2010}.
 Weiter ist eine Voraussetzung für die Bestimmung des Wertes bilateraler Präferenzen anhand des harmonischen Mittels, dass die jeweiligen Kompatibilitätswerte nicht null sein dürfen, da das harmonische Mittel für solche Werte nicht definiert ist.
 Dies muss beim Aufsetzen des Algorithmus berücksichtigt werden.
 % Vorstellung ergebnisse des Algorithmus?
@@ -97,25 +97,16 @@ Dies macht es jedoch zugleich unmöglich, dass Mitarbeiter mit Kenntnissen am ob
 
 Des weiteren bemängelt \textcite[S. 69]{link:booklet}, dass aus einer fehlenden Angabe zu der Präferenz eines Mitarbeiters für eine Projektposition nicht hervorgeht, ob dieser einer Fähigkeit neutral gegenübersteht, oder diese nicht bei zukünftigen Projektarbeiten anwenden möchte.
 
-Zuletzt veröffentlichten \textcite[S. 102ff.]{yang:inproceedings} einen Ansatz für die Bestimmung des Person-Job-Fit unter Berücksichtigung wechselseitiger Präferenzen.
-Die Autoren stellen ein System vor, in dem Interaktionen zwischen Kandidaten und Jobausschreibungen als dual-perspective Graph modelliert sind.
-In dem Graph wird jeder Kandidat und jede Jobausschreibung jeweils durch einen aktiven (z.B. Kandidat bewirbt sich für Job) und einen passiven Knoten (Kandidat wird von Recruiter angeworben) in dem Netzwerk repräsentiert.
-Dadurch ermöglichen die Autoren eine Modellierung der verschiedenen Perspektiven von Kandidat und Recruiter in der Zuordnung von Person zu Arbeitsumgebung bereits für die Vorhersage fehlender \ac{N-E-K}. % ??????? d.h. knackpunkt ist hier, dass eine separater vorhersage möglich ist und nicht erst wenn der match schon aggregiert ist?
-% HIER WEITERMACHEN !!!
-Ein Matching zwischen Job und Kandidat ergibt sich nach \textcite[S. 106]{yang:inproceedings} aus dem Durchschnitt der Präferenz $r_{i\rightarrow k}$ des Kandidats $c_{i}$ für die Auswahl von Job $j_{k}$ und der Präferenz $s_{k\rightarrow i}$ des Recruiters (d.h. Jobs) $j_{k}$ für die Auswahl von Kandidats $c_{i}$:
-\begin{equation}\label{eq35}
-    \hat{y} = \frac{1}{2} r_{i\rightarrow k} +\frac{1}{2} s_{k\rightarrow i}
-\end{equation}
-Folglich werden die Präferenzen beider Parteien nach dem Ansatz von \textcite[S. 102ff.]{yang:inproceedings} gleichermaßen berücksichtigt.
-Kritisch ist zu bewerten, dass diese Berücksichtigung ....
-% Dual perspektive graph representation hier: S. 104, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/recsys%202022%20modeling%20two%20way%20selection%20preference%20for%20person%20job%20fit.pdf
-
 % Einsatz von MAUT, siehe file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Analysis%20and%20Classification%20of%20Multi-Criteria.pdf
 
 \section{Als multi-kriteriell bezeichnete wechselseitige Systeme}
-Obwohl der Bereich des \ac{MCDA} in der Literatur bereits intensiv behandelt wurde, merken \textcite[S. 248]{kim:2:inproceedings} an, dass die Thematik in dem Kontext von Empfehlungssytemen bislang wenig Aufmerksamkeit erhalten hat.
+Obwohl der Bereich des \ac{MCDA} in der Literatur bereits intensiv behandelt wurde \cite[S. 220]{lakiotaki:inproceedings}, merken \textcite[S. 248]{kim:2:inproceedings} an, dass die Thematik in dem Kontext von Empfehlungssytemen bislang wenig Aufmerksamkeit erhalten hat.
+Wie in Kapitel \ref{ch:erweiterungen:bedeutung} angeführt, werden Techniken der \ac{MCDA} in Empfehlungssystemen maßgeblich angewandt, um multi-kriterielle Bewertungen für Empfehlungen zu berücksichtigen.
 
-hier bsp anführen für arbeiten die sich mit mk systemen beschäftigen in den 3 bereichen
+% Hier ganz kurz beispiele anführen zu mk empfehlungssystemen anderer domänen bzw. ohne bezug auf aggregation der präferenzen. (z.B.: file:///C:/Users/masc6/Downloads/3297280.3297522.pdf , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf , file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommending%20Hotels%20based%20on%20Multidimesional%20Customer%20Ratings.pdf , wichtig ist jannach: (siehe hier file:///C:/Users/masc6/Downloads/Accuracy_improvements_for_multi-criteria_recommend.pdf und hier S. 25 , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Multi-Criteria%20Collaborative%20Filtering%20Recommender%20System%20Using%20Clustering.pdf ) , lineare regression: S. 239, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Linear%20Regression%20Approach%20to%20Multi-criteria.pdf)
+
+Folglich existieren in der Literatur nur wenige Publikationen zu wechselseitigen Systemen, die reziproke Empfehlungen als multi-kriterielles Problem erkennen.
+% HIER ÜBERLEITUNG FINDEN
 % Hier erwähnen, dass nicht alle systeme auch als mk-systeme bezeichnet sind, die solche Ansätze anwenden (bspw. hybride systeme)
 % Hier erwähnen, dass Fokus auf aggregation mehrerer Kriterien und deren gewichtung liegt -> hiernach suchen
 
@@ -123,9 +114,13 @@ hier bsp anführen für arbeiten die sich mit mk systemen beschäftigen in den 3
 % MAUT in utility based recommenders: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Designing%20utility-based%20recommender%20systems%20for%20e-commerce.pdf
 
 \subsection{Multi-attribut basierte Systeme}
+% Vielleicht hier?: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Adaptive%20multi%20attribute%20diversity%20for%20recommender%20systems.pdf
+häufig nicht spezifisch als multi-kriteriell bzw. multi-attribut bezeichnet, sondern häufig betrachtung als kombination zweier separater systeme (hybride systeme) % -> siehe hier: S. 549, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
 % hybrid recommender: weighted -> S. 339, https://link.springer.com/content/pdf/10.1023/A:1021240730564.pdf?pdf=button
 
 \subsection{Multi-objektive Systeme}
+% file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Optimizing%20Rankings%20for%20Recommendation%20in%20Matching%20Markets.pdf
+% S. 5, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Multi-Objective%20Recommender%20Systems%20Survey%20and%20Challenges.pdf
 % multi-objective example: S. 237, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Adaptive%20multi%20attribute%20diversity%20for%20recommender%20systems.pdf
 
 % Bsp im Bereich Reciprocal recommendation: file:///C:/Users/masc6/Downloads/1-s2.0-S2215098621000744-main.pdf
@@ -168,6 +163,7 @@ Dabei stellten die Autoren fest, dass eine signifikante Verbesserung des Nutzens
 Kritisch betrachten \textcite[S. 16]{rodriguez:inproceedings} an ihrem Ansatz, dass für die Wirksamkeit eines Modells im praktischen Einsatz überprüft werden muss, ob die durchschnittliche Anzahl aktiver und passiver Nutzer tatsächlich repräsentativ für das Engagement von Nutzern in einem System ist.
 
 \subsection{Multi-kriterielle Bewertungen in Empfehlungssystemen}
+Wie in Kapitel \ref{ch:erweiterungen:bedeutung} angeführt, werden Techniken der \ac{MCDA} in Empfehlungssystemen maßgeblich angewandt, um multi-kriterielle Bewertungen für Empfehlungen zu berücksichtigen.
 % Erfinder des aggregation Funktion approaches: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
 % Arbeit von Jannach wie hier beschrieben mit SVM: S. 102, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/E-Commerce.pdf
 % multi-kriteria: Aggregation function approach: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommending%20Hotels%20based%20on%20Multidimesional%20Customer%20Ratings.pdf
@@ -177,7 +173,7 @@ Kritisch betrachten \textcite[S. 16]{rodriguez:inproceedings} an ihrem Ansatz, d
 % CCSD method, siehe: file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf
 % Wenn viele features: liwei et al (zsfsg. siehe hier: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Multi-criteria%20Recommender%20System%20Incorporating%20Intensity%20of%20Preferences.pdf )
 
-Darüber hinaus existieren einige Ansätze verwandter Domänen, die ebenfalls für die automatisierte Zuordnung von Personen für Jobpositionen relevant sind.
+%Darüber hinaus existieren einige Ansätze verwandter Domänen, die ebenfalls für die automatisierte Zuordnung von Personen für Jobpositionen relevant sind.
 % Hier ggf. verwandte arbeiten in anderen domänen anführen. (z.B. Online Dating, Education)
 
 % was gibt es also nicht? -> Reziprozität als gewichtetes Kriterium (Präferenz der empfohlenen Person zählt nicht genauso viel wie Präferenz des Nutzers, kann daher als gewichtetes Kriterium einer Aggregation Function betrachtet werden, welche über historische daten erlernt werden kann)
