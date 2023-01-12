@@ -7,7 +7,7 @@
 \label{ch:verwandte_arbeiten}
 In der Literatur existieren bereits diverse Veröffentlichungen, die sich mit der Berücksichtigung wechselseitiger Präferenzen für die automatische Zuweisung von Personen für Jobpositionen beschäftigen.
 Während einige Veröffentlichungen Reziprozität als multi-kriterielles Problem betrachten, ordnen andere Arbeiten die reziproke Empfehlungserstellung nicht den multi-kriteriellen Empfehlungssystemen zu.
-Dadurch haben sich im Verlauf der Jahre unterschiedliche Ansätze für die Integration bilateraler Präferenzen in Empfehlungssysteme entwickelt.
+% Auch wenn der Fokus eines Großteils der Veröffentlichungen auf der Vorhersage wechselseitiiger Empfehlungen beruht, lassen sich dennoch Ansätze für die Integration bilateraler Präferenzen in Empfehlungssysteme unterscheiden.
 % Nachfolgend werden verwandte Arbeiten zu reziproken Empfehlungssystemen mit Bezug auf die vorliegende Domäne angeführt.
 
 \section{Nicht als multi-kriteriell bezeichnete wechselseitige Systeme}
@@ -101,7 +101,7 @@ Des weiteren bemängelt \textcite[S. 69]{link:booklet}, dass aus einer fehlenden
 
 \section{Als multi-kriteriell bezeichnete wechselseitige Systeme}
 Obwohl der Bereich des \ac{MCDA} in der Literatur bereits intensiv behandelt wurde \cite[S. 220]{lakiotaki:inproceedings}, merken \textcite[S. 248]{kim:2:inproceedings} an, dass die Thematik in dem Kontext von Empfehlungssytemen bislang wenig Aufmerksamkeit erhalten hat.
-Wie in Kapitel \ref{ch:erweiterungen:bedeutung} angeführt, werden Techniken der \ac{MCDA} in Empfehlungssystemen maßgeblich angewandt, um multi-kriterielle Bewertungen für Empfehlungen zu berücksichtigen.
+Wie in Kapitel \ref{ch:erweiterungen:bedeutung} angeführt, werden Techniken der \ac{MCDA} in Empfehlungssystemen zumeist angewandt, um multi-kriterielle Bewertungen für Empfehlungen zu berücksichtigen.
 
 % Hier ganz kurz beispiele anführen zu mk empfehlungssystemen anderer domänen bzw. ohne bezug auf aggregation der präferenzen. (z.B.: file:///C:/Users/masc6/Downloads/3297280.3297522.pdf , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf , file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommending%20Hotels%20based%20on%20Multidimesional%20Customer%20Ratings.pdf , wichtig ist jannach: (siehe hier file:///C:/Users/masc6/Downloads/Accuracy_improvements_for_multi-criteria_recommend.pdf und hier S. 25 , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Multi-Criteria%20Collaborative%20Filtering%20Recommender%20System%20Using%20Clustering.pdf ) , lineare regression: S. 239, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Linear%20Regression%20Approach%20to%20Multi-criteria.pdf)
 
@@ -120,11 +120,21 @@ häufig nicht spezifisch als multi-kriteriell bzw. multi-attribut bezeichnet, so
 
 \subsection{Multi-objektive Systeme}
 % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Optimizing%20Rankings%20for%20Recommendation%20in%20Matching%20Markets.pdf
+\textcite[S. 329]{su:inproceedings} ordnen Plattformen für die Bestimmung von Personen für Jobpositionen mehrseitigen Marktplattformen\footnote{"multi-sided market platforms" - \textcite[S. 329]{su:inproceedings}} zu.
+Mehrseitige Marktplattformen verstehen die Autoren als Mediatoren zwischen den unterschiedlichen Parteien eines Marktes (z.B. Erwerbssucher und Erwerbsanbieter), deren Aufgabe darin besteht, die Ziele der verschiedenen Parteien in Einklang zu bringen \cite[S. 329]{su:inproceedings}.
+Die Berücksichtigung mehrerer Ziele für die Empfehlung in mehrseitigen Marktplattformen, verstehen \textcite[S. 329]{su:inproceedings} als multi-objektives Optimierungsproblem.
+
+Im Vergleich zu herkömmlichen \ac{RRS} verfolgen \textcite[S. 328ff.]{su:inproceedings} einen Ansatz, der Empfehlungen nicht allein auf dem (angenommenen) reziproken Wert einer Jobposition (eines Kandidaten) für einen Kandidaten (eine Jobposition) basiert.
+Stattdessen besteht das übergeordnete Ziel der Autoren darin, alle Rankings von Kandidaten bzw. Jobpositionen in einem Markt so zu sortieren, dass die Gesamtwohlfahrt\footnote{"social welfare" - \textcite[S. 329]{su:inproceedings}} im Markt maximiert wird.
+Die Gesamtwohlfahrt im Markt definieren die Autoren als die erwartete Anzahl an erfolgreichen Paaren in dem Markt, unter Anwendung einer Ranking-Methode $\pi$.
+Eine optimales Matching von Personen zu Jobpositionen lässt daher auch Paare zu, deren reziproker Wert (marginal) suboptimal ist, wenn dadurch mehrere erfolgreiche Paarungen in dem Markt vorhanden sind \cite[S. 334]{su:inproceedings}.
+
+Anzumerken ist, dass \textcite[S. 328ff.]{su:inproceedings} trotz ihrer Einordnung der Thematik als multi-objektives Optimierungsproblem, einen single-objective Ansatz für die Ermittlung des Rankings für die Zuordnung von Personen zu Jobpositionen vorstellen.
+Anstelle eines manuellen Trade-Offs zwischen den unterschiedlichen Interessen der Stakeholder, modellieren \textcite[S. 329]{su:inproceedings} den Interaktionsprozess zwischen Jobkandidat und Unternehmen direkt als Produkt der Wahrscheinlichkeit der Selektion von Kandidat bw. Jobposition unter Berücksichtigung der Ranking-Methode $\pi$.
+Das heißt, die Autoren klassifizieren die wechselseitigen Präferenzen in ihrem System nicht als eigenständige Zielsetzungen, sondern formulieren die Gesamtwohlfahrt als alleinige Zielsetzung.
+
 % S. 5, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Multi-Objective%20Recommender%20Systems%20Survey%20and%20Challenges.pdf
 % multi-objective example: S. 237, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Adaptive%20multi%20attribute%20diversity%20for%20recommender%20systems.pdf
-
-% Bsp im Bereich Reciprocal recommendation: file:///C:/Users/masc6/Downloads/1-s2.0-S2215098621000744-main.pdf
-% HIER WEITERMACHEN
 
 Als multi-objektiv bezeichnen \textcite[S. 12]{rodriguez:inproceedings} ihren Ansatz zur Integration "äußerer Merkmale"\footnote{"extraneous features" - \textcite[S. 12]{rodriguez:inproceedings}} in ein semantisches Modell im Bereich des Online-Recruitments. 
 Dieser ist in Abbildung \ref{fig:relatedwork:abb1} dargestellt.
@@ -162,8 +172,17 @@ Dabei stellten die Autoren fest, dass eine signifikante Verbesserung des Nutzens
 % Für bestimmte Kombinationen von $\alpha$ und $\beta$ konnte die Anzahl aktiver und passiver Nutzer in dem Top-K-Ranking durch Anwendung des erweiterten Modells verdoppelt werden, ohne massive Einbußen in den semantischen Matches einzufahren.
 Kritisch betrachten \textcite[S. 16]{rodriguez:inproceedings} an ihrem Ansatz, dass für die Wirksamkeit eines Modells im praktischen Einsatz überprüft werden muss, ob die durchschnittliche Anzahl aktiver und passiver Nutzer tatsächlich repräsentativ für das Engagement von Nutzern in einem System ist.
 
+% Bsp im Bereich Reciprocal recommendation: file:///C:/Users/masc6/Downloads/1-s2.0-S2215098621000744-main.pdf
+\textcite[S. 1467ff.]{yildirim:article} stellen ebenfalls einen multi-objektiven Ansatz für wechselseitige Empfehlungssysteme im Online-Recruting vor.
+Der Fokus der Auttoren liegt auf der Entwicklung eines Modells für die Vorhersage der Reziprozität zwischen Jobkandidat und Recruiter (d.h. Jobpositon).
+Reziprozität definieren \textcite[S. 1470]{yildirim:article} in ihrem Modell als die Wahrscheinlichkeit der Bewerbung eines Kandidats für eine Jobposition und die Wahrscheinlichkeit einer Kontaktaufnahme eines Recrutiers mit dem Kandidat.
+% HIER WEITERMACHEN !!!!
+% Neben dem Aspekt der Reziprozität versuchen die Autoren weitere Herausforderungen \ac{RRS} zu berücksichtigen (Endlichkeit, Passivität).
+
+% Das beschreibt den Anwendungsfall sehr gut: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Utility-Based_Multi-Stakeholder_Recommendations_by_Multi-Objective_Optimization.pdf
+% Das hier auch: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Personalized%20Educational%20Learning%20with%20multi-stakeholder%20optimizations.pdf , Ergänzung siehe hier: https://sci-hub.st/10.1007/s11257-021-09291-x mit Kritik
+
 \subsection{Multi-kriterielle Bewertungen in Empfehlungssystemen}
-Wie in Kapitel \ref{ch:erweiterungen:bedeutung} angeführt, werden Techniken der \ac{MCDA} in Empfehlungssystemen maßgeblich angewandt, um multi-kriterielle Bewertungen für Empfehlungen zu berücksichtigen.
 % Erfinder des aggregation Funktion approaches: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
 % Arbeit von Jannach wie hier beschrieben mit SVM: S. 102, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/E-Commerce.pdf
 % multi-kriteria: Aggregation function approach: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommending%20Hotels%20based%20on%20Multidimesional%20Customer%20Ratings.pdf
@@ -181,5 +200,7 @@ Wie in Kapitel \ref{ch:erweiterungen:bedeutung} angeführt, werden Techniken der
 
 % Zusätzlich: Darstellung negativer Präferenzen, siehe S. 288: https://link.springer.com/content/pdf/10.1007/978-3-642-22362-4.pdf?pdf=button
 % -> RECON mit negativen Präferenzen
+
+% Wie einbringen, dass der Fokus vieler Arbeiten ein anderer ist? Das macht natürlich die Bewertung schwierig, da viel von mir angenommen wird (Fokus meist auf Vorhersage und nicht Kombination der Präferenzen)
 
  \shorthandon{"}
