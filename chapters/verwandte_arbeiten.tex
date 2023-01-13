@@ -26,13 +26,14 @@ Für alternative Kombinationsmöglichkeiten der bilateralen Präferenzen verweis
 Auch wenn die Umsetzung der reziproken Empfehlung bereits als multi-kriterieller Ansatz modelliert wurde (Vgl. Gleichung \ref{eq32}), bezeichnen \textcite[S. 1ff.]{pizzato:inproceedings} die wechselseitige Empfehlungserstellung nicht ausdrücklich als multi-kriterielles Problem. 
 
 Eine Umsetzung des Konzepts wechselseitiger Empfehlungssysteme stellen \textcite[S. 207ff.]{pizzato:2010} in einer weiterführenden Arbeit vor.
-Die Autoren entwickeln einen inhaltsbasierten Algorithmus für eine Online-Dating-Website, welche die bilateralen Präferenzen zweier Nutzer $x$ und $y$ über das harmonische Mittel aggregiert.
+Die Autoren entwickeln einen inhaltsbasierten Algorithmus für eine Online-Dating-Website, welche die bilateralen Präferenzen zweier Nutzer $x$ und $y$ über das harmonische Mittel aggregiert:
 \begin{equation}\label{eq33}
     PRR(x,y) = \frac{2}{(\frac{1}{Comp.(P_{x,y})}+\frac{1}{Comp.(P_{y,x})})}
 \end{equation}
 Als Indikator für die Präferenzen $P_{x}$ eines Nutzers $x$ stützen sich die Autoren auf Attribute der Nutzer, die eine Nachricht des Nutzers $x$ erhalten haben.
 So gehen \textcite[S. 210]{pizzato:2010} davon aus, dass ein Nutzer $x$ eine bestimmte Altersgruppe bevorzugt, wenn er im Vergleich zu anderen Altersgruppen maßgeblich Nutzern einer Altersklasse Nachrichten gesendet hat.
 Die Präferenz eines Nutzers $x$ für einen Nutzer $y$ bestimmen \textcite[S. 210]{pizzato:2010} über einen Komnpatibilitäs-Wert $Comp.(P_{x,y})$, der sich aus der Präferenz des Nutzers $x$ für die Attribute des Nutzers $y$ ergibt.
+Bis heute wird davon ausgegangen, dass die meisten der später vorgeschlagenen Modelle zu \ac{RRS} auf dem Ansatz von \textcite[S. 207ff.]{pizzato:2010} basieren \cite[S. 723]{kumari:article}.
 
 % Negative Präferenzen? s.u.
 
@@ -44,7 +45,7 @@ Dies muss beim Aufsetzen des Algorithmus berücksichtigt werden.
 
 \textcite[S. 40]{li:inproceedings} bemängeln an dem Ansatz von \textcite[S. 207ff.]{pizzato:2010}, dass wesentliche Charakteristika wechselseitiger Empfehlungssysteme außer Acht gelassen werden.
 Sie merken an, dass Aspekte wie Passivität und die Endlichkeit von Nutzern nicht in die Empfehlungserstellung miteinbezogen werden.
-Zusätzlich zu der Berücksichtigung weiterer Aspekte wechselseitier Empfehlungssysteme, wird der Wert der Reziprozität in dem allgemeinen Framework für \ac{RRS} von \textcite[S. 38]{li:inproceedings} als Produkt der Präferenzwerte zweier Nutzer $x$ und $y$ bestimmt.
+Zusätzlich zu der Berücksichtigung weiterer Aspekte wechselseitier Empfehlungssysteme, wird der Wert der Reziprozität in dem allgemeinen Framework für \ac{RRS} von \textcite[S. 38]{li:inproceedings} als Produkt der Präferenzwerte zweier Nutzer $x$ und $y$ bestimmt \cite[S. 710]{kumari:article}.
 Den Autoren zufolge soll dadurch eine unilaterale Präferenz im Vergleich zu herkömmlichen Aggregationsmethoden (z.B. Linearkombination) verhindert werden.
 Dies betrifft beispielsweise Fälle in denen lediglich eine Person den Präferenzen der anderen Person entspricht, zum Beispiel in Fällen in denen ein Bewerber eine Jobposition bevorzugt, dieser aber nicht für die ausgeschriebenen Stelle geeignet ist \cite[S. 38]{li:inproceedings}.
 
@@ -172,12 +173,48 @@ Dabei stellten die Autoren fest, dass eine signifikante Verbesserung des Nutzens
 % Für bestimmte Kombinationen von $\alpha$ und $\beta$ konnte die Anzahl aktiver und passiver Nutzer in dem Top-K-Ranking durch Anwendung des erweiterten Modells verdoppelt werden, ohne massive Einbußen in den semantischen Matches einzufahren.
 Kritisch betrachten \textcite[S. 16]{rodriguez:inproceedings} an ihrem Ansatz, dass für die Wirksamkeit eines Modells im praktischen Einsatz überprüft werden muss, ob die durchschnittliche Anzahl aktiver und passiver Nutzer tatsächlich repräsentativ für das Engagement von Nutzern in einem System ist.
 
-% Bsp im Bereich Reciprocal recommendation: file:///C:/Users/masc6/Downloads/1-s2.0-S2215098621000744-main.pdf
 \textcite[S. 1467ff.]{yildirim:article} stellen ebenfalls einen multi-objektiven Ansatz für wechselseitige Empfehlungssysteme im Online-Recruting vor.
-Der Fokus der Auttoren liegt auf der Entwicklung eines Modells für die Vorhersage der Reziprozität zwischen Jobkandidat und Recruiter (d.h. Jobpositon).
-Reziprozität definieren \textcite[S. 1470]{yildirim:article} in ihrem Modell als die Wahrscheinlichkeit der Bewerbung eines Kandidats für eine Jobposition und die Wahrscheinlichkeit einer Kontaktaufnahme eines Recrutiers mit dem Kandidat.
-% HIER WEITERMACHEN !!!!
-% Neben dem Aspekt der Reziprozität versuchen die Autoren weitere Herausforderungen \ac{RRS} zu berücksichtigen (Endlichkeit, Passivität).
+Jedoch liegt der Fokus der Autoren auf der Entwicklung eines Modells für die Vorhersage der Reziprozität zwischen Jobkandidat und Recruiter (d.h. Jobpositon).
+Reziprozität definieren \textcite[S. 1470]{yildirim:article} in ihrem Modell als die Wahrscheinlichkeit der Bewerbung eines Kandidats für eine Jobposition und die Wahrscheinlichkeit einer Kontaktaufnahme eines Recrutiers mit diesem Kandidat.
+Hierbei betrachten die Autoren die Präferenzen separat als die beiden Outputs des Modells (daher multi-objektiv).
+Die anschließende Kombination der beiden Wahrscheinlichkeit lassen die Autoren vorerst offen \cite[S. 1474]{yildirim:article}.
+Sie gehen lediglich davon aus, dass dem Interesse eines Unternehmen bei der Jobauswahl höhere Bedeutung zukommt als dem Interesse eines Jobsuchenden.
+Dies begründen die Autoren damit, dass Unternehmen die finale Entscheidung für bzw. gegen die Einstellung eines Kandidaten treffen \cite[S. 1470]{yildirim:article}.
+
+\textcite[S. 705ff.]{kumari:article} setzen das von \textcite[S. 1467ff.]{yildirim:article} vorgestellte Modell als Benchmark für ihren Ansatzes zu \ac{RRS} in Online-Dating-Plattformen ein.
+Für die Kombination der unilateralen Präferenzen verwenden die Autoren das harmonische Mittel.
+Dies begründen \textcite[S. 724]{kumari:article} damit, dass das harmonische Mittel kleinere Werte einer Datenreihe stärker berücksichtigt und dadurch die Interessen beider Parteien stärker vertreten sind als bei vergleichbaren Aggregationsmethoden.
+
+Einen Vergleich verschiedener Aggregationsmethoden von Präferenzen in wechselseitigen Empfehlungssystemen führen \textcite[S. 4031ff.]{neve:inproceedings} und \textcite[S. 1ff.]{kumari:2:inproceedings} an.
+\textcite[S. 4031ff.]{neve:inproceedings} vergleichen die Performance eines wechselseitigen Empfehlungssystems anhand der drei Pythagoras-Mittelwerte (arithmetisches, geometrisches und harmonisches Mittel) sowie der Cross-Ratio-Uninorm.
+Die Cross-Ratio-Uni\-norm aggregiert zwei Werte $x$ und $y$ wie folgt \cite[S. 19]{appel:article}:
+\begin{equation}\label{eq35}
+    rcS(x,y) =
+        \begin{cases}
+            0 & \textnormal{wenn } (x,y) \in \{(0,1),(1,0)\} \\
+            \frac{xy}{xy + (1-x) \times (1-y)} & \textnormal{sonst } \\
+        \end{cases}
+\end{equation}
+Für den Vergleich der Aggregationsmethoden verwenden \textcite[S. 4034]{neve:inproceedings} die Performance-Metriken Precision, Recall und F1-Maß.
+Dabei stellen die Autoren fest, dass das harmonische Mittel und die Cross-Ratio-Uninorm zu mehrheitlich höherer Precision führte als die anderen Methoden, wobei sie Precision (d.h. das Verhältnis relevanter Elemente zu allen empfohlenen Elementen) als besonders wichtiges Maß in \ac{RRS} bezeichnen \cite[S. 4035]{neve:inproceedings}.
+Übergreifend konnte die Cross-Ratio-Uninorm die besten Performance-Ergebnisse erzielen \cite[S. 4035]{neve:inproceedings}.
+
+\textcite[S. 4031]{neve:inproceedings} erkennen in ihrer Publikation die entscheidene Rolle der Kombination der Präferenzen der Parteien in wechselseitigen Empfehlungssystemen.
+Aus den Ergebnissen ihres Experiments schließen die Autoren, dass wechselseitige Empfehlungssysteme durchaus von komplexeren Aggregationsfunktionen für die Kombination der Präferenzen profitieren könnten.
+Daher argumentieren sie, dass Entscheidungen über die Aggregations-Funktion der Präferenzen in Algorithmen wechselseitiger Empfehlungssysteme zukünftig evidenzbasiert erfolgen sollen \cite[S. 4032]{neve:inproceedings}.
+Weiter erkennen die Autoren den multi-kriteriellen Charakter der Thematik und schlagen die Verwendung von \ac{MCDA} (z.B. gewichtete Aggregationsmethoden \cite[S. 4036]{neve:inproceedings}) für die Kombination der unilateralen Präferenzen vor.
+
+Zusätzlich zu den von \textcite[S. 4031ff.]{neve:inproceedings} angeführten Methoden betrachten \textcite[S. 1ff.]{kumari:2:inproceedings} das Produkt, den Schnitt und die Summe der unilateralen Präferenzen in ihrer Evaluation.
+Aus der Publikation geht hervor, dass harmonisches Mittel, Cross-Ratio-Uninorm und Schnitt die besten Ergebnisse erzielen konnten.
+Im vergleich zu \textcite[S. 4031ff.]{neve:inproceedings} konnten in dem Versuch von \textcite[S. 5]{kumari:2:inproceedings} mit dem harmonischen Mittel als Aggregationsmethode die besten Ergebnisse erzielt werden.
+
+% https://www.inf.unibz.it/~ricci/papers/p131-kleinerman.pdf
+\textcite[S. 131ff.]{kleinerman:2:inproceedings} stellen fest, dass in \ac{RRS} bislang offen blieb, wie die unilateralen Präferenzen zweier Parteien optimal im Gleichgewicht gehalten werden können.
+Die Autoren entwickelten daher eine Methode (sog. \ac{RWS}), die Empfehlungen wechselseitger Systeme basierend auf dem optimalen Gleichgewicht zwischen den Interessen zweier Personen erstellt.
+\ac{RWS} kombiniert für jeden Nutzer die Wahrhscheinlichkeit, dass eine Person eine Empfehlung annimmt und die Wahrscheinlichkeit, dass die empfohlene Person dies positiv erwidert, zu einem einzelnen Wert kombiniert \cite[S. 131f.]{kleinerman:2:inproceedings}.
+Im Vergleich zu herkömmlichen \ac{RRS}, in denen für alle Nutzer die Präferenzen beider Parteien gleichermaßen in den reziproken Wert einflossen, erfolgt die Gewichtung der Präferenzen nach der Methode von \textcite[S. 133]{kleinerman:2:inproceedings} für jeden Nutzer individuell, basierend auf dessen vergangenen Interaktionen.
+% HIER BILD EINFÜGEN S: 134
+% HIER WEITERMACHEN S: 133
 
 % Das beschreibt den Anwendungsfall sehr gut: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Utility-Based_Multi-Stakeholder_Recommendations_by_Multi-Objective_Optimization.pdf
 % Das hier auch: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Personalized%20Educational%20Learning%20with%20multi-stakeholder%20optimizations.pdf , Ergänzung siehe hier: https://sci-hub.st/10.1007/s11257-021-09291-x mit Kritik
