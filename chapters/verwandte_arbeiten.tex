@@ -39,6 +39,7 @@ Bis heute wird davon ausgegangen, dass die meisten der später vorgeschlagenen M
 
 Kritisch ist anzumerken, dass die Präferenzen der Nutzer in der Ermittlung des reziproken Wertes nicht unterschiedlich stark gewichtet werden können.
 Demzufolge ist der reziproke Wert eines Nutzers $x$ für einen Nutzer $y$ symmetrisch zu dem Wert eines Nutzers $y$ für einen Nutzer $x$ \cite[S. 211]{pizzato:2010}.
+% Darüber hinaus weisen \textcite[S. 285]{zheng:2:inproceedings} darauf hin, dass eine unterschiedliche Gewichtung notwendig sein kann, bspw. wenn die Kompatibilitätswerte auf unterschiedlichen Skalen oder Verteilungen liegen.
 Weiter ist eine Voraussetzung für die Bestimmung des Wertes bilateraler Präferenzen anhand des harmonischen Mittels, dass die jeweiligen Kompatibilitätswerte nicht null sein dürfen, da das harmonische Mittel für solche Werte nicht definiert ist.
 Dies muss beim Aufsetzen des Algorithmus berücksichtigt werden.
 % Vorstellung ergebnisse des Algorithmus?
@@ -104,7 +105,12 @@ Des weiteren bemängelt \textcite[S. 69]{link:booklet}, dass aus einer fehlenden
 Obwohl der Bereich des \ac{MCDA} in der Literatur bereits intensiv behandelt wurde \cite[S. 220]{lakiotaki:inproceedings}, merken \textcite[S. 248]{kim:2:inproceedings} an, dass die Thematik in dem Kontext von Empfehlungssytemen bislang wenig Aufmerksamkeit erhalten hat.
 Wie in Kapitel \ref{ch:erweiterungen:bedeutung} angeführt, werden Techniken der \ac{MCDA} in Empfehlungssystemen zumeist angewandt, um multi-kriterielle Bewertungen für Empfehlungen zu berücksichtigen.
 
+So wenden \textcite[S. 48ff.]{adomavicius:inproceedings:2} den Aggregation-Function Ansatz auf einen Yahoo!-Movies-Datensatz an, indem sie Lineare Regression verwenden, um die Gewichte einzelner Kriterien für Nutzer basierend auf bekannten Bewertungen zu ermitteln.
+\textcite[S. 678]{jannach:2:article} verwenden \ac{SVR} für das Lernen der Gewichte für Nutzer und vergleichen ihren Ansatz mit dem von ... .
+Dabei stellen die Autoren fest, dass \ac{SVR}
+% welche daten verwendet jannach?
 % Hier ganz kurz beispiele anführen zu mk empfehlungssystemen anderer domänen bzw. ohne bezug auf aggregation der präferenzen. (z.B.: file:///C:/Users/masc6/Downloads/3297280.3297522.pdf , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf , file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommending%20Hotels%20based%20on%20Multidimesional%20Customer%20Ratings.pdf , wichtig ist jannach: (siehe hier file:///C:/Users/masc6/Downloads/Accuracy_improvements_for_multi-criteria_recommend.pdf und hier S. 25 , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Multi-Criteria%20Collaborative%20Filtering%20Recommender%20System%20Using%20Clustering.pdf ) , lineare regression: S. 239, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Linear%20Regression%20Approach%20to%20Multi-criteria.pdf)
+% HIER WEITERMACHEN UND KURZ ERKLÄREN
 
 Folglich existieren in der Literatur nur wenige Publikationen zu wechselseitigen Systemen, die reziproke Empfehlungen als multi-kriterielles Problem erkennen.
 % HIER ÜBERLEITUNG FINDEN
@@ -181,7 +187,7 @@ Die anschließende Kombination der beiden Wahrscheinlichkeit lassen die Autoren 
 Sie gehen lediglich davon aus, dass dem Interesse eines Unternehmen bei der Jobauswahl höhere Bedeutung zukommt als dem Interesse eines Jobsuchenden.
 Dies begründen die Autoren damit, dass Unternehmen die finale Entscheidung für bzw. gegen die Einstellung eines Kandidaten treffen \cite[S. 1470]{yildirim:article}.
 
-\textcite[S. 705ff.]{kumari:article} setzen das von \textcite[S. 1467ff.]{yildirim:article} vorgestellte Modell als Benchmark für ihren Ansatzes zu \ac{RRS} in Online-Dating-Plattformen ein.
+\textcite[S. 705ff.]{kumari:article} setzen das multi-objektive Modell von \textcite[S. 1467ff.]{yildirim:article} als Benchmark für ihren Ansatz zu \ac{RRS} in Online-Dating-Plattformen ein.
 Für die Kombination der unilateralen Präferenzen verwenden die Autoren das harmonische Mittel.
 Dies begründen \textcite[S. 724]{kumari:article} damit, dass das harmonische Mittel kleinere Werte einer Datenreihe stärker berücksichtigt und dadurch die Interessen beider Parteien stärker vertreten sind als bei vergleichbaren Aggregationsmethoden.
 
@@ -236,7 +242,8 @@ Um für Nutzer ohne erfolgreiche Interaktionen in der Vergangenheit Empfehlungen
 \end{equation}
 Hierbei stellt $V_{c}$ die Menge aller Personen $c'$ dar, deren Profil $c$ betrachtet hat und $\mathbb{1}_{c' \in SuccInter_{c}}$ eine Indikatorfunktion, welche $1$ ausgibt, wenn eine Person $c'$ eine erfolgreiche Interaktion mit $c$ aufweist und $0$ andernfalls.
 $Rank_{c'} (RWS_{c,*}(\alpha))$ gibt den Rang einer Person $c' \in V_{c}$ im Ranking für einen Nutzer $c$ an \cite[S. 135]{kleinerman:2:inproceedings}.
-Aus der Lösung des Optimierungsproblems resultiert das Gewicht $\alpha$, welches Personen, die erfolgreiche Interaktionen mit einem Nutzer aufweisen höher im Ranking platziert.
+Für die Lösung des Optimierungsproblems verwenden die Autoren den Algorithmus von \textcite[S. 422ff.]{brent:article} für die lokale Minimumsuche innerhalb eines angegebenen Intervalls.
+Aus der Lösung resultiert das Gewicht $\alpha$, welches Personen, die erfolgreiche Interaktionen mit einem Nutzer aufweisen, höher im Ranking platziert \cite[S. 135]{kleinerman:2:inproceedings}.
 
 In anknüpfenden Experimenten untersuchten die Autoren die Bedeutung der individuellen Gewichtung in Online-Dating-Plattformen.
 Hierfür verglichen sie ihren Ansatz mit einer bekannten Methode für wechselseitige Empfehlungssysteme von \textcite[S. 6]{xia:inproceedings}, welche die Interessen der Nutzer über das harmonische Mittel aggregiert.
@@ -260,7 +267,7 @@ Grundsätzlich gehen  \textcite[S. 138]{kleinerman:2:inproceedings} davon aus, d
 % CCSD method, siehe: file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf
 % Wenn viele features: liwei et al (zsfsg. siehe hier: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Multi-criteria%20Recommender%20System%20Incorporating%20Intensity%20of%20Preferences.pdf )
 
-%Darüber hinaus existieren einige Ansätze verwandter Domänen, die ebenfalls für die automatisierte Zuordnung von Personen für Jobpositionen relevant sind.
+% Darüber hinaus existieren einige Ansätze verwandter Domänen, die ebenfalls für die automatisierte Zuordnung von Personen für Jobpositionen relevant sind.
 % Hier ggf. verwandte arbeiten in anderen domänen anführen. (z.B. Online Dating, Education)
 
 % was gibt es also nicht? -> Reziprozität als gewichtetes Kriterium (Präferenz der empfohlenen Person zählt nicht genauso viel wie Präferenz des Nutzers, kann daher als gewichtetes Kriterium einer Aggregation Function betrachtet werden, welche über historische daten erlernt werden kann)
