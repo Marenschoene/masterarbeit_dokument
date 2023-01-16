@@ -83,7 +83,7 @@ Die Bestimmung einer optimalen Zuordnung als Kombination aus den Bedürfnissen d
 Jedoch führten \textcite[S. 1ff.]{malinowski:2006} keine Implementierung und Evaluation einer solchen Kombination durch \cite[S. 549]{koprinska:inbook}.
 % HIER KRITIK NENNEN VON RECON!
 
-Eine erste Implementierung und Evaluation eines bilateralen Ansatzes für die Zuordnung von Personen zu Jobpositionen stellt \textcite[S. 1ff.]{link:booklet} vor.
+Eine erste Implementierung und Evaluation eines bilateralen Ansatzes für die Zuordnung von Personen zu Projektpositionen stellt \textcite[S. 1ff.]{link:booklet} vor.
 In seiner Arbeit führt \textcite[S. 2]{link:booklet} an, dass bislang keine Publikation belegt, dass eine Zuordnung von Mitarbeitern zu Projektpositionen durch ein wechselseitiges Empfehlungssystem die Theorie des \ac{P-E-Fit} und die damit verbundenen Auswirkungen erzielen kann.
 Daher entwickelte \textcite[S. 1ff.]{link:booklet} ein Empfehlungssystem, das Mitarbeiter sowohl ausschließlich anhand der Präferenzen von Projektmanagern (unilateral) als auch unter Einbezug der Präferenzen der Mitarbeiter (bilateral) sortiert.
 In seiner Arbeit evaluiert der Autor, ob der bilaterale Ansatz die Zufriedenheit der Mitarbeiter sowie die erwartete Arbeitsleistung dieser seitens der Projektmanager im Vergleich zu dem unilateralen Ansatz steigert.
@@ -162,7 +162,7 @@ $\lambda$ stellt einen positiven Trade-Off-Parameter dar \cite[S. 13]{rodriguez:
 % \textcite[S. 13]{rodriguez:inproceedings} merken an, dass die Verlust-Funktion auch als Maximierungsproblem der Funktion $g$ dargestellt werden kann, welches $\Delta$ durch das Aufstellen einer Bedingung $c$ (d.h. $\Delta (\pi (Y), \pi (f(Y,X,[\alpha ,\beta]))) \leq c$) begrenzen kann.
 Die Anpassung eines semantischen Matches $y$ realisieren \textcite[S. 15]{rodriguez:inproceedings} durch einen sogenannten "Boost", wobei zwischen einem Boost für aktive ($\alpha$) und passive ($\beta$) Nutzer unterschieden wird:
 \begin{equation}\label{eq31}
-    f(y,x,[\alpha ,\beta]) = y \times (\alpha^{1\{{x == \textnormal{active}\}}}) \times (\beta^{1\{{x == \textnormal{active}\}}})
+    f(y,x,[\alpha ,\beta]) = y \cdot (\alpha^{1\{{x == \textnormal{active}\}}}) \cdot (\beta^{1\{{x == \textnormal{active}\}}})
 \end{equation}
 Hierbei ist $1\{x == \textnormal{active}\}$ gleich $1$, wenn die Bedingung innerhalb der geschweiften Klammer wahr ist und $0$ andernfalls.
 Das Optimieren der Parameter $\alpha$ und $\beta$ führen \textcite[S. 15]{rodriguez:inproceedings} über eine Rastersuche durch.
@@ -192,7 +192,7 @@ Die Cross-Ratio-Uni\-norm aggregiert zwei Werte $x$ und $y$ wie folgt \cite[S. 1
     rcS(x,y) =
         \begin{cases}
             0 & \textnormal{wenn } (x,y) \in \{(0,1),(1,0)\} \\
-            \frac{xy}{xy + (1-x) \times (1-y)} & \textnormal{sonst } \\
+            \frac{xy}{xy + (1-x) (1-y)} & \textnormal{sonst } \\
         \end{cases}
 \end{equation}
 Für den Vergleich der Aggregationsmethoden verwenden \textcite[S. 4034]{neve:inproceedings} die Performance-Metriken Precision, Recall und F1-Maß.
@@ -208,13 +208,44 @@ Zusätzlich zu den von \textcite[S. 4031ff.]{neve:inproceedings} angeführten Me
 Aus der Publikation geht hervor, dass harmonisches Mittel, Cross-Ratio-Uninorm und Schnitt die besten Ergebnisse erzielen konnten.
 Im vergleich zu \textcite[S. 4031ff.]{neve:inproceedings} konnten in dem Versuch von \textcite[S. 5]{kumari:2:inproceedings} mit dem harmonischen Mittel als Aggregationsmethode die besten Ergebnisse erzielt werden.
 
-% https://www.inf.unibz.it/~ricci/papers/p131-kleinerman.pdf
 \textcite[S. 131ff.]{kleinerman:2:inproceedings} stellen fest, dass in \ac{RRS} bislang offen blieb, wie die unilateralen Präferenzen zweier Parteien optimal im Gleichgewicht gehalten werden können.
-Die Autoren entwickelten daher eine Methode (sog. \ac{RWS}), die Empfehlungen wechselseitger Systeme basierend auf dem optimalen Gleichgewicht zwischen den Interessen zweier Personen erstellt.
-\ac{RWS} kombiniert für jeden Nutzer die Wahrhscheinlichkeit, dass eine Person eine Empfehlung annimmt und die Wahrscheinlichkeit, dass die empfohlene Person dies positiv erwidert, zu einem einzelnen Wert kombiniert \cite[S. 131f.]{kleinerman:2:inproceedings}.
-Im Vergleich zu herkömmlichen \ac{RRS}, in denen für alle Nutzer die Präferenzen beider Parteien gleichermaßen in den reziproken Wert einflossen, erfolgt die Gewichtung der Präferenzen nach der Methode von \textcite[S. 133]{kleinerman:2:inproceedings} für jeden Nutzer individuell, basierend auf dessen vergangenen Interaktionen.
-% HIER BILD EINFÜGEN S: 134
-% HIER WEITERMACHEN S: 133
+Die Autoren entwickelten daher eine Methode (sog. \ac{RWS}) für Online-Dating-Plattformen, die Empfehlungen basierend auf dem optimalen Gleichgewicht zwischen den Interessen zweier Personen erstellt.
+Im Vergleich zu vorherigen Ansätzen, in denen für alle Nutzer die Präferenzen beider Parteien gleichermaßen in den reziproken Wert einflossen, erfolgt die Gewichtung mit \ac{RWS} für jeden Nutzer individuell, basierend auf dessen vergangenen Interaktionen \cite[S. 133]{kleinerman:2:inproceedings}.
+\ac{RWS} kombiniert für jeden Nutzer $c$ die Wahrhscheinlichkeit, dass dieser Interesse an einer empfohlenen Person $c'$ aufweist ($CF_{c,c'}$) und die Wahrscheinlichkeit, dass die empfohlene Person $c'$ dies positiv erwidert ($PR_{c',c}$) \cite[S. 131f.]{kleinerman:2:inproceedings}:
+\begin{equation}\label{eq36}
+    RWS_{c,c'}(\alpha_{c}) = \alpha_{c} \cdot CF_{c,c'} + (1-\alpha_{c}) \cdot PR_{c',c}
+\end{equation}
+Der Parameter $\alpha$ wird anhand des Einflusses der einzelnen Werte ($CF$ und $PR$) auf erfolgreiche Interaktionen des Nutzers $x$ aus der Vergangenheit ermittelt \cite[S. 135]{kleinerman:2:inproceedings}.
+Für die Vorhersage der Interessen von $c$ verwenden die Autoren kollaboratives Filtern, während für die Vorhersage der Rückmeldung durch $c'$ Techniken des Maschinellen Lernens verwendet werden.
+Die \ac{RWS} von \textcite[S. 134]{kleinerman:2:inproceedings} ist nachfolgend in Abbildung \ref{fig:relatedwork:abb2} anhand eines Beispiel-Nutzers grafisch dargestellt.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.9\textwidth]{gfx/rws.png}
+	\caption[Reciprocal Weighted Score]{Reciprocal Weighted Score\\
+    (Eigene Darstellung in Anlehnung an \cite[S. 134]{kleinerman:2:inproceedings})}
+	\label{fig:relatedwork:abb2}
+\end{figure}
+
+Um für Nutzer ohne erfolgreiche Interaktionen in der Vergangenheit Empfehlungen zu erstellen, definieren die Autoren zusätzlich ein Optimierungsproblem über alle Nutzer eines Systems hinweg \cite[S. 135]{kleinerman:2:inproceedings}:
+\begin{equation}\label{eq37}
+    \begin{aligned}
+        \min_{\alpha} \sum_{c \in C} \sum_{c' \in V_{c}} \mathbb{1}_{c' \in SuccInter_{c}} Rank_{c'} (RWS_{c,*}(\alpha))\\
+        \textnormal{u.d.B. } 0 \geq \alpha \geq 1\\
+    \end{aligned}
+\end{equation}
+Hierbei stellt $V_{c}$ die Menge aller Personen $c'$ dar, deren Profil $c$ betrachtet hat und $\mathbb{1}_{c' \in SuccInter_{c}}$ eine Indikatorfunktion, welche $1$ ausgibt, wenn eine Person $c'$ eine erfolgreiche Interaktion mit $c$ aufweist und $0$ andernfalls.
+$Rank_{c'} (RWS_{c,*}(\alpha))$ gibt den Rang einer Person $c' \in V_{c}$ im Ranking für einen Nutzer $c$ an \cite[S. 135]{kleinerman:2:inproceedings}.
+Aus der Lösung des Optimierungsproblems resultiert das Gewicht $\alpha$, welches Personen, die erfolgreiche Interaktionen mit einem Nutzer aufweisen höher im Ranking platziert.
+
+In anknüpfenden Experimenten untersuchten die Autoren die Bedeutung der individuellen Gewichtung in Online-Dating-Plattformen.
+Hierfür verglichen sie ihren Ansatz mit einer bekannten Methode für wechselseitige Empfehlungssysteme von \textcite[S. 6]{xia:inproceedings}, welche die Interessen der Nutzer über das harmonische Mittel aggregiert.
+Dabei stellten die Autoren fest, dass durch die gewichtete Methode die Anzahl erfolgreicher Interaktionen im Vergleich zum Benchmark gesteigert werden konnte \cite[S. 132]{kleinerman:2:inproceedings}.
+Gleichzeitig führte die Methode jedoch zu einer Abnahme der relevanten Vorschläge für einen Nutzer.
+Dies begründen \textcite[S. 132]{kleinerman:2:inproceedings} damit, dass ihn ihren Experimenten im Durchschnitt das Interesse der empfohlenen Personen (d.h. $PR$) stärker gewichtet wurde.
+Darüber hinaus kritisieren die Autoren an ihrer Methode, dass die Optimierung auf Individuen-Level zu einer erhöhten Laufzeit führt.
+Eine Reduktion der Laufzeit sei durch Verlagerung der Ermittlung der Gewichte in eine Offline-Phase denkbar \cite[S. 138]{kleinerman:2:inproceedings}.
+Grundsätzlich gehen  \textcite[S. 138]{kleinerman:2:inproceedings} davon aus, dass ihr Ansatz auch für verwandte Domänen wie dem Online-Recruiting von Relevanz ist.
 
 % Das beschreibt den Anwendungsfall sehr gut: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Utility-Based_Multi-Stakeholder_Recommendations_by_Multi-Objective_Optimization.pdf
 % Das hier auch: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Personalized%20Educational%20Learning%20with%20multi-stakeholder%20optimizations.pdf , Ergänzung siehe hier: https://sci-hub.st/10.1007/s11257-021-09291-x mit Kritik
@@ -237,7 +268,5 @@ Im Vergleich zu herkömmlichen \ac{RRS}, in denen für alle Nutzer die Präferen
 
 % Zusätzlich: Darstellung negativer Präferenzen, siehe S. 288: https://link.springer.com/content/pdf/10.1007/978-3-642-22362-4.pdf?pdf=button
 % -> RECON mit negativen Präferenzen
-
-% Wie einbringen, dass der Fokus vieler Arbeiten ein anderer ist? Das macht natürlich die Bewertung schwierig, da viel von mir angenommen wird (Fokus meist auf Vorhersage und nicht Kombination der Präferenzen)
 
  \shorthandon{"}
