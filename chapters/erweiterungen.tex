@@ -174,13 +174,13 @@ Ein speicherbasierter Ansatz für die Berücksichtigung multi-kriterieller Bewer
 Gibt $sim^{i}(c,c')$ die Ähnlichkeit zweier Nutzer $c$ und $c'$ für jedes Kriterium $i \in \{0,k\}$ an, so kann deren Ähnlichkeit nach \textcite[S. 427]{recommenderSystems:2016} allgemein wie folgt ermittelt werden:
 \begin{enumerate}
     \item Berechnung der Ähnlichkeit $sim^{i}(c,c')$ für jedes Kriterium $i \in \{0,k\}$ anhand eines paarweisen Ähnlichkeitsmaßes (z.B. Pearson-Korrelations\-koeffizient, Kosinus-Ähnlichkeit).
-    \item Berechnung der aggregierten Ähnlichkeit $sim^{aggr}(c,c')$ anhand einer Aggregations-Funktion über alle Ähnlichkeiten der einzlenen Kriterien:
+    \item Berechnung der aggregierten Ähnlichkeit $sim^{aggr}(c,c')$ anhand einer Aggregationsfunktion über alle Ähnlichkeiten der einzlenen Kriterien:
     \begin{equation}
         sim^{aggr}(c,c') = F(sim^{0}(c,c'), sim^{1}(c,c'), ..., sim^{k}(c,c'))
     \end{equation}
 \end{enumerate}
 
-Nach \textcite[S. 427]{recommenderSystems:2016} und \textcite[S. 857]{adomavicius:4:inbook} zählen zu den bekanntesten Aggregations-Funktionen multi-kriterieller Bewertungen:
+Nach \textcite[S. 427]{recommenderSystems:2016} und \textcite[S. 857]{adomavicius:4:inbook} zählen zu den bekanntesten Aggregationsfunktionen multi-kriterieller Bewertungen:
 \begin{itemize}
     \item die durchschnittliche Ähnlichkeit:
     \begin{equation}\label{eq15}
@@ -246,24 +246,24 @@ Basierend auf vergangenen Bewertungen der Nutzer eines Systems \cite[S. 358]{jin
 In der Literatur existieren bereits einige Ansätze für die Integration multi-kriterieller Bewertungen in modellbasierte Systeme \cite[S. 861]{adomavicius:4:inbook}.
 Eine umfassende Übersicht grundlegender Ansätze stellen \textcite[S. 861]{adomavicius:4:inbook} vor.
 
-\textbf{Aggregation-Function Ansatz}
+\textbf{Aggregation Function Ansatz}
 Nach \textcite[S. 861]{adomavicius:4:inbook} besteht ein Nachteil speicherbasierter Ansätze darin, dass sich deren Einsatz auf Systeme des kollaborativen Filterns beschränkt.
-Ein alternativer Ansatz, der in Kombination mit jeglicher Art an Empfehlungssystem verwendet werden kann, stellt der Aggregation-Function Ansatz von \textcite[S. 52ff.]{adomavicius:inproceedings:2} dar \cite[S. 861]{adomavicius:4:inbook}.
+Ein alternativer Ansatz, der in Kombination mit jeglicher Art an Empfehlungssystem verwendet werden kann, stellt der Aggregation Function Ansatz von \textcite[S. 52ff.]{adomavicius:inproceedings:2} dar \cite[S. 861]{adomavicius:4:inbook}.
 Dem Ansatz liegt die Idee zugrunde, dass Gesamtbewertungen von Elementen eine Kombination (Aggregation) ihrer zugehörigen multi-kriteriellen Bewertungen darstellen \cite[S. 861]{adomavicius:4:inbook}.
 Gemäß \textcite[S. 52]{adomavicius:inproceedings:2} wird eine Gesamtbewertung $r^{0}$ durch eine Aggregationfunktion $f$ ihrer multikriteriellen Bewertungen $r^{1}, ..., r^{k}$ repräsentiert:
 \begin{equation}\label{eq22}
     r^{0} = f(r^{1}, ..., r^{k})
 \end{equation}
-Das bedeutet, der Aggregation-Function Ansatz unterstellt eine bestimmte Beziehung zwischen der Gesamtbewertung eines Elements durch einen Nutzer und dessen multi-kriterieller Bewertungen \cite[S. 52]{adomavicius:inproceedings:2}.
+Das bedeutet, der Aggregation Function Ansatz unterstellt eine bestimmte Beziehung zwischen der Gesamtbewertung eines Elements durch einen Nutzer und dessen multi-kriterieller Bewertungen \cite[S. 52]{adomavicius:inproceedings:2}.
 So kann es sein, dass die Präferenz von Mitarbeitern für Fähigkeiten eine stärkere Priorität besitzt, d.h. das die meisten Mitarbeiter Fähigkeiten tatsächlich hoch bewerten, wenn sie diese gleichzeitig präferieren (Vgl. Tabelle \ref{tab3}).
 Nach dieser Annahme müsste eine hoch vorhergesagte Präferenz eines Mitarbeiters für eine Fähigkeit ebenfalls in einer hoch vorhergesagten Gesamtbewertung resultieren \cite[S. 52]{adomavicius:inproceedings:2}.
 
-Die Vorhersage von Gesamtbewertungen nach dem Aggregation-Function Ansatz erfolgt anhand von drei Schritten, welche nachfolgend in Abbildung \ref{fig:optimierung:loesungen:abb1} grafisch abgebildet sind.
+Die Vorhersage von Gesamtbewertungen nach dem Aggregation Function Ansatz erfolgt anhand von drei Schritten, welche nachfolgend in Abbildung \ref{fig:optimierung:loesungen:abb1} grafisch abgebildet sind.
 
 \begin{figure}
     \centering
 	\includegraphics[width=1.0\textwidth]{gfx/a-f-ansatz.png}
-	\caption[Aggregation-Function Ansatz]{Aggregation-Function Ansatz\\
+	\caption[Aggregation Function Ansatz]{Aggregation Function Ansatz\\
     (Eigene Darstellung in Anlehnung an \cite[S. 862]{adomavicius:4:inbook})}
 	\label{fig:optimierung:loesungen:abb1}
 \end{figure}
@@ -274,7 +274,7 @@ Dadurch wird das $k$-dimensionale multi-kriterielle Problem in $k$ unikriteriell
 Schritt 2 umfasst das Aufstellen der Aggregatios-Funktion $f$.
 Nach \textcite[S. 53]{adomavicius:inproceedings:2} existieren hierfür maßgeblich drei Verfahren:
 \begin{itemize}
-    \item \textit{Domänenwissen:} Aufstellen der Funktion basierend auf Erfahrungen und Domänenwissen. Ein simpler Ansatz stellt der Durchschnitt aller angenommenen Bewertungen der einzelnen Kriterien als Aggregations-Funktion dar.
+    \item \textit{Domänenwissen:} Aufstellen der Funktion basierend auf Erfahrungen und Domänenwissen. Ein simpler Ansatz stellt der Durchschnitt aller angenommenen Bewertungen der einzelnen Kriterien als Aggregationsfunktion dar.
     \item \textit{Statistische Methoden:} Aufstellen der Funktion anhand statistischer Verfahren (z.B. lineare und nicht-lineare Regressionsanalysen) \cite[S. 53]{adomavicius:inproceedings:2}. So kann die Vorhersage einer Gesamtbewertung in der linearen Regression als eine Linearkombination der (angenommenen) multi-kriteriellen Bewertungen repräsentiert werden \cite[S. 429]{recommenderSystems:2016}:
     \begin{equation}\label{eq23}
         \hat{r}^{0} = \sum\limits_{i=1}^{k}w^{i} r^{i}
@@ -283,14 +283,14 @@ Nach \textcite[S. 53]{adomavicius:inproceedings:2} existieren hierfür maßgebli
     \item \textit{Techniken des Maschinellen Lernens:} Aufstellen der Funktion über Modelle des Maschinellen Lernens (z.B. neuronale Netze) \cite[S. 53]{adomavicius:inproceedings:2}.
 \end{itemize}
 Weiter unterscheiden \textcite[S. 53]{adomavicius:inproceedings:2} Aggregations-Funk\-tionen in Abhängigkeit ihres Bezugs.
-Wird eine Funktion verwendet um Vorhersagen für alle \ac{N-E-K}-en übergreifend zu treffen, wird diese als total Aggregation-Function bezeichnet (d.h. Gewichte sind nutzer- bzw. elementübergreifend festgesetzt).
-Als nutzerbasiert bzw. elementbasiert wird eine Aggregations-Funktion bezeichnet, die basierend auf Bewertungen eines einzelnen Nutzers bzw. Elements bestimmt wird.
+Wird eine Funktion verwendet um Vorhersagen für alle \ac{N-E-K}-en übergreifend zu treffen, wird diese als total Aggregation Function bezeichnet (d.h. Gewichte sind nutzer- bzw. elementübergreifend festgesetzt).
+Als nutzerbasiert bzw. elementbasiert wird eine Aggregationsfunktion bezeichnet, die basierend auf Bewertungen eines einzelnen Nutzers bzw. Elements bestimmt wird.
 Dies kann in Domänen sinnvoll sein, in denen sich die Gewichte einzelner Kriterien zwischen Nutzern bzw. Elementen stark unterscheiden \cite[S. 53]{adomavicius:inproceedings:2}.
 
-Im letzten Schritt erfolgt die Vorhersage der Gesamtbewertungen basierend auf den (angenommenen) multi-kriteriellen Bewertungen und der erstellten Aggregation-Function $f$ \cite[S. 861]{adomavicius:4:inbook}.
+Im letzten Schritt erfolgt die Vorhersage der Gesamtbewertungen basierend auf den (angenommenen) multi-kriteriellen Bewertungen und der erstellten Aggregationsfunktion $f$ \cite[S. 861]{adomavicius:4:inbook}.
 
 \textbf{Probabilistic Modeling Ansatz}
-Neben dem Aggregation-Function Ansatz nennen \textcite[S. 861]{adomavicius:4:inbook} probabilistische Modellierungs-Ansätze (engl.: Probabilistic Modeling Approach) für die Integration multi-kriterieller Bewertungen in Empfehlungssysteme.
+Neben dem Aggregation Function Ansatz nennen \textcite[S. 861]{adomavicius:4:inbook} probabilistische Modellierungs-Ansätze (engl.: Probabilistic Modeling Approach) für die Integration multi-kriterieller Bewertungen in Empfehlungssysteme.
 Vereinfacht gesehen handelt es sich dabei um Methoden, die mit Wahrscheinlichkeitsverteilungen für die Vorhersage von Bewertungen arbeiten.
 \textcite[S. 861]{adomavicius:4:inbook} nennen als Beispiel die Veröffentlichung von \textcite[S. 231]{sahoo:article}.
 In der Veröffentlichung wird eine Anpassung des \ac{FMM} von \textcite[S. 704ff.]{si:inproceedings} um multi-krierielle Bewertungen vorgestellt.
@@ -376,8 +376,8 @@ Die Autoren wenden die truncated \ac{MSVD} an, um die Dimensionalität des $Nutz
 Basierend auf dem näherungsweisen Tensor, wenden \textcite[S. 1236]{li:2:inproceedings} Techniken des kollaborativen Filterns an, um Empfehlungen zu ermitteln.
 
 \textbf{Support Vector Regression Ansatz}
-Unter dem Aggregation Function Ansatz wurden bereits einige Methoden für die Bestimmung von Aggregations-Funktionen vorgestellt (z.B. Lineare Regression).
-Ansätze, die für die Bestimmung einer Aggregations-Funktion die \ac{SVR} \cite[S. 155ff.]{drucker:inproceedings} anwenden, bezeichnen \textcite[S. 865]{adomavicius:4:inbook} gesondert als \ac{SVR} Ansatz.
+Unter dem Aggregation Function Ansatz wurden bereits einige Methoden für die Bestimmung von Aggregationsfunktionen vorgestellt (z.B. Lineare Regression).
+Ansätze, die für die Bestimmung einer Aggregationsfunktion die \ac{SVR} \cite[S. 155ff.]{drucker:inproceedings} anwenden, bezeichnen \textcite[S. 865]{adomavicius:4:inbook} gesondert als \ac{SVR} Ansatz.
 
 Wie bei herkömmlichen Regressionsmodellen wird mittels \ac{SVR} eine Funktion $f$ ermittelt, die den Zusammenhang zwischen einer Input-Variable $x$ und deren abhängigen Output-Variable $y$ modelliert.
 Herkömmliche Regressionsmodelle wie die Lineare Regression ermitteln Regressionsgleichungen beispielsweise, indem sie versuchen den quadrierten Abstand zwischen vorhergesagtem und tatsächlichem Wert für $y$ zu minimieren.
@@ -395,7 +395,7 @@ Für ein besseres Verständnis ist in Abbildung \ref{fig:optimierung:loesungen:a
 Der Bereich um $f$ wird durch die Stützvektoren (engl.: Support Vectors) bestimmt, welche die äußersten Punkte einer Datenmenge darstellen.
 Ein Parameter $\xi$ legt fest, wie viele Datenpunkte außerhalb des Bereichs toleriert werden \cite[S. 70]{awad:inbook}.
 
-Gemäß \textcite[S. 675]{jannach:2:article} kann über die \ac{SVR} eine Aggregations-Funktion erlernt werden, die den Zusammenhang zwischen einer Gesamtbewertung und einzelnen Kriterien beschreibt. 
+Gemäß \textcite[S. 675]{jannach:2:article} kann über die \ac{SVR} eine Aggregationsfunktion erlernt werden, die den Zusammenhang zwischen einer Gesamtbewertung und einzelnen Kriterien beschreibt. 
 
 Nach \textcite[S. 866]{adomavicius:4:inbook} stellen die Ansätze erste Anhaltspunkte für die Integration multi-kriterieller Bewertungen in die Vorhersage dar.
 Nachfolgend werden in Anlehnung an \textcite[S. 867]{adomavicius:4:inbook} Ansätze vorgestellt, die nach der Vorhersage ansetzen, das heißt, wenn Bewertungen für \ac{N-E-K} vollständig vorliegen.
@@ -407,7 +407,7 @@ Liegt eine Gesamtbewertung vor, erfolgt das Ranking typischerweise analog zu tra
 Das bedeutet, nach der Vorhersage wird die (angenommene) Gesamtbewertung einer \ac{N-E-K} als Sortier-Kriterium für das Ranking von Elementen herangezogen \cite[S. 867]{adomavicius:4:inbook}.
 
 Ohne Gesamtbewertung wird das Ranking von Elementen komplexer \cite[S. 867]{adomavicius:4:inbook}.
-Dem liegt zugrunde, dass die Ordnung der einzelnen Kriterien nicht unmittelbar ersichtlich \cite[S. 867]{adomavicius:4:inbook} oder ohne Weiteres über Aggregations-Funktionen erlernbar ist.
+Dem liegt zugrunde, dass die Ordnung der einzelnen Kriterien nicht unmittelbar ersichtlich \cite[S. 867]{adomavicius:4:inbook} oder ohne Weiteres über Aggregationsfunktionen erlernbar ist.
 Basierend auf Verfahren der multi-kriteriellen Optimierung aus dem Bereich Operations Research \cite[S. 745]{adomavicius:inproceedings}, stellen \textcite[S. 867]{adomavicius:4:inbook} verschiedene Methoden für das Ranking von Elementen anhand multipler Kriterien vor.
 Hierzu zählen
 \begin{itemize}

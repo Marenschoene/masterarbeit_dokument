@@ -6,7 +6,8 @@
 \chapter{Verwandte Arbeiten}
 \label{ch:verwandte_arbeiten}
 In der Literatur existieren bereits diverse Veröffentlichungen, die sich mit der Berücksichtigung wechselseitiger Präferenzen für die automatische Zuweisung von Personen für Jobpositionen beschäftigen.
-Während einige Veröffentlichungen Reziprozität als multi-kriterielles Problem betrachten, ordnen andere Arbeiten die reziproke Empfehlungserstellung nicht den multi-kriteriellen Empfehlungssystemen zu.
+Während einige Veröffentlichungen Reziprozität als multi-kriterielles Problem betrachten, ordnen andere Arbeiten die reziproke Empfehlungserstellung nicht explizit als multi-kriterielles Problem ein.
+Dadurch haben sich im Verlauf der Jahre unterschiedliche Ansätze für die Berücksichtigung wechselseitiger Präferenzen von Nutzern und Elementen in Empfehlungssystemen entwickelt.
 % Auch wenn der Fokus eines Großteils der Veröffentlichungen auf der Vorhersage wechselseitiiger Empfehlungen beruht, lassen sich dennoch Ansätze für die Integration bilateraler Präferenzen in Empfehlungssysteme unterscheiden.
 % Nachfolgend werden verwandte Arbeiten zu reziproken Empfehlungssystemen mit Bezug auf die vorliegende Domäne angeführt.
 
@@ -72,6 +73,46 @@ Die Veröffentlichung von \textcite[S. 259]{kim:2:inproceedings} kann folglich k
 % Dies ist durch die Art der Ermittlung des Interesses eines Empfängers zu erklären, welches durch das Verhältnis von positiven Rückmeldungen eines Empfängers zu allen Interaktionen eines Senders bemessen wird.
 % Da die Anzahl an Rückmeldungen bereits in der Vergangenheit ermittelt wurde, hat eine höhere Gewichtung dieser keinen Einfluss auf vergangene Interaktionen, lediglich auf die Ermittlung des harmonischen Mittels.
 
+\textcite[S. 131ff.]{kleinerman:2:inproceedings} stellen fest, dass in \ac{RRS} bislang offen blieb, wie die unilateralen Präferenzen zweier Parteien optimal im Gleichgewicht gehalten werden können.
+Die Autoren entwickelten daher eine Methode (sog. \ac{RWS}) für Online-Dating-Plattformen, die Empfehlungen basierend auf dem optimalen Gleichgewicht zwischen den Interessen zweier Personen erstellt.
+Im Vergleich zu vorherigen Ansätzen, in denen für alle Nutzer die Präferenzen beider Parteien gleichermaßen in den reziproken Wert einflossen, erfolgt die Gewichtung mit \ac{RWS} für jeden Nutzer individuell, basierend auf dessen vergangenen Interaktionen \cite[S. 133]{kleinerman:2:inproceedings}.
+\ac{RWS} kombiniert für jeden Nutzer $c$ die Wahrhscheinlichkeit, dass dieser Interesse an einer empfohlenen Person $c'$ aufweist ($CF_{c,c'}$) und die Wahrscheinlichkeit, dass die empfohlene Person $c'$ dies positiv erwidert ($PR_{c',c}$) \cite[S. 131f.]{kleinerman:2:inproceedings}:
+\begin{equation}\label{eq36}
+    RWS_{c,c'}(\alpha_{c}) = \alpha_{c} \cdot CF_{c,c'} + (1-\alpha_{c}) \cdot PR_{c',c}
+\end{equation}
+Der Parameter $\alpha$ wird anhand des Einflusses der einzelnen Werte ($CF$ und $PR$) auf erfolgreiche Interaktionen des Nutzers $x$ aus der Vergangenheit ermittelt \cite[S. 135]{kleinerman:2:inproceedings}.
+Für die Vorhersage der Interessen von $c$ verwenden die Autoren kollaboratives Filtern, während für die Vorhersage der Rückmeldung durch $c'$ Techniken des Maschinellen Lernens verwendet werden.
+Die \ac{RWS} von \textcite[S. 134]{kleinerman:2:inproceedings} ist nachfolgend in Abbildung \ref{fig:relatedwork:abb2} anhand eines Beispiel-Nutzers grafisch dargestellt.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.9\textwidth]{gfx/rws.png}
+	\caption[Reciprocal Weighted Score]{Reciprocal Weighted Score\\
+    (Eigene Darstellung in Anlehnung an \cite[S. 134]{kleinerman:2:inproceedings})}
+	\label{fig:relatedwork:abb2}
+\end{figure}
+
+Um für Nutzer ohne erfolgreiche Interaktionen in der Vergangenheit Empfehlungen zu erstellen, definieren die Autoren zusätzlich ein Optimierungsproblem über alle Nutzer eines Systems hinweg \cite[S. 135]{kleinerman:2:inproceedings}:
+\begin{equation}\label{eq37}
+    \begin{aligned}
+        \min_{\alpha} \sum_{c \in C} \sum_{c' \in V_{c}} \mathbb{1}_{c' \in SuccInter_{c}} Rank_{c'} (RWS_{c,*}(\alpha))\\
+        \textnormal{u.d.B. } 0 \geq \alpha \geq 1\\
+    \end{aligned}
+\end{equation}
+Hierbei stellt $V_{c}$ die Menge aller Personen $c'$ dar, deren Profil $c$ betrachtet hat und $\mathbb{1}_{c' \in SuccInter_{c}}$ eine Indikatorfunktion, welche $1$ ausgibt, wenn eine Person $c'$ eine erfolgreiche Interaktion mit $c$ aufweist und $0$ andernfalls.
+$Rank_{c'} (RWS_{c,*}(\alpha))$ gibt den Rang einer Person $c' \in V_{c}$ im Ranking für einen Nutzer $c$ an \cite[S. 135]{kleinerman:2:inproceedings}.
+Für die Lösung des Optimierungsproblems verwenden die Autoren den Algorithmus von \textcite[S. 422ff.]{brent:article} für die lokale Minimumsuche innerhalb eines angegebenen Intervalls.
+Aus der Lösung resultiert das Gewicht $\alpha$, welches Personen, die erfolgreiche Interaktionen mit einem Nutzer aufweisen, höher im Ranking platziert \cite[S. 135]{kleinerman:2:inproceedings}.
+
+In anknüpfenden Experimenten untersuchten die Autoren die Bedeutung der individuellen Gewichtung in Online-Dating-Plattformen.
+Hierfür verglichen sie ihren Ansatz mit einer bekannten Methode für wechselseitige Empfehlungssysteme von \textcite[S. 6]{xia:inproceedings}, welche die Interessen der Nutzer über das harmonische Mittel aggregiert.
+Dabei stellten die Autoren fest, dass durch die gewichtete Methode die Anzahl erfolgreicher Interaktionen im Vergleich zum Benchmark gesteigert werden konnte \cite[S. 132]{kleinerman:2:inproceedings}.
+Gleichzeitig führte die Methode jedoch zu einer Abnahme der relevanten Vorschläge für einen Nutzer.
+Dies begründen \textcite[S. 132]{kleinerman:2:inproceedings} damit, dass ihn ihren Experimenten im Durchschnitt das Interesse der empfohlenen Personen (d.h. $PR$) stärker gewichtet wurde.
+Darüber hinaus kritisieren die Autoren an ihrer Methode, dass die Optimierung auf Individuen-Level zu einer erhöhten Laufzeit führt.
+Eine Reduktion der Laufzeit sei durch Verlagerung der Ermittlung der Gewichte in eine Offline-Phase denkbar \cite[S. 138]{kleinerman:2:inproceedings}.
+Grundsätzlich gehen  \textcite[S. 138]{kleinerman:2:inproceedings} davon aus, dass ihr Ansatz auch für verwandte Domänen wie dem Online-Recruitment von Relevanz ist.
+
 Im Vergleich zu verwandten Domänen hat die automatische Zuordnung von Personen zu Jobpositionen in der Literatur bislang wenig Aufmerksamkeit erhalten \cite[S. 1469]{yildirim:article}.
 
 \textcite[S. 1ff.]{malinowski:2006} stellen in ihrer Arbeit die Notwendigkeit der Berücksichtigung bilateraler Präferenzen für die Zuordnung von Personen zu Jobpositionen fest.
@@ -99,20 +140,20 @@ Dies macht es jedoch zugleich unmöglich, dass Mitarbeiter mit Kenntnissen am ob
 
 Des weiteren bemängelt \textcite[S. 69]{link:booklet}, dass aus einer fehlenden Angabe zu der Präferenz eines Mitarbeiters für eine Projektposition nicht hervorgeht, ob dieser einer Fähigkeit neutral gegenübersteht, oder diese nicht bei zukünftigen Projektarbeiten anwenden möchte.
 
-% Einsatz von MAUT, siehe file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Analysis%20and%20Classification%20of%20Multi-Criteria.pdf
-
 \section{Als multi-kriteriell bezeichnete wechselseitige Systeme}
-Obwohl der Bereich des \ac{MCDA} in der Literatur bereits intensiv behandelt wurde \cite[S. 220]{lakiotaki:inproceedings}, merken \textcite[S. 248]{kim:2:inproceedings} an, dass die Thematik in dem Kontext von Empfehlungssytemen bislang wenig Aufmerksamkeit erhalten hat.
-Wie in Kapitel \ref{ch:erweiterungen:bedeutung} angeführt, werden Techniken der \ac{MCDA} in Empfehlungssystemen zumeist angewandt, um multi-kriterielle Bewertungen für Empfehlungen zu berücksichtigen.
+% Obwohl \ac{MCDA} in der Literatur im Bereich Operations Research bereits intensiv behandelt wurde \cite[S. 220]{lakiotaki:inproceedings}, merken \textcite[S. 248]{kim:2:inproceedings} an, dass die Thematik in dem Kontext von Empfehlungssytemen bislang wenig Aufmerksamkeit erhalten hat.
 
-So wenden \textcite[S. 48ff.]{adomavicius:inproceedings:2} den Aggregation-Function Ansatz auf einen Yahoo!-Movies-Datensatz an, indem sie Lineare Regression verwenden, um die Gewichte einzelner Kriterien für Nutzer basierend auf bekannten Bewertungen zu ermitteln.
-\textcite[S. 678]{jannach:2:article} verwenden \ac{SVR} für das Lernen der Gewichte für Nutzer und vergleichen ihren Ansatz mit dem von ... .
-Dabei stellen die Autoren fest, dass \ac{SVR}
-% welche daten verwendet jannach?
-% Hier ganz kurz beispiele anführen zu mk empfehlungssystemen anderer domänen bzw. ohne bezug auf aggregation der präferenzen. (z.B.: file:///C:/Users/masc6/Downloads/3297280.3297522.pdf , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf , file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommending%20Hotels%20based%20on%20Multidimesional%20Customer%20Ratings.pdf , wichtig ist jannach: (siehe hier file:///C:/Users/masc6/Downloads/Accuracy_improvements_for_multi-criteria_recommend.pdf und hier S. 25 , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Multi-Criteria%20Collaborative%20Filtering%20Recommender%20System%20Using%20Clustering.pdf ) , lineare regression: S. 239, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/A%20Linear%20Regression%20Approach%20to%20Multi-criteria.pdf)
+% Wie in Kapitel \ref{ch:erweiterungen:bedeutung} angeführt, werden Techniken der \ac{MCDA} in Empfehlungssystemen größtenteils angewandt, um multi-kriterielle Bewertungen in der Vorhersage fehlender \ac{N-E-K} einzusetzen.
+% So ermitteln \textcite[S. 48ff.]{adomavicius:inproceedings:2} und \textcite[S. 235ff.]{jhalani:inproceedings} unbekannte Bewertungen für Filme des Yahoo!Movie-Datensatzes über kollaboratives Filtern auf Kriterien-Ebene und nutzen Lineare Regression, um basierend auf vergangenen Bewertungen die Gewichte einzelner Kriterien für Nutzer zu ermitteln (nutzerbasierte Aggregationsfunktion).
+% \textcite[S. 2456]{zheng:inproceedings} und \textcite[S. 678]{jannach:2:article} verwenden ebenfalls kollaboratives Filtern für die Vorhersage multi-kriterieller Bewertungen, jedoch wird \ac{SVR} für das Lernen der individuellen Gewichte von Nutzern und Elementen angewandt.
+% Den Einsatz von \ac{SVR} begründen die Autoren mit der hohen Genauigkeit und schnellen Laufzeit der Methode.
+
+% ... widerum setzen Techniken der \ac{MCDA} ein, um verschiedene Ziele beim Ranking von Elementen für Nutzer zu berücksichtigen.
+% ... führen ein Re-Ranking von Elementen durch, bei dem im ersten Schritt Elemente anhand der Genaugikeit der angenommenen Bewertungen sortiert und im zweiten Schritt basierend auf deren Diversität im Vergleich zu anderen Elementen des Ratings umsortiert werden.
+% Hier ganz kurz beispiele anführen zu mk empfehlungssystemen anderer domänen bzw. ohne bezug auf aggregation der präferenzen. (z.B.: file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommending%20Hotels%20based%20on%20Multidimesional%20Customer%20Ratings.pdf
 % HIER WEITERMACHEN UND KURZ ERKLÄREN
 
-Folglich existieren in der Literatur nur wenige Publikationen zu wechselseitigen Systemen, die reziproke Empfehlungen als multi-kriterielles Problem erkennen.
+In der Literatur existieren nur wenige Publikationen zu wechselseitigen Systemen, die die reziproke Empfehlungen als multi-kriterielles Problem erkennen.
 % HIER ÜBERLEITUNG FINDEN
 % Hier erwähnen, dass nicht alle systeme auch als mk-systeme bezeichnet sind, die solche Ansätze anwenden (bspw. hybride systeme)
 % Hier erwähnen, dass Fokus auf aggregation mehrerer Kriterien und deren gewichtung liegt -> hiernach suchen
@@ -120,13 +161,11 @@ Folglich existieren in der Literatur nur wenige Publikationen zu wechselseitigen
 % Verwendung von MAUT (siehe S. 432, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Analysis%20and%20Classification%20of%20Multi-Criteria.pdf)
 % MAUT in utility based recommenders: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Designing%20utility-based%20recommender%20systems%20for%20e-commerce.pdf
 
-\subsection{Multi-attribut basierte Systeme}
-% Vielleicht hier?: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Adaptive%20multi%20attribute%20diversity%20for%20recommender%20systems.pdf
-häufig nicht spezifisch als multi-kriteriell bzw. multi-attribut bezeichnet, sondern häufig betrachtung als kombination zweier separater systeme (hybride systeme) % -> siehe hier: S. 549, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
+% \subsection{Multi-attribut basierte Systeme}
+% häufig nicht spezifisch als multi-kriteriell bzw. multi-attribut bezeichnet, sondern häufig betrachtung als kombination zweier separater systeme (hybride systeme) % -> siehe hier: S. 549, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/2015_Book_RecommenderSystemsHandbook.pdf
 % hybrid recommender: weighted -> S. 339, https://link.springer.com/content/pdf/10.1023/A:1021240730564.pdf?pdf=button
 
-\subsection{Multi-objektive Systeme}
-% file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Optimizing%20Rankings%20for%20Recommendation%20in%20Matching%20Markets.pdf
+% \subsection{Multi-objektive Systeme}
 \textcite[S. 329]{su:inproceedings} ordnen Plattformen für die Bestimmung von Personen für Jobpositionen mehrseitigen Marktplattformen\footnote{"multi-sided market platforms" - \textcite[S. 329]{su:inproceedings}} zu.
 Mehrseitige Marktplattformen verstehen die Autoren als Mediatoren zwischen den unterschiedlichen Parteien eines Marktes (z.B. Erwerbssucher und Erwerbsanbieter), deren Aufgabe darin besteht, die Ziele der verschiedenen Parteien in Einklang zu bringen \cite[S. 329]{su:inproceedings}.
 Die Berücksichtigung mehrerer Ziele für die Empfehlung in mehrseitigen Marktplattformen, verstehen \textcite[S. 329]{su:inproceedings} als multi-objektives Optimierungsproblem.
@@ -146,7 +185,7 @@ Das heißt, die Autoren klassifizieren die wechselseitigen Präferenzen in ihrem
 Als multi-objektiv bezeichnen \textcite[S. 12]{rodriguez:inproceedings} ihren Ansatz zur Integration "äußerer Merkmale"\footnote{"extraneous features" - \textcite[S. 12]{rodriguez:inproceedings}} in ein semantisches Modell im Bereich des Online-Recruitments. 
 Dieser ist in Abbildung \ref{fig:relatedwork:abb1} dargestellt.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
 	\includegraphics[width=0.9\textwidth]{gfx/talentMatch.png}
 	\caption[Ansatz für die Integration äußerer Merkmale in semantische Modelle]{Ansatz für die Integration äußerer Merkmale in semantische Modelle\\
@@ -207,57 +246,21 @@ Dabei stellen die Autoren fest, dass das harmonische Mittel und die Cross-Ratio-
 
 \textcite[S. 4031]{neve:inproceedings} erkennen in ihrer Publikation die entscheidene Rolle der Kombination der Präferenzen der Parteien in wechselseitigen Empfehlungssystemen.
 Aus den Ergebnissen ihres Experiments schließen die Autoren, dass wechselseitige Empfehlungssysteme durchaus von komplexeren Aggregationsfunktionen für die Kombination der Präferenzen profitieren könnten.
-Daher argumentieren sie, dass Entscheidungen über die Aggregations-Funktion der Präferenzen in Algorithmen wechselseitiger Empfehlungssysteme zukünftig evidenzbasiert erfolgen sollen \cite[S. 4032]{neve:inproceedings}.
+Daher argumentieren sie, dass Entscheidungen über die Aggregationsfunktion der Präferenzen in Algorithmen wechselseitiger Empfehlungssysteme zukünftig evidenzbasiert erfolgen sollen \cite[S. 4032]{neve:inproceedings}.
 Weiter erkennen die Autoren den multi-kriteriellen Charakter der Thematik und schlagen die Verwendung von \ac{MCDA} (z.B. gewichtete Aggregationsmethoden \cite[S. 4036]{neve:inproceedings}) für die Kombination der unilateralen Präferenzen vor.
 
 Zusätzlich zu den von \textcite[S. 4031ff.]{neve:inproceedings} angeführten Methoden betrachten \textcite[S. 1ff.]{kumari:2:inproceedings} das Produkt, den Schnitt und die Summe der unilateralen Präferenzen in ihrer Evaluation.
 Aus der Publikation geht hervor, dass harmonisches Mittel, Cross-Ratio-Uninorm und Schnitt die besten Ergebnisse erzielen konnten.
-Im vergleich zu \textcite[S. 4031ff.]{neve:inproceedings} konnten in dem Versuch von \textcite[S. 5]{kumari:2:inproceedings} mit dem harmonischen Mittel als Aggregationsmethode die besten Ergebnisse erzielt werden.
+Im Vergleich zu \textcite[S. 4031ff.]{neve:inproceedings} konnten in dem Versuch von \textcite[S. 5]{kumari:2:inproceedings} mit dem harmonischen Mittel als Aggregationsmethode die besten Ergebnisse erzielt werden.
 
-\textcite[S. 131ff.]{kleinerman:2:inproceedings} stellen fest, dass in \ac{RRS} bislang offen blieb, wie die unilateralen Präferenzen zweier Parteien optimal im Gleichgewicht gehalten werden können.
-Die Autoren entwickelten daher eine Methode (sog. \ac{RWS}) für Online-Dating-Plattformen, die Empfehlungen basierend auf dem optimalen Gleichgewicht zwischen den Interessen zweier Personen erstellt.
-Im Vergleich zu vorherigen Ansätzen, in denen für alle Nutzer die Präferenzen beider Parteien gleichermaßen in den reziproken Wert einflossen, erfolgt die Gewichtung mit \ac{RWS} für jeden Nutzer individuell, basierend auf dessen vergangenen Interaktionen \cite[S. 133]{kleinerman:2:inproceedings}.
-\ac{RWS} kombiniert für jeden Nutzer $c$ die Wahrhscheinlichkeit, dass dieser Interesse an einer empfohlenen Person $c'$ aufweist ($CF_{c,c'}$) und die Wahrscheinlichkeit, dass die empfohlene Person $c'$ dies positiv erwidert ($PR_{c',c}$) \cite[S. 131f.]{kleinerman:2:inproceedings}:
-\begin{equation}\label{eq36}
-    RWS_{c,c'}(\alpha_{c}) = \alpha_{c} \cdot CF_{c,c'} + (1-\alpha_{c}) \cdot PR_{c',c}
-\end{equation}
-Der Parameter $\alpha$ wird anhand des Einflusses der einzelnen Werte ($CF$ und $PR$) auf erfolgreiche Interaktionen des Nutzers $x$ aus der Vergangenheit ermittelt \cite[S. 135]{kleinerman:2:inproceedings}.
-Für die Vorhersage der Interessen von $c$ verwenden die Autoren kollaboratives Filtern, während für die Vorhersage der Rückmeldung durch $c'$ Techniken des Maschinellen Lernens verwendet werden.
-Die \ac{RWS} von \textcite[S. 134]{kleinerman:2:inproceedings} ist nachfolgend in Abbildung \ref{fig:relatedwork:abb2} anhand eines Beispiel-Nutzers grafisch dargestellt.
-
-\begin{figure}[H]
-    \centering
-	\includegraphics[width=0.9\textwidth]{gfx/rws.png}
-	\caption[Reciprocal Weighted Score]{Reciprocal Weighted Score\\
-    (Eigene Darstellung in Anlehnung an \cite[S. 134]{kleinerman:2:inproceedings})}
-	\label{fig:relatedwork:abb2}
-\end{figure}
-
-Um für Nutzer ohne erfolgreiche Interaktionen in der Vergangenheit Empfehlungen zu erstellen, definieren die Autoren zusätzlich ein Optimierungsproblem über alle Nutzer eines Systems hinweg \cite[S. 135]{kleinerman:2:inproceedings}:
-\begin{equation}\label{eq37}
-    \begin{aligned}
-        \min_{\alpha} \sum_{c \in C} \sum_{c' \in V_{c}} \mathbb{1}_{c' \in SuccInter_{c}} Rank_{c'} (RWS_{c,*}(\alpha))\\
-        \textnormal{u.d.B. } 0 \geq \alpha \geq 1\\
-    \end{aligned}
-\end{equation}
-Hierbei stellt $V_{c}$ die Menge aller Personen $c'$ dar, deren Profil $c$ betrachtet hat und $\mathbb{1}_{c' \in SuccInter_{c}}$ eine Indikatorfunktion, welche $1$ ausgibt, wenn eine Person $c'$ eine erfolgreiche Interaktion mit $c$ aufweist und $0$ andernfalls.
-$Rank_{c'} (RWS_{c,*}(\alpha))$ gibt den Rang einer Person $c' \in V_{c}$ im Ranking für einen Nutzer $c$ an \cite[S. 135]{kleinerman:2:inproceedings}.
-Für die Lösung des Optimierungsproblems verwenden die Autoren den Algorithmus von \textcite[S. 422ff.]{brent:article} für die lokale Minimumsuche innerhalb eines angegebenen Intervalls.
-Aus der Lösung resultiert das Gewicht $\alpha$, welches Personen, die erfolgreiche Interaktionen mit einem Nutzer aufweisen, höher im Ranking platziert \cite[S. 135]{kleinerman:2:inproceedings}.
-
-In anknüpfenden Experimenten untersuchten die Autoren die Bedeutung der individuellen Gewichtung in Online-Dating-Plattformen.
-Hierfür verglichen sie ihren Ansatz mit einer bekannten Methode für wechselseitige Empfehlungssysteme von \textcite[S. 6]{xia:inproceedings}, welche die Interessen der Nutzer über das harmonische Mittel aggregiert.
-Dabei stellten die Autoren fest, dass durch die gewichtete Methode die Anzahl erfolgreicher Interaktionen im Vergleich zum Benchmark gesteigert werden konnte \cite[S. 132]{kleinerman:2:inproceedings}.
-Gleichzeitig führte die Methode jedoch zu einer Abnahme der relevanten Vorschläge für einen Nutzer.
-Dies begründen \textcite[S. 132]{kleinerman:2:inproceedings} damit, dass ihn ihren Experimenten im Durchschnitt das Interesse der empfohlenen Personen (d.h. $PR$) stärker gewichtet wurde.
-Darüber hinaus kritisieren die Autoren an ihrer Methode, dass die Optimierung auf Individuen-Level zu einer erhöhten Laufzeit führt.
-Eine Reduktion der Laufzeit sei durch Verlagerung der Ermittlung der Gewichte in eine Offline-Phase denkbar \cite[S. 138]{kleinerman:2:inproceedings}.
-Grundsätzlich gehen  \textcite[S. 138]{kleinerman:2:inproceedings} davon aus, dass ihr Ansatz auch für verwandte Domänen wie dem Online-Recruiting von Relevanz ist.
+\textcite[S. 41f.]{palomares:article} weisen in ihrer Veröffentlichung zum Stand der Forschung von wechselseitigen Empfehlungssystemen zuletzt ebenfalls auf die Bedeutung der Methodik für die Kombination unilateraler Präferenzen in ein bilaterales Resultat hin.
+Darüber hinaus deuten nach \textcite[S. 42]{palomares:article} die Ergebnisse der Studie von \textcite[S. 4031ff.]{neve:inproceedings} darauf hin, dass eine Durchführung von Untersuchungen neuer Aggregationsfunktionen in bestehenden Modellen zu neuen Performance-Erkenntnissen führen kann.
+% Weiterer Proof für bedeutsamkeit der aggregation unilateraler Präferenzen siehe hier: S. 41ff. : https://sci-hub.st/https://doi.org/10.1016/j.inffus.2020.12.001
 
 % Das beschreibt den Anwendungsfall sehr gut: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Utility-Based_Multi-Stakeholder_Recommendations_by_Multi-Objective_Optimization.pdf
 % Das hier auch: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Personalized%20Educational%20Learning%20with%20multi-stakeholder%20optimizations.pdf , Ergänzung siehe hier: https://sci-hub.st/10.1007/s11257-021-09291-x mit Kritik
 
-\subsection{Multi-kriterielle Bewertungen in Empfehlungssystemen}
+% \subsection{Multi-kriterielle Bewertungen in Empfehlungssystemen}
 % Erfinder des aggregation Funktion approaches: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/New_Recommendation_Techniques_for_Multicriteria_Rating_Systems.pdf
 % Arbeit von Jannach wie hier beschrieben mit SVM: S. 102, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/E-Commerce.pdf
 % multi-kriteria: Aggregation function approach: file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommending%20Hotels%20based%20on%20Multidimesional%20Customer%20Ratings.pdf
