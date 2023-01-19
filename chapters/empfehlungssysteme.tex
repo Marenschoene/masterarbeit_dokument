@@ -412,7 +412,7 @@ Nach \textcite[S. 41]{berkovsky:2:article} kann diese Sammlung beispielsweise al
     UM_{c} = \{s_{1}:r_{1},\textnormal{ }s_{2}:r_{2},\textnormal{ }...,\textnormal{ }s_{k}:r_{k}\}
 \end{equation}
 Dabei stellt jedes Paar $s_{j}:r_{j}$ die Bewertung $r_{j}$ eines Elements $s_{j}$ durch den Nutzer $c$ dar \cite[S. 41]{berkovsky:2:article}.
-Daraus ergibt sich beispielsweise für den Nutzer John D. das Nutzermodell $UM_{John\textnormal{ }D.} = \{Java: 3, Python:\textnormal{ }, MySQL: 2\}$ (Vgl. Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1}).
+Daraus ergibt sich beispielsweise für den Nutzer John D. das Nutzermodell $UM_{John\textnormal{ }D.} = \{Java: 3, Python:\textnormal{ ?}, MySQL: 2\}$ (Vgl. Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1}).
 
 Ein Vergleich der Matrix $R_{CF}$ aus Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1} mit der Rating-Matrix aus Tabelle \ref{tab1} zeigt, dass Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:1} lediglich einen vereinfachten Ausschnitt der Rating-Matrix darstellt.
 In Systemen des kollaborativen Filterns sind die Nutzer$_{ID}$$\times$Element$_{ID}$-Matrix zur Abbildung der Nutzermodelle und die Rating-Matrix folglich identisch.
@@ -442,7 +442,7 @@ Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:2} illustriert eine solch
 
 Als Elementattribut wurde für dieses Beispiel die Typisierung einer Programmiersprache mit den Ausprägungen "Statisch" und "Dynamisch" gewählt.
 Ein Nutzermodell enthält für alle Ausprägungen des Attributs Gewichte $w$, die den Wert eines Elementattributs für einen Nutzer abbilden \cite[S. 251]{berkovsky:article}.
-Daraus ergibt sich beispielsweise für den Nutzer John D. das Nutzermodell $UM_{John\textnormal{ }D.} = \{Statisch:\textnormal{ ?}, Dynamisch: 1.0\}$ (Vgl. Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:2}).
+Daraus ergibt sich beispielsweise für den Nutzer John D. das Nutzermodell $UM_{John\textnormal{ }D.} = \{Statisch:\textnormal{ 1.0}, Dynamisch: \textnormal{ 0.0}\}$ (Vgl. Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:2}).
 
 Um die Gewichte einer Nutzer$_{ID}$$\times$Element$_{Attribut}$-Matrix zu ermitteln, existieren in der Literatur verschiedene Verfahren \cite[S. 42]{berkovsky:2:article}.
 Grundsätzlich wird die Nutzer$_{ID}$$\times$Element$_{Attribut}$-Matrix auf Basis der Rating-Matrix generiert.
@@ -576,9 +576,9 @@ Dies kann unter anderem daran liegen, dass Nutzer diese selbst falsch einschätz
 In wechselseitigen Empfehlungssystemen sind Empfehlungen für Nutzer endlich.
 Das bedeutet, dass ein Element nicht unbegrenzt Nutzern eines Systems vorgeschlagen werden kann.
 So ist es unwahrscheinlich, dass ein Nutzer einer Online-Dating-Plattform zeitgleich fünfzig verschiedene Personen kennenlernt \cite[S. 35]{li:inproceedings}.
+Diese Eigenschaft wird als Endlichkeit bezeichnet \cite[S. 35]{li:inproceedings}.
 Im Vergleich dazu sind Elemente in traditionellen Empfehlungssystemen für Empfehlungen an unterschiedliche Nutzer nicht begrenzt \cite[S. 1468]{yildirim:article}.
 Das bedeutet, ein Element kann zeitgleich jedem Nutzer eines Systems vorgeschlagen werden.
-Diese Eigenschaft wird als Endlichkeit bezeichnet \cite[S. 35]{li:inproceedings}.
 % Weiterer unterschied: \ac{RRS} unterstützen keine n-to-n connections % S. 423, https://link.springer.com/content/pdf/10.1007/978-1-0716-2197-4.pdf
 
 \subsection{Problemstellung}\label{ch:empfehlungssyteme:rrs:problem}
@@ -619,8 +619,6 @@ Für reziproke Empfehlungen wird meist kein hartes Match zwischen Nutzer und Ele
 Das heißt, das Ziel der Empfehlungserstellung an einen Nutzer $c$ besteht darin, dem Nutzer eine Liste $L_{s} \subset S$ an Personen $s$ zu empfehlen, sodass die Präferenzen $F_{s}^{p}$ und $F_{c}^{p}$ erfüllt sind \cite[S. 36]{li:inproceedings}.
 
 Das grundlegende Konzept für die Ermittlung des Wertes einer Paarung ist in Abbildung \ref{fig:empfehlungssysteme:rrs:abb2} dargestellt.
-Nach \textcite[S. 2429]{palomares:inproceedings} werden basierend auf Daten zu Nutzern und Elementen die Präferenzen der Personen füreinander vorhergesagt (d.h. die Erfüllung von $F_{s}^{p}$ und $F_{c}^{p}$).
-Die unabhängig voneinander ermittelten Präferenzwerte werden dann mittels Aggregation zu einer Angabe zusammengeführt, welche den angenommenen Wert der bilateralen Paarung angibt.
 
 \begin{figure}[H]
     \centering
@@ -629,6 +627,9 @@ Die unabhängig voneinander ermittelten Präferenzwerte werden dann mittels Aggr
     (Eigene Darstellung in Anlehnung an \cite[S. 2429]{palomares:inproceedings})}
 	\label{fig:empfehlungssysteme:rrs:abb2}
 \end{figure}
+
+Nach \textcite[S. 2429]{palomares:inproceedings} werden basierend auf Daten zu Nutzern und Elementen die Präferenzen der Personen füreinander vorhergesagt (d.h. die Erfüllung von $F_{s}^{p}$ und $F_{c}^{p}$).
+Die unabhängig voneinander ermittelten Präferenzwerte werden dann mittels Aggregation zu einer Angabe zusammengeführt, welche den angenommenen Wert der bilateralen Paarung angibt.
 
 Nach \textcite[S. 36]{li:inproceedings} ist das Bestimmen einer optimalen Paarung in \ac{RRS} erschwert, da neben der Reziprozität auch Eigenschaften wie die Verfügbarkeit von Elementen (Endlichkeit) berücksichtigt werden müssen.
 So kann es sein, dass eine Person anhand ihrer Präferenzen optimal zu einem Nutzer passt, die empfohlene Person aber in einem gegebenen Zeitraum nicht verfügbar ist.
@@ -640,6 +641,18 @@ Eine erfolgreiche Paarung definieren \textcite[S. 37]{li:inproceedings} wie folg
 \end{definition}
 
 Demnach kann eine Paarung auch dann erfolgreich sein, wenn Beschreibungen von Nutzern bzw. Elementen die Präferenzen des Partners nur teilweise erfüllen \cite[S. 37]{li:inproceedings}.
-Dafür können andere Aspekte, wie die Verfügbarkeit von Personen, in einer erfolgreichen Paarung berücksichtigt werden.
+Dafür können andere Aspekte wie die Verfügbarkeit von Personen in einer erfolgreichen Paarung berücksichtigt werden.
+
+% Hier Überleitung finden zu Multi-kriterieller Optimierung in RS (Anknüpfen über Nutzen, der sich aus mehreren Aspekten zusammensetzt (hier: Nutzen setzt sich zusammen aus Präferenzen Manager und Präferenzen Mitarbeiter)).
+% Grundsätzlich basiert das Rating eines Elements auf einem Kriterium.
+% Für reziproke Empfehlungen sowohl die Präferenzen der Nutzer als auch die Präferenzen der Elemente berücksichtigt werden müssen.
+% Irgendwo noch einbringen, dass Paarung quasi den Nutzen angibt, also gutes paar = guter Nutzen
+% Nach \textcite[S. 36]{li:inproceedings} ist eine optimale Paarung zwischen Nutzer und Element abhängig von zwei Attributen: der Bedürfniserfüllung des Empfehlungsempfängers und der Bedürfniserfüllung der empfohlenen Person.
+
+In wechselseitigen Empfehlungssystemen reicht eine alleinige Betrachtung der Relevanz eines Elements für einen Nutzer (d.h. des Ratings) bei der Empfehlungserstellung folglich nicht aus.
+Für die erfolgreiche Empfehlung von Elementen für Nutzer in wechselseitigen Systemen müssen daher (mindestens) zwei Attribute berücksichtigt werden: die Bedürfniserfüllung des Empfehlungsempfängers und die Bedürfniserfüllung der empfohlenen Person.
+Der Nutzen einer \ac{N-E-K} in wechselseitigen Empfehlungssystemen ist folglich durch mehrere Kriterien bedingt.
+% Die Kernfrage ist also: wie kann das Rating berechnet werden, wenn die Präferenzen von Elementen einbezogen werden sollen?
+% Auch: Wie Gesamtrating ermitteln, wenn mehrere Kriterien berücksichtigt werden sollen? Wie sind Präferenzen zu gewichten? % S. 5, file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf
 
 \shorthandon{"}

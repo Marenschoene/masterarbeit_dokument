@@ -60,16 +60,18 @@ Die Ermittlung des Verlusts in dem Machine-Learning Modell von \textcite[S. 69]{
 Den Aspekt der Reziprozität bezeichnen \textcite[S. 66]{diaz:inproceedings} als two-sided relevance (dt.: zweiseitige Relevanz) \cite[S. 550]{koprinska:inbook}.
 
 \textcite[S. 247ff.]{kim:2:inproceedings} entwickelten eine Methode für die bilaterale Empfehlungserstellung in sozialen Netzwerken.
-In ihrer Arbeit beziehen sich die Autoren auf Netzwerke, in denen Nutzer auf Nachrichten anderer Nutzer positiv bzw. negativ reagieren können \cite[S. 548]{koprinska:inbook} .
+In ihrer Arbeit beziehen sich die Autoren auf Netzwerke, in denen Nutzer auf Nachrichten anderer Nutzer positiv bzw. negativ reagieren können \cite[S. 548]{koprinska:inbook}.
 Der Ansatz von \textcite[S. 247ff.]{kim:2:inproceedings} berücksichtigt für die Empfehlungserstellung sowohl die Interessen des Senders einer Nachricht, als auch die Interessen des Empfängers einer Nachricht.
 Ähnlich zu dem Ansatz von \textcite[S. 207ff.]{pizzato:2010} erfolgt die Aggregation durch Verwendung des gewichteten harmonischen Mittels \cite[S. 251]{kim:2:inproceedings}.
 Dies ermöglicht eine unterschiedliche Gewichtung des Interesses $I$ von Sender $x$ an Empfänger $y$ bzw. von Empfänger $y$ an Sender $x$ über die Parameter $w_{x}$ und $w_{y}$ \cite[S. 251]{kim:2:inproceedings}:
 \begin{equation}\label{eq34}
     H(x,y) = \frac{2}{(\frac{w_{x}}{I_{x,y}}+\frac{w_{y}}{I_{y,x}})}
 \end{equation}
-Anküpfende Experimente von \textcite[S. 259]{kim:2:inproceedings} zeigen nur eine geringe Schwangung des Anteils positiver Interaktionen von Empfängern am Gesamtaufkommen der Interaktionen in Abhängigkeit der gewählten Gewichte für die Interessen.
-Die Autoren gehen davon aus, dass die geringe Schwankung maßgeblich aufgrund des retrospektiven Charakters der historischen Daten besteht \cite[S. 259]{kim:2:inproceedings}.
-Die Veröffentlichung von \textcite[S. 259]{kim:2:inproceedings} kann folglich keine Aussage darüber treffen, wie Nutzer auf Empfehlungen reagieren, die anhand unterschiedlicher Gewichte ermittelt wurden.
+Nach \textcite[S. 219]{kim:2:inproceedings} werden die Gewichte so gewählt, dass deren Summe ($w_{1}+w_{2}$) $1$ ist.
+Für anknüpfende Experimente setzten die Autoren für das Gewicht $w_{y}$ die unterschiedlichen Werte 0, 0.25, 0.5 und 0.75 sowie analog für $w_{x}$ die Werte 1.0, 0.75, 0.5 und 0.25 ein \cite[S. 251]{kim:2:inproceedings}.
+Die Ergebnisse der Experimente zeigten nur eine geringe Schwankung des Anteils positiver Interaktionen von Empfängern am Gesamtaufkommen der Interaktionen bei unterschiedlichen Ausprägungen der Gewichte der Interessen.
+\textcite[S. 259]{kim:2:inproceedings} gehen davon aus, dass die geringe Schwankung maßgeblich aufgrund des retrospektiven Charakters der historischen Daten besteht.
+Die Autoren können folglich keine Aussage darüber treffen, wie Nutzer auf Empfehlungen reagieren, die anhand unterschiedlicher Gewichte ermittelt wurden.
 % Dies ist durch die Art der Ermittlung des Interesses eines Empfängers zu erklären, welches durch das Verhältnis von positiven Rückmeldungen eines Empfängers zu allen Interaktionen eines Senders bemessen wird.
 % Da die Anzahl an Rückmeldungen bereits in der Vergangenheit ermittelt wurde, hat eine höhere Gewichtung dieser keinen Einfluss auf vergangene Interaktionen, lediglich auf die Ermittlung des harmonischen Mittels.
 
@@ -102,7 +104,7 @@ Um für Nutzer ohne erfolgreiche Interaktionen in der Vergangenheit Empfehlungen
 Hierbei stellt $V_{c}$ die Menge aller Personen $c'$ dar, deren Profil $c$ betrachtet hat und $\mathbb{1}_{c' \in SuccInter_{c}}$ eine Indikatorfunktion, welche $1$ ausgibt, wenn eine Person $c'$ eine erfolgreiche Interaktion mit $c$ aufweist und $0$ andernfalls.
 $Rank_{c'} (RWS_{c,*}(\alpha))$ gibt den Rang einer Person $c' \in V_{c}$ im Ranking für einen Nutzer $c$ an \cite[S. 135]{kleinerman:2:inproceedings}.
 Für die Lösung des Optimierungsproblems verwenden die Autoren den Algorithmus von \textcite[S. 422ff.]{brent:article} für die lokale Minimumsuche innerhalb eines angegebenen Intervalls.
-Aus der Lösung resultiert das Gewicht $\alpha$, welches Personen, die erfolgreiche Interaktionen mit einem Nutzer aufweisen, höher im Ranking platziert \cite[S. 135]{kleinerman:2:inproceedings}.
+Aus der Lösung resultiert das Gewicht $\alpha$, welches Personen, die erfolgreiche Interaktionen mit einem Nutzer aufwiesen, höher im Ranking platziert \cite[S. 135]{kleinerman:2:inproceedings}.
 
 In anknüpfenden Experimenten untersuchten die Autoren die Bedeutung der individuellen Gewichtung in Online-Dating-Plattformen.
 Hierfür verglichen sie ihren Ansatz mit einer bekannten Methode für wechselseitige Empfehlungssysteme von \textcite[S. 6]{xia:inproceedings}, welche die Interessen der Nutzer über das harmonische Mittel aggregiert.
@@ -116,7 +118,7 @@ Grundsätzlich gehen  \textcite[S. 138]{kleinerman:2:inproceedings} davon aus, d
 Im Vergleich zu verwandten Domänen hat die automatische Zuordnung von Personen zu Jobpositionen in der Literatur bislang wenig Aufmerksamkeit erhalten \cite[S. 1469]{yildirim:article}.
 
 \textcite[S. 1ff.]{malinowski:2006} stellen in ihrer Arbeit die Notwendigkeit der Berücksichtigung bilateraler Präferenzen für die Zuordnung von Personen zu Jobpositionen fest.
-Die Autoren führen den Begriff des \ac{P-E Fit} ein, welcher häufig in der Berufs- und Organisationspsychologie Anwendung findet \cite[S. 2]{link:booklet} und eine optimale Zuordnung einer Person zu ihrer Umgebung beschreibt.
+Die Autoren führen den Begriff des \ac{P-E Fit} an, welcher häufig in der Berufs- und Organisationspsychologie Anwendung findet \cite[S. 2]{link:booklet} und eine optimale Zuordnung einer Person zu ihrer Umgebung beschreibt.
 Gemäß \textcite[S. 1ff.]{malinowski:2006} hängt eine optimale Zuordnung von Person zu Arbeitsumgebung (d.h. \ac{P-E Fit}) von vier Komponenten ab: dem Person-Job-Fit, dem Person-Oganisation-Fit, dem Per\-son-Vocation-Fit und dem Person-Group-Fit \cite[S. 3]{malinowski:2006}.
 Diese Zuordnung kann signifikante Auswirkungen (z.B. Zufriedenheit, Leistung, Stress) haben \cite[S. 83]{su:2015}.
 In ihrer Arbeit fokussieren sich \textcite[S. 4]{malinowski:2006} auf die optimale Zuordnung von Person zu Job (Person-Job-Fit).
@@ -133,9 +135,9 @@ Für die Abbildung der Präferenz eines Mitarbeiters für eine Projektposition v
 Die Berücksichtigung der Präferenzen der Mitarbeiter erfolgt, indem das System für einen Mitarbeiter, der eine Projektposition präferiert, die höchste Bewertung dieser Fähigkeit innerhalb des Kompetenzniveaus des Angestellten zu dessen Beurteilung addiert \cite[S. 44]{link:booklet}.
 \textcite[S. 44]{link:booklet} begründet diese Aggregation der Präferenzen damit, dass die ursprüngliche Reihenfolge der Mitarbeiter bestehen bleibt und Projektmanager zugleich den fähigsten und motiviertesten Angestellten vorgeschlagen bekommen.
 
-Kritisch ist anzumerken, dass diese Methode keine durchgängige Gewichtung der Präferenzen von Mitarbeitern vorsieht.
+Kritisch ist anzumerken, dass diese Methode keine einheitliche Gewichtung der Präferenzen von Mitarbeitern vorsieht.
 Dies führt zwangsläufig dazu, dass alle Mitarbeiter innerhalb einer Kompetenzstufe einer Fähigkeit, die diese Fähigkeit präferieren, höher eingestuft werden als der fähigste Mitarbeiter dieser Kompetenzstufe, der keine Präferenz angegeben hat.
-Da der Einfluss der Präferenz eines Mitarbeiters auf das jeweilige Kompetenzniveau begrenzt ist, verhindert \textcite[S. 1ff.]{link:booklet}, dass Mitarbeiter mit geringen Kenntnissen in einer Fähigkeit durch Präferenz höher gelistet werden als Mitarbeiter mit Expertenwissen.
+Da der Einfluss der Präferenz eines Mitarbeiters auf das jeweilige Kompetenzniveau begrenzt ist, erlaubt \textcite[S. 1ff.]{link:booklet}, dass Mitarbeiter mit geringen Kenntnissen in einer Fähigkeit durch Präferenz höher gelistet werden als Mitarbeiter mit Expertenwissen.
 Dies macht es jedoch zugleich unmöglich, dass Mitarbeiter mit Kenntnissen am oberen Rand eines Kompetenzniveaus einer Fähigkeit, die diese Fähigkeit präferieren, höher gelistet werden, als Mitarbeiter mit Kenntnissen am unteren Rand der angrenzenden Kompetenzstufe, die diese Fähigkeit nicht präferieren.
 
 Des weiteren bemängelt \textcite[S. 69]{link:booklet}, dass aus einer fehlenden Angabe zu der Präferenz eines Mitarbeiters für eine Projektposition nicht hervorgeht, ob dieser einer Fähigkeit neutral gegenübersteht, oder diese nicht bei zukünftigen Projektarbeiten anwenden möchte.

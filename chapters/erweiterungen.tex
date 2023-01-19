@@ -5,27 +5,18 @@
 \shorthandoff{"}
 \chapter{Multi-kriterielle Optimierung}
 \label{ch:erweiterungen}
-% Hier Überleitung finden zu Multi-kriterieller Optimierung in RS (Anknüpfen über Nutzen, der sich aus mehreren Aspekten zusammensetzt (hier: Nutzen setzt sich zusammen aus Präferenzen Manager und Präferenzen Mitarbeiter)).
-% Grundsätzlich basiert das Rating eines Elements auf einem Kriterium.
-Im vorangegangenen Kapitel wurde erläutert, dass für reziproke Empfehlungen sowohl die Präferenzen der Nutzer als auch die Präferenzen der Elemente berücksichtigt werden müssen.
-% Irgendwo noch einbringen, dass Paarung quasi den Nutzen angibt, also gutes paar = guter Nutzen
-Nach \textcite[S. 36]{li:inproceedings} ist eine optimale Paarung von Nutzer und Element demnach abhängig von zwei Attributen: der Bedürfniserfüllung des Empfehlungsempfängers und der Bedürfniserfüllung der empfohlenen Person.
-Eine alleinige Betrachtung der Relevanz eines Elements für einen Nutzer (d.h. des Ratings) reicht in \ac{RRS} folglich nicht aus.
-Für die Ermittlung des Nutzen einer \ac{N-E-K} in wechselseitigen Empfehlungssystemen müssen demnach mehrere Kriterien berücksichtigt werden.
-% Die Kernfrage ist also: wie kann das Rating berechnet werden, wenn die Präferenzen von Elementen einbezogen werden sollen?
-% Auch: Wie Gesamtrating ermitteln, wenn mehrere Kriterien berücksichtigt werden sollen? Wie sind Präferenzen zu gewichten? % S. 5, file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf
 
 \section{Einführung}
 \label{ch:erweiterungen:einführung}
-In den meisten Empfehlungssystemen erfolgt die Ermittlung des Nutzen einer \ac{N-E-K} anhand eines Kriteriums (z.B. der Gesamtbewertung eines Elements, Vgl. Kapitel \ref{ch:empfehlungssysteme:empfehlungserstellung:recommendation}) \cite[S. 847]{adomavicius:4:inbook}\cite[S. 745]{adomavicius:inproceedings}\cite[S. 49]{adomavicius:inproceedings:2}\cite[S. 424]{manouselis:article}\cite[S. 65]{lakiotaki:article}.
-Nach \textcite[S. 847f.]{adomavicius:4:inbook} ist diese Annahme in der Literaur zuletzt in Teilen als unzureichend bezeichnet worden.
-Es wird davon ausgegangen, dass der Nutzen eines Elements für einen Nutzer durchaus von mehreren Kriterien abhängen kann \cite[S. 847f.]{adomavicius:4:inbook}\cite[S. 424]{manouselis:article}.
+% In den meisten Empfehlungssystemen erfolgt die Ermittlung des Nutzen einer \ac{N-E-K} anhand eines Kriteriums (z.B. der Gesamtbewertung eines Elements, Vgl. Kapitel \ref{ch:empfehlungssysteme:empfehlungserstellung:recommendation}) \cite[S. 847]{adomavicius:4:inbook}\cite[S. 745]{adomavicius:inproceedings}\cite[S. 49]{adomavicius:inproceedings:2}\cite[S. 424]{manouselis:article}\cite[S. 65]{lakiotaki:article}.
+% Nach \textcite[S. 847f.]{adomavicius:4:inbook} ist diese Annahme in der Literaur zuletzt in Teilen als unzureichend bezeichnet worden.
+% Es wird davon ausgegangen, dass der Nutzen eines Elements für einen Nutzer durchaus von mehreren Kriterien abhängen kann \cite[S. 847f.]{adomavicius:4:inbook}\cite[S. 424]{manouselis:article}.
 
 In der Praxis existiert auch außerhalb des Bereichs der Empfehlungssysteme eine Vielzahl an Problemstellungen, für die unter der Berücksichtigung von oftmals konkurrierenden Kriterien eine optimale Lösung gefunden werden muss.
 So zählt nach \textcite[S. ix]{statnikov:book} die Mehrheit aller Probleme der Ingenieurswissenschaft zu multi-kriteriellen Problemen.
 Auch in anderen Bereichen wie dem Gesundheitswesen \cite[S. 195]{nemeth:article} oder der Marktforschung \cite[S. 50]{adomavicius:inproceedings:2} treten multi-kriterielle Probleme auf.
-Ansätze für die Lösung solcher multi-kriteriellen Probleme werden allgemein unter dem Begriff der multi-kriteriellen Optimierung (engl.: multicriteria optimization) zusammengefasst \cite[S. v]{ehrgott:book}\cite[S. 867]{adomavicius:4:inbook}.
-Zu bekannten Methoden zählen das Finden Pareto-Optimaler Lösungen \cite[S. 50]{adomavicius:inproceedings:2} und das Anwenden von Linearkombinationen zur Reduktion multi-kriterieller auf unikriterielle Probleme \cite[S. 745]{adomavicius:inproceedings}.
+Ansätze für die Lösung solcher multi-kriteriellen Probleme werden allgemein unter dem Begriff der multi-kriteriellen Optimierung (engl.: multicriteria optimization) zusammengefasst \cite[S. 867]{adomavicius:4:inbook}\cite[S. v]{ehrgott:book}.
+Zu bekannten Methoden zählen das Finden pareto-optimaler Lösungen \cite[S. 50]{adomavicius:inproceedings:2} und das Anwenden von Linearkombinationen zur Reduktion multi-kriterieller auf unikriterielle Probleme \cite[S. 745]{adomavicius:inproceedings}.
 
 In der Entscheidungstheorie wird die Entscheidungsfindung in Organisationen ebenfalls als ein multi-kriterielles Problem behandelt, wobei verschiedene Aspekte wie Personal, Finanzen und Umwelt berücksichtigt werden müssen \cite[S. 50]{adomavicius:inproceedings:2}.
 Ansätze, um Verantwortliche in dem Treffen von Entscheidungen anhand von (konkurrierenden) Kriterien zu unterstützen, werden gemäß \textcite[S. 50]{adomavicius:inproceedings:2} unter dem Begriff der multi-kriteriellen Entscheidungsunterstützung (engl.: \ac{MCDA}) zusammengefasst.
@@ -43,7 +34,7 @@ Eine entscheidende Rolle in \ac{MCDA} spielt die Gewichtung der einzelnen Kriter
 Aus Sicht der Entscheidungstheorie \cite[S. 77]{jannach:inproceedings} können Empfehlungssysteme als entscheidungsunterstüztende Systeme verstanden werden \cite[S. 398f.]{huang:article}.
 Demnach unterstützen Empfehlungssysteme die Nutzer eines Systems darin, aus einer Menge an Alternativen basierend auf mehreren Kriterien nützliche Elemente zu finden \cite[S. 398f.]{huang:article}.
 
-Im Kontext von Empfehlungssystemen wurde der Einsatz von \ac{MCDA}-Metho\-den bereits in einigen Veröffentlichungen behandelt (siehe \cite{hdioud:inproceedings}\cite{zheng:inproceedings}\cite{adomavicius:4:inbook}\cite{adomavicius:inproceedings:2}).
+Im Kontext von Empfehlungssystemen wurde der Einsatz von \ac{MCDA}-Metho\-den bereits in einigen Veröffentlichungen behandelt (siehe \cite{adomavicius:inproceedings:2}\cite{adomavicius:4:inbook}\cite{hdioud:inproceedings}\cite{lakiotaki:article}\cite{manouselis:article}\cite{zheng:inproceedings}).
 \textcite[S. 849]{adomavicius:4:inbook} gehen davon aus, dass aufgrund der Generalität des Begriffs "multi-kriteriell", der multi-kriterielle Charakter \cite[S. 10]{adomavicius:5:inbook} der meisten Empfehlungssysteme auf unterschiedliche Grundideen verweisen kann.
 Größtenteils können diese einer der folgenden Kategorien zugeordnet werden \cite[S. 10]{adomavicius:5:inbook}\cite[S. 849]{adomavicius:4:inbook}:
 \begin{itemize}
@@ -52,7 +43,7 @@ Größtenteils können diese einer der folgenden Kategorien zugeordnet werden \c
     \item Multi-kriterielle Bewertungen in der Präferenzerhebungen
 \end{itemize}
 
-Multi-attribut-basierte Inhaltssuche und multi-attribut-basiertes Filtern bezeichnen Systeme, die einem Nutzer ermöglichen seine Präferenzen unter Anwendung von Such- bzw. Filterprozessen spezifizieren \cite[S. 10]{adomavicius:5:inbook}\cite[S. 851]{adomavicius:4:inbook}.
+Multi-attribut-basierte Inhaltssuche und multi-attribut-basiertes Filtern bezeichnen Systeme, die einem Nutzer ermöglichen, seine Präferenzen unter Anwendung von Such- bzw. Filterprozessen spezifizieren \cite[S. 851]{adomavicius:4:inbook}\cite[S. 10]{adomavicius:5:inbook}.
 Diese zusätzlichen Präferenzen können in solchen Systemen verwendet werden, um die Menge an potenziell nützlichen Elementen für einen Nutzer weiter einzugrenzen \cite[S. 11]{adomavicius:5:inbook}.
 Unter multi-attribut-basierter Präferenzmodellierung wird die Darstellung von Präferenzen anhand verschiedener Attribute eines Elements verstanden (z.b. in klassischen inhaltsbasierten \ac{RS} \cite[S. 205]{hdioud:inproceedings}) \cite[S. 10]{adomavicius:5:inbook}.
 Nach \textcite[S. 850]{adomavicius:4:inbook} werden diese Arten der multi-kriteriellen Empfehlung bereits durch existierende Typen von Empfehlungssystemen unterstützt (z.B. wissenbasierten, inhaltsbasierten und hybriden \ac{RS}).
@@ -61,10 +52,10 @@ Ein Beispiel stellen Conversational \ac{RS} dar, die Präferenzen eines Nutzers 
 % Hier beispiel einfügen? S. 4, https://iopscience.iop.org/article/10.1088/1742-6596/930/1/012050/pdf
 
 Als multi-objektive Empfehlungsstrategien werden Implementierungen von Empfehlungssystemen verstanden, die für die Empfehlung von Elementen für einen Nutzer mehrere Ziele (engl.: Objectives) berücksichtigen \cite[S. 850]{adomavicius:4:inbook}.
-Gemäß \textcite[S. 1097]{mcnee:inproceedings} verfolgen Empfehlungssysteme in der Literatur häufig ein Ziel, nämlich die Genauigkeit (engl.: Accuracy) der empfohlenen Elemente an einen Nutzer zu erhöhen.
+Gemäß \textcite[S. 1097]{mcnee:inproceedings} verfolgen Empfehlungssysteme in der Literatur häufig das Ziel, die Genauigkeit (engl.: Accuracy) der empfohlenen Elemente für einen Nutzer zu erhöhen.
 Unter der Genauigkeit von Empfehlungen wird die Übereinstimmung einer vorhergesagten Bewertung durch das System mit der tatsächlichen Bewertung eines Nutzers verstanden \cite[S. 1098]{mcnee:inproceedings}.
 In der Literatur wird davon ausgegangen, dass die Genauigkeit von Empfehlungen nicht immer ein alleiniger Indikator des tatsächlichen Nutzen von Empfehlungen ist \cite[S. 1097]{mcnee:inproceedings}\cite[S. 850]{adomavicius:4:inbook}\cite[S. 896]{adomavicius:article}.
-Neben der Genauigkeit von Empfehlungen versuchen moderne Empfehlungssysteme daher oftmals die eingesetzten Algorithmen hinsichtlich weiterer Ziele (z.B. Diversität von Elementen \cite[S. 896]{adomavicius:article}, Serendipity \cite[S. 1099]{mcnee:inproceedings}) zu optimieren \cite[S. 850]{adomavicius:4:inbook}.
+Neben der Genauigkeit von Empfehlungen versuchen moderne Empfehlungssysteme daher oftmals die eingesetzten Algorithmen hinsichtlich weiterer Ziele (z.B. Diversität von Elementen \cite[S. 896]{adomavicius:article}, Serendipität \cite[S. 1099]{mcnee:inproceedings}) zu optimieren \cite[S. 850]{adomavicius:4:inbook}.
 Multi-kriteriell bedeutet in solchen Systemen folglich die Empfehlungen für Nutzer unter Berücksichtigung mehrerer Ziele zu generieren \cite[S. 850]{adomavicius:4:inbook}.
 % Beispiel?
 
@@ -90,6 +81,8 @@ Bilden \ac{MCRS} lediglich die Bewertungen der einzelnen Kriterien ab, ergibt si
 \begin{equation}\label{eq12}
     R: Nutzer \times Element \rightarrow R_{1} \times ... \times R_{k}
 \end{equation}
+Solche Systeme verfügen lediglich über Bewertungen der einzelnen Kriterien eines Elements.
+Es existiert folglich keine Gesamtbewertung $R_{0}$ \cite[S. 853]{adomavicius:4:inbook}.
 
 Tabelle \ref{tab3} bildet beispielhaft multi-kriterielle Bewertungen von Mitarbeitern eines Unternehmens für Fähigkeiten ab.
 Hierbei setzt sich eine Gesamtbewertung aus dem Kenntnisstand eines Mitarbeiters und dessen Präferenzen für eine Fähigkeit zusammen.
@@ -129,8 +122,8 @@ Daher werden nachfolgend Lösungsansätze multi-kriterieller Optimierungsproblem
 
 \section{Lösungsansätze}
 Nach \textcite[S. 853]{adomavicius:4:inbook} stellt die Integration multi-kriteriel\-ler Bewertungen in bestehende Techniken eine der wichtigsten Themen zukünftiger Empfehlungssysteme dar.
-In der Literatur existieren bereits einige Veröffentlichungen, die grundlegende Techniken zur Integration multi-kriterieller Bewertungen in Empfehlungssysteme betrachten (siehe \cite{recommenderSystems:2016}\cite{adomavicius:4:inbook}\cite{adomavicius:inproceedings:2}).
-Abhängig davon, in welcher Phase des Empfehlungserstellungsprozesses die Techniken eingesetzt werden, werden diese in der Literatur einer von zwei Kategorien zugeordnet: Einsatz multi-kriterieller Bewertungen in der Vorhersage oder Einsatz multi-kriterieller Bewertungen im Ranking \cite[S. 854]{adomavicius:4:inbook}.
+In der Literatur existieren bereits einige Veröffentlichungen, die grundlegende Techniken zur Integration multi-kriterieller Bewertungen in Empfehlungssysteme betrachten (siehe \cite{adomavicius:inproceedings:2}\cite{adomavicius:4:inbook}\cite{recommenderSystems:2016}).
+Abhängig davon, in welcher Phase des Empfehlungserstellungsprozesses die Techniken eingesetzt werden, ordnen \textcite[S. 854f.]{adomavicius:4:inbook} diese einer von zwei Kategorien zu: Einsatz multi-kriterieller Bewertungen in der Vorhersage oder Einsatz multi-kriterieller Bewertungen im Ranking \cite[S. 854]{adomavicius:4:inbook}.
 
 Während der Vorhersage-Phase können multi-kriterielle Bewertungen eingesetzt werden, um Gesamtbewertungen bzw. Bewertungen individueller Kriterien vorherzusagen \cite[S. 854]{adomavicius:4:inbook}.
 Häufig werden multi-kriterielle Bewertungen für die Vorhersage in Systemen des kollaborativen Filterns verwendet \cite[S. 850]{adomavicius:4:inbook}.
@@ -142,7 +135,7 @@ Für die Vorhersage werden heuristische Methoden verwendet \cite[S. 855]{adomavi
 Abhängig davon, welche Technik für die Vorhersage angewandt wird, unterscheiden sich Lösungsansätze multi-kriterieller Bewertungen in der Vorhersage weiter in speicherbasierte- und modellbasierte Ansätze.
 
 \subsection{Speicherbasierte Ansätze}
-In speicherbasierten Systemen des kollaborativen Filterns erfolgt die Vorhersage fehlender Bewertungen grundsätzlich durch Aggregation \cite[S.738]{adomavicius:inproceedings} von Bewertungen ähnlicher Nutzer bzw. ähnlicher Elemente.
+In speicherbasierten Systemen des kollaborativen Filterns erfolgt die Vorhersage fehlender Bewertungen grundsätzlich durch Aggregation \cite[S.738]{adomavicius:inproceedings} von Bewertungen ähnlicher Nutzer bzw. Elemente.
 Dies basiert auf der Annahme, dass ähnliche Nutzer ähnliches Bewertungsverhalten aufweisen (nutzerbasiertes kollaboratives Filtern) bzw. ähnliche Elemente ähnliche Bewertungen erhalten (elementbasiertes kollaboratives Filtern) \cite[S. 29]{recommenderSystems:2016}.
 In der Praxis verwenden die meisten Systeme des kollaborativen Filterns Ähnlichkeiten zwischen Nutzern für die Vorhersage fehlender Bewertungen \cite[S. 427]{recommenderSystems:2016}.
 Eine Vorhersage stellt demnach eine Aggregation der Bewertungen eines Zielelements durch Nutzer dar, die (basiernd auf ihren vorherigen Bewertungen) Ähnlichkeit zu einem Zielnutzer aufweisen \cite[S.738]{adomavicius:inproceedings}.
@@ -150,7 +143,7 @@ Eine Vorhersage stellt demnach eine Aggregation der Bewertungen eines Zielelemen
 Für die Ermittlung der Ähnlichkeit $sim(c,c')$ zweier Nutzer $c$ und $c'$, können verschiedene Ähnlichkeitsmaße herangezogen werden.
 Zu den bekanntesten paarweisen Ähnlichkeitsmaßen zählen der Pearson-Korrelationskoeffizient und die Kosinus-Ähnlichkeit \cite[S. 856]{adomavicius:4:inbook}\cite[S. 738]{adomavicius:inproceedings}.
 % Hier Maße mit reinnehmen oder nicht?
-Angenommen $S(c,c')$ stellt die Menge aller Elemente aus $S$ dar, die beide Nutzer bewertet haben (d.h. $S(c,c')=\{s \in S | r_{cs} \neq ? \cap r_{c's} \neq ?\}$ \cite[S. 738]{adomavicius:inproceedings}), so werden die Ähnlichkeitsmaße wie folgt ermittelt \cite[S. 856]{adomavicius:4:inbook}:
+Sei $S(c,c')$ die Menge aller Elemente aus $S$, die beide Nutzer bewertet haben (d.h. $S(c,c')=\{s \in S | r_{cs} \neq ? \cap r_{c's} \neq ?\}$ \cite[S. 738]{adomavicius:inproceedings}), so werden die Ähnlichkeitsmaße wie folgt ermittelt \cite[S. 856]{adomavicius:4:inbook}:
 \begin{itemize}
     \item Pearson-Korrelationskoeffizient:
     \begin{equation}\label{eq13}
@@ -167,11 +160,11 @@ Die Idee der Integration multi-kriterieller Bewertungen in die Ähnlichkeitsbere
 Gemäß \textcite[S. 856f.]{adomavicius:4:inbook} können Ähnlichkeitsmaße wie der Pearson-Korrelationskoeffizient oder die Kosinus-Ähnlichkeit lediglich Bewertungen anhand eines einzelnen Kriteriums verarbeiten.
 In \ac{MCRS} besteht eine Bewertung $r$ jedoch neben einer Gesamtbewertung $r^{0}$ zusätzlich aus $k$ multi-kriteriellen Bewertungen $r^{1}, ..., r^{k}$, d.h. $r=(r^{0},r^{1}, ..., r^{k})$ \cite[S. 426]{recommenderSystems:2016}\cite[S. 857]{adomavicius:4:inbook}.
 Anstelle eines einzigen Ratings besitzt eine \ac{N-E-K} in \ac{MCRS} demnach $k+1$ Bewertungen \cite[S. 857]{adomavicius:4:inbook}.\footnote{Für \ac{MCRS}, die keine Gesamtbewertungen beinhalten, können für die Berechnung der Ähnlichkeit dieselben Maße angewandt werden, wie für Systeme die Gesamtbewertungen verwenden, mit dem einzigen Unterschied, dass der Index $i$ nicht die Gesamtbewertung einschließt (d.h. $i \in \{1,k\}$ anstelle von $i \in \{0,k\}$) \cite[S. 857]{adomavicius:4:inbook}.}
-Daher können multi-kriterielle Bewertungen nicht unmittelbar auf die Gleichungen angewandt werden.
+Daher könnendie Gleichungen nicht unmittelbar für multi-kriterielle Bewertungen angewandt werden.
 In Anlehnung an \textcite[S. 49]{adomavicius:inproceedings:2}, \textcite[S. 860]{adomavicius:4:inbook} und \textcite[S. 427]{recommenderSystems:2016} wird die Vorstellung der Lösungsansätze auf nutzerbasiertes kollaboratives Filtern begrenzt.\footnote{Für ein simples Vorgehen zur Umstellung der Berechnungen auf elementbasiertes kollaboratives Filtern wird auf \textcite[S. 49]{adomavicius:inproceedings:2} verwiesen.}
 
 Ein speicherbasierter Ansatz für die Berücksichtigung multi-kriterieller Bewertungen in der Ähnlichkeitsberechnung stellt die Aggregation von Ähnlichkeiten auf Ebene der einzelnen Kriterien dar.
-Gibt $sim^{i}(c,c')$ die Ähnlichkeit zweier Nutzer $c$ und $c'$ für jedes Kriterium $i \in \{0,k\}$ an, so kann deren Ähnlichkeit nach \textcite[S. 427]{recommenderSystems:2016} allgemein wie folgt ermittelt werden:
+Gibt $sim^{i}(c,c')$ die Ähnlichkeit zweier Nutzer $c$ und $c'$ für jedes Kriterium $i \in \{0,k\}$ an, so kann deren Ähnlichkeit nach \textcite[S. 427]{recommenderSystems:2016} allgemein in zwei Schritten ermittelt werden:
 \begin{enumerate}
     \item Berechnung der Ähnlichkeit $sim^{i}(c,c')$ für jedes Kriterium $i \in \{0,k\}$ anhand eines paarweisen Ähnlichkeitsmaßes (z.B. Pearson-Korrelations\-koeffizient, Kosinus-Ähnlichkeit).
     \item Berechnung der aggregierten Ähnlichkeit $sim^{aggr}(c,c')$ anhand einer Aggregationsfunktion über alle Ähnlichkeiten der einzlenen Kriterien:
@@ -203,7 +196,7 @@ Hierbei stellt $w^{i}$ das Gewicht des Kriteriums $i$ $(i=0,...,k)$ dar, welches
 Die Werte der Gewichte können gemäß \textcite[S. 428]{recommenderSystems:2016} mithilfe herkömmlicher Parameteroptimierungs-Techniken (z.b. Kreuzvalidierung) bestimmt werden.
 
 Neben der Ähnlichkeitsberechnung mit anschließender Aggregation kann die Ähnlichkeit zweier Nutzer unter Berücksichtigung multi-kriterieller Bewertungen auch über multidimensionale Distanzmaße ermittelt werden \cite[S. 857]{adomavicius:4:inbook}.
-Für diesen speicherbasierten Ansatz wird im ersten Schritt die Ähnlichkeit zweier Nutzer $c$ und $c'$ basierend auf einem Element $s$ über ein herkömmliches Distanzmaß ermittelt.
+Für diesen speicherbasierten Ansatz wird im ersten Schritt die Ähnlichkeit zweier Nutzer $c$ und $c'$ anhand eines Elements $s$ über ein herkömmliches Distanzmaß ermittelt.
 % Hier Maße mit reinnehmen oder nicht?
 Zu bekannten Distanzmaßen zählen \textcite[S. 857f.]{adomavicius:4:inbook}:
 \begin{itemize}
@@ -237,11 +230,11 @@ Aus der Gesamtdistanz lässt sich die Ähnlichkeit zweier Nutzer wie folgt ablei
     sim^{aggr}(c,c') = \frac{1}{1 + dist^{aggr}(c,c')}
 \end{equation}
 
-Speicherbasierte Ansätze beeinflussen lediglich die Ähnlichkeitsberechnung in kollaborativen Systemen.\footnote{Die speicherbasierten Ansätze werden daher auch als ähnlichkeitsbasierte Ansätze bezeichnet \cite[S. 52]{adomavicius:inproceedings:2}.}
+Speicherbasierte Ansätze adjustieren lediglich die Ähnlichkeitsberechnung in kollaborativen Systemen.\footnote{Die speicherbasierten Ansätze werden daher auch als ähnlichkeitsbasierte Ansätze bezeichnet \cite[S. 52]{adomavicius:inproceedings:2}.}
 Das bedeutet, fehlende Bewertungen können nach Ermittlung der Ähnlichkeit wie gewohnt mittels Aggregation (z.B. gewichtete Summe \cite[S. 859]{adomavicius:4:inbook}) bestimmt werden \cite[S. 52]{adomavicius:inproceedings:2}\cite[S. 428]{recommenderSystems:2016}.
 
 \subsection{Modellbasierte Ansätze}
-Im Vergleich zu speicherbasierten Algorithmen des kollaborativen Filterns, werden fehlende Bewertungen in traditionellen modellbasierten Systemen über Vorhersage-Modelle bestimmt \cite[S. 861]{recommenderSystems:2016}.
+Im Vergleich zu speicherbasierten Algorithmen des kollaborativen Filterns werden fehlende Bewertungen in traditionellen modellbasierten Systemen über Vorhersage-Modelle bestimmt \cite[S. 861]{recommenderSystems:2016}.
 Basierend auf vergangenen Bewertungen der Nutzer eines Systems \cite[S. 358]{jin:article}, werden diese Vorhersage-Modelle im Vorfeld entwickelt (bspw. anhand von statistischen Modellen) \cite[S. 71]{recommenderSystems:2016}.
 In der Literatur existieren bereits einige Ansätze für die Integration multi-kriterieller Bewertungen in modellbasierte Systeme \cite[S. 861]{adomavicius:4:inbook}.
 Eine umfassende Übersicht grundlegender Ansätze stellen \textcite[S. 861]{adomavicius:4:inbook} vor.
@@ -260,7 +253,7 @@ Nach dieser Annahme müsste eine hoch vorhergesagte Präferenz eines Mitarbeiter
 
 Die Vorhersage von Gesamtbewertungen nach dem Aggregation Function Ansatz erfolgt anhand von drei Schritten, welche nachfolgend in Abbildung \ref{fig:optimierung:loesungen:abb1} grafisch abgebildet sind.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
 	\includegraphics[width=1.0\textwidth]{gfx/a-f-ansatz.png}
 	\caption[Aggregation Function Ansatz]{Aggregation Function Ansatz\\
@@ -296,7 +289,7 @@ Vereinfacht gesehen handelt es sich dabei um Methoden, die mit Wahrscheinlichkei
 In der Veröffentlichung wird eine Anpassung des \ac{FMM} von \textcite[S. 704ff.]{si:inproceedings} um multi-krierielle Bewertungen vorgestellt.
 
 \textcite[S. 358]{jin:article} beschreiben das \ac{FMM} als eine grafische Darstellung eines probabilistischen Modells, in dem Nutzer und Elemente (mehreren)\footnote{Das \ac{FMM} unterscheidet sich von herkömmlichen grafischen Modellen unter anderem darin, dass Nutzer bzw. Elemente mehreren Clustern zugeordnet werden können \cite[S. 3]{si:inproceedings}\cite[S. 366]{jin:article}.} Clustern (übergeordneten Klassen) zugeordnet werden können.
-Die Idee hinter probabilistischen Clustering-Methoden besteht darin, zugrundeliegende Strukturen aus einer Menge an Daten zu ermitteln \cite[S. 197]{truyen:inproceedings}, die für die Vorhersage verwendet werden können.
+Die Idee hinter probabilistischen Clustering-Methoden besteht darin, zugrundeliegende (auch: latente) Strukturen aus einer Menge an Daten zu ermitteln \cite[S. 197]{truyen:inproceedings}, die für die Vorhersage verwendet werden.
 Das \ac{FMM} folgt der Annahme, dass eine Bewertung r, welche ein Element s von einem Nutzer c erhält, von einer latenten Variable $Z_{c}$ und einer latenten Variable $Z_{s}$ abhängt \cite[S. 235]{sahoo:article}.
 $Z_{c}$ kennzeichnet hierbei die Klasse(n), denen ein Nutzer $c$ und ${Z_{s}}$ die Klasse(n), denen ein Element $s$ zugeordnet werden kann \cite[S. 862]{adomavicius:4:inbook}\cite[S. 3]{si:inproceedings}.
 % Die Idee des \ac{FMM} besteht darin, dass die Variablen Bewertung, Nutzer und Element unter der Bedingung der latenten Variablen $Z_{c}$ und $Z_{s}$ unabhängig voneinander sind \cite[S. 4]{sahoo:2:article}\cite[S. 235]{sahoo:article}.
@@ -310,7 +303,7 @@ Das grundlegende Modell ist in Abbildung \ref{fig:optimierung:loesungen:abb2:1} 
 % Mixture Models wurden ursprünglich entwickelt, um das Sparsity-Problem zu umgehen.
 % Vereinfacht gesagt ist eine Bewertung r abhängig von einer Nutzerklasse und einer Elementklasse und nicht genau von einem Nutzer und einem Element.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \subfloat[Flexible Mixture Model]{\includegraphics[width=2.0in]{gfx/f-m-m.png}\label{fig:optimierung:loesungen:abb2:1}}
     \subfloat[Flexible Mixture Model mit multi-kriteriellen Bewertungen und Dependency-Struktur]{\includegraphics[width=3.0in]{gfx/f-m-m-2.png}\label{fig:optimierung:loesungen:abb2:2}}\\
@@ -385,7 +378,7 @@ Im Gegensatz dazu ermittelt \ac{SVR} eine Funktion $f$ unter Anwendung des $\eps
 Dieser führt einen $\epsilon$-insensitiven, symmetrischen Bereich mit minimalem Radius um $f$ ein, sodass Fehler $< \epsilon$ nicht das Erstellen der Regressionsgleichung beeinflussen \cite[S. 67]{awad:inbook}.
 Für ein besseres Verständnis ist in Abbildung \ref{fig:optimierung:loesungen:abb3} ein Beispiel einer linearen \ac{SVR} dargestellt.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
 	\includegraphics[width=1.0\textwidth]{gfx/svr.png}
 	\caption[Lineare Support Vector Regression]{Lineare Support Vector Regression \cite[S. 68]{awad:inbook}}
@@ -408,7 +401,7 @@ Das bedeutet, nach der Vorhersage wird die (angenommene) Gesamtbewertung einer \
 
 Ohne Gesamtbewertung wird das Ranking von Elementen komplexer \cite[S. 867]{adomavicius:4:inbook}.
 Dem liegt zugrunde, dass die Ordnung der einzelnen Kriterien nicht unmittelbar ersichtlich \cite[S. 867]{adomavicius:4:inbook} oder ohne Weiteres über Aggregationsfunktionen erlernbar ist.
-Basierend auf Verfahren der multi-kriteriellen Optimierung aus dem Bereich Operations Research \cite[S. 745]{adomavicius:inproceedings}, stellen \textcite[S. 867]{adomavicius:4:inbook} verschiedene Methoden für das Ranking von Elementen anhand multipler Kriterien vor.
+Basierend auf Verfahren der multi-kriteriellen Optimierung aus dem Bereich Operations Research \cite[S. 745]{adomavicius:inproceedings} stellen \textcite[S. 867]{adomavicius:4:inbook} verschiedene Methoden für das Ranking von Elementen anhand multipler Kriterien vor.
 Hierzu zählen
 \begin{itemize}
     \item Verfahren für das Finden Pareto-optimaler Lösungen,
