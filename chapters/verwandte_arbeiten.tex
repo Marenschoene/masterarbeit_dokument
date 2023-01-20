@@ -33,7 +33,7 @@ Die Autoren entwickeln einen inhaltsbasierten Algorithmus für eine Online-Datin
 \end{equation}
 Als Indikator für die Präferenzen $P_{x}$ eines Nutzers $x$ stützen sich die Autoren auf Attribute der Nutzer, die eine Nachricht des Nutzers $x$ erhalten haben.
 So gehen \textcite[S. 210]{pizzato:2010} davon aus, dass ein Nutzer $x$ eine bestimmte Altersgruppe bevorzugt, wenn er im Vergleich zu anderen Altersgruppen maßgeblich Nutzern einer Altersklasse Nachrichten gesendet hat.
-Die Präferenz eines Nutzers $x$ für einen Nutzer $y$ bestimmen \textcite[S. 210]{pizzato:2010} über einen Komnpatibilitäs-Wert $Comp.(P_{x,y})$, der sich aus der Präferenz des Nutzers $x$ für die Attribute des Nutzers $y$ ergibt.
+Die Präferenz eines Nutzers $x$ für einen Nutzer $y$ bestimmen \textcite[S. 210]{pizzato:2010} über einen Kompatibilitäts-Wert $Comp.(P_{x,y})$, der sich aus der Präferenz des Nutzers $x$ für die Attribute des Nutzers $y$ ergibt.
 Bis heute wird davon ausgegangen, dass die meisten der später vorgeschlagenen Modelle zu \ac{RRS} auf dem Ansatz von \textcite[S. 207ff.]{pizzato:2010} basieren \cite[S. 723]{kumari:article}.
 
 % Negative Präferenzen? s.u.
@@ -52,8 +52,10 @@ Den Autoren zufolge soll dadurch eine unilaterale Präferenz im Vergleich zu her
 Dies betrifft beispielsweise Fälle in denen lediglich eine Person den Präferenzen der anderen Person entspricht, zum Beispiel in Fällen in denen ein Bewerber eine Jobposition bevorzugt, dieser aber nicht für die ausgeschriebenen Stelle geeignet ist \cite[S. 38]{li:inproceedings}.
 
 \textcite[S. 66ff.]{diaz:inproceedings} formulieren das Finden optimaler Paare in Online-Dating-Plattformen als Informationsbeschaffungsproblem\footnote{"Information retrieval problem" - \textcite[S. 67]{diaz:inproceedings}} \cite[S. 550]{koprinska:inbook}.
-\textcite[S. 550]{koprinska:inbook} beschreiben die Veröffentlichung der Autoren als einen Ansatz für das Ranking von Nutzern in Abhängighkeit ihrer Übereinstimmung mit dem idealen Partnerprofil eines Nutzers (d.h. Ausprägungen strukturierter und unstrukturierter Profilattribute \cite[S. 288]{li:article}\cite[S. 272]{pizzato:2:inproceedings}).
-Die Autoren verwenden historische Daten, mithilfe derer Paare von Nutzern als "relevant" bzw. "nicht-relevant" gekennzeichnet werden.
+\textcite[S. 550]{koprinska:inbook} beschreiben die Veröffentlichung der Autoren als einen Ansatz für das Ranking von Nutzern in Abhängighkeit ihrer Übereinstimmung mit dem idealen Partnerprofil eines Nutzers.
+Das ideale Partnerprofil eines Nutzers ermitteln die Autoren über strukturierte und unstrukturierte Profilattribute \cite[S. 288]{li:article}\cite[S. 272]{pizzato:2:inproceedings}, zu denen auch explizite Prfäferenzen eines Nutzers zählen, die dieser in Form einer Anfrage festlegen kann.
+% Die Profilattribute, die ... in ihrem Ansatz berücksichtigen sind in ... grafisch dargestellt.
+Die Autoren verwenden historische Daten, mithilfe derer Paare von Nutzern als "relevant" bzw. "nicht-relevant" gekennzeichnet werden \cite[S. 288]{li:article}.
 Als relevant bezeichnen die Autoren Paare, in denen Nutzer Kontaktinformation ausgetauscht haben \cite[S. 66ff.]{diaz:inproceedings}.
 Unter Verwendung eines Gradient Boosted Decision Trees (Machine-Learning Technik) und den gekennzeichneten historischen Daten ermitteln \textcite[S. 69]{diaz:inproceedings} die angenommene Relevanz potenzieller Kandidaten für einen Nutzer \cite[S. 550]{koprinska:inbook}.
 Die Ermittlung des Verlusts in dem Machine-Learning Modell von \textcite[S. 69]{diaz:inproceedings} erfolgt durch Anwendung der mittleren quadratischen Abweichung (engl.: \ac{MSE}).
