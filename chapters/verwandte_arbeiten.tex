@@ -144,6 +144,29 @@ Dies macht es jedoch zugleich unmöglich, dass Mitarbeiter mit Kenntnissen am ob
 
 Des weiteren bemängelt \textcite[S. 69]{link:booklet}, dass aus einer fehlenden Angabe zu der Präferenz eines Mitarbeiters für eine Projektposition nicht hervorgeht, ob dieser einer Fähigkeit neutral gegenübersteht, oder diese nicht bei zukünftigen Projektarbeiten anwenden möchte.
 
+Zuletzt veröffentlichten \textcite[S. 102ff.]{yang:inproceedings} einen Ansatz für die Bestimmung des Person-Job-Fit unter Berücksichtigung wechselseitiger Präferenzen.
+Die Autoren stellen ein System vor, in dem Interaktionen zwischen Kandidaten und Jobausschreibungen als dual-perspective Graph modelliert sind \cite[S. 102]{yang:inproceedings}.
+In dem Graph wird jeder Kandidat und jede Jobausschreibung jeweils durch einen aktiven (z.B. Kandidat bewirbt sich für Job) und einen passiven Knoten (Kandidat wird von Recruiter angeworben) in dem Netzwerk repräsentiert.
+Die Darstellung der Interaktionen als dual-perspective Graph sind in Abbildung \ref{fig:relatedwork:abb3} dargestellt.
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.9\textwidth]{gfx/dpg.png}
+	\caption[Dual-perspective Graph]{Dual-perspective Graph\\
+    (Eigene Darstellung in Anlehnung an \cite[S. 104]{yang:inproceedings})}
+	\label{fig:relatedwork:abb3}
+\end{figure}
+Dadurch ermöglichen die Autoren eine Modellierung der verschiedenen Perspektiven von Kandidat und Recruiter in der Zuordnung von Person zu Arbeitsumgebung.
+% Kandidaten bzw. Jobausschreibungen werden jeweils durch eine Beschreibung (z.B. Anschreiben, Jobausschreibung) sowie gerichtete Interaktionen (z.B. Bewerbung, Sichten von Bewerbungsunterlagen) repräsentiert werden \cite[S. 103]{yang:inproceedings}.
+Die Präferenz eines Kandidats für eine Jobausschreibung ermitteln \textcite[S. 106]{yang:inproceedings} als das Produkt der Repräsentation des aktiven Knoten eines Kandidaten und der Repräsentation des passiven Knoten eines Jobs.
+Analog ermitteln die Autoren die Präferenz eines Recruiters für einen Kandidat.
+Ein Matching zwischen Job und Kandidat ergibt sich nach \textcite[S. 106]{yang:inproceedings} aus dem Durchschnitt der Präferenz $r_{i\rightarrow k}$ des Kandidats $c_{i}$ für die Auswahl von Job $j_{k}$ und der Präferenz $s_{k\rightarrow i}$ des Recruiters (d.h. Jobs) $j_{k}$ für die Auswahl von Kandidat $c_{i}$:
+\begin{equation}\label{eq35}
+    \hat{y} = \frac{1}{2} r_{i\rightarrow k} +\frac{1}{2} s_{k\rightarrow i}
+\end{equation}
+Nach dem Ansatz von \textcite[S. 102ff.]{yang:inproceedings} werden die Präferenzen beider Parteien gleichermaßen berücksichtigt.
+Basierend auf dem dual-perspective Graph werden bereits existierende Paarungen als Referenz verwendet, um nicht gematchte Kandidaten bzw. Jobausschreibungen in Abhängigkeit des reziproken Präferenzwertes zu sortieren.
+% Dual perspektive graph representation hier: S. 104, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/recsys%202022%20modeling%20two%20way%20selection%20preference%20for%20person%20job%20fit.pdf
+
 \section{Als multi-kriteriell bezeichnete wechselseitige Systeme}
 % Obwohl \ac{MCDA} in der Literatur im Bereich Operations Research bereits intensiv behandelt wurde \cite[S. 220]{lakiotaki:inproceedings}, merken \textcite[S. 248]{kim:2:inproceedings} an, dass die Thematik in dem Kontext von Empfehlungssytemen bislang wenig Aufmerksamkeit erhalten hat.
 
