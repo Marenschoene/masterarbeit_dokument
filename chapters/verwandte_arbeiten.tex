@@ -27,7 +27,7 @@ Für alternative Kombinationsmöglichkeiten der bilateralen Präferenzen verweis
 Auch wenn die Umsetzung der reziproken Empfehlung bereits als multi-kriterieller Ansatz modelliert wurde (Vgl. Gleichung \ref{eq32}), bezeichnen \textcite[S. 1ff.]{pizzato:inproceedings} die wechselseitige Empfehlungserstellung nicht ausdrücklich als multi-kriterielles Problem. 
 
 Eine Umsetzung des Konzepts wechselseitiger Empfehlungssysteme stellen \textcite[S. 207ff.]{pizzato:2010} in einer weiterführenden Arbeit vor.
-Die Autoren entwickeln einen inhaltsbasierten Algorithmus für eine Online-Dating-Website, welche die bilateralen Präferenzen zweier Nutzer $x$ und $y$ über das harmonische Mittel aggregiert:
+Die Autoren entwickeln den inhaltsbasierten Algorithmus RECON für eine Online-Dating-Website, welche die bilateralen Präferenzen zweier Nutzer $x$ und $y$ über das harmonische Mittel aggregiert:
 \begin{equation}\label{eq33}
     PRR(x,y) = \frac{2}{(\frac{1}{Comp.(P_{x,y})}+\frac{1}{Comp.(P_{y,x})})}
 \end{equation}
@@ -35,8 +35,6 @@ Als Indikator für die Präferenzen $P_{x}$ eines Nutzers $x$ stützen sich die 
 So gehen \textcite[S. 210]{pizzato:2010} davon aus, dass ein Nutzer $x$ eine bestimmte Altersgruppe bevorzugt, wenn er im Vergleich zu anderen Altersgruppen maßgeblich Nutzern einer Altersklasse Nachrichten gesendet hat.
 Die Präferenz eines Nutzers $x$ für einen Nutzer $y$ bestimmen \textcite[S. 210]{pizzato:2010} über einen Kompatibilitäts-Wert $Comp.(P_{x,y})$, der sich aus der Präferenz des Nutzers $x$ für die Attribute des Nutzers $y$ ergibt.
 Bis heute wird davon ausgegangen, dass die meisten der später vorgeschlagenen Modelle zu \ac{RRS} auf dem Ansatz von \textcite[S. 207ff.]{pizzato:2010} basieren \cite[S. 723]{kumari:article}.
-
-% Negative Präferenzen? s.u.
 
 Kritisch ist anzumerken, dass die Präferenzen der Nutzer in der Ermittlung des reziproken Wertes nicht unterschiedlich stark gewichtet werden können.
 Demzufolge ist der reziproke Wert eines Nutzers $x$ für einen Nutzer $y$ symmetrisch zu dem Wert eines Nutzers $y$ für einen Nutzer $x$ \cite[S. 211]{pizzato:2010}.
@@ -144,28 +142,55 @@ Dies macht es jedoch zugleich unmöglich, dass Mitarbeiter mit Kenntnissen am ob
 
 Des weiteren bemängelt \textcite[S. 69]{link:booklet}, dass aus einer fehlenden Angabe zu der Präferenz eines Mitarbeiters für eine Projektposition nicht hervorgeht, ob dieser einer Fähigkeit neutral gegenübersteht, oder diese nicht bei zukünftigen Projektarbeiten anwenden möchte.
 
+Ein Ansatz für die Kombination von positiven und negativen Präferenzen stellen \textcite[S. 269ff.]{pizzato:2:inproceedings} in einer Weiterentwicklung des RECON-Algorithmus um negative Präferenzen vor.
+Unter negativen Präferenzen verstehen die Autoren negative Interaktionen zwischen Nutzern (z.B. negative Rückmeldung eines Nutzers auf die Kontaktaufnahme durch einen anderen Nutzer) \cite[S. 273]{pizzato:2:inproceedings}.
+Im Detail führen die Autoren eine Modellierung an, die sowohl positive als auch negative Präferenzen im Online-Dating in der Empfehlungserstellung berücksichtigt.
+Hierfür werden separat für positive und negative Präferenzen eines Nutzers $c$ Kompatibilitätswerte ($C^{+}(c,c')$ für positiv und $C^{-}(c,c')$ für negativ) mit einem potenziellen Partner $c'$ ermittelt und zu einem Gesamtwert aggregiert \cite[S. 273]{pizzato:2:inproceedings}:
+\begin{equation}\label{eq39}
+    C^{\pm}(c,c')=\frac{1+C^{+}(c,c')-C^{-}(c,c')}{2}
+\end{equation}
+Das Ergebnis stellt die Kompatibilität eines potenziellen Partners $c'$ mit dem Nutzer $c$ dar, wobei $C^{\pm}(c,c')$ nahe 1 ist, wenn $c'$ stark mit den positiven Präferenzen von $c'$ und schwach bis gar nicht mit den negativen Präferenzen von $c'$ übereinstimmt.
+Durch Normalisierung stellen die Autoren sicher, dass der finale Kompatibilitätswert zwischen $0$ und $1$ liegt \cite[S. 273]{pizzato:2:inproceedings}.
+In anknüpfenden Experimenten zeigen \textcite[S. 279]{pizzato:2:inproceedings}, dass eine zusätzliche Berücksichtigung negativer Präferenzen zu Empfehlungenn mit höheren Erfolgsaussichten führen \cite[S. 279]{pizzato:2:inproceedings}.
+
 Zuletzt veröffentlichten \textcite[S. 102ff.]{yang:inproceedings} einen Ansatz für die Bestimmung des Person-Job-Fit unter Berücksichtigung wechselseitiger Präferenzen.
 Die Autoren stellen ein System vor, in dem Interaktionen zwischen Kandidaten und Jobausschreibungen als dual-perspective Graph modelliert sind \cite[S. 102]{yang:inproceedings}.
 In dem Graph wird jeder Kandidat und jede Jobausschreibung jeweils durch einen aktiven (z.B. Kandidat bewirbt sich für Job) und einen passiven Knoten (Kandidat wird von Recruiter angeworben) in dem Netzwerk repräsentiert.
-Die Darstellung der Interaktionen als dual-perspective Graph sind in Abbildung \ref{fig:relatedwork:abb3} dargestellt.
-\begin{figure}[H]
-    \centering
-	\includegraphics[width=0.9\textwidth]{gfx/dpg.png}
-	\caption[Dual-perspective Graph]{Dual-perspective Graph\\
-    (Eigene Darstellung in Anlehnung an \cite[S. 104]{yang:inproceedings})}
-	\label{fig:relatedwork:abb3}
-\end{figure}
+% Die Darstellung der Interaktionen als dual-perspective Graph sind in Abbildung \ref{fig:relatedwork:abb3} dargestellt.
+% \begin{figure}[H]
+%     \centering
+% 	\includegraphics[width=0.9\textwidth]{gfx/dpg.png}
+% 	\caption[Dual-perspective Graph]{Dual-perspective Graph\\
+%     (Eigene Darstellung in Anlehnung an \cite[S. 104]{yang:inproceedings})}
+% 	\label{fig:relatedwork:abb3}
+% \end{figure}
 Dadurch ermöglichen die Autoren eine Modellierung der verschiedenen Perspektiven von Kandidat und Recruiter in der Zuordnung von Person zu Arbeitsumgebung.
 % Kandidaten bzw. Jobausschreibungen werden jeweils durch eine Beschreibung (z.B. Anschreiben, Jobausschreibung) sowie gerichtete Interaktionen (z.B. Bewerbung, Sichten von Bewerbungsunterlagen) repräsentiert werden \cite[S. 103]{yang:inproceedings}.
 Die Präferenz eines Kandidats für eine Jobausschreibung ermitteln \textcite[S. 106]{yang:inproceedings} als das Produkt der Repräsentation des aktiven Knoten eines Kandidaten und der Repräsentation des passiven Knoten eines Jobs.
 Analog ermitteln die Autoren die Präferenz eines Recruiters für einen Kandidat.
 Ein Matching zwischen Job und Kandidat ergibt sich nach \textcite[S. 106]{yang:inproceedings} aus dem Durchschnitt der Präferenz $r_{i\rightarrow k}$ des Kandidats $c_{i}$ für die Auswahl von Job $j_{k}$ und der Präferenz $s_{k\rightarrow i}$ des Recruiters (d.h. Jobs) $j_{k}$ für die Auswahl von Kandidat $c_{i}$:
-\begin{equation}\label{eq35}
+\begin{equation}\label{eq38}
     \hat{y} = \frac{1}{2} r_{i\rightarrow k} +\frac{1}{2} s_{k\rightarrow i}
 \end{equation}
 Nach dem Ansatz von \textcite[S. 102ff.]{yang:inproceedings} werden die Präferenzen beider Parteien gleichermaßen berücksichtigt.
-Basierend auf dem dual-perspective Graph werden bereits existierende Paarungen als Referenz verwendet, um nicht gematchte Kandidaten bzw. Jobausschreibungen in Abhängigkeit des reziproken Präferenzwertes zu sortieren.
-% Dual perspektive graph representation hier: S. 104, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/recsys%202022%20modeling%20two%20way%20selection%20preference%20for%20person%20job%20fit.pdf
+Basierend auf dem dual-perspective Graph werden bereits existierende Paarungen als Referenz verwendet, um nicht gematchte Kandidaten bzw. Jobausschreibungen in Abhängigkeit des vorhergesagten reziproken Präferenzwertes zu sortieren.
+
+Die Autoren vergleichen ihren Ansatz bezüglich der Performance (Precision, Recall, Normalized Discounte Cumulative Gain und Mean Reciprocal Rank) mit diversen Baseline-Algorithmen.
+Dabei konnten sie feststellen, dass ihr Algorithmus im Vergleich zu den Baseline-Algorithmen durchweg bessere Ergebnisse erzielen konnte \cite[S. 110]{yang:inproceedings}.
+\textcite[S. 110]{yang:inproceedings} begründen dies anhand einer Fallstudie, welche in Abbildung \ref{fig:relatedwork:abb4} grafisch dargestellt ist.\footnote{Die Abbildung von \textcite[S. 111]{yang:inproceedings} enthält einen Schreibfehler (LigthGCN [sic]).}
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=1.0\textwidth]{gfx/dpg-case-study.png}
+	\caption[Vergleich dual-perspective Graph-Algorithmus mit Baseline-Algorithmen anhand einer Fallstudie]{Vergleich Dual-perspective Graph-Algorithmus mit Baseline-Algo\-rithmen anhand einer Fallstudie\\
+    \cite[S. 111]{yang:inproceedings}}
+	\label{fig:relatedwork:abb4}
+\end{figure}
+Anhand einer Jobbeschreibung und eines Lebenslaufs zeigt das Schaubild einen Vergleich der bilateralen Präferenzwerte eines Kandidats und eines Recruiters, die durch den vorgestellten Algorithmus (DPGNN) ermittelt wurden, mit den Empfehlungswerten eines Kollaborativen Systems (LightGCN) und eines inhaltsbasierten Systems (BPJFNN).
+\textcite[S. 110]{yang:inproceedings} zeigen, dass anhand der separat ermittelten Präferenzwerte ihres Algorithmus korrekterweise keine Empfehlung des Kandidats für den Job erfolgt, während vergleichbare Systeme (LightGCN und BPJFNN) den Kandidat fälschlicherweise empfehlen würden.
+
+Kritisch an dem Ansatz von \textcite[S. 102ff.]{yang:inproceedings} ist anzumerken, dass der angeführte Vergleich keine isolierte Betrachtung der wechselseitigen Komponente ermöglicht.
+Zwar zeigen die Ergebnisse eine bessere Performance des Ansatzes als Ganzes, es ist jedoch nicht ersichtlich, wie die Steigerung der Performance erzielt wurde.
+Beispielsweise wird aus Abbildung \ref{fig:relatedwork:abb4} nicht unmittelbar sichtbar, ob die Verbesserung in der Empfehlung durch die wechselseitige Komponente erzielt wurde oder beispielsweise durch die Kombination von Interaktionen und textbasierten Daten als Input für den Algorithmus.
 
 \section{Als multi-kriteriell bezeichnete wechselseitige Systeme}
 % Obwohl \ac{MCDA} in der Literatur im Bereich Operations Research bereits intensiv behandelt wurde \cite[S. 220]{lakiotaki:inproceedings}, merken \textcite[S. 248]{kim:2:inproceedings} an, dass die Thematik in dem Kontext von Empfehlungssytemen bislang wenig Aufmerksamkeit erhalten hat.
@@ -212,7 +237,7 @@ Das heißt, die Autoren klassifizieren die wechselseitigen Präferenzen in ihrem
 Als multi-objektiv bezeichnen \textcite[S. 12]{rodriguez:inproceedings} ihren Ansatz zur Integration "äußerer Merkmale"\footnote{"extraneous features" - \textcite[S. 12]{rodriguez:inproceedings}} in ein semantisches Modell im Bereich des Online-Recruitments. 
 Dieser ist in Abbildung \ref{fig:relatedwork:abb1} dargestellt.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
 	\includegraphics[width=0.9\textwidth]{gfx/talentMatch.png}
 	\caption[Ansatz für die Integration äußerer Merkmale in semantische Modelle]{Ansatz für die Integration äußerer Merkmale in semantische Modelle\\
