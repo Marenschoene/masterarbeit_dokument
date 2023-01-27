@@ -94,11 +94,11 @@ Die \ac{RWS} von \textcite[S. 134]{kleinerman:2:inproceedings} ist nachfolgend i
 	\label{fig:relatedwork:abb2}
 \end{figure}
 
-Um für Nutzer ohne erfolgreiche Interaktionen in der Vergangenheit Empfehlungen zu erstellen, definieren die Autoren zusätzlich ein Optimierungsproblem über alle Nutzer eines Systems hinweg \cite[S. 135]{kleinerman:2:inproceedings}:
+Um für Nutzer ohne erfolgreiche Interaktionen in der Vergangenheit Empfehlungen zu erstellen, definieren die Autoren zusätzlich ein Optimierungsproblem über alle Nutzer eines Systems hinweg \cite[S. 135]{kleinerman:2:inproceedings}:\footnote{Die Formel von \textcite[S. 135]{kleinerman:2:inproceedings} enthält einen Tippfehler ($\geq$ anstelle von $\leq$ [sic]).}
 \begin{equation}\label{eq37}
     \begin{aligned}
         \min_{\alpha} \sum_{c \in C} \sum_{c' \in V_{c}} \mathbb{1}_{c' \in SuccInter_{c}} Rank_{c'} (RWS_{c,*}(\alpha))\\
-        \textnormal{u.d.B. } 0 \geq \alpha \geq 1\\
+        \textnormal{u.d.B. } 0 \leq \alpha \leq 1\\
     \end{aligned}
 \end{equation}
 Hierbei stellt $V_{c}$ die Menge aller Personen $c'$ dar, deren Profil $c$ betrachtet hat und $\mathbb{1}_{c' \in SuccInter_{c}}$ eine Indikatorfunktion, welche $1$ ausgibt, wenn eine Person $c'$ eine erfolgreiche Interaktion mit $c$ aufweist und $0$ andernfalls.
