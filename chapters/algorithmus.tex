@@ -6,14 +6,23 @@
 \chapter{Konzeption}
 \label{ch:algorithmus}
 
-\section{Probleminterpretation}
-
 \section{Gestaltung des bilateralen Algorithmus}
+
+\subsection{Aggregation}
 % Begründung Auswahl der Kombination der Präferernzen
 % Berücksichtigung negativer Präferenzen in Anlehnung an: S. 231, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/recsys%202022%20modeling%20two%20way%20selection%20preference%20for%20person%20job%20fit.pdf
 
+\subsection{Gewichtung}
+
 \section{Aufbau des Empfehlungssystems}
 % Microservice-Architektur -> Empfehlungs-komponente (Rankings)
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=1.0\textwidth]{gfx/empfehlungsservice.png}
+	\caption[Aufbau des Empfehlungssystems]{Aufbau des Empfehlungssystems}
+	\label{fig:algorithmus:abb1}
+\end{figure}
 
 % Begründung für SVR: S: 30, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Criteria%20Chains%20A%20Novel%20Multi-Criteria%20Recommendation.pdf
 
