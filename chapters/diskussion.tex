@@ -6,7 +6,84 @@
 \chapter{Diskussion}
 \label{ch:diskussion}
 
-Kurz eingehen auf die ergebnisse der präferenz und fähigkeitsbefragung
+\section{Zusammenfassung der Ergebnisse}
+Im Rahmen der quantitativen Forschung dieser Arbeit wurde untersucht, ob der entwickelte bilaterale Algorithmus robust die Zufriedenheit von Mitarbeitenden erhöhen kann, ohne Einbußen in der zu erwartenden Arbeitsleistung der Mitarbeitenden bei der Besetzung von offenen Projektpositionen zu bewirken.
+Anhand einer Befragung unter den Mitarbeitenden des IT-Unternehmens EXXETA wurden Fähigkeiten und Präferenzen von Mitarbeitenden sowie deren Zufriedenheit mit ausgewählten Beispielprojekten ermittelt.
+Eine Befragung unter den Managern desselbigen Unternehmens diente dazu, die zu erwartende Arbeitsleistung der befragten Mitarbeitenden in den ausgewählten Projekten zu bestimmen.
+Die Zufriedenheit und die zu erwartende Arbeitsleistung wurde jeweils für die empfohlenen Mitarbeitenden des unilateralen sowie die empfohlenen Mitarbeitenden des bilateralen Algorithmus gemessen und miteinander verglichen.
+Insgesamt konnte festgestellt werden, dass der bilaterale Algorithmus im Mittel in jedem Projekt eine höhere Zufriedenheit erzielte und in zwei der fünf Projekte eine Steigerung der Arbeitsleistung bewirkte.
+Dabei führte der bilaterale Algorithmus in 28 Prozent der Fälle zu einer erhöhten Zufriedenheit unter den empfohlenen Mitarbeitenden und in 20 Prozent der Fällen zu einer Steigerung der prognostizierten Arbeitsleistung der empfohlenen Mitarbeitenden.
+Zugleich führte der bilaterale Algorithmus in 12 Prozent der Fälle zu einer Verschlechterung der erwarteten Arbeitsleistung.
+Der Rückgang der Arbeitsleistung konnte zwei der fünf Projekte zugeordnet werden.
+Lediglich in 8 Prozent der Fälle bewirkte der bilaterale Algorithmus einen Rückgang der Zufriedenheit unter den empfohlenen Mitarbeitenden.
+Die Verschlechterung der Zufriedenheit wurde genau in einem der fünf Projekte bewirkt.
+% In 12 Prozent der Fälle führte der bilaterale Algorithmus dagegen zu einer Verschlechterung der zu erwartenden Arbeitsleistung.
+% In 8 Prozent der Fälle bewirkte der bilaterale Algorithmus sogar eine Verschlechterung der Zufriedenheit unter den empfohlenen Mitarbeitenden.
+
+% Kurz eingehen auf die ergebnisse der präferenz und fähigkeitsbefragung
+Bei der Befragung der Mitarbeitenden zu ihren Fähigkeiten und Präferenzen konnte festgestellt werden, dass Mitarbeitende den Großteil der angefragten Fähigkeiten präferierten, während sie nahezu gleich vielen angeforderten Fähigkeiten neutral gegenüber standen.
+Weiter wurde sichtbar, dass der Großteil der Fähigkeiten von Mitarbeitenden sowohl beherrscht als auch präferiert wurde.
+Durch die Integration der negativen Präferenzen wurde sichtbar, dass Mitarbeitende bei über 22 Prozent der angeforderten Fähigkeiten kein Interesse zeigten diese in zukünftigen Projekten einsetzen zu wollen.
+Ein Vergleich der Erfüllung der Präferenzen der Mitarbeitenden durch die angeforderten Projektpositionen und deren Zufriedenheit in den jeweiligen Projekten zeigte darüber hinaus bei zwei der fünf Beispielprojekte eine auffällige Diskrepanz.
+
+Die Befragung der Manager legte offen, dass deren Angaben zu der prognostizierten Arbeitsleistung der Mitarbeitenden in den ausgewählten Projekten bei zwei der Beispielprojekte auffällig auseinanderfielen. 
+Ein Vergleich der Erfüllung der angeforderten Projektpositionen durch die Mitarbeitenden und deren erwarteter Arbeitsleistung nach Angaben der Manager zeigte darüber hinaus, dass die angegebenen Mitarbeitenden in einigen Projekten nicht konkruent mit den Mitarbeitenden mit der höchsten Erfüllung der angeforderten Projektpositionen waren.
+
+Abschließend wurde betrachet, wie sich die Gewichtung von Fähigkeiten und Präferenzen auf die Zufriedenheit und die Arbeitsleistung der Mitarbeitenden auswirkte.
+Dabei wurde festgestellt, dass die Methode zur Bestimmung des optimalen Gewichts bei unterschiedlichen Kombinationen der Traningsdatensätze zu Gewichten führte, die alle in einen Bereich zwischen 0.6 und 0.8 fielen.
+Bei Betrachtung der Zufriedenheit und der Arbeitsleistung unter Anwendung der verschiedenen Gewichte fiel auf, dass die Steigerung der Zufriedenheit und der Arbeitsleistung durch kein bestimmtes Gewicht erzielt wurde.
+Auch die Fälle, die eine Verschlechterung der Zufriedenheit bzw. der Arbeitsleistung aufwiesen konnten nicht gezielt einem Gewicht zugeordnet werden.
+
+\section{Interpretation der Ergebnisse}
+% - interpretation von zufriedenheit und arbeitsleistung insgesamt und ausreisser erklären mit bezug zu kapitel 3, wo erklärt wird, dass man präferenzen integrieren soll
+
+% Die in Kapitel .. vorgestellten verwandten Arbeiten über die Kombination der Präferenzen zweier Parteien in einem Empfehlungssystem ließen vermuten, dass die unterschiedliche Gewichtung der Präferenzen
+
+In Kapitel \ref{ch:verwandte_arbeiten} wurde im Rahmen der verwandten Arbeiten angeführt, dass eine Gewichtung der Präferenzen beider Parteien eines Empfehlungssystems die Qualität der Empfehlungen positiv beeinflussen kann.
+Aufgrund der Natur des Anwendungsfalls wurde angenommen, dass eine geringere Gewichtung der Fähigkeiten ($\alpha$ <= 0.5) und die damit einhergehende höhere Gewichtung der Präferenzen in einer höheren Zufriedenheit und niedrigeren Arbeitsleistung unter den empfohlenen Mitarbeitenden resultiert.
+Zugleich wurde erwartet, dass eine höhere Gewichtung der Fähigkeiten ($\alpha$ > 0.5) und die damit einhergehende geringere Gewichtung der Präferenzen eine höhere Arbeitsleistung sowie eine niedrigere Zufriedenheit bewirken.
+Die Ergebnisse der Fallstudie zeigten jedoch keinen eindeutigen Trend hinsichtlich Zufriedenheit und Arbeitsleistung bei unterschiedlicher Gewichtung der Fähigkeiten und Präferenzen.
+Dies ist daran zu erkennen, dass die Verschlechterung bzw. Verbesserung von weder Zufriedenheit noch Arbeitsleistung eindeutig bestimmten Gewichten zugeordnet werden kann (Vgl. Abbildung \ref{fig:ergebnisse:abb12} und Abbildung \ref{fig:ergebnisse:abb13}).
+
+Eine Vermutung für den unklaren Trend lag darin, dass die untersuchten $\alpha$-Werte für die Menge der vorhanden Daten (13 Mitarbeitende je Gewicht) zu nah beieinander lagen.
+Daher wurde der bilaterale Algorithmus anhand der gesamten Daten (54 Mitarbeitende) für Grenzfälle von $\alpha$ evaluiert, einmal mit $\alpha$ = 0.1 und einmal mit $\alpha$ = 0.9 als Gewicht.
+Die Ergebnisse sind in Abbildung \ref{fig:diskussion:abb1} dargestellt.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.95\textwidth]{gfx/verhaeltnis-z-a-projekte-edge-cases.png}
+	\caption[Veränderung von Zufriedenheit und Arbeitsleistung der Mitarbeitenden von unilateralem zu bilateralem Algorithmus für Grenzfälle von $\alpha$]{Veränderung von Zufriedenheit und Arbeitsleistung der Mitarbeitenden von unilateralem zu bilateralem Algorithmus für Grenzfälle von $\alpha$}
+	\label{fig:diskussion:abb1}
+\end{figure}
+
+Die Abbildung stellt die Veränderung der Zufriedenheit und der Arbeitsleistung von unilateralem zu bilateralem Algorithmus in Abhängigkeit der Grenzfälle für $\alpha$ dar.
+Darin ist zu erkennen, bei wie vielen Projekten eine Kennzahl durch den bilateralen Algorithmus im Vergleich zum unilateralen Algorithmus gestiegen, gesunken oder gleich geblieben ist.
+Auffällig ist, dass entgegen der Erwartungen eine marginale Gewichtung der Fähigkeiten ($\alpha$ = 0.1) in zwei von fünf Projekten sogar zu einer Steigerung der Arbeitsleistung der empfohlenen Mitarbeitenden führte.
+Des Weiteren ist auffällig, dass eine Berücksichtigung der Präferenzen ($\alpha$ = 0.9), wenn auch geringfügig, in einem der fünf Projekte zu einem Rückgang der Zufriedenheit unter den Mitarbeitenden führte.
+Insgesamt wird deutlich, dass auch für Grenzfälle des Gewichts $\alpha$ kein klarer Trend zu erkennen ist.
+
+Die Ergebnisse der Auswirkungen des bilateralen Algorithmus auf die Zufriedenheit und die Arbeitsleistung der Mitarbeitenden lassen die Vermutung zu, dass eine Berücksichtigung der Präferenzen grundsätzlich vorteilhaft ist.
+Dabei scheint es eine geringfügigere Rolle zu spielen, welches Gewicht den Präferenzen zukommt.
+Darüber hinaus wird angenommen, dass die geringe Bedeutung der Gewichtung auch darauf zurückzuführen ist, dass viele Mitarbeitende die Fähigkeiten präferieren, die sie auch beherrschen.
+Folglich führt eine geringe Gewichtung der Fähigkeiten und eine damit einhergehende hohe Gewichtung der Präferenzen nicht umgehend zu einer geringen Arbeitsleistung.
+Umgekehrt führt eine hohe Gewichtung der Fähigkeiten und eine damit einhergehende niedrige Gewichtung der Präferenzen nicht zwangsläufig zu einer geringeren Zufriedenheit.
+
+
+welcher trend wurde erwartet, was konnte erkannt werden?
+- hinweis, dass gewichtung interessant sein kann wie in kapitel 3 beschrieben
+- anführen, dass arbeit dies nicht belegen konnte, edge cases vorgestellten
+
+- integration der negativen präferenzen diskutieren
+
+
+
+\section{Beschränkungen der Forschung}
+- managerbefragung anführen, zu wenig zeit genommen, liegen weit auseinander etc.
+
+\section{Empfehlungen für weiterführende Forschung}
+vorschlag mit integration als slider option
+
+hinzunahme weiterer kriterien in anlehnung an die vorgestellten methoden in der arbeit
 
 % Abgleich Präferenzen angeforderte Projektpositionen:
 % Ein detaillierter Abgleich der Mitarbeitenden, die angaben mit Projekt 5 zufrieden zu sein, mit den Mitarbeitenden, die eine hohe Übereinstimmung aufwiesen (> 80 Prozent) zeigte, dass lediglich 5 dieser 13 Mitarbeitenden auch angaben, mit dem Projekt zufrieden zu sein.
@@ -14,19 +91,19 @@ Kurz eingehen auf die ergebnisse der präferenz und fähigkeitsbefragung
 % Darüber hinaus liegt die Anzahl an Mitarbeitenden mit einer Übereinstimmung der Präferenzen unter 20 Prozent\footnote{inkl.} bei Projekt 4 mit 23 Befragten mit Abstand am höchsten.
 % Hier wieder bei diskussion die  schwankung erklären -> annahme, dass das mit der ANzahl der angeforderten Projektpositionen zusammenhängt!
 
-Argumentation:
-\begin{itemize}
-    \item Zufriedenheit zu integrieren ist auf jeden Fall gut -> daher ergebnisse besser
-    \item Wie dann gewichtet wird scheint weniger eine Rolle zu spielen -> sehr schwankende Ergebnisse
-    \item Die geringe Bedeutung der Gewichtung kann auch darauf zurückzuführen sein, dass viele Mitarbeitende auch das präferieren, was sie können (daher ist die Diskrepanz zwischen hohem und kleinen gewicht nicht so groß) -> überprüfen!!
-    \item Haupterkenntnis ist also, dass es wichtig ist die Zufriedenheit zu berücksichtigen, Gewicht an sich aber kaum eine Rolle gespiel that, hauptsache die Präferenzen sind dabei
-    \item Die Präferenzen ist dann das was den unterschied macht zwischen "Mitarbeitender passt" und "Mitarbeitender passt gut"
-    \item Viele unbekannte Einflussfaktoren auf die Zufriedenheit: Gewichtung der einzelnen Präferenzen für einen Mitarbeitenden, andere Projekte die zur Auswahl stehen
-    \item Unbekannte Einflussfaktoren auf die Arbeitsleistung: welche Fähigkeiten einem Mitarbeitendem fehlen spielt eine entscheidende rolle -> kann er diese schnell erlernen oder nicht?
-    \item Next steps: Experteninterviews um zu identifizieren, was das kernproblem des bestehenden algorithmus ist und dann kriterium mit aufnehmen anhand einer der vorgestellten maßnahmen
-    \item perspektivisch auch die Präferenzen integrieren, aber geringere Bedeutung als andere Kriterien (Verfügbarkeit, Vollständigkeit und Aktualität der Daten, Teamzugehörigkeit)
-    \item Wichtige überlegung: problem der auswahl mitarbeitender für projekte ist entscheidungsproblem -> Frage, wieviel man dem system übergibt und was man den Managern noch an Entscheidung überlässt (bspw. Zufriedenheit als slider)
-\end{itemize}
+% Argumentation:
+% \begin{itemize}
+%     \item Zufriedenheit zu integrieren ist auf jeden Fall gut -> daher ergebnisse besser
+%     \item Wie dann gewichtet wird scheint weniger eine Rolle zu spielen -> sehr schwankende Ergebnisse
+%     \item Die geringe Bedeutung der Gewichtung kann auch darauf zurückzuführen sein, dass viele Mitarbeitende auch das präferieren, was sie können (daher ist die Diskrepanz zwischen hohem und kleinen gewicht nicht so groß) -> überprüfen!!
+%     \item Haupterkenntnis ist also, dass es wichtig ist die Zufriedenheit zu berücksichtigen, Gewicht an sich aber kaum eine Rolle gespiel that, hauptsache die Präferenzen sind dabei
+%     \item Die Präferenzen ist dann das was den unterschied macht zwischen "Mitarbeitender passt" und "Mitarbeitender passt gut"
+%     \item Viele unbekannte Einflussfaktoren auf die Zufriedenheit: Gewichtung der einzelnen Präferenzen für einen Mitarbeitenden, andere Projekte die zur Auswahl stehen
+%     \item Unbekannte Einflussfaktoren auf die Arbeitsleistung: welche Fähigkeiten einem Mitarbeitendem fehlen spielt eine entscheidende rolle -> kann er diese schnell erlernen oder nicht?
+%     \item Next steps: Experteninterviews um zu identifizieren, was das kernproblem des bestehenden algorithmus ist und dann kriterium mit aufnehmen anhand einer der vorgestellten maßnahmen
+%     \item perspektivisch auch die Präferenzen integrieren, aber geringere Bedeutung als andere Kriterien (Verfügbarkeit, Vollständigkeit und Aktualität der Daten, Teamzugehörigkeit)
+%     \item Wichtige überlegung: problem der auswahl mitarbeitender für projekte ist entscheidungsproblem -> Frage, wieviel man dem system übergibt und was man den Managern noch an Entscheidung überlässt (bspw. Zufriedenheit als slider)
+% \end{itemize}
 
 % Für die diskussion bzgl. der ergebnisse bei den ergebnissen auf kommentare achten!
 % Hier auf die unterschiede zwischen histogramm und zufriedenheit bzw. erwartete arbeitsleistung angaben hinweisen!
@@ -38,7 +115,7 @@ Argumentation:
 % wenn alle mitarbeitende gleich bleiben und nur alpha sich verändert kommen trotzdem komische werte raus :D
 % dass bei 4 der 5 verschiedenen gewichte eine steigerung erzielt werden konnte deutet eher darauf hin, dass die gewichtung hier nicht ausschlaggebend war. dies spricht auch dafür, dass bei demselben gewicht die zufriedenheit bei manchen gewichten sowohl gestiegen als auch gesunken ist 
 % -> hier auch ergebnisse über alle mitarbeitenden hinweg anführen für die edge cases 0,1 und 0,9 und zeigen, wie es sich da verhält
-Daraus geht hervor, dass keines der Gewichte eindeutig zu einer Verbesserung oder einer Verschlechterung im Vergleich zum unilateralen Algorithmus geführt hat.
+% Daraus geht hervor, dass keines der Gewichte eindeutig zu einer Verbesserung oder einer Verschlechterung im Vergleich zum unilateralen Algorithmus geführt hat.
 
 % Fragen:
 % \begin{itemize}

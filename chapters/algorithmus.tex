@@ -19,11 +19,12 @@
 % Hier: mithilfe des Brent Algorithmus in anlehnung an die verwandte Arbeit von \textcite[S. 131ff.]{kleinerman:2:inproceedings}
 % Nach https://e-maxx.ru/bookz/files/numerical_recipes.pdf S. 489 gibt es keinen perfekten Optimierungs-Algorithmus -> daher ist es grundsätzlih ratsam, verschiedene Techniken auszuprobieren und zu vergleichen.
 % Was macht der Brent Algorithmus?: % https://users.wpi.edu/~walker/MA3257/HANDOUTS/brents_algm.pdf
-\begin{itemize}
-	\item In Essenz einfach eine Strategie für das Finden von lokalen Minima ohne Ableitung, indem sich von einem Intervall iterativ an ein Minima angenähert wird, entweder über GSS oder über SPI % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Minimization%20or%20Maximization%20of%20Functions.pdf
-	\item Unterscheiden zw. Brent Methode für root search und Brent-Methode für Minimasuche ohne Derivate (Ableitung)
-	\item Kombination von successive parabolic interpolation (schnell) und golden-section search (garantiertes finden von Minimum) % für Erklärung siehe video hier: https://www.youtube.com/watch?v=BQm7uTYC0sg
-\end{itemize}
+
+% \begin{itemize}
+% 	\item In Essenz einfach eine Strategie für das Finden von lokalen Minima ohne Ableitung, indem sich von einem Intervall iterativ an ein Minima angenähert wird, entweder über GSS oder über SPI % file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Minimization%20or%20Maximization%20of%20Functions.pdf
+% 	\item Unterscheiden zw. Brent Methode für root search und Brent-Methode für Minimasuche ohne Derivate (Ableitung)
+% 	\item Kombination von successive parabolic interpolation (schnell) und golden-section search (garantiertes finden von Minimum) % für Erklärung siehe video hier: https://www.youtube.com/watch?v=BQm7uTYC0sg
+% \end{itemize}
 
 % Lösung über Python Skript unter Einsatz der scipy-Bibliothek (siehe Anhang).
 % minimize_scalar function für das Finden von Minima einer skalaren Funktion (output eines einzelnen Wertes) mit einer Variablen (in unserem Fall alpha), deren default Methode brent ist
@@ -33,12 +34,12 @@
 \section{Aufbau des Empfehlungssystems}
 % Microservice-Architektur -> Empfehlungs-komponente (Rankings)
 
-\begin{figure}[H]
-    \centering
-	\includegraphics[width=1.0\textwidth]{gfx/empfehlungsservice.png}
-	\caption[Aufbau des bilateralen Empfehlungssystems]{Aufbau des bilateralen Empfehlungssystems}
-	\label{fig:algorithmus:abb1}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+% 	\includegraphics[width=1.0\textwidth]{gfx/empfehlungsservice.png}
+% 	\caption[Aufbau des bilateralen Empfehlungssystems]{Aufbau des bilateralen Empfehlungssystems}
+% 	\label{fig:algorithmus:abb1}
+% \end{figure}
 
 % Begründung für SVR: S: 30, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Criteria%20Chains%20A%20Novel%20Multi-Criteria%20Recommendation.pdf
 
