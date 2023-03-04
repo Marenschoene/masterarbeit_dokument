@@ -7,11 +7,11 @@
 \label{ch:diskussion}
 
 \section{Zusammenfassung der Ergebnisse}
-Im Rahmen der quantitativen Forschung dieser Arbeit wurde untersucht, ob der entwickelte bilaterale Algorithmus robust die Zufriedenheit von Mitarbeitenden erhöhen kann, ohne Einbußen in der zu erwartenden Arbeitsleistung der Mitarbeitenden bei der Besetzung von offenen Projektpositionen zu bewirken.
+Im Rahmen der quantitativen Forschung dieser Arbeit wurde untersucht, ob der entwickelte multi-kriterielle Ansatz für die Berücksichtigung der Präferenzen in einem bilateralen Empfehlungssystem, robust die Zufriedenheit von Mitarbeitenden erhöhen kann, ohne Einbußen in der zu erwartenden Arbeitsleistung der Mitarbeitenden bei der Besetzung von offenen Projektpositionen zu bewirken.
 Anhand einer Befragung unter den Mitarbeitenden des IT-Unternehmens EXXETA wurden Fähigkeiten und Präferenzen von Mitarbeitenden sowie deren Zufriedenheit mit ausgewählten Beispielprojekten ermittelt.
 Eine Befragung unter den Managern desselbigen Unternehmens diente dazu, die zu erwartende Arbeitsleistung der befragten Mitarbeitenden in den ausgewählten Projekten zu bestimmen.
-Die Zufriedenheit und die zu erwartende Arbeitsleistung wurde jeweils für die empfohlenen Mitarbeitenden des unilateralen sowie die empfohlenen Mitarbeitenden des bilateralen Algorithmus gemessen und miteinander verglichen.
-Insgesamt konnte festgestellt werden, dass der bilaterale Algorithmus im Mittel in jedem Projekt eine höhere Zufriedenheit erzielte und in zwei der fünf Projekte eine Steigerung der Arbeitsleistung bewirkte.
+Die Zufriedenheit und die zu erwartende Arbeitsleistung wurde jeweils für die empfohlenen Mitarbeitenden des unilateralen sowie die empfohlenen Mitarbeitenden des bilateralen Systems gemessen und miteinander verglichen.
+Insgesamt konnte festgestellt werden, dass der bilaterale Algorithmus im Mittel in vier von fünf Projekten eine höhere Zufriedenheit erzielte und in zwei der fünf Projekte eine Steigerung der Arbeitsleistung bewirkte.
 Dabei führte der bilaterale Algorithmus in 28 Prozent der Fälle zu einer erhöhten Zufriedenheit unter den empfohlenen Mitarbeitenden und in 20 Prozent der Fällen zu einer Steigerung der prognostizierten Arbeitsleistung der empfohlenen Mitarbeitenden.
 Zugleich führte der bilaterale Algorithmus in 12 Prozent der Fälle zu einer Verschlechterung der erwarteten Arbeitsleistung.
 Der Rückgang der Arbeitsleistung konnte zwei der fünf Projekte zugeordnet werden.
@@ -35,11 +35,85 @@ Bei Betrachtung der Zufriedenheit und der Arbeitsleistung unter Anwendung der ve
 Auch die Fälle, die eine Verschlechterung der Zufriedenheit bzw. der Arbeitsleistung aufwiesen konnten nicht gezielt einem Gewicht zugeordnet werden.
 
 \section{Interpretation der Ergebnisse}
+Basierend auf den Forschungsergebnissen von \textcite[S.1 ff.]{link:booklet} wurde die Annahme aufgestellt, dass ein alternativer Ansatz für die Berücksichtigung der Präferenzen beider Parteien in einem bilateralen Empfehlungssystems robust zu einer verbesserten Zuordnung von Person zu Umgebung im Vergleich zu einem unilateralen System führen kann.
+% Als Indikatoren einer optimalen Zuordnung betrachtete \textcite[S.1 ff.]{link:booklet} die Kennzahlen Zufriedenheit und Arbeitsleistung.
+Die Ergebnisse der quantitativen Forschung zeigen, dass der entwickelte multi-kriterielle Ansatz für das bilaterale Empfehlungssystem verglichen mit dem unilateralen System in vier von fünf Projekten im Mittel eine höhere Zufriedenheit unter den empfohlenen Mitarbeitenden erzielen konnte (Vgl. Abbildung \ref{fig:ergebnisse:abb8}).
+Zugleich blieb die Arbeitsleistung in drei von fünf Projekten im Mittel konstant, wobei in zwei der fünf Projekte durchschnittlich sogar eine Steigerung der Arbeitsleistung unter Einsatz des bilateralen Algorithmus erzielt wurde (Vgl. Abbildung \ref{fig:ergebnisse:abb10}).
+Insgesammt lassen die Auswirkungen des entwickelten bilateralen Algorithmus auf die durchschnittliche Zufriedenheit und Arbeitsleistung der Mitarbeitenden daher die Vermutung zu, dass eine Berücksichtigung der Präferenzen grundsätzlich vorteilhaft ist.
+
+Entgegen der Erwartungen bewirkte der bilaterale Algorithmus in zwei von 25 Fällen eine Verschlechterung der Zufriedenheit unter den empfohlenen Mitarbeitenden (Vgl. Abbildung \ref{fig:ergebnisse:abb9}).
+Ein Vergleich der unilateralen und bilateralen Rankings zeigte, dass die Verschlechterung der Zufriedenheit in beiden Fällen durch denselben Mitarbeitenden in Projekt 3 bewirkt wurde.
+Tabelle \ref{tab:diskussion:tab1} stellt für einen der Fälle ($\alpha$ = 0.6068) das unilaterale Top-5-Ranking im Vergleich zu den Rängen der Mitarbeitenden im bilateralen Ranking dar.
+
+\begin{table}[htbp]
+    \begin{center}
+    \begin{tabular}{c|p{0.7in}|p{0.7in}|p{0.7in}|p{0.7in}}
+    {\textbf{Mitarbeitender}} & {\textbf{Rang unilateral}} & {\textbf{Rangwert unilateral}} & {\textbf{Rang bilateral}} & {\textbf{Rangwert bilateral}} \\
+    \hline
+	Mitarbeitender A & \hfil1 & \hfil0.625 & \hfil3 & \hfil0.5759 \\
+    \hline
+    Mitarbeitender B & \hfil2 & \hfil0.625 & \hfil5 & \hfil0.5513 \\
+    \hline
+	Mitarbeitender C & \hfil3 & \hfil0.625 & \hfil6 & \hfil0.5514 \\
+    \hline
+	Mitarbeitender D & \hfil4 & \hfil0.625 & \hfil2 & \hfil0.6004 \\
+    \hline
+	Mitarbeitender E & \hfil5 & \hfil0.5625 & \hfil1 & \hfil0.6362 \\
+    \end{tabular}
+    \end{center}
+    \caption[Vergleich des unilateralen Top-5-Rankings mit den bilateralen Rängen der empfohlenen Mitarbeitenden für Projekt 3 ($\alpha$ = 0.6068)]{Vergleich des unilateralen Top-5-Rankings mit den bilateralen Rängen der empfohlenen Mitarbeitenden für Projekt 3 ($\alpha$ = 0.6068)}
+	\label{tab:diskussion:tab1}
+\end{table}
+
+Daran ist zu erkennen, dass der Mitarbeitende C durch die Berücksichtigung der Präferenzen im bilateralen Ranking auf Rang 6 platziert wurde und damit nicht mehr unter die fünf empfohlenen Mitarbeitenden fiel.
+% Der Mitarbeitende wurde aufgrund seiner geringen Übereinstimmung der angegebenen Präferenzen mit den angeforderten Projektpositionen von Projekt 3 im bilateralen Ranking niedriger platziert als im unilateralen Ranking.
+Obwohl der Mitarbeitende die Mehrheit der angeforderten Fähigkeiten des Projekts nicht präferierte, konnte festgestellt werden, dass dieser in der Befragung dennoch angab mit dem Projekt grundsätzlich zufrieden zu sein.
+Die geringere Zufriedenheit bei bilateraler Empfehlung wurde folglich durch eine niedrigere Platzierung des Mitarbeitenden aufgrund der hohen Gewichtung der Präferenzen im Vergleich zum unilateralen Ranking bewirkt.
+Der Sachverhalt lässt vermuten, dass neben den Präferenzen eines Mitarbeitenden offenbar weitere unbekannte Faktoren existieren, die die Zufriedenheit eines Mitarbeitenden beeinflussen.
+Eine Annahme ist, dass unterschiedliche Fähigkeiten in Projekten von unterschiedlicher Bedeutung für einen Mitarbeitenden sind.
+Es wird vermutet, dass das Vorhandensein oder Fehlen bestimmter Projektposition in einem Projekt ausschlaggebend für die Zufriedenheit eines Mitarbeitenden in einem Projekt sein kann, unabhängig von dessen übrigen Präferenzangaben.
+
+In Kapitel ...AUF KAPITEL 5 METHODIK VERWEISEN...  wurde angeführt, dass die Berücksichtigung der Zufriedenheit der Mitarbeitenden bei der Zuordnung zu Projekten mit deren erwarteter Arbeitsleistung in Projekten in Konkurrenz stehen kann.
+Es wurde daher durchaus erwartet, dass die Berücksichtigung der Zufriedenheit der Mitarbeitenden in einigen Fällen auch zu einer Reduktion der erwarteten Arbeitsleistung führen würde.
+Die absolute Veränderung der Arbeitsleistung der Mitarbeitenden von unilateralem zu bilateralem Algorithmus nach Projekt in Abbildung \ref{fig:ergebnisse:abb11} zeigte, dass dies in drei von 25 Fällen auftrat.
+Tabelle \ref{tab:diskussion:tab2} stellt für einen der Fälle (Projekt 2, $\alpha$ = 0.6068) das unilaterale Top-6-Ranking im Vergleich zu den Rängen der Mitarbeitenden im bilateralen Ranking dar.
+
+\begin{table}[htbp]
+    \begin{center}
+    \begin{tabular}{c|p{0.7in}|p{0.7in}|p{0.7in}|p{0.7in}}
+    {\textbf{Mitarbeitender}} & {\textbf{Rang unilateral}} & {\textbf{Rangwert unilateral}} & {\textbf{Rang bilateral}} & {\textbf{Rangwert bilateral}} \\
+    \hline
+	Mitarbeitender A & \hfil1 & \hfil0.875 & \hfil3 & \hfil0.7767 \\
+    \hline
+    Mitarbeitender B & \hfil2 & \hfil0.8125 & \hfil1 & \hfil0.8862 \\
+    \hline
+	Mitarbeitender C & \hfil3 & \hfil0.75 & \hfil2 & \hfil0.7992 \\
+    \hline
+	Mitarbeitender D & \hfil4 & \hfil0.5 & \hfil4 & \hfil0.6720 \\
+    \hline
+	Mitarbeitender E & \hfil5 & \hfil0.375 & \hfil6 & \hfil0.4979 \\
+    \hline
+	Mitarbeitender F & \hfil6 & \hfil0.375 & \hfil5 & \hfil0.5225 \\
+    \end{tabular}
+    \end{center}
+    \caption[Vergleich des unilateralen Top-6-Rankings mit den bilateralen Rängen der empfohlenen Mitarbeitenden für Projekt 2 ($\alpha$ = 0.6068)]{Vergleich des unilateralen Top-6-Rankings mit den bilateralen Rängen der empfohlenen Mitarbeitenden für Projekt 2 ($\alpha$ = 0.6068)}
+	\label{tab:diskussion:tab2}
+\end{table}
+
+Bei näherer Betrachtung der unilateralen und bilateralen Rankings fällt auf, dass Mitarbeitender E und F im unilateralen Ranking denselben Rangwert aufwiesen.
+Durch die Berücksichtigung der Präferenzen rückte der Mitarbeitende F im bilateralen Ranking vor den Mitarbeitenden E, wodurch dieser nicht unter die empfohlenen Personen des bilateralen Rankings fiel.
+Auffällig ist, dass beide Mitarbeitende im unilateralen Ranking denselben Rangwert aufwiesen.
+Entgegen der Erwartungen zeigte ein Vergleich der Angaben der Manager zu der erwarteten Arbeitsleistung der Mitarbeitenden in Projekt 2 jedoch, dass lediglich von dem Mitarbeitenden E eine hohe Arbeitsleistung erwartet wurde.
+Dies lässt die Vermutung zu, dass neben den Fähigkeiten weitere Faktoren die Auswahl der Manager bei der Zuordnung von Mitarbeitenden für offene Projekte beeinflussen.
+Eine Vermutung ist, dass auch bei der Besetzung von Projekten mit Mitarbeitenden das Vorhandensein bzw. Fehlen spezifischer Fähigkeiten der Mitarbeitenden ausschlaggebend für die Zuordnung durch die Manager sein kann.  
+Es wird angenommen, dass die Auswahl der Manager möglicherweise dadurch beeinflusst wird, wie schnell Mitarbeitende basierend auf ihren vorhanden Fähigkeiten projektkritische Fähigkeiten erlernen können.
+
 % - interpretation von zufriedenheit und arbeitsleistung insgesamt und ausreisser erklären mit bezug zu kapitel 3, wo erklärt wird, dass man präferenzen integrieren soll
 
 % Die in Kapitel .. vorgestellten verwandten Arbeiten über die Kombination der Präferenzen zweier Parteien in einem Empfehlungssystem ließen vermuten, dass die unterschiedliche Gewichtung der Präferenzen
 
-In Kapitel \ref{ch:verwandte_arbeiten} wurde im Rahmen der verwandten Arbeiten angeführt, dass eine Gewichtung der Präferenzen beider Parteien eines Empfehlungssystems die Qualität der Empfehlungen positiv beeinflussen kann.
+Die Ergebnisse der Arbeiten von \textcite[S. 131ff.]{kleinerman:2:inproceedings} und \textcite[S. 4031 ff.]{neve:inproceedings} ließen darüber hinaus erwarten, dass eine individuelle Gewichtung der Präferenzen beider Parteien eines Empfehlungssystems die Qualität der Empfehlungen positiv beeinflussen kann.
+% In Kapitel \ref{ch:verwandte_arbeiten} wurde im Rahmen der verwandten Arbeiten angeführt, dass eine Gewichtung der Präferenzen beider Parteien eines Empfehlungssystems die Qualität der Empfehlungen positiv beeinflussen kann.
 Aufgrund der Natur des Anwendungsfalls wurde angenommen, dass eine geringere Gewichtung der Fähigkeiten ($\alpha$ <= 0.5) und die damit einhergehende höhere Gewichtung der Präferenzen in einer höheren Zufriedenheit und niedrigeren Arbeitsleistung unter den empfohlenen Mitarbeitenden resultiert.
 Zugleich wurde erwartet, dass eine höhere Gewichtung der Fähigkeiten ($\alpha$ > 0.5) und die damit einhergehende geringere Gewichtung der Präferenzen eine höhere Arbeitsleistung sowie eine niedrigere Zufriedenheit bewirken.
 Die Ergebnisse der Fallstudie zeigten jedoch keinen eindeutigen Trend hinsichtlich Zufriedenheit und Arbeitsleistung bei unterschiedlicher Gewichtung der Fähigkeiten und Präferenzen.
@@ -60,7 +134,7 @@ Die Abbildung stellt die Veränderung der Zufriedenheit und der Arbeitsleistung 
 Darin ist zu erkennen, bei wie vielen Projekten eine Kennzahl durch den bilateralen Algorithmus im Vergleich zum unilateralen Algorithmus gestiegen, gesunken oder gleich geblieben ist.
 Auffällig ist, dass entgegen der Erwartungen eine marginale Gewichtung der Fähigkeiten ($\alpha$ = 0.1) in zwei von fünf Projekten sogar zu einer Steigerung der Arbeitsleistung der empfohlenen Mitarbeitenden führte.
 Des Weiteren ist auffällig, dass eine Berücksichtigung der Präferenzen ($\alpha$ = 0.9), wenn auch geringfügig, in einem der fünf Projekte zu einem Rückgang der Zufriedenheit unter den Mitarbeitenden führte.
-Insgesamt wird deutlich, dass auch für Grenzfälle des Gewichts $\alpha$ kein klarer Trend zu erkennen ist.
+Insgesamt wird deutlich, dass auch für Grenzfälle des Gewichts $\alpha$ kein kausaler Zusammenhang zwischen der Höhe des Gewichts und der Auswirkung auf die Zufriedenheit bzw. die Arbeitsleistung zu bestehen scheint.
 
 Die Ergebnisse der Auswirkungen des bilateralen Algorithmus auf die Zufriedenheit und die Arbeitsleistung der Mitarbeitenden lassen die Vermutung zu, dass eine Berücksichtigung der Präferenzen grundsätzlich vorteilhaft ist.
 Dabei scheint es eine geringfügigere Rolle zu spielen, welches Gewicht den Präferenzen zukommt.
@@ -68,17 +142,15 @@ Darüber hinaus wird angenommen, dass die geringe Bedeutung der Gewichtung auch 
 Folglich führt eine geringe Gewichtung der Fähigkeiten und eine damit einhergehende hohe Gewichtung der Präferenzen nicht umgehend zu einer geringen Arbeitsleistung.
 Umgekehrt führt eine hohe Gewichtung der Fähigkeiten und eine damit einhergehende niedrige Gewichtung der Präferenzen nicht zwangsläufig zu einer geringeren Zufriedenheit.
 
+% - integration der negativen präferenzen diskutieren
 
-welcher trend wurde erwartet, was konnte erkannt werden?
-- hinweis, dass gewichtung interessant sein kann wie in kapitel 3 beschrieben
-- anführen, dass arbeit dies nicht belegen konnte, edge cases vorgestellten
-
-- integration der negativen präferenzen diskutieren
+% interpretation der gewählten art der integration -> gewichtete summe anstatt von harmonischem Mittel zb
 
 
 
 \section{Beschränkungen der Forschung}
 - managerbefragung anführen, zu wenig zeit genommen, liegen weit auseinander etc.
+- mitarbeitendenbefragung war sehr spezifisch für entwickler -> bspw. agile coach haben dann höhere zufriedenheit bei projekt 3, obwohl sonst viele dinge nicht stimmen
 
 \section{Empfehlungen für weiterführende Forschung}
 vorschlag mit integration als slider option
