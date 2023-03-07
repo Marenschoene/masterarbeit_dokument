@@ -44,6 +44,7 @@ Insgesammt lassen die Auswirkungen des entwickelten bilateralen Algorithmus auf 
 Entgegen der Erwartungen bewirkte der bilaterale Algorithmus in zwei von 25 Fällen eine Verschlechterung der Zufriedenheit unter den empfohlenen Mitarbeitenden (Vgl. Abbildung \ref{fig:ergebnisse:abb9}).
 Ein Vergleich der unilateralen und bilateralen Rankings zeigte, dass die Verschlechterung der Zufriedenheit in beiden Fällen durch denselben Mitarbeitenden in Projekt 3 bewirkt wurde.
 Tabelle \ref{tab:diskussion:tab1} stellt für einen der Fälle ($\alpha$ = 0.6068) das unilaterale Top-5-Ranking im Vergleich zu den Rängen der Mitarbeitenden im bilateralen Ranking dar.
+Aus Datenschutzgründen wurden die Mitarbeitenden in der Tabelle pseudonymisiert.
 
 \begin{table}[htbp]
     \begin{center}
@@ -79,6 +80,7 @@ In Kapitel ...AUF KAPITEL 5 METHODIK VERWEISEN...  wurde erläutert, dass die Be
 Es wurde daher durchaus erwartet, dass die Berücksichtigung der Zufriedenheit der Mitarbeitenden in einigen Fällen auch zu einer Reduktion der erwarteten Arbeitsleistung führen würde.
 Die absolute Veränderung der Arbeitsleistung der Mitarbeitenden von unilateralem zu bilateralem Algorithmus nach Projekt in Abbildung \ref{fig:ergebnisse:abb11} zeigte, dass dies in drei von 25 Fällen auftrat.
 Tabelle \ref{tab:diskussion:tab2} stellt für einen der Fälle (Projekt 2, $\alpha$ = 0.6068) das unilaterale Top-6-Ranking im Vergleich zu den Rängen der Mitarbeitenden im bilateralen Ranking dar.
+Aus Datenschutzgründen wurden die Mitarbeitenden in der Tabelle pseudonymisiert.
 
 \begin{table}[htbp]
     \begin{center}
@@ -114,7 +116,7 @@ Die Ergebnisse der Arbeiten von \textcite[S. 131ff.]{kleinerman:2:inproceedings}
 % In Kapitel \ref{ch:verwandte_arbeiten} wurde im Rahmen der verwandten Arbeiten angeführt, dass eine Gewichtung der Präferenzen beider Parteien eines Empfehlungssystems die Qualität der Empfehlungen positiv beeinflussen kann.
 Aufgrund der Natur des Anwendungsfalls wurde angenommen, dass eine geringere Gewichtung der Fähigkeiten ($\alpha$ <= 0.5) und die damit einhergehende höhere Gewichtung der Präferenzen in einer höheren Zufriedenheit und niedrigeren Arbeitsleistung unter den empfohlenen Mitarbeitenden resultiert.
 Zugleich wurde erwartet, dass eine höhere Gewichtung der Fähigkeiten ($\alpha$ > 0.5) und die damit einhergehende geringere Gewichtung der Präferenzen eine höhere Arbeitsleistung sowie eine niedrigere Zufriedenheit bewirken.
-Die Ergebnisse der Fallstudie zeigten jedoch keinen eindeutigen Trend hinsichtlich Zufriedenheit und Arbeitsleistung bei unterschiedlicher Gewichtung der Fähigkeiten und Präferenzen.
+Die Ergebnisse des Experiments zeigten jedoch keinen eindeutigen Trend hinsichtlich Zufriedenheit und Arbeitsleistung bei unterschiedlicher Gewichtung der Fähigkeiten und Präferenzen.
 Dies ist daran zu erkennen, dass weder die Verschlechterung noch die Verbesserung der Zufriedenheit bzw. der Arbeitsleistung eindeutig bestimmten Gewichten zugeordnet werden kann (Vgl. Abbildung \ref{fig:ergebnisse:abb12} und Abbildung \ref{fig:ergebnisse:abb13}).
 
 Eine Vermutung für den unklaren Trend lag darin, dass die untersuchten $\alpha$-Werte für die Menge der vorhanden Daten (13 Mitarbeitende je Gewicht) zu nah beieinander lagen.
@@ -133,15 +135,15 @@ Darin ist zu erkennen, bei wie vielen Projekten eine Kennzahl durch den bilatera
 Auffällig ist, dass entgegen der Erwartungen eine marginale Gewichtung der Fähigkeiten ($\alpha$ = 0.1) in zwei von fünf Projekten sogar zu einer Steigerung der Arbeitsleistung der empfohlenen Mitarbeitenden führte.
 Des Weiteren ist auffällig, dass eine Berücksichtigung der Präferenzen ($\alpha$ = 0.9), wenn auch geringfügig, in einem der fünf Projekte zu einem Rückgang der Zufriedenheit unter den Mitarbeitenden führte.
 Es wird deutlich, dass auch für Grenzfälle des Gewichts $\alpha$ kein kausaler Zusammenhang zwischen der Höhe des Gewichts und der Auswirkung auf die Zufriedenheit bzw. die Arbeitsleistung in den Daten zu bestehen scheint.
-Eine Vermutung ist, dass die geringe Bedeutung der Gewichtung in der Fallstudie unter anderem darauf zurückzuführen ist, dass viele Mitarbeitende die Fähigkeiten präferieren, die sie auch beherrschen (Vgl. Abbildung \ref{fig:ergebnisse:abb1}).
+Eine Vermutung ist, dass die geringe Bedeutung der Gewichtung in dem Experiment unter anderem darauf zurückzuführen ist, dass viele Mitarbeitende die Fähigkeiten präferieren, die sie auch beherrschen (Vgl. Abbildung \ref{fig:ergebnisse:abb1}).
 Folglich führt eine geringe Gewichtung der Fähigkeiten und eine damit einhergehende hohe Gewichtung der Präferenzen nicht umgehend zu einer geringen Arbeitsleistung.
 Umgekehrt führt eine hohe Gewichtung der Fähigkeiten und eine damit einhergehende niedrige Gewichtung der Präferenzen nicht zwangsläufig zu einer geringeren Zufriedenheit.
 
 % - integration der negativen präferenzen diskutieren
 Abschließend wurde anhand der Forschungsergebnisse von \textcite[S. 1ff.]{link:booklet} angenommen, dass eine zusätzliche Berücksichtigung negativer Präferenzen bei der Zuordnung von Personen zu Projekten zu robusteren Ergebnissen führt.
 Daher wurden in Anlehnung an das Vorgehen von \textcite[S. 269ff.]{pizzato:2:inproceedings} negative Präferenzen in den bilateralen Algorithmus integriert.
-Wie eingangs angeführt, haben die Ergebnisse der Fallstudie gezeigt, dass der bilaterale Algorithmus in 2 von 25 Fällen eine Verschlechterung der Zufriedenheit und in 3 von 25 Fällen einen Rückgang der zu erwartenden Arbeitsleistung der Mitarbeitenden bewirkte.
-Trotz einer Berücksichtigung der negativen Präferenzen der Mitarbeitenden konnte in der Fallstudie folglich keine durchgängige Steigerung der Zufriedenheit und Arbeitsleistung der Mitarbeitenden erzielt werden. 
+Wie eingangs angeführt, haben die Ergebnisse des Experiments gezeigt, dass der bilaterale Algorithmus in 2 von 25 Fällen eine Verschlechterung der Zufriedenheit und in 3 von 25 Fällen einen Rückgang der zu erwartenden Arbeitsleistung der Mitarbeitenden bewirkte.
+Trotz einer Berücksichtigung der negativen Präferenzen der Mitarbeitenden konnte in dem Experiment folglich keine durchgängige Steigerung der Zufriedenheit und Arbeitsleistung der Mitarbeitenden erzielt werden. 
 Um ein bilaterales Empfehlungssystem robust gegen Ausreißer zu gestalten, reicht eine zusätzliche Berücksichtigung negativer Präferenzen bei der Empfehlungserstellung folglich nicht aus.
 Zusätzlich wird davon ausgegangen, dass auch bei den negativen Präferenzen spezifische Fähigkeiten für einen Mitarbeitenden dominieren und demnach dessen Zufriedenheit stärker beeinflussen als andere.
 

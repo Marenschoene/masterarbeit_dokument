@@ -1,0 +1,40 @@
+{
+    "project": {
+        "skills": [
+            {
+                "name": "Angular",
+                "level": 1
+            }
+        ]
+    },
+    "employees": [
+        {
+            "username": "mitarbeitender.eins@exxeta.com",
+            "skills": [
+                {
+                    "name": "Angular",
+                    "level": 0
+                }
+            ],
+            "preferences": [
+                    "name": "Angular",
+                    "level": -1
+                }
+            ]
+        },
+		{
+            "username": "mitarbeitender.zwei@exxeta.com",
+            "skills": [
+                {
+                    "name": "Angular",
+                    "level": 2
+                }
+            ],
+            "preferences": [
+                    "name": "Angular",
+                    "level": 1
+                }
+            ]
+        }
+	]
+}

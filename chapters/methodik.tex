@@ -17,20 +17,31 @@ Abschließend wird die Konzeption des bilateralen Algorithmus beschrieben und de
 % Nutzer = Manager, deren Anforderungen als Vektor dargestellt werden
 
 \section{Art und Ablauf der Forschung}
-Um die Forschungsfrage der vorliegenden Arbeit zu beantworten, wurde eine quantitative Forschung in dem IT-Beratungsunternehmen EXXETA durchgeführt.
-Der Ablauf der Forschung kann in 4 Stufen unterteilt werden und ist nachfolgend in Abbildung \ref{fig:methodik:abb1} grafisch dargestellt.
+Um die Forschungsfrage der vorliegenden Arbeit zu beantworten, wurde eine quantitative Forschung durchgeführt.
+Die Durchführung der Forschung erfolgte in Form eines Feldexperiments in dem IT-Beratungsunternehmen EXXETA.
+Die EXXETA AG verfügt über 1.000 Mitarbeitende, die maßgeblich projektbasierte Tätigkeiten ausüben.\footnote{Stand: 7. April 2023.}
+Die Zuordnung passender Mitarbeitender für offene Projektpositionen ist dementsprechend entscheidend für den Erfolg des Tagesgeschäfts des Unternehmen.
+
+Der Ablauf der Forschung kann in 3 Stufen unterteilt werden und ist nachfolgend in Abbildung \ref{fig:methodik:abb1} grafisch dargestellt.
 
 \begin{figure}[H]
     \centering
-	\includegraphics[width=0.95\textwidth]{gfx/prozess-forschung.png}
+	\includegraphics[width=0.75\textwidth]{gfx/prozess-forschung.png}
 	\caption[Ablauf der Forschung]{Ablauf der Forschung}
 	\label{fig:methodik:abb1}
 \end{figure}
 
-Die einzelnen Stufen werden anschließend im Detail erläutert.
+Im Rahmen der Forschung wurde im ersten Schritt das Experiment aufgesetzt, indem fünf für den Anwendungsfall repräsentative Beispielprojekte definiert wurden.
+Anhand zweier Befragungen wurde anschließend die Zufriedenheit und die zu erwartende Arbeitsleistung von Mitarbeitenden in den Beispielprojekten erhoben.
+Im Kontext der Auswertung des Experiments wurden zwei Algorithmen implementiert.
+Repräsentativ für ein unilaterales Empfehlungssystem wurde ein unilateraler Algorithmus entwickelt, der die fünf passensten Mitarbeitenden in Abhängigkeit ihrer Fähigkeiten für Projekte vorschlägt.
+Für die bilaterale Empfehlung wurde ein bilateraler Algorithmus implementiert, der die fünf passensten Mitarbeitenden in Abhängigkeit ihrer Fähigkeiten und Präferenzen empfiehlt.
+Darauf basierend konnte für ein Projekt und eine Menge an Mitarbeitenden die Performance der Algorithmen hinsichtlich der Anzahl an zufriedenen Mitarbeitenden bzw. Mitarbeitenden mit zu erwartend hoher Arbeitsleistung verglichen werden.
 
-\subsection{Aufsetzen der Fallstudie}
-Für das Aufsetzen der Fallstudie wurden zu Beginn durch einen Manager des Fachbereichs Java Enterprise Solutions fünf Beispielprojekte mit angeforderten Projektpositionen erstellt.
+Der Ablauf der Untersuchung wird anschließend anhand der einzelnen Stufen im Detail erläutert.
+
+\section{Aufsetzen der Experiments}
+Für das Aufsetzen des Experiments wurden zu Beginn durch einen Manager des Fachbereichs Java Enterprise Solutions fünf Beispielprojekte mit angeforderten Projektpositionen erstellt.
 Nach Angaben des Managers gelten die Beispielprojekte als repräsentativ für häufige Kundenanfragen an den Bereich.
 Die Projekte sind in Abbildung \ref{fig:methodik:abb2} dargestellt.
 
@@ -63,7 +74,7 @@ Die Projekte sind in Abbildung \ref{fig:methodik:abb2} dargestellt.
     \subfloat[Projekt 3]{\includegraphics[width=0.5\textwidth]{gfx/projekt-3.png}\label{fig:methodik:abb2:3}}
     \subfloat[Projekt 4]{\includegraphics[width=0.5\textwidth]{gfx/projekt-4.png}\label{fig:methodik:abb2:4}}\\
     \subfloat[Projekt 5]{\includegraphics[width=0.5\textwidth]{gfx/projekt-5.png}\label{fig:methodik:abb2:5}}\\
-\caption[Beispielprojekte der Fallstudie]{Beispielprojekte der Fallstudie}
+\caption[Beispielprojekte des Experiments]{Beispielprojekte des Experiments}
   \label{fig:methodik:abb2}
 \end{figure}
 
@@ -72,7 +83,7 @@ Tabelle \ref{tab:methodik:tab1} stellt eine Beschreibung der Kenntnisse dar, die
 
 \begin{table}[htbp]
     \begin{center}
-    \begin{tabular}{c|p{3.5in}}
+    \begin{tabular}{p{1.5in}|p{3.25in}}
     {\textbf{Anforderungsniveau}} & {\textbf{Beschreibung}}\\
     \hline
 	Grundkenntnisse & Kenntnisse entsprechen mindestens einer der Stufen "Ich habe Grundkenntnisse", "Ich habe es schon in einem Projekt eingesetzt" oder "Ich habe es in einem Projekt eingeführt" \\
@@ -84,25 +95,25 @@ Tabelle \ref{tab:methodik:tab1} stellt eine Beschreibung der Kenntnisse dar, die
 	\label{tab:methodik:tab1}
 \end{table}
 
-\subsection{Datenerhebung}
+\section{Datenerhebung}
 In der zweiten Stufe wurden die benötigten Daten erhoben.
 Die Erhebung der Daten erfolgte anhand von zwei separaten Befragungen.
-Die erste Befragung wurde unter Mitarbeitenden des Unternehmens durchgeführt.
+Die erste Befragung wurde unter den Mitarbeitenden des Unternehmens durchgeführt.
 Die zweite Befragung erfolgte unter den Managern des Unternehmens.
 Die Befragungen wurden unabhängig von dem entwickelten Algorithmus gestaltet.
 Dadurch ist eine Reproduzierbarkeit der Ergebnisse und deren Vergleichbarkeit mit Ergebnissen alternativer Algorithmen möglich.
 
-\subsubsection{Befragung der Mitarbeitenden}
+\subsection{Befragung der Mitarbeitenden}
 Die Befragung unter den Mitarbeitenden hatte zwei Erkenntnisse zum Ziel.
 Zum einen sollte die Umfrage Auskunft über die Fähigkeiten und Präferenzen eines befragten Mitarbeitenden liefern.
 Zum anderen sollte über die Umfrage die Zufriedenheit eines Mitarbeitenden mit den jeweiligen Beispielprojekten aus Tabelle \ref{fig:methodik:abb2} erhoben werden.
 
-Für die Erhebung der Fähigkeiten und Präferenzen wurden die Mitarbeitenden in der Umfrage gebeten, ihr Kenntnisniveau für jede der insgesamt 31 unterschiedlichen Fähigkeiten der Beispielprojekte anzugeben.
-Hierfür mussten die Mitarbeitenden ihr Kenntnisniveau auf einer Likert-Skala angeben.
+Für die Erhebung der Fähigkeiten wurden die Mitarbeitenden in der Umfrage gebeten, ihr Kenntnisniveau für jede der insgesamt 31 unterschiedlichen Fähigkeiten der Beispielprojekte anzugeben.
+Zur Einordnung der Fähigkeiten wurde eine dreistufige Likert-Skala gewählt, anhand derer die Mitarbeitenden ihr Kenntnisniveau angeben sollten.
 Die Likert-Skala umfasste die Optionen "Keine Kenntnisse", "Grundkenntnisse" und "Fortgeschritten".
 Die Optionen "Grundkenntnisse" und "Fortgeschritten" der Skala wurden entsprechend der Skala des Anforderungsniveaus der Fähigkeiten der Beispielprojekte gewählt (Vgl. Tabelle \ref{tab:methodik:tab1}).
-Zusätzlich zu den Kenntnisniveaus "Grundkenntnisse" und "Fortgeschritten" konnten die Mitarbeitenden darüber hinaus über die Option "Keine Kenntnisse" angeben, wenn sie in einer Fähigkeit keine Kenntnisse beherrschten.
-Abbildung \ref{fig:methodik:abb2} stellt einen Auszug aus der Umfrage zur Erhebung der Fähigkeiten eines Mitarbeitenden dar.
+Zusätzlich zu den Kenntnisniveaus "Grundkenntnisse" und "Fortgeschritten" konnten die Mitarbeitenden darüber hinaus über die Option "Keine Kenntnisse" angeben, wenn sie eine Fähigkeit nicht beherrschten.
+Abbildung \ref{fig:methodik:abb3} stellt einen Auszug aus der Umfrage zur Erhebung der Fähigkeiten eines Mitarbeitenden dar.
 
 \begin{figure}[H]
     \centering
@@ -111,55 +122,137 @@ Abbildung \ref{fig:methodik:abb2} stellt einen Auszug aus der Umfrage zur Erhebu
 	\label{fig:methodik:abb3}
 \end{figure}
 
-% Hier erwähnen, dass jeweils zu 31 Fähigkeiten das Kenntnisniveau und Präferenz abgegeben werden musste.
+Für die Erhebung der Präferenzen sollten die Mitarbeitenden darüber hinaus für jede der Fähigkeiten angeben, ob Interesse besteht diese in zukünftigen Projekten anzuwenden.
+Hierfür wurden die Mitarbeitenden aufgefordert ihr Interesse auf einer dreistufigen Likert-Skala mit den Optionen "Möchte ich anwenden", "Möchte ich nicht anwenden" und "Neutral" einzuordnen.
+Eine Beschreibung der Bedeutung der Einordnung des Interesses eines Mitarbeitenden für eine Fähigkeit anhand der Skala ist in Tabelle \ref{tab:methodik:tab2} dargestellt.
+
+\begin{table}[htbp]
+    \begin{center}
+    \begin{tabular}{p{1.5in}|p{3.25in}}
+    {\textbf{Präferenzangabe}} & {\textbf{Bedeutung}}\\
+    \hline
+	Möchte ich anwenden & Bei dem Mitarbeitenden besteht Interesse die ausgewählte Fähigkeit in zukünftigen Projekten (weiter) anzuwenden \\
+    \hline
+    Möchte ich nicht anwenden & Der Mitarbeitende möchte die Fähigkeit in zukünftigen Projekten (vorerst) nicht anwenden \\
+    \hline
+    Neutral & Der Mitarbeitende steht der Option die ausgewählte Fähigkeit in zukünftigen Projekten anzuwenden neutral gegenüber \\
+    \end{tabular}
+    \end{center}
+    \caption[Bedeutung der unterschiedlichen Ausprägungen der Likert-Skala für die Präferenzangabe]{Bedeutung der unterschiedlichen Ausprägungen der Likert-Skala für die Präferenzangabe}
+	\label{tab:methodik:tab2}
+\end{table}
+
+Die Skala wurde so gewählt, dass für Mitarbeitende neben präferierten Fähigkeiten auch deren negative Präferenzen erhoben werden konnten, sowie die Fähigkeiten, denen sie indifferent gegenüberstanden.
+In Abbildung \ref{fig:methodik:abb4} ist einen Auszug aus der Umfrage zur Erhebung der Präferenzen eines Mitarbeitenden abgebildet.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=1\textwidth]{gfx/befragung-praeferenzen.png}
+	\caption[Auszug aus der Befragung der Mitarbeitenden zu ihren Präferenzen]{Auszug aus der Befragung der Mitarbeitenden zu ihren Präferenzen}
+	\label{fig:methodik:abb4}
+\end{figure}
+
+Abschließend wurden die Mitarbeitenden bezüglich ihrer Zufriedenheit mit den fünf Beispielprojekten befragt.
+Hierfür wurden die Mitarbeitenden aufgefordert ihre Zufriedenheit mit jedem Beispielprojekt entlang einer vierstufigen ordinalen Skala anzugeben, wobei die niedrigste Angabe 1 für "Gar nicht zufrieden" und die höchste Angabe 4 für "Voll und Ganz zufrieden" stand.
+Die Skala wurde bewusst so gewählt, dass die Mitarbeitenden keine neutrale Bewertung bezüglich ihrer Zufriedenheit abgeben konnten.
+Ein Auszug der Befragung der Mitarbeitenden zu ihrer Zufriedenheit ist beispielhaft für Projekt 1 in Abbildung \ref{fig:methodik:abb5} illustriert.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=1\textwidth]{gfx/befragung-zufriedenheit.png}
+	\caption[Auszug aus der Befragung der Mitarbeitenden zu ihrer Zufriedenheit mit Projekt 1]{Auszug aus der Befragung der Mitarbeitenden zu ihrer Zufriedenheit mit Projekt 1}
+	\label{fig:methodik:abb5}
+\end{figure}
+
 % 1. Mitarbeiter befragen nach Selbsteintschätzung der Fähigkeiten in Anlehnung an Intranet (da im Intranet nur z.T. vollständig), sowie Präferenzen (pos. und neg.)
-% Zusätzlich: Bewertung der zufriedenheit eines MA bei Zuteilung zu den verschiedenen Dummy-Projekten
-% Erklärung für Auswhal der Skalen
 
-\subsubsection{Befragung der Projektmanager}
-% 2. Bewertung der erwarteten Arbeitsleistung von Mitarbeitern unter Berücksichtigung ihrer Fähigkeiten und Präferenzen in den versch. Dummy-Projekten
-% Hier ist ein Teil dese Outputs (Präferenzen und Skills) der 1. Befragung der Input dieser Befragung
-% Erklärung für Auswahl der Skalen
+\subsection{Befragung der Manager}
+Die zweite Umfrage erfolgte unter Managern des Unternehmens und galt der Ermittlung der zu erwarteten Arbeitsleistung der Mitarbeitenden in den jeweiligen Beispielprojekten.
 
-Zum einen sollten in dessen Rahmen die Fähigkeiten und Präferenzen der befragten Mitarbeitenden erhoben werden.
-Zum anderen wurde deren Zufriedenheit mit den jeweiligen Beispielprojekten aus Tabelle \ref{fig:methodik:abb2} ermittelt.
+Für die Erhebung wurden die Befragten aufgefordert für jedes der Beispielprojekte die Mitarbeitenden auszuwählen, von denen sie eine hohe Arbeitsleistung erwarten würden.
+Auswählen konnten die Manager aus einer Liste an Mitarbeitenden, die zuvor an der Befragung der Mitarbeitenden teilgenommen hatten.
+Zu jedem Mitarbeitenden wurde den Managern als Information deren Namen, Fähigkeitsbewertung und Präferenzen zur Verfügung gestellt.
+Die erhobenen Daten der Mitarbeitendenbefragung zu Fähigkeiten und Präferenzen wurden folglich als Input für die Befragung der Projektmanager verwendet, weshalb die Befragungen zeitlich versetzt voneinander stattfanden.
 
-Die zweite Befragung erfolgte unter Managern des Unternehmens und galt der Ermittlung der zu erwarteten Arbeitsleistung der Mitarbeitenden in den jeweiligen Beispielprojekten.
+Für Auswahl der Mitarbeitenden mit zu erwartend hoher Arbeitsleistung wurde eine Mehrfachauswahl gewählt.
+Dies sollte sicherstellen, dass als Ergebnis der Managerbefragung für jeden Mitarbeitenden ein boolescher Wert vorlag, der eindeutig bestimmt, ob eine hohe Arbeitsleistung von einem Mitarbeitenden erwartet wird oder nicht.
+Abbildung \ref{fig:methodik:abb6} zeigt einen Auszug aus der Managerbefragung zu der erwarteten Arbeitsleistung der Mitarbeitenden seitens der Manager am Beispiel von Projekt 4.
+Aus Datenschutzgründen wurden die Mitarbeitenden in der Abbildung pseudonymisiert.
 
-In der dritten Stufe erfolgte die Gestaltung des Empfehlungssystems.
-Dieses sollte in der Lage sein, aus einer Menge an zu Verfügung stehenden Mitarbeitenden die fünf passensten Mitarbeitenden anhand eines unilateralen und anhand eines bilateralen Algorithmus zu empfehlen.
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=1\textwidth]{gfx/befragung-arbeitsleistung.png}
+	\caption[Auszug aus der Befragung der Manager zu der erwarteten Arbeitsleistung von Mitarbeitenden in Projekt 4]{Auszug aus der Befragung der Manager zu der erwarteten Arbeitsleistung von Mitarbeitenden in Projekt 4}
+	\label{fig:methodik:abb6}
+\end{figure}
 
-Die letzte Stufe umfasste die Evaluation der Algorithmen.
+In Abbildung \ref{fig:methodik:abb7} ist beispielhaft ein Auszug der zugehörigen Auswahlliste an Mitarbeitenden dargestellt, die einem Manager in Abhängigkeit der angeforderten Fähigkeiten je Projekt zur Verfügung gestellt wurden.
 
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=1\textwidth]{gfx/befragung-arbeitsleistung-liste-ma.png}
+	\caption[Auszug aus der Auswahlliste an Mitarbeitenden für die Manager am Beispiel von Projekt 4]{Auszug aus der Auswahlliste an Mitarbeitenden für die Manager am Beispiel von Projekt 4}
+	\label{fig:methodik:abb7}
+\end{figure}
 
-Hierfür wurden im Rahmen zweier separater Befragungen Fähigkeiten, Präferenzen, Zufriedenheit der Mitarbeitenden und erwarteter Arbeitsleistung von Mitarbeitenden erhoben.
-Die Erhebung der Daten erfolgte anhand von zwei separaten Befragungen.
-Die erste Befragung wurde unter den Mitarbeitenden des Unternehmens durchgeführt.
-Zum einen sollten in dessen Rahmen die Fähigkeiten und Präferenzen der Mitarbeitenden erhoben werden.
-Zum anderen wurden deren Zufriedenheit m
+\section{Auswertung des Experiments}
+In der dritten Stufe erfolgte die Auswertung des Feldexperiments.
+In dem Kontext wurde ein bilateraler Algorithmus für die Zuordnung von passenden Mitarbeitenden zu Projektpositionen konzipiert und implementiert.
+Als Benchmark wurde anhand derselben Vorgehensweise ein unilateraler Algorithmus für die Zuordnung von passenden Mitarbeitenden zu Projektpositionen aufgesetzt.
+Die beiden Algorithmen unterscheiden sich lediglich in den Kriterien, die für die Zuordnung herangezogen werden.
+So erfolgt die Zuordnung über den unilateralen Algorithmus anhand der Fähigkeiten, während die bilaterale Zuordnung neben den Fähigkeiten auch die Präferenzen eines Mitarbeitenden miteinbezieht.
+Die beiden Algorithmen wurden in einen Microservice eingebettet.
 
-% Art der Methodik
-% quantitative Forschung in Form einer Befragung
+\subsection{Aufbau des Microservice}
+Der Microservice stellt eine POST-Schnittstelle zur Verfügung, über die Manager für offene Projektpositionen passende Mitarbeitende vorgeschlagen bekommen können.
+Der Dienst wurde in der Programmiersprache Python implementiert, wobei für das Erstellen der Webanwendung das Framework Flask verwendet wurde.
+Die Berechnungen wurden unter Anwendung der Bibliothek Numpy entwickelt.
+Der Service wird als Docker-Container bereitgestellt.
+Abbildung \ref{fig:methodik:abb8} zeigt eine vereinfachte Darstellung des Dienstes.
 
-% \subsection{Bestimmung der Stichprobe}
-% MA im JES-Team, Manager, angeben wie viele kontakiert wurden (Anzahl MA, Anzahl Manager)
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=1.0\textwidth]{gfx/empfehlungsservice.png}
+	\caption[Aufbau des Microservice]{Aufbau des Microservice}
+	\label{fig:methodik:abb8}
+\end{figure}
 
-% 2 separate Befragungen
-% Befragung ist unabhängig von dem gewählten algorithmus -> dadurch reproduzierbarkeit und vergleichbarkeit möglich
+Wie der Abbildung entnommen werden kann, akzeptiert der Dienst Anfragen, die im Body die Projektanforderungen sowie die zur Verfügung stehenden Mitarbeitenden enthalten.
+Diese Daten werden in Form eines JSON-Arrays an den Service übermittelt.
+In Listing \ref{lst:methodik:lst1} ist eine beispielhafte Anfrage an den Service abgebildet.
+
+\lstinputlisting[
+    language=json,
+    caption=Beispiel für die Rückgabe des Intranetservices (Auszug),
+    captionpos=b,
+    label=lst:methodik:lst1
+    ]{gfx/request-body.json}
+
+Eine Anfrage beinhaltet folglich ein Projekt, welches die angeforderten Fähigkeiten als Liste enthält. 
+
+Als Ergebnis produziert der Service zwei Listen: eine Liste mit empfohlenen Mitarbeitenden basierend auf dem bilateralen Algorithmus und eine Liste mit empfohlenen Mitarbeitenden anhand des unilateralen Algorithmus.
+Beide Listen schickt der Service in einer Antwort an den Client zurück.
+
+Die erste Liste stellt eine sortierte Liste der Mitarbeitenden dar, die anhand des bilateralen Algorithmus ermittelt wurden.
+% Dieses sollte in der Lage sein, aus einer Menge an zu Verfügung stehenden Mitarbeitenden die fünf passensten Mitarbeitenden anhand eines unilateralen und anhand eines bilateralen Algorithmus zu empfehlen.
+
 % Aufteilen der Daten in Trainings- und Testdaten
 % Nutzen der Trainingsdaten, um Gewichte des bilateralen Algorithmus zu lernen
 % Vergleich des entwickelten bilateralen Algorithmus mit einer unilateralen Variante anhand der Testdaten
 
-\subsection{Gestaltung des Empfehlungssystems}
+\subsection{Gestaltung des bilateralen Algorithmus}
+% Für die Konzeption des bilateralen Algorithmus wurde im ersten Schritt identifiziert, welche Eingangsdaten der Algorithmus verwenden sollte und welche Ausgangsdaten erwartet werden.
+% Als Eingangsdaten w
+Der Algorithm
 Für die Gestalung des Algorithmus wurden die im Rahmen der Befragungen erhobenen Daten in Trainings- und Testdaten unterteilt.
 
-% \subsection{Aggregation}
+\subsubsection{Aggregation}
 % Beispielrechnung in Anhang?
 % Begründung Auswahl der Kombination der Präferernzen
 % Kein harmonisches Mittel, da teilen durch 0 nicht möglich. Da aber MA durchaus fähigkeiten nicht besitzen kommt das häufig vor (man könnte als abhilfe einen Default von 0,000001 setzen o.ä.)
 % Berücksichtigung negativer Präferenzen in Anlehnung an: S. 231, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/recsys%202022%20modeling%20two%20way%20selection%20preference%20for%20person%20job%20fit.pdf
 
-% \subsection{Gewichtung}
+\subsubsection{Gewichtung}
 % Ermitteln der Gewichte: alpha so wählen, dass Endergebnis möglichst optimal -> bedeutet für uns: zufriedene und leistungsfähige Mitarbeiter werden empfohlen -> erscheinen oben im Ranking
 % Ziel: Gegeben einer Funktion f, welches von ein oder mehreren Input-Variablen abhängt, finden der Ausprägungen der Input-Variablen, für die f minimal wird. Obacht: f umfasst hier mehr als nur rws, da auch das ranking danach miteinbezogen wird -> zu minimieren ist die Summe der Ränge der zufriedenen und Leistungsfähigen MA über alle Projekte hinweg
 % Hier: mithilfe des Brent Algorithmus in anlehnung an die verwandte Arbeit von \textcite[S. 131ff.]{kleinerman:2:inproceedings}
@@ -180,15 +273,10 @@ Für die Gestalung des Algorithmus wurden die im Rahmen der Befragungen erhobene
 % \section{Aufbau des Empfehlungssystems}
 % Microservice-Architektur -> Empfehlungs-komponente (Rankings)
 
-% \begin{figure}[H]
-%     \centering
-% 	\includegraphics[width=1.0\textwidth]{gfx/empfehlungsservice.png}
-% 	\caption[Aufbau des bilateralen Empfehlungssystems]{Aufbau des bilateralen Empfehlungssystems}
-% 	\label{fig:algorithmus:abb1}
-% \end{figure}
+
 
 % Begründung für SVR: S: 30, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Criteria%20Chains%20A%20Novel%20Multi-Criteria%20Recommendation.pdf
 
-\subsection{Datenauswertung}
+\subsection{Ablauf der Evaluation}
 
 \shorthandon{"}
