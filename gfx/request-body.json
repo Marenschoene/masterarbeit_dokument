@@ -9,7 +9,7 @@
     },
     "employees": [
         {
-            "username": "mitarbeitender.eins@exxeta.com",
+            "email": "mitarbeitender.eins@exxeta.com",
             "skills": [
                 {
                     "name": "Angular",
@@ -17,13 +17,14 @@
                 }
             ],
             "preferences": [
+                {
                     "name": "Angular",
-                    "level": -1
+                    "level": 1
                 }
             ]
         },
-		{
-            "username": "mitarbeitender.zwei@exxeta.com",
+        {
+            "email": "mitarbeitender.zwei@exxeta.com",
             "skills": [
                 {
                     "name": "Angular",
@@ -31,10 +32,11 @@
                 }
             ],
             "preferences": [
+                {
                     "name": "Angular",
-                    "level": 1
+                    "level": 0
                 }
             ]
         }
-	]
+    ]
 }

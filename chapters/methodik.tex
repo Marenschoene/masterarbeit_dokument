@@ -11,6 +11,13 @@ Darauf folgt eine Beschreibung der durchgeführten quantitativen Forschung.
 Abschließend wird die Konzeption des bilateralen Algorithmus beschrieben und der Aufbau des Gesamtsystems vorgestellt.
 
 \section{Problemanalyse}
+% Präferenz eines Managers für einen Mitarbeitenden wird verstanden als: Übereinstimmung der angeforderten Fähigkeiten mit den Fähigkeiten eines MA
+% Präferenz eines MA für "Manager" wird verstanden als: Übereinstimmung der angeforderten Fähigkeiten mit den Präferenzen eines MA
+% % Das bezeichnen wir als Kompatibilität, in anlehnung an pizzato
+% In Anlehnung an \textcite[S. 207ff.]{pizzato:2010} wird die Übereinstimmung der Fähigkeiten eines Mitarbeitenden mit den angeforderten Fähigkeiten im Projekt wird nachfolgend als Fähigkeits-Kompatibilität bezeichnet.
+% Analog wird die Übereinstimmung der Präferenzen eines Mitarbeitenden mit den angeforderten Fähigkeiten im Projekt als Präferenz-Kompatibilität bezeichnet.
+% user ist manager -> projekt, elemente sind mitarbeitende
+
 % Erklärung der genauen Problematik in unserem Anwendungsfall
 
 % \subsection{Probleminterpretation}
@@ -201,39 +208,59 @@ In dem Kontext wurde ein bilateraler Algorithmus für die Zuordnung von passende
 Als Benchmark wurde anhand derselben Vorgehensweise ein unilateraler Algorithmus für die Zuordnung von passenden Mitarbeitenden zu Projektpositionen aufgesetzt.
 Die beiden Algorithmen unterscheiden sich lediglich in den Kriterien, die für die Zuordnung herangezogen werden.
 So erfolgt die Zuordnung über den unilateralen Algorithmus anhand der Fähigkeiten, während die bilaterale Zuordnung neben den Fähigkeiten auch die Präferenzen eines Mitarbeitenden miteinbezieht.
-Die beiden Algorithmen wurden in einen Microservice eingebettet.
+Die beiden Algorithmen wurden in einen Microservice eingebettet, welcher nachfolgend als Empfehlungsservice bezeichnet wird.
 
-\subsection{Aufbau des Microservice}
-Der Microservice stellt eine POST-Schnittstelle zur Verfügung, über die Manager für offene Projektpositionen passende Mitarbeitende vorgeschlagen bekommen können.
+\subsection{Aufbau des Empfehlungsservice}
+Der Empfehlungsservice stellt eine POST-Schnittstelle zur Verfügung, über die Manager für offene Projektpositionen passende Mitarbeitende vorgeschlagen bekommen können.
 Der Dienst wurde in der Programmiersprache Python implementiert, wobei für das Erstellen der Webanwendung das Framework Flask verwendet wurde.
-Die Berechnungen wurden unter Anwendung der Bibliothek Numpy entwickelt.
+% Die Berechnungen wurden unter Anwendung der Bibliothek Numpy entwickelt.
 Der Service wird als Docker-Container bereitgestellt.
 Abbildung \ref{fig:methodik:abb8} zeigt eine vereinfachte Darstellung des Dienstes.
 
 \begin{figure}[H]
     \centering
 	\includegraphics[width=1.0\textwidth]{gfx/empfehlungsservice.png}
-	\caption[Aufbau des Microservice]{Aufbau des Microservice}
+	\caption[Aufbau des Empfehlungsservice]{Aufbau des Empfehlungsservice}
 	\label{fig:methodik:abb8}
 \end{figure}
 
-Wie der Abbildung entnommen werden kann, akzeptiert der Dienst Anfragen, die im Body die Projektanforderungen sowie die zur Verfügung stehenden Mitarbeitenden enthalten.
+Wie der Abbildung entnommen werden kann, akzeptiert der Dienst Anfragen, die im Body die angefragte Projektposition sowie die zur Verfügung stehenden Mitarbeitenden enthalten.
 Diese Daten werden in Form eines JSON-Arrays an den Service übermittelt.
-In Listing \ref{lst:methodik:lst1} ist eine beispielhafte Anfrage an den Service abgebildet.
+In Listing \ref{lst:methodik:lst1} ist eine solche Anfrage beispielhaft abgebildet.
 
 \lstinputlisting[
     language=json,
-    caption=Beispiel für die Rückgabe des Intranetservices (Auszug),
+    caption=Beispiel einer Anfrage an den Empfehlungsservice,
     captionpos=b,
     label=lst:methodik:lst1
     ]{gfx/request-body.json}
 
-Eine Anfrage beinhaltet folglich ein Projekt, welches die angeforderten Fähigkeiten als Liste enthält. 
+Eine Projektposition wird in Form einer Liste an angeforderten Fähigkeiten (\textit{skills}) dargestellt.
+Jede angeforderte Fähigkeit kann über einen Namen und ein zugehöriges Anforderungsniveau (\textit{level}) beschrieben werden.
+Das Anforderungsniveau ist als Integer codiert, wobei eine 1 dem Anforderungsniveau "Grundkenntnisse" und eine 2 dem Anforderungsniveau "Fortgeschritten" entspricht.
+Die zur Verfügung stehenden Mitarbeitenden werden als Liste dargestellt.
+Ein Mitarbeitender wird eindeutig über seine Mailadresse identifiziert und verfügt über eine Liste an Fähigkeiten (\textit{skills}) mit zugehörigem Kenntnisniveau (\textit{level}) und eine Liste an Präferenzen (\textit{preferences}) mit zugehörigem Präferenzniveau (\textit{level}).
+Die Ausprägungen "Grundkenntnisse" und "Fortgeschritten" des Kenntnisniveaus sind analog zum Anforderungsniveau kodiert.
+Zusätzlich ist das Kenntnisniveau "Keine Kenntnisse" als Zahl 0 kodiert.
+Die Präferenzangabe ist ebenfalls als Integer kodiert, wobei "Möchte ich anwenden" einer 1, "Möchte ich nicht anwenden" einer -1 und "Neutral" einer 0 entspricht.
 
-Als Ergebnis produziert der Service zwei Listen: eine Liste mit empfohlenen Mitarbeitenden basierend auf dem bilateralen Algorithmus und eine Liste mit empfohlenen Mitarbeitenden anhand des unilateralen Algorithmus.
+
+Als Ergebnis produziert der Service zwei Listen: eine Liste mit empfohlenen Mitarbeitenden basierend auf dem bilateralen Algorithmus und eine Liste mit empfohlenen Mitarbeitenden durch den unilateralen Algorithmus.
+Beide Listen sind absteigend sortiert und stellen ein Ranking der Mitarbeitenden dar.
+Die Liste des bilateralen Algorithmus sortiert die Angestellten anhand ihres bilateralen Kompatibilitätswertes, während der unilaterale Algorithmus die Mitarbeitenden anhand ihres unilateralen Kompatibilitätswertes sortiert.
 Beide Listen schickt der Service in einer Antwort an den Client zurück.
+Hierbei wird jeder Mitarbeitender einerste durch seine Mailadresse und seinen Kompatibilitätswert (\textit{matchValue}) abgebildet.
+In Listing \ref{lst:methodik:lst2} ist beispielhaft die Rückgabe des Empfehlungsservice für die Anfrage aus Listing \ref{lst:methodik:lst1} dargestellt.
 
-Die erste Liste stellt eine sortierte Liste der Mitarbeitenden dar, die anhand des bilateralen Algorithmus ermittelt wurden.
+\lstinputlisting[
+    language=json,
+    caption=Beispiel einer Antwort des Empfehlungsservice,
+    captionpos=b,
+    label=lst:methodik:lst2
+    ]{gfx/response-body.json}
+
+Für die Ermittlung der uni- und bilateralen Kompatibilitätswerte wurden zwei Algorithmen implementiert, welche nachfolgend vorgestellt werden.
+% Die erste Liste stellt eine sortierte Liste der Mitarbeitenden dar, die anhand des bilateralen Algorithmus ermittelt wurden.
 % Dieses sollte in der Lage sein, aus einer Menge an zu Verfügung stehenden Mitarbeitenden die fünf passensten Mitarbeitenden anhand eines unilateralen und anhand eines bilateralen Algorithmus zu empfehlen.
 
 % Aufteilen der Daten in Trainings- und Testdaten
@@ -241,9 +268,51 @@ Die erste Liste stellt eine sortierte Liste der Mitarbeitenden dar, die anhand d
 % Vergleich des entwickelten bilateralen Algorithmus mit einer unilateralen Variante anhand der Testdaten
 
 \subsection{Gestaltung des bilateralen Algorithmus}
-% Für die Konzeption des bilateralen Algorithmus wurde im ersten Schritt identifiziert, welche Eingangsdaten der Algorithmus verwenden sollte und welche Ausgangsdaten erwartet werden.
-% Als Eingangsdaten w
-Der Algorithm
+Die Logik des bilateralen Algorithmus wurde in zwei Kernfunktionalitäten aufgeteilt.
+Der erste Teil umfasst das Matching zwischen der angeforderten Projektposition und den einzelnen Mitarbeitenden.
+Der zweite Teil beinhaltet das Sortieren der Mitarbeitenden anhand ihres Matchingwerts (siehe Abbildung \ref{fig:methodik:abb8}).
+
+Im Matching-Teil des Algorithmus wird für jeden Mitarbeitenden ermittelt, wie sehr dessen Fähigkeiten und dessen Präferenzen mit den angeforderten Fähigkeiten im Projekt übereinstimmen.
+Hierfür ermittelt der Algorithmus in Anlehnung an \textcite[S. 207ff.]{pizzato:2010} zwei separate Kompatibilitätswerte.
+Für die Berechnung der Präferenz-Kompatibilität wurde nach dem Verfahren von \textcite[S. 269ff.]{pizzato:2:inproceedings} für die Kombination positiver und negativer Präferenzen vorgegangen, welches in Kapitel \ref{ch:verwandte_arbeiten:1} vorgestellt wurde.
+Demnach kann die Präferenz-Kompatibilität $C_{Pref}^{\pm}(c,s)$ eines Mitarbeitenden $s$ mit einer angeforderten Projektposition $c$ wie folgt ermittelt werden:
+\begin{equation}\label{methodik:eq:1}
+    C_{Pref}^{\pm}(c,s)=\frac{1+C_{Pref}^{+}(c,s)-C_{Pref}^{-}(c,s)}{2}
+\end{equation}
+Die positive Präferenz-Kompatibilität $C_{Pref}^{+}(c,s)$ eines Mitarbeiters mit einem Projekt ermittelt der Algorithmus, indem die Anzahl der angeforderten Fähigkeiten, die ein Mitarbeiter präferiert durch die Gesamtzahl an angefragten Fähigkeiten geteilt wird:
+\begin{equation}\label{methodik:eq:2}
+    C_{Pref}^{+}(c,s)=\frac{\sum\limits_{i \in F_{c}} \mathbb{1}_{i \in P_{s}}}{|F_{c}|}
+\end{equation}
+In Gleichung \ref{methodik:eq:2} stellt $F_{c}$ die Menge an angeforderten Fähigkeiten einer Projektposition dar, während $P_{s}$ die Menge an Fähigkeiten repräsentiert, die ein Mitarbeitender präferiert.
+
+Die Kalkulation der negativen Präferenz-Kompatibilität $C_{Pref}^{-}(c,s)$ erfolgt analog zu Gleichung \ref{methodik:eq:2}, indem die Anzahl an Fähigkeiten, die ein Mitarbeiter nicht anwenden möchte durch die Gesamtzahl an angefragten Fähigkeiten geteilt wird.
+Da Fähigkeiten, denen ein Mitarbeitender neutral gegenübersteht, weder zu einem höheren noch zu einem niedrigeren Rang eines Mitarbeitenden im Ranking führen sollen, werden diese bei der Kalkulation der Präferenz-Kompatibilität nicht berücksichtigt.
+
+Für die Anfrage in Listing \ref{lst:methodik:lst1} ergibt sich die Präferenzkompatibilität des Mitarbeiters 1 wie folgt:
+\begin{equation}\label{methodik:eq:4}
+    C_{Pref}^{\pm}(c,s) = \frac{1+\frac{1}{1}-\frac{0}{1}}{2} = 1
+\end{equation}
+
+Für die Berechnung der Fähigkeits-Kompatibilität verwendet der Algorithmus eine abgewandelte Version des Verfahrens von \textcite[S. 269ff.]{pizzato:2:inproceedings} zur Berechnung der Präferenz-Kompatibilität.
+Dabei ermittelt der Algorithmus für jede angeforderte Fähigkeit deren anteilige Erfüllung durch die Kenntnisse eines Mitarbeiters.
+Diese wird berechnet, indem je Fähigkeit das Kenntnisniveau eines Mitarbeiters durch das Anforderungsniveau einer angeforderten Fähigkeit dividiert wird.
+Die Summe der anteiligen Fähigkeiten wird anschließend durch die Anzahl an angeforderten Fähigkeiten geteilt.
+Dadurch ergibt sich für die Kalkulation der Fähigkeits-Kompatibilität des Algorithmus folgende Formel:
+\begin{equation}\label{methodik:eq:3}
+    C_{Skills}(c,s)=\frac{1}{|F_{c}|} \cdot \sum\limits_{i \in F_{c}} \mathbb{1}_{i \in F_{s}} \frac{level(i \in F_{s})}{level(i \in F_{c})}
+\end{equation}
+In Gleichung \ref{methodik:eq:3} stellt $F_{s}$ die Menge an Fähigkeiten dar, die ein Mitarbeitender beherrscht (Kenntnisniveaus "Grundkenntnisse" und "Fortgeschritten").
+Der Ausdruck $level(i \in F_{s})$ gibt den Wert des Kenntnisniveaus einer beherrschten Fähigkeit eines Mitarbeitenden an.
+Analog bezeichnet $level(i \in F_{c})$ den Wert des Anforderungsniveaus einer angeforderten Fähigkeit in einem Projekts.
+
+Da Fähigkeiten auf unterschiedlichem Level beherrscht werden können, musste bei der Konzeption entschieden werden, wie mit einer Überqualifikation eines Mitarbeitenden in einer Fähigkeit verfahren wird.
+Eine Überqualifikation eines Mitarbeiters (d.h. $level(i \in F_{s}) > level(i \in F_{c})$) bewertet der Algorithmus gleich, wie die exakte Erfüllung einer Fähigkeit.
+Wird eine Fähigkeit auf dem Niveau Grundkenntnisse ($\widehat{=} 1$) angefordert ist es folglich  
+% hier beispiel einfügen für skill kompatibilitätsrechnung
+
+im ersten Schritt identifiziert, welche Eingangsdaten der Algorithmus erhält und welche Ausgangsdaten erwartet werden.
+Wie aus Listing \ref{lst:methodik:lst1} hervorgeht, liegen die Projektpositionen in Form einer Liste an Fähigkeiten vor.
+
 Für die Gestalung des Algorithmus wurden die im Rahmen der Befragungen erhobenen Daten in Trainings- und Testdaten unterteilt.
 
 \subsubsection{Aggregation}
