@@ -9,7 +9,7 @@
     },
     "employees": [
         {
-            "email": "mitarbeitender.eins@exxeta.com",
+            "email": "jane.d@exxeta.com",
             "skills": [
                 {
                     "name": "Angular",
@@ -24,7 +24,7 @@
             ]
         },
         {
-            "email": "mitarbeitender.zwei@exxeta.com",
+            "email": "john.d@exxeta.com",
             "skills": [
                 {
                     "name": "Angular",

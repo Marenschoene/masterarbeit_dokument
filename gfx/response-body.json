@@ -1,21 +1,21 @@
 {
     "bilateral_recommendations": [
         {
-            "email": "mitarbeitender.zwei@exxeta.com",
+            "email": "john.d@exxeta.com",
             "matchValue": 0.8170999999999999
         },
         {
-            "email": "mitarbeitender.eins@exxeta.com",
+            "email": "jane.d@exxeta.com",
             "matchValue": 0.3658
         }
     ],
     "unilateral_recommendations": [
         {
-            "email": "mitarbeitender.zwei@exxeta.com",
+            "email": "john.d@exxeta.com",
             "matchValue": 1.0
         },
         {
-            "email": "mitarbeitender.eins@exxeta.com",
+            "email": "jane.d@exxeta.com",
             "matchValue": 0.0
         }
     ]

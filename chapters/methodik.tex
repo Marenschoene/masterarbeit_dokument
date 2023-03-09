@@ -40,7 +40,7 @@ Der Ablauf der Forschung kann in 3 Stufen unterteilt werden und ist nachfolgend 
 
 Im Rahmen der Forschung wurde im ersten Schritt das Experiment aufgesetzt, indem fünf für den Anwendungsfall repräsentative Beispielprojekte definiert wurden.
 Anhand zweier Befragungen wurde anschließend die Zufriedenheit und die zu erwartende Arbeitsleistung von Mitarbeitenden in den Beispielprojekten erhoben.
-Im Kontext der Auswertung des Experiments wurden zwei Algorithmen implementiert.
+Im Kontext der Auswertung des Experiments wurde ein multi-kriterielles Empfehlungssystem entwickelt, welches zwei Algorithmen implementiert.
 Repräsentativ für ein unilaterales Empfehlungssystem wurde ein unilateraler Algorithmus entwickelt, der die fünf passensten Mitarbeitenden in Abhängigkeit ihrer Fähigkeiten für Projekte vorschlägt.
 Für die bilaterale Empfehlung wurde ein bilateraler Algorithmus implementiert, der die fünf passensten Mitarbeitenden in Abhängigkeit ihrer Fähigkeiten und Präferenzen empfiehlt.
 Darauf basierend konnte für ein Projekt und eine Menge an Mitarbeitenden die Performance der Algorithmen hinsichtlich der Anzahl an zufriedenen Mitarbeitenden bzw. Mitarbeitenden mit zu erwartend hoher Arbeitsleistung verglichen werden.
@@ -103,6 +103,7 @@ Tabelle \ref{tab:methodik:tab1} stellt eine Beschreibung der Kenntnisse dar, die
 \end{table}
 
 \section{Datenerhebung}
+\label{ch:methodik:datenerhebung}
 In der zweiten Stufe wurden die benötigten Daten erhoben.
 Die Erhebung der Daten erfolgte anhand von zwei separaten Befragungen.
 Die erste Befragung wurde unter den Mitarbeitenden des Unternehmens durchgeführt.
@@ -111,6 +112,7 @@ Die Befragungen wurden unabhängig von dem entwickelten Algorithmus gestaltet.
 Dadurch ist eine Reproduzierbarkeit der Ergebnisse und deren Vergleichbarkeit mit Ergebnissen alternativer Algorithmen möglich.
 
 \subsection{Befragung der Mitarbeitenden}
+\label{ch:methodik:datenerhebung:1}
 Die Befragung unter den Mitarbeitenden hatte zwei Erkenntnisse zum Ziel.
 Zum einen sollte die Umfrage Auskunft über die Fähigkeiten und Präferenzen eines befragten Mitarbeitenden liefern.
 Zum anderen sollte über die Umfrage die Zufriedenheit eines Mitarbeitenden mit den jeweiligen Beispielprojekten aus Tabelle \ref{fig:methodik:abb2} erhoben werden.
@@ -174,6 +176,7 @@ Ein Auszug der Befragung der Mitarbeitenden zu ihrer Zufriedenheit ist beispielh
 % 1. Mitarbeiter befragen nach Selbsteintschätzung der Fähigkeiten in Anlehnung an Intranet (da im Intranet nur z.T. vollständig), sowie Präferenzen (pos. und neg.)
 
 \subsection{Befragung der Manager}
+\label{ch:methodik:datenerhebung:2}
 Die zweite Umfrage erfolgte unter Managern des Unternehmens und galt der Ermittlung der zu erwarteten Arbeitsleistung der Mitarbeitenden in den jeweiligen Beispielprojekten.
 
 Für die Erhebung wurden die Befragten aufgefordert für jedes der Beispielprojekte die Mitarbeitenden auszuwählen, von denen sie eine hohe Arbeitsleistung erwarten würden.
@@ -204,7 +207,14 @@ In Abbildung \ref{fig:methodik:abb7} ist beispielhaft ein Auszug der zugehörige
 
 \section{Auswertung des Experiments}
 In der dritten Stufe erfolgte die Auswertung des Feldexperiments.
-In dem Kontext wurde ein bilateraler Algorithmus für die Zuordnung von passenden Mitarbeitenden zu Projektpositionen konzipiert und implementiert.
+In dem Kontext wurde ein multi-kriterielles Empfehlungssystem für die Empfehlung von passenden Mitarbeitern für offene Projektpositionen anhand von Fähigkeiten und Präferenzen entwickelt.
+
+Für die Gestaltung des Empfehlungssystems wurde nach dem Aggregation-Function-Ansatz vorgegangen, welcher in Kapitel \ref{ch:erweiterungen:loesungen:modellbasiert} vorgestellt wurde.
+Dieser ist unabhängig von der jeweiligen Vorhersage-Technik eines Empfehlungssystems.
+Da die Bewertungen der Mitarbeiter zu ihren Fähigkeiten und Präferenzen als gegeben angenommen wurden, wurde auf eine separate Vorhersage von Fähigkeits- und Präferenzbewertungen in dieser Arbeit verzichtet.
+Der Aggregation-Function-Ansatz eignet sich daher besonders, da das nachfolgend vorgestellte Verfahren in Verbindung mit jeder beliebigen Vorhersage-Technik angewandt werden kann.
+
+In dem System wurde ein biltareraler Algorithmus für die Zuordnung von Mitarbeitenden zu Projektpositionen implementiert.
 Als Benchmark wurde anhand derselben Vorgehensweise ein unilateraler Algorithmus für die Zuordnung von passenden Mitarbeitenden zu Projektpositionen aufgesetzt.
 Die beiden Algorithmen unterscheiden sich lediglich in den Kriterien, die für die Zuordnung herangezogen werden.
 So erfolgt die Zuordnung über den unilateralen Algorithmus anhand der Fähigkeiten, während die bilaterale Zuordnung neben den Fähigkeiten auch die Präferenzen eines Mitarbeitenden miteinbezieht.
@@ -244,7 +254,6 @@ Die Ausprägungen "Grundkenntnisse" und "Fortgeschritten" des Kenntnisniveaus si
 Zusätzlich ist das Kenntnisniveau "Keine Kenntnisse" als Zahl 0 kodiert.
 Die Präferenzangabe ist ebenfalls als Integer kodiert, wobei "Möchte ich anwenden" einer 1, "Möchte ich nicht anwenden" einer -1 und "Neutral" einer 0 entspricht.
 
-
 Als Ergebnis produziert der Service zwei Listen: eine Liste mit empfohlenen Mitarbeitenden basierend auf dem bilateralen Algorithmus und eine Liste mit empfohlenen Mitarbeitenden durch den unilateralen Algorithmus.
 Beide Listen sind absteigend sortiert und stellen ein Ranking der Mitarbeitenden dar.
 Die Liste des bilateralen Algorithmus sortiert die Angestellten anhand ihres bilateralen Kompatibilitätswertes, während der unilaterale Algorithmus die Mitarbeitenden anhand ihres unilateralen Kompatibilitätswertes sortiert.
@@ -259,7 +268,7 @@ In Listing \ref{lst:methodik:lst2} ist beispielhaft die Rückgabe des Empfehlung
     label=lst:methodik:lst2
     ]{gfx/response-body.json}
 
-Für die Ermittlung der uni- und bilateralen Kompatibilitätswerte wurden zwei Algorithmen implementiert, welche nachfolgend vorgestellt werden.
+Für die Ermittlung der uni- und bilateralen Kompatibilitätswerte wurden zwei Algorithmen implementiert.
 % Die erste Liste stellt eine sortierte Liste der Mitarbeitenden dar, die anhand des bilateralen Algorithmus ermittelt wurden.
 % Dieses sollte in der Lage sein, aus einer Menge an zu Verfügung stehenden Mitarbeitenden die fünf passensten Mitarbeitenden anhand eines unilateralen und anhand eines bilateralen Algorithmus zu empfehlen.
 
@@ -268,10 +277,12 @@ Für die Ermittlung der uni- und bilateralen Kompatibilitätswerte wurden zwei A
 % Vergleich des entwickelten bilateralen Algorithmus mit einer unilateralen Variante anhand der Testdaten
 
 \subsection{Gestaltung des bilateralen Algorithmus}
-Die Logik des bilateralen Algorithmus wurde in zwei Kernfunktionalitäten aufgeteilt.
-Der erste Teil umfasst das Matching zwischen der angeforderten Projektposition und den einzelnen Mitarbeitenden.
-Der zweite Teil beinhaltet das Sortieren der Mitarbeitenden anhand ihres Matchingwerts (siehe Abbildung \ref{fig:methodik:abb8}).
+Wie Abbildung \ref{fig:methodik:abb8} zeigt, kann die Logik des bilateralen Algorithmus in zwei Kernfunktionalitäten aufgeteilt werden: Matching und Ranking.
+Das Matching umfasst die Kalkulation der Kompatibilität der einzelnen Mitarbeitenden mit der angeforderten Projektposition.
+Das Ranking beinhaltet das Sortieren der Mitarbeitenden anhand ihres Kompatibilitätswerts (siehe Abbildung \ref{fig:methodik:abb8}).
+Nachfolgend wird erläutert, wie die Funktionalitäten umgesetzt wurden.
 
+\subsubsection{Konzeption von Fähigkeiten und Präferenzen}
 Im Matching-Teil des Algorithmus wird für jeden Mitarbeitenden ermittelt, wie sehr dessen Fähigkeiten und dessen Präferenzen mit den angeforderten Fähigkeiten im Projekt übereinstimmen.
 Hierfür ermittelt der Algorithmus in Anlehnung an \textcite[S. 207ff.]{pizzato:2010} zwei separate Kompatibilitätswerte.
 Für die Berechnung der Präferenz-Kompatibilität wurde nach dem Verfahren von \textcite[S. 269ff.]{pizzato:2:inproceedings} für die Kombination positiver und negativer Präferenzen vorgegangen, welches in Kapitel \ref{ch:verwandte_arbeiten:1} vorgestellt wurde.
@@ -288,13 +299,15 @@ In Gleichung \ref{methodik:eq:2} stellt $F_{c}$ die Menge an angeforderten Fähi
 Die Kalkulation der negativen Präferenz-Kompatibilität $C_{Pref}^{-}(c,s)$ erfolgt analog zu Gleichung \ref{methodik:eq:2}, indem die Anzahl an Fähigkeiten, die ein Mitarbeiter nicht anwenden möchte durch die Gesamtzahl an angefragten Fähigkeiten geteilt wird.
 Da Fähigkeiten, denen ein Mitarbeitender neutral gegenübersteht, weder zu einem höheren noch zu einem niedrigeren Rang eines Mitarbeitenden im Ranking führen sollen, werden diese bei der Kalkulation der Präferenz-Kompatibilität nicht berücksichtigt.
 
-Für die Anfrage in Listing \ref{lst:methodik:lst1} ergibt sich die Präferenzkompatibilität des Mitarbeiters 1 wie folgt:
+Für die Mitarbeiterin Jane D. ergibt sich die Präferenz-Kompatibilität für die Anfrage in Listing \ref{lst:methodik:lst1} wie folgt:
 \begin{equation}\label{methodik:eq:4}
     C_{Pref}^{\pm}(c,s) = \frac{1+\frac{1}{1}-\frac{0}{1}}{2} = 1
 \end{equation}
 
-Für die Berechnung der Fähigkeits-Kompatibilität verwendet der Algorithmus eine abgewandelte Version des Verfahrens von \textcite[S. 269ff.]{pizzato:2:inproceedings} zur Berechnung der Präferenz-Kompatibilität.
-Dabei ermittelt der Algorithmus für jede angeforderte Fähigkeit deren anteilige Erfüllung durch die Kenntnisse eines Mitarbeiters.
+Für die Berechnung der Fähigkeits-Kompatibilität wurde eine abgewandelte Version des Verfahrens von \textcite[S. 269ff.]{pizzato:2:inproceedings} zur Berechnung der Präferenz-Kompatibilität entwickelt.
+Diese ermöglicht die Berücksichtigung einer teilweisen Erfüllung von Fähigkeiten durch einen Mitarbeiter.
+Das bedeutet, der Algorithmus ist so gestaltet, dass ein Mitarbeitender, der beispielsweise eine angeforderte Fähigkeit mit Anforderungsniveau "Fortgeschritten" auf dem Niveau "Grundkenntnisse" beherrscht, eine höhere Kompatibilität aufweist als ein Mitarbeitender, der diese Fähigkeit nicht beherrscht.
+Hierfür ermittelt der Algorithmus für jede angeforderte Fähigkeit deren anteilige Erfüllung durch die Kenntnisse eines Mitarbeiters.
 Diese wird berechnet, indem je Fähigkeit das Kenntnisniveau eines Mitarbeiters durch das Anforderungsniveau einer angeforderten Fähigkeit dividiert wird.
 Die Summe der anteiligen Fähigkeiten wird anschließend durch die Anzahl an angeforderten Fähigkeiten geteilt.
 Dadurch ergibt sich für die Kalkulation der Fähigkeits-Kompatibilität des Algorithmus folgende Formel:
@@ -305,23 +318,66 @@ In Gleichung \ref{methodik:eq:3} stellt $F_{s}$ die Menge an Fähigkeiten dar, d
 Der Ausdruck $level(i \in F_{s})$ gibt den Wert des Kenntnisniveaus einer beherrschten Fähigkeit eines Mitarbeitenden an.
 Analog bezeichnet $level(i \in F_{c})$ den Wert des Anforderungsniveaus einer angeforderten Fähigkeit in einem Projekts.
 
-Da Fähigkeiten auf unterschiedlichem Level beherrscht werden können, musste bei der Konzeption entschieden werden, wie mit einer Überqualifikation eines Mitarbeitenden in einer Fähigkeit verfahren wird.
-Eine Überqualifikation eines Mitarbeiters (d.h. $level(i \in F_{s}) > level(i \in F_{c})$) bewertet der Algorithmus gleich, wie die exakte Erfüllung einer Fähigkeit.
-Wird eine Fähigkeit auf dem Niveau Grundkenntnisse ($\widehat{=} 1$) angefordert ist es folglich  
+Da ein Mitarbeiter eine angeforderte Fähigkeit auch besser beherrschen kann als gefordert ist, musste bei der Konzeption darüber hinaus berücksichtigt werden, wie mit einer Überqualifikation eines Mitarbeitenden in einer Fähigkeit verfahren wird.
+Der Algorithmus wurde so gestaltet, dass eine Überqualifikation eines Mitarbeiters ($level(i \in F_{s}) > level(i \in F_{c})$) gleich gehandhabt wird, wie die exakte Erfüllung einer Fähigkeit ($level(i \in F_{s}) = level(i \in F_{c})$).
+Wird eine Fähigkeit beispielsweise auf dem Niveau "Grundkenntnisse" ($\widehat{=} \textnormal{ }1$) angefordert, die ein Mitarbeiter auf dem Niveau "Fortgeschritten" ($\widehat{=} \textnormal{ }2$) beherrscht, wird für die anteilige Erfüllung eine 1 ($\frac{level(i \in F_{c})}{level(i \in F_{c})}$) anstelle einer 2 ($\frac{level(i \in F_{s})}{level(i \in F_{c})}$) angenommen.
+Dadurch soll verhindert werden, dass das Fehlen einer Fähigkeit durch die Überqualifikation in einer anderen Fähigkeit kompensiert wird.
 % hier beispiel einfügen für skill kompatibilitätsrechnung
 
-im ersten Schritt identifiziert, welche Eingangsdaten der Algorithmus erhält und welche Ausgangsdaten erwartet werden.
-Wie aus Listing \ref{lst:methodik:lst1} hervorgeht, liegen die Projektpositionen in Form einer Liste an Fähigkeiten vor.
+Für die Mitarbeiterin Jane D. ergibt sich die Fähigkeits-Kompatibilität für die Anfrage in Listing \ref{lst:methodik:lst1} wie folgt:
+\begin{equation}\label{methodik:eq:5}
+    C_{Skills}(c,s) = \frac{1}{1} \cdot (\frac{0}{1}) = 0
+\end{equation}
 
-Für die Gestalung des Algorithmus wurden die im Rahmen der Befragungen erhobenen Daten in Trainings- und Testdaten unterteilt.
+Für die Kombination der Fähigkeits-Kompatibilität und der Präferenz-Kompa\-tibilität im bilateralen Algorithmus wurden verschiedene Aggregationsmethoden betrachtet.
 
 \subsubsection{Aggregation}
+Im Kontext wechselseitiger Empfehlungssysteme wurden verschiedene statistische Verfahren für die Aggregation der Präferenzen zweier Parteien vorgstellt und deren Einsatz bewertet.
 % Beispielrechnung in Anhang?
-% Begründung Auswahl der Kombination der Präferernzen
-% Kein harmonisches Mittel, da teilen durch 0 nicht möglich. Da aber MA durchaus fähigkeiten nicht besitzen kommt das häufig vor (man könnte als abhilfe einen Default von 0,000001 setzen o.ä.)
-% Berücksichtigung negativer Präferenzen in Anlehnung an: S. 231, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/recsys%202022%20modeling%20two%20way%20selection%20preference%20for%20person%20job%20fit.pdf
+% Im Rahmen der verwandten Arbeiten wurden verschiedene statistische Methoden für die Aggregation beider Kriterien vorgestellt.
+Bei der Wahl der Aggregationsmethode für den bilateralen Algorithmus wurden lediglich Verfahren mit individueller Gewichtung der Kriterien betrachtet.
+Dem lag die Annahme zugrunde, dass die Fähigkeits-Kompatibilität im Vergleich von höherer Bedeutung bei der Zuordnung von Mitarbeitern für Projekte ist als die Präferenz-Kompatibilität, da Manager die finale Entscheidung bei der Zuordnung treffen.
+
+Obwohl das harmonische Mittel in dem Experiment von \textcite[S. 1ff.]{kumari:2:inproceedings} die besten Ergebnisse erzielen konnte, wurde sich im bilateralen Algorithmus gegen diese Methode entschieden.
+Zum einen wurde in Kapitel \ref{ch:verwandte_arbeiten:1} erläutert, dass das harmonische Mittel für Fähigkeits- bzw. Präferenz-Kompatibilität von 0 nicht definiert ist.
+Im vorliegenden Anwendungsfall wurde jedoch davon ausgegangen, dass in der Praxis durchaus Mitarbeiter existieren, die keine der angeforderten Fähigkeiten einer Projektposition besitzen (Fähigkeits-Kompatibilität $= 0$) bzw. präferieren (Präferenz-Kompatibilität $= 0$).
+Auch wenn eine individuelle Gewichtung der Kriterien durch das gewichtete harmonische Mittel möglich gewesen wäre, wurde sich daher gegen die Methode entschieden.
+Darüber hinaus zeigten Experimente von \textcite[S. 131ff.]{kleinerman:2:inproceedings}, dass eine gewichtete Summe im Vergleich zum harmonischen Mittel zu besseren Ergebnissen führen kann.
+In Anlehnung an \textcite[S. 131ff.]{kleinerman:2:inproceedings} wurde daher die gewichtete Summe als Aggregationsmethode in dem bilateralen Algorithmus umgesetzt.
+Die Kombination von Fähigkeits- und Präferenz-Kompatibilität ermittelt der Algorithmus demnach wie folgt:
+\begin{equation}\label{methodik:eq:6}
+    MS_{c,s}^{bil}(\alpha) = \alpha \cdot C_{Skills}(c,s) + (1-\alpha) \cdot C_{Pref}^{\pm}(c,s)
+\end{equation}
+Das Ergebnis $MS_{c,s}^{bil}$ der Aggregation wird nachfolgend als bilateraler Matching-Score bezeichnet.
 
 \subsubsection{Gewichtung}
+\label{ch:methodik:auswertung:gewichtung}
+Da die genaue Bedeutung der einzelnen Kriterien in der Zuordnung von Mitarbeitern zu Projekten nicht bekannt ist, wurde ein separates Skript zur Bestimmung eines optimalen Werts für $\alpha$ entwickelt.
+Das Skript wurde in der Programmiersprache Python programmiert.
+Hierfür wurden die erhobenen Daten der Mitarbeiter- und Managerbefragung herangezogen (Vgl. Kapitel \ref{ch:methodik:datenerhebung:1} und \ref{ch:methodik:datenerhebung:2}).
+
+In Anlehnung an das in Kapitel \ref{ch:verwandte_arbeiten:1} vorgestellte Verfahren von \textcite[S. 131ff.]{kleinerman:2:inproceedings} wurde das Optimierungsproblem zur Bestimmung von $\alpha$ wie folgt definiert:
+\begin{equation}\label{methodik:eq:7}
+    \begin{aligned}
+        \min_{\alpha} \sum_{c \in C} \sum_{s \in S} \mathbb{1}_{s \in SuccMatch_{c}} Rank_{s} (MS_{c,*}(\alpha))\\
+        \textnormal{u.d.B. } 0 \leq \alpha \leq 1\\
+    \end{aligned}
+\end{equation}
+Vereinfach gesagt wird durch die Lösung des Optimierungsproblems das Gewicht $\alpha$ so gewählt, dass für eine Menge an Mitarbeiter $S$ und eine Menge an Projekten $C$ die Summe der Ränge der Mitarbeitenden, die in Projekten erfolgreich waren, möglichst minimal wird.
+Das Verfahren optimiert $\alpha$ folglich dahingehend, dass Mitarbeitende, die in Projekten als erfolgreich eingestuft wurden, in der Liste an empfohlenen Mitarbeitenden an einen Manager möglichst weit oben platziert werden.
+Als erfolgreich wurden Mitarbeiter eingestuft, die sowohl angaben mit einem Projekt zufrieden gewesen zu sein (Angaben "Eher zufrieden" oder "Voll und Ganz zufrieden"), als auch von mindestens einem Manager als Mitarbeiter mit hoher Arbeitsleistung eingeschätzt wurden.
+
+Der Brent-Algorithmus zur Lösung des Optimierungsproblems aus Gleichung \ref{methodik:eq:7} wurde über die Funktion \textit{minimize\textunderscore scalar} der Bibliothek \textit{scipy.opti\-mize} in das Programm integriert.
+Für $\alpha$ wurde das Intervall von 0 bis 1 gewählt.
+Anhand der erhobenen Daten der Mitarbeiter- und Managerbefragung ermittelte der Algorithmus in dem Intervall von 0 bis 1 das optimale Gewicht bei $\alpha = 0.6342$.
+
+Im Unterschied zum bilateralen Algorithmus wird für die Zuordnung von Mitarbeitern zu Projekten im unilateralen Algorithmus als einziges Kriterium die Fähigkeits-Kompatibilität herangezogen.
+Im unilateralen Algorithmus wird der Matching-Score demnach wie folgt ermittelt:
+\begin{equation}\label{methodik:eq:8}
+    MS_{c,s}^{unil} = C_{Skills}(c,s)
+\end{equation}
+Die Punkte Aggregation und Gewichtung waren folglich für die Implementierung des unilateralen Algorithmus nicht von Belangen.
+
 % Ermitteln der Gewichte: alpha so wählen, dass Endergebnis möglichst optimal -> bedeutet für uns: zufriedene und leistungsfähige Mitarbeiter werden empfohlen -> erscheinen oben im Ranking
 % Ziel: Gegeben einer Funktion f, welches von ein oder mehreren Input-Variablen abhängt, finden der Ausprägungen der Input-Variablen, für die f minimal wird. Obacht: f umfasst hier mehr als nur rws, da auch das ranking danach miteinbezogen wird -> zu minimieren ist die Summe der Ränge der zufriedenen und Leistungsfähigen MA über alle Projekte hinweg
 % Hier: mithilfe des Brent Algorithmus in anlehnung an die verwandte Arbeit von \textcite[S. 131ff.]{kleinerman:2:inproceedings}
@@ -339,13 +395,42 @@ Für die Gestalung des Algorithmus wurden die im Rahmen der Befragungen erhobene
 % Angeben eines Intervalls (hier: zwischen 0 und 1)
 % Beschreibung des Algorithmus in anlehung an file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Minimization%20or%20Maximization%20of%20Functions.pdf ggf. in den Anhang?
 
+
+% im ersten Schritt identifiziert, welche Eingangsdaten der Algorithmus erhält und welche Ausgangsdaten erwartet werden.
+% Wie aus Listing \ref{lst:methodik:lst1} hervorgeht, liegen die Projektpositionen in Form einer Liste an Fähigkeiten vor.
+
+% Für die Gestaltung des Algorithmus wurden die im Rahmen der Befragungen erhobenen Daten in Trainings- und Testdaten unterteilt.
+
 % \section{Aufbau des Empfehlungssystems}
 % Microservice-Architektur -> Empfehlungs-komponente (Rankings)
 
-
-
-% Begründung für SVR: S: 30, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Criteria%20Chains%20A%20Novel%20Multi-Criteria%20Recommendation.pdf
-
 \subsection{Ablauf der Evaluation}
+\label{ch:methodik:auswertung:ablauf}
+Für die Auswertung des Experiments sollte für die fünf Beispielprojekte verglichen werden, wie sich der Einsatz der jeweiligen Algorithmen auf die Zufriedenheit und die Arbeitsleistung der empfohlenen Mitarbeitenden auswirkt.
+Da erhobene Daten für die Ermittlung des Gewichts $\alpha$ im bilateralen Algorithmus benötigt wurden, wurde sich für die Auswertung des Experiments für eine Aufteilung der Daten in Trainings- und Testdaten entschieden.
+Dadurch sollte verhindert werden, dass dieselben Daten, für die der bilaterale Algorithmus optimiert wurde, zugleich für die Evaluation desselbigen verwendet werden.
+
+Für die Aufteilung wurde jeder Datensatz mit einer eindeutigen Identifikationsnummer versehen.
+Anhand der Identifikationsnummer wurden zufällig 75 Prozent der Datensätze ausgewählt und für das Training verwendet.
+Die übrigen 25 Prozent der Datensätze wurden als Testdaten herangezogen.
+
+Um eventuell auftretenden Bias bei der zufälligen Aufteilung der Datensätze in Trainings- und Testdaten zu vermeiden, wurde das zufällige Aufteilen insgesamt fünf mal wiederholt.
+Dadurch entstanden fünf Trainings- und fünf zugehörige Test-Samples.
+Der entwickelte bilaterale Algorithmus wurde für jede der 5 Sample-Datensätze evaluiert.
+
+Nach dem vorgestellten Verfahren in Abschnitt \ref{ch:methodik:auswertung:gewichtung} wurde für jedes Sample basierend auf den Trainingsdaten das Gewicht $\alpha$ erstellt.
+Dieses Gewicht wurde im Anschluss an den bilateralen Algorithmus übergeben.
+Anhand der Mitarbeitenden des Testdatensatzes eines jeden Samples wurde daraufhin für jedes Projekt einmal anhand des uni- und einmal anhand des bilateralen Algorithmus ein Ranking der fünf passensten Mitarbeitenden ermittelt.
+
+Um die Auswirkungen des bilateralen Algorithmus auf die Zufriedenheit der Mitarbeitenden zu ermitteln, wurde die Genauigkeit der Empfehlungen unter Anwendung des jeweiligen Algorithmus bestimmt.
+Für die Bestimmung der Genauigkeit des jeweiligen Algorithmus wurde in jedem Projekt innerhalb eines Samples die Mitarbeitenden des unilateralen sowie des bilateralen Rankings ermittelt, die angaben mit dem jeweiligen Projekt zufrieden zu sein ("Eher zufrieden" und "Voll und ganz zufrieden").
+Daraufhin wurde der Anteil an zufriedenen Mitarbeitenden unter den fünf empfohlenen Mitarbeitenden je Ranking ermittelt und miteinander verglichen.
+Die Veränderung des Anteils des bilateralen Rankings im Vergleich zum unilateralen Ranking diente als Indikator dafür, ob die Zufriedenheit stieg, sank oder gleich blieb.
+
+Für die Ermittlung der Auswirkung des bilateralen Algorithmus auf die Arbeitsleistung der Mitarbeitenden wurde analog zu der Zufriedenheit vorgegangen.
+Hierbei wurden die Anteile jedoch anhand der Mitarbeitenden des unilateralen bzw. des bilateralen Rankings ermittelt, deren Arbeitsleistung von mindestens einem Manager in dem jeweiligen Projekt als hoch eingestuft wurde.
+
+
+% durfte nicht dasselbe Gewicht genommen werden, wohin das system auch optimiert wurde, daher samples mit jeweils separater ermittlung der gewichte und dann anwenden auf testdaten
 
 \shorthandon{"}

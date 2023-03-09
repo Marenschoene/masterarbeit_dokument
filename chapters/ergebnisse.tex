@@ -179,26 +179,25 @@ Ein Abgleich der Angabe der 23 Mitarbeitenden durch die Manager mit den 26 Mitar
 % \end{figure}
 
 \section{Evaluation des Algorithmus}
-Für die Evaluation des entwickelten Algorithmus wurden die 54 Datensätze zufällig in Trainings- und Testdaten unterteilt.
-Dafür wurde jeder Datensatz mit einer eindeutigen Identifikationsnummer versehen (1 Datensatz $\hat{=}$ 1 Mitarbeitendem).
-Anhand der Identifikationsnummer wurden zufällig 75 Prozent der Datensätze ($\hat{=}$ aufgerundet 41 Mitarbeitenden) ausgewählt und für das Training verwendet.
+Für die Evaluation des entwickelten Algorithmus wurden die 54 Datensätze anhand des in Kapitel \ref{ch:methodik:auswertung:ablauf} beschriebenen Vorgehens zufällig in Trainings- und Testdaten unterteilt.
+Anhand ihrer Identifikationsnummer wurden zufällig 75 Prozent der Datensätze ($\hat{=}$ aufgerundet 41 Mitarbeitenden) ausgewählt und für das Training verwendet.
 Die übrigen 25 Prozent der Datensätze ($\hat{=}$ abgerundet 13 Mitarbeitenden) wurden als Testdaten herangezogen.
+Da das Aufteilen in Trainings- und Testdaten zu Vermeidung von eventuell auftretendem Bias insgesamt fünf mal wiederholt wurde, entstanden 5 Sample-Datensätze.
+% Um eventuell auftretenden Bias bei der zufälligen Aufteilung der Datensätze in Trainings- und Testdaten zu vermeiden, wurde das zufällige Aufteilen insgesamt fünf mal wiederholt.
+% Dadurch entstanden fünf Trainings- und fünf zugehörige Test-Samples.
+% Der entwickelte Algorithmus wurde für jede der 5 Sample-Datensätze evaluiert.
 
-Um eventuell auftretenden Bias bei der zufälligen Aufteilung der Datensätze in Trainings- und Testdaten zu vermeiden, wurde das zufällige Aufteilen insgesamt fünf mal wiederholt.
-Dadurch entstanden fünf Trainings- und fünf zugehörige Test-Samples.
-Der entwickelte Algorithmus wurde für jede der 5 Sample-Datensätze evaluiert.
+% Nach dem vorgestellten Verfahren in ... wurde für jedes Sample basierend auf den Trainingsdaten das Gewicht $\alpha$ ermittelt.
+% Dieses Gewicht wurde im Anschluss an den bilateralen Algorithmus übergeben.
+% Anhand der Mitarbeitenden des Testdatensatzes eines jeden Samples wurde daraufhin für jedes Projekt einmal anhand des uni- und einmal anhand des bilateralen Algorithmus ein Ranking der fünf passensten Mitarbeitenden ermittelt.
 
-Nach dem vorgestellten Verfahren in ... wurde für jedes Sample basierend auf den Trainingsdaten das Gewicht $\alpha$ ermittelt.
-Dieses Gewicht wurde im Anschluss an den bilateralen Algorithmus übergeben.
-Anhand der Mitarbeitenden des Testdatensatzes eines jeden Samples wurden daraufhin für jedes Projekt einmal anhand des uni- und einmal anhand des bilateralen Algorithmus ein Ranking der fünf passensten Mitarbeitenden ermittelt.
+% Um die Auswirkungen des bilateralen Algorithmus auf die Zufriedenheit der Mitarbeitenden zu ermitteln, wurde die Genauigkeit der Empfehlungen unter Anwendung des jeweiligen Algorithmus bestimmt.
+% Für die Bestimmung der Genauigkeit des jeweiligen Algorithmus wurden für jedes Projekt innerhalb eines Samples die Mitarbeitenden des unilateralen sowie des bilateralen Rankings ermittelt, die angaben mit dem jeweiligen Projekt zufrieden zu sein ("Eher zufrieden" und "Voll und ganz zufrieden").
+% Daraufhin wurde der Anteil an zufriedenen Mitarbeitenden unter den fünf empfohlenen Mitarbeitenden je Ranking ermittelt und miteinander verglichen.
+% Die Veränderung des Anteils des bilateralen Rankings im Vergleich zum unilateralen Ranking diente als Indikator dafür, ob die Zufriedenheit gestiegen, gesunken oder gleich blieb.
 
-Um die Auswirkungen des bilateralen Algorithmus auf die Zufriedenheit der Mitarbeitenden zu ermitteln, wurde die Genauigkeit der Empfehlungen unter Anwendung des jeweiligen Algorithmus bestimmt.
-Für die Bestimmung der Genauigkeit des jeweiligen Algorithmus wurden für jedes Projekt innerhalb eines Samples die Mitarbeitenden des unilateralen sowie des bilateralen Rankings ermittelt, die angaben mit dem jeweiligen Projekt zufrieden zu sein ("Eher zufrieden" und "Voll und ganz zufrieden").
-Daraufhin wurde der Anteil an zufriedenen Mitarbeitenden unter den fünf empfohlenen Mitarbeitenden je Ranking ermittelt und miteinander verglichen.
-Die Veränderung des Anteils des bilateralen Rankings im Vergleich zum unilateralen Ranking diente als Indikator dafür, ob die Zufriedenheit gestiegen, gesunken oder gleich blieb.
-
-Für die Ermittlung der Auswirkung des bilateralen Algorithmus auf die Arbeitsleistung der Mitarbeitenden wurde analog zu der Zufriedenheit vorgegangen.
-Hierbei wurden die Anteile jedoch anhand der Mitarbeitenden des unilateralen bzw. des bilateralen Rankings ermittelt, deren Arbeitsleistung von mindestens einem Manager in dem jeweiligen Projekt als hoch eingestuft wurde .
+% Für die Ermittlung der Auswirkung des bilateralen Algorithmus auf die Arbeitsleistung der Mitarbeitenden wurde analog zu der Zufriedenheit vorgegangen.
+% Hierbei wurden die Anteile jedoch anhand der Mitarbeitenden des unilateralen bzw. des bilateralen Rankings ermittelt, deren Arbeitsleistung von mindestens einem Manager in dem jeweiligen Projekt als hoch eingestuft wurde .
 
 Insgesamt wurde die Veränderung der Anteile von unilateralem zu bilateralem Algorithmus je Kennzahl (Zufriedenheit, Arbeitsleistung) für 25 Projekte ermittelt (5 Samples \`{a} 5 Projekte).
 % Die Veränderung der Anteile unter Einsatz des unilateralen Algorithmus zu den Anteilen unter Anwendung des bilateralen Algorithmus ist in Abbildung \ref{fig:ergebnisse:abb8} grafisch dargestellt.
