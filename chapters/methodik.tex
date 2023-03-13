@@ -243,9 +243,9 @@ Elemente des Empfehlungssystems sind die Mitarbeiter, die den Entscheidungsträg
 Die Nutzer des Systems werden in Form einer offenen Projektposition repräsentiert, welche als Sammlung der angeforderten Fähigkeiten der Projektposition abgebildet werden können.
 Jedes Element des Systems wird durch seine Fähigkeiten und Präferenzen dargestellt.
 Unter der Präferenz eines Nutzers (Entscheidungsträgers) für ein Element (Mitarbeiter) wird in dem System die Erfüllung der angeforderten Fähigkeiten der Projektposition eines Nutzers durch die Fähigkeiten eines Elements verstanden.
-Der Präferenzwert eines Entscheidungsträgers für einen Mitarbeiter wird als Fähigkeits-Kompatibilität bezeichnet.
+In Anlehnung an \textcite[S. 207ff.]{pizzato:2010} wird dieser Präferenzwert als Fähigkeits-Kompatibilität bezeichnet.
 Unter der Präferenz eines Elements für einen Nutzer wird die Erfüllung der präferierten Fähigkeiten eines Elements durch die angeforderten Fähigkeiten der Projektposition eines Nutzers verstanden.
-Der Präferenzwert eines Mitarbeiters für einen Entscheidungsträger wird als Präferenz-Kompatibilität bezeichnet.
+Analog wird der Präferenzwert eines Mitarbeiters für einen Entscheidungsträger als Präferenz-Kompatibilität bezeichnet.
 
 In dem Empfehlungssystem wurde ein biltareraler Algorithmus für die Zuordnung von Mitarbeitern zu Projektpositionen implementiert.
 Als Benchmark wurde anhand derselben Vorgehensweise ein unilateraler Algorithmus für die Zuordnung von passenden Mitarbeitern zu Projektpositionen aufgesetzt.
@@ -341,7 +341,7 @@ Da Fähigkeiten, denen ein Angestellter neutral gegenübersteht, weder zu einem 
 
 Für die Mitarbeiterin Jane D. der Anfrage in Listing \ref{lst:methodik:lst1} ergibt sich die Präferenz-Kompatibilität für die angeforderte Projektposition demnach wie folgt:
 \begin{equation}\label{methodik:eq:4}
-    C_{Pref}^{\pm}(c,s) = \frac{1+\frac{1}{1}-\frac{0}{1}}{2} = 1
+    C_{Pref}^{\pm}(c,Jane \textnormal{ }D.) = \frac{1+\frac{1}{1}-\frac{0}{1}}{2} = 1
 \end{equation}
 
 Für die Berechnung der Fähigkeits-Kompatibilität wurde eine abgewandelte Version des Verfahrens von \textcite[S. 269ff.]{pizzato:2:inproceedings} entwickelt.
@@ -366,7 +366,7 @@ Dadurch soll verhindert werden, dass das Fehlen einer Fähigkeit durch die Über
 
 Für die Mitarbeiterin Jane D. der Anfrage in Listing \ref{lst:methodik:lst1} ergibt sich die Fähigkeits-Kompatibilität demnach wie folgt:
 \begin{equation}\label{methodik:eq:5}
-    C_{Skills}(c,s) = \frac{1}{1} \cdot (\frac{0}{1}) = 0
+    C_{Skills}(c,Jane \textnormal{ }D.) = \frac{1}{1} \cdot (\frac{0}{1}) = 0
 \end{equation}
 
 Für die Kombination der Fähigkeits- und Präferenz-Kompatibilität im bilateralen Algorithmus wurden verschiedene Aggregationsmethoden betrachtet.
@@ -413,12 +413,21 @@ Der Brent-Algorithmus zur Lösung des Optimierungsproblems aus Gleichung \ref{me
 Für $\alpha$ wurde ein Intervall von 0 bis 1 gewählt.
 Anhand der erhobenen Daten der Mitarbeiter- und Managerbefragung ermittelte der Algorithmus in dem Intervall von 0 bis 1 das optimale Gewicht bei $\alpha = 0.6342$.
 
+Für die Mitarbeiterin Jane D. der Anfrage in Listing \ref{lst:methodik:lst1} ergibt sich der bilaterale Präferenzwert demnach wie folgt:
+\begin{equation}\label{methodik:eq:9}
+    PW_{c,Jane \textnormal{ }D.}^{bil}(0.6342) = 0.6342 \cdot 0 + (1-0.6342) \cdot 1 = 0.3658
+\end{equation}
+
 Im Unterschied zum bilateralen Algorithmus wird für die Zuordnung von Mitarbeitern zu Projekten im unilateralen Algorithmus als einziges Kriterium die Fähigkeits-Kompatibilität herangezogen.
 Im unilateralen Algorithmus wird der Präferenzwert demnach wie folgt ermittelt:
 \begin{equation}\label{methodik:eq:8}
     PW_{c,s}^{unil} = C_{Skills}(c,s)
 \end{equation}
 Die Schritte Aggregation und Gewichtung waren folglich für die Implementierung des unilateralen Algorithmus nicht von Belangen.
+Der unilaterale Präferenzwert für die Mitarbeiterin Jane D. der Anfrage in Listing \ref{lst:methodik:lst1} ergibt sich demnach wie folgt:
+\begin{equation}\label{methodik:eq:10}
+    PW_{c,Jane \textnormal{ }D.}^{unil} = 0
+\end{equation}
 
 % Ermitteln der Gewichte: alpha so wählen, dass Endergebnis möglichst optimal -> bedeutet für uns: zufriedene und leistungsfähige Mitarbeiter werden empfohlen -> erscheinen oben im Ranking
 % Ziel: Gegeben einer Funktion f, welches von ein oder mehreren Input-Variablen abhängt, finden der Ausprägungen der Input-Variablen, für die f minimal wird. Obacht: f umfasst hier mehr als nur rws, da auch das ranking danach miteinbezogen wird -> zu minimieren ist die Summe der Ränge der zufriedenen und Leistungsfähigen MA über alle Projekte hinweg
