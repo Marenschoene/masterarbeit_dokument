@@ -62,6 +62,7 @@ Beispiele für Attribute eines Nutzers sind Geschlecht oder Alter eines Anwender
 \end{equation}
 Hierbei bezeichnet $C$ die Menge aller Nutzer und $S$ die Menge aller Elemente eines Systems.
 Nach \textcite[S. 735]{adomavicius:inproceedings} gibt $u(c,s)$ den Nutzen eines Elements $s$ für einen Nutzer $c$ an.
+$s'_c$ stellt das Element mit dem größten Nutzen dar, welches einem Nutzer $c$ empfohlen wird.
 
 Bei dem beschriebenen Problem in Gleichung \ref{eq1} handelt es sich um ein Maximierungsproblem.
 Nach \textcite[S. 1]{book:kallrath} können Maximierungsprobleme der Kategorie der Optimierungsprobleme zugeordnet werden.
@@ -69,7 +70,7 @@ Die Problematik des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Men
 % Da es sich bei dem Problem des Ermittelns einer nutzenmaximierenden Teilmenge aus einer Menge an Elementen um ein Maximierungsproblem handelt, kann das Problem der Kategorie der Optimierungsprobleme, wie in \textcite[S. 1]{book:kallrath} definiert, zugeordnet werden.
 
 % Wird das Problem aus Gleichung \ref{eq1} auf einem höheren Abstraktionslevel betrachtet, besteht das grundsätzliche Problem in Empfehlungssystemen in der Auswahl von Elementen $s' \in S$ für einen Nutzer $c \in C$ mit maximalem Nutzen $u(c,s)$.
-Wird das Problem aus Gleichung \ref{eq1} weiter abstrahiert, kann die Problemstellung in Empfehlungssystemen als Auswahl der Elemente $s'$$\in$$S$ für einen Nutzer $c$$\in$$C$ mit maximalem Nutzen $u(c,s)$ verstanden werden.
+Wird das Problem aus Gleichung \ref{eq1} weiter verallgemeinert, kann die Problemstellung in Empfehlungssystemen als Auswahl der Elemente $s'$$\in$$S$ für einen Nutzer $c$$\in$$C$ mit maximalem Nutzen $u(c,s)$ verstanden werden.
 % Das Problem in Gleichung \ref{eq1} kann abstrahiert werden als das grundsätzliche Problem der Auswahl von Elementen $s' \in S$ für einen Nutzer $c \in C$ mit maximalem Nutzen $u(c,s)$. % verallgemeinert werden?
 Dabei bleibt vorerst offen, was im Einzelfall unter dem Nutzen $u(c,s)$ einer Kombination $(c,s)$ an Nutzer $c$ und Element $s$ (im Folgenden \ac{N-E-K} genannt \cite[S. 3]{recommenderSystems:2016}) verstanden wird.
 Diese Verallgemeinerung ermöglicht eine Formulierung des Problems, die für alle Empfehlungssysteme zutreffend ist.
@@ -493,7 +494,7 @@ Ein Beispiel eines Nutzermodells $UM$ unter Berücksichtigung des Kontextes ist 
 % Zu klassischen Inhalten von Empfehlungen zählt \textcite[S. 2429]{palomares:inproceedings} Objekte wie Musik, Filme, Konsumgüter und Restaurants. 
  
 % Als wechselseitig werden Empfehlungssysteme bezeichnet, in denen Personen den Inhalt von Empfehlungen bilden und für die Empfehlungserstellung sowohl die Präferenzen der Empfänger, als auch der empfohlenen Personen berücksichtigt werden (bspw. in Online-Dating-Plattformen oder Recruiting-Systemen) \cite[S. 35]{li:inproceedings}\cite[S. 2199]{akehurst:inproceedings}\cite[S. 207]{pizzato:2010}.
-Empfehlungssysteme, in denen Personen die Inhalte von Empfehlungen bilden und diese Empfehlungen reziprok sind, werden in der Literatur als wechselseitige Empfehlungssysteme (engl.: \ac{RRS}) bezeichnet \cite[S. 35]{li:inproceedings}\cite[S. 2199]{akehurst:inproceedings}\cite[S. 207]{pizzato:2010}.
+Empfehlungssysteme, in denen Personen die Inhalte von Empfehlungen bilden und diese Empfehlungen reziprok sind, werden in der Literatur als wechselseitige Empfehlungssysteme (engl.: \ac{RRS}) bezeichnet \cite[S. 2199]{akehurst:inproceedings}\cite[S. 35]{li:inproceedings}\cite[S. 207]{pizzato:2010}.
 Reziprok bedeutet, dass für eine erfolgreiche Empfehlung sowohl die Präferenzen des Empfängers einer Empfehlung, als auch die Präferenzen der empfohlenen Person berücksichtigt werden \cite[S. 447]{pizzato:2013}\cite[S. 22]{kleinerman:inproceedings}.
 In der Literatur sind wechselseitige Empfehlungssysteme auch als bilaterale Empfehlungssysteme bekannt \cite[S. 32]{link:booklet}.
 Analog werden Systeme, die lediglich die Präferenzen der Empfehlungsempfänger berücksichtigen auch als unilaterale Systeme bezeichnet.
