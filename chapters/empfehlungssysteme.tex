@@ -497,7 +497,7 @@ Ein Beispiel eines Nutzermodells $UM$ unter Berücksichtigung des Kontextes ist 
 Empfehlungssysteme, in denen Personen die Inhalte von Empfehlungen bilden und diese Empfehlungen reziprok sind, werden in der Literatur als wechselseitige Empfehlungssysteme (engl.: \ac{RRS}) bezeichnet \cite[S. 2199]{akehurst:inproceedings}\cite[S. 35]{li:inproceedings}\cite[S. 207]{pizzato:2010}.
 Reziprok bedeutet, dass für eine erfolgreiche Empfehlung sowohl die Präferenzen des Empfängers einer Empfehlung, als auch die Präferenzen der empfohlenen Person berücksichtigt werden \cite[S. 447]{pizzato:2013}\cite[S. 22]{kleinerman:inproceedings}.
 In der Literatur sind wechselseitige Empfehlungssysteme auch als bilaterale Empfehlungssysteme bekannt \cite[S. 32]{link:booklet}.
-Analog werden Systeme, die lediglich die Präferenzen der Empfehlungsempfänger berücksichtigen auch als unilaterale Systeme bezeichnet.
+Analog werden Systeme, die lediglich die Bedürfnisse der Empfehlungsempfänger berücksichtigen als unilaterale Systeme bezeichnet.
 Bekannte Domänen für den Einsatz wechselseitiger Empfehlungssysteme sind Online-Dating und (semi-)automatisiertes Recruiting.
 Nachfolgend wird das Konzept der \ac{RRS} und dessen zugrundeliegende Problemstellung erläutert.
 
@@ -583,20 +583,20 @@ Das bedeutet, ein Element kann zeitgleich jedem Nutzer eines Systems vorgeschlag
 % Weiterer unterschied: \ac{RRS} unterstützen keine n-to-n connections % S. 423, https://link.springer.com/content/pdf/10.1007/978-1-0716-2197-4.pdf
 
 \subsection{Problemstellung}\label{ch:empfehlungssyteme:rrs:problem}
-Nach \textcite[S. 35]{li:inproceedings} stellt das Zufriedenstellen der Bedürfnisse beider Akteure, das heißt von sowohl Empfänger einer Empfehlung als auch empfohlener Person, die größte Herausforderung wechselseitiger \ac{RS} dar.
+Nach \textcite[S. 35]{li:inproceedings} stellt das Zufriedenstellen der Präferenzen beider Akteure, das heißt von sowohl Empfänger einer Empfehlung als auch empfohlener Person, die größte Herausforderung wechselseitiger \ac{RS} dar.
 Das Problem ist nachfolgend in Abbildung \ref{fig:empfehlungssysteme:rrs:abb1} veranschaulicht.\footnote{Es gilt zu beachten, dass in \ac{RRS} die Elemente von Empfehlungen (empfohlene Personen) gleichzeitig auch Nutzer desselbigen Systems darstellen können.}
 Hierfür wurde die vereinfachte Darstellung des Empfehlungssystems aus Abbildung \ref{fig:empfehlungssysteme:einführung:abb1} aufgegriffen.
 
 Auf der linken Seite ist ein traditionelles Empfehlungssystem dargestellt.
 Elemente, die die Bedürfnisse des Nutzers $X$ erfüllen, sind durch einen empfangenden roten Pfeil gekennzeichnet.
-Fehlende Verbindungen zwischen Elementen und dem Nutzer $X$ bedeuten, dass ein Element die Bedürfnisse des Nutzers $X$ nicht erfüllt.
+Fehlende Verbindungen zwischen Elementen und dem Nutzer $X$ bedeuten, dass ein Element die Präferenzen des Nutzers $X$ nicht erfüllt.
 Soll dem Nutzer $X$ das Element empfohlen werden, welches seine Bedürfnisse am stärksten erfüllt, würde nach Abbildung \ref{fig:empfehlungssysteme:rrs:abb1} eindeutig Element $C$ ausgewählt werden.
 
 Auf der rechten Seite von Abbildung \ref{fig:empfehlungssysteme:rrs:abb1} ist ein wechselseitiges Empfehlungssystem vereinfacht dargestellt.
 Zusätzlich zu den präferierten Elementen des Nutzers $X$ sind in der Darstellung auch die Präferenzen der empfohlenen Personen abgebildet.
-Daraus wird ersichtlich, dass Person $C$ die Bedürfnisse des Nutzers $X$ erfüllt, aber eine Empfehlung von Person $C$ für Nutzer $X$ nicht die Bedürfnisse von Person $C$ erfüllen würde.
-Eine Empfehlung von Person $A$ würde die Bedürfnisse von Person $A$ erfüllen, dann jedoch die Bedürfnisse des Nutzers $X$ unerfüllt lassen.
-Das Problem besteht folglich darin, aus einer Menge an Personen eine passende Person für Nutzer $X$ zu ermitteln, sodass sowohl die Bedürfnisse des Nutzers als auch der empfohlenen Person möglichst optimal erfüllt werden.
+Daraus wird ersichtlich, dass Person $C$ die Präfernezen des Nutzers $X$ erfüllt, aber eine Empfehlung von Person $C$ für Nutzer $X$ nicht die Präferenzen von Person $C$ erfüllen würde.
+Eine Empfehlung von Person $A$ würde die Bedürfnisse von Person $A$ erfüllen, dann jedoch die Präferenzen des Nutzers $X$ unerfüllt lassen.
+Das Problem besteht folglich darin, aus einer Menge an Personen eine passende Person für Nutzer $X$ zu ermitteln, sodass sowohl die Präferenzen des Nutzers als auch der empfohlenen Person möglichst optimal erfüllt werden.
 
 \begin{figure}[H]
     \centering
@@ -651,7 +651,7 @@ Dafür können andere Aspekte wie die Verfügbarkeit von Personen in einer erfol
 % Nach \textcite[S. 36]{li:inproceedings} ist eine optimale Paarung zwischen Nutzer und Element abhängig von zwei Attributen: der Bedürfniserfüllung des Empfehlungsempfängers und der Bedürfniserfüllung der empfohlenen Person.
 
 In wechselseitigen Empfehlungssystemen reicht eine alleinige Betrachtung der Relevanz eines Elements für einen Nutzer (d.h. des Ratings) bei der Empfehlungserstellung folglich nicht aus.
-Für die erfolgreiche Empfehlung von Elementen für Nutzer in wechselseitigen Systemen müssen daher (mindestens) zwei Attribute berücksichtigt werden: die Bedürfniserfüllung des Empfehlungsempfängers und die Bedürfniserfüllung der empfohlenen Person.
+Für die erfolgreiche Empfehlung von Elementen für Nutzer in wechselseitigen Systemen müssen daher (mindestens) zwei Attribute berücksichtigt werden: die Präferenzerfüllung des Empfehlungsempfängers und die Präferenzerfüllung der empfohlenen Person.
 Der Nutzen einer \ac{N-E-K} in wechselseitigen Empfehlungssystemen ist folglich durch mehrere Kriterien bedingt.
 % Die Kernfrage ist also: wie kann das Rating berechnet werden, wenn die Präferenzen von Elementen einbezogen werden sollen?
 % Auch: Wie Gesamtrating ermitteln, wenn mehrere Kriterien berücksichtigt werden sollen? Wie sind Präferenzen zu gewichten? % S. 5, file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf

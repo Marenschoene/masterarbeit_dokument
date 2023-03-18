@@ -3,7 +3,6 @@
 %*******************************************************
 \pdfbookmark[1]{Abstract}{Abstract}
 
-
 \begin{otherlanguage}{american}
 	\chapter*{Abstract}
 	% Short summary of the contents in English. Approximately one page\dots
@@ -14,4 +13,33 @@
 	% \begin{center}
 	% 	\url{https://plg.uwaterloo.ca/~migod/research/beckOOPSLA.html}
 	% \end{center}
+
+	The application of recommender systems for decision support has become increasingly important in recent years.
+	While early recommender systems were used for recommending objects or documents, the recommendation of people recently received increasing attention due to the growth in social networks.
+	In systems where people form the content of recommendations, the success of a recommendation may be affected by the satisfaction of the preferences of both parties involved, that is, both the referee and the recommended person.
+	Such systems are referred to as reciprocal or bilateral recommender systems.
+	
+	In project-driven companies, reciprocal recommenders can support decision-makers in assigning suitable employees to open project positions.
+	Past research has already shown that mutual consideration of preferences when making recommendations compared to unilateral approaches can lead to an improvement in employee satisfaction and expected work performance.
+	However, according to the current state of research, it has remained unclear how the preferences of decision-makers and employees should be considered in a bilateral recommender system in order to robustly improve employee satisfaction and the expected work performance of the recommended employees when assigning them to project positions.
+	The present work aims at closing this research gap.
+	
+	For this purpose, a multi-criteria approach was designed to take into account the preferences of decision-makers and employees when matching suitable employees to projects.
+	A bilateral algorithm was implemented within the system which bases recommendations on the weighted sum of an employee's preference fulfillment and a decision-maker's preference fulfillment.
+	An experiment was set up to evaluate the influence of the bilateral algorithm on employee satisfaction and expected work performance of the recommended employees.
+	An unilateral algorithm, which only considers the needs of a decision-maker, served as a baseline for the evaluation.
+	
+	Overall, the results of the experiment showed that taking into account the needs of both parties when assigning employees to project positions is fundamentally advantageous.
+	However, the experiment showed individual outliers in the results, in which a decrease in satisfaction or job performance was recorded.
+	As a result, the robustness of the developed approach cannot be confirmed without exception.
+
+	Further research suggested that a reason for this observation lies in the fact that both the satisfaction of employees and their expected work performance are influenced by other unknown factors.
+	In order to determine the clear influence of the bilateral preference fulfillment on satisfaction and work performance, it is recommended to identify these factors by conducting expert interviews among managers and employees.
+	The identified factors should be considered in further research as additional criteria in the multi-criteria recommender system.
+
+	With regard to the weighting of preferences, it became clear in the course of the experiment that it plays a minor role how the preferences of decision-makers or employees are weighted.
+	In order to further investigate the effect of weighting on job satisfaction and job performance, a recommendation for future studies is to look more closely at the cases where the needs of the decision maker and the needs of the employees compete with each other.
+	In addition, it is advisable for future studies to base the determination of the optimal weighting of the preferences on a larger database.
+	It is assumed that this consideration will add to the robustness of the algorithm against outliers.
+
 \end{otherlanguage}

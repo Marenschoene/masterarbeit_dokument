@@ -6,19 +6,19 @@
 \chapter{Fazit}
 \label{ch:fazit}
 Der Einsatz von Empfehlungssystemen zur Entscheidungsunterstützung hat in den vergangenen Jahren zunehmend an Bedeutung gewonnen.
-Während Empfehlungssysteme traditionell für die Empfehlung von Gegenständen, Orten oder Dokumenten eingesetzt werden, hat die Empfehlung von Personen durch den Zuwachs an sozialen Netzwerken vermehrt Aufmerksamkeit erlangt.
-In Systemen, in denen Personen die Inhalte von Empfehlungen bilden, kann der Erfolg einer Empfehlung von der Bedürfniserfüllung beider beteiligten Parteien, das heißt von sowohl Empfehlungsempfänger als auch empfohlener Person, beeinflusst werden.
+Während Empfehlungssysteme ursprünglich für die Empfehlung von Gegenständen oder Dokumenten eingesetzt wurden, hat die Empfehlung von Personen durch den Zuwachs an sozialen Netzwerken vermehrt Aufmerksamkeit erlangt.
+In Systemen, in denen Personen die Inhalte von Empfehlungen bilden, kann der Erfolg einer Empfehlung von der Präferenzerfüllung beider beteiligter Parteien, das heißt von sowohl Empfehlungsempfänger als auch empfohlener Person, beeinflusst werden.
 Solche Systeme werden als wechselseitige oder auch bilaterale Empfehlungssysteme bezeichnet.
 % Systeme, in denen Personen die Inhalte von Empfehlungen bilden und der Erfolg einer Empfehlung von der Bedürfniserfüllung beider beteiligten Parteien abhängt, werden als wechselseitige Empfehlungssysteme bezeichnet.
 
 In projektgetriebenen Unternehmen können wechselseitige Empfehlungssysteme Entscheidungsträger darin unterstützen, passende Mitarbeiter zu offenen Projektpositionen zuzuordnen.
-In der Forschung wurde bereits belegt, dass die beidseitige Berücksichtigung der Bedürfnisse bei der Empfehlungserstellung verglichen mit einem unilateralen Ansatz zu einer Verbesserung der Zufriedenheit der Mitarbeiter sowie der erwarteten Arbeitsleistung dieser führen kann.
-Nach aktuellem Stand der Forschung blieb jedoch bislang unklar, wie die Bedürfnisse von Entscheidungsträgern und Mitarbeitern in einem bilateralen Empfehlungssystem einfliessen müssten, um die Zufriedenheit der Mitarbeiter und die erwartete Arbeitsleistung seitens der Entscheidungsträger bei der Zuordnung von Mitarbeitern zu Projektpositionen robust zu verbessern.
+In der Forschung konnte bereits nachgewiesen werden, dass eine beidseitige Berücksichtigung der Bedürfnisse bei der Empfehlungserstellung im Vergleich zu einer unilateralen Berücksichtigung zu einer Verbesserung der Zufriedenheit von Mitarbeitern sowie der erwarteten Arbeitsleistung dieser führen kann.
+Nach aktuellem Stand der Forschung blieb jedoch bislang unklar, wie die Präferenzen von Entscheidungsträgern und Mitarbeitern in einem bilateralen Empfehlungssystem einfliessen müssten, um die Zufriedenheit der Mitarbeiter und die erwartete Arbeitsleistung seitens der Entscheidungsträger bei der Zuordnung von Mitarbeitern zu Projektpositionen robust zu verbessern.
 
 Daher wurde im Rahmen der vorliegenden Arbeit ein alternativer Ansatz für die Berücksichtigung der Präferenzen von Entscheidungsträgern und Mitarbeitern bei der Zuordnung zu Projekten entwickelt.
-Hierfür wurde das Problem der bilateralen Bedürfniserfüllung in wechselseitigen Systemen aus Sicht der Entscheidungstheorie betrachtet und als Entscheidungsproblem mit zwei Kriterien definiert.
+Hierfür wurde das Problem der bilateralen Präferenzerfüllung in wechselseitigen Systemen aus Sicht der Entscheidungstheorie betrachtet und als Entscheidungsproblem mit zwei Kriterien definiert.
 Darauf basierend wurde ein multi-kriterielles Empfehlungssystem konzipiert, welches zwei Algorithmen implementiert.
-Repräsentativ für ein unilaterales Empfehlungssystem wurde ein unilateraler Algorithmus erstellt, der die fünf passensten Mitarbeiter in Abhängigkeit der Bedürfnisserfüllung aus Sicht des Entscheidungsträgers für die Beispielprojekte vorschlägt.
+Repräsentativ für ein unilaterales Empfehlungssystem wurde ein unilateraler Algorithmus erstellt, der die fünf passensten Mitarbeiter in Abhängigkeit der Erfüllung ihrer Präferenzen aus Sicht des Entscheidungsträgers für die Beispielprojekte vorschlägt.
 Für die bilaterale Empfehlung wurde ein bilateraler Algorithmus implementiert, der die fünf passensten Mitarbeiter für eine Projektposition in Abhängigkeit der zwei Kriterien Bedürfniserfüllung des Entscheidungsträgers und Bedürfniserfüllung des Mitarbeiters empfiehlt.
 Die Aggregation der Kriterien im bilateralen Algorithmus erfolgte anhand der gewichteten Summe.
 
@@ -29,21 +29,21 @@ Für jedes Projekt wurde die Performance der Algorithmen hinsichtlich der Anzahl
 Die Ergebnisse wurden in Bezug auf die vorliegende Forschungsfrage analysiert:
 \forschungsfrage
 
-Insgesamt konnte im Rahmen der Untersuchung festgestellt werden, dass die Zufriedenheit der Mitarbeiter im Mittel in vier von fünf Projekten durch Einsatz des bilateralen Algorithmus gesteigert werden konnte.
+Insgesamt konnte im Rahmen der Untersuchung festgestellt werden, dass die Zufriedenheit der Mitarbeiter im Mittel in vier von fünf Projekten durch Einsatz des bilateralen Algorithmus verbessert werden konnte.
 Darüber hinaus zeigten die Ergebnisse, dass eines der fünf Projekte im Durchschnitt sogar eine Steigerung der erwarteten Arbeitsleistung der Mitarbeiter aus Sicht der Entscheidungsträger erreichen konnte.
 Weiter führte der bilaterale Ansatz im Mittel in keinem der Projekte zu einem Rückgang der Zufriedenheit oder der erwarteter Arbeitsleistung der Mitarbeiter.
 
-Eine Betrachtung der absoluten Ergebnisse zeigte jedoch, dass einzelne Ausreißer in den Ergebnissen vorhanden waren, bei denen ein Rückgang von Zufriedenheit bzw. Arbeitsleistung verzeichnet wurde.
-Dadurch kann eine Robustheit des entwickelten Ansatzes nicht uneingeschränkt bestätigt werden.
-Als Ursache für diese Beobachtung wird angesehen, dass sowohl die Zufriedenheit von Mitarbeitern als auch deren erwartete Arbeitsleistung seitens der Entscheidungsträger durch weitere Einflussfaktoren bestimmt werden.
-Um den eindeutigen Einfluss der bilateralen Bedürfniserfüllung auf Zufriedenheit und Arbeitsleistung zu ermitteln, wird empfohlen, diese Kriterien zu identifizieren und in weiterführenden Forschungen zu berücksichtigen.
+Eine Betrachtung der absoluten Ergebnisse zeigte jedoch einzelne Ausreißer in den Ergebnissen, bei denen ein Rückgang von Zufriedenheit bzw. Arbeitsleistung zu erkennen war.
+Eine Robustheit des entwickelten Ansatzes kann daher im Rahmen des Experiments nicht uneingeschränkt bestätigt werden.
 
-Bezüglich der Gewichtung der Bedürfnisse scheint es eine geringfügigere Rolle zu spielen, welches Gewicht den Bedürfnissen zukommt.
+Als Ursache für diese Beobachtung wird angesehen, dass sowohl die Zufriedenheit von Mitarbeitern als auch deren erwartete Arbeitsleistung seitens der Entscheidungsträger durch weitere Einflussfaktoren bestimmt werden.
+Um den eindeutigen Einfluss der bilateralen Präferenzerfüllung auf Zufriedenheit und Arbeitsleistung zu ermitteln, wird für weiterführende Forschungen empfohlen, diese Faktoren durch das Durchführen von Experteninterviews unter den Managern und Mitarbeitern zu identifizieren.
+Die identifizierten Einflussfaktoren sollten als zusätzliche Kriterien in dem multi-kriteriellen Empfehlungssystem berücksichtigt werden.
+
+Bezüglich der Gewichtung der Präferenzen scheint es eine geringfügigere Rolle zu spielen, wie die Präferenzen von Entscheidungsträger bzw. Mitarbeitern gewichtet werden.
 Die Erwartung ist, dass die Auswirkungen der Berücksichtigung der Präferenzen vorallem dann entscheidend ist, wenn die beherrschten und präferierten Fähigkeiten der Angestellten weiter auseinanderliegen.
 Um den Effekt der Gewichte auf die Zufriedenheit und Arbeitsleistung genauer zu untersuchen, wird daher empfohlen eine weitere Studie durchzuführen, die auf solchen Daten basiert.
-Darüber hinaus wird empfohlen eine größere Datenmenge als Ausgangsbasis für die Ermittlung einer optimalen Gewichtung heranzuziehen, um zusätzlich zu der Robustheit des Algorithmus unter Einsatz des optimierten Gewichts beizutragen.
-
-Hier noch letzten punkt anführen?????
+Darüber hinaus sollte in zukünftigen Studien eine größere Datenmenge als Ausgangsbasis zur Ermittlung einer optimalen Gewichtung herangezogen werden, um zusätzlich zu der Robustheit des Algorithmus unter Einsatz des optimierten Gewichts beizutragen.
 
 % In Teilen konnten die Ausreißer durch mangelnde Datengrundlage zurückgeführt werden.
 
