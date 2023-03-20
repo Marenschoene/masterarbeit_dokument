@@ -239,7 +239,7 @@ Ziel ist es, in Abhängigkeit der vollständigen Rating-Matrix $R$ eine Empfehlu
 % Wichtig zu unterscheiden, dass die Empfehlungen nicht zwangsäufig die präferenzen des nutzers empfehlen müssen, da diese auch von anderen kriterien abhängen könnne, siehe quelle unten
 
 In Abhängigkeit des Anwendungsfalls kann eine Empfehlung verschiedene Formen annehmen.
-So kann eine Empfehlung beispielsweise ein einizges Element umfassen (bspw. das Element mit dem größten angenommenen Nutzen für einen Nutzer) \cite[S. 6]{ricci:inbook}.
+So kann eine Empfehlung beispielsweise ein einziges Element umfassen (bspw. das Element mit dem größten angenommenen Nutzen für einen Nutzer) \cite[S. 6]{ricci:inbook}.
 Eine Empfehlung kann auch eine Kombination unterschiedlicher Elemente darstellen \cite[S. 7]{ricci:inbook}.
 Ein Beispiel stellen Empfehlungen in Online-Shops dar, die einem Kunden zu einem ausgewählten T-Shirt eine passende Hose und Schuhe vorschlagen.
 Die unterschiedlichen Kleidungsstücke (Elemente) bilden gesammelt ein vollständiges Outfit, welches einem Kunden als Ganzes empfohlen werden kann.
@@ -286,7 +286,7 @@ In solchen Empfehlungssystemen kann der Rang eines Elements anhand mehrerer Sort
 % ------- Hier (oder oben?) kurze Zusammenfassung der Begrifflichkeiten (siehe aggarwal, S. xviii, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/Aggarwal2016_Book_RecommenderSystems.pdf)
 
 % Weglassen?
-Abbildung \ref{fig:empfehlungssysteme:recommendation:abb1} illustriert den Prozess der Empfehlungserstellung am Beispiel eines Ausschnitts der Mitarbeiter-Fähigkeiten Matrix aus Tabelle \ref{tab1}.
+Abbildung \ref{fig:empfehlungssysteme:recommendation:abb1} illustriert den zweistufigen Prozess der Empfehlungserstellung am Beispiel eines Ausschnitts der Mitarbeiter-Fähigkeiten Matrix aus Tabelle \ref{tab1}.
 Das Beispiel stellt den Empfehlungerstellungsprozess für die Mitarbeiterin Erika M. dar.
 Dabei soll mithilfe des Empfehlungssystems die Fähigkeit vorschlagen werden, von der angenommen werden kann, dass Erika M. in dieser Fähigkeit die meisten Kenntnisse im Vergleich zu den anderen Fähigkeiten aufweist (e.g. $argmax(\hat{r}_{\textnormal{Erika M., s}})$).
 % am die dieser am Gesucht: Element des Mitarbeiters, für das er/sie die höchsten Fähigkeiten aufweist, bspw. weil vorgeschalgen wird in dem Bereich eine Schulung zu geben, oder MA gesucht wird, der experte in einem bestimmten gebiet ist
@@ -631,7 +631,8 @@ Das grundlegende Konzept für die Ermittlung des Wertes einer Paarung ist in Abb
 \end{figure}
 
 Nach \textcite[S. 2429]{palomares:inproceedings} werden basierend auf Daten zu Nutzern und Elementen die Präferenzen der Personen füreinander vorhergesagt (d.h. die Erfüllung von $F_{s}^{p}$ und $F_{c}^{p}$).
-Die unabhängig voneinander ermittelten Präferenzwerte werden dann mittels Aggregation zu einer Angabe zusammengeführt, welche den angenommenen Wert der bilateralen Paarung angibt.
+Die Erfüllung der Präferenzen einer Person durch eine Andere bezeichnet \textcite[S. 2429]{palomares:inproceedings} als Präferenzwert.
+Die unabhängig voneinander ermittelten Präferenzwerte werden dann mittels Aggregation zu einem bilateralen Präferenzwert zusammengeführt, welche den angenommenen Wert der beidseitigen Präferenzerfüllung angibt.
 
 Nach \textcite[S. 36]{li:inproceedings} ist das Bestimmen einer optimalen Paarung in \ac{RRS} erschwert, da neben der Reziprozität auch Eigenschaften wie die Verfügbarkeit von Elementen (Endlichkeit) berücksichtigt werden müssen.
 So kann es sein, dass eine Person anhand ihrer Präferenzen optimal zu einem Nutzer passt, die empfohlene Person aber in einem gegebenen Zeitraum nicht verfügbar ist.

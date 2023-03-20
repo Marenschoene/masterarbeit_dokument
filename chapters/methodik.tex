@@ -326,22 +326,22 @@ Nachfolgend wird erläutert, wie die Funktionalitäten umgesetzt wurden.
 Im Matching-Teil des Algorithmus wird für jeden Mitarbeiter ermittelt, wie sehr dessen Fähigkeiten und dessen Präferenzen mit den angeforderten Fähigkeiten im Projekt übereinstimmen.
 Hierfür ermittelt der Algorithmus in Anlehnung an \textcite[S. 207ff.]{pizzato:2010} zwei separate Kompatibilitätswerte.
 Für die Berechnung der Präferenz-Kompatibilität wurde nach dem Verfahren von \textcite[S. 269ff.]{pizzato:2:inproceedings} für die Kombination positiver und negativer Präferenzen vorgegangen, welches in Kapitel \ref{ch:verwandte_arbeiten:1} vorgestellt wurde.
-Demnach kann die Präferenz-Kompatibilität $C_{Pref}^{\pm}(c,s)$ eines Mitarbeiters $s$ mit einer angeforderten Projektposition $c$ wie folgt ermittelt werden:
+Demnach kann die Präferenz-Kompatibilität $Comp_{Pref}^{\pm}(c,s)$ eines Mitarbeiters $s$ mit einer angeforderten Projektposition $c$ wie folgt ermittelt werden:
 \begin{equation}\label{methodik:eq:1}
-    C_{Pref}^{\pm}(c,s)=\frac{1+C_{Pref}^{+}(c,s)-C_{Pref}^{-}(c,s)}{2}
+    Comp_{Pref}^{\pm}(c,s)=\frac{1+Comp_{Pref}^{+}(c,s)-Comp_{Pref}^{-}(c,s)}{2}
 \end{equation}
-Die positive Präferenz-Kompatibilität $C_{Pref}^{+}(c,s)$ eines Mitarbeiters mit einem Projekt ermittelt der Algorithmus, indem die Anzahl der angeforderten Fähigkeiten, die ein Mitarbeiter präferiert durch die Gesamtzahl an angefragten Fähigkeiten geteilt wird:
+Die positive Präferenz-Kompatibilität $Comp_{Pref}^{+}(c,s)$ eines Mitarbeiters mit einem Projekt ermittelt der Algorithmus, indem die Anzahl der angeforderten Fähigkeiten, die ein Mitarbeiter präferiert durch die Gesamtzahl an angefragten Fähigkeiten geteilt wird:
 \begin{equation}\label{methodik:eq:2}
-    C_{Pref}^{+}(c,s)=\frac{\sum\limits_{i \in F_{c}} \mathbb{1}_{i \in P_{s}}}{|F_{c}|}
+    Comp_{Pref}^{+}(c,s)=\frac{\sum\limits_{i \in F_{c}} \mathbb{1}_{i \in P_{s}}}{|F_{c}|}
 \end{equation}
 In Gleichung \ref{methodik:eq:2} stellt $F_{c}$ die Menge an angeforderten Fähigkeiten einer Projektposition dar, während $P_{s}$ die Menge an Fähigkeiten repräsentiert, die ein Mitarbeiter präferiert.
 
-Die Kalkulation der negativen Präferenz-Kompatibilität $C_{Pref}^{-}(c,s)$ erfolgt analog zu Gleichung \ref{methodik:eq:2}, indem die Anzahl an Fähigkeiten, die ein Mitarbeiter nicht anwenden möchte durch die Gesamtzahl an angefragten Fähigkeiten geteilt wird.
+Die Kalkulation der negativen Präferenz-Kompatibilität $Comp_{Pref}^{-}(c,s)$ erfolgt analog zu Gleichung \ref{methodik:eq:2}, indem die Anzahl an Fähigkeiten, die ein Mitarbeiter nicht anwenden möchte durch die Gesamtzahl an angefragten Fähigkeiten geteilt wird.
 Da Fähigkeiten, denen ein Angestellter neutral gegenübersteht, weder zu einem höheren noch zu einem niedrigeren Rang eines Mitarbeiters im Ranking führen sollen, werden diese bei der Kalkulation der Präferenz-Kompatibilität nicht berücksichtigt.
 
 Für die Mitarbeiterin Jane D. der Anfrage in Listing \ref{lst:methodik:lst1} ergibt sich die Präferenz-Kompatibilität für die angeforderte Projektposition demnach wie folgt:
 \begin{equation}\label{methodik:eq:4}
-    C_{Pref}^{\pm}(c,Jane \textnormal{ }D.) = \frac{1+\frac{1}{1}-\frac{0}{1}}{2} = 1
+    Comp_{Pref}^{\pm}(c,Jane \textnormal{ }D.) = \frac{1+\frac{1}{1}-\frac{0}{1}}{2} = 1
 \end{equation}
 
 Für die Berechnung der Fähigkeits-Kompatibilität wurde eine abgewandelte Version des Verfahrens von \textcite[S. 269ff.]{pizzato:2:inproceedings} entwickelt.
@@ -352,7 +352,7 @@ Diese wird berechnet, indem je Fähigkeit das Kenntnisniveau eines Mitarbeiters 
 Die Summe der anteiligen Fähigkeiten wird anschließend durch die Anzahl an angeforderten Fähigkeiten geteilt.
 Dadurch ergibt sich für die Kalkulation der Fähigkeits-Kompatibilität des Algorithmus folgende Formel:
 \begin{equation}\label{methodik:eq:3}
-    C_{Skills}(c,s)=\frac{1}{|F_{c}|} \cdot \sum\limits_{i \in F_{c}} \mathbb{1}_{i \in F_{s}} \frac{level(i \in F_{s})}{level(i \in F_{c})}
+    Comp_{Skills}(c,s)=\frac{1}{|F_{c}|} \cdot \sum\limits_{i \in F_{c}} \mathbb{1}_{i \in F_{s}} \frac{level(i \in F_{s})}{level(i \in F_{c})}
 \end{equation}
 In Gleichung \ref{methodik:eq:3} stellt $F_{s}$ die Menge an Fähigkeiten dar, die ein Angestellter beherrscht (Kenntnisniveaus "Grundkenntnisse" und "Fortgeschritten").
 Der Ausdruck $level(i \in F_{s})$ gibt den Wert des Kenntnisniveaus einer beherrschten Fähigkeit eines Mitarbeiters an.
@@ -366,7 +366,7 @@ Dadurch soll verhindert werden, dass das Fehlen einer Fähigkeit durch die Über
 
 Für die Mitarbeiterin Jane D. der Anfrage in Listing \ref{lst:methodik:lst1} ergibt sich die Fähigkeits-Kompatibilität demnach wie folgt:
 \begin{equation}\label{methodik:eq:5}
-    C_{Skills}(c,Jane \textnormal{ }D.) = \frac{1}{1} \cdot (\frac{0}{1}) = 0
+    Comp_{Skills}(c,Jane \textnormal{ }D.) = \frac{1}{1} \cdot (\frac{0}{1}) = 0
 \end{equation}
 
 Für die Kombination der Fähigkeits- und Präferenz-Kompatibilität im bilateralen Algorithmus wurden verschiedene Aggregationsmethoden betrachtet.
@@ -388,7 +388,7 @@ Darüber hinaus zeigten Experimente von \textcite[S. 131ff.]{kleinerman:2:inproc
 In Anlehnung an \textcite[S. 131ff.]{kleinerman:2:inproceedings} wurde daher die gewichtete Summe als Aggregationsmethode in dem bilateralen Algorithmus umgesetzt.
 Die Kombination von Fähigkeits- und Präferenz-Kompatibilität ermittelt der Algorithmus demnach wie folgt:
 \begin{equation}\label{methodik:eq:6}
-    PW_{c,s}^{bil}(\alpha) = \alpha \cdot C_{Skills}(c,s) + (1-\alpha) \cdot C_{Pref}^{\pm}(c,s)
+    PW_{c,s}^{bil}(\alpha) = \alpha \cdot Comp_{Skills}(c,s) + (1-\alpha) \cdot Comp_{Pref}^{\pm}(c,s)
 \end{equation}
 Das Ergebnis $PW_{c,s}^{bil}$ der Aggregation stellt den bilateralen Präferenzwert dar.
 
@@ -401,7 +401,7 @@ Hierfür wurden die erhobenen Daten der Mitarbeiter- und Managerbefragung herang
 In Anlehnung an das in Kapitel \ref{ch:verwandte_arbeiten:1} vorgestellte Verfahren von \textcite[S. 131ff.]{kleinerman:2:inproceedings} wurde das Optimierungsproblem zur Bestimmung von $\alpha$ wie folgt definiert:
 \begin{equation}\label{methodik:eq:7}
     \begin{aligned}
-        \min_{\alpha} \sum_{c \in C} \sum_{s \in S} \mathbb{1}_{s \in SuccMatch_{c}} Rank_{s} (PW_{c,*}(\alpha))\\
+        \min_{\alpha} \sum_{c \in C} \sum_{s \in S} \mathbb{1}_{s \in SuccMatch_{c}} Rank_{s} (PW_{c,*}^{bil}(\alpha))\\
         \textnormal{u.d.B. } 0 \leq \alpha \leq 1\\
     \end{aligned}
 \end{equation}
@@ -421,7 +421,7 @@ Für die Mitarbeiterin Jane D. der Anfrage in Listing \ref{lst:methodik:lst1} er
 Im Unterschied zum bilateralen Algorithmus wird für die Zuordnung von Mitarbeitern zu Projekten im unilateralen Algorithmus als einziges Kriterium die Fähigkeits-Kompatibilität herangezogen.
 Im unilateralen Algorithmus wird der Präferenzwert demnach wie folgt ermittelt:
 \begin{equation}\label{methodik:eq:8}
-    PW_{c,s}^{unil} = C_{Skills}(c,s)
+    PW_{c,s}^{unil} = Comp_{Skills}(c,s)
 \end{equation}
 Die Schritte Aggregation und Gewichtung waren folglich für die Implementierung des unilateralen Algorithmus nicht von Belangen.
 Der unilaterale Präferenzwert für die Mitarbeiterin Jane D. der Anfrage in Listing \ref{lst:methodik:lst1} ergibt sich demnach wie folgt:

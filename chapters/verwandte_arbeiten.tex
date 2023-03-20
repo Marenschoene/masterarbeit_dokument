@@ -19,26 +19,29 @@ Dadurch haben sich im Verlauf der Jahre unterschiedliche Ansätze für die Berü
 Die erste Veröffentlichung in der Literatur zu wechselseitigen Empfehlungssystemen stammt von \textcite[S. 1ff.]{pizzato:inproceedings}, welche ein wechselseitiges Empfehlungssystem für Online-Dating-Plattformen vorstellen \cite[S. 1469]{yildirim:article}.
 Nach \textcite[S. 5]{pizzato:inproceedings} ergibt sich der Wert einer \ac{N-E-K} grundsätzlich aus einer Kombination der Präferenz eines Nutzers für ein Element und der Präferenz eines Elements für einen Nutzer.
 Die Autoren weisen darauf hin, dass für die Kombination der beiden Komponenten verschiedene Methoden verwendet werden können.
-In ihrer Veröffentlichung modellieren \textcite[S. 6]{pizzato:inproceedings} eine reziproke Empfehlung als gewichtete Summe aus dem Wert der Präferenz eines Nutzers für ein Element ($P1$) und dem Wert der Präferenz eines Elements für einen Nutzer ($P2$) \cite[S. 6]{pizzato:inproceedings}:
+In ihrer Veröffentlichung modellieren \textcite[S. 6]{pizzato:inproceedings} den bilateralen Präferenzwert als gewichtete Summe aus dem Wert der Präferenz eines Nutzers für ein Element ($P1$) und dem Wert der Präferenz eines Elements für einen Nutzer ($P2$) \cite[S. 6]{pizzato:inproceedings}:
 \begin{equation}\label{eq32}
-    PRR(c,s) = w_{1}P1(c,s) + w_{2}P2(c,s)
+    PW_{c,s}^{bil} = w_{1}P1(c,s) + w_{2}P2(c,s)
 \end{equation}
 Über die Gewichte $w_{1}$ und $w_{2}$ können die Präferenzen von Nutzern bzw. Elementen unterschiedlich gewichtet werden \cite[S. 6]{pizzato:inproceedings}.
-Für alternative Kombinationsmöglichkeiten der bilateralen Präferenzen verweisen \textcite[S. 5]{pizzato:inproceedings} auf \textcite[S. 339ff.]{burke:article}, der in seiner Veröffentlichung zu hybriden Empfehlungssystemen allgemeine Methoden für die Kombination von Ergebnissen unterschiedlicher Systeme vorstellt.
+Für alternative Kombinationsmöglichkeiten der bilateralen Präferenzen verweisen \textcite[S. 5]{pizzato:inproceedings} auf \textcite[S. 339ff.]{burke:article}.
+Dieser stellt in seiner Veröffentlichung zu hybriden Empfehlungssystemen allgemeine Methoden für die Kombination von Ergebnissen unterschiedlicher Systeme vor.
 Auch wenn die Umsetzung der reziproken Empfehlung bereits als multi-kriterieller Ansatz modelliert wurde (Vgl. Gleichung \ref{eq32}), bezeichnen \textcite[S. 1ff.]{pizzato:inproceedings} die wechselseitige Empfehlungserstellung nicht ausdrücklich als multi-kriterielles Problem. 
 
 Eine Umsetzung des Konzepts wechselseitiger Empfehlungssysteme stellen \textcite[S. 207ff.]{pizzato:2010} in einer weiterführenden Arbeit vor.
-Die Autoren entwickeln den inhaltsbasierten Algorithmus RECON für eine Online-Dating-Website, welche die bilateralen Präferenzen zweier Nutzer $x$ und $y$ über das harmonische Mittel aggregiert:
+Die Autoren entwickeln den inhaltsbasierten Algorithmus RECON für eine Online-Dating-Website, welche die Präferenzwerte zweier Nutzer $c$ und $s$ über das harmonische Mittel aggregiert:
 \begin{equation}\label{eq33}
-    PRR(x,y) = \frac{2}{(\frac{1}{Comp.(P_{x,y})}+\frac{1}{Comp.(P_{y,x})})}
+    PW_{c,s}^{bil} = \frac{2}{(\frac{1}{Comp(P_{c,s})}+\frac{1}{Comp(P_{s,c})})}
 \end{equation}
-Als Indikator für die Präferenzen $P_{x}$ eines Nutzers $x$ stützen sich die Autoren auf Attribute der Nutzer, die eine Nachricht des Nutzers $x$ erhalten haben.
-So gehen \textcite[S. 210]{pizzato:2010} davon aus, dass ein Nutzer $x$ eine bestimmte Altersgruppe bevorzugt, wenn er im Vergleich zu anderen Altersgruppen maßgeblich Nutzern einer Altersklasse Nachrichten gesendet hat.
-Die Präferenz eines Nutzers $x$ für einen Nutzer $y$ bestimmen \textcite[S. 210]{pizzato:2010} über einen Kompatibilitäts-Wert $Comp.(P_{x,y})$, der sich aus der Präferenz des Nutzers $x$ für die Attribute des Nutzers $y$ ergibt.
+Als Indikator für die Präferenzen $P_{c}$ eines Nutzers $c$ stützen sich die Autoren auf Attribute der Nutzer, die eine Nachricht des Nutzers $c$ erhalten haben.
+So gehen \textcite[S. 210]{pizzato:2010} davon aus, dass ein Nutzer $c$ eine bestimmte Altersgruppe bevorzugt, wenn er im Vergleich zu anderen Altersgruppen maßgeblich Nutzern einer Altersklasse Nachrichten gesendet hat.
+Den Präferenzwert eines Nutzers $c$ für einen Nutzer $s$ bezeichnen \textcite[S. 210]{pizzato:2010} als Kompatibilitäts-Wert $Comp(P_{c,s})$.
+Diesen ermitteln die Autoren aus der Präferenz des Nutzers $c$ für die Attribute des Nutzers $s$ ($P_{c,s}$).
+Analog erfolgt die Ermittlung des Präferenzwerts des empfohlenen Nutzers $s$ für den Empfehlungsempfänger $c$.
 Bis heute wird davon ausgegangen, dass die meisten der später vorgeschlagenen Modelle zu \ac{RRS} auf dem Ansatz von \textcite[S. 207ff.]{pizzato:2010} basieren \cite[S. 723]{kumari:article}.
 
-Kritisch ist anzumerken, dass die Präferenzen der Nutzer in der Ermittlung des reziproken Wertes nicht unterschiedlich stark gewichtet werden können.
-Demzufolge ist der reziproke Wert eines Nutzers $x$ für einen Nutzer $y$ symmetrisch zu dem Wert eines Nutzers $y$ für einen Nutzer $x$ \cite[S. 211]{pizzato:2010}.
+Kritisch ist anzumerken, dass die Präferenzen der Nutzer in der Ermittlung des bilateralen Präferenzwertes nicht unterschiedlich stark gewichtet werden.
+Demzufolge ist der bilaterale Präferenzwert eines Nutzers $c$ für einen Nutzer $s$ symmetrisch zu dem bilateralen Präferenzwert eines Nutzers $s$ für einen Nutzer $c$ \cite[S. 211]{pizzato:2010}.
 % Darüber hinaus weisen \textcite[S. 285]{zheng:2:inproceedings} darauf hin, dass eine unterschiedliche Gewichtung notwendig sein kann, bspw. wenn die Kompatibilitätswerte auf unterschiedlichen Skalen oder Verteilungen liegen.
 Weiter ist eine Voraussetzung für die Bestimmung des Wertes bilateraler Präferenzen anhand des harmonischen Mittels, dass die jeweiligen Kompatibilitätswerte nicht null sein dürfen, da das harmonische Mittel für solche Werte nicht definiert ist.
 Dies muss beim Aufsetzen des Algorithmus berücksichtigt werden.
@@ -46,48 +49,71 @@ Dies muss beim Aufsetzen des Algorithmus berücksichtigt werden.
 
 \textcite[S. 40]{li:inproceedings} bemängeln an dem Ansatz von \textcite[S. 207ff.]{pizzato:2010}, dass wesentliche Charakteristika wechselseitiger Empfehlungssysteme außer Acht gelassen werden.
 Sie merken an, dass Aspekte wie Passivität und die Endlichkeit von Nutzern nicht in die Empfehlungserstellung miteinbezogen werden.
-Zusätzlich zu der Berücksichtigung weiterer Aspekte wechselseitier Empfehlungssysteme, wird der Wert der Reziprozität in dem allgemeinen Framework für \ac{RRS} von \textcite[S. 38]{li:inproceedings} als Produkt der Präferenzwerte zweier Nutzer $x$ und $y$ bestimmt \cite[S. 710]{kumari:article}.
+
+% Zusätzlich zu der Berücksichtigung weiterer Aspekte wechselseitier Empfehlungssysteme, wird der Wert der Reziprozität in dem allgemeinen Framework für \ac{RRS} von \textcite[S. 38]{li:inproceedings} als Produkt der Präferenzwerte zweier Nutzer $x$ und $y$ bestimmt \cite[S. 710]{kumari:article}.
+In ihrer Publikation stellen \textcite[S. 38]{li:inproceedings} daher ein allgemeines Framework für wechselseitige Empfehlungssysteme vor, welches neben der Reziprozität weitere Aspekte wechselseitiger Empfehlungssysteme berücksichtigt.
+Im Gegensatz zu dem Ansatz von \textcite[S. 207ff.]{pizzato:2010} erfolgt die Ermittlung des bilateralen Präferenzwertes als Produkt der Präferenzwerte zweier Nutzer $c$ und $s$ \cite[S. 710]{kumari:article}:
+\begin{equation}\label{eq40}
+    PW_{c,s}^{bil} = Comp(P_{c,s}) \cdot Comp(P_{s,c})
+\end{equation}
 Den Autoren zufolge soll dadurch eine unilaterale Präferenz im Vergleich zu herkömmlichen Aggregationsmethoden (z.B. Linearkombination) verhindert werden.
 Dies betrifft beispielsweise Fälle in denen lediglich eine Person den Präferenzen der anderen Person entspricht, zum Beispiel in Fällen in denen ein Bewerber eine Jobposition bevorzugt, dieser aber nicht für die ausgeschriebenen Stelle geeignet ist \cite[S. 38]{li:inproceedings}.
 
-\textcite[S. 66ff.]{diaz:inproceedings} formulieren das Finden optimaler Paare in Online-Dating-Plattformen als Informationsbeschaffungsproblem\footnote{"Information retrieval problem" - \textcite[S. 67]{diaz:inproceedings}} \cite[S. 550]{koprinska:inbook}.
+\textcite[S. 66ff.]{diaz:inproceedings} formulieren das Finden optimaler Paare in Online-Dating-Plattformen als "Informationsbeschaffungsproblem"\footnote{"Information retrieval problem" - \textcite[S. 67]{diaz:inproceedings}} \cite[S. 550]{koprinska:inbook}.
 \textcite[S. 550]{koprinska:inbook} beschreiben die Veröffentlichung der Autoren als einen Ansatz für das Ranking von Nutzern in Abhängighkeit ihrer Übereinstimmung mit dem idealen Partnerprofil eines Nutzers.
-Das ideale Partnerprofil eines Nutzers ermitteln die Autoren über strukturierte und unstrukturierte Profilattribute \cite[S. 288]{li:article}\cite[S. 272]{pizzato:2:inproceedings}, zu denen auch explizite Prfäferenzen eines Nutzers zählen, die dieser in Form einer Anfrage festlegen kann.
+Das ideale Partnerprofil eines Nutzers ermitteln die Autoren über strukturierte und unstrukturierte Profilattribute \cite[S. 288]{li:article}\cite[S. 272]{pizzato:2:inproceedings}, zu denen auch explizite Präferenzen eines Nutzers zählen, die dieser in Form einer Anfrage an das System festlegen kann.
 % Die Profilattribute, die ... in ihrem Ansatz berücksichtigen sind in ... grafisch dargestellt.
 Die Autoren verwenden historische Daten, mithilfe derer Paare von Nutzern als "relevant" bzw. "nicht-relevant" gekennzeichnet werden \cite[S. 288]{li:article}.
 Als relevant bezeichnen die Autoren Paare, in denen Nutzer Kontaktinformation ausgetauscht haben \cite[S. 66ff.]{diaz:inproceedings}.
-Unter Verwendung eines Gradient Boosted Decision Trees (Machine-Learning Technik) und den gekennzeichneten historischen Daten ermitteln \textcite[S. 69]{diaz:inproceedings} die angenommene Relevanz potenzieller Kandidaten für einen Nutzer \cite[S. 550]{koprinska:inbook}.
-Die Ermittlung des Verlusts in dem Machine-Learning Modell von \textcite[S. 69]{diaz:inproceedings} erfolgt durch Anwendung der mittleren quadratischen Abweichung (engl.: \ac{MSE}).
+Unter Verwendung der Machine-Learning Technik Gradient Boosted Decision Tree und den gekennzeichneten historischen Daten ermitteln \textcite[S. 69]{diaz:inproceedings} die angenommene Relevanz potenzieller Kandidaten für einen Nutzer \cite[S. 550]{koprinska:inbook}.
+Die Ermittlung des Verlusts in dem Machine-Learning Modell von \textcite[S. 69]{diaz:inproceedings} erfolgt durch Anwendung der mittleren quadratischen Abweichung.
 Den Aspekt der Reziprozität bezeichnen \textcite[S. 66]{diaz:inproceedings} als two-sided relevance (dt.: zweiseitige Relevanz) \cite[S. 550]{koprinska:inbook}.
 
 \textcite[S. 247ff.]{kim:2:inproceedings} entwickelten eine Methode für die bilaterale Empfehlungserstellung in sozialen Netzwerken.
 In ihrer Arbeit beziehen sich die Autoren auf Netzwerke, in denen Nutzer auf Nachrichten anderer Nutzer positiv bzw. negativ reagieren können \cite[S. 548]{koprinska:inbook}.
-Der Ansatz von \textcite[S. 247ff.]{kim:2:inproceedings} berücksichtigt für die Empfehlungserstellung sowohl die Interessen des Senders einer Nachricht, als auch die Interessen des Empfängers einer Nachricht.
+Der Ansatz von \textcite[S. 247ff.]{kim:2:inproceedings} berücksichtigt für die Empfehlungserstellung sowohl die Interessen des Senders einer Nachricht, als auch die Interessen des Empfängers.
 Ähnlich zu dem Ansatz von \textcite[S. 207ff.]{pizzato:2010} erfolgt die Aggregation durch Verwendung des gewichteten harmonischen Mittels \cite[S. 251]{kim:2:inproceedings}.
-Dies ermöglicht eine unterschiedliche Gewichtung des Interesses $I$ von Sender $x$ an Empfänger $y$ bzw. von Empfänger $y$ an Sender $x$ über die Parameter $w_{x}$ und $w_{y}$ \cite[S. 251]{kim:2:inproceedings}:
+Dies ermöglicht eine unterschiedliche Gewichtung des Interesses $I$ des Sender $c$ an Empfänger $s$ bzw. des Empfänger $s$ an Sender $c$ über die Parameter $w_{c}$ und $w_{s}$ \cite[S. 251]{kim:2:inproceedings}:
 \begin{equation}\label{eq34}
-    H(x,y) = \frac{2}{(\frac{w_{x}}{I_{x,y}}+\frac{w_{y}}{I_{y,x}})}
+    PW_{c,s}^{bil} = \frac{w_{c}+w_{s}}{(\frac{w_{c}}{I_{c,s}}+\frac{w_{s}}{I_{s,c}})}
 \end{equation}
-Nach \textcite[S. 219]{kim:2:inproceedings} werden die Gewichte so gewählt, dass deren Summe ($w_{1}+w_{2}$) $1$ ist.
-Für anknüpfende Experimente setzten die Autoren für das Gewicht $w_{y}$ die unterschiedlichen Werte 0, 0.25, 0.5 und 0.75 sowie analog für $w_{x}$ die Werte 1.0, 0.75, 0.5 und 0.25 ein \cite[S. 251]{kim:2:inproceedings}.
-Die Ergebnisse der Experimente zeigten nur eine geringe Schwankung des Anteils positiver Interaktionen von Empfängern am Gesamtaufkommen der Interaktionen bei unterschiedlichen Ausprägungen der Gewichte der Interessen.
-\textcite[S. 259]{kim:2:inproceedings} gehen davon aus, dass die geringe Schwankung maßgeblich aufgrund des retrospektiven Charakters der historischen Daten besteht.
-Die Autoren können folglich keine Aussage darüber treffen, wie Nutzer auf Empfehlungen reagieren, die anhand unterschiedlicher Gewichte ermittelt wurden.
+Nach \textcite[S. 219]{kim:2:inproceedings} werden die Gewichte so gewählt, dass deren Summe ($w_{c}+w_{s}$) $1$ ist.
+
+Im Rahmen eines Experiments evaluierten die Autoren das entwickelte System.
+Hierfür erhoben sie für eine Woche die positiven und negativen Interaktionen in einem sozialen Netzwerk und verglichen diese mit den empfohlenen Interaktionen ihres bilateralen Systems.
+In dem Experiment setzten sie für das Gewicht $w_{s}$ die Werte 0, 0.25, 0.5 und 0.75 sowie analog für $w_{c}$ die Werte 1.0, 0.75, 0.5 und 0.25 ein \cite[S. 251]{kim:2:inproceedings}.
+Die Ergebnisse des Experiments zeigen, dass unterschiedliche Ausprägungen der Gewichte nur zu geringen Schwankungen in der Erfolgsrate des Systems führten, wobei die Erfolgsrate als der Anteil positiver Interaktionen an den Gesamtinteraktionen bemessen wurde.
+Die geringen Schwankungen führen \textcite[S. 219]{kim:2:inproceedings} darauf zurück, dass es sich bei ihrem Experiment um eine retrospektive Forschung handelt.
+Durch das Experiment konnten die Autoren zwar feststellen, ob eine empfohlene Interaktion, ermittelt anhand eines bestimmten Gewichts, in den historischen Daten als positiv verzeichnet wurde.
+Es war ihnen jedoch nicht möglich eine Aussage darüber zu treffen, wie ein Nutzer auf eine Empfehlung basierend auf unterschiedlichen Gewichten reagieren würde.
+Folglich konnten die Autoren rückwirkend nicht bestimmen, welchen Einfluss die Gewichtung auf zukünftige Interaktionen in einem System haben könnte.
+% Im umkehrschluss bedeutet das, es war den Autoren nicht möglich zu ermitteln, ob bspw. eine Gewichtung von 0.7 für wc insgesamt zu mehr positiven interaktionen im system führen würde, da nicht bemessen werden konnte, wie ein Empfehlungsempfänger auf eine empfohlene Person reagiert.
+% So konnte nicht bemessen werden, wie sich die Interaktionen verhalten, wenn bspw. ein Empfehlungsempfänger eine empfehlung annimmt, obwohl die eigentlich nicht seinen Interessen entspricht.
+% D.h. die hätten krassere Schwankungen erwartet, wenn die Interaktionen über einen gewissen zeitraum betrachtet worden wären, und nicht in der Vergangenheit, d.h. dass die positiven Interaktionen ingesamt steigen würden.
+% \textcite[S. 259]{kim:2:inproceedings} gehen davon aus, dass die geringe Schwankung maßgeblich aufgrund des retrospektiven Charakters der historischen Daten besteht.
+% Damit beschreiben die Autoren die Art, welche Kennzahl erhoben wird.
+% Da die Interaktionen des sozialen Netzwerks basierend auf dem Interesse des
+% Damit beschreiben sie den Zustand, dass das Senden einer Nachricht und das Empfangen derselbigen in dem sozialen Netzwerk zeitlich auseinander liegen.
+% Demnach kann das Gewicht einer empfohlenen Person für
+% Dieser Zustand ist auf die Art, wie die Kennzahl ermittelt wird.
+% Die Autoren können folglich keine Aussage darüber treffen, wie Nutzer auf Empfehlungen reagieren, die anhand unterschiedlicher Gewichte ermittelt wurden.
 % Dies ist durch die Art der Ermittlung des Interesses eines Empfängers zu erklären, welches durch das Verhältnis von positiven Rückmeldungen eines Empfängers zu allen Interaktionen eines Senders bemessen wird.
 % Da die Anzahl an Rückmeldungen bereits in der Vergangenheit ermittelt wurde, hat eine höhere Gewichtung dieser keinen Einfluss auf vergangene Interaktionen, lediglich auf die Ermittlung des harmonischen Mittels.
 
-\textcite[S. 131ff.]{kleinerman:2:inproceedings} stellen fest, dass in \ac{RRS} bislang offen blieb, wie die unilateralen Präferenzen zweier Parteien optimal im Gleichgewicht gehalten werden können.
+\textcite[S. 131ff.]{kleinerman:2:inproceedings} stellen fest, dass in Forschungsarbeiten bislang offen blieb, wie die unilateralen Präferenzen zweier Parteien optimal im Gleichgewicht gehalten werden können.
 Die Autoren entwickelten daher eine Methode (sog. \ac{RWS}) für Online-Dating-Plattformen, die Empfehlungen basierend auf dem optimalen Gleichgewicht zwischen den Interessen zweier Personen erstellt.
-Im Vergleich zu vorherigen Ansätzen, in denen für alle Nutzer die Präferenzen beider Parteien gleichermaßen in den reziproken Wert einflossen, erfolgt die Gewichtung mit \ac{RWS} für jeden Nutzer individuell, basierend auf dessen vergangenen Interaktionen \cite[S. 133]{kleinerman:2:inproceedings}.
-\ac{RWS} kombiniert für jeden Nutzer $c$ die Wahrhscheinlichkeit, dass dieser Interesse an einer empfohlenen Person $c'$ aufweist ($CF_{c,c'}$) und die Wahrscheinlichkeit, dass die empfohlene Person $c'$ dies positiv erwidert ($PR_{c',c}$) \cite[S. 131f.]{kleinerman:2:inproceedings}:
+Im Vergleich zu vorherigen Ansätzen, in denen für alle Nutzer die Präferenzen beider Parteien gleichermaßen in den bilateralen Präferenzwert einflossen, erfolgt die Gewichtung mit \ac{RWS} für jeden Nutzer individuell, basierend auf dessen vergangenen Interaktionen \cite[S. 133]{kleinerman:2:inproceedings}.
+\ac{RWS} kombiniert für jeden Nutzer $c$ die Wahrhscheinlichkeit, dass dieser Interesse an einer empfohlenen Person $s$ aufweist ($CF_{c,s}$) und die Wahrscheinlichkeit, dass die empfohlene Person $s$ dies positiv erwidert ($PR_{s,c}$) \cite[S. 131f.]{kleinerman:2:inproceedings}:
 \begin{equation}\label{eq36}
-    RWS_{c,c'}(\alpha_{c}) = \alpha_{c} \cdot CF_{c,c'} + (1-\alpha_{c}) \cdot PR_{c',c}
+    PW_{c,s}^{bil}(\alpha_{c}) = \alpha_{c} \cdot CF_{c,s} + (1-\alpha_{c}) \cdot PR_{s,c}
 \end{equation}
-Der Parameter $\alpha$ wird anhand des Einflusses der einzelnen Werte ($CF$ und $PR$) auf erfolgreiche Interaktionen des Nutzers $x$ aus der Vergangenheit ermittelt \cite[S. 135]{kleinerman:2:inproceedings}.
-Für die Vorhersage der Interessen von $c$ verwenden die Autoren kollaboratives Filtern, während für die Vorhersage der Rückmeldung durch $c'$ Techniken des Maschinellen Lernens verwendet werden.
-Die \ac{RWS} von \textcite[S. 134]{kleinerman:2:inproceedings} ist nachfolgend in Abbildung \ref{fig:relatedwork:abb2} anhand eines Beispiel-Nutzers grafisch dargestellt.
+Der Parameter $\alpha_{c}$ wird anhand des Einflusses der einzelnen Werte ($CF$ und $PR$) auf erfolgreiche Interaktionen des Nutzers $c$ aus der Vergangenheit ermittelt \cite[S. 135]{kleinerman:2:inproceedings}.
+Als erfolgreich bezeichnen die Autoren eine Interaktion, wenn ein Empfehlungsempfänger eine Empfehlung annimmt und die empfohlene Person eine positive Rückmeldung sendet.
+Für die Vorhersage der Interessen von $c$ verwenden die Autoren kollaboratives Filtern, während für die Vorhersage der Rückmeldung durch $s$ Techniken des maschinellen Lernens verwendet werden.
 
-\begin{figure}[H]
+Die \ac{RWS} von \textcite[S. 134]{kleinerman:2:inproceedings} ist auf der nachfolgenden Seite in Abbildung \ref{fig:relatedwork:abb2} anhand eines Beispiel-Nutzers grafisch dargestellt.
+
+\begin{figure}
     \centering
 	\includegraphics[width=0.9\textwidth]{gfx/rws.png}
 	\caption[Reciprocal Weighted Score]{Reciprocal Weighted Score\\
@@ -98,12 +124,12 @@ Die \ac{RWS} von \textcite[S. 134]{kleinerman:2:inproceedings} ist nachfolgend i
 Um für Nutzer ohne erfolgreiche Interaktionen in der Vergangenheit Empfehlungen zu erstellen, definieren die Autoren zusätzlich ein Optimierungsproblem über alle Nutzer eines Systems hinweg \cite[S. 135]{kleinerman:2:inproceedings}:\footnote{Die Formel von \textcite[S. 135]{kleinerman:2:inproceedings} enthält einen Tippfehler ($\geq$ anstelle von $\leq$ [sic]).}
 \begin{equation}\label{eq37}
     \begin{aligned}
-        \min_{\alpha} \sum_{c \in C} \sum_{c' \in V_{c}} \mathbb{1}_{c' \in SuccInter_{c}} Rank_{c'} (RWS_{c,*}(\alpha))\\
+        \min_{\alpha} \sum_{c \in C} \sum_{s \in V_{c}} \mathbb{1}_{s \in SuccInter_{c}} Rank_{s} (RWS_{c,*}(\alpha))\\
         \textnormal{u.d.B. } 0 \leq \alpha \leq 1\\
     \end{aligned}
 \end{equation}
-Hierbei stellt $V_{c}$ die Menge aller Personen $c'$ dar, deren Profil $c$ betrachtet hat und $\mathbb{1}_{c' \in SuccInter_{c}}$ eine Indikatorfunktion, welche $1$ ausgibt, wenn eine Person $c'$ eine erfolgreiche Interaktion mit $c$ aufweist und $0$ andernfalls.
-$Rank_{c'} (RWS_{c,*}(\alpha))$ gibt den Rang einer Person $c' \in V_{c}$ im Ranking für einen Nutzer $c$ an \cite[S. 135]{kleinerman:2:inproceedings}.
+Hierbei stellt $V_{c}$ die Menge aller Personen $s$ dar, deren Profil $c$ betrachtet hat und $\mathbb{1}_{s \in SuccInter_{c}}$ eine Indikatorfunktion, welche $1$ ausgibt, wenn eine Person $s$ eine erfolgreiche Interaktion mit $c$ aufweist und $0$ andernfalls.
+$Rank_{s} (RWS_{c,*}(\alpha))$ gibt den Rang einer Person $s \in V_{c}$ im Ranking für einen Nutzer $c$ an \cite[S. 135]{kleinerman:2:inproceedings}.
 Für die Lösung des Optimierungsproblems verwenden die Autoren den Algorithmus von \textcite[S. 422ff.]{brent:article} für die lokale Minimumsuche innerhalb eines angegebenen Intervalls.
 Der Brent-Algorithmus stellt eine Methode für das Finden lokaler Minima ohne Derivate dar.
 Aus der Lösung resultiert das Gewicht $\alpha$, welches Personen, die erfolgreiche Interaktionen mit einem Nutzer aufwiesen, höher im Ranking platziert \cite[S. 135]{kleinerman:2:inproceedings}.
@@ -112,13 +138,14 @@ In anknüpfenden Experimenten untersuchten die Autoren die Bedeutung der individ
 Hierfür verglichen sie ihren Ansatz mit einer bekannten Methode für wechselseitige Empfehlungssysteme von \textcite[S. 6]{xia:inproceedings}, welche die Interessen der Nutzer über das harmonische Mittel aggregiert.
 Dabei stellten die Autoren fest, dass durch die gewichtete Methode die Anzahl erfolgreicher Interaktionen im Vergleich zum Benchmark gesteigert werden konnte \cite[S. 132]{kleinerman:2:inproceedings}.
 Gleichzeitig führte die Methode jedoch zu einer Abnahme der relevanten Vorschläge für einen Nutzer.
-Dies begründen \textcite[S. 132]{kleinerman:2:inproceedings} damit, dass ihn ihren Experimenten im Durchschnitt das Interesse der empfohlenen Personen (d.h. $PR$) stärker gewichtet wurde.
+Dies begründen \textcite[S. 132]{kleinerman:2:inproceedings} damit, dass in ihren Experimenten im Durchschnitt das Interesse der empfohlenen Personen (d.h. $PR$) stärker gewichtet wurde.
 Darüber hinaus kritisieren die Autoren an ihrer Methode, dass die Optimierung auf Individuen-Level zu einer erhöhten Laufzeit führt.
 Eine Reduktion der Laufzeit sei durch Verlagerung der Ermittlung der Gewichte in eine Offline-Phase denkbar \cite[S. 138]{kleinerman:2:inproceedings}.
 Grundsätzlich gehen  \textcite[S. 138]{kleinerman:2:inproceedings} davon aus, dass ihr Ansatz auch für verwandte Domänen wie dem Online-Recruitment von Relevanz ist.
 
 Im Vergleich zu verwandten Domänen hat die automatische Zuordnung von Personen zu Jobpositionen in der Literatur bislang wenig Aufmerksamkeit erhalten \cite[S. 1469]{yildirim:article}.
 
+% \subsection{Zuordnung von Person zu Jobposition}
 \textcite[S. 1ff.]{malinowski:2006} stellen in ihrer Arbeit die Notwendigkeit der Berücksichtigung bilateraler Präferenzen für die Zuordnung von Personen zu Jobpositionen fest.
 Die Autoren führen den Begriff des \ac{P-E Fit} an, welcher häufig in der Berufs- und Organisationspsychologie Anwendung findet \cite[S. 2]{link:booklet} und eine optimale Zuordnung einer Person zu ihrer Umgebung beschreibt.
 Gemäß \textcite[S. 1ff.]{malinowski:2006} hängt eine optimale Zuordnung von Person zu Arbeitsumgebung (d.h. \ac{P-E Fit}) von vier Komponenten ab: dem Person-Job-Fit, dem Person-Oganisation-Fit, dem Per\-son-Vocation-Fit und dem Person-Group-Fit \cite[S. 3]{malinowski:2006}.
@@ -127,7 +154,6 @@ In ihrer Arbeit fokussieren sich \textcite[S. 4]{malinowski:2006} auf die optima
 Sie stellen fest, dass für die reziproke Empfehlungerstellung die Bedürfnisse der Recruiter und die Bedürfnisse der Bewerber zu einem Indikator \cite[S. 922]{siting:2012} aggregiert werden müssen \cite[S. 5]{malinowski:2006}.
 Die Bestimmung einer optimalen Zuordnung als Kombination aus den Bedürfnissen der Recruiter und den Bedürfnissen der Bewerber definieren die Autoren als Problem des Findens einer pareto-optimalen Lösung \cite[S. 5]{malinowski:2006}.
 Jedoch führten \textcite[S. 1ff.]{malinowski:2006} keine Implementierung und Evaluation einer solchen Kombination durch \cite[S. 549]{koprinska:inbook}.
-% HIER KRITIK NENNEN VON RECON!
 
 Eine erste Implementierung und Evaluation eines bilateralen Ansatzes für die Zuordnung von Personen zu Projektpositionen stellt \textcite[S. 1ff.]{link:booklet} vor.
 In seiner Arbeit führt \textcite[S. 2]{link:booklet} an, dass bislang keine Publikation belegt, dass eine Zuordnung von Mitarbeitern zu Projektpositionen durch ein wechselseitiges Empfehlungssystem die Theorie des \ac{P-E Fit} und die damit verbundenen Auswirkungen erzielen kann.
@@ -142,16 +168,19 @@ Dies führt zwangsläufig dazu, dass alle Mitarbeiter innerhalb einer Kompetenzs
 Da der Einfluss der Präferenz eines Mitarbeiters auf das jeweilige Kompetenzniveau begrenzt ist, erlaubt \textcite[S. 1ff.]{link:booklet}, dass Mitarbeiter mit geringen Kenntnissen in einer Fähigkeit durch Präferenz höher gelistet werden als Mitarbeiter mit Expertenwissen.
 Dies macht es jedoch zugleich unmöglich, dass Mitarbeiter mit Kenntnissen am oberen Rand eines Kompetenzniveaus einer Fähigkeit, die diese Fähigkeit präferieren, höher gelistet werden, als Mitarbeiter mit Kenntnissen am unteren Rand der angrenzenden Kompetenzstufe, die diese Fähigkeit nicht präferieren.
 
-Des weiteren bemängelt \textcite[S. 69]{link:booklet}, dass aus einer fehlenden Angabe zu der Präferenz eines Mitarbeiters für eine Projektposition nicht hervorgeht, ob dieser einer Fähigkeit neutral gegenübersteht, oder diese nicht bei zukünftigen Projektarbeiten anwenden möchte.
+Insgesamt zeigen die Ergebnisse der Evaluation von \textcite[S. 62]{link:booklet}, dass die Zufriedenheit der Mitarbeiter sowie deren erwartete Arbeitsleistung seitens der Manager durch den bilateralen Ansatz in vier von fünf Fällen gesteigert werden konnte.
+Dennoch bemängelt \textcite[S. 69]{link:booklet}, dass das bilaterale System nicht uneingeschränkt zu einer Verbesserung von Zufriedenheit und Arbeitsleistung führte.
+Als Ursache hierfür sieht der Autor, dass aus einer fehlenden Angabe zu der Präferenz eines Mitarbeiters für eine Projektposition nicht hervorgeht, ob dieser einer Fähigkeit neutral gegenübersteht, oder diese nicht bei zukünftigen Projektarbeiten anwenden möchte.
+Darauf basierend stellt \textcite[S. 69]{link:booklet} die Hypothese auf, dass eine Berücksichtigung von sowohl positiver als auch negativer Präferenzen eines Mitarbeiters uneingeschränkt zu einer Verbesserung von Zufriedenheit und Arbeitsleistung führen würde.
 
 Ein Ansatz für die Kombination von positiven und negativen Präferenzen stellen \textcite[S. 269ff.]{pizzato:2:inproceedings} in einer Weiterentwicklung des RECON-Algorithmus um negative Präferenzen vor.
 Unter negativen Präferenzen verstehen die Autoren negative Interaktionen zwischen Nutzern (z.B. negative Rückmeldung eines Nutzers auf die Kontaktaufnahme durch einen anderen Nutzer) \cite[S. 273]{pizzato:2:inproceedings}.
 Im Detail führen die Autoren eine Modellierung an, die sowohl positive als auch negative Präferenzen im Online-Dating in der Empfehlungserstellung berücksichtigt.
-Hierfür werden separat für positive und negative Präferenzen eines Nutzers $c$ Kompatibilitätswerte ($C^{+}(c,c')$ für positiv und $C^{-}(c,c')$ für negativ) mit einem potenziellen Partner $c'$ ermittelt und zu einem Gesamtwert aggregiert \cite[S. 273]{pizzato:2:inproceedings}:
+Hierfür werden separat für positive und negative Präferenzen eines Nutzers $c$ Kompatibilitätswerte ($Comp^{+}(c,s)$ für positiv und $Comp^{-}(c,s)$ für negativ) mit einem potenziellen Partner $s$ ermittelt und zu einem Gesamtwert aggregiert \cite[S. 273]{pizzato:2:inproceedings}:
 \begin{equation}\label{eq39}
-    C^{\pm}(c,c')=\frac{1+C^{+}(c,c')-C^{-}(c,c')}{2}
+    Comp^{\pm}(c,s)=\frac{1+Comp^{+}(c,s)-Comp^{-}(c,s)}{2}
 \end{equation}
-Das Ergebnis stellt die Kompatibilität eines potenziellen Partners $c'$ mit dem Nutzer $c$ dar, wobei $C^{\pm}(c,c')$ nahe 1 ist, wenn $c'$ stark mit den positiven Präferenzen von $c'$ und schwach bis gar nicht mit den negativen Präferenzen von $c'$ übereinstimmt.
+Das Ergebnis stellt die Kompatibilität eines potenziellen Partners $s$ mit dem Nutzer $c$ dar, wobei $Comp^{\pm}(c,s)$ nahe 1 ist, wenn $s$ stark mit den positiven Präferenzen von $c$ und schwach bis gar nicht mit den negativen Präferenzen von $c$ übereinstimmt.
 Durch Normalisierung stellen die Autoren sicher, dass der finale Kompatibilitätswert zwischen $0$ und $1$ liegt \cite[S. 273]{pizzato:2:inproceedings}.
 In anknüpfenden Experimenten zeigen \textcite[S. 279]{pizzato:2:inproceedings}, dass eine zusätzliche Berücksichtigung negativer Präferenzen zu Empfehlungenn mit höheren Erfolgsaussichten führen \cite[S. 279]{pizzato:2:inproceedings}.
 
