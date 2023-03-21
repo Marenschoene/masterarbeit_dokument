@@ -130,7 +130,7 @@ Um für Nutzer ohne erfolgreiche Interaktionen in der Vergangenheit Empfehlungen
 \end{equation}
 Hierbei stellt $V_{c}$ die Menge aller Personen $s$ dar, deren Profil $c$ betrachtet hat und $\mathbb{1}_{s \in SuccInter_{c}}$ eine Indikatorfunktion, welche $1$ ausgibt, wenn eine Person $s$ eine erfolgreiche Interaktion mit $c$ aufweist und $0$ andernfalls.
 $Rank_{s} (RWS_{c,*}(\alpha))$ gibt den Rang einer Person $s \in V_{c}$ im Ranking für einen Nutzer $c$ an \cite[S. 135]{kleinerman:2:inproceedings}.
-Für die Lösung des Optimierungsproblems verwenden die Autoren den Algorithmus von \textcite[S. 422ff.]{brent:article} für die lokale Minimumsuche innerhalb eines angegebenen Intervalls.
+Für die Lösung des Optimierungsproblems verwenden die Autoren den Algorithmus von \textcite[S. 422ff.]{brent:article} zur lokalen Minimasuche innerhalb eines angegebenen Intervalls.
 Der Brent-Algorithmus stellt eine Methode für das Finden lokaler Minima ohne Derivate dar.
 Aus der Lösung resultiert das Gewicht $\alpha$, welches Personen, die erfolgreiche Interaktionen mit einem Nutzer aufwiesen, höher im Ranking platziert \cite[S. 135]{kleinerman:2:inproceedings}.
 
@@ -149,7 +149,7 @@ Im Vergleich zu verwandten Domänen hat die automatische Zuordnung von Personen 
 \textcite[S. 1ff.]{malinowski:2006} stellen in ihrer Arbeit die Notwendigkeit der Berücksichtigung bilateraler Präferenzen für die Zuordnung von Personen zu Jobpositionen fest.
 Die Autoren führen den Begriff des \ac{P-E Fit} an, welcher häufig in der Berufs- und Organisationspsychologie Anwendung findet \cite[S. 2]{link:booklet} und eine optimale Zuordnung einer Person zu ihrer Umgebung beschreibt.
 Gemäß \textcite[S. 1ff.]{malinowski:2006} hängt eine optimale Zuordnung von Person zu Arbeitsumgebung (d.h. \ac{P-E Fit}) von vier Komponenten ab: dem Person-Job-Fit, dem Person-Oganisation-Fit, dem Per\-son-Vocation-Fit und dem Person-Group-Fit \cite[S. 3]{malinowski:2006}.
-Diese Zuordnung kann signifikante Auswirkungen (z.B. Zufriedenheit, Leistung, Stress) haben \cite[S. 83]{su:2015}.
+Diese Zuordnung kann signifikante Auswirkungen auf die betrachtete Person (z.B. Zufriedenheit, Leistung, Stress) haben \cite[S. 83]{su:2015}.
 In ihrer Arbeit fokussieren sich \textcite[S. 4]{malinowski:2006} auf die optimale Zuordnung von Person zu Job (Person-Job-Fit).
 Sie stellen fest, dass für die reziproke Empfehlungerstellung die Bedürfnisse der Recruiter und die Bedürfnisse der Bewerber zu einem Indikator \cite[S. 922]{siting:2012} aggregiert werden müssen \cite[S. 5]{malinowski:2006}.
 Die Bestimmung einer optimalen Zuordnung als Kombination aus den Bedürfnissen der Recruiter und den Bedürfnissen der Bewerber definieren die Autoren als Problem des Findens einer pareto-optimalen Lösung \cite[S. 5]{malinowski:2006}.
@@ -158,7 +158,7 @@ Jedoch führten \textcite[S. 1ff.]{malinowski:2006} keine Implementierung und Ev
 Eine erste Implementierung und Evaluation eines bilateralen Ansatzes für die Zuordnung von Personen zu Projektpositionen stellt \textcite[S. 1ff.]{link:booklet} vor.
 In seiner Arbeit führt \textcite[S. 2]{link:booklet} an, dass bislang keine Publikation belegt, dass eine Zuordnung von Mitarbeitern zu Projektpositionen durch ein wechselseitiges Empfehlungssystem die Theorie des \ac{P-E Fit} und die damit verbundenen Auswirkungen erzielen kann.
 Daher entwickelte \textcite[S. 1ff.]{link:booklet} ein Empfehlungssystem, das Mitarbeiter sowohl ausschließlich anhand der Präferenzen von Projektmanagern (unilateral) als auch unter Einbezug der Präferenzen der Mitarbeiter (bilateral) sortiert.
-In seiner Arbeit evaluiert der Autor, ob der bilaterale Ansatz die Zufriedenheit der Mitarbeiter sowie die erwartete Arbeitsleistung dieser seitens der Projektmanager im Vergleich zu dem unilateralen Ansatz steigert.
+In seiner Arbeit evaluiert der Autor, ob der bilaterale Ansatz die Zufriedenheit der Mitarbeiter sowie deren erwartete Arbeitsleistung dieser seitens der Projektmanager im Vergleich zu dem unilateralen Ansatz steigert.
 Für die Abbildung der Präferenz eines Mitarbeiters für eine Projektposition verwendet das System boolesche Werte \cite[S. 69]{link:booklet}.
 Die Berücksichtigung der Präferenzen der Mitarbeiter erfolgt, indem das System für einen Mitarbeiter, der eine Projektposition präferiert, die höchste Bewertung dieser Fähigkeit innerhalb des Kompetenzniveaus des Angestellten zu dessen Beurteilung addiert \cite[S. 44]{link:booklet}.
 \textcite[S. 44]{link:booklet} begründet diese Aggregation der Präferenzen damit, dass die ursprüngliche Reihenfolge der Mitarbeiter bestehen bleibt und Projektmanager zugleich den fähigsten und motiviertesten Angestellten vorgeschlagen bekommen.
@@ -182,9 +182,9 @@ Hierfür werden separat für positive und negative Präferenzen eines Nutzers $c
 \end{equation}
 Das Ergebnis stellt die Kompatibilität eines potenziellen Partners $s$ mit dem Nutzer $c$ dar, wobei $Comp^{\pm}(c,s)$ nahe 1 ist, wenn $s$ stark mit den positiven Präferenzen von $c$ und schwach bis gar nicht mit den negativen Präferenzen von $c$ übereinstimmt.
 Durch Normalisierung stellen die Autoren sicher, dass der finale Kompatibilitätswert zwischen $0$ und $1$ liegt \cite[S. 273]{pizzato:2:inproceedings}.
-In anknüpfenden Experimenten zeigen \textcite[S. 279]{pizzato:2:inproceedings}, dass eine zusätzliche Berücksichtigung negativer Präferenzen zu Empfehlungenn mit höheren Erfolgsaussichten führen \cite[S. 279]{pizzato:2:inproceedings}.
+In anknüpfenden Experimenten zeigen \textcite[S. 279]{pizzato:2:inproceedings}, dass eine zusätzliche Berücksichtigung negativer Präferenzen zu Empfehlungen mit höheren Erfolgsaussichten führen \cite[S. 279]{pizzato:2:inproceedings}.
 
-Zuletzt veröffentlichten \textcite[S. 102ff.]{yang:inproceedings} einen Ansatz für die Bestimmung des Person-Job-Fit unter Berücksichtigung wechselseitiger Präferenzen.
+Zuletzt veröffentlichten \textcite[S. 102ff.]{yang:inproceedings} einen Ansatz für die Bestimmung des Person-Job-Fits unter Berücksichtigung wechselseitiger Präferenzen.
 Die Autoren stellen ein System vor, in dem Interaktionen zwischen Kandidaten und Jobausschreibungen als dual-perspective Graph modelliert sind \cite[S. 102]{yang:inproceedings}.
 In dem Graph wird jeder Kandidat und jede Jobausschreibung jeweils durch einen aktiven (z.B. Kandidat bewirbt sich für Job) und einen passiven Knoten (Kandidat wird von Recruiter angeworben) in dem Netzwerk repräsentiert.
 % Die Darstellung der Interaktionen als dual-perspective Graph sind in Abbildung \ref{fig:relatedwork:abb3} dargestellt.
@@ -198,7 +198,7 @@ In dem Graph wird jeder Kandidat und jede Jobausschreibung jeweils durch einen a
 Dadurch ermöglichen die Autoren eine Modellierung der verschiedenen Perspektiven von Kandidat und Recruiter in der Zuordnung von Person zu Arbeitsumgebung.
 % Kandidaten bzw. Jobausschreibungen werden jeweils durch eine Beschreibung (z.B. Anschreiben, Jobausschreibung) sowie gerichtete Interaktionen (z.B. Bewerbung, Sichten von Bewerbungsunterlagen) repräsentiert werden \cite[S. 103]{yang:inproceedings}.
 Die Präferenz eines Kandidats für eine Jobausschreibung ermitteln \textcite[S. 106]{yang:inproceedings} als das Produkt der Repräsentation des aktiven Knoten eines Kandidaten und der Repräsentation des passiven Knoten eines Jobs.
-Analog ermitteln die Autoren die Präferenz eines Recruiters für einen Kandidat.
+Analog ermitteln die Autoren die Präferenz eines Recruiters für einen Kandidaten.
 Ein Matching zwischen Job und Kandidat ergibt sich nach \textcite[S. 106]{yang:inproceedings} aus dem Durchschnitt der Präferenz $r_{i\rightarrow k}$ des Kandidats $c_{i}$ für die Auswahl von Job $j_{k}$ und der Präferenz $s_{k\rightarrow i}$ des Recruiters (d.h. Jobs) $j_{k}$ für die Auswahl von Kandidat $c_{i}$:
 \begin{equation}\label{eq38}
     \hat{y} = \frac{1}{2} r_{i\rightarrow k} +\frac{1}{2} s_{k\rightarrow i}
@@ -207,7 +207,7 @@ Nach dem Ansatz von \textcite[S. 102ff.]{yang:inproceedings} werden die Präfere
 Basierend auf dem dual-perspective Graph werden bereits existierende Paarungen als Referenz verwendet, um nicht gematchte Kandidaten bzw. Jobausschreibungen in Abhängigkeit des vorhergesagten reziproken Präferenzwertes zu sortieren.
 
 Die Autoren vergleichen ihren Ansatz bezüglich der Performance (Precision, Recall, Normalized Discounte Cumulative Gain und Mean Reciprocal Rank) mit diversen Baseline-Algorithmen.
-Dabei konnten sie feststellen, dass ihr Algorithmus im Vergleich zu den Baseline-Algorithmen durchweg bessere Ergebnisse erzielen konnte \cite[S. 110]{yang:inproceedings}.
+Dabei stellten sie fest, dass ihr Algorithmus im Vergleich zu den Baseline-Algorithmen durchweg bessere Ergebnisse erzielte \cite[S. 110]{yang:inproceedings}.
 \textcite[S. 110]{yang:inproceedings} begründen dies anhand einer Fallstudie, welche in Abbildung \ref{fig:relatedwork:abb4} grafisch dargestellt ist.\footnote{Die Abbildung von \textcite[S. 111]{yang:inproceedings} enthält einen Schreibfehler (LigthGCN [sic]).}
 \begin{figure}[H]
     \centering
@@ -216,7 +216,7 @@ Dabei konnten sie feststellen, dass ihr Algorithmus im Vergleich zu den Baseline
     \cite[S. 111]{yang:inproceedings}}
 	\label{fig:relatedwork:abb4}
 \end{figure}
-Anhand einer Jobbeschreibung und eines Lebenslaufs zeigt das Schaubild einen Vergleich der bilateralen Präferenzwerte eines Kandidats und eines Recruiters, die durch den vorgestellten Algorithmus (DPGNN) ermittelt wurden, mit den Empfehlungswerten eines Kollaborativen Systems (LightGCN) und eines inhaltsbasierten Systems (BPJFNN).
+Anhand einer Jobbeschreibung und eines Lebenslaufs zeigt das Schaubild \ref{fig:relatedwork:abb4} einen Vergleich der bilateralen Präferenzwerte eines Kandidats und eines Recruiters, die durch den vorgestellten Algorithmus (DPGNN) ermittelt wurden, mit den Empfehlungswerten eines Kollaborativen Systems (LightGCN) und eines inhaltsbasierten Systems (BPJFNN).
 \textcite[S. 110]{yang:inproceedings} zeigen, dass anhand der separat ermittelten Präferenzwerte ihres Algorithmus korrekterweise keine Empfehlung des Kandidats für den Job erfolgt, während vergleichbare Systeme (LightGCN und BPJFNN) den Kandidat fälschlicherweise empfehlen würden.
 
 Kritisch an dem Ansatz von \textcite[S. 102ff.]{yang:inproceedings} ist anzumerken, dass der angeführte Vergleich keine isolierte Betrachtung der wechselseitigen Komponente ermöglicht.
@@ -236,7 +236,7 @@ Beispielsweise wird aus Abbildung \ref{fig:relatedwork:abb4} nicht unmittelbar s
 % Hier ganz kurz beispiele anführen zu mk empfehlungssystemen anderer domänen bzw. ohne bezug auf aggregation der präferenzen. (z.B.: file:///C:/Users/masc6/Downloads/79_HDIOUD.pdf , file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Recommending%20Hotels%20based%20on%20Multidimesional%20Customer%20Ratings.pdf
 % HIER WEITERMACHEN UND KURZ ERKLÄREN
 
-In der Literatur existieren nur wenige Publikationen zu wechselseitigen Systemen, die die reziproke Empfehlungen als multi-kriterielles Problem erkennen.
+In der Literatur existieren nur wenige Publikationen zu wechselseitigen Systemen, die die reziproke Empfehlungen als multi-kriterielles Problem bezeichnen.
 % HIER ÜBERLEITUNG FINDEN
 % Hier erwähnen, dass nicht alle systeme auch als mk-systeme bezeichnet sind, die solche Ansätze anwenden (bspw. hybride systeme)
 % Hier erwähnen, dass Fokus auf aggregation mehrerer Kriterien und deren gewichtung liegt -> hiernach suchen
@@ -249,23 +249,23 @@ In der Literatur existieren nur wenige Publikationen zu wechselseitigen Systemen
 % hybrid recommender: weighted -> S. 339, https://link.springer.com/content/pdf/10.1023/A:1021240730564.pdf?pdf=button
 
 % \subsection{Multi-objektive Systeme}
-\textcite[S. 329]{su:inproceedings} ordnen Plattformen für die Bestimmung von Personen für Jobpositionen mehrseitigen Marktplattformen\footnote{"multi-sided market platforms" - \textcite[S. 329]{su:inproceedings}} zu.
+\textcite[S. 329]{su:inproceedings} ordnen Plattformen für die Bestimmung von Personen für Jobpositionen "mehrseitigen Marktplattformen"\footnote{"multi-sided market platforms" - \textcite[S. 329]{su:inproceedings}} zu.
 Mehrseitige Marktplattformen verstehen die Autoren als Mediatoren zwischen den unterschiedlichen Parteien eines Marktes (z.B. Erwerbssucher und Erwerbsanbieter), deren Aufgabe darin besteht, die Ziele der verschiedenen Parteien in Einklang zu bringen \cite[S. 329]{su:inproceedings}.
 Die Berücksichtigung mehrerer Ziele für die Empfehlung in mehrseitigen Marktplattformen, verstehen \textcite[S. 329]{su:inproceedings} als multi-objektives Optimierungsproblem.
 
 Im Vergleich zu herkömmlichen \ac{RRS} verfolgen \textcite[S. 328ff.]{su:inproceedings} einen Ansatz, der Empfehlungen nicht allein auf dem (angenommenen) reziproken Wert einer Jobposition (eines Kandidaten) für einen Kandidaten (eine Jobposition) basiert.
-Stattdessen besteht das übergeordnete Ziel der Autoren darin, alle Rankings von Kandidaten bzw. Jobpositionen in einem Markt so zu sortieren, dass die Gesamtwohlfahrt\footnote{"social welfare" - \textcite[S. 329]{su:inproceedings}} im Markt maximiert wird.
+Stattdessen besteht das übergeordnete Ziel der Autoren darin, alle Rankings von Kandidaten bzw. Jobpositionen in einem Markt so zu sortieren, dass die "Gesamtwohlfahrt"\footnote{"social welfare" - \textcite[S. 329]{su:inproceedings}} im Markt maximiert wird.
 Die Gesamtwohlfahrt im Markt definieren die Autoren als die erwartete Anzahl an erfolgreichen Paaren in dem Markt, unter Anwendung einer Ranking-Methode $\pi$.
 Eine optimales Matching von Personen zu Jobpositionen lässt daher auch Paare zu, deren reziproker Wert (marginal) suboptimal ist, wenn dadurch mehrere erfolgreiche Paarungen in dem Markt vorhanden sind \cite[S. 334]{su:inproceedings}.
 
 Anzumerken ist, dass \textcite[S. 328ff.]{su:inproceedings} trotz ihrer Einordnung der Thematik als multi-objektives Optimierungsproblem, einen single-objective Ansatz für die Ermittlung des Rankings für die Zuordnung von Personen zu Jobpositionen vorstellen.
-Anstelle eines manuellen Trade-Offs zwischen den unterschiedlichen Interessen der Stakeholder, modellieren \textcite[S. 329]{su:inproceedings} den Interaktionsprozess zwischen Jobkandidat und Unternehmen direkt als Produkt der Wahrscheinlichkeit der Selektion von Kandidat bw. Jobposition unter Berücksichtigung der Ranking-Methode $\pi$.
+Anstelle eines manuellen Trade-Offs zwischen den unterschiedlichen Interessen der Stakeholder modellieren \textcite[S. 329]{su:inproceedings} den Interaktionsprozess zwischen Jobkandidat und Unternehmen direkt als Produkt der Wahrscheinlichkeit der Selektion von Kandidat bw. Jobposition unter Berücksichtigung der Ranking-Methode $\pi$.
 Das heißt, die Autoren klassifizieren die wechselseitigen Präferenzen in ihrem System nicht als eigenständige Zielsetzungen, sondern formulieren die Gesamtwohlfahrt als alleinige Zielsetzung.
 
 % S. 5, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Multi-Objective%20Recommender%20Systems%20Survey%20and%20Challenges.pdf
 % multi-objective example: S. 237, file://wsl%24/Ubuntu/home/masc6/Projects/masterarbeit/literatur/Adaptive%20multi%20attribute%20diversity%20for%20recommender%20systems.pdf
 Als multi-objektiv bezeichnen \textcite[S. 12]{rodriguez:inproceedings} ihren Ansatz zur Integration "äußerer Merkmale"\footnote{"extraneous features" - \textcite[S. 12]{rodriguez:inproceedings}} in ein semantisches Modell im Bereich des Online-Recruitments. 
-Dieser ist in Abbildung \ref{fig:relatedwork:abb1} dargestellt.
+Dieser ist in Abbildung \ref{fig:relatedwork:abb1} grafisch dargestellt.
 
 \begin{figure}[H]
     \centering
@@ -294,7 +294,7 @@ Die Anpassung eines semantischen Matches $y$ realisieren \textcite[S. 15]{rodrig
 Hierbei ist $1\{x == \textnormal{active}\}$ gleich $1$, wenn die Bedingung innerhalb der geschweiften Klammer wahr ist und $0$ andernfalls.
 Das Optimieren der Parameter $\alpha$ und $\beta$ führen \textcite[S. 15]{rodriguez:inproceedings} über eine Rastersuche durch.
 
-\textcite[S. 15f.]{rodriguez:inproceedings} prüften ihren Ansatz anhand von 760 offenen Jobangeboten, von denen jedes zwischen 6 und 9000 mal in Empfehlungen auftauchte.
+\textcite[S. 15f.]{rodriguez:inproceedings} prüften ihren Ansatz anhand von 760 offenen Jobangeboten, von denen jedes zwischen 6 und 9000 mal in Empfehlungen angezeigt wurde.
 Dabei stellten die Autoren fest, dass eine signifikante Verbesserung des Nutzens mit einer akzeptablen und vorhersebaren Verschlechterung der semantischen Matches erreicht werden konnte \cite[S. 11]{rodriguez:inproceedings}.
 % Dabei stellten die Autoren fest, dass bis zu einem gewissen Wert für Delta ein linearer Zusammenhang zwischen dem Zugewinn an durchschnittlich aktiven und passiven Nutzern und der Aufgabe von Übereinstimmung der Rankings besteht \cite[S. 16]{rodriguez:inproceedings}.
 % Für bestimmte Kombinationen von $\alpha$ und $\beta$ konnte die Anzahl aktiver und passiver Nutzer in dem Top-K-Ranking durch Anwendung des erweiterten Modells verdoppelt werden, ohne massive Einbußen in den semantischen Matches einzufahren.

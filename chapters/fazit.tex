@@ -13,36 +13,42 @@ Solche Systeme werden als wechselseitige oder auch bilaterale Empfehlungssysteme
 
 In projektgetriebenen Unternehmen können wechselseitige Empfehlungssysteme Entscheidungsträger darin unterstützen, passende Mitarbeiter offenen Projektpositionen zuzuordnen.
 In der Forschung existieren bereits erste Hinweise darauf, dass eine beidseitige Berücksichtigung der Bedürfnisse bei der Empfehlungserstellung im Vergleich zu einer unilateralen Berücksichtigung zu einer Verbesserung der Zufriedenheit von Mitarbeitern sowie der erwarteten Arbeitsleistung dieser führen kann \cite[S. 3]{link:booklet}.
-Nach aktuellem Stand der Forschung blieb jedoch bislang unklar, wie die Präferenzen von Entscheidungsträgern und Mitarbeitern in einem bilateralen Empfehlungssystem einfliessen müssten, um die Zufriedenheit der Mitarbeiter und die erwartete Arbeitsleistung seitens der Entscheidungsträger bei der Zuordnung von Mitarbeitern zu Projektpositionen robust zu verbessern.
+Nach aktuellem Stand der Forschung blieb jedoch bislang unklar, wie die Präferenzen von Entscheidungsträgern und Mitarbeitern in einem bilateralen Empfehlungssystem einfliessen müssen, um die Zufriedenheit der Mitarbeiter und die erwartete Arbeitsleistung seitens der Entscheidungsträger bei der Zuordnung von Mitarbeitern zu Projektpositionen robust zu verbessern.
 
 Daher wurde im Rahmen der vorliegenden Arbeit ein alternativer Ansatz für die Berücksichtigung der Präferenzen von Entscheidungsträgern und Mitarbeitern bei der Zuordnung zu Projekten entwickelt.
 Hierfür wurde das Problem der bilateralen Präferenzerfüllung in wechselseitigen Systemen aus Sicht der Entscheidungstheorie betrachtet und als Entscheidungsproblem mit zwei Kriterien definiert.
 Darauf basierend wurde ein multi-kriterielles Empfehlungssystem konzipiert, welches zwei Algorithmen implementiert.
-Repräsentativ für ein unilaterales Empfehlungssystem wurde ein unilateraler Algorithmus erstellt, der die fünf passensten Mitarbeiter in Abhängigkeit der Erfüllung ihrer Präferenzen aus Sicht des Entscheidungsträgers für die Beispielprojekte vorschlägt.
+Repräsentativ für ein unilaterales Empfehlungssystem wurde ein unilateraler Algorithmus erstellt, der die fünf passensten Mitarbeiter in Abhängigkeit ihrer Fähigkeiten für die Beispielprojekte vorschlägt.
 Für die bilaterale Empfehlung wurde ein bilateraler Algorithmus implementiert, der die fünf passensten Mitarbeiter für eine Projektposition in Abhängigkeit der zwei Kriterien Bedürfniserfüllung des Entscheidungsträgers und Bedürfniserfüllung des Mitarbeiters empfiehlt.
 Die Aggregation der Kriterien im bilateralen Algorithmus erfolgte anhand der gewichteten Summe.
 
-Der alternative Ansatz wurde anhand eines Experiments in dem IT-Bera\-tungsunternehmen EXXETA evaluiert.
+Der alternative Ansatz wurde anhand eines Experiments in dem IT-Bera\-tungsunternehmen Exxeta evaluiert.
 Im Kontext des Experiments wurden fünf repräsentative Beispielprojekte aufgesetzt.
-Eine Datenerhebung unter Mitarbeitern und Managern (Entscheidungsträger der Mitarbeiterzuordnung zu Projekten) des Unternehmens lieferte Daten zu Präferenzen der Mitarbeiter und potenzieller Zufriedenheit dieser in Projekten sowie zur erwarteten Arbeitsleistung dieser in den Projekten aus Sicht der Manager.
+Eine Datenerhebung unter Mitarbeitern und Managern (Entscheidungsträger der Mitarbeiterzuordnung zu Projekten) des Unternehmens lieferte Daten zu Präferenzen der Mitarbeiter und deren potenzieller Zufriedenheit in Projekten sowie zur erwarteten Arbeitsleistung dieser in den Projekten aus Sicht der Manager.
 Für jedes Projekt wurde die Performance der Algorithmen hinsichtlich der Anzahl der zufriedenen Mitarbeitern sowie der Mitarbeiter mit zu erwartender hoher Arbeitsleistung verglichen.
 Die Ergebnisse wurden in Bezug auf die vorliegende Forschungsfrage analysiert:
 \forschungsfrage
 
-Insgesamt konnte im Rahmen der Untersuchung festgestellt werden, dass die Zufriedenheit der Mitarbeiter im Mittel in vier von fünf Projekten durch Einsatz des bilateralen Algorithmus verbessert werden konnte.
+Insgesamt wurde im Rahmen der Untersuchung festgestellt, dass die Zufriedenheit der Mitarbeiter im Mittel in vier von fünf Projekten durch Einsatz des bilateralen Algorithmus verbessert werden konnte.
 Darüber hinaus zeigten die Ergebnisse, dass eines der fünf Projekte im Durchschnitt sogar eine Steigerung der erwarteten Arbeitsleistung der Mitarbeiter aus Sicht der Entscheidungsträger erreichen konnte.
 Weiter führte der bilaterale Ansatz im Mittel in keinem der Projekte zu einem Rückgang der Zufriedenheit oder der erwarteter Arbeitsleistung der Mitarbeiter.
 
-Eine Betrachtung der absoluten Ergebnisse zeigte jedoch einzelne Ausreißer in den Ergebnissen, bei denen eine geringere Zufriedenheit bzw. Arbeitsleistung trotz bilateralem ALgorithmus zu erkennen war.
+Eine Betrachtung der absoluten Ergebnisse zeigte jedoch einzelne Ausreißer in den Ergebnissen, bei denen eine geringere Zufriedenheit bzw. Arbeitsleistung trotz bilateralem Algorithmus zu erkennen war.
 Eine Robustheit des entwickelten Ansatzes kann daher im Rahmen des Experiments nicht uneingeschränkt bestätigt werden.
 
 Als Ursache für diese Beobachtung wird angesehen, dass sowohl die Zufriedenheit von Mitarbeitern als auch deren erwartete Arbeitsleistung seitens der Entscheidungsträger durch weitere Einflussfaktoren bestimmt werden.
-Um den eindeutigen Einfluss der bilateralen Präferenzerfüllung auf Zufriedenheit und Arbeitsleistung zu ermitteln, wird für weiterführende Forschungen empfohlen, diese Faktoren durch das Durchführen von Experteninterviews unter den Managern und Mitarbeitern zu identifizieren.
-Die identifizierten Einflussfaktoren sollten als zusätzliche Kriterien in dem multi-kriteriellen Empfehlungssystem berücksichtigt werden.
+% Um den eindeutigen Einfluss der bilateralen Präferenzerfüllung auf Zufriedenheit und Arbeitsleistung zu ermitteln, wird für weiterführende Forschungen empfohlen, diese Faktoren durch das Durchführen von Experteninterviews unter den Managern und Mitarbeitern zu identifizieren.
+% Die identifizierten Einflussfaktoren sollten als zusätzliche Kriterien in dem multi-kriteriellen Empfehlungssystem berücksichtigt werden.
+Die Erkenntnisse der vorliegenden Arbeit führten zu der Annahme, dass ein möglicher Einflussfaktor das Vorhandensein oder Fehlen bestimmter Fähigkeiten eines Mitarbeiters bzw. einer Projektposition darstellt.
+% Bezogen auf die Zufriedenheit wird angenommen, dass das Vorhandensein oder Fehlen bestimmter Fähigkeiten in einem Projekt ausschlaggebend für die Zufriedenheit eines Mitarbeiters in einem Projekt sein kann, unabhängig von dessen übrigen Präferenzangaben.
+% Analog wird hinsichtlich der erwartete Arbeitsleistung eines Mitarbeiters seitens der Entscheidungsträger angenommen, dass diese durch das Vorhandensein oder Fehlen bestimmter Fähigkeiten in einem Projekt maßgeblich beeinflusst wird, unabhängig von dessen übrigen Fähigkeiten.
+Für eine robustere Gestaltung des Systems wird daher für zukünftige Arbeiten empfohlen, die Bedeutung einer präferierten Fähigkeit für einen Mitarbeiter sowie die Bedeutung einer angeforderten Fähigkeit im Projekt aus Sicht des Entscheidungsträgers bei der Zuordnung von Mitarbeitern zu Projekten zu berücksichtigen.
+Dies könnte über eine individuelle Gewichtung der präferierten Fähigkeiten eines Mitarbeiters sowie der angeforderten Fähigkeiten im Projekt umgesetzt werden.
+Zur Identifikation weiterer Einflussfaktoren wird darüber hinaus für weiterführende Forschungen das Durchführen von Experteninterviews unter Mitarbeitern und Entscheidungsträgern empfohlen.
 
 Bezüglich der Gewichtung der Präferenzen scheint es eine geringfügigere Rolle zu spielen, wie die Präferenzen von Entscheidungsträger bzw. Mitarbeitern gewichtet werden.
 Die Erwartung ist, dass die Auswirkungen der Berücksichtigung der Präferenzen vorallem dann entscheidend ist, wenn die beherrschten und präferierten Fähigkeiten der Angestellten weiter auseinanderliegen.
-Um den Effekt der Gewichte auf die Zufriedenheit und Arbeitsleistung genauer zu untersuchen, wird daher empfohlen eine weitere Studie durchzuführen, die auf solchen Daten basiert.
+Um den Effekt der Gewichte auf die Zufriedenheit und Arbeitsleistung genauer zu untersuchen, wird daher empfohlen, eine weitere Studie durchzuführen, die auf solchen Daten basiert.
 Darüber hinaus sollte in zukünftigen Studien eine größere Datenmenge als Ausgangsbasis zur Ermittlung einer optimalen Gewichtung herangezogen werden, um die Robustheit des Algorithmus unter Einsatz des optimierten Gewichts zu steigern.
 
 % In Teilen konnten die Ausreißer durch mangelnde Datengrundlage zurückgeführt werden.
