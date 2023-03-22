@@ -7,7 +7,7 @@
 \label{ch:methodik}
 Das folgende Kapitel beschreibt das methodische Vorgehen zur Beantwortung der Forschungsfrage der vorliegenden Arbeit.
 Hierfür erfolgt zu Beginn ein Überblick über Art und Ablauf der Forschung.
-Darauf folgt eine detaillierte Beschreibung der einzelnen Phasen der Forschung.
+Daran schließt eine detaillierte Beschreibung der einzelnen Phasen der Untersuchung.
 In dem Kontext wird der entwickelte bilaterale Algorithmus vorgestellt und der Aufbau des Gesamtsystems beschrieben.
 
 % \section{Problemanalyse}
@@ -47,11 +47,12 @@ In dem Kontext wird der entwickelte bilaterale Algorithmus vorgestellt und der A
 
 \section{Art und Ablauf der Forschung}
 Um die Forschungsfrage der vorliegenden Arbeit zu beantworten, wurde eine quantitative Forschung durchgeführt.
-Die Durchführung der Forschung erfolgte in Form eines Feldexperiments in dem IT-Beratungsunternehmen EXXETA AG.
-Die EXXETA AG verfügt über 1.000 Mitarbeiter, die maßgeblich projektbasierte Tätigkeiten ausüben.\footnote{Stand: 7. April 2023.}
+Die Durchführung der Forschung erfolgte in Form eines Feldexperiments in dem IT-Beratungsunternehmen Exxeta AG.
+Die Exxeta AG verfügt über 1.000 Mitarbeiter, die maßgeblich projektbasierte Tätigkeiten ausüben.\footnote{Stand: 7. April 2023.}
 Die Zuordnung passender Mitarbeiter zu offenen Projektpositionen ist dementsprechend entscheidend für den Erfolg des Tagesgeschäfts des Unternehmen.
 
-Der Ablauf der Forschung kann in 3 Phasen unterteilt werden und ist nachfolgend in Abbildung \ref{fig:methodik:abb1} grafisch dargestellt.
+Der Ablauf der Forschung ist in drei Phasen unterteilt.
+Diese sind nachfolgend in Abbildung \ref{fig:methodik:abb1} grafisch dargestellt.
 
 \begin{figure}[H]
     \centering
@@ -65,9 +66,9 @@ Anhand zweier Befragungen wurde anschließend die Zufriedenheit und die zu erwar
 Im Kontext der Auswertung des Experiments wurde ein multi-kriterielles Empfehlungssystem entwickelt, welches zwei Algorithmen implementiert.
 Repräsentativ für ein unilaterales Empfehlungssystem wurde ein unilateraler Algorithmus entwickelt, der die fünf passensten Mitarbeiter in Abhängigkeit ihrer Fähigkeiten für Projekte vorschlägt.
 Für die bilaterale Empfehlung wurde ein bilateraler Algorithmus implementiert, der die fünf passensten Mitarbeiter in Abhängigkeit ihrer Fähigkeiten und Präferenzen empfiehlt.
-Darauf basierend konnte für ein Projekt und eine Menge an Mitarbeitern die Performance der Algorithmen hinsichtlich der Anzahl an zufriedenen Mitarbeitern bzw. Mitarbeitern mit zu erwartend hoher Arbeitsleistung verglichen werden.
+Darauf basierend wurde für ein Projekt und eine Menge an Mitarbeitern die Performance der Algorithmen hinsichtlich der Anzahl an zufriedenen Mitarbeitern bzw. Mitarbeitern mit zu erwartend hoher Arbeitsleistung verglichen.
 
-Der Ablauf der Untersuchung wird anschließend anhand der einzelnen Phasen im Detail erläutert.
+Im Folgenden wird der Ablauf der Untersuchung anhand der einzelnen Phasen im Detail erläutert.
 
 \section{Aufsetzen des Experiments}
 Für das Aufsetzen des Experiments wurden zu Beginn durch einen Manager des Fachbereichs Java Enterprise Solutions fünf Beispielprojekte mit angeforderten Projektpositionen erstellt.
@@ -108,7 +109,7 @@ Die Projekte sind auf der folgenden Seite in Abbildung \ref{fig:methodik:abb2} d
 \end{figure}
 
 Für jede Fähigkeit eines Projekts ist ein Anforderungsniveau angegeben.
-Dieses gibt an, welches Kenntnissniveau ein Mitarbeiter in der angeforderten Fähigkeit beherrschen soll.
+Dieses gibt an, welches Kenntnissniveau ein Mitarbeiter in der angeforderten Fähigkeit im Idealfall beherrschen sollte.
 Tabelle \ref{tab:methodik:tab1} stellt eine Beschreibung der Kenntnisse dar, die von den Fähigkeiten eines Mitarbeiters entsprechend des angeforderten Niveaus erwartet wurden.
 
 \begin{table}[htbp]
@@ -130,7 +131,7 @@ Tabelle \ref{tab:methodik:tab1} stellt eine Beschreibung der Kenntnisse dar, die
 In der zweiten Phase wurden die benötigten Daten erhoben.
 Die Erhebung der Daten erfolgte anhand von zwei separaten Befragungen.
 Die erste Befragung wurde unter den Mitarbeitern des Unternehmens durchgeführt.
-Die zweite Befragung erfolgte unter den Managern des Unternehmens.
+Die zweite Befragung erfolgte unter Managern des Unternehmens.
 Die Befragungen wurden unabhängig von dem entwickelten Algorithmus gestaltet.
 Dadurch ist eine Reproduzierbarkeit der Ergebnisse und deren Vergleichbarkeit mit Ergebnissen alternativer Algorithmen möglich.
 
@@ -154,8 +155,8 @@ Abbildung \ref{fig:methodik:abb3} stellt einen Auszug aus der Umfrage zur Erhebu
 	\label{fig:methodik:abb3}
 \end{figure}
 
-Für die Erhebung der Präferenzen sollten die Mitarbeiter darüber hinaus für jede der Fähigkeiten angeben, ob Interesse besteht diese in zukünftigen Projekten anzuwenden.
-Hierfür wurden die Befragten aufgefordert ihr Interesse auf einer dreistufigen Likert-Skala mit den Optionen "Möchte ich anwenden", "Möchte ich nicht anwenden" und "Neutral" einzuordnen.
+Für die Erhebung der Präferenzen sollten die Mitarbeiter darüber hinaus für jede der Fähigkeiten angeben, ob Interesse besteht, diese in zukünftigen Projekten anzuwenden.
+Hierfür wurden die Befragten aufgefordert, ihr Interesse auf einer dreistufigen Likert-Skala mit den Optionen "Möchte ich anwenden", "Möchte ich nicht anwenden" und "Neutral" einzuordnen.
 Eine Beschreibung der Bedeutung der Einordnung des Interesses eines Mitarbeiters für eine Fähigkeit anhand der Skala ist in Tabelle \ref{tab:methodik:tab2} dargestellt.
 
 \begin{table}[htbp]
@@ -185,7 +186,8 @@ In Abbildung \ref{fig:methodik:abb4} ist einen Auszug aus der Umfrage zur Erhebu
 \end{figure}
 
 Abschließend wurden die Mitarbeiter bezüglich ihrer Zufriedenheit mit den fünf Beispielprojekten befragt.
-Hierfür wurden die Befragten aufgefordert ihre Zufriedenheit mit jeweiligen Beispielprojekt entlang einer vierstufigen ordinalen Skala anzugeben, wobei die niedrigste Angabe 1 für "Gar nicht zufrieden" und die höchste Angabe 4 für "Voll und Ganz zufrieden" stand.
+Hierfür wurden die Befragten aufgefordert, ihre Zufriedenheit mit dem jeweiligen Beispielprojekt entlang einer vierstufigen ordinalen Skala anzugeben.
+Hierbei stand die niedrigste Angabe 1 für "Gar nicht zufrieden" und die höchste Angabe 4 für "Voll und Ganz zufrieden".
 Die Skala wurde bewusst so gewählt, dass Mitarbeiter keine neutrale Bewertung bezüglich ihrer Zufriedenheit abgeben konnten.
 Ein Auszug der Befragung der Mitarbeiter zu ihrer Zufriedenheit ist beispielhaft für Projekt 1 in Abbildung \ref{fig:methodik:abb5} illustriert.
 
@@ -202,10 +204,10 @@ Ein Auszug der Befragung der Mitarbeiter zu ihrer Zufriedenheit ist beispielhaft
 \label{ch:methodik:datenerhebung:2}
 Die zweite Umfrage erfolgte unter Managern des Unternehmens und galt der Ermittlung der zu erwarteten Arbeitsleistung der Mitarbeiter in den jeweiligen Beispielprojekten.
 
-Für die Erhebung wurden die Befragten aufgefordert für jedes der Beispielprojekte die Mitarbeiter auszuwählen, von denen sie eine hohe Arbeitsleistung erwarten würden.
+Für die Erhebung wurden die Befragten aufgefordert, für jedes der Beispielprojekte die Mitarbeiter auszuwählen, von denen sie eine hohe Arbeitsleistung erwarten.
 Auswählen konnten die Manager aus einer Liste an Angestellten, die zuvor an der Befragung der Mitarbeiter teilgenommen hatten.
 Zu jedem Angestellten wurde den Managern als Information deren Namen, Fähigkeitsbewertung und Präferenzen zur Verfügung gestellt.
-Da die erhobenen Daten der Mitarbeiterbefragung zu Fähigkeiten und Präferenzen folglich als Input für die Befragung der Manager verwendet wurden, fanden die Befragungen zeitlich versetzt voneinander statt.
+Da die erhobenen Daten der Mitarbeiterbefragung zu Fähigkeiten und Präferenzen folglich als Input für die Befragung der Manager verwendet wurden, fanden die Befragungen unter Mitarbeitern und Managern zeitlich versetzt voneinander statt.
 
 Für die Auswahl der Mitarbeiter mit zu erwartend hoher Arbeitsleistung wurde eine Mehrfachauswahl gewählt.
 Dies sollte sicherstellen, dass als Ergebnis der Managerbefragung für jeden Mitarbeiter ein boolescher Wert vorlag, der eindeutig bestimmt, ob eine hohe Arbeitsleistung von dem jeweiligen Mitarbeiter erwartet wird oder nicht.
@@ -219,7 +221,7 @@ Aus Datenschutzgründen wurden die Mitarbeiter in der Abbildung pseudonymisiert.
 	\label{fig:methodik:abb6}
 \end{figure}
 
-In Abbildung \ref{fig:methodik:abb7} ist beispielhaft ein Auszug der zugehörigen Auswahlliste an Mitarbeitern dargestellt, die einem Manager in Abhängigkeit der angeforderten Fähigkeiten je Projekt zur Verfügung gestellt wurden.
+Am Beispiel von Projekt 4 ist in Abbildung \ref{fig:methodik:abb7} ein Auszug der zugehörigen Auswahlliste an Mitarbeitern dargestellt, die einem Manager in Abhängigkeit der angeforderten Fähigkeiten eines Projekts zur Verfügung gestellt wurden.
 
 \begin{figure}[H]
     \centering
@@ -234,13 +236,13 @@ In dem Kontext wurde ein multi-kriterielles Empfehlungssystem für die Empfehlun
 
 \subsection{Aufbau des Empfehlungssystems}
 Für die Gestaltung des Empfehlungssystems wurde nach dem Aggregation Function Ansatz vorgegangen, welcher in Kapitel \ref{ch:erweiterungen:loesungen:modellbasiert} vorgestellt wurde.
-Dieser ist unabhängig von der jeweiligen Vorhersage-Technik eines Empfehlungssystems.
+Dieser ist unabhängig von der Vorhersage-Technik eines Empfehlungssystems.
 Da die Bewertungen der Mitarbeiter zu ihren Fähigkeiten und Präferenzen als gegeben angenommen wurden, wurde auf eine separate Vorhersage von Fähigkeits- und Präferenzbewertungen in dieser Arbeit verzichtet.
 Der Aggregation Function Ansatz eignet sich daher besonders, da das nachfolgend vorgestellte Verfahren in Verbindung mit jeder beliebigen Vorhersage-Technik angewandt werden kann.
 
 Das Empfehlungssystem wurde so konzipiert, dass Entscheidungsträger (Manager) die Nutzer des Systems darstellen.
 Elemente des Empfehlungssystems sind die Mitarbeiter, die den Entscheidungsträgern für Projektpositionen vorgeschlagen werden können.
-Die Nutzer des Systems werden in Form einer offenen Projektposition repräsentiert, welche als Sammlung der angeforderten Fähigkeiten der Projektposition abgebildet werden können.
+Die Nutzer des Systems werden in Form einer offenen Projektposition repräsentiert, welche als Sammlung der angeforderten Fähigkeiten einer Projektposition abgebildet werden.
 Jedes Element des Systems wird durch seine Fähigkeiten und Präferenzen dargestellt.
 Unter der Erfüllung der Präferenzen eines Nutzers (Entscheidungsträgers) durch ein Element (Mitarbeiter) wird in dem System die Erfüllung der angeforderten Fähigkeiten der Projektposition eines Nutzers durch die Fähigkeiten eines Elements verstanden.
 In Anlehnung an \textcite[S. 207ff.]{pizzato:2010} wird dieser Präferenzwert als Fähigkeits-Kompatibilität bezeichnet.
@@ -279,6 +281,7 @@ Diese Daten werden in Form eines JSON-Arrays an den Service übermittelt.
 In Listing \ref{lst:methodik:lst1} ist eine solche Anfrage beispielhaft abgebildet.
 
 \lstinputlisting[
+    basicstyle=\linespread{0.5},
     language=json,
     caption=Beispiel einer Anfrage an den Empfehlungsservice,
     captionpos=b,
@@ -294,12 +297,12 @@ Die Ausprägungen "Grundkenntnisse" und "Fortgeschritten" des Kenntnisniveaus si
 Zusätzlich ist das Kenntnisniveau "Keine Kenntnisse" als Zahl 0 kodiert.
 Die Präferenzangabe ist ebenfalls als Integer kodiert, wobei "Möchte ich anwenden" einer 1, "Möchte ich nicht anwenden" einer -1 und "Neutral" einer 0 entspricht.
 
-Als Ergebnis produziert der Service zwei Listen: eine Liste mit empfohlenen Mitarbeitern basierend auf dem bilateralen Algorithmus und eine Liste mit empfohlenen Mitarbeitern durch den unilateralen Algorithmus.
+Als Ergebnis gibt der Service zwei Listen aus: eine Liste mit empfohlenen Mitarbeitern basierend auf dem bilateralen Algorithmus und eine Liste mit empfohlenen Mitarbeitern durch den unilateralen Algorithmus.
 Beide Listen sind absteigend sortiert und stellen ein Ranking der Mitarbeiter dar.
 Die Liste des bilateralen Algorithmus sortiert die Angestellten anhand ihres bilateralen Präferenzwertes, während der unilaterale Algorithmus die Mitarbeiter anhand ihres unilateralen Präferenzwertes sortiert.
 Beide Listen schickt der Service in einer Antwort an den Client zurück.
-Hierbei wird jeder Mitarbeiter durch seine Mailadresse und seinen Präferenzwert (\textit{matchValue}) abgebildet.
-In Listing \ref{lst:methodik:lst2} ist beispielhaft die Rückgabe des Empfehlungsservice für die Anfrage aus Listing \ref{lst:methodik:lst1} dargestellt.
+Hierbei wird jeder Mitarbeiter durch seine Mailadresse und seinen Präferenzwert (\textit{matchValue}) dargestellt.
+In Listing \ref{lst:methodik:lst2} ist beispielhaft die Rückgabe des Empfehlungsservice für die Anfrage aus Listing \ref{lst:methodik:lst1} abgebildet.
 
 \lstinputlisting[
     language=json,
@@ -346,7 +349,7 @@ Für die Mitarbeiterin Jane D. der Anfrage in Listing \ref{lst:methodik:lst1} er
 
 Für die Berechnung der Fähigkeits-Kompatibilität wurde eine abgewandelte Version des Verfahrens von \textcite[S. 269ff.]{pizzato:2:inproceedings} entwickelt.
 Diese ermöglicht die Berücksichtigung einer teilweisen Erfüllung von Fähigkeiten durch einen Mitarbeiter.
-Das bedeutet, der Algorithmus ist so gestaltet, dass ein Mitarbeiter, der beispielsweise eine angeforderte Fähigkeit mit Anforderungsniveau "Fortgeschritten" auf dem Niveau "Grundkenntnisse" beherrscht, eine höhere Kompatibilität aufweist als ein Mitarbeiter, der diese Fähigkeit nicht beherrscht.
+Der Algorithmus ist dabei so gestaltet, dass ein Mitarbeiter, der beispielsweise eine angeforderte Fähigkeit mit Anforderungsniveau "Fortgeschritten" auf dem Niveau "Grundkenntnisse" beherrscht, eine höhere Kompatibilität aufweist als ein Mitarbeiter, der diese Fähigkeit nicht beherrscht.
 Hierfür ermittelt der Algorithmus für jede angeforderte Fähigkeit deren anteilige Erfüllung durch die Kenntnisse eines Mitarbeiters.
 Diese wird berechnet, indem je Fähigkeit das Kenntnisniveau eines Mitarbeiters durch das Anforderungsniveau einer angeforderten Fähigkeit dividiert wird.
 Die Summe der anteiligen Fähigkeiten wird anschließend durch die Anzahl an angeforderten Fähigkeiten geteilt.
@@ -360,7 +363,7 @@ Analog bezeichnet $level(i \in F_{c})$ den Wert des Anforderungsniveaus einer an
 
 Da ein Mitarbeiter eine angeforderte Fähigkeit auch besser beherrschen kann als gefordert ist, musste bei der Konzeption darüber hinaus berücksichtigt werden, wie mit einer Überqualifikation eines Mitarbeiters in einer Fähigkeit verfahren wird.
 Der Algorithmus wurde so gestaltet, dass eine Überqualifikation eines Mitarbeiters ($level(i \in F_{s}) > level(i \in F_{c})$) gleich gehandhabt wird, wie die exakte Erfüllung einer Fähigkeit ($level(i \in F_{s}) = level(i \in F_{c})$).
-Wird eine Fähigkeit beispielsweise auf dem Niveau "Grundkenntnisse" ($\widehat{=} \textnormal{ }1$) angefordert, die ein Mitarbeiter auf dem Niveau "Fortgeschritten" ($\widehat{=} \textnormal{ }2$) beherrscht, wird für die anteilige Erfüllung eine 1 ($\frac{level(i \in F_{c})}{level(i \in F_{c})}$) anstelle einer 2 ($\frac{level(i \in F_{s})}{level(i \in F_{c})}$) angenommen.
+Wird eine Fähigkeit beispielsweise auf dem Niveau "Grundkenntnisse" ($\widehat{=} \textnormal{ }1$) gefordert, die ein Mitarbeiter auf dem Niveau "Fortgeschritten" ($\widehat{=} \textnormal{ }2$) beherrscht, wird für die anteilige Erfüllung eine 1 ($\frac{level(i \in F_{c})}{level(i \in F_{c})}$) anstelle einer 2 ($\frac{level(i \in F_{s})}{level(i \in F_{c})}$) angenommen.
 Dadurch soll verhindert werden, dass das Fehlen einer Fähigkeit durch die Überqualifikation in einer anderen Fähigkeit kompensiert wird.
 % hier beispiel einfügen für skill kompatibilitätsrechnung
 
@@ -372,7 +375,7 @@ Für die Mitarbeiterin Jane D. der Anfrage in Listing \ref{lst:methodik:lst1} er
 Für die Kombination der Fähigkeits- und Präferenz-Kompatibilität im bilateralen Algorithmus wurden verschiedene Aggregationsmethoden betrachtet.
 
 \subsubsection{Aggregation}
-Nach dem Aggregation Function Ansatz existieren verschiedene Verfahren für die Aggregation der Kriterien in einem multi-kriteriellen System.
+Nach dem Aggregation Function Ansatz existieren verschiedene Verfahren zur Aggregation der Kriterien in einem multi-kriteriellen System.
 Im Kontext wechselseitiger Empfehlungssysteme wurden verschiedene statistische Verfahren für die Aggregation der Präferenzen zweier Parteien identifiziert.
 Deren Einsatz wurde in Kapitel \ref{ch:verwandte_arbeiten} diskutiert.
 % Beispielrechnung in Anhang?
@@ -380,9 +383,9 @@ Deren Einsatz wurde in Kapitel \ref{ch:verwandte_arbeiten} diskutiert.
 Bei der Entscheidung für eine Aggregationsmethode des bilateralen Algorithmus wurden lediglich Verfahren mit individueller Gewichtung der Kriterien betrachtet.
 Dem lag die Annahme zugrunde, dass die Fähigkeits-Kompatibilität im Vergleich von höherer Bedeutung bei der Zuordnung von Mitarbeitern für Projekte ist als die Präferenz-Kompatibilität, da Manager die finale Entscheidung bei der Zuordnung treffen.
 
-Obwohl das harmonische Mittel in dem Experiment von \textcite[S. 1ff.]{kumari:2:inproceedings} die besten Ergebnisse erzielen konnte, wurde sich im bilateralen Algorithmus gegen diese Methode entschieden.
+Obwohl das harmonische Mittel in dem Experiment von \textcite[S. 1ff.]{kumari:2:inproceedings} die besten Ergebnisse erzielte, wurde diese Aggregationsmethode nicht für den bilateralen Algorithmus gewählt.
 Zum einen wurde in Kapitel \ref{ch:verwandte_arbeiten:1} erläutert, dass das harmonische Mittel für eine Fähigkeits- bzw. Präferenz-Kompatibilität von 0 nicht definiert ist.
-FÜr den vorliegenden Anwendungsfall wurde jedoch davon ausgegangen, dass in der Praxis durchaus Mitarbeiter existieren, die keine der angeforderten Fähigkeiten einer Projektposition besitzen (Fähigkeits-Kompatibilität $= 0$) bzw. präferieren (Präferenz-Kompatibilität $= 0$).
+Für den vorliegenden Anwendungsfall wurde jedoch davon ausgegangen, dass in der Praxis durchaus Mitarbeiter existieren, die keine der angeforderten Fähigkeiten einer Projektposition besitzen (Fähigkeits-Kompatibilität $= 0$) bzw. präferieren (Präferenz-Kompatibilität $= 0$).
 Auch wenn eine individuelle Gewichtung der Kriterien durch das gewichtete harmonische Mittel möglich gewesen wäre, wurde sich daher gegen die Methode entschieden.
 Darüber hinaus zeigten Experimente von \textcite[S. 131ff.]{kleinerman:2:inproceedings}, dass eine gewichtete Summe im Vergleich zum harmonischen Mittel zu besseren Ergebnissen führen kann.
 In Anlehnung an \textcite[S. 131ff.]{kleinerman:2:inproceedings} wurde daher die gewichtete Summe als Aggregationsmethode in dem bilateralen Algorithmus umgesetzt.
@@ -395,7 +398,7 @@ Das Ergebnis $PW_{c,s}^{bil}$ der Aggregation stellt den bilateralen Präferenzw
 \subsubsection{Gewichtung}
 \label{ch:methodik:auswertung:gewichtung}
 Da die genaue Bedeutung der einzelnen Kriterien in der Zuordnung von Mitarbeitern zu Projekten nicht bekannt ist, wurde ein separates Skript zur Bestimmung eines optimalen Werts für $\alpha$ entwickelt.
-Das Skript wurde in der Programmiersprache Python programmiert.
+Das Skript wurde in der Programmiersprache Python entwickelt.
 Hierfür wurden die erhobenen Daten der Mitarbeiter- und Managerbefragung herangezogen (Vgl. Kapitel \ref{ch:methodik:datenerhebung:1} und \ref{ch:methodik:datenerhebung:2}).
 
 In Anlehnung an das in Kapitel \ref{ch:verwandte_arbeiten:1} vorgestellte Verfahren von \textcite[S. 131ff.]{kleinerman:2:inproceedings} wurde das Optimierungsproblem zur Bestimmung von $\alpha$ wie folgt definiert:
@@ -405,11 +408,11 @@ In Anlehnung an das in Kapitel \ref{ch:verwandte_arbeiten:1} vorgestellte Verfah
         \textnormal{u.d.B. } 0 \leq \alpha \leq 1\\
     \end{aligned}
 \end{equation}
-Vereinfach gesagt wird durch die Lösung des Optimierungsproblems das Gewicht $\alpha$ so gewählt, dass für eine Menge an Mitarbeiter $S$ und eine Menge an Projekten $C$ die Summe der Ränge der Mitarbeiter, die in Projekten erfolgreich waren (d.h. $s \in SuccMatch_{c}$), möglichst minimal wird.
+Durch die Lösung des Optimierungsproblems wird das Gewicht $\alpha$ so gewählt, dass für eine Menge an Mitarbeiter $S$ und eine Menge an Projekten $C$ die Summe der Ränge der Mitarbeiter, die in Projekten erfolgreich waren (d.h. $s \in SuccMatch_{c}$), möglichst minimal wird.
 Das Verfahren optimiert $\alpha$ folglich dahingehend, dass Mitarbeiter, die in Projekten als erfolgreich eingestuft wurden, in der Liste an empfohlenen Angestellten an einen Manager möglichst weit oben platziert werden.
 Als erfolgreich wurden Mitarbeiter eingestuft, die sowohl angaben mit einem Projekt zufrieden gewesen zu sein ("Eher zufrieden" oder "Voll und Ganz zufrieden"), als auch von mindestens einem Manager als Mitarbeiter mit hoher Arbeitsleistung eingeschätzt wurden.
 
-Der Brent-Algorithmus zur Lösung des Optimierungsproblems aus Gleichung \ref{methodik:eq:7} wurde über die Funktion \textit{minimize\textunderscore scalar} der Bibliothek \textit{scipy.opti\-mize} in das Programm integriert.
+Der Brent-Algorithmus zur Lösung des Optimierungsproblems aus Gleichung \ref{methodik:eq:7} wurde über die Funktion \textit{minimize\textunderscore scalar} der Python-Bibliothek \textit{scipy.opti\-mize} in das Programm integriert.
 Für $\alpha$ wurde ein Intervall von 0 bis 1 gewählt.
 Anhand der erhobenen Daten der Mitarbeiter- und Managerbefragung ermittelte der Algorithmus in dem Intervall von 0 bis 1 das optimale Gewicht bei $\alpha = 0.6342$.
 
@@ -465,7 +468,7 @@ Für die Aufteilung wurde jeder Datensatz mit einer eindeutigen Identifikationsn
 Anhand der Identifikationsnummer wurden zufällig 75 Prozent der Datensätze ausgewählt und für das Training verwendet.
 Die übrigen 25 Prozent der Datensätze wurden als Testdaten herangezogen.
 
-Um eventuell auftretenden Bias bei der zufälligen Aufteilung der Datensätze in Trainings- und Testdaten zu vermeiden, wurde das zufällige Aufteilen insgesamt fünf mal wiederholt.
+Um eventuell auftretenden Bias bei der zufälligen Aufteilung der Datensätze in Trainings- und Testdaten zu vermeiden, wurde das zufällige Aufteilen insgesamt fünf Mal wiederholt.
 Dadurch entstanden fünf Trainings- und fünf zugehörige Test-Samples.
 Der entwickelte bilaterale Algorithmus wurde für jede der 5 Sample-Datensätze evaluiert.
 

@@ -286,23 +286,23 @@ In solchen Empfehlungssystemen kann der Rang eines Elements anhand mehrerer Sort
 % ------- Hier (oder oben?) kurze Zusammenfassung der Begrifflichkeiten (siehe aggarwal, S. xviii, file:///C:/Users/masc6/OneDrive/Persoenliche_Unterlagen/Uni/Masterthesis/Aggarwal2016_Book_RecommenderSystems.pdf)
 
 % Weglassen?
-Abbildung \ref{fig:empfehlungssysteme:recommendation:abb1} illustriert den zweistufigen Prozess der Empfehlungserstellung am Beispiel eines Ausschnitts der Mitarbeiter-Fähigkeiten Matrix aus Tabelle \ref{tab1}.
-Das Beispiel stellt den Empfehlungerstellungsprozess für die Mitarbeiterin Erika M. dar.
-Dabei soll mithilfe des Empfehlungssystems die Fähigkeit vorschlagen werden, von der angenommen werden kann, dass Erika M. in dieser Fähigkeit die meisten Kenntnisse im Vergleich zu den anderen Fähigkeiten aufweist (e.g. $argmax(\hat{r}_{\textnormal{Erika M., s}})$).
-% am die dieser am Gesucht: Element des Mitarbeiters, für das er/sie die höchsten Fähigkeiten aufweist, bspw. weil vorgeschalgen wird in dem Bereich eine Schulung zu geben, oder MA gesucht wird, der experte in einem bestimmten gebiet ist
+% Abbildung \ref{fig:empfehlungssysteme:recommendation:abb1} illustriert den zweistufigen Prozess der Empfehlungserstellung am Beispiel eines Ausschnitts der Mitarbeiter-Fähigkeiten Matrix aus Tabelle \ref{tab1}.
+% Das Beispiel stellt den Empfehlungerstellungsprozess für die Mitarbeiterin Erika M. dar.
+% Dabei soll mithilfe des Empfehlungssystems die Fähigkeit vorschlagen werden, von der angenommen werden kann, dass Erika M. in dieser Fähigkeit die meisten Kenntnisse im Vergleich zu den anderen Fähigkeiten aufweist (e.g. $argmax(\hat{r}_{\textnormal{Erika M., s}})$).
+% % am die dieser am Gesucht: Element des Mitarbeiters, für das er/sie die höchsten Fähigkeiten aufweist, bspw. weil vorgeschalgen wird in dem Bereich eine Schulung zu geben, oder MA gesucht wird, der experte in einem bestimmten gebiet ist
 
-\begin{figure}[H]
-    \centering
-	\includegraphics[width=1.0\textwidth]{gfx/phasen-empfehlungserstellung.png}
-	\caption[Phasen der Empfehlungserstellung]{Phasen der Empfehlungserstellung\\}
-	\label{fig:empfehlungssysteme:recommendation:abb1}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+% 	\includegraphics[width=1.0\textwidth]{gfx/phasen-empfehlungserstellung.png}
+% 	\caption[Phasen der Empfehlungserstellung]{Phasen der Empfehlungserstellung\\}
+% 	\label{fig:empfehlungssysteme:recommendation:abb1}
+% \end{figure}
 
-Empfehlungen dieser Art können beispielsweise sinnvoll sein, wenn Mitarbeitern Fähigkeiten vorgeschlagen werden sollen, die sie verhältnismäßig schnell erlernen können.
-% Empfehlungen dieser Art können beispielsweise sinnvoll sein, wenn Mitarbeitern Fähigkeiten vorgeschlagen werden sollen, die viele Ähnlichkeiten zu bereits existierenden Fähigkeiten eines Mitarbeiters aufweisen.
-% Dies kann sinnvoll sein, wenn Mitarbeiter möglichst schnell eine Fähigkeit erlernen sollen.
-% Wenn angenommen wird, dass Mitarbeiter, die bereits Fähigkeiten besitzen, welche Ähnlichkeiten zu der gefragten Fähigkeit aufweisen, schneller die gefragte Fähigkeit erlernen als Mitarbeiter, die diese Fähigkeiten nicht oder weniger gut beherrschen.
-So kann es vorteilhaft sein, der Mitarbeiterin Erika M. die Fähigkeit MySQL für eine Schulung vorzuschlagen, da aufgrund ihrer Vorkenntnisse in MongoDB angenommen werden kann, dass sie sich My\-SQL im Verhältnis zu anderen unbekannten Fähigkeiten wie Python schnell aneignen kann.
+% Empfehlungen dieser Art können beispielsweise sinnvoll sein, wenn Mitarbeitern Fähigkeiten vorgeschlagen werden sollen, die sie verhältnismäßig schnell erlernen können.
+% % Empfehlungen dieser Art können beispielsweise sinnvoll sein, wenn Mitarbeitern Fähigkeiten vorgeschlagen werden sollen, die viele Ähnlichkeiten zu bereits existierenden Fähigkeiten eines Mitarbeiters aufweisen.
+% % Dies kann sinnvoll sein, wenn Mitarbeiter möglichst schnell eine Fähigkeit erlernen sollen.
+% % Wenn angenommen wird, dass Mitarbeiter, die bereits Fähigkeiten besitzen, welche Ähnlichkeiten zu der gefragten Fähigkeit aufweisen, schneller die gefragte Fähigkeit erlernen als Mitarbeiter, die diese Fähigkeiten nicht oder weniger gut beherrschen.
+% So kann es vorteilhaft sein, der Mitarbeiterin Erika M. die Fähigkeit MySQL für eine Schulung vorzuschlagen, da aufgrund ihrer Vorkenntnisse in MongoDB angenommen werden kann, dass sie sich My\-SQL im Verhältnis zu anderen unbekannten Fähigkeiten wie Python schnell aneignen kann.
 
 \section{Präferenzen in Empfehlungssystemen}
 \label{ch:empfehlungssysteme:preferences}
@@ -402,7 +402,7 @@ Mitarbeiter und Fähigkeiten werden jeweils eindeutig über deren Namen gekennze
 
 \begin{figure}[H]
     \centering
-	\includegraphics[width=1.1\textwidth]{gfx/abbildung-präferenzen-A.png}
+	\includegraphics[width=1.0\textwidth]{gfx/abbildung-präferenzen-A.png}
 	\caption[Abbildung von Präferenzen in Systemen des kollaborativen Filterns]{Abbildung von Präferenzen in Systemen des kollaborativen Filterns}
 	\label{fig:empfehlungssysteme:preferences:abb1:1}
 \end{figure}
@@ -433,15 +433,15 @@ Für die Darstellung der Nutzermodelle eines inhaltsbasierten Systems ergibt sic
 Hierbei umfasst Element$_{Attribut}$ das Attribut, durch das die Elemente eines Systems beschrieben werden können \cite[S. 251]{berkovsky:article}.
 
 Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:2} illustriert eine solche Nutzer$_{ID}$$\times$Element$_{Attribut}$-Matrix anhand des Beispiels aus Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}.
+Als Elementattribut wurde für dieses Beispiel die Typisierung einer Programmiersprache mit den Ausprägungen "Statisch" und "Dynamisch" gewählt.
 
 \begin{figure}[H]
     \centering
-	\includegraphics[width=1.1\textwidth]{gfx/abbildung-präferenzen-B.png}
+	\includegraphics[width=1.0\textwidth]{gfx/abbildung-präferenzen-B.png}
 	\caption[Abbildung von Präferenzen in inhaltsbasierten Systemen]{Abbildung von Präferenzen in inhaltsbasierten Systemen}
 	\label{fig:empfehlungssysteme:preferences:abb1:2}
 \end{figure}
 
-Als Elementattribut wurde für dieses Beispiel die Typisierung einer Programmiersprache mit den Ausprägungen "Statisch" und "Dynamisch" gewählt.
 Ein Nutzermodell enthält für alle Ausprägungen des Attributs Gewichte $w$, die den Wert eines Elementattributs für einen Nutzer abbilden \cite[S. 251]{berkovsky:article}.
 Daraus ergibt sich beispielsweise für den Nutzer John D. das Nutzermodell $UM_{John\textnormal{ }D.} = \{Statisch:\textnormal{ 1.0}, Dynamisch: \textnormal{ 0.0}\}$ (Vgl. Abbildung \ref{fig:empfehlungssysteme:preferences:abb1:2}).
 
