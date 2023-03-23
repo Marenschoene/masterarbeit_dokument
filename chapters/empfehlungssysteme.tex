@@ -308,22 +308,21 @@ In solchen Empfehlungssystemen kann der Rang eines Elements anhand mehrerer Sort
 \label{ch:empfehlungssysteme:preferences}
 Im Zusammenhang mit Empfehlungssystemen fällt häufig der Begriff der Präferenzen (engl.: preferences) \cite[S. 11f.]{recommenderSystems:2016}\cite[S. 87]{ekstrand:article}\cite[S. 2429]{palomares:inproceedings}\cite[S. 2]{ricci:inbook}.
 % Brauch man hier überhaupt ein zitat, wenn ich die Annahme selber aufstelle?
-Ein Verständnis der Präferenzen von Nutzern eines Systems kann für die erfolgreiche Ermittlung von Empfehlungen von großer Bedeutung sein. % \cite[S. 1]{jawaheer:article}
-In diesem Kapitel werden Präferenzen daher allgemein erläutert und im Kontext von Empfehlungssystemen inhaltlich abgegrenzt.
+Präferenzen ermöglichen es, Empfehlungen für Nutzer zu personalisieren und sind daher für die individuelle Empfehlungserstellung in Empfehlungssystemen von großer Bedeutung.
+% In diesem Kapitel werden sie daher allgemein erläutert und im Kontext von Empfehlungssystemen inhaltlich abgegrenzt.
 
 % Nach dem Verständnis der Bundeszentrale für politische Bildung können Präferenzen grundsätzlich als Vorlieben und Verhaltensweisen von Personen verstanden werden, "[...], die bewirken, dass Güter unterscheidbar werden."\cite{pollert:book}
 % Wenn Präferenzen in dem Kontext von Empfehlungssystemen aufkommen, wird sich in der Regel auf die Vorlieben und Verhaltensweisen der Nutzer des Systems bezogen.
 % Beispielsweise kann unter der Präferenz eines Nutzers in einem Online-Shop die Bevorzugung eines Produktes gegenüber eines Anderen Verstanden werden.
 
 In der Literatur wird unter Präferenzen eines Nutzers zumeist dessen explizite und / oder implizite Bewertungen von Elementen verstanden \cite[S. 743]{adomavicius:inproceedings}\cite[S. 899]{adomavicius:article}\cite[S. 11]{recommenderSystems:2016}\cite[S. 37]{berkovsky:2:article}\cite[S. 129]{ekstrand:article}.\footnote{Vgl. Kapitel \ref{ch:empfehlungssysteme:nutzenfunktion}.}
-Die Präferenz eines Nutzers $c$ für ein Element $s$ kann daher als das (angenommene) Rating $R(c,s)$ verstanden werden.
-Die Präferenzen von Nutzern sind jedoch keinesfalls trivial.
+Daher wird die Präferenz eines Nutzers $c$ für ein Element $s$ auch als dessen (angenommenes) Rating $R(c,s)$ verstanden.
+Rating und Präferenz sind jedoch nicht zwangsläufig ein und dasselbe.
 Dies hängt unter anderem damit zusammen, dass einer expliziten Bewertung (z.B. einer Gefällt-mir-Angabe in Facebook) durch einen Nutzer aus der Sicht eines Nutzers ein unterschiedlicher Wert zukommen kann als aus Sicht des Systems.
 Darüber hinaus kann auch die Bewertungsskala eines Elements Einfluss auf die Genauigkeit von Präferenzen haben.
 So kann eine fehlende Gefällt-mir-Angabe für ein Element durch einen Nutzer in Facebook nicht zwangsläufig als Abneigung für das Element verstanden werden \cite[S. 11]{recommenderSystems:2016}.
 
-Anhand von Präferenzen ist es möglich, Empfehlungen für Nutzer eines Empfehlungssystems zu personalisieren.
-In Abhängigkeit des Grads der Personalisierung können Empfehlungen personalisierten bzw. nicht-personali\-sierten Empfehlungen zugeordnet werden (in Anlehnung an \cite[S. 400]{unternährer:article}).
+In Abhängigkeit des Grads der Personalisierung können Empfehlungen personalisierten bzw. nicht-personali\-sierten Empfehlungen zugeordnet werden \cite[S. 400]{unternährer:article}.
 
 \subsection{Personalisierte und nicht-personalisierte Empfehlungen}
 \label{ch:empfehlungssysteme:preferences:personal_vs_nonpersonal}
@@ -505,29 +504,29 @@ Nachfolgend wird das Konzept der \ac{RRS} und dessen zugrundeliegende Problemste
 \subsection{People-to-People-Empfehlungen}% oder umbenennen in Allgemeines Konzept
 \label{ch:empfehlungssysteme:rrs:people_to_people}
 Ein grundlegender Unterschied zwischen klassischen Empfehlungssystemen und \ac{RRS} liegt in der Art der Empfehlung.
-Diese können in \ac{I2P}- und \ac{P2P}-Empfehlungen unterschieden werden \cite[S. 62f.]{kim:inproceedings}.
+Diese können in \ac{I-2-P}- und \ac{P-2-P}-Empfehlungen unterschieden werden \cite[S. 62f.]{kim:inproceedings}.
 
-In der Literatur wird unter traditioneller \ac{I2P}-Empfehlung die Empfehlung klassischer Inhalte (z.B. Bücher, Filme, Hotels) verstanden \cite[S. 2199]{akehurst:inproceedings}\cite[S. 2429]{palomares:inproceedings}.
-In \ac{I2P}-Empfehlungen ist der Erfolg einer Empfehlung durch die Akzeptanz des Empfehlungsempfängers (d.h. des Nutzers) gekennzeichnet \cite[S. 131]{kleinerman:2:inproceedings}\cite[S. 546]{koprinska:inbook}.
-% Für personalisierte \ac{I2P}-Empfehlungen verwenden Empfehlungssysteme Wissen über die Präferenzen der Nutzer, um ihnen potenziell interessante Elemente zu empfehlen \cite[S. 403]{terveen:article}.
+In der Literatur wird unter traditioneller \ac{I-2-P}-Empfehlung die Empfehlung klassischer Inhalte (z.B. Bücher, Filme, Hotels) verstanden \cite[S. 2199]{akehurst:inproceedings}\cite[S. 2429]{palomares:inproceedings}.
+In \ac{I-2-P}-Empfehlungen ist der Erfolg einer Empfehlung durch die Akzeptanz des Empfehlungsempfängers (d.h. des Nutzers) gekennzeichnet \cite[S. 131]{kleinerman:2:inproceedings}\cite[S. 546]{koprinska:inbook}.
+% Für personalisierte \ac{I-2-P}-Empfehlungen verwenden Empfehlungssysteme Wissen über die Präferenzen der Nutzer, um ihnen potenziell interessante Elemente zu empfehlen \cite[S. 403]{terveen:article}.
 
 % Ein grundlegendes Problem, welches dieser Art der Empfehlung löst, ist das Problem der Informationsüberlastung \cite[S. 403]{terveen:article}.
 % Indem Empfehlungssysteme Nutzern aus einem Überangebot an (unbekannten) Elementen potenziell nützliche Elemente vorschlagen, können sie Nutzer bei der Entscheidungsfindung unterstützen.
 
-Im Vergleich zu traditionellen Empfehlungssystemen basieren \ac{RRS} auf \ac{P2P}-Empfehlungen \cite[S. 207]{pizzato:2010}.
-Unter \ac{P2P}-Empfehlung (auch: social matching \cite[S. 208]{pizzato:2010}) wird die Empfehlung von Personen an Nutzer eines Empfehlungssystems verstanden.
-Im Gegensatz zu \ac{I2P}-Empfehlungen, handelt es sich bei den empfohlenen Elementen nicht um leblose Objekte, sondern um Menschen, die anderen Menschen empfohlen werden \cite[S. 2]{kazienko:inbook}.
+Im Vergleich zu traditionellen Empfehlungssystemen basieren \ac{RRS} auf \ac{P-2-P}-Empfehlungen \cite[S. 207]{pizzato:2010}.
+Unter \ac{P-2-P}-Empfehlung (auch: social matching \cite[S. 208]{pizzato:2010}) wird die Empfehlung von Personen an Nutzer eines Empfehlungssystems verstanden.
+Im Gegensatz zu \ac{I-2-P}-Empfehlungen, handelt es sich bei den empfohlenen Elementen nicht um leblose Objekte, sondern um Menschen, die anderen Menschen empfohlen werden \cite[S. 2]{kazienko:inbook}.
 Das bedeutet, dass auch die empfohlenen Elemente Präferenzen besitzen und auch positiv oder negativ reagieren können \cite[S. 2]{kazienko:inbook}.
-Dies ist ein besonderer Aspekt, den es zu beachten gilt, da dadurch die Qualität der Empfehlungen beeinflusst werden kann \cite[S. 208]{pizzato:2010}\cite[S. 2199]{akehurst:inproceedings}.
+Dies ist ein besonderer Aspekt, den es zu beachten gilt, da dadurch die Qualität der Empfehlungen beeinflusst werden kann \cite[S. 2199]{akehurst:inproceedings}\cite[S. 208]{pizzato:2010}.
 
-Während ein Großteil der \ac{P2P}-Empfehlungen auf dem Aspekt der Reziprozität (engl.: reciprocity) beruhen \cite[S. 545]{koprinska:inbook}, ist nicht jede \ac{P2P}-Empfehlung unmittelbar reziprok.
-Empfehlungen können auch \ac{P2P}-Empfehlungen sein und lediglich die Präferenzen des Nutzers berücksichtigen \cite[S. 2429]{palomares:inproceedings}.
-Ein Beispiel stellen \ac{P2P}-Empfehlungen des sozialen Netzwerks Twitter dar \cite[S. 2429]{palomares:inproceedings}.
+Während ein Großteil der \ac{P-2-P}-Empfehlungen auf dem Aspekt der Reziprozität (engl.: reciprocity) beruhen \cite[S. 545]{koprinska:inbook}, ist nicht jede \ac{P-2-P}-Empfehlung unmittelbar reziprok.
+Empfehlungen können auch \ac{P-2-P}-Empfehlungen sein und lediglich die Präferenzen der Empfehlungsempfänger berücksichtigen \cite[S. 2429]{palomares:inproceedings}.
+Ein Beispiel stellen \ac{P-2-P}-Empfehlungen des sozialen Netzwerks Twitter dar \cite[S. 2429]{palomares:inproceedings}.
 Der Vorschlag einer anderen Person zu folgen beruht dabei lediglich auf den Präferenzen des Empfängers des Vorschlags.
 
 \subsection{Abgrenzung traditioneller Empfehlungssysteme}
 \label{ch:empfehlungssysteme:rrs:traditional_vs_rrs}
-Bei Empfehlungen in \ac{RRS} handelt es sich um reziproke \ac{P2P}-Empfehlungen \cite[S. 207]{pizzato:2010}, deren Erfolg von der Berücksichtigung der bilateralen Präferenzen abhängt.
+Bei Empfehlungen in \ac{RRS} handelt es sich um reziproke \ac{P-2-P}-Empfehlungen \cite[S. 207]{pizzato:2010}, deren Erfolg von der Berücksichtigung der bilateralen Präferenzen abhängt.
 Im Gegensatz dazu beeinflussen in traditionellen Systemen lediglich die Präferenzen der Nutzer den Erfolg einer Empfehlung \cite[S. 1468]{yildirim:article}.
 So reicht es beispielsweise in einem Recruiting-System nicht aus, lediglich die Präferenzen eines Akteurs (bspw. dem Recruiter) zu berücksichtigen.
 Damit dem Recruiter auch Personen vorgeschlagen werden, die ein potenzielles Angebot annehmen würden, müssen die Präferenzen der Stellensuchenden ebenfalls in Betracht gezogen werden.
@@ -591,11 +590,11 @@ Hierfür wurde die vereinfachte Darstellung des Empfehlungssystems aus Abbildung
 Auf der linken Seite ist ein traditionelles Empfehlungssystem dargestellt.
 Elemente, die die Bedürfnisse des Nutzers $X$ erfüllen, sind durch einen empfangenden roten Pfeil gekennzeichnet.
 Fehlende Verbindungen zwischen Elementen und dem Nutzer $X$ bedeuten, dass ein Element die Präferenzen des Nutzers $X$ nicht erfüllt.
-Soll dem Nutzer $X$ das Element empfohlen werden, welches seine Bedürfnisse am stärksten erfüllt, würde nach Abbildung \ref{fig:empfehlungssysteme:rrs:abb1} eindeutig Element $C$ ausgewählt werden.
+Soll dem Nutzer $X$ das Element empfohlen werden, welches seine Bedürfnisse am stärksten erfüllt, würde nach dem traditionellen System eindeutig Element $C$ ausgewählt werden.
 
 Auf der rechten Seite von Abbildung \ref{fig:empfehlungssysteme:rrs:abb1} ist ein wechselseitiges Empfehlungssystem vereinfacht dargestellt.
 Zusätzlich zu den präferierten Elementen des Nutzers $X$ sind in der Darstellung auch die Präferenzen der empfohlenen Personen abgebildet.
-Daraus wird ersichtlich, dass Person $C$ die Präfernezen des Nutzers $X$ erfüllt, aber eine Empfehlung von Person $C$ für Nutzer $X$ nicht die Präferenzen von Person $C$ erfüllen würde.
+Daraus wird ersichtlich, dass Person $C$ die Präferenzen des Nutzers $X$ erfüllt, aber eine Empfehlung von Person $C$ für Nutzer $X$ nicht die Präferenzen von Person $C$ erfüllen würde.
 Eine Empfehlung von Person $A$ würde die Bedürfnisse von Person $A$ erfüllen, dann jedoch die Präferenzen des Nutzers $X$ unerfüllt lassen.
 Das Problem besteht folglich darin, aus einer Menge an Personen eine passende Person für Nutzer $X$ zu ermitteln, sodass sowohl die Präferenzen des Nutzers als auch der empfohlenen Person möglichst optimal erfüllt werden.
 
@@ -607,7 +606,7 @@ Das Problem besteht folglich darin, aus einer Menge an Personen eine passende Pe
 \end{figure}
 
 Nach \textcite[S. 36]{li:inproceedings} kann diese Problemstellung der reziproken Empfehlung mathematisch als das "Stable Marriage"-Problem modelliert werden.
-Das "Stable-Marriage"-Problem beschreibt das Problem der Bestimmung einer optimalen Paarung (engl.: Match) zweier Mengen an Elementen anhand ihrer Präferenzen, sodass kein Element durch Paarung mit einem anderen Partner besser gestellt wäre \cite[S. 36]{li:inproceedings}\cite[S. 67]{diaz:inproceedings}.
+Das "Stable-Marriage"-Problem beschreibt das Problem der Bestimmung einer optimalen Paarung (engl.: Match) zweier Mengen an Elementen anhand ihrer Präferenzen, sodass kein Element durch Paarung mit einem anderen Partner besser gestellt wäre \cite[S. 67]{diaz:inproceedings}\cite[S. 36]{li:inproceedings}.
 
 Um in dem Szenario einer reziproken Empfehlung zu ermitteln, ob ein Paar optimal ist, müssen nach \textcite[S. 36]{li:inproceedings} für jeden Nutzer $c \in C$ eine Selbstbeschreibung $F_{c}^{d}$ und Präferenzen $F_{c}^{p}$ bekannt sein.
 Analog müssen für jede Person (Element) $s \in S$ des Systems eine Selbstbeschreibung $F_{s}^{d}$ und Präferenzen $F_{s}^{p}$ bekannt sein.

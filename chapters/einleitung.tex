@@ -20,7 +20,7 @@ Die Relevanz dieser Systeme wird seit Jahren durch die Vielzahl an Publikationen
 % Die Wahl des richtigen Verfahrens zur Empfehlungserstellung in multi-kriteriellen Systemen spielt hierbei eine entscheidende Rolle für den Erfolg eines Empfehlungssystems.
 
 Wechselseitige Empfehlungssysteme, in denen Personen die Inhalte von Empfehlungen bilden, haben durch die Zunahme an sozialen Netzwerken seit einigen Jahren eine große Bedeutung erlangt \cite[S. 2429]{palomares:inproceedings}.
-Im Vergleich zu herkömmlichen Empfehlungssystemen ist der Erfolg einer Empfehlung in wechselseitigen Systemen unter anderem von der bilateralen Präferenzerfüllung beider beteiligten Parteien abhängig.
+Im Vergleich zu herkömmlichen Empfehlungssystemen ist der Erfolg einer Empfehlung in wechselseitigen Systemen stark von der bilateralen Präferenzerfüllung beider beteiligten Parteien abhängig.
 Das bedeutet, dass sowohl die Präferenzen des Empfehlungsempfängers, als auch der empfohlenen Person bei der Empfehlungserstellung berücksichtigt werden müssen.
 % Eine bilaterale Bedürfniserfüllung besagt, dass der Erfolg einer Empfehlung sowohl von der Berücksichtigung der Bedürfnisse des Anwenders eines Systems, als auch der empfohlenen Person abhängt.
 Daher werden wechselseitige Empfehlungssysteme auch als bilaterale Systeme bezeichnet.
@@ -34,12 +34,11 @@ Konträr werden Systeme, die allein die Bedürfnisse des Anwenders eines Systems
 % Hier überleiten zu bekannten domänen, dann zu people to people empfehlung
 
 Ein Einsatzgebiet wechselseitiger Empfehlungssysteme stellt die Besetzung offener Projektpositionen durch passende Mitarbeiter in projektgetriebenen Unternehmen dar.
-Aufgrund eines Wandels weg von zentralen und hierarchischen Unternehmensstrukturen hin zu dezentralen Projektteams, wird angenommen, dass die Zuordnung von Mitarbeitern zu Projektpositionen in Unternehmen zukünftig weiter an Bedeutung gewinnen wird \cite[S. 2]{link:booklet}. % hier erklären, warum davon ausgegangen wird, dass das ein spannendes thema ist
+Aufgrund des Wandels weg von zentralen und hierarchischen Unternehmensstrukturen hin zu dezentralen Projektteams, ist zu erwarten, dass die Zuordnung von Mitarbeitern zu Projektpositionen in Unternehmen zukünftig weiter an Bedeutung gewinnen wird \cite[S. 2]{link:booklet}. % hier erklären, warum davon ausgegangen wird, dass das ein spannendes thema ist
 Empfehlungssysteme können Entscheidungsträger in diesem Auswahlprozess unterstützen, indem potenziell passende Mitarbeiter für Projektpositionen ermittelt und den Entscheidungsträgern vorgeschlagen werden.
 % \textcite[S .iii]{link:booklet} erkennt die Bedeutung der Berücksichtigung der bilateralen Präferenuen für eine erfolgreiche Zuordnung von Mitarbeitern zu Projekten an und entwickelte ein System, dass neben den Präferenzen der Entscheidungsträger auch die Präferenzen der empfohlenen Personen bei der Zuordnung berücksichtigt.
 Während vorangegangene Arbeiten in wechselseitigen Domänen zumeist lediglich die Bedürfnisse der Entscheidungsträger bei der Empfehlungserstellung berücksichtigen \cite[S. 2f.]{siting:2012}, betont \textcite[S. 2]{link:booklet} die Bedeutung der Berücksichtigung bilateralen Präferenzen für eine erfolgreiche Zuordnung von Mitarbeitern zu Projekten.
-% HIER NOCH ZITAT!!!
-Er entwickelte ein bilaterales Empfehlungssystem, dass neben den Präferenzen der Entscheidungsträger auch die Präferenzen der empfohlenen Personen, nämlich den Mitarbeitern, bei der Zuordnung berücksichtigt.
+Er entwickelte ein bilaterales Empfehlungssystem, dass neben den Präferenzen der Entscheidungsträger auch die Präferenzen der empfohlenen Mitarbeiter bei der Zuordnung berücksichtigt.
 \textcite[S. 3]{link:booklet} zeigte in seiner Untersuchung, dass durch die beidseitige Berücksichtigung der Präferenzen in vier von fünf Fällen die erwartete Zufriedenheit von Mitarbeitern sowie die erwartete Arbeitsleistung dieser seitens der Entscheidungsträger gesteigert werden konnte.
 % Hierbei wird eine hohe erwartete Arbeitsleistung der empfohlenen Mitarbeitern mit einer Zufriedenheit der Entscheidungsträger erfasste \textcite[S. iii]{link:booklet} mittels der zu erwartenden Arbeitsleistung der empfohlenen Mitarbeiter in Projekten.
 % Hier noch erwähnen, was seine kritikpunkte waren, um die mitaufzunehmen?
@@ -79,7 +78,7 @@ Ziel der vorliegenden Arbeit ist es, die folgende Forschungsfrage zu beantworten
 
 Zur Beantwortung der Forschungsfrage soll anknüpfend an die Arbeit von \textcite[S. 1ff.]{link:booklet} untersucht werden, ob ein alternativer Ansatz für die Berücksichtigung der bilateralen Präferenzen bei der Ermittlung von Empfehlungen uneingeschränkt zu einer höheren Zufriedenheit der Angestellten und deren Arbeitsleistung in Projekten führt.
 Hierfür wird innerhalb eines IT-Beratungsunternehmens ein Experiment basierend auf fünf Beispielprojekten durchgeführt.
-Anhand zweier Befragungen wird im Rahmen des Experiments die Zufriedenheit der Mitarbeiter und die, von den Entscheidungsträgern erwartete Arbeitsleistung dieser Mitarbeiter, in den Beispielprojekten erhoben.
+Anhand zweier Befragungen wird im Rahmen des Experiments die Zufriedenheit der Mitarbeiter und deren erwartete Arbeitsleistung in den Beispielprojekten aus Sicht der Entscheidungsträger erhoben.
 Für die Auswertung des Experiments wird ein multi-kriterielles Empfehlungssystem entwickelt, welches zwei Algorithmen implementiert.
 Repräsentativ für die unilaterale Präferenzerfüllung wird ein unilateraler Algorithmus erstellt, der die fünf passensten Mitarbeiter in Abhängigkeit ihrer Fähigkeiten für die Beispielprojekte vorschlägt.
 Für die bilaterale Empfehlung wird ein bilateraler Algorithmus implementiert, der die fünf passensten Mitarbeiter für eine Projektposition in Abhängigkeit der zwei Kriterien Fähigkeit und Präferenz empfiehlt.
@@ -95,7 +94,7 @@ Nach der Einleitung in Kapitel 1 erfolgt in Kapitel 2 eine Übersicht über theo
 Hierfür werden Grundbegriffe eingeführt und erläutert.
 Daran schließt ein allgemeiner Überblick über den Empfehlungserstellungs-Prozess, welcher für ein fundiertes Verständnis der Inhalte der darauffolgenden Kapitel erforderlich ist.
 % Eine Erläuterung der Bedeutung von Präferenzen im Kontext von Empfehlungssystemen dient der Unterscheidung zwischen Präferenzen im herkömmlichen Sinn und Präferenzen im Kontext der vorliegenden Arbeit.
-Zuletzt erfolgt eine Einführung in wechselseitige Empfehlungssysteme sowie eine Abgrenzung dieser zu ordinären Systemen.
+Zuletzt erfolgt eine Einführung in wechselseitige Empfehlungssysteme sowie eine Abgrenzung zu ordinären Systemen.
 % mit anschließender Erläuterung der veränderten Problemstellung in solchen Systemen.
 
 In Kapitel 3 wird das Problem der Erfüllung der bilateralen Präferenzen in wechselseitigen Systemen aus Sicht der Entscheidungstheorie betrachtet und als Entscheidungsproblem mit zwei Kriterien definiert.

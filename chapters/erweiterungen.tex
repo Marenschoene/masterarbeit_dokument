@@ -43,7 +43,7 @@ Größtenteils können diese einer der folgenden Kategorien zugeordnet werden \c
     \item Multi-kriterielle Bewertungen in der Präferenzerhebungen
 \end{itemize}
 
-Multi-attribut-basierte Inhaltssuche und multi-attribut-basiertes Filtern bezeichnen Systeme, die einem Nutzer ermöglichen, seine Präferenzen unter Anwendung von Such- bzw. Filterprozessen spezifizieren \cite[S. 851]{adomavicius:4:inbook}\cite[S. 10]{adomavicius:5:inbook}.
+Multi-attribut-basierte Inhaltssuche und multi-attribut-basiertes Filtern bezeichnen Systeme, die einem Nutzer ermöglichen, seine Präferenzen unter Anwendung von Such- bzw. Filterprozessen zu spezifizieren \cite[S. 851]{adomavicius:4:inbook}\cite[S. 10]{adomavicius:5:inbook}.
 Diese zusätzlichen Präferenzen können in solchen Systemen verwendet werden, um die Menge an potenziell nützlichen Elementen für einen Nutzer weiter einzugrenzen \cite[S. 11]{adomavicius:5:inbook}.
 Unter multi-attribut-basierter Präferenzmodellierung wird die Darstellung von Präferenzen anhand verschiedener Attribute eines Elements verstanden (z.b. in klassischen inhaltsbasierten \ac{RS} \cite[S. 10]{adomavicius:5:inbook}\cite[S. 205]{hdioud:inproceedings}).
 Nach \textcite[S. 850]{adomavicius:4:inbook} werden diese Arten der multi-kriteriellen Empfehlung bereits durch existierende Typen von Empfehlungssystemen unterstützt (z.B. wissenbasierten, inhaltsbasierten und hybriden \ac{RS}).
@@ -116,7 +116,7 @@ Diese können wiederum für die Vorhersage fehlender Transaktionen genutzt werde
 
 Multi-kriterielle Optimierungsprobleme können in Empfehlungssystemen folglich in unterschiedlichen Kontexten bestehen.
 Aufgrund eines anhaltenden Trends im Bereich der multi-kriteriellen Bewertungen \cite[S. 851]{adomavicius:4:inbook}, beziehen sich die meisten Veröffentlichungen zu Lösungsansätzen multi-kriteriel\-ler Optimierungsprobleme in der Literatur auf multi-kriterielle Ratings.
-Auch wenn der Kontext der multi-kriteriellen Probleme sich unterscheiden kann, können viele Lösungsansätze in allen Bereichen eingesetzt werden.
+Auch wenn sich der Kontext der multi-kriteriellen Probleme unterscheiden kann, können viele Lösungsansätze in allen Bereichen eingesetzt werden.
 Daher werden nachfolgend Lösungsansätze multi-kriterieller Optimierungsprobleme am Beispiel multi-kriterieller Bewertungen angeführt.
 
 % \section{Problemstellung}
@@ -162,7 +162,7 @@ Die Idee der Integration multi-kriterieller Bewertungen in die Ähnlichkeitsbere
 Gemäß \textcite[S. 856f.]{adomavicius:4:inbook} können Ähnlichkeitsmaße wie der Pearson-Korrelationskoeffizient oder die Kosinus-Ähnlichkeit lediglich Bewertungen anhand eines einzelnen Kriteriums verarbeiten.
 In \ac{MCRS} besteht eine Bewertung $r$ jedoch neben einer Gesamtbewertung $r^{0}$ zusätzlich aus $k$ multi-kriteriellen Bewertungen $r^{1}, ..., r^{k}$, d.h. $r=(r^{0},r^{1}, ..., r^{k})$ \cite[S. 857]{adomavicius:4:inbook}\cite[S. 426]{recommenderSystems:2016}.
 Anstelle eines einzigen Ratings besitzt eine \ac{N-E-K} in \ac{MCRS} demnach $k+1$ Bewertungen \cite[S. 857]{adomavicius:4:inbook}.\footnote{Für \ac{MCRS}, die keine Gesamtbewertungen beinhalten, können für die Berechnung der Ähnlichkeit dieselben Maße angewandt werden, wie für Systeme die Gesamtbewertungen verwenden, mit dem einzigen Unterschied, dass der Index $i$ nicht die Gesamtbewertung einschließt (d.h. $i \in \{1,k\}$ anstelle von $i \in \{0,k\}$) \cite[S. 857]{adomavicius:4:inbook}.}
-Daher könnendie Gleichungen nicht unmittelbar für multi-kriterielle Bewertungen angewandt werden.
+Daher können die Gleichungen nicht unmittelbar für multi-kriterielle Bewertungen angewandt werden.
 In Anlehnung an \textcite[S. 49]{adomavicius:inproceedings:2}, \textcite[S. 860]{adomavicius:4:inbook} und \textcite[S. 427]{recommenderSystems:2016} wird die Vorstellung der Lösungsansätze auf nutzerbasiertes kollaboratives Filtern begrenzt.\footnote{Für ein simples Vorgehen zur Umstellung der Berechnungen auf elementbasiertes kollaboratives Filtern wird auf \textcite[S. 49]{adomavicius:inproceedings:2} verwiesen.}
 
 Ein speicherbasierter Ansatz für die Berücksichtigung multi-kriterieller Bewertungen in der Ähnlichkeitsberechnung stellt die Aggregation von Ähnlichkeiten auf Ebene der einzelnen Kriterien dar.
@@ -232,7 +232,7 @@ Aus der Gesamtdistanz lässt sich die Ähnlichkeit zweier Nutzer wie folgt ablei
     sim^{aggr}(c,c') = \frac{1}{1 + dist^{aggr}(c,c')}
 \end{equation}
 
-Speicherbasierte Ansätze adjustieren lediglich die Ähnlichkeitsberechnung in kollaborativen Systemen.\footnote{Die speicherbasierten Ansätze werden daher auch als ähnlichkeitsbasierte Ansätze bezeichnet \cite[S. 52]{adomavicius:inproceedings:2}.}
+Die Berücksichtigung multipler Kriterien in kollaborativen Systemen über einen speicherbasierten Ansatz erfordert lediglich eine Anpassung der Ähnlichkeitsberechnung.\footnote{Die speicherbasierten Ansätze werden daher auch als ähnlichkeitsbasierte Ansätze bezeichnet \cite[S. 52]{adomavicius:inproceedings:2}.}
 Das bedeutet, fehlende Bewertungen können nach Ermittlung der Ähnlichkeit wie gewohnt mittels Aggregation (z.B. gewichtete Summe \cite[S. 859]{adomavicius:4:inbook}) bestimmt werden \cite[S. 52]{adomavicius:inproceedings:2}\cite[S. 428]{recommenderSystems:2016}.
 
 \subsection{Modellbasierte Ansätze}
@@ -286,14 +286,14 @@ Dies kann in Domänen sinnvoll sein, in denen sich die Gewichte einzelner Kriter
 Im letzten Schritt erfolgt die Vorhersage der Gesamtbewertungen basierend auf den (angenommenen) multi-kriteriellen Bewertungen und der erstellten Aggregationsfunktion $f$ \cite[S. 861]{adomavicius:4:inbook}.
 
 \textbf{Probabilistic Modeling Ansatz}
-Neben dem Aggregation Function Ansatz nennen \textcite[S. 861]{adomavicius:4:inbook} probabilistische Modellierungs-Ansätze (engl.: Probabilistic Modeling Approach) für die Integration multi-kriterieller Bewertungen in Empfehlungssysteme.
+Neben dem Aggregation Function Ansatz nennen \textcite[S. 861]{adomavicius:4:inbook} probabilistische Modellierungsansätze (engl.: Probabilistic Modeling Approach) für die Integration multi-kriterieller Bewertungen in Empfehlungssysteme.
 Vereinfacht gesehen handelt es sich dabei um Methoden, die mit Wahrscheinlichkeitsverteilungen für die Vorhersage von Bewertungen arbeiten.
 \textcite[S. 861]{adomavicius:4:inbook} nennen als Beispiel die Veröffentlichung von \textcite[S. 231]{sahoo:article}.
 In der Veröffentlichung wird eine Anpassung des \ac{FMM} von \textcite[S. 704ff.]{si:inproceedings} um multi-kriterielle Bewertungen vorgestellt.
 
-\textcite[S. 358]{jin:article} beschreiben das \ac{FMM} als eine grafische Darstellung eines probabilistischen Modells, in dem Nutzer und Elemente (mehreren)\footnote{Das \ac{FMM} unterscheidet sich von herkömmlichen grafischen Modellen unter anderem darin, dass Nutzer bzw. Elemente mehreren Clustern zugeordnet werden können \cite[S. 3]{si:inproceedings}\cite[S. 366]{jin:article}.} Clustern (übergeordneten Klassen) zugeordnet werden können.
+\textcite[S. 358]{jin:article} beschreiben das \ac{FMM} als eine grafische Darstellung eines probabilistischen Modells, in dem Nutzer und Elemente (mehreren)\footnote{Das \ac{FMM} unterscheidet sich von herkömmlichen grafischen Modellen unter anderem darin, dass Nutzer bzw. Elemente mehreren Clustern zugeordnet werden können \cite[S. 366]{jin:article}\cite[S. 3]{si:inproceedings}.} Clustern (übergeordneten Klassen) zugeordnet werden können.
 Die Idee hinter probabilistischen Clustering-Methoden besteht darin, zugrundeliegende (auch: latente) Strukturen aus einer Menge an Daten zu ermitteln \cite[S. 197]{truyen:inproceedings}, die für die Vorhersage verwendet werden.
-Das \ac{FMM} folgt der Annahme, dass eine Bewertung r, welche ein Element s von einem Nutzer c erhält, von einer latenten Variable $Z_{c}$ und einer latenten Variable $Z_{s}$ abhängt \cite[S. 235]{sahoo:article}.
+Das \ac{FMM} folgt der Annahme, dass eine Bewertung $r$, welche ein Element $s$ von einem Nutzer $c$ erhält, von einer latenten Variable $Z_{c}$ und einer latenten Variable $Z_{s}$ abhängt \cite[S. 235]{sahoo:article}.
 $Z_{c}$ kennzeichnet hierbei die Klasse(n), denen ein Nutzer $c$ und ${Z_{s}}$ die Klasse(n), denen ein Element $s$ zugeordnet werden kann \cite[S. 862]{adomavicius:4:inbook}\cite[S. 3]{si:inproceedings}.
 % Die Idee des \ac{FMM} besteht darin, dass die Variablen Bewertung, Nutzer und Element unter der Bedingung der latenten Variablen $Z_{c}$ und $Z_{s}$ unabhängig voneinander sind \cite[S. 4]{sahoo:2:article}\cite[S. 235]{sahoo:article}.
 % Die Wahrscheinlichkeit der Bewertung $r$ eines Nutzers $c$ für ein Element $s$ ergibt sich demnach aus der Summe aller Wahrscheinlichkeiten der Kombinationen der Variablen $Z_{c}$ und $Z_{s}$ \cite[S. 862]{adomavicius:4:inbook}:
@@ -310,7 +310,7 @@ Das grundlegende Modell ist in Abbildung \ref{fig:optimierung:loesungen:abb2:1} 
     \centering
     \subfloat[Flexible Mixture Model]{\includegraphics[width=2.0in]{gfx/f-m-m.png}\label{fig:optimierung:loesungen:abb2:1}}
     \subfloat[Flexible Mixture Model mit multi-kriteriellen Bewertungen und Dependency-Struktur]{\includegraphics[width=3.0in]{gfx/f-m-m-2.png}\label{fig:optimierung:loesungen:abb2:2}}\\
-  \caption[Beispiel eines probabilistischen Modellierungs-Ansatzes]{Beispiel eines probabilistischen Modellierungs-Ansatzes\\
+  \caption[Beispiel eines probabilistischen Modellierungsansatzes]{Beispiel eines probabilistischen Modellierungsansatzes\\
 	(Eigene Darstellung in Anlehnung an \cite[S. 836]{adomavicius:4:inbook})}\label{fig:optimierung:loesungen:abb2}
 \end{figure}
 
@@ -332,7 +332,7 @@ Die Wahrscheinlichkeit der Bewertung eines Nutzers für ein Element ergibt sich 
 % Anstelle der Wahrscheinlichkeit $P(r|Z_{c},Z_{s})$ steht das Produkt der Wahrscheinlichkeiten der Bewertung der einzelnen Kriteriums eines Elements einer Klasse durch einen Nutzer einer Klasse, unter Berücksichtigung der Gesamtbewertung ($P(r^{i}|Z_{c},Z_{s}, Pa_{r^{i}})$).
 
 Die Parameter ($Z_{c}$ und $Z_{s}$ \cite[S. 4]{si:inproceedings}) des \ac{FMM} können mithilfe des Expectation Maximization Algorithmus von \textcite[S. 1ff.]{dempster:article} bestimmt \cite[S. 863]{adomavicius:4:inbook}.
-Unter Anwendung der Parameter kann eine fehlende Bewertung als die Bewertung mit der höchsten Wahrscheinlichkeit vorhergesagt \cite[S. 863]{adomavicius:4:inbook}. 
+Unter Anwendung der Parameter wird eine fehlende Bewertung als die Bewertung mit der höchsten Wahrscheinlichkeit vorhergesagt \cite[S. 863]{adomavicius:4:inbook}. 
 
 % Einen weiteren probabilistischen Ansatz zur Integration multi-kriterieller Bewertungen in die Vorhersage führen \textcite[S. 97ff.]{zhang:article} an.
 % Im Detail stellen die Autoren zwei multi-kriterielle Herangehensweisen vor, welche auf der Probabilistic Latent Semantic Analysis aufbauen \cite[S. 864]{adomavicius:4:inbook}.
@@ -356,7 +356,7 @@ Die Matrix $U$ des Produkts bildet $k$ latente Vektoren ab, welche die Affinitä
 Entsprechend stellt Matrix $V$ $k$ latenten Vektoren der Elemente dar, welche die Affinität von Elementen für diese Kategorien abbilden \cite[S. 94]{recommenderSystems:2016}.
 
 \ac{SVD} ist eine bekannte \cite[S. 83]{koren:inbook} Matrix Factorization Technik.
-Gemäß \textcite[S. 864]{adomavicius:4:inbook} wird \ac{SVD} maßgeblich für das Auffinden von Faktor-Räumen geringerer Dimensionalität (bspw. $k < n$) angewandt.
+Gemäß \textcite[S. 864]{adomavicius:4:inbook} wird \ac{SVD} maßgeblich für das Auffinden von Faktor-Räumen geringerer Dimensionalität (d.h. $k < n$) angewandt.
 Anhand der vollständigen latenten Vektoren können Bewertungen in Empfehlungssystemen ermittelt werden.
 Stellt ein Vektor $p_{c}$ die Affinität eines Nutzers für $k$ Faktoren der Elemente eines Systems dar und $p_{s}$ die Affinität eines Elements für diese Kategorien $k$, so kann eine Bewertung wie folgt ermittelt werden \cite[S. 865]{adomavicius:4:inbook}:
 \begin{equation}\label{eq29}

@@ -16,6 +16,8 @@ Dadurch haben sich im Verlauf der Jahre unterschiedliche Ansätze für die Berü
 % Gemäß \textcite[S. 1467]{yildirim:article} hat die wechselseitige Empfehlung in der Literatur bis heute wenig Aufmerksamkeit erhalten.
 % Dies begründen \textcite[S. 1467]{yildirim:article} durch eine begrenzte Verfügbarkeit öffenlticher Datensätze mit Angaben zu Präferenzen der Nutzer eines Netzwerks.
 
+\subsection{Zuordnung von Personen in verwandten Domänen}
+\label{ch:verwandte_arbeiten:1:1}
 Die erste Veröffentlichung in der Literatur zu wechselseitigen Empfehlungssystemen stammt von \textcite[S. 1ff.]{pizzato:inproceedings}, welche ein wechselseitiges Empfehlungssystem für Online-Dating-Plattformen vorstellen \cite[S. 1469]{yildirim:article}.
 Nach \textcite[S. 5]{pizzato:inproceedings} ergibt sich der Wert einer \ac{N-E-K} grundsätzlich aus einer Kombination der Präferenz eines Nutzers für ein Element und der Präferenz eines Elements für einen Nutzer.
 Die Autoren weisen darauf hin, dass für die Kombination der beiden Komponenten verschiedene Methoden verwendet werden können.
@@ -29,7 +31,7 @@ Dieser stellt in seiner Veröffentlichung zu hybriden Empfehlungssystemen allgem
 Auch wenn die Umsetzung der reziproken Empfehlung bereits als multi-kriterieller Ansatz modelliert wurde (Vgl. Gleichung \ref{eq32}), bezeichnen \textcite[S. 1ff.]{pizzato:inproceedings} die wechselseitige Empfehlungserstellung nicht ausdrücklich als multi-kriterielles Problem. 
 
 Eine Umsetzung des Konzepts wechselseitiger Empfehlungssysteme stellen \textcite[S. 207ff.]{pizzato:2010} in einer weiterführenden Arbeit vor.
-Die Autoren entwickeln den inhaltsbasierten Algorithmus RECON für eine Online-Dating-Website, welche die Präferenzwerte zweier Nutzer $c$ und $s$ über das harmonische Mittel aggregiert:
+Die Autoren entwickelten den inhaltsbasierten Algorithmus RECON, der die Präferenzwerte zweier Nutzer $c$ und $s$ einer Online-Dating-Website über das harmonische Mittel aggregiert:
 \begin{equation}\label{eq33}
     PW_{c,s}^{bil} = \frac{2}{(\frac{1}{Comp(P_{c,s})}+\frac{1}{Comp(P_{s,c})})}
 \end{equation}
@@ -84,7 +86,7 @@ Hierfür erhoben sie für eine Woche die positiven und negativen Interaktionen i
 In dem Experiment setzten sie für das Gewicht $w_{s}$ die Werte 0, 0.25, 0.5 und 0.75 sowie analog für $w_{c}$ die Werte 1.0, 0.75, 0.5 und 0.25 ein \cite[S. 251]{kim:2:inproceedings}.
 Die Ergebnisse des Experiments zeigen, dass unterschiedliche Ausprägungen der Gewichte nur zu geringen Schwankungen in der Erfolgsrate des Systems führten, wobei die Erfolgsrate als der Anteil positiver Interaktionen an den Gesamtinteraktionen bemessen wurde.
 Die geringen Schwankungen führen \textcite[S. 219]{kim:2:inproceedings} darauf zurück, dass es sich bei ihrem Experiment um eine retrospektive Forschung handelt.
-Durch das Experiment konnten die Autoren zwar feststellen, ob eine empfohlene Interaktion, ermittelt anhand eines bestimmten Gewichts, in den historischen Daten als positiv verzeichnet wurde.
+Das bedeutet, die Autoren konnten zwar feststellen, ob eine empfohlene Interaktion, die anhand eines bestimmten Gewichts ermittelt wurde, in den historischen Daten als positiv verzeichnet wurde.
 Es war ihnen jedoch nicht möglich eine Aussage darüber zu treffen, wie ein Nutzer auf eine Empfehlung basierend auf unterschiedlichen Gewichten reagieren würde.
 Folglich konnten die Autoren rückwirkend nicht bestimmen, welchen Einfluss die Gewichtung auf zukünftige Interaktionen in einem System haben könnte.
 % Im umkehrschluss bedeutet das, es war den Autoren nicht möglich zu ermitteln, ob bspw. eine Gewichtung von 0.7 für wc insgesamt zu mehr positiven interaktionen im system führen würde, da nicht bemessen werden konnte, wie ein Empfehlungsempfänger auf eine empfohlene Person reagiert.
@@ -145,6 +147,8 @@ Grundsätzlich gehen  \textcite[S. 138]{kleinerman:2:inproceedings} davon aus, d
 
 Im Vergleich zu verwandten Domänen hat die automatische Zuordnung von Personen zu Jobpositionen in der Literatur bislang wenig Aufmerksamkeit erhalten \cite[S. 1469]{yildirim:article}.
 
+\subsection{Zuordnung von Person zu Jobposition}
+\label{ch:verwandte_arbeiten:1:2}
 % \subsection{Zuordnung von Person zu Jobposition}
 \textcite[S. 1ff.]{malinowski:2006} stellen in ihrer Arbeit die Notwendigkeit der Berücksichtigung bilateraler Präferenzen für die Zuordnung von Personen zu Jobpositionen fest.
 Die Autoren führen den Begriff des \ac{P-E Fit} an, welcher häufig in der Berufs- und Organisationspsychologie Anwendung findet \cite[S. 2]{link:booklet} und eine optimale Zuordnung einer Person zu ihrer Umgebung beschreibt.
@@ -165,7 +169,7 @@ Die Berücksichtigung der Präferenzen der Mitarbeiter erfolgt, indem das System
 
 Kritisch ist anzumerken, dass diese Methode keine einheitliche Gewichtung der Präferenzen von Mitarbeitern vorsieht.
 Dies führt zwangsläufig dazu, dass alle Mitarbeiter innerhalb einer Kompetenzstufe einer Fähigkeit, die diese Fähigkeit präferieren, höher eingestuft werden als der fähigste Mitarbeiter dieser Kompetenzstufe, der keine Präferenz angegeben hat.
-Da der Einfluss der Präferenz eines Mitarbeiters auf das jeweilige Kompetenzniveau begrenzt ist, erlaubt \textcite[S. 1ff.]{link:booklet}, dass Mitarbeiter mit geringen Kenntnissen in einer Fähigkeit durch Präferenz höher gelistet werden als Mitarbeiter mit Expertenwissen.
+Da der Einfluss der Präferenz eines Mitarbeiters auf das jeweilige Kompetenzniveau begrenzt ist, stellt \textcite[S. 44]{link:booklet} sicher, dass Mitarbeiter mit geringen Kenntnissen in einer Fähigkeit durch Präferenz nicht höher gelistet werden als Mitarbeiter mit Expertenwissen.
 Dies macht es jedoch zugleich unmöglich, dass Mitarbeiter mit Kenntnissen am oberen Rand eines Kompetenzniveaus einer Fähigkeit, die diese Fähigkeit präferieren, höher gelistet werden, als Mitarbeiter mit Kenntnissen am unteren Rand der angrenzenden Kompetenzstufe, die diese Fähigkeit nicht präferieren.
 
 Insgesamt zeigen die Ergebnisse der Evaluation von \textcite[S. 62]{link:booklet}, dass die Zufriedenheit der Mitarbeiter sowie deren erwartete Arbeitsleistung seitens der Manager durch den bilateralen Ansatz in vier von fünf Fällen gesteigert werden konnte.
@@ -201,10 +205,10 @@ Die Präferenz eines Kandidats für eine Jobausschreibung ermitteln \textcite[S.
 Analog ermitteln die Autoren die Präferenz eines Recruiters für einen Kandidaten.
 Ein Matching zwischen Job und Kandidat ergibt sich nach \textcite[S. 106]{yang:inproceedings} aus dem Durchschnitt der Präferenz $r_{i\rightarrow k}$ des Kandidats $c_{i}$ für die Auswahl von Job $j_{k}$ und der Präferenz $s_{k\rightarrow i}$ des Recruiters (d.h. Jobs) $j_{k}$ für die Auswahl von Kandidat $c_{i}$:
 \begin{equation}\label{eq38}
-    \hat{y} = \frac{1}{2} r_{i\rightarrow k} +\frac{1}{2} s_{k\rightarrow i}
+    PW_{c_{i},j_{k}}^{bil} = \frac{1}{2} r_{i\rightarrow k} +\frac{1}{2} s_{k\rightarrow i}
 \end{equation}
 Nach dem Ansatz von \textcite[S. 102ff.]{yang:inproceedings} werden die Präferenzen beider Parteien gleichermaßen berücksichtigt.
-Basierend auf dem dual-perspective Graph werden bereits existierende Paarungen als Referenz verwendet, um nicht gematchte Kandidaten bzw. Jobausschreibungen in Abhängigkeit des vorhergesagten reziproken Präferenzwertes zu sortieren.
+Basierend auf dem dual-perspec\-tive Graph werden bereits existierende Paarungen als Referenz verwendet, um nicht gematchte Kandidaten bzw. Jobausschreibungen in Abhängigkeit des vorhergesagten reziproken Präferenzwertes zu sortieren.
 
 Die Autoren vergleichen ihren Ansatz bezüglich der Performance (Precision, Recall, Normalized Discounte Cumulative Gain und Mean Reciprocal Rank) mit diversen Baseline-Algorithmen.
 Dabei stellten sie fest, dass ihr Algorithmus im Vergleich zu den Baseline-Algorithmen durchweg bessere Ergebnisse erzielte \cite[S. 110]{yang:inproceedings}.
@@ -212,7 +216,7 @@ Dabei stellten sie fest, dass ihr Algorithmus im Vergleich zu den Baseline-Algor
 \begin{figure}[H]
     \centering
 	\includegraphics[width=1.0\textwidth]{gfx/dpg-case-study.png}
-	\caption[Vergleich dual-perspective Graph-Algorithmus mit Baseline-Algorithmen anhand einer Fallstudie]{Vergleich Dual-perspective Graph-Algorithmus mit Baseline-Algo\-rithmen anhand einer Fallstudie\\
+	\caption[Vergleich dual-perspective Graph-Algorithmus mit Base\-line-Algorithmen anhand einer Fallstudie]{Vergleich Dual-perspective Graph-Algorithmus mit Baseline-Algo\-rithmen anhand einer Fallstudie\\
     \cite[S. 111]{yang:inproceedings}}
 	\label{fig:relatedwork:abb4}
 \end{figure}
@@ -253,7 +257,7 @@ In der Literatur existieren nur wenige Publikationen zu wechselseitigen Systemen
 Mehrseitige Marktplattformen verstehen die Autoren als Mediatoren zwischen den unterschiedlichen Parteien eines Marktes (z.B. Erwerbssucher und Erwerbsanbieter), deren Aufgabe darin besteht, die Ziele der verschiedenen Parteien in Einklang zu bringen \cite[S. 329]{su:inproceedings}.
 Die Berücksichtigung mehrerer Ziele für die Empfehlung in mehrseitigen Marktplattformen, verstehen \textcite[S. 329]{su:inproceedings} als multi-objektives Optimierungsproblem.
 
-Im Vergleich zu herkömmlichen \ac{RRS} verfolgen \textcite[S. 328ff.]{su:inproceedings} einen Ansatz, der Empfehlungen nicht allein auf dem (angenommenen) reziproken Wert einer Jobposition (eines Kandidaten) für einen Kandidaten (eine Jobposition) basiert.
+Im Vergleich zu herkömmlichen \ac{RRS} verfolgen \textcite[S. 328ff.]{su:inproceedings} einen Ansatz, der Empfehlungen nicht allein auf dem (angenommenen) Präferenzwert einer Jobposition (eines Kandidaten) für einen Kandidaten (eine Jobposition) basiert.
 Stattdessen besteht das übergeordnete Ziel der Autoren darin, alle Rankings von Kandidaten bzw. Jobpositionen in einem Markt so zu sortieren, dass die "Gesamtwohlfahrt"\footnote{"social welfare" - \textcite[S. 329]{su:inproceedings}} im Markt maximiert wird.
 Die Gesamtwohlfahrt im Markt definieren die Autoren als die erwartete Anzahl an erfolgreichen Paaren in dem Markt, unter Anwendung einer Ranking-Methode $\pi$.
 Eine optimales Matching von Personen zu Jobpositionen lässt daher auch Paare zu, deren reziproker Wert (marginal) suboptimal ist, wenn dadurch mehrere erfolgreiche Paarungen in dem Markt vorhanden sind \cite[S. 334]{su:inproceedings}.
@@ -300,7 +304,7 @@ Dabei stellten die Autoren fest, dass eine signifikante Verbesserung des Nutzens
 % Für bestimmte Kombinationen von $\alpha$ und $\beta$ konnte die Anzahl aktiver und passiver Nutzer in dem Top-K-Ranking durch Anwendung des erweiterten Modells verdoppelt werden, ohne massive Einbußen in den semantischen Matches einzufahren.
 Kritisch betrachten \textcite[S. 16]{rodriguez:inproceedings} an ihrem Ansatz, dass für die Wirksamkeit eines Modells im praktischen Einsatz überprüft werden muss, ob die durchschnittliche Anzahl aktiver und passiver Nutzer tatsächlich repräsentativ für das Engagement von Nutzern in einem System ist.
 
-\textcite[S. 1467ff.]{yildirim:article} stellen ebenfalls einen multi-objektiven Ansatz für wechselseitige Empfehlungssysteme im Online-Recruting vor.
+\textcite[S. 1467ff.]{yildirim:article} stellen ebenfalls einen multi-objektiven Ansatz für wechselseitige Empfehlungssysteme im Online-Recruiting vor.
 Jedoch liegt der Fokus der Autoren auf der Entwicklung eines Modells für die Vorhersage der Reziprozität zwischen Jobkandidat und Recruiter (d.h. Jobpositon).
 Reziprozität definieren \textcite[S. 1470]{yildirim:article} in ihrem Modell als die Wahrscheinlichkeit der Bewerbung eines Kandidats für eine Jobposition und die Wahrscheinlichkeit einer Kontaktaufnahme eines Recrutiers mit diesem Kandidat.
 Hierbei betrachten die Autoren die Präferenzen separat als die beiden Outputs des Modells (daher multi-objektiv).
@@ -316,7 +320,7 @@ Einen Vergleich verschiedener Aggregationsmethoden von Präferenzen in wechselse
 \textcite[S. 4031ff.]{neve:inproceedings} vergleichen die Performance eines wechselseitigen Empfehlungssystems anhand der drei Pythagoras-Mittelwerte (arithmetisches, geometrisches und harmonisches Mittel) sowie der Cross-Ratio-Uninorm.
 Die Cross-Ratio-Uni\-norm aggregiert zwei Werte $x$ und $y$ wie folgt \cite[S. 19]{appel:article}:
 \begin{equation}\label{eq35}
-    rcS(x,y) =
+    PW_{x,y}^{bil} =
         \begin{cases}
             0 & \textnormal{wenn } (x,y) \in \{(0,1),(1,0)\} \\
             \frac{xy}{xy + (1-x) (1-y)} & \textnormal{sonst } \\

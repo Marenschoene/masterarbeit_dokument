@@ -71,7 +71,7 @@ Darauf basierend wurde für ein Projekt und eine Menge an Mitarbeitern die Perfo
 Im Folgenden wird der Ablauf der Untersuchung anhand der einzelnen Phasen im Detail erläutert.
 
 \section{Aufsetzen des Experiments}
-Für das Aufsetzen des Experiments wurden zu Beginn durch einen Manager des Fachbereichs Java Enterprise Solutions fünf Beispielprojekte mit angeforderten Projektpositionen erstellt.
+Für das Aufsetzen des Experiments wurden zu Beginn durch einen Manager des Fachbereichs Java Enterprise Solutions fünf Beispielprojekte mit angeforderten Fähigkeiten erstellt.
 Nach Angaben des Managers gelten die Beispielprojekte als repräsentativ für häufige Kundenanfragen an den Bereich.
 Die Projekte sind auf der folgenden Seite in Abbildung \ref{fig:methodik:abb2} dargestellt.
 
@@ -176,7 +176,7 @@ Eine Beschreibung der Bedeutung der Einordnung des Interesses eines Mitarbeiters
 \end{table}
 
 Die Skala wurde so gewählt, dass für Mitarbeiter neben präferierten Fähigkeiten auch deren negative Präferenzen erhoben werden konnten, sowie die Fähigkeiten, denen sie indifferent gegenüberstanden.
-In Abbildung \ref{fig:methodik:abb4} ist einen Auszug aus der Umfrage zur Erhebung der Präferenzen eines Mitarbeiters abgebildet.
+In Abbildung \ref{fig:methodik:abb4} ist ein Auszug aus der Umfrage zur Erhebung der Präferenzen eines Mitarbeiters abgebildet.
 
 \begin{figure}[H]
     \centering
@@ -361,7 +361,7 @@ In Gleichung \ref{methodik:eq:3} stellt $F_{s}$ die Menge an Fähigkeiten dar, d
 Der Ausdruck $level(i \in F_{s})$ gibt den Wert des Kenntnisniveaus einer beherrschten Fähigkeit eines Mitarbeiters an.
 Analog bezeichnet $level(i \in F_{c})$ den Wert des Anforderungsniveaus einer angeforderten Fähigkeit in einem Projekt.
 
-Da ein Mitarbeiter eine angeforderte Fähigkeit auch besser beherrschen kann als gefordert ist, musste bei der Konzeption darüber hinaus berücksichtigt werden, wie mit einer Überqualifikation eines Mitarbeiters in einer Fähigkeit verfahren wird.
+Da ein Mitarbeiter eine angeforderte Fähigkeit auch besser beherrschen kann als gefordert, musste bei der Konzeption darüber hinaus berücksichtigt werden, wie mit einer Überqualifikation eines Mitarbeiters in einer Fähigkeit verfahren wird.
 Der Algorithmus wurde so gestaltet, dass eine Überqualifikation eines Mitarbeiters ($level(i \in F_{s}) > level(i \in F_{c})$) gleich gehandhabt wird, wie die exakte Erfüllung einer Fähigkeit ($level(i \in F_{s}) = level(i \in F_{c})$).
 Wird eine Fähigkeit beispielsweise auf dem Niveau "Grundkenntnisse" ($\widehat{=} \textnormal{ }1$) gefordert, die ein Mitarbeiter auf dem Niveau "Fortgeschritten" ($\widehat{=} \textnormal{ }2$) beherrscht, wird für die anteilige Erfüllung eine 1 ($\frac{level(i \in F_{c})}{level(i \in F_{c})}$) anstelle einer 2 ($\frac{level(i \in F_{s})}{level(i \in F_{c})}$) angenommen.
 Dadurch soll verhindert werden, dass das Fehlen einer Fähigkeit durch die Überqualifikation in einer anderen Fähigkeit kompensiert wird.
@@ -384,7 +384,7 @@ Bei der Entscheidung für eine Aggregationsmethode des bilateralen Algorithmus w
 Dem lag die Annahme zugrunde, dass die Fähigkeits-Kompatibilität im Vergleich von höherer Bedeutung bei der Zuordnung von Mitarbeitern für Projekte ist als die Präferenz-Kompatibilität, da Manager die finale Entscheidung bei der Zuordnung treffen.
 
 Obwohl das harmonische Mittel in dem Experiment von \textcite[S. 1ff.]{kumari:2:inproceedings} die besten Ergebnisse erzielte, wurde diese Aggregationsmethode nicht für den bilateralen Algorithmus gewählt.
-Zum einen wurde in Kapitel \ref{ch:verwandte_arbeiten:1} erläutert, dass das harmonische Mittel für eine Fähigkeits- bzw. Präferenz-Kompatibilität von 0 nicht definiert ist.
+Zum einen wurde in Kapitel \ref{ch:verwandte_arbeiten:1:1} erläutert, dass das harmonische Mittel für eine Fähigkeits- bzw. Präferenz-Kompatibilität von 0 nicht definiert ist.
 Für den vorliegenden Anwendungsfall wurde jedoch davon ausgegangen, dass in der Praxis durchaus Mitarbeiter existieren, die keine der angeforderten Fähigkeiten einer Projektposition besitzen (Fähigkeits-Kompatibilität $= 0$) bzw. präferieren (Präferenz-Kompatibilität $= 0$).
 Auch wenn eine individuelle Gewichtung der Kriterien durch das gewichtete harmonische Mittel möglich gewesen wäre, wurde sich daher gegen die Methode entschieden.
 Darüber hinaus zeigten Experimente von \textcite[S. 131ff.]{kleinerman:2:inproceedings}, dass eine gewichtete Summe im Vergleich zum harmonischen Mittel zu besseren Ergebnissen führen kann.
@@ -401,7 +401,7 @@ Da die genaue Bedeutung der einzelnen Kriterien in der Zuordnung von Mitarbeiter
 Das Skript wurde in der Programmiersprache Python entwickelt.
 Hierfür wurden die erhobenen Daten der Mitarbeiter- und Managerbefragung herangezogen (Vgl. Kapitel \ref{ch:methodik:datenerhebung:1} und \ref{ch:methodik:datenerhebung:2}).
 
-In Anlehnung an das in Kapitel \ref{ch:verwandte_arbeiten:1} vorgestellte Verfahren von \textcite[S. 131ff.]{kleinerman:2:inproceedings} wurde das Optimierungsproblem zur Bestimmung von $\alpha$ wie folgt definiert:
+In Anlehnung an das in Kapitel \ref{ch:verwandte_arbeiten:1:1} vorgestellte Verfahren von \textcite[S. 131ff.]{kleinerman:2:inproceedings} wurde das Optimierungsproblem zur Bestimmung von $\alpha$ wie folgt definiert:
 \begin{equation}\label{methodik:eq:7}
     \begin{aligned}
         \min_{\alpha} \sum_{c \in C} \sum_{s \in S} \mathbb{1}_{s \in SuccMatch_{c}} Rank_{s} (PW_{c,*}^{bil}(\alpha))\\
@@ -477,7 +477,7 @@ Dieses Gewicht wurde im Anschluss an den bilateralen Algorithmus übergeben.
 Anhand der Mitarbeiter des Testdatensatzes eines jeden Samples wurde daraufhin für jedes Projekt einmal anhand des uni- und einmal anhand des bilateralen Algorithmus ein Ranking der fünf passensten Mitarbeiter ermittelt.
 
 Um die Auswirkungen des bilateralen Algorithmus auf die Zufriedenheit der Angestellten zu ermitteln, wurde die Genauigkeit der Empfehlungen unter Anwendung des jeweiligen Algorithmus bestimmt.
-Für die Bestimmung der Genauigkeit des jeweiligen Algorithmus wurde in jedem Projekt innerhalb eines Samples die Mitarbeiter des unilateralen sowie des bilateralen Rankings ermittelt, die angaben mit dem jeweiligen Projekt zufrieden zu sein ("Eher zufrieden" und "Voll und ganz zufrieden").
+Für die Bestimmung der Genauigkeit des jeweiligen Algorithmus wurden in jedem Projekt innerhalb eines Samples die Mitarbeiter des unilateralen sowie des bilateralen Rankings ermittelt, die angaben mit dem jeweiligen Projekt zufrieden zu sein ("Eher zufrieden" und "Voll und ganz zufrieden").
 Daraufhin wurde der Anteil an zufriedenen Mitarbeitern unter den fünf empfohlenen Angestellten je Ranking ermittelt und miteinander verglichen.
 Die Veränderung des Anteils des bilateralen Rankings im Vergleich zum unilateralen Ranking diente als Indikator dafür, ob die Zufriedenheit stieg, sank oder gleich blieb.
 
